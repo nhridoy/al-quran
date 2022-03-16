@@ -17,6 +17,8 @@ export const Surah = (props) => {
         setAyahs(data.data.ayahs);
         setSurah(data.data);
       });
+  }, []);
+  useEffect(() => {
     fetch(`https://api.alquran.cloud/v1/surah/${id}/en.asad`)
       .then((res) => res.json())
       .then((data) => setEnAyahs(data.data.ayahs));
@@ -27,7 +29,11 @@ export const Surah = (props) => {
       <Header surah={surah} />
       <div className="flex gap-3 flex-col">
         {ayahs.map((ayah, index) => (
-          <SingleSurah ayah={ayah} enayah={enayahs[index]} key={ayah.number} />
+          <SingleSurah
+            ayah={ayah}
+            enayah={enayahs.length ? enayahs[index] : ""}
+            key={ayah.number}
+          />
         ))}
       </div>
     </div>
