@@ -54,7 +54,7 @@ export const SingleSurah = (props) => {
         </div>
       </div>
       <p className="text-right font-semibold text-3xl">{ayah.text}</p>
-      <p className=" text-3xl">{enayah.text}</p>
+      {/* <p className=" text-3xl">{enayah.text}</p> */}
     </div>
   );
 };
