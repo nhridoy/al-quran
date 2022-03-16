@@ -4,6 +4,7 @@ import { Header } from "../../Header/Header";
 import { BiShareAlt, BiBookmark } from "react-icons/bi";
 import { IoPlayOutline } from "react-icons/io5";
 import { SurahHead } from "./SurahHead";
+import { Player } from "./Player";
 
 export const Surah = (props) => {
   const { id } = useParams();
@@ -28,6 +29,7 @@ export const Surah = (props) => {
     <div>
       <Header surah={surah} />
       <SurahHead surah={surah} />
+      <Player surah={surah} />
       <div className="flex gap-3 flex-col">
         {ayahs.map((ayah, index) => (
           <SingleSurah

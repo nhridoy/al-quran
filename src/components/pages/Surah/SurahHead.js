@@ -3,7 +3,6 @@ import { FiPlayCircle } from "react-icons/fi";
 
 export const SurahHead = (props) => {
   const { surah } = props;
-  console.log(surah);
   return (
     <div className="flex flex-col md:flex-row md:justify-between md:px-8 items-center p-5 gap-3 bg-gradient-to-tl rounded-2xl text-white from-secondary to-alternateOne mb-5 shadow-xl shadow-alternateOne">
       <div className="flex flex-col items-center gap-3 border-b md:border-b-0 p-5">
