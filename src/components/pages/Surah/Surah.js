@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Header } from "../../Header/Header";
 import { BiShareAlt, BiBookmark } from "react-icons/bi";
 import { IoPlayOutline } from "react-icons/io5";
+import { SurahHead } from "./SurahHead";
 
 export const Surah = (props) => {
   const { id } = useParams();
@@ -26,6 +27,7 @@ export const Surah = (props) => {
   return (
     <div>
       <Header surah={surah} />
+      <SurahHead surah={surah} />
       <div className="flex gap-3 flex-col">
         {ayahs.map((ayah, index) => (
           <SingleSurah
@@ -44,7 +46,7 @@ export const SingleSurah = (props) => {
   return (
     <div className="flex flex-col gap-4 border-b-2 p-4">
       <div className="flex bg-secondaryLight p-3 rounded-lg justify-between items-center">
-        <p className="bg-primary w-9 h-9 text-white font-semibold flex justify-center items-center rounded-full">
+        <p className="bg-primary w-10 h-10 text-white font-semibold flex justify-center items-center rounded-full">
           {ayah.numberInSurah}
         </p>
         <div className="flex text-primary text-2xl gap-4">
