@@ -17,11 +17,11 @@ export const Surah = (props) => {
         setSurah(data.data);
       });
   }, []);
-  useEffect(() => {
-    fetch(`https://api.alquran.cloud/v1/surah/${id}/en.asad`)
-      .then((res) => res.json())
-      .then((data) => setEnAyahs(data.data.ayahs));
-  }, []);
+  // useEffect(() => {
+  //   fetch(`https://api.alquran.cloud/v1/surah/${id}/en.asad`)
+  //     .then((res) => res.json())
+  //     .then((data) => setEnAyahs(data.data.ayahs));
+  // }, []);
 
   return (
     <div>
@@ -30,7 +30,7 @@ export const Surah = (props) => {
         {ayahs.map((ayah, index) => (
           <SingleSurah
             ayah={ayah}
-            enayah={enayahs.length ? enayahs[index] : ""}
+            // enayah={enayahs.length ? enayahs[index] : ""}
             key={ayah.number}
           />
         ))}
