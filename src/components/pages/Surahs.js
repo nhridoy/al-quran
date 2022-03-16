@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { FiOctagon } from "react-icons/fi";
+import { Header } from "../Header/Header";
 
 export const Surahs = () => {
   const [surahs, setSurahs] = React.useState([]);
@@ -10,10 +11,13 @@ export const Surahs = () => {
   }, []);
   console.log(surahs);
   return (
-    <div className="flex flex-col md:flex-row md:grid md:grid-cols-5 md:gap-4">
-      {surahs.map((surah) => (
-        <Surah data={surah} key={surah.number} />
-      ))}
+    <div className="">
+      <Header />
+      <div className="flex flex-col md:flex-row md:grid md:grid-cols-5 md:gap-4">
+        {surahs.map((surah) => (
+          <Surah data={surah} key={surah.number} />
+        ))}
+      </div>
     </div>
   );
 };
