@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { FiOctagon } from "react-icons/fi";
-import { Link, NavLink, Outlet, Route, Routes } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { Header } from "../Header/Header";
-import { Surah } from "./Surah";
 
 export const Surahs = () => {
   const [surahs, setSurahs] = React.useState([]);
@@ -34,7 +33,7 @@ const SurahList = (props) => {
       <div className="flex gap-4">
         <div className="flex gap-3 md:flex-col  items-center">
           <div className="relative">
-            <FiOctagon className="text-primary font-bold text-4xl" />
+            <FiOctagon className="text-primary font-bold text-6xl" />
             <span className="absolute inset-0 font-semibold grid place-items-center">
               {props.data.number}
             </span>

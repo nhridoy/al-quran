@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Header } from "../Header/Header";
-import { BiShareAlt, BiSearch, BiBookmark } from "react-icons/bi";
+import { Header } from "../../Header/Header";
+import { BiShareAlt, BiBookmark } from "react-icons/bi";
 import { IoPlayOutline } from "react-icons/io5";
-import { BsBookmark } from "react-icons/bs";
 
 export const Surah = (props) => {
   const { id } = useParams();
