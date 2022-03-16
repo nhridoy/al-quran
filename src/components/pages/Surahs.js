@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { FiOctagon } from "react-icons/fi";
+import { Link, NavLink, Outlet, Route, Routes } from "react-router-dom";
 import { Header } from "../Header/Header";
+import { Surah } from "./Surah";
 
 export const Surahs = () => {
   const [surahs, setSurahs] = React.useState([]);
@@ -9,20 +11,24 @@ export const Surahs = () => {
       .then((res) => res.json())
       .then((data) => setSurahs(data.data));
   }, []);
-  console.log(surahs);
+  // console.log(surahs);
   return (
     <div className="">
       <Header />
       <div className="flex flex-col md:flex-row md:grid md:grid-cols-5 md:gap-4">
         {surahs.map((surah) => (
-          <Surah data={surah} key={surah.number} />
+          <Link key={surah.number} exact="true" to={`/surah/${surah.number}`}>
+            <SurahList data={surah} key={surah.number} />
+          </Link>
         ))}
+
+        <Outlet />
       </div>
     </div>
   );
 };
 
-const Surah = (props) => {
+const SurahList = (props) => {
   return (
     <div className="py-4 px-3 hover:bg-secondaryLight active:bg-alternateOne rounded-md flex md:flex-col justify-between items-center gap-4 border-b-2 md:border-2 border-alternateOne lg:cursor-pointer">
       <div className="flex gap-4">

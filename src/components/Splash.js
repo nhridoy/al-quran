@@ -30,7 +30,7 @@ export const Splash = () => {
             />
           </div>
           <NavLink
-            to="/home"
+            to="/surah"
             className="text-center bg-alternateSecond px-5 py-2 rounded-2xl text-white font-semibold"
           >
             Browse Surah
