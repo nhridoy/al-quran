@@ -10,7 +10,7 @@ export const Player = (props) => {
   const { id } = useParams();
   const [playList, setPlayList] = useState({});
   useEffect(() => {
-    fetch(`http://api.alquran.cloud/v1/surah/${id}/ar.alafasy`)
+    fetch(`https://api.alquran.cloud/v1/surah/${id}/ar.alafasy`)
       .then((res) => res.json())
       .then((data) => setPlayList(data.data));
   }, []);
