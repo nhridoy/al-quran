@@ -6,7 +6,7 @@ export const Header = (props) => {
 
   return (
     <div className="my-6 text-xl">
-      <div className="flex justify-between">
+      <div className="flex justify-between items-center">
         <div className="flex items-center gap-4">
           <BiArrowBack />
           <h2 className="text-primary font-bold">
