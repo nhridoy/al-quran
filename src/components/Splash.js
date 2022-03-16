@@ -6,6 +6,9 @@ export const Splash = () => {
   return (
     <div className="h-screen grid place-items-center">
       <div className="flex flex-col items-center gap-4">
+        <h2 className="text-primary font-bold text-3xl">
+          بِسْمِ ٱللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
+        </h2>
         <h2 className="text-primary font-bold text-3xl">Quran Mazid</h2>
         <p className="text-gray-700">Full Quran with Audio Player</p>
       </div>

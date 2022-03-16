@@ -1,26 +1,46 @@
-import React from "react";
-import { BsOctagon } from "react-icons/bs";
+import React, { useEffect } from "react";
+import { FiOctagon } from "react-icons/fi";
 
 export const Surahs = () => {
+  const [surahs, setSurahs] = React.useState([]);
+  useEffect(() => {
+    fetch("https://api.alquran.cloud/v1/surah")
+      .then((res) => res.json())
+      .then((data) => setSurahs(data.data));
+  }, []);
+  console.log(surahs);
   return (
-    <div className="flex flex-col md:flex-row">
-      <div className="flex md:flex-col justify-between items-center md:items-end gap-4 border-b-2">
-        <div className="flex gap-4">
-          <div className="flex gap-3 items-center">
-            <div className="">
-              <BsOctagon />
-              <span>1</span>
-            </div>
-            <div className="flex flex-col">
-              <div className="name">Fatiha</div>
-              <div className="flex gap-2 text-gray-600">
-                <p>Text</p>
-                <p>Text</p>
-              </div>
+    <div className="flex flex-col md:flex-row md:grid md:grid-cols-5 md:gap-4">
+      {surahs.map((surah) => (
+        <Surah data={surah} key={surah.number} />
+      ))}
+    </div>
+  );
+};
+
+const Surah = (props) => {
+  return (
+    <div className="py-4 px-3 hover:bg-secondaryLight active:bg-alternateOne rounded-md flex md:flex-col justify-between items-center gap-4 border-b-2 md:border-2 border-alternateOne cursor-pointer">
+      <div className="flex gap-4">
+        <div className="flex gap-3 md:flex-col  items-center">
+          <div className="relative">
+            <FiOctagon className="text-primary font-bold text-4xl" />
+            <span className="absolute inset-0 font-semibold grid place-items-center">
+              {props.data.number}
+            </span>
+          </div>
+          <div className="flex flex-col md:items-center">
+            <div className="font-semibold">{props.data.englishName}</div>
+            <div className="flex flex-col md:flex-row gap-2 text-gray-600 text-xs">
+              <p className="uppercase">{props.data.revelationType}</p>
+              <p className="uppercase">{props.data.numberOfAyahs} verses</p>
             </div>
           </div>
         </div>
-        <div className="">Arbi</div>
+      </div>
+      <div className="md:w-full text-right">
+        <p>{props.data.name}</p>
+        <p>{props.data.englishNameTranslation}</p>
       </div>
     </div>
   );
