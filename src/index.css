@@ -12,6 +12,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.react-draggable {
+  /* transform: translate(80vw, 85vh) !important; */
+}
 .react-jinke-music-player-mobile-toggle {
   display: flex;
   align-items: center;

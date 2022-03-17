@@ -5,6 +5,7 @@ import logo from "../../../logo.png";
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ReactDOM from "react-dom";
 
 export const Player = (props) => {
   const { surah } = props;
@@ -29,7 +30,15 @@ export const Player = (props) => {
       })
     );
   //   console.log(audioList);
-
+  ReactDOM.findDOMNode(
+    document.getElementsByClassName("react-draggable")[0] &&
+      document
+        .getElementsByClassName("react-draggable")[0]
+        .setAttribute(
+          "style",
+          "left: 0px; top: 0px; transform: translate(85vw, 85vh);"
+        )
+  );
   return (
     <div>
       <ReactJkMusicPlayer
