@@ -9,7 +9,7 @@ export const Splash = () => {
         <h2 className="text-primary font-bold text-3xl">
           بِسْمِ ٱللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
         </h2>
-        <h2 className="text-primary font-bold text-3xl">Quran Mazid</h2>
+        <h2 className="text-primary font-bold text-3xl">Al Quran</h2>
         <p className="text-gray-700">Full Quran with Audio Player</p>
       </div>
       <div className="bg-primary py-4 h-full w-full rounded-3xl">
