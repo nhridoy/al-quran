@@ -12,3 +12,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.react-jinke-music-player-mobile-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.react-jinke-music-player-mobile-operation > .items > .item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* .react-jinke-music-player-mobile-operation > .items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
+} */
