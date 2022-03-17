@@ -100,7 +100,7 @@ export const Player = (props) => {
         bounds={{ right: "4vw", bottom: "2vh", left: "4vw", top: "2vh" }}
         // volumeFade={{ fadeIn: 500, fadeOut: 500 }}
         getAudioInstance={(instance) => {
-          //   console.log(instance);
+          //   console.log(instance); // Test
           audioInstance = instance;
         }}
       />
