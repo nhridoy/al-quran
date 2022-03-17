@@ -56,15 +56,15 @@ export const Player = (props) => {
     localStorage.setItem("fullQuran", JSON.stringify(fullAudioList));
 
   //   fullAudioList.length && console.log(fullAudioList);
-  ReactDOM.findDOMNode(
-    document.getElementsByClassName("react-draggable")[0] &&
-      document
-        .getElementsByClassName("react-draggable")[0]
-        .setAttribute(
-          "style",
-          "left: 0px; top: 0px; transform: translate(85vw, 85vh);"
-        )
-  );
+  //   ReactDOM.findDOMNode(
+  //     document.getElementsByClassName("react-draggable")[0] &&
+  //       document
+  //         .getElementsByClassName("react-draggable")[0]
+  //         .setAttribute(
+  //           "style",
+  //           "left: 0px; top: 0px; transform: translate(85vw, 85vh);"
+  //         )
+  //   );
   return (
     <div>
       <ReactJkMusicPlayer
@@ -96,6 +96,7 @@ export const Player = (props) => {
         restartCurrentOnPrev
         showMediaSession
         theme="auto"
+        defaultPosition={{ right: "4vw", bottom: "2vh" }}
         // volumeFade={{ fadeIn: 500, fadeOut: 500 }}
         getAudioInstance={(instance) => {
           //   console.log(instance);
