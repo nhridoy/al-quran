@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { FiOctagon } from "react-icons/fi";
 import { Link, Outlet } from "react-router-dom";
 import { Header } from "../Header/Header";
+import { Player } from "./Surah/Player";
 
 export const Surahs = () => {
   const [surahs, setSurahs] = React.useState([]);
@@ -20,6 +21,7 @@ export const Surahs = () => {
             <SurahList data={surah} key={surah.number} />
           </Link>
         ))}
+        <Player />
 
         <Outlet />
       </div>
