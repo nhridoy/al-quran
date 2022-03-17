@@ -70,7 +70,7 @@ export const Player = (props) => {
       <ReactJkMusicPlayer
         audioLists={audioList.length ? audioList : audioLists}
         glassBg
-        drag
+        drag={false}
         seeked
         toggleMode
         autoPlay={false}
@@ -86,20 +86,21 @@ export const Player = (props) => {
         showThemeSwitch={false}
         showLyric={false}
         showDestroy={false}
-        preload
+        preload={true}
         remove={false}
         remember
-        spaceBar
+        spaceBar={true}
         responsive
-        autoHiddenCover={false}
+        autoHiddenCover={true}
         quietUpdate
-        restartCurrentOnPrev
-        showMediaSession
+        restartCurrentOnPrev={true}
+        showMediaSession={true}
         theme="auto"
         defaultPosition={{ right: "4vw", bottom: "2vh" }}
+        bounds={{ right: "4vw", bottom: "2vh", left: "4vw", top: "2vh" }}
         // volumeFade={{ fadeIn: 500, fadeOut: 500 }}
         getAudioInstance={(instance) => {
-          //   console.log(instance);
+          //   console.log(instance); // Test
           audioInstance = instance;
         }}
       />
