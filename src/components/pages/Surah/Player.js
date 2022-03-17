@@ -1,6 +1,7 @@
 import ReactJkMusicPlayer from "react-jinke-music-player";
 import "react-jinke-music-player/assets/index.css";
 import "./Playes.css";
+import logo from "../../../logo.png";
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -22,8 +23,8 @@ export const Player = (props) => {
     playList.ayahs.map((ayah, index) =>
       audioList.push({
         name: ayah.text,
-        singer: "",
-        cover: "",
+        singer: ayah.numberInSurah,
+        cover: logo,
         musicSrc: ayah.audio,
       })
     );
@@ -58,6 +59,12 @@ export const Player = (props) => {
         autoHiddenCover={false}
         quietUpdate
         restartCurrentOnPrev
+        showMediaSession
+        theme="auto"
+        // volumeFade={{ fadeIn: 500, fadeOut: 500 }}
+        // getAudioInstance={(instance) => {
+        //   audioInstance = instance;
+        // }}
       />
     </div>
   );

@@ -18,7 +18,10 @@ export const SurahHead = (props) => {
       <p className="text-2xl">
         بِسْــــــــــــــــــمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ
       </p>
-      <FiPlayCircle className="text-4xl cursor-pointer" />
+      <FiPlayCircle
+        className="text-4xl cursor-pointer"
+        // onClick={() => audioInstance.play()}
+      />
     </div>
   );
 };
