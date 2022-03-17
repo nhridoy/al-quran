@@ -9,7 +9,7 @@ export const Header = (props) => {
   };
 
   return (
-    <div className="my-6 text-xl">
+    <div className="py-6 text-xl bg-white">
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-4">
           <BiArrowBack

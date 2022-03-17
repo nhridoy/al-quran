@@ -27,8 +27,10 @@ export const Surah = (props) => {
 
   return (
     <div>
-      <Header surah={surah} />
-      <SurahHead surah={surah} />
+      <div className="bg-white sticky top-0 left-0 w-full">
+        <Header surah={surah} />
+        <SurahHead surah={surah} />
+      </div>
       <Player surah={surah} />
       <div className="flex gap-3 flex-col">
         {ayahs.map((ayah, index) => (
@@ -58,7 +60,7 @@ export const SingleSurah = (props) => {
         </div>
       </div>
       <p className="text-right font-semibold text-3xl">{ayah.text}</p>
-      <p className=" text-3xl">{enayah.text}</p>
+      <p className=" text-2xl">{enayah.text}</p>
     </div>
   );
 };
