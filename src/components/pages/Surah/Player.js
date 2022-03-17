@@ -12,17 +12,21 @@ export const Player = (props) => {
   const { id } = useParams();
   const [playList, setPlayList] = useState({});
   const [fullPlayList, setFullPlayList] = useState([]);
+  let audioLists = [];
+  localStorage.getItem("fullQuran") &&
+    (audioLists = JSON.parse(localStorage.getItem("fullQuran")));
   useEffect(() => {
     id
       ? fetch(`https://api.alquran.cloud/v1/surah/${id}/ar.alafasy`)
           .then((res) => res.json())
           .then((data) => setPlayList(data.data))
-      : fetch(`https://api.alquran.cloud/v1/quran/ar.alafasy`)
+      : audioLists.length ||
+        fetch(`https://api.alquran.cloud/v1/quran/ar.alafasy`)
           .then((res) => res.json())
           .then((data) => setFullPlayList(data.data.surahs));
   }, []);
   //   playList.ayahs.map((ayah) => console.log(ayah));
-
+  //   console.log(audioLists);
   const audioList = [];
   const fullAudioList = [];
   let audioInstance = null;
@@ -36,10 +40,9 @@ export const Player = (props) => {
           musicSrc: ayah.audio,
         })
       )
-    : fullPlayList.map((surah, index) => {
-        // console.log(surah.ayahs);
+    : fullPlayList.length &&
+      fullPlayList.map((surah, index) => {
         surah.ayahs.map((ayah, index) => {
-          //   console.log(ayah);
           fullAudioList.push({
             name: surah.englishName,
             singer: ayah.numberInSurah,
@@ -47,18 +50,12 @@ export const Player = (props) => {
             musicSrc: ayah.audio,
           });
         });
-        // Object.keys(surah).map((singleSurah, index) => {
-        //   console.log(singleSurah);
-        //   //   fullAudioList.push({
-        //   //     name: ayah.text,
-        //   //     singer: ayah.numberInSurah,
-        //   //     cover: logo,
-        //   //     musicSrc: ayah.audio,
-        //   //   });
-        // });
       });
-  console.log(audioList);
-  fullAudioList.length && console.log(fullAudioList);
+
+  fullAudioList.length &&
+    localStorage.setItem("fullQuran", JSON.stringify(fullAudioList));
+
+  //   fullAudioList.length && console.log(fullAudioList);
   ReactDOM.findDOMNode(
     document.getElementsByClassName("react-draggable")[0] &&
       document
@@ -71,7 +68,7 @@ export const Player = (props) => {
   return (
     <div>
       <ReactJkMusicPlayer
-        audioLists={audioList.length ? audioList : fullAudioList}
+        audioLists={audioList.length ? audioList : audioLists}
         glassBg
         drag
         seeked
@@ -101,7 +98,7 @@ export const Player = (props) => {
         theme="auto"
         // volumeFade={{ fadeIn: 500, fadeOut: 500 }}
         getAudioInstance={(instance) => {
-          console.log(instance);
+          //   console.log(instance);
           audioInstance = instance;
         }}
       />
