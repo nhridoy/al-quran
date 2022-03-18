@@ -11,6 +11,19 @@ export const Surahs = () => {
       .then((res) => res.json())
       .then((data) => setSurahs(data.data));
   }, []);
+
+  // Load All Surah List from LocalStorage
+  let surahList = [];
+  const loadSurahList = () => {
+    const isLoaded = localStorage.getItem("isLoaded");
+    Object.keys(localStorage).map((key) => {
+      if (key.includes("surah")) {
+        surahList.push(JSON.parse(localStorage.getItem(key)));
+      }
+    });
+    console.log(surahList);
+  };
+  loadSurahList();
   // console.log(surahs);
   return (
     <div className="">
@@ -37,11 +50,11 @@ const SurahList = (props) => {
           <div className="relative">
             <FiOctagon className="text-primary font-bold text-6xl" />
             <span className="absolute inset-0 font-semibold grid place-items-center">
-              {props.data.number}
+              {props.data.no}
             </span>
           </div>
           <div className="flex flex-col md:items-center">
-            <div className="font-semibold">{props.data.englishName}</div>
+            <div className="font-semibold">{props.data.enName}</div>
             <div className="flex flex-col md:flex-row gap-2 text-gray-600 text-xs">
               <p className="uppercase">{props.data.revelationType}</p>
               <p className="uppercase">{props.data.numberOfAyahs} verses</p>
@@ -51,7 +64,8 @@ const SurahList = (props) => {
       </div>
       <div className="md:w-full text-right">
         <p>{props.data.name}</p>
-        <p>{props.data.englishNameTranslation}</p>
+        <p>{props.data.enNameTranslation}</p>
+        <p>{props.data.bnNameTranslation}</p>
       </div>
     </div>
   );
