@@ -58,11 +58,21 @@ const SurahList = (props) => {
               {props.data.no}
             </span>
           </div>
-          <div className="flex flex-col md:items-center">
+          <div className="flex gap-1 flex-col md:items-center">
             <div className="font-semibold">{props.data.enName}</div>
             <div className="flex flex-col md:flex-row gap-2 text-gray-600 text-xs">
-              <p className="uppercase">{props.data.revelationType}</p>
-              <p className="uppercase">{props.data.numberOfAyahs} verses</p>
+              <span className="flex gap-1">
+                {props.data.revelationType === "Meccan" ? (
+                  <img src="https://img.icons8.com/external-others-ghozy-muhtarom/16/000000/external-kaaba-eid-al-adha-outline-others-ghozy-muhtarom.png" />
+                ) : (
+                  <img src="https://img.icons8.com/external-others-ghozy-muhtarom/16/000000/external-dome-eid-al-adha-outline-others-ghozy-muhtarom.png" />
+                )}
+                <span className="uppercase">{props.data.revelationType}</span>
+              </span>
+
+              <span className="uppercase">
+                {props.data.numberOfAyahs} verses
+              </span>
             </div>
           </div>
         </div>
