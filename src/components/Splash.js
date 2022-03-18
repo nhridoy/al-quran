@@ -33,18 +33,16 @@ export const Splash = () => {
               bnNameTranslation: data.singleSurah[key].bnNameTranslation,
               revelationType: data.singleSurah[key].revelationType,
               numberOfAyahs: data.singleSurah[key].numberOfAyahs,
-              verses: [
-                data.singleSurah[key].verses.map((verse) => {
-                  return {
-                    text: verse.text,
-                    bnText: verse.bnText,
-                    enText: verse.enText,
-                    enTextTransliteration: verse.enTextTransliteration,
-                    audioPrimary: verse.audioPrimary,
-                    numberInSurah: verse.numberInSurah,
-                  };
-                }),
-              ],
+              verses: data.singleSurah[key].verses.map((verse) => {
+                return {
+                  text: verse.text,
+                  bnText: verse.bnText,
+                  enText: verse.enText,
+                  enTextTransliteration: verse.enTextTransliteration,
+                  audioPrimary: verse.audioPrimary,
+                  numberInSurah: verse.numberInSurah,
+                };
+              }),
             };
           });
 
@@ -113,6 +111,9 @@ export const Splash = () => {
             </Link>
           </div>
         </div>
+        {/* <p className="text-red-400">
+          {loading ? "First time loading needed about 10Mb of Internet" : ""}
+        </p> */}
       </div>
     </div>
   );

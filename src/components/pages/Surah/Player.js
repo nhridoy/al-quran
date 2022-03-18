@@ -13,49 +13,41 @@ export const Player = (props) => {
   const [playList, setPlayList] = useState({});
   const [fullPlayList, setFullPlayList] = useState([]);
   let audioLists = [];
-  localStorage.getItem("fullQuran") &&
-    (audioLists = JSON.parse(localStorage.getItem("fullQuran")));
-  useEffect(() => {
-    id
-      ? fetch(`https://api.alquran.cloud/v1/surah/${id}/ar.alafasy`)
-          .then((res) => res.json())
-          .then((data) => setPlayList(data.data))
-      : audioLists.length ||
-        fetch(`https://api.alquran.cloud/v1/quran/ar.alafasy`)
-          .then((res) => res.json())
-          .then((data) => setFullPlayList(data.data.surahs));
-  }, []);
+
+  // useEffect(() => {
+  //   id
+  //     ? fetch(`https://api.alquran.cloud/v1/surah/${id}/ar.alafasy`)
+  //         .then((res) => res.json())
+  //         .then((data) => setPlayList(data.data))
+  //     : audioLists.length ||
+  //       fetch(`https://api.alquran.cloud/v1/quran/ar.alafasy`)
+  //         .then((res) => res.json())
+  //         .then((data) => setFullPlayList(data.data.surahs));
+  // }, []);
   //   playList.ayahs.map((ayah) => console.log(ayah));
   //   console.log(audioLists);
   const audioList = [];
   const fullAudioList = [];
   let audioInstance = null;
 
-  Object.keys(playList).length
-    ? playList.ayahs.map((ayah, index) =>
-        audioList.push({
-          name: ayah.text,
-          singer: ayah.numberInSurah,
+  const loadSurahAudio = () => {
+    let totalSurah = parseInt(localStorage.getItem("isLoaded"));
+    for (let index = 1; index <= totalSurah; index++) {
+      let surah = JSON.parse(localStorage.getItem(index));
+      surah.verses.map((verse) => {
+        fullAudioList.push({
+          name: surah.enName,
+          singer: verse.numberInSurah,
           cover: logo,
-          musicSrc: ayah.audio,
-        })
-      )
-    : fullPlayList.length &&
-      fullPlayList.map((surah, index) => {
-        surah.ayahs.map((ayah, index) => {
-          fullAudioList.push({
-            name: surah.englishName,
-            singer: ayah.numberInSurah,
-            cover: logo,
-            musicSrc: ayah.audio,
-          });
+          musicSrc: verse.audioPrimary,
+          lyric: "verse.enText",
         });
       });
+    }
+  };
+  loadSurahAudio();
 
-  fullAudioList.length &&
-    localStorage.setItem("fullQuran", JSON.stringify(fullAudioList));
-
-  //   fullAudioList.length && console.log(fullAudioList);
+  // fullAudioList.length && console.log(fullAudioList);
   //   ReactDOM.findDOMNode(
   //     document.getElementsByClassName("react-draggable")[0] &&
   //       document
@@ -68,13 +60,13 @@ export const Player = (props) => {
   return (
     <div>
       <ReactJkMusicPlayer
-        audioLists={audioList.length ? audioList : audioLists}
+        audioLists={fullAudioList.length ? fullAudioList : audioLists}
         glassBg
         drag={false}
         seeked
         toggleMode
         autoPlay={false}
-        clearPriorAudioLists
+        clearPriorAudioLists={false}
         autoPlayInitLoadPlayList={false}
         showMiniProcessBar
         showMiniModeCover
@@ -84,11 +76,11 @@ export const Player = (props) => {
         showDownload={false}
         showPlayMode
         showThemeSwitch={false}
-        showLyric={false}
+        showLyric={true}
         showDestroy={false}
-        preload={true}
+        preload="auto"
         remove={false}
-        remember
+        remember={true}
         spaceBar={true}
         responsive
         autoHiddenCover={true}
@@ -98,6 +90,10 @@ export const Player = (props) => {
         theme="auto"
         defaultPosition={{ right: "4vw", bottom: "2vh" }}
         bounds={{ right: "4vw", bottom: "2vh", left: "4vw", top: "2vh" }}
+        sortableOptions={{
+          sort: false,
+          swap: false,
+        }}
         // volumeFade={{ fadeIn: 500, fadeOut: 500 }}
         getAudioInstance={(instance) => {
           //   console.log(instance); // Test
