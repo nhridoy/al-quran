@@ -58,7 +58,7 @@ export const Splash = () => {
 
                 // Disabling the loading state
                 setLoading(parseInt(localStorage.getItem("isLoaded")) < 114);
-                console.log(parseInt(localStorage.getItem("isLoaded")) < 114);
+                // console.log(parseInt(localStorage.getItem("isLoaded")) < 114);
 
                 // setLoading(!(parseInt(localStorage.getItem("isLoaded")) < 114));
                 console.log("Surah", key, "Loaded");
@@ -109,7 +109,7 @@ export const Splash = () => {
                 loading ? "pointer-events-none" : "pointer-events-auto"
               } text-center bg-alternateSecond px-5 py-2 rounded-2xl text-white font-semibold`}
             >
-              {loading ? "Please Wait..." : "Browse Surah"}
+              {loading ? "Loading Surah Please Wait..." : "Browse Surah"}
             </Link>
           </div>
         </div>
