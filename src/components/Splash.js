@@ -6,6 +6,7 @@ export const Splash = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     // Enabling the loading state
+    localStorage.clear();
     localStorage.getItem("isLoaded") === null && setLoading(true);
 
     apiLoad();
@@ -63,7 +64,7 @@ export const Splash = () => {
               } catch (error) {
                 alert("Error Fetching Surah! Please Reload The Page Again.");
                 console.log(error);
-                // localStorage.clear();
+                localStorage.clear();
                 return;
               }
             });
