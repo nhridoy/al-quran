@@ -11,6 +11,7 @@ export const Splash = () => {
     apiLoad();
   }, []);
   const apiLoad = () => {
+    document.title = "Al Quran";
     let count = 0;
     console.log(localStorage.getItem("isLoaded") === null);
     localStorage.getItem("isLoaded") === null &&

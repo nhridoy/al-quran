@@ -16,6 +16,7 @@ export const Surah = (props) => {
   const loadSurahAyahs = () => {
     const surah = JSON.parse(localStorage.getItem(id));
     setSurah(surah);
+    document.title = surah.enName;
     setAyahs(surah.verses);
   };
 

@@ -27,6 +27,7 @@ export const Surahs = () => {
     }
 
     setSurahs(surahList);
+    document.title = "Al Quran - Surah List";
   };
 
   // console.log(surahs);
