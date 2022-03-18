@@ -1,13 +1,15 @@
 import logo from "../logo.png";
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const Splash = () => {
-  const [loading, setLoading] = useState(0);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
+    // Enabling the loading state
+    localStorage.getItem("isLoaded") === null && setLoading(true);
+
     apiLoad();
   }, []);
-
   const apiLoad = () => {
     let count = 0;
     console.log(localStorage.getItem("isLoaded") === null);
@@ -47,12 +49,18 @@ export const Splash = () => {
           });
 
           console.log("Loaded");
-          //   console.log(loadedData);
+
           Object.keys(loadedData).length > 0 &&
             Object.keys(loadedData).map((key) => {
               try {
                 localStorage.setItem(key, JSON.stringify(loadedData[key]));
                 localStorage.setItem("isLoaded", ++count);
+
+                // Disabling the loading state
+                setLoading(parseInt(localStorage.getItem("isLoaded")) < 114);
+                console.log(parseInt(localStorage.getItem("isLoaded")) < 114);
+
+                // setLoading(!(parseInt(localStorage.getItem("isLoaded")) < 114));
                 console.log("Surah", key, "Loaded");
               } catch (error) {
                 alert(error);
@@ -89,13 +97,21 @@ export const Splash = () => {
               alt="logo"
             />
           </div>
-
-          <NavLink
-            to="/surah"
-            className="text-center bg-alternateSecond px-5 py-2 rounded-2xl text-white font-semibold"
+          <div
+            className={`${
+              loading ? "cursor-not-allowed" : "cursor-auto"
+            } flex items-center justify-center`}
           >
-            Browse Surah
-          </NavLink>
+            <Link
+              disabled
+              to="/surah"
+              className={`${
+                loading ? "pointer-events-none" : "pointer-events-auto"
+              } text-center bg-alternateSecond px-5 py-2 rounded-2xl text-white font-semibold`}
+            >
+              {loading ? "Please Wait..." : "Browse Surah"}
+            </Link>
+          </div>
         </div>
       </div>
     </div>
