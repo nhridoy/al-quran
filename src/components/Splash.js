@@ -1,6 +1,7 @@
 import logo from "../logo.png";
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { Api } from "./Api";
 
 export const Splash = () => {
   return (
@@ -29,6 +30,7 @@ export const Splash = () => {
               alt="logo"
             />
           </div>
+          <Api />
           <NavLink
             to="/surah"
             className="text-center bg-alternateSecond px-5 py-2 rounded-2xl text-white font-semibold"
