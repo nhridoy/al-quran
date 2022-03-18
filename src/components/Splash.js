@@ -61,9 +61,9 @@ export const Splash = () => {
                 // setLoading(!(parseInt(localStorage.getItem("isLoaded")) < 114));
                 console.log("Surah", key, "Loaded");
               } catch (error) {
-                alert(error);
+                alert("Error Fetching Surah! Please Reload The Page Again.");
                 console.log(error);
-                localStorage.clear();
+                // localStorage.clear();
                 return;
               }
             });
