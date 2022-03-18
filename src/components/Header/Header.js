@@ -17,7 +17,7 @@ export const Header = (props) => {
             className="cursor-pointer"
           />
           <h2 className="text-primary font-bold">
-            {Object.keys(props).length ? surah.englishName : "Quran Mazid"}
+            {Object.keys(props).length ? surah.enName : "Quran Mazid"}
           </h2>
         </div>
         <BiSearch />
