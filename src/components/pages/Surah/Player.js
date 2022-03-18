@@ -10,26 +10,15 @@ import ReactDOM from "react-dom";
 export const Player = (props) => {
   const { surah } = props;
   const { id } = useParams();
-  const [playList, setPlayList] = useState({});
   const [fullPlayList, setFullPlayList] = useState([]);
-  let audioLists = [];
-
-  // useEffect(() => {
-  //   id
-  //     ? fetch(`https://api.alquran.cloud/v1/surah/${id}/ar.alafasy`)
-  //         .then((res) => res.json())
-  //         .then((data) => setPlayList(data.data))
-  //     : audioLists.length ||
-  //       fetch(`https://api.alquran.cloud/v1/quran/ar.alafasy`)
-  //         .then((res) => res.json())
-  //         .then((data) => setFullPlayList(data.data.surahs));
-  // }, []);
-  //   playList.ayahs.map((ayah) => console.log(ayah));
-  //   console.log(audioLists);
-  const audioList = [];
   const fullAudioList = [];
-  let audioInstance = null;
 
+  useEffect(() => {
+    id ? loadSingleSurahAudio(id) : loadSurahAudio();
+  }, []);
+
+  let audioInstance = null;
+  // Load Full Surah
   const loadSurahAudio = () => {
     let totalSurah = parseInt(localStorage.getItem("isLoaded"));
     for (let index = 1; index <= totalSurah; index++) {
@@ -45,8 +34,22 @@ export const Player = (props) => {
       });
     }
   };
-  loadSurahAudio();
+  // Load Single Surah
+  const loadSingleSurahAudio = (id) => {
+    let surah = JSON.parse(localStorage.getItem(id));
 
+    surah.verses.map((verse) => {
+      fullAudioList.push({
+        name: surah.enName,
+        singer: verse.numberInSurah,
+        cover: logo,
+        musicSrc: verse.audioPrimary,
+        lyric: `[00:00.01] ${verse.bnText}`,
+      });
+    });
+    setFullPlayList(fullAudioList);
+  };
+  // console.log(fullAudioList);
   // fullAudioList.length && console.log(fullAudioList);
   //   ReactDOM.findDOMNode(
   //     document.getElementsByClassName("react-draggable")[0] &&
@@ -60,7 +63,7 @@ export const Player = (props) => {
   return (
     <div>
       <ReactJkMusicPlayer
-        audioLists={fullAudioList.length ? fullAudioList : audioLists}
+        audioLists={fullAudioList.length ? fullAudioList : fullPlayList}
         glassBg
         drag={false}
         seeked
