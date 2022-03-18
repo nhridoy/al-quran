@@ -46,6 +46,7 @@ export const Surah = (props) => {
 };
 
 export const SingleSurah = (props) => {
+  console.log(props);
   const { ayah, enayah } = props;
   return (
     <div className="flex flex-col gap-4 border-b-2 p-4">
