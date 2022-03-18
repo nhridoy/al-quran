@@ -10,20 +10,14 @@ export const Surah = (props) => {
   const { id } = useParams();
   const [surah, setSurah] = React.useState({});
   const [ayahs, setAyahs] = React.useState([]);
-  const [enayahs, setEnAyahs] = React.useState([]);
-  useEffect(() => {
-    fetch(`https://api.alquran.cloud/v1/surah/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setAyahs(data.data.ayahs);
-        setSurah(data.data);
-      });
-  }, []);
-  useEffect(() => {
-    fetch(`https://api.alquran.cloud/v1/surah/${id}/en.asad`)
-      .then((res) => res.json())
-      .then((data) => setEnAyahs(data.data.ayahs));
-  }, []);
+  useEffect(() => loadSurahAyahs(), []);
+
+  // Load Sura ayahs from Local Storage
+  const loadSurahAyahs = () => {
+    const surah = JSON.parse(localStorage.getItem(id));
+    setSurah(surah);
+    setAyahs(surah.verses);
+  };
 
   return (
     <div>
@@ -36,7 +30,7 @@ export const Surah = (props) => {
         {ayahs.map((ayah, index) => (
           <SingleSurah
             ayah={ayah}
-            enayah={enayahs.length ? enayahs[index] : ""}
+            enayah={ayahs.length ? ayahs[index] : ""}
             key={ayah.number}
           />
         ))}
@@ -46,8 +40,8 @@ export const Surah = (props) => {
 };
 
 export const SingleSurah = (props) => {
-  console.log(props);
-  const { ayah, enayah } = props;
+  // console.log(props);
+  const { ayah } = props;
   return (
     <div className="flex flex-col gap-4 border-b-2 p-4">
       <div className="flex bg-secondaryLight p-3 rounded-lg justify-between items-center">
@@ -61,7 +55,9 @@ export const SingleSurah = (props) => {
         </div>
       </div>
       <p className="text-right font-semibold text-3xl">{ayah.text}</p>
-      <p className=" text-2xl">{enayah.text}</p>
+      <p className="text-right text-lg">{ayah.enTextTransliteration}</p>
+      <p className=" text-lg">{ayah.enText}</p>
+      <p className=" text-lg">{ayah.bnText}</p>
     </div>
   );
 };
