@@ -63,6 +63,7 @@ export const Splash = () => {
               } catch (error) {
                 alert(error);
                 console.log(error);
+                localStorage.clear();
                 return;
               }
             });
