@@ -6,8 +6,6 @@ export const Splash = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     // Enabling the loading state
-    localStorage.clear();
-    alert("Cleaning");
     localStorage.getItem("isLoaded") === null && setLoading(true);
 
     apiLoad();

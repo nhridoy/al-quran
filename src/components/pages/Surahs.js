@@ -6,32 +6,37 @@ import { Player } from "./Surah/Player";
 
 export const Surahs = () => {
   const [surahs, setSurahs] = React.useState([]);
-  useEffect(() => {
-    fetch("https://api.alquran.cloud/v1/surah")
-      .then((res) => res.json())
-      .then((data) => setSurahs(data.data));
-  }, []);
+  useEffect(() => loadSurahList(), []);
 
   // Load All Surah List from LocalStorage
   let surahList = [];
   const loadSurahList = () => {
-    const isLoaded = localStorage.getItem("isLoaded");
-    Object.keys(localStorage).map((key) => {
-      if (key.includes("surah")) {
-        surahList.push(JSON.parse(localStorage.getItem(key)));
-      }
-    });
-    console.log(surahList);
+    const isLoaded = parseInt(localStorage.getItem("isLoaded"));
+    for (let index = 1; index <= isLoaded; index++) {
+      let loadedSurah = JSON.parse(localStorage.getItem(index));
+      surahList.push({
+        no: loadedSurah.no,
+        enName: loadedSurah.enName,
+        name: loadedSurah.name,
+        enNameTranslation: loadedSurah.enNameTranslation,
+        bnNameTranslation: loadedSurah.bnNameTranslation,
+        revelationType: loadedSurah.revelationType,
+        numberOfAyahs: loadedSurah.numberOfAyahs,
+      });
+      // console.log(loadedSurah);
+    }
+
+    setSurahs(surahList);
   };
-  loadSurahList();
+
   // console.log(surahs);
   return (
     <div className="">
       <Header />
       <div className="flex flex-col md:flex-row md:grid md:grid-cols-5 md:gap-4">
         {surahs.map((surah) => (
-          <Link key={surah.number} exact="true" to={`/surah/${surah.number}`}>
-            <SurahList data={surah} key={surah.number} />
+          <Link key={surah.no} exact="true" to={`/surah/${surah.no}`}>
+            <SurahList data={surah} />
           </Link>
         ))}
         <Player />
@@ -62,7 +67,7 @@ const SurahList = (props) => {
           </div>
         </div>
       </div>
-      <div className="md:w-full text-right">
+      <div className="md:w-full text-right text-sm">
         <p>{props.data.name}</p>
         <p>{props.data.enNameTranslation}</p>
         <p>{props.data.bnNameTranslation}</p>
