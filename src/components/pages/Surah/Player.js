@@ -7,8 +7,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReactDOM from "react-dom";
 
-export const Player = (props) => {
-  const { surah } = props;
+export const Player = () => {
   const { id } = useParams();
   const [audio, setAudio] = useState(null);
   const [fullPlayList, setFullPlayList] = useState([]);
@@ -18,7 +17,6 @@ export const Player = (props) => {
     id ? loadSingleSurahAudio(id) : loadSurahAudio();
   }, []);
 
-  let audioInstance = null;
   // Load Full Surah
   const loadSurahAudio = () => {
     let totalSurah = parseInt(localStorage.getItem("isLoaded"));
@@ -34,6 +32,7 @@ export const Player = (props) => {
         });
       });
     }
+    setFullPlayList(fullAudioList);
   };
   // Load Single Surah
   const loadSingleSurahAudio = (id) => {
@@ -113,7 +112,7 @@ export const Player = (props) => {
   return (
     <div>
       <ReactJkMusicPlayer
-        audioLists={fullAudioList.length ? fullAudioList : fullPlayList}
+        audioLists={fullPlayList}
         {...options}
         onAudioPause={(audio) => {
           // console.log(audio);
