@@ -40,7 +40,7 @@ export const Player = (props) => {
           singer: verse.numberInSurah,
           cover: logo,
           musicSrc: verse.audioPrimary,
-          lyric: "verse.enText",
+          lyric: `[00:00.01] ${verse.bnText}`,
         });
       });
     }

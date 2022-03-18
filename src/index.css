@@ -12,8 +12,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.react-draggable {
-  /* transform: translate(80vw, 85vh) !important; */
+.react-jinke-music-player-main ::-webkit-scrollbar {
+  width: 20px !important;
+}
+.react-jinke-music-player-main ::-webkit-scrollbar-thumb {
+  /* background-color: #3d10b8 !important; */
+  height: 50px;
 }
 .react-jinke-music-player-mobile-toggle {
   display: flex;
