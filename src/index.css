@@ -34,3 +34,15 @@ code {
   grid-template-columns: repeat(3, 1fr);
   place-items: center;
 } */
+.add-to-home-screen-pwa__notify {
+  display: flex !important;
+  justify-content: space-around;
+  align-items: center;
+}
+.add-to-home-screen-pwa__notify > .heading {
+  margin-top: 0 !important;
+}
+
+.isActive {
+  display: block !important;
+}

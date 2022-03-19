@@ -138,3 +138,17 @@ self.addEventListener("fetch", (event) => {
 //     console.log("Notification was closed", event);
 // }
 // );
+
+// ------------------------
+// Cookies methods found on w3schools - We need them to not annoy our visitors
+// https://www.w3schools.com/js/js_cookies.asp
+// ------------------------
+
+// ------------------------
+// Here starts our part
+// ------------------------
+
+// ------------------------
+// We listen to the `beforeinstallprompt` event
+// If the user has
+// ------------------------
