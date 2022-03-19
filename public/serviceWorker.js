@@ -18,6 +18,8 @@ let cacheList = [
   "/",
   "/surah",
   "/index.html",
+  "/static/css/main.92447845.css",
+  "/static/js/main.f8ea3893.js",
   "/static/js/bundle.js",
   "/static/media/logo.e4a082d466ccc7346f5b.png",
   "/manifest.json",
