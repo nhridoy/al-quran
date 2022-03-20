@@ -1,8 +1,6 @@
 import logo from "../logo.png";
 import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { AddToHomeScreen } from "react-pwa-add-to-homescreen";
-import { InstallButton } from "./InstallButton";
 
 export const Splash = () => {
   const [loading, setLoading] = useState(false);
@@ -10,96 +8,6 @@ export const Splash = () => {
     // Enabling the loading state
     localStorage.getItem("isLoaded") === null && setLoading(true);
     apiLoad();
-  }, []);
-
-  useEffect(() => {
-    function setCookie(cname, cvalue, exdays) {
-      var d = new Date();
-      d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-      var expires = "expires=" + d.toUTCString();
-      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-    }
-
-    function getCookie(cname) {
-      var name = cname + "=";
-      var decodedCookie = decodeURIComponent(document.cookie);
-      var ca = decodedCookie.split(";");
-      for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == " ") {
-          c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-          return c.substring(name.length, c.length);
-        }
-      }
-      return "";
-    }
-
-    function checkCookie() {
-      var user = getCookie("username");
-      if (user != "") {
-        alert("Welcome again " + user);
-      } else {
-        user = prompt("Please enter your name:", "");
-        if (user != "" && user != null) {
-          setCookie("username", user, 365);
-        }
-      }
-    }
-
-    window.addEventListener("load", () => {
-      // When the user clicks on Close, we need to keep this in mind and not annoy him again
-      document
-        .getElementById("BlockInstallClose")
-        .addEventListener("click", (e) => {
-          document.getElementById("BlockInstall").classList.remove("isActive");
-          setCookie("BlockInstallCookieHide", 1, 14);
-        });
-    });
-    let deferredPrompt;
-    window.addEventListener("beforeinstallprompt", function (event) {
-      // Don't display the standard one
-      event.preventDefault();
-
-      // We check if the user has the Don't Show Cookie stored. If not, we'll show him the banner.
-      let cookieBlockInstallCookieHide = getCookie("BlockInstallCookieHide");
-      console.log(cookieBlockInstallCookieHide);
-      if (!cookieBlockInstallCookieHide) {
-        console.log(document.getElementById("BlockInstall"));
-        // document.getElementById("BlockInstall").classList.remove("isActive");
-        // document.getElementById("BlockInstall").classList.add("isActive");
-        document.getElementById("BlockInstall").style.display = "block";
-      }
-
-      // Save the event to use it later
-      window.promptEvent = event;
-    });
-
-    // If the visitor clicks on `Install` button, we'll show the banner
-    document.addEventListener("click", (event) => {
-      if (event.target.matches("#BlockInstallButton")) {
-        addToHomeScreen();
-      }
-    });
-
-    function addToHomeScreen() {
-      // Install prompt
-      // (window.promptEvent || {}).prompt();
-      deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === "accepted") {
-          // gtag("event", "Installed PWA", {
-          //   event_category: "PWA",
-          //   value: 1,
-          // });
-          console.log("installed");
-        } else {
-          // Do nothing
-          console.log("not installed");
-        }
-        deferredPrompt = null;
-      });
-    }
   }, []);
 
   const apiLoad = () => {
@@ -175,7 +83,7 @@ export const Splash = () => {
         <h2 className="text-primary font-bold text-3xl">Al Quran</h2>
         <p className="text-gray-700">Full Quran with Audio Player</p>
       </div>
-      <div className="bg-primary py-4 h-full w-full rounded-3xl">
+      <div className="bg-primary pt-4 pb-10 h-full w-full rounded-3xl">
         <div className="h-full w-full grid justify-center items-end">
           <div className="relative">
             <lottie-player
@@ -212,42 +120,6 @@ export const Splash = () => {
           {loading ? "First time loading needed about 10Mb of Internet" : ""}
         </p> */}
       </div>
-      <InstallButton />
-      {/* <AddToHomeScreen
-        skipFirstVisit={false}
-        styles={{
-          body: {
-            // display: "flex",
-            textAlign: "center",
-            borderRadius: "0.5rem",
-            border: "1px solid white",
-            boxShadow: "0 0.5rem 1rem rgba(0, 0, 0, 0.5)",
-          },
-          button: {
-            background: "#2E0D8A",
-            border: "none",
-            color: "white",
-            fontSize: "1.5rem",
-            fontWeight: "bold",
-            cursor: "pointer",
-            outline: "none",
-            padding: "0.5rem",
-            transition: "all 0.2s",
-            "&:hover": {
-              background: "rgba(255, 255, 255, 0.1)",
-            },
-          },
-        }}
-        translate={{
-          headline: "Head",
-          // bottomline: "Bottom",
-          safariTapShare: "Share",
-          safariAddHomeScreen: "Install to Home Screen",
-          chromiumAddHomeScreen: "Install to Home Screen",
-          chromiumInstall: "Install to Home Screen",
-          // buttonInstall: "buttonInstall",
-        }}
-      /> */}
     </div>
   );
 };

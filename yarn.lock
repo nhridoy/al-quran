@@ -7170,11 +7170,6 @@ react-jinke-music-player@^4.24.2:
     react-draggable "^4.4.3"
     sortablejs "^1.13.0"
 
-react-pwa-add-to-homescreen@^1.1.7:
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/react-pwa-add-to-homescreen/-/react-pwa-add-to-homescreen-1.1.7.tgz#10d0f2b1a3cb978933dd356d57af71e076371d6c"
-  integrity sha512-peLWwxkp82IFXn5i98OfB+X1E78+6BElJ7fe3SNADtnfmMeg/X3At+FiItu+GcEk+I+7ND9ZYFfLjokn5tVDNg==
-
 react-refresh@^0.11.0:
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.11.0.tgz#77198b944733f0f1f1a90e791de4541f9f074046"
