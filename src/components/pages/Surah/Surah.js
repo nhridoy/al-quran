@@ -10,6 +10,7 @@ export const Surah = (props) => {
   const { id } = useParams();
   const [surah, setSurah] = React.useState({});
   const [ayahs, setAyahs] = React.useState([]);
+  const [currentPlaying, setCurrentPlaying] = React.useState({});
   useEffect(() => {
     window.scrollTo(0, 0);
     loadSurahAyahs();
@@ -29,7 +30,7 @@ export const Surah = (props) => {
         <Header surah={surah} />
         <SurahHead surah={surah} />
       </div>
-      <Player surah={surah} />
+      <Player currentPlaying={setCurrentPlaying} surah={surah} />
       <div className="flex gap-3 flex-col">
         {ayahs.map((ayah, index) => (
           <SingleSurah ayah={ayah} key={ayah.numberInSurah} />

@@ -7,7 +7,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReactDOM from "react-dom";
 
-export const Player = () => {
+export const Player = (props) => {
+  const { surah, currentPlaying } = props;
   const { id } = useParams();
   const [audio, setAudio] = useState(null);
   const [fullPlayList, setFullPlayList] = useState([]);
@@ -37,7 +38,7 @@ export const Player = () => {
   // Load Single Surah
   const loadSingleSurahAudio = (id) => {
     let surah = JSON.parse(localStorage.getItem(id));
-
+    // console.log(surah);
     surah.verses.map((verse) => {
       fullAudioList.push({
         name: surah.enName,
@@ -119,11 +120,12 @@ export const Player = () => {
         //   setAudio(instance);
         // }}
         onAudioPlay={(index) => {
+          currentPlaying(index);
           localStorage.setItem(
             "currentAudioIndex",
             JSON.stringify({ surahName: index.name, verseNumber: index.singer })
           );
-          console.log(index);
+          // console.log(index);
         }}
       />
       {/* <button onClick={() => audio.togglePlay()}>play</button> */}
