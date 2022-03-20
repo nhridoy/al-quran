@@ -3,6 +3,7 @@ import { FiOctagon } from "react-icons/fi";
 import { Link, Outlet } from "react-router-dom";
 import { Header } from "../Header/Header";
 import { Player } from "./Surah/Player";
+import { SurahsHead } from "./SurahsHead";
 
 export const Surahs = () => {
   const [surahs, setSurahs] = React.useState([]);
@@ -33,8 +34,11 @@ export const Surahs = () => {
   // console.log(surahs);
   return (
     <div className="">
-      <Header />
-      <div className="flex flex-col md:flex-row md:grid md:grid-cols-5 md:gap-4">
+      <div className="bg-white sticky top-0 left-0 w-full z-10">
+        <Header />
+        <SurahsHead />
+      </div>
+      <div className="flex flex-col md:flex-row md:grid md:grid-cols-3 lg:grid-cols-5 md:gap-4">
         {surahs.map((surah, index) => (
           <Link key={surah.no} exact="true" to={`/surah/${surah.no}`}>
             <SurahList data={surah} key={surah.no} />

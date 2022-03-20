@@ -46,3 +46,7 @@ code {
 .isActive {
   display: block !important;
 }
+
+.activeAyat {
+  background: rgb(255, 215, 141);
+}

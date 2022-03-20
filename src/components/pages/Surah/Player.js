@@ -114,8 +114,16 @@ export const Player = () => {
       <ReactJkMusicPlayer
         audioLists={fullPlayList}
         {...options}
-        getAudioInstance={(instance) => {
-          setAudio(instance);
+        // getAudioInstance={(instance) => {
+        //   console.log(instance);
+        //   setAudio(instance);
+        // }}
+        onAudioPlay={(index) => {
+          localStorage.setItem(
+            "currentAudioIndex",
+            JSON.stringify({ surahName: index.name, verseNumber: index.singer })
+          );
+          console.log(index);
         }}
       />
       {/* <button onClick={() => audio.togglePlay()}>play</button> */}
