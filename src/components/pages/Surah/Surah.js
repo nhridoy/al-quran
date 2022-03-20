@@ -21,6 +21,7 @@ export const Surah = (props) => {
   useEffect(() => {
     current = currentPlaying.singer;
     if (current) {
+      const totalAyahs = surah.numberOfAyahs;
       const currentayah = document.getElementById(`ayah-${current}`);
 
       currentayah.scrollIntoView({
@@ -31,17 +32,16 @@ export const Surah = (props) => {
       // // currentayah.style.zIndex = "-1";
       // currentayah.style.top = "25px";
       currentayah.classList.add("bg-alternateSecondDeep");
-      const prevayah = document.getElementById(`ayah-${current - 1}`);
-      const nextayah = document.getElementById(`ayah-${current + 1}`);
-      if (prevayah) {
-        prevayah.classList.remove("bg-alternateSecondDeep");
-        // prevayah.style.position = "static";
-        // prevayah.style.top = "0px";
-      }
-      if (nextayah) {
-        nextayah.classList.remove("bg-alternateSecondDeep");
-        // nextayah.style.position = "static";
-        // nextayah.style.top = "0px";
+      for (let index = 1; index <= totalAyahs; index++) {
+        if (current === index) {
+          continue;
+        }
+        document
+          .getElementById(`ayah-${index}`)
+          .classList.contains("bg-alternateSecondDeep") &&
+          document
+            .getElementById(`ayah-${index}`)
+            .classList.remove("bg-alternateSecondDeep");
       }
     }
   }, [currentPlaying]);
