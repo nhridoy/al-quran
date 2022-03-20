@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 import ReactDOM from "react-dom";
 
 export const Player = (props) => {
-  const { surah, currentPlaying } = props;
+  const { surah, currentPlaying, audioInstance } = props;
   const { id } = useParams();
   const [audio, setAudio] = useState(null);
   const [fullPlayList, setFullPlayList] = useState([]);
@@ -115,10 +115,10 @@ export const Player = (props) => {
       <ReactJkMusicPlayer
         audioLists={fullPlayList}
         {...options}
-        // getAudioInstance={(instance) => {
-        //   console.log(instance);
-        //   setAudio(instance);
-        // }}
+        getAudioInstance={(instance) => {
+          // console.log(instance);
+          audioInstance(instance);
+        }}
         onAudioPlay={(index) => {
           currentPlaying(index);
           localStorage.setItem(

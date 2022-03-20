@@ -11,6 +11,7 @@ export const Surah = (props) => {
   const [surah, setSurah] = React.useState({});
   const [ayahs, setAyahs] = React.useState([]);
   const [currentPlaying, setCurrentPlaying] = React.useState({});
+  const [audioInstance, setAudioInstance] = React.useState(null);
   let current;
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -21,20 +22,27 @@ export const Surah = (props) => {
     current = currentPlaying.singer;
     if (current) {
       const currentayah = document.getElementById(`ayah-${current}`);
+
       currentayah.scrollIntoView({
         behavior: "smooth",
-        block: "center",
+        block: "end",
       });
+      // currentayah.style.position = "relative";
+      // // currentayah.style.zIndex = "-1";
+      // currentayah.style.top = "25px";
       currentayah.classList.add("bg-alternateSecondDeep");
-      document.getElementById(`ayah-${current - 1}`) &&
-        document
-          .getElementById(`ayah-${current - 1}`)
-          .classList.remove("bg-alternateSecondDeep");
-
-      document.getElementById(`ayah-${current + 1}`) &&
-        document
-          .getElementById(`ayah-${current + 1}`)
-          .classList.remove("bg-alternateSecondDeep");
+      const prevayah = document.getElementById(`ayah-${current - 1}`);
+      const nextayah = document.getElementById(`ayah-${current + 1}`);
+      if (prevayah) {
+        prevayah.classList.remove("bg-alternateSecondDeep");
+        // prevayah.style.position = "static";
+        // prevayah.style.top = "0px";
+      }
+      if (nextayah) {
+        nextayah.classList.remove("bg-alternateSecondDeep");
+        // nextayah.style.position = "static";
+        // nextayah.style.top = "0px";
+      }
     }
   }, [currentPlaying]);
 
@@ -45,14 +53,18 @@ export const Surah = (props) => {
     document.title = surah.enName;
     setAyahs(surah.verses);
   };
-  console.log(currentPlaying);
+  // console.log(audioInstance);
   return (
     <div>
       <div className="bg-white sticky top-0 left-0 w-full">
         <Header surah={surah} />
-        <SurahHead surah={surah} />
+        <SurahHead audioInstance={audioInstance} surah={surah} />
       </div>
-      <Player currentPlaying={setCurrentPlaying} surah={surah} />
+      <Player
+        audioInstance={setAudioInstance}
+        currentPlaying={setCurrentPlaying}
+        surah={surah}
+      />
       <div className="flex gap-3 flex-col">
         {ayahs.map((ayah, index) => (
           <SingleSurah ayah={ayah} key={ayah.numberInSurah} />
