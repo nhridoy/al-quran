@@ -97,7 +97,7 @@ export const Player = () => {
       textShadow: "0 0 5px #000",
     },
   };
-  let audiotest;
+  // let audiotest;
   // console.log(fullAudioList);
   // fullAudioList.length && console.log(fullAudioList);
   //   ReactDOM.findDOMNode(
@@ -114,32 +114,11 @@ export const Player = () => {
       <ReactJkMusicPlayer
         audioLists={fullPlayList}
         {...options}
-        onAudioPause={(audio) => {
-          // console.log(audio);
-          // console.log(audio.audio.src);
-          // console.log(audio.audio.currentTime);
-          // console.log(audio.audio.duration);
-          // console.log(audio.audio.paused);
-          // console.log(audio.audio.ended);
-          // console.log(audio.audio.buffered);
-          // console.log(audio.audio.buffered.length);
-          // console.log(audio.audio.buffered.end(0));
-          // console.log(audio.audio.buffered.start(0));
+        getAudioInstance={(instance) => {
+          setAudio(instance);
         }}
-        // getAudioInstance={(instance) => {
-        //   //   console.log(instance); // Test
-        //   audioInstance = instance;
-        // }}
-        // getAuioInstance={(instance) => console.log(instance)}
-        // getAudioInstance={(instance) => {
-        //   audiotest = instance;
-        // }}
       />
-
-      <button onClick={() => (audiotest.playbackRate = 2)}>
-        set playback rate
-      </button>
-      <button onClick={() => audiotest.play()}>play</button>
+      {/* <button onClick={() => audio.togglePlay()}>play</button> */}
     </div>
   );
 };

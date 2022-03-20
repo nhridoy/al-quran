@@ -10,7 +10,10 @@ export const Surah = (props) => {
   const { id } = useParams();
   const [surah, setSurah] = React.useState({});
   const [ayahs, setAyahs] = React.useState([]);
-  useEffect(() => loadSurahAyahs(), []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    loadSurahAyahs();
+  }, []);
 
   // Load Sura ayahs from Local Storage
   const loadSurahAyahs = () => {
@@ -29,11 +32,7 @@ export const Surah = (props) => {
       <Player surah={surah} />
       <div className="flex gap-3 flex-col">
         {ayahs.map((ayah, index) => (
-          <SingleSurah
-            ayah={ayah}
-            enayah={ayahs.length ? ayahs[index] : ""}
-            key={ayah.number}
-          />
+          <SingleSurah ayah={ayah} key={ayah.numberInSurah} />
         ))}
       </div>
     </div>

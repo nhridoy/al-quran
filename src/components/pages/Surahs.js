@@ -35,12 +35,12 @@ export const Surahs = () => {
     <div className="">
       <Header />
       <div className="flex flex-col md:flex-row md:grid md:grid-cols-5 md:gap-4">
-        {surahs.map((surah) => (
+        {surahs.map((surah, index) => (
           <Link key={surah.no} exact="true" to={`/surah/${surah.no}`}>
-            <SurahList data={surah} />
+            <SurahList data={surah} key={surah.no} />
           </Link>
         ))}
-        <Player />
+        {/* <Player /> */}
 
         <Outlet />
       </div>
