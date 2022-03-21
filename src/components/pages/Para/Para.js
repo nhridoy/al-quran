@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaQuran } from "react-icons/fa";
 import { BsBoxArrowInRight } from "react-icons/bs";
 import { Header } from "../../Header/Header";
 import { FiOctagon } from "react-icons/fi";
 
 export const Para = (props) => {
+  useEffect(() => {
+    document.querySelector("html").classList.remove("overflow-x-hidden");
+    document.querySelector("body").classList.remove("overflow-x-hidden");
+  }, []);
   return (
     <div className="">
       <div className="bg-white sticky top-0 left-0 w-full">
