@@ -53,25 +53,25 @@ export const About = () => {
           <div className="flex items-center flex-col p-4 gap-2">
             <p className="mb-1 md:text-lg">What we do?</p>
             <div className="flex flex-col gap-2">
-              <div className="flex gap-3">
+              <div className="flex items-center gap-3">
                 <GoPrimitiveDot />
                 <p className="text-xs md:text-sm">
                   We are a team of software developers and designers.
                 </p>
               </div>
-              <div className="flex gap-3">
+              <div className="flex items-center gap-3">
                 <GoPrimitiveDot />
                 <p className="text-xs md:text-sm">
                   We are a team of software developers and designers.
                 </p>
               </div>
-              <div className="flex gap-3">
+              <div className="flex items-center gap-3">
                 <GoPrimitiveDot />
                 <p className="text-xs md:text-sm">
                   We are a team of software developers and designers.
                 </p>
               </div>
-              <div className="flex gap-3">
+              <div className="flex items-center gap-3">
                 <GoPrimitiveDot />
                 <p className="text-xs md:text-sm">
                   We are a team of software developers and designers.
