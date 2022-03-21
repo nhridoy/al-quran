@@ -29,7 +29,6 @@ export const About = () => {
               <IoLogoWhatsapp className="" />
             </div>
           </div>
-          {/* <hr /> */}
           <div className="flex items-center flex-col p-4 gap-2">
             <p className="mb-1 md:text-lg">About Us</p>
             <div className="flex items-center gap-4">
