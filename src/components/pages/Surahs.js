@@ -35,7 +35,7 @@ export const Surahs = () => {
   return (
     <div className="">
       <div className="bg-white sticky top-0 left-0 w-full z-10">
-        <Header />
+        <Header head="Al Quran" />
         <SurahsHead />
       </div>
       <div className="flex flex-col md:flex-row md:grid md:grid-cols-3 lg:grid-cols-5 md:gap-4">

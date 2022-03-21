@@ -4,7 +4,7 @@ import { Header } from "../../Header/Header";
 export const Credits = () => {
   return (
     <div>
-      <Header />
+      <Header head="Credits" />
       <h1>Credits</h1>
     </div>
   );

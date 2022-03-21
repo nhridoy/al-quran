@@ -3,8 +3,6 @@ import { BiArrowBack, BiSearch } from "react-icons/bi";
 import HamBurger from "../Hamburger/HamBurger";
 
 export const Header = (props) => {
-  const { surah } = props;
-
   const handleBackBtn = (e) => {
     window.history.back();
   };
@@ -22,7 +20,7 @@ export const Header = (props) => {
           </div>
 
           <h2 className="text-primary font-bold">
-            {Object.keys(props).length ? surah.enName : "Al Quran"}
+            {!props.head ? props.surah.enName : props.head}
           </h2>
         </div>
         <BiSearch />
