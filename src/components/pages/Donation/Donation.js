@@ -19,7 +19,7 @@ export const Donation = () => {
     document.querySelector("body").classList.add("overflow-x-hidden");
   }, []);
   return (
-    <div>
+    <div className="h-screen">
       <div className="bg-white sticky top-0 left-0 w-full z-10">
         <Header head="Donation" />
       </div>
