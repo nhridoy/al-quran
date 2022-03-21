@@ -64,7 +64,7 @@ const HamBurger = () => {
               className="flex items-center p-3 hover:bg-alternateOne"
             >
               <div className="flex items-center gap-3">
-                <BsInfoCircle className="text-xl font-bold" />
+                <IoSettingsOutline className="text-xl font-bold" />
                 <span className="text-primary  font-bold">Settings</span>
               </div>
             </NavLink>
@@ -74,7 +74,7 @@ const HamBurger = () => {
               className="flex items-center p-3 hover:bg-alternateOne"
             >
               <div className="flex items-center gap-3">
-                <IoSettingsOutline className="text-xl font-bold" />
+                <BsInfoCircle className="text-xl font-bold" />
                 <span className="text-primary font-bold">About</span>
               </div>
             </NavLink>
