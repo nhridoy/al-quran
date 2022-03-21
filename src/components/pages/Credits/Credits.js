@@ -5,7 +5,9 @@ import { GoPrimitiveDot } from "react-icons/go";
 export const Credits = () => {
   return (
     <div>
-      <Header head="Credits" />
+      <div className="bg-white sticky top-0 left-0 w-full z-10">
+        <Header head="Credits" />
+      </div>
       <div className="grid grid-rows-5">
         <div className="row-span-1 flex items-center justify-center text-lg font-bold">
           <h2 className=" md:text-2xl">Credits</h2>

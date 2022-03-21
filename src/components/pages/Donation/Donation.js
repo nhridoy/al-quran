@@ -16,7 +16,9 @@ import { EffectCards } from "swiper";
 export const Donation = () => {
   return (
     <div>
-      <Header head="Donation" />
+      <div className="bg-white sticky top-0 left-0 w-full z-10">
+        <Header head="Donation" />
+      </div>
       <div className="grid grid-rows-5">
         <div className="row-span-1 flex items-center justify-center text-lg font-bold">
           <h2 className=" md:text-2xl">Donate</h2>
@@ -26,7 +28,7 @@ export const Donation = () => {
             50% of your donation will go directy to different mosque and islamic
             education center.
           </p>
-          <p>Other 50% will be used for server maintanance fee.</p>
+          <p>Other 50% will be used for server maintenance fee.</p>
           <div className="">
             <Swiper
               // install Swiper modules

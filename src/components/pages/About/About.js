@@ -12,7 +12,9 @@ import { IoLogoFacebook, IoLogoWhatsapp } from "react-icons/io5";
 export const About = () => {
   return (
     <div>
-      <Header head="About" />
+      <div className="bg-white sticky top-0 left-0 w-full z-10">
+        <Header head="About" />
+      </div>
       <div className="grid grid-rows-5">
         <div className="row-span-1 flex items-center justify-center text-lg font-bold">
           <h2 className=" md:text-2xl">Wo We Are?</h2>
