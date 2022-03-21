@@ -17,6 +17,10 @@ export const Surah = (props) => {
     window.scrollTo(0, 0);
     loadSurahAyahs();
   }, []);
+  useEffect(() => {
+    document.querySelector("html").classList.remove("overflow-x-hidden");
+    document.querySelector("body").classList.remove("overflow-x-hidden");
+  }, []);
 
   useEffect(() => {
     current = currentPlaying.singer;

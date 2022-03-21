@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Header } from "../../Header/Header";
 import { GoPrimitiveDot } from "react-icons/go";
 // import Swiper core and required modules
@@ -14,6 +14,10 @@ import "swiper/css/effect-cards";
 import { EffectCards } from "swiper";
 
 export const Donation = () => {
+  useEffect(() => {
+    document.querySelector("html").classList.add("overflow-x-hidden");
+    document.querySelector("body").classList.add("overflow-x-hidden");
+  }, []);
   return (
     <div>
       <div className="bg-white sticky top-0 left-0 w-full z-10">

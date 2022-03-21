@@ -8,6 +8,10 @@ import { SurahsHead } from "./SurahsHead";
 export const Surahs = () => {
   const [surahs, setSurahs] = React.useState([]);
   useEffect(() => loadSurahList(), []);
+  useEffect(() => {
+    document.querySelector("html").classList.remove("overflow-x-hidden");
+    document.querySelector("body").classList.remove("overflow-x-hidden");
+  }, []);
 
   // Load All Surah List from LocalStorage
   let surahList = [];

@@ -9,6 +9,10 @@ export const Splash = () => {
     localStorage.getItem("isLoaded") === null && setLoading(true);
     apiLoad();
   }, []);
+  useEffect(() => {
+    document.querySelector("html").classList.remove("overflow-x-hidden");
+    document.querySelector("body").classList.remove("overflow-x-hidden");
+  }, []);
 
   const apiLoad = () => {
     document.title = "Al Quran";
