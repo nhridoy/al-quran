@@ -5,7 +5,9 @@ import { BsInfoCircle } from "react-icons/bs";
 import { IoSettingsOutline } from "react-icons/io5";
 import { RiHandHeartLine } from "react-icons/ri";
 import { AiOutlineDoubleLeft, AiOutlineHeart } from "react-icons/ai";
+import { FaQuran } from "react-icons/fa";
 import { VscBook } from "react-icons/vsc";
+import { MdMenuBook } from "react-icons/md";
 import { Link, NavLink, Route, Routes } from "react-router-dom";
 import { Settings } from "../pages/Settings/Settings";
 import { About } from "../pages/About/About";
@@ -44,6 +46,16 @@ const HamBurger = () => {
               <div className="flex items-center gap-3">
                 <VscBook className="text-xl font-bold" />
                 <span className="text-primary  font-bold">Surah</span>
+              </div>
+            </NavLink>
+            <NavLink
+              exact
+              to="/para"
+              className="flex items-center p-3 hover:bg-alternateOne"
+            >
+              <div className="flex items-center gap-3">
+                <MdMenuBook className="text-xl font-bold" />
+                <span className="text-primary  font-bold">Para</span>
               </div>
             </NavLink>
             <NavLink

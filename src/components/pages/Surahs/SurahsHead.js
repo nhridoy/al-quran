@@ -12,7 +12,7 @@ export const SurahsHead = () => {
   }, []);
 
   return (
-    <div className="flex justify-between gap-10 items-center md:px-8 py-3 px-5 gap-3 bg-gradient-to-tl rounded-2xl text-white from-secondary to-alternateOne mb-5 shadow-lg shadow-alternateOne text-sm md:text-lg">
+    <div className="flex justify-between gap-10 items-center md:px-8 py-3 px-5 gap-3 bg-gradient-to-tl rounded-2xl text-white from-alternateOne to-secondary mb-5 shadow-lg shadow-alternateOne text-sm md:text-lg">
       <div className="flex flex-col gap-3">
         <div className="">
           <p className="">Assalamualaikum</p>
