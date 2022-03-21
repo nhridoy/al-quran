@@ -19,7 +19,7 @@ export const Settings = () => {
         <div className="row-span-4 bg-secondary text-white p-5 rounded-t-3xl flex flex-col divide-y">
           <div className="pb-5">
             <h2 className="md:text-2xl px-2 py-3">App Settings:</h2>
-            <h2 className="text-sm md:text-xl bg-primary p-3 flex justify-between">
+            <h2 className="text-sm md:text-xl bg-purple-500 p-3 flex justify-between">
               <p>Dark Mode</p>
               <div>
                 <div className="relative">
@@ -44,7 +44,7 @@ export const Settings = () => {
           </div>
           <div className="pb-5">
             <h2 className="md:text-2xl px-2 py-3">Data Settings:</h2>
-            <h2 className="text-sm md:text-xl bg-primary p-3 flex justify-between">
+            <h2 className="text-sm md:text-xl bg-purple-500 p-3 flex justify-between">
               <p>Clear Data:</p>
               <button className="bg-red-500 text-white px-2 py-1 active:scale-95  rounded text-sm">
                 Clear
