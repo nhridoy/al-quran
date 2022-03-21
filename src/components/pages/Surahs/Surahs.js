@@ -1,17 +1,12 @@
 import React, { useEffect } from "react";
 import { FiOctagon } from "react-icons/fi";
 import { Link, Outlet } from "react-router-dom";
-import { Header } from "../Header/Header";
-import { Player } from "./Surah/Player";
-import { SurahsHead } from "./SurahsHead";
+import { Home } from "../Home/Home";
+import { Player } from "../Surah/Player";
 
 export const Surahs = () => {
   const [surahs, setSurahs] = React.useState([]);
   useEffect(() => loadSurahList(), []);
-  useEffect(() => {
-    document.querySelector("html").classList.remove("overflow-x-hidden");
-    document.querySelector("body").classList.remove("overflow-x-hidden");
-  }, []);
 
   // Load All Surah List from LocalStorage
   let surahList = [];
@@ -38,10 +33,7 @@ export const Surahs = () => {
   // console.log(surahs);
   return (
     <div className="">
-      <div className="bg-white sticky top-0 left-0 w-full z-10">
-        <Header head="Al Quran" />
-        <SurahsHead />
-      </div>
+      <Home />
       <div className="flex flex-col md:flex-row md:grid md:grid-cols-3 lg:grid-cols-5 md:gap-4">
         {surahs.map((surah, index) => (
           <Link key={surah.no} exact="true" to={`/surah/${surah.no}`}>

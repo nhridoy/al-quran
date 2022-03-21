@@ -17,6 +17,7 @@ let cacheList = [
   // Local React Files
   "/",
   "/surah",
+  "/para",
   "/index.html",
   "/static/css/main.92447845.css",
   "/static/js/main.f8ea3893.js",
