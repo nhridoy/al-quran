@@ -22,7 +22,7 @@ export const Header = (props) => {
           </div>
 
           <h2 className="text-primary font-bold">
-            {Object.keys(props).length ? surah.enName : "Quran Mazid"}
+            {Object.keys(props).length ? surah.enName : "Al Quran"}
           </h2>
         </div>
         <BiSearch />

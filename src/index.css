@@ -50,3 +50,6 @@ code {
 .activeAyat {
   background: rgb(255, 215, 141);
 }
+.active {
+  background: #b9a2d8;
+}
