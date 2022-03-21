@@ -19,7 +19,7 @@ export const Para = (props) => {
             </span>
           </div>
           <div className="flex gap-1 flex-col">
-            <div className="font-semibold">Al Fatiha</div>
+            <div className="font-semibold md:text-lg">Al Fatiha</div>
             <div className="flex flex-col gap-1 text-xs">
               <span className="flex gap-1">
                 {/* {props.data.revelationType === "Meccan" ? (
@@ -34,10 +34,10 @@ export const Para = (props) => {
             </div>
           </div>
         </div>
-        <div className="md:w-full text-right text-sm">
-          <p>الفاتحة</p>
+        <div className="text-right text-sm md:text-lg">
+          <p className=" md:font-semibold">سُورَةُ ٱلْفَاتِحَةِ</p>
           <p>The Opening</p>
-          <p>The Opening</p>
+          <p>আল ফাতিহা </p>
         </div>
       </div>
     </div>
