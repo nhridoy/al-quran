@@ -9,7 +9,7 @@ export const ParaHead = ({ para }) => {
   const { id } = useParams();
   return (
     <div className="">
-      <div className="flex justify-between bg-secondary text-white p-4 rounded-lg">
+      <div className="flex sticky top-24 justify-between bg-secondary text-white p-4 rounded-lg">
         <div className="flex gap-3 items-center">
           <div className="relative">
             <FiOctagon className="font-bold text-4xl" />
