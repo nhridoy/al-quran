@@ -76,7 +76,7 @@ export const Player = (props) => {
     responsive: true,
     autoHiddenCover: true,
     quietUpdate: true,
-    restartCurrentOnPrev: true,
+    // restartCurrentOnPrev: true,
     showMediaSession: true,
     theme: "auto",
     defaultPosition: { right: "4vw", bottom: "2vh" },
