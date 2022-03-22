@@ -17,6 +17,10 @@ export const Ayahs = (props) => {
         >
           {ayah.numberInSurah}
         </p>
+        {ayah.sajda.recommended && (
+          <img src="https://img.icons8.com/external-jumpicon-glyph-ayub-irawan/32/000000/external-_10-ramadan-jumpicon-(glyph)-jumpicon-glyph-ayub-irawan.png" />
+        )}
+
         <div className="flex text-primary text-2xl gap-4">
           <BiShareAlt className="cursor-pointer" />
           <IoPlayOutline className="cursor-pointer" />
