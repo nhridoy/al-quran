@@ -8,6 +8,9 @@ import { ParaHead } from "../ParaHead/ParaHead";
 import { paraCreation } from "../../../utilities/paraCreation";
 
 export const Para = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const paraDetails = paraCreation();
   const { id } = useParams();
   const para = paraDetails[id];
