@@ -5,6 +5,7 @@ const SplashImage = () => {
   return (
     <div className="relative">
       <lottie-player
+        rel="preconnect"
         src="https://assets9.lottiefiles.com/packages/lf20_5mpwodai.json"
         background="transparent"
         speed="1"
