@@ -11,14 +11,18 @@ import { IoLogoFacebook, IoLogoWhatsapp } from "react-icons/io5";
 import Swal from "sweetalert2";
 import { dataFetching } from "../../../utilities/dataFetching";
 
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
+
 export const Settings = () => {
   const [loading, setLoading] = useState(false);
-  const [toast, setToast] = useState(false);
+  // const [toast, setToast] = useState(false);
   useEffect(() => {
     document.querySelector("html").classList.remove("overflow-x-hidden");
     document.querySelector("body").classList.remove("overflow-x-hidden");
   }, []);
-
+  const notify = () => toast.success("Wow so easy !");
   const handleUpdate = () => {
     Swal.fire({
       title: "Are you sure?",
@@ -33,8 +37,10 @@ export const Settings = () => {
         if (result.value) {
           localStorage.clear();
           localStorage.getItem("isLoaded") === null && setLoading(true);
-          dataFetching(setLoading);
-          setToast(true);
+          dataFetching(setLoading).then((data) => {
+            console.log(data);
+            notify();
+          });
         }
       })
       .then((result) => {
@@ -43,7 +49,6 @@ export const Settings = () => {
         }
       });
   };
-  console.log(loading);
 
   return (
     <div>
@@ -100,6 +105,19 @@ export const Settings = () => {
           </div>
         </div>
       </div>
+
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        theme="light"
+      />
     </div>
   );
 };
