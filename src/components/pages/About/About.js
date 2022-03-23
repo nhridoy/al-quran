@@ -21,7 +21,7 @@ export const About = () => {
       </div>
       <div className="grid grid-rows-5">
         <div className="row-span-1 flex items-center justify-center text-lg font-bold">
-          <h2 className=" md:text-2xl">Wo We Are?</h2>
+          <h2 className=" md:text-2xl dark:text-white">Wo We Are?</h2>
         </div>
         <div className="row-span-4 bg-secondary text-white p-5 rounded-t-3xl flex items-center flex-col divide-y">
           <div className="flex items-center flex-col p-4">

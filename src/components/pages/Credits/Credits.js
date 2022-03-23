@@ -8,13 +8,13 @@ export const Credits = () => {
     document.querySelector("body").classList.remove("overflow-x-hidden");
   }, []);
   return (
-    <div>
+    <div className="h-screen">
       <div className="bg-white sticky top-0 left-0 w-full z-10">
         <Header head="Credits" />
       </div>
       <div className="grid grid-rows-5">
         <div className="row-span-1 flex items-center justify-center text-lg font-bold">
-          <h2 className=" md:text-2xl">Credits</h2>
+          <h2 className=" md:text-2xl dark:text-white">Credits</h2>
         </div>
         <div className="row-span-4 bg-secondary text-white p-5 rounded-t-3xl flex flex-col divide-y">
           <a
