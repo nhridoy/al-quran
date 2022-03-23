@@ -25,7 +25,7 @@ export const Home = () => {
     document.querySelector("body").classList.remove("overflow-x-hidden");
   }, []);
   return (
-    <div className="bg-white sticky top-0 left-0 w-full z-10">
+    <div className="bg-white dark:bg-[#20282e] sticky top-0 left-0 w-full z-10">
       <Header head="Al Quran" />
       <SurahsHead />
       <div className="grid grid-cols-2 my-3">

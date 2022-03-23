@@ -3,3 +3,10 @@
   border-bottom: 2px solid #2e0d8a;
   background: #fff;
 }
+@media (prefers-color-scheme: dark) {
+  .activeClass {
+    color: #fff;
+    border-bottom: 2px solid #9345f2;
+    background: #191f24;
+  }
+}
