@@ -78,20 +78,19 @@ self.addEventListener("fetch", (event) => {
   }
 });
 
-// self.addEventListener("activate", (event) => {
-//     event.waitUntil(
-//         caches.keys().then((cacheNames) => {
-//             return Promise.all(
-//                 cacheNames.map((cache) => {
-//                     if (cache !== cacheName) {
-//                         return caches.delete(cache);
-//                     }
-//                 })
-//             );
-//         })
-//     );
-// }
-// );
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cache) => {
+          if (cache !== cacheName) {
+            return caches.delete(cache);
+          }
+        })
+      );
+    })
+  );
+});
 
 // self.addEventListener("message", (event) => {
 //     if (event.data.action === "skipWaiting") {
@@ -155,17 +154,3 @@ self.addEventListener("fetch", (event) => {
 //     console.log("Notification was closed", event);
 // }
 // );
-
-// ------------------------
-// Cookies methods found on w3schools - We need them to not annoy our visitors
-// https://www.w3schools.com/js/js_cookies.asp
-// ------------------------
-
-// ------------------------
-// Here starts our part
-// ------------------------
-
-// ------------------------
-// We listen to the `beforeinstallprompt` event
-// If the user has
-// ------------------------
