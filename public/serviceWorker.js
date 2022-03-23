@@ -37,7 +37,6 @@ let cacheList = [
   "/logo512.png",
   "/ios/144.png",
 
-  // "/index.js",
   // "/index.css",
   // "/logo.png",
   "/serviceWorker.js",
