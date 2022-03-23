@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 
 import { Link, Outlet } from "react-router-dom";
 import { Home } from "../Home/Home";
-import { Player } from "../Surah/Player";
 import { SurahList } from "../SurahList/SurahList";
 
 export const Surahs = () => {
@@ -37,7 +36,7 @@ export const Surahs = () => {
       <Home />
       <div className="flex flex-col md:flex-row md:grid md:grid-cols-3 lg:grid-cols-5 md:gap-4">
         {surahs.map((surah, index) => (
-          <Link key={surah.no} exact="true" to={`/surah/${surah.no}`}>
+          <Link key={surah.no} to={`/surah/${surah.no}`}>
             <SurahList data={surah} key={surah.no} />
           </Link>
         ))}

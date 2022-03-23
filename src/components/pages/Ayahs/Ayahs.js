@@ -18,7 +18,10 @@ export const Ayahs = (props) => {
           {ayah.numberInSurah}
         </p>
         {ayah.sajda.recommended && (
-          <img src="https://img.icons8.com/external-jumpicon-glyph-ayub-irawan/32/000000/external-_10-ramadan-jumpicon-(glyph)-jumpicon-glyph-ayub-irawan.png" />
+          <img
+            src="https://img.icons8.com/external-jumpicon-glyph-ayub-irawan/32/000000/external-_10-ramadan-jumpicon-(glyph)-jumpicon-glyph-ayub-irawan.png"
+            alt="Sajdah Here"
+          />
         )}
 
         <div className="flex text-primary dark:text-secondaryLight text-2xl gap-4">

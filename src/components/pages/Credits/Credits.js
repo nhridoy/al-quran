@@ -21,6 +21,7 @@ export const Credits = () => {
             href="https://alquran.cloud/"
             target="_blank"
             className="p-5 hover:bg-purple-500 transition-all"
+            rel="noopener noreferrer"
           >
             <div className="flex items-center gap-3">
               <GoPrimitiveDot />
@@ -31,6 +32,7 @@ export const Credits = () => {
             href="https://alquranbd.com/"
             target="_blank"
             className="p-5 hover:bg-purple-500 transition-all"
+            rel="noopener noreferrer"
           >
             <div className="flex items-center gap-3">
               <GoPrimitiveDot />
@@ -41,6 +43,7 @@ export const Credits = () => {
             href="https://sutanlab.id/"
             target="_blank"
             className="p-5 hover:bg-purple-500 transition-all"
+            rel="noopener noreferrer"
           >
             <div className="flex items-center gap-3">
               <GoPrimitiveDot />
@@ -51,6 +54,7 @@ export const Credits = () => {
             href="https://github.com/fawazahmed0/quran-api"
             target="_blank"
             className="p-5 hover:bg-purple-500 transition-all"
+            rel="noopener noreferrer"
           >
             <div className="flex items-center gap-3">
               <GoPrimitiveDot />
@@ -61,6 +65,7 @@ export const Credits = () => {
             href="https://github.com/nhridoy/quran-api"
             target="_blank"
             className="p-5 hover:bg-purple-500 transition-all"
+            rel="noopener noreferrer"
           >
             <div className="flex items-center gap-3">
               <GoPrimitiveDot />

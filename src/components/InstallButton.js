@@ -49,7 +49,10 @@ export const InstallButton = () => {
           />
         </div>
         <div className="logo">
-          <img src="https://img.icons8.com/external-others-bzzricon-studio/42/000000/external-quran-ramadan-others-bzzricon-studio.png" />
+          <img
+            src="https://img.icons8.com/external-others-bzzricon-studio/42/000000/external-quran-ramadan-others-bzzricon-studio.png"
+            all=""
+          />
         </div>
         <div className="name" style={name}>
           <p className="title" style={title}>

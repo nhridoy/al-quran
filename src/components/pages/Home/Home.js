@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Header } from "../../Header/Header";
-import { Para } from "../Para/Para";
-import { Surahs } from "../Surahs/Surahs";
 import { SurahsHead } from "../Surahs/SurahsHead";
 import "./Home.css";
 

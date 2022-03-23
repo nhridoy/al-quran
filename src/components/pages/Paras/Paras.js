@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { paraCreation } from "../../../utilities/paraCreation";
 import { Home } from "../Home/Home";
-import { Para } from "../Para/Para";
 import { ParaList } from "../ParaList/ParaList";
 
 export const Paras = (props) => {

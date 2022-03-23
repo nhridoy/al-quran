@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Header } from "../../Header/Header";
-import { BsDot } from "react-icons/bs";
 import { GoPrimitiveDot } from "react-icons/go";
 import {
   AiFillTwitterCircle,

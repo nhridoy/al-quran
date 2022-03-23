@@ -1,7 +1,9 @@
-import logo from "../logo.png";
 import React, { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { dataFetching } from "../utilities/dataFetching";
+// import { SplashImage } from "./SplashImage/SplashImage";
+import loadable from "@loadable/component";
+const SplashImage = loadable(() => import("./SplashImage/SplashImage"));
 
 export const Splash = () => {
   const [loading, setLoading] = useState(false);
@@ -30,21 +32,9 @@ export const Splash = () => {
       </div>
       <div className="bg-primary pt-4 pb-10 h-full w-full rounded-3xl">
         <div className="h-full w-full grid justify-center items-end">
-          <div className="relative">
-            <lottie-player
-              src="https://assets9.lottiefiles.com/packages/lf20_5mpwodai.json"
-              background="transparent"
-              speed="1"
-              style={{ width: 300, height: 300 }}
-              loop
-              autoplay
-            ></lottie-player>
-            <img
-              src={logo}
-              className="absolute inset-0 p-16 w-full"
-              alt="logo"
-            />
-          </div>
+          {/* <Suspense fallback={<div>Loading...</div>}> */}
+          <SplashImage />
+          {/* </Suspense> */}
           <div
             className={`${
               loading ? "cursor-not-allowed" : "cursor-auto"

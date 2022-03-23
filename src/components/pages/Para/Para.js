@@ -1,7 +1,4 @@
 import React, { useEffect } from "react";
-import { FaQuran } from "react-icons/fa";
-import { BsBoxArrowInRight } from "react-icons/bs";
-import { FiOctagon } from "react-icons/fi";
 import { Header } from "../../Header/Header";
 import { useParams } from "react-router-dom";
 import { ParaHead } from "../ParaHead/ParaHead";

@@ -17,9 +17,15 @@ export const SurahList = (props) => {
             <div className="flex flex-col md:flex-row gap-2 text-gray-600 dark:text-gray-400 text-xs">
               <span className="flex gap-1">
                 {props.data.revelationType === "Meccan" ? (
-                  <img src="https://img.icons8.com/external-color-outline-adri-ansyah/16/000000/external-islam-islam-and-ramadhan-color-outline-adri-ansyah-8.png" />
+                  <img
+                    src="https://img.icons8.com/external-color-outline-adri-ansyah/16/000000/external-islam-islam-and-ramadhan-color-outline-adri-ansyah-8.png"
+                    alt="Meccan"
+                  />
                 ) : (
-                  <img src="https://img.icons8.com/external-color-outline-adri-ansyah/16/000000/external-islam-islam-and-ramadhan-color-outline-adri-ansyah-13.png" />
+                  <img
+                    src="https://img.icons8.com/external-color-outline-adri-ansyah/16/000000/external-islam-islam-and-ramadhan-color-outline-adri-ansyah-13.png"
+                    alt="Medinan"
+                  />
                 )}
                 <span className="uppercase">{props.data.revelationType}</span>
               </span>

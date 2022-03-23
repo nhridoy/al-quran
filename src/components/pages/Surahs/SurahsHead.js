@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { MdMenuBook } from "react-icons/md";
-import logo from "../../../logo.png";
+import logo from "../../../logo.svg";
 
 export const SurahsHead = () => {
   const [readStatus, setReadStatus] = useState(null);
@@ -28,7 +28,7 @@ export const SurahsHead = () => {
         </div>
       </div>
       <div className="flex justify-end">
-        <img className="w-1/2 md:w-1/5" src={logo} alt="" />
+        <img className="w-1/2 md:w-1/5" src={logo} alt="logo" />
       </div>
     </div>
   );

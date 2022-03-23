@@ -1,6 +1,4 @@
 import React from "react";
-import { FaQuran } from "react-icons/fa";
-import { BsBoxArrowInRight } from "react-icons/bs";
 import { FiOctagon } from "react-icons/fi";
 import { useParams } from "react-router-dom";
 import { Ayahs } from "../Ayahs/Ayahs";
@@ -22,9 +20,15 @@ export const ParaHead = ({ para }) => {
             <div className="flex flex-col gap-1 text-xs">
               <span className="flex gap-1">
                 {para.revelationType === "Meccan" ? (
-                  <img src="https://img.icons8.com/external-color-outline-adri-ansyah/16/000000/external-islam-islam-and-ramadhan-color-outline-adri-ansyah-8.png" />
+                  <img
+                    src="https://img.icons8.com/external-color-outline-adri-ansyah/16/000000/external-islam-islam-and-ramadhan-color-outline-adri-ansyah-8.png"
+                    alt="Meccan"
+                  />
                 ) : (
-                  <img src="https://img.icons8.com/external-color-outline-adri-ansyah/16/000000/external-islam-islam-and-ramadhan-color-outline-adri-ansyah-13.png" />
+                  <img
+                    src="https://img.icons8.com/external-color-outline-adri-ansyah/16/000000/external-islam-islam-and-ramadhan-color-outline-adri-ansyah-13.png"
+                    alt="Medinan"
+                  />
                 )}
                 <span className="uppercase">{para.revelationType}</span>
               </span>

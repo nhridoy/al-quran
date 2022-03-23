@@ -1,18 +1,13 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import { Spin as HamburgerBtn } from "hamburger-react";
 import Drawer from "react-drag-drawer";
 import { BsInfoCircle } from "react-icons/bs";
 import { IoSettingsOutline } from "react-icons/io5";
 import { RiHandHeartLine } from "react-icons/ri";
 import { AiOutlineDoubleLeft, AiOutlineHeart } from "react-icons/ai";
-import { FaQuran } from "react-icons/fa";
 import { VscBook } from "react-icons/vsc";
 import { MdMenuBook } from "react-icons/md";
-import { Link, NavLink, Route, Routes } from "react-router-dom";
-import { Settings } from "../pages/Settings/Settings";
-import { About } from "../pages/About/About";
-import { Credits } from "../pages/Credits/Credits";
-import { Donation } from "../pages/Donation/Donation";
+import { NavLink } from "react-router-dom";
 
 const HamBurger = () => {
   const [sidebarLeft, setSidebarLeft] = React.useState(false);
@@ -44,7 +39,6 @@ const HamBurger = () => {
         <div className="row-span-2">
           <nav className="flex flex-col">
             <NavLink
-              exact
               to="/surah"
               className="flex items-center p-3 hover:bg-alternateOne dark:hover:bg-[#191f24]"
             >
@@ -56,7 +50,6 @@ const HamBurger = () => {
               </div>
             </NavLink>
             <NavLink
-              exact
               to="/para"
               className="flex items-center p-3 hover:bg-alternateOne  dark:hover:bg-[#191f24]"
             >
@@ -68,7 +61,6 @@ const HamBurger = () => {
               </div>
             </NavLink>
             <NavLink
-              exact
               to="/settings"
               className="flex items-center p-3 hover:bg-alternateOne  dark:hover:bg-[#191f24]"
             >
@@ -80,7 +72,6 @@ const HamBurger = () => {
               </div>
             </NavLink>
             <NavLink
-              exact
               to="/about"
               className="flex items-center p-3 hover:bg-alternateOne  dark:hover:bg-[#191f24]"
             >
@@ -92,7 +83,6 @@ const HamBurger = () => {
               </div>
             </NavLink>
             <NavLink
-              exact
               to="/credits"
               className="flex items-center p-3 hover:bg-alternateOne  dark:hover:bg-[#191f24]"
             >
@@ -104,7 +94,6 @@ const HamBurger = () => {
               </div>
             </NavLink>
             <NavLink
-              exact
               to="/donation"
               className="flex  items-center p-3 hover:bg-alternateOne  dark:hover:bg-[#191f24]"
             >

@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Header } from "../../Header/Header";
-import { GoPrimitiveDot } from "react-icons/go";
-import {
-  AiFillTwitterCircle,
-  AiOutlineMail,
-  AiOutlineGithub,
-} from "react-icons/ai";
-import { IoLogoFacebook, IoLogoWhatsapp } from "react-icons/io5";
 
 import Swal from "sweetalert2";
 import { dataFetching } from "../../../utilities/dataFetching";

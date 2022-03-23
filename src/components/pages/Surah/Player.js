@@ -1,15 +1,13 @@
 import ReactJkMusicPlayer from "react-jinke-music-player";
 import "react-jinke-music-player/assets/index.css";
-import logo from "../../../logo.png";
+import logo from "../../../logo.svg";
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ReactDOM from "react-dom";
 
 export const Player = (props) => {
   const { surah, currentPlaying, audioInstance } = props;
   const { id } = useParams();
-  const [audio, setAudio] = useState(null);
   const [fullPlayList, setFullPlayList] = useState([]);
   const fullAudioList = [];
 
@@ -97,18 +95,7 @@ export const Player = (props) => {
       textShadow: "0 0 5px #000",
     },
   };
-  // let audiotest;
-  // console.log(fullAudioList);
-  // fullAudioList.length && console.log(fullAudioList);
-  //   ReactDOM.findDOMNode(
-  //     document.getElementsByClassName("react-draggable")[0] &&
-  //       document
-  //         .getElementsByClassName("react-draggable")[0]
-  //         .setAttribute(
-  //           "style",
-  //           "left: 0px; top: 0px; transform: translate(85vw, 85vh);"
-  //         )
-  //   );
+
   return (
     <div>
       <ReactJkMusicPlayer
@@ -127,7 +114,6 @@ export const Player = (props) => {
           // console.log(index);
         }}
       />
-      {/* <button onClick={() => audio.togglePlay()}>play</button> */}
     </div>
   );
 };

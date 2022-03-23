@@ -23,11 +23,13 @@ export const SurahHead = (props) => {
             <img
               style={{ width: "16px", height: "16px" }}
               src="https://img.icons8.com/external-color-outline-adri-ansyah/64/000000/external-islam-islam-and-ramadhan-color-outline-adri-ansyah-8.png"
+              alt="Meccan"
             />
           ) : (
             <img
               style={{ width: "16px", height: "16px" }}
               src="https://img.icons8.com/external-color-outline-adri-ansyah/16/000000/external-islam-islam-and-ramadhan-color-outline-adri-ansyah-13.png"
+              alt="Medinan"
             />
           )}
           <span className="uppercase">{surah.revelationType}</span>
