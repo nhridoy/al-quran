@@ -21,9 +21,7 @@ export const serviceWorkerDev = () => {
           installingWorker.onstatechange = () => {
             if (installingWorker.state === "installed") {
               if (navigator.serviceWorker.controller) {
-                alert(
-                  "Update available! To update, close all windows and reopen."
-                );
+                alert("Update available! To update, close app and reopen.");
               } else {
                 console.log("Content is cached for offline use.");
               }

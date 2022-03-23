@@ -21,7 +21,7 @@ export const Para = () => {
   return (
     <div className="">
       <div className="bg-white sticky top-0 left-0 w-full z-10">
-        <Header head="Para 1" />
+        <Header head={`Para ${id}`} />
       </div>
       {para.map((para, index) => (
         <ParaHead para={para} key={index} />
