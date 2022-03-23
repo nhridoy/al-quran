@@ -9,8 +9,8 @@ export const Splash = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     // Enabling the loading state
-    // localStorage.getItem("isLoaded") === null && setLoading(true);
-    // dataFetching(setLoading);
+    localStorage.getItem("isLoaded") === null && setLoading(true);
+    dataFetching(setLoading);
   }, []);
   useEffect(() => {
     document.querySelector("html").classList.remove("overflow-x-hidden");
