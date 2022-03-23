@@ -30,9 +30,9 @@ let cacheList = [
   // "/static/css/main.7dc91d28.css.map",
 
   // New Version
-  "/static/js/main.e423c732.js",
-  "/static/css/main.2649208a.css",
-  "/static/css/main.2649208a.css.map",
+  "/static/js/main.0860ac71.js",
+  "/static/css/main.df282e87.css",
+  "/static/css/main.df282e87.css.map",
 
   "/static/media/logo.e4a082d466ccc7346f5b.png",
   "/manifest.json",
