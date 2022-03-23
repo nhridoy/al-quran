@@ -81,19 +81,21 @@ export const About = () => {
               <div className="flex items-center gap-3">
                 <GoPrimitiveDot />
                 <p className="text-xs md:text-sm">
-                  We are a team of software developers and designers.
+                  We develop web and mobile applications.
                 </p>
               </div>
               <div className="flex items-center gap-3">
                 <GoPrimitiveDot />
                 <p className="text-xs md:text-sm">
-                  We are a team of software developers and designers.
+                  We have years of experience in developing web and mobile
+                  applications.
                 </p>
               </div>
               <div className="flex items-center gap-3">
                 <GoPrimitiveDot />
                 <p className="text-xs md:text-sm">
-                  We are a team of software developers and designers.
+                  We use latest technologies to develop web and mobile
+                  applications.
                 </p>
               </div>
             </div>
