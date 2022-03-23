@@ -23,8 +23,13 @@ const HamBurger = () => {
 
   return (
     <>
-      <button onClick={toggle(true)} className={"Toggle"}>
-        <HamburgerBtn size={20} toggled={sidebarLeft} />
+      <button onClick={toggle(true)} className=" dark:text-white">
+        <HamburgerBtn
+          size={20}
+          toggled={sidebarLeft}
+          hideOutline={false}
+          rounded
+        />
       </button>
 
       <Drawer
