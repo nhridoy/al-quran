@@ -46,5 +46,18 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script>
+      /* In main.js */
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("./serviceWorker.js")
+          .then(function (registration) {
+            console.log("Service Worker Registered", registration);
+          })
+          .catch(function (err) {
+            console.log("Service Worker Failed to Register", err);
+          });
+      }
+    </script>
   </body>
 </html>

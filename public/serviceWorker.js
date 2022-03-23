@@ -21,12 +21,6 @@ let cacheList = [
   "/index.html",
   "/static/css/main.92447845.css",
   "/static/js/main.f8ea3893.js",
-
-  "/static/js/2.d7a32088.chunk.js",
-  "/static/js/main.cace1e96.chunk.js",
-  "/static/js/inject.js",
-  "/static/js/react_devtools_backend.js",
-
   "/static/js/bundle.js",
   "/static/media/logo.e4a082d466ccc7346f5b.png",
   "/manifest.json",
@@ -66,18 +60,6 @@ self.addEventListener("fetch", (event) => {
   if (!navigator.onLine) {
     event.respondWith(
       caches.match(event.request).then((response) => {
-        // if (response) {
-        //   // retrieve from cache
-        //   return response;
-        // }
-
-        // // if not found in cache, return default offline content (only if this is a navigation request)
-        // if (event.request.mode === "navigate") {
-        //   return caches.match("./");
-        // }
-
-        // // fetch as normal
-        // return fetch(event.request.clone());
         return response || fetch(event.request.clone());
       })
     );
