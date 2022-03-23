@@ -53,6 +53,11 @@ code {
 .active {
   background: #b9a2d8;
 }
+@media (prefers-color-scheme: dark) {
+  .active {
+    background: #303439;
+  }
+}
 
 .swiper {
   width: 240px;

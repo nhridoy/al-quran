@@ -14,18 +14,20 @@ import { Splash } from "./components/Splash";
 function App() {
   return (
     <BrowserRouter>
-      <div className="container mx-auto px-4">
-        <Routes>
-          <Route path="/" exact element={<Splash />} />
-          <Route path="/surah" exact element={<Surahs />} />
-          <Route path="/para" exact element={<Paras />} />
-          <Route path="/surah/:id" exact element={<Surah />} />
-          <Route path="/para/:id" exact element={<Para />} />
-          <Route path="/settings" exact element={<Settings />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/credits" element={<Credits />} />
-          <Route path="/donation" element={<Donation />} />
-        </Routes>
+      <div className="bg-white dark:bg-[#20282e]">
+        <div className="container mx-auto px-4 ">
+          <Routes>
+            <Route path="/" exact element={<Splash />} />
+            <Route path="/surah" exact element={<Surahs />} />
+            <Route path="/para" exact element={<Paras />} />
+            <Route path="/surah/:id" exact element={<Surah />} />
+            <Route path="/para/:id" exact element={<Para />} />
+            <Route path="/settings" exact element={<Settings />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/credits" element={<Credits />} />
+            <Route path="/donation" element={<Donation />} />
+          </Routes>
+        </div>
       </div>
     </BrowserRouter>
   );

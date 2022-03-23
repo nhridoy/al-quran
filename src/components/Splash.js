@@ -18,11 +18,15 @@ export const Splash = () => {
   return (
     <div className="h-screen grid place-items-center">
       <div className="flex flex-col items-center gap-4">
-        <h2 className="text-primary font-bold text-3xl">
+        <h2 className="text-primary dark:text-white font-bold text-3xl">
           بِسْمِ ٱللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
         </h2>
-        <h2 className="text-primary font-bold text-3xl">Al Quran</h2>
-        <p className="text-gray-700">Full Quran with Audio Player</p>
+        <h2 className="text-primary dark:text-white font-bold text-3xl">
+          Al Quran
+        </h2>
+        <p className="text-gray-700 dark:text-gray-400">
+          Full Quran with Audio Player
+        </p>
       </div>
       <div className="bg-primary pt-4 pb-10 h-full w-full rounded-3xl">
         <div className="h-full w-full grid justify-center items-end">

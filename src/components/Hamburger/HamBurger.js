@@ -30,7 +30,7 @@ const HamBurger = () => {
       <Drawer
         open={sidebarLeft}
         onRequestClose={toggle(false)}
-        modalElementClass="bg-white h-screen left-0 absolute grid grid-rows-3 w-2/3 md:w-1/5"
+        modalElementClass="bg-white dark:bg-[#20282e] h-screen left-0 absolute grid grid-rows-3 w-2/3 md:w-1/5"
         direction="left"
       >
         <div className="row-span-1 bg-primary p-5 text-white flex items-center justify-center">
@@ -41,61 +41,73 @@ const HamBurger = () => {
             <NavLink
               exact
               to="/surah"
-              className="flex items-center p-3 hover:bg-alternateOne"
+              className="flex items-center p-3 hover:bg-alternateOne dark:hover:bg-secondary"
             >
               <div className="flex items-center gap-3">
-                <VscBook className="text-xl font-bold" />
-                <span className="text-primary  font-bold">Surah</span>
+                <VscBook className="text-xl font-bold dark:text-white" />
+                <span className="text-primary dark:text-white font-bold">
+                  Surah
+                </span>
               </div>
             </NavLink>
             <NavLink
               exact
               to="/para"
-              className="flex items-center p-3 hover:bg-alternateOne"
+              className="flex items-center p-3 hover:bg-alternateOne dark:hover:bg-secondary"
             >
               <div className="flex items-center gap-3">
-                <MdMenuBook className="text-xl font-bold" />
-                <span className="text-primary  font-bold">Para</span>
+                <MdMenuBook className="text-xl font-bold dark:text-white" />
+                <span className="text-primary dark:text-white font-bold">
+                  Para
+                </span>
               </div>
             </NavLink>
             <NavLink
               exact
               to="/settings"
-              className="flex items-center p-3 hover:bg-alternateOne"
+              className="flex items-center p-3 hover:bg-alternateOne dark:hover:bg-secondary"
             >
               <div className="flex items-center gap-3">
-                <IoSettingsOutline className="text-xl font-bold" />
-                <span className="text-primary  font-bold">Settings</span>
+                <IoSettingsOutline className="text-xl font-bold dark:text-white" />
+                <span className="text-primary dark:text-white font-bold">
+                  Settings
+                </span>
               </div>
             </NavLink>
             <NavLink
               exact
               to="/about"
-              className="flex items-center p-3 hover:bg-alternateOne"
+              className="flex items-center p-3 hover:bg-alternateOne dark:hover:bg-secondary"
             >
               <div className="flex items-center gap-3">
-                <BsInfoCircle className="text-xl font-bold" />
-                <span className="text-primary font-bold">About</span>
+                <BsInfoCircle className="text-xl font-bold dark:text-white" />
+                <span className="text-primary dark:text-white font-bold">
+                  About
+                </span>
               </div>
             </NavLink>
             <NavLink
               exact
               to="/credits"
-              className="flex items-center p-3 hover:bg-alternateOne"
+              className="flex items-center p-3 hover:bg-alternateOne dark:hover:bg-secondary"
             >
               <div className="flex items-center gap-3">
-                <AiOutlineHeart className="text-xl font-bold" />
-                <span className="text-primary font-bold">Credits</span>
+                <AiOutlineHeart className="text-xl font-bold dark:text-white" />
+                <span className="text-primary dark:text-white font-bold">
+                  Credits
+                </span>
               </div>
             </NavLink>
             <NavLink
               exact
               to="/donation"
-              className="flex  items-center p-3 hover:bg-alternateOne"
+              className="flex  items-center p-3 hover:bg-alternateOne dark:hover:bg-secondary"
             >
               <div className="flex items-center gap-3">
-                <RiHandHeartLine className="text-xl font-bold" />
-                <span className="text-primary font-bold">Donation</span>
+                <RiHandHeartLine className="text-xl font-bold dark:text-white" />
+                <span className="text-primary dark:text-white font-bold">
+                  Donation
+                </span>
               </div>
             </NavLink>
           </nav>
