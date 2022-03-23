@@ -35,7 +35,7 @@ let cacheList = [
   "/static/css/main.df282e87.css",
   "/static/css/main.df282e87.css.map",
 
-  "/static/media/logo.e4a082d466ccc7346f5b.png",
+  "/static/media/logo.cc2bc814ed3554c7522ccb45ea1a73a2.svg",
   "/manifest.json",
   "/favicon.ico",
   "/logo192.png",
