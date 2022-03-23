@@ -22,6 +22,10 @@ let cacheList = [
   "/static/css/main.92447845.css",
   "/static/js/main.f8ea3893.js",
   "/static/js/bundle.js",
+
+  "/static/js/main.bd80fb27.js",
+  "/static/css/main.7dc91d28.css",
+
   "/static/media/logo.e4a082d466ccc7346f5b.png",
   "/manifest.json",
   "/favicon.ico",
