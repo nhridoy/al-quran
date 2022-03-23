@@ -32,7 +32,7 @@ let cacheList = [
   // "/index.js",
   // "/index.css",
   // "/logo.png",
-  // "/serviceWorker.js",
+  "/serviceWorker.js",
   // "/src/index.js",
   // "/src/index.css",
   // "/src/App.js",
