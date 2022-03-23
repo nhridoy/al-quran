@@ -18,43 +18,53 @@ export const Credits = () => {
         </div>
         <div className="row-span-4 bg-secondary text-white p-5 rounded-t-3xl flex flex-col divide-y">
           <a
-            href=""
+            href="https://alquran.cloud/"
             target="_blank"
             className="p-5 hover:bg-purple-500 transition-all"
           >
             <div className="flex items-center gap-3">
               <GoPrimitiveDot />
-              <p className="text-xs md:text-sm">Al Quran</p>
+              <p className="text-xs md:text-sm">Al Quran Cloud</p>
             </div>
           </a>
           <a
-            href=""
+            href="https://alquranbd.com/"
             target="_blank"
             className="p-5 hover:bg-purple-500 transition-all"
           >
             <div className="flex items-center gap-3">
               <GoPrimitiveDot />
-              <p className="text-xs md:text-sm">Al Quran</p>
+              <p className="text-xs md:text-sm">Al Quran BD</p>
             </div>
           </a>
           <a
-            href=""
+            href="https://sutanlab.id/"
             target="_blank"
             className="p-5 hover:bg-purple-500 transition-all"
           >
             <div className="flex items-center gap-3">
               <GoPrimitiveDot />
-              <p className="text-xs md:text-sm">Al Quran</p>
+              <p className="text-xs md:text-sm">Sultan Labs</p>
             </div>
           </a>
           <a
-            href=""
+            href="https://github.com/fawazahmed0/quran-api"
             target="_blank"
             className="p-5 hover:bg-purple-500 transition-all"
           >
             <div className="flex items-center gap-3">
               <GoPrimitiveDot />
-              <p className="text-xs md:text-sm">Al Quran</p>
+              <p className="text-xs md:text-sm">Fawaz Ahmed</p>
+            </div>
+          </a>
+          <a
+            href="https://github.com/nhridoy/quran-api"
+            target="_blank"
+            className="p-5 hover:bg-purple-500 transition-all"
+          >
+            <div className="flex items-center gap-3">
+              <GoPrimitiveDot />
+              <p className="text-xs md:text-sm">Nahidujjaman Hridoy</p>
             </div>
           </a>
         </div>
