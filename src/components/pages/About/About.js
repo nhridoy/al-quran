@@ -28,11 +28,24 @@ export const About = () => {
             <h2 className="text-4xl font-bold">01</h2>
             <p className="mb-1 md:text-lg">Contact Us</p>
             <div className="flex gap-3 items-center text-2xl">
-              <AiOutlineGithub className="" />
-              <IoLogoFacebook className="" />
-              <AiFillTwitterCircle className="" />
-              <AiOutlineMail className="" />
-              <IoLogoWhatsapp className="" />
+              <a href="https://github.com/nhridoy" target="_blank">
+                <AiOutlineGithub className="" />
+              </a>
+              <a
+                href="https://www.facebook.com/nahidujjaman.hridoy"
+                target="_blank"
+              >
+                <IoLogoFacebook className="" />
+              </a>
+              <a href="https://twitter.com/hridoyboss12" target="_blank">
+                <AiFillTwitterCircle className="" />
+              </a>
+              <a href="mailto:nahidujjamanhridoy@gmail.com" target="_blank">
+                <AiOutlineMail className="" />
+              </a>
+              <a href="https://wa.me/8801768098882" target="_blank">
+                <IoLogoWhatsapp className="" />
+              </a>
             </div>
           </div>
           <div className="flex items-center flex-col p-4 gap-2">
