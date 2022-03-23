@@ -34,17 +34,37 @@ export const Surah = (props) => {
       // currentayah.style.position = "relative";
       // // currentayah.style.zIndex = "-1";
       // currentayah.style.top = "25px";
-      currentayah.classList.add("bg-alternateSecondDeep");
-      for (let index = 1; index <= totalAyahs; index++) {
-        if (current === index) {
-          continue;
-        }
-        document
-          .getElementById(`ayah-${index}`)
-          .classList.contains("bg-alternateSecondDeep") &&
+      if (
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      ) {
+        // dark mode
+        currentayah.classList.add("bg-[#14191d]");
+        for (let index = 1; index <= totalAyahs; index++) {
+          if (current === index) {
+            continue;
+          }
           document
             .getElementById(`ayah-${index}`)
-            .classList.remove("bg-alternateSecondDeep");
+            .classList.contains("bg-[#14191d]") &&
+            document
+              .getElementById(`ayah-${index}`)
+              .classList.remove("bg-[#14191d]");
+        }
+      } else {
+        // Light Mode
+        currentayah.classList.add("bg-alternateSecondDeep");
+        for (let index = 1; index <= totalAyahs; index++) {
+          if (current === index) {
+            continue;
+          }
+          document
+            .getElementById(`ayah-${index}`)
+            .classList.contains("bg-alternateSecondDeep") &&
+            document
+              .getElementById(`ayah-${index}`)
+              .classList.remove("bg-alternateSecondDeep");
+        }
       }
     }
   }, [currentPlaying]);
@@ -59,7 +79,7 @@ export const Surah = (props) => {
   // console.log(audioInstance);
   return (
     <div>
-      <div className="bg-white sticky top-0 left-0 w-full">
+      <div className="bg-white dark:bg-[#20282e] sticky top-0 left-0 w-full">
         <Header surah={surah} />
         <SurahHead audioInstance={audioInstance} surah={surah} />
       </div>
