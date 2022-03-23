@@ -42,6 +42,9 @@ let cacheList = [
 for (let index = 1; index <= 114; index++) {
   cacheList.push(`/surah/${index}`);
 }
+for (let index = 1; index <= 30; index++) {
+  cacheList.push(`/para/${index}`);
+}
 
 self.addEventListener("install", (event) => {
   event.waitUntil(

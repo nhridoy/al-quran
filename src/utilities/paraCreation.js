@@ -23,12 +23,12 @@ export const paraCreation = () => {
     for (let index = 1; index <= 114; index++) {
       const surah = JSON.parse(localStorage.getItem(index));
       surah.verses.map((verse) => {
-        if (currentPara == verse.juz) {
+        if (currentPara === verse.juz) {
           //   console.log(paraList[currentPara].length);
           //   console.log(surah.no);
           if (
             paraList[currentPara].length < surah.no &&
-            !paraList[currentPara].some((item) => item.no == surah.no)
+            !paraList[currentPara].some((item) => item.no === surah.no)
           ) {
             paraList[currentPara].push({
               name: surah.name,
@@ -48,7 +48,7 @@ export const paraCreation = () => {
               verse
             );
           }
-        } else if (currentPara + 1 == verse.juz) {
+        } else if (currentPara + 1 === verse.juz) {
           currentPara += 1;
           if (paraList[currentPara].length < surah.no) {
             paraList[currentPara].push({

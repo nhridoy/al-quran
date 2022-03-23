@@ -1,14 +1,14 @@
 import logo from "../logo.png";
 import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { apiLoad } from "../utilities/dataFetching";
+import { dataFetching } from "../utilities/dataFetching";
 
 export const Splash = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     // Enabling the loading state
     localStorage.getItem("isLoaded") === null && setLoading(true);
-    apiLoad(setLoading);
+    dataFetching(setLoading);
   }, []);
   useEffect(() => {
     document.querySelector("html").classList.remove("overflow-x-hidden");

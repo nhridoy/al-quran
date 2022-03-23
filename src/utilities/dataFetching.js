@@ -1,4 +1,4 @@
-export const apiLoad = (setLoading) => {
+export const dataFetching = (setLoading) => {
   document.title = "Al Quran";
   let count = 0;
   console.log(localStorage.getItem("isLoaded") === null);
