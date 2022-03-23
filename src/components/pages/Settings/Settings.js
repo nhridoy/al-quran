@@ -22,7 +22,7 @@ export const Settings = () => {
     document.querySelector("html").classList.remove("overflow-x-hidden");
     document.querySelector("body").classList.remove("overflow-x-hidden");
   }, []);
-  const notify = () => toast.success("Wow so easy !");
+  const notify = () => toast.success("Your file has been updated!");
   const handleUpdate = () => {
     Swal.fire({
       title: "Are you sure?",
@@ -32,32 +32,27 @@ export const Settings = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, update it!",
-    })
-      .then((result) => {
-        if (result.value) {
-          localStorage.clear();
-          localStorage.getItem("isLoaded") === null && setLoading(true);
-          dataFetching(setLoading).then((data) => {
-            console.log(data);
-            notify();
-          });
-        }
-      })
-      .then((result) => {
-        if (result) {
-          Swal.fire("Updated!", "Your file has been updated.", "success");
-        }
-      });
+    }).then((result) => {
+      if (result.value) {
+        localStorage.clear();
+        localStorage.getItem("isLoaded") === null && setLoading(true);
+        dataFetching(setLoading).then((data) => {
+          // console.log(data);
+          notify();
+          // Swal.fire("Updated!", "Your file has been updated.", "success");
+        });
+      }
+    });
   };
 
   return (
-    <div>
+    <div className="h-screen">
       <div className="bg-white sticky top-0 left-0 w-full z-10">
         <Header head="Settings" />
       </div>
       <div className="grid grid-rows-5">
         <div className="row-span-1 flex items-center justify-center text-lg font-bold">
-          <h2 className=" md:text-2xl">Configure Settings</h2>
+          <h2 className=" md:text-2xl dark:text-white">Configure Settings</h2>
         </div>
         <div className="row-span-4 bg-secondary text-white p-5 rounded-t-3xl flex flex-col divide-y">
           <div className="pb-5">
