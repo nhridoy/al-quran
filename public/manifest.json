@@ -676,7 +676,7 @@
     }
    
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#9345F2",
   "background_color": "#9345F2"
