@@ -48,16 +48,29 @@
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script>
       /* In main.js */
-      if ("serviceWorker" in navigator) {
-        navigator.serviceWorker
-          .register("./serviceWorker.js")
-          .then(function (registration) {
-            console.log("Service Worker Registered", registration);
-          })
-          .catch(function (err) {
-            console.log("Service Worker Failed to Register", err);
-          });
-      }
+      // if ("serviceWorker" in navigator) {
+      //   navigator.serviceWorker
+      //     .register("./serviceWorker.js")
+      //     .then((registration) => {
+      //       registration.update();
+      //       registration.onupdatefound = () => {
+      //         const installingWorker = registration.installing;
+      //         installingWorker.onstatechange = () => {
+      //           if (installingWorker.state === "installed") {
+      //             if (navigator.serviceWorker.controller) {
+      //               console.log("New content is available; please refresh.");
+      //             } else {
+      //               console.log("Content is cached for offline use.");
+      //             }
+      //           }
+      //         };
+      //       };
+      //       console.log("Service Worker Registered", registration);
+      //     })
+      //     .catch((err) => {
+      //       console.log("Service Worker Failed to Register", err);
+      //     });
+      // }
     </script>
   </body>
 </html>
