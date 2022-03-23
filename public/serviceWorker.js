@@ -21,6 +21,12 @@ let cacheList = [
   "/index.html",
   "/static/css/main.92447845.css",
   "/static/js/main.f8ea3893.js",
+
+  "/static/js/2.d7a32088.chunk.js",
+  "/static/js/main.cace1e96.chunk.js",
+  "/static/js/inject.js",
+  "/static/js/react_devtools_backend.js",
+
   "/static/js/bundle.js",
   "/static/media/logo.e4a082d466ccc7346f5b.png",
   "/manifest.json",
@@ -78,19 +84,19 @@ self.addEventListener("fetch", (event) => {
   }
 });
 
-self.addEventListener("activate", (event) => {
-  event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cache) => {
-          if (cache !== cacheName) {
-            return caches.delete(cache);
-          }
-        })
-      );
-    })
-  );
-});
+// self.addEventListener("activate", (event) => {
+//   event.waitUntil(
+//     caches.keys().then((cacheNames) => {
+//       return Promise.all(
+//         cacheNames.map((cache) => {
+//           if (cache !== cacheName) {
+//             return caches.delete(cache);
+//           }
+//         })
+//       );
+//     })
+//   );
+// });
 
 // self.addEventListener("message", (event) => {
 //     if (event.data.action === "skipWaiting") {
