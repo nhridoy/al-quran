@@ -27,6 +27,7 @@ let cacheList = [
   "/favicon.ico",
   "/logo192.png",
   "/logo512.png",
+  "/ios/144.png",
 
   // "/index.js",
   // "/index.css",
@@ -55,22 +56,23 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
+  // console.log(event.request);
   if (!navigator.onLine) {
     event.respondWith(
       caches.match(event.request).then((response) => {
-        if (response) {
-          // retrieve from cache
-          return response;
-        }
+        // if (response) {
+        //   // retrieve from cache
+        //   return response;
+        // }
 
-        // if not found in cache, return default offline content (only if this is a navigation request)
-        if (event.request.mode === "navigate") {
-          return caches.match("./");
-        }
+        // // if not found in cache, return default offline content (only if this is a navigation request)
+        // if (event.request.mode === "navigate") {
+        //   return caches.match("./");
+        // }
 
-        // fetch as normal
-        return fetch(event.request.clone());
-        // return response || fetch(event.request.clone());
+        // // fetch as normal
+        // return fetch(event.request.clone());
+        return response || fetch(event.request.clone());
       })
     );
   }
