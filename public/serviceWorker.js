@@ -34,11 +34,11 @@ let cacheList = [
   // "/static/css/main.7dc91d28.css.map",
 
   // New Version
-  // "/static/js/main.45a91c53.js",
+  "/static/js/main.51693738.js",
   // "/static/js/146.c0791d76.chunk.js",
   "/static/js/src_components_SplashImage_SplashImage_js.chunk.js",
-  // "/static/css/main.7b39bbdc.css",
-  // "/static/css/main.7b39bbdc.css.map",
+  "/static/css/main.ba696bdd.css",
+  "/static/css/main.ba696bdd.css.map",
 
   "/static/media/logo.cc2bc814ed3554c7522ccb45ea1a73a2.svg",
   "/manifest.json",
