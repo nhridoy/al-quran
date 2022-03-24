@@ -38,16 +38,7 @@ const Search = () => {
       setSearchResult([]);
     }
   };
-  const surah = {
-    no: 1,
-    enName: "Al-Faatiha",
-    name: "سُورَةُ ٱلْفَاتِحَةِ",
-    enNameTranslation: "The Opening",
-    bnNameTranslation: "আল ফাতিহা ",
-    revelationType: "Meccan",
-    numberOfAyahs: 7,
-  };
-  //   console.log(searchResult.slice(0, 3));
+
   return (
     <>
       <button onClick={toggle(true)} className=" dark:text-white">
