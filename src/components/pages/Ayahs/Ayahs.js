@@ -2,7 +2,7 @@ import React from "react";
 import { BiShareAlt, BiBookmark } from "react-icons/bi";
 import { IoPlayOutline } from "react-icons/io5";
 
-export const Ayahs = (props) => {
+const Ayahs = (props) => {
   // console.log(props);
   const { ayah } = props;
   return (
@@ -41,3 +41,5 @@ export const Ayahs = (props) => {
     </div>
   );
 };
+
+export default Ayahs;

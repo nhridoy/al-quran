@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { dataFetching } from "../utilities/dataFetching";
-// import { SplashImage } from "./SplashImage/SplashImage";
+// import SplashImage from "./SplashImage/SplashImage";
 import loadable from "@loadable/component";
 const SplashImage = loadable(() => import("./SplashImage/SplashImage"));
 
-export const Splash = () => {
+const Splash = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     // Enabling the loading state
@@ -53,3 +53,5 @@ export const Splash = () => {
     </div>
   );
 };
+
+export default Splash;

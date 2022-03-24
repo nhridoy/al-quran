@@ -2,7 +2,7 @@ import React from "react";
 import { FaQuran } from "react-icons/fa";
 import { BsBoxArrowInRight } from "react-icons/bs";
 
-export const ParaList = (props) => {
+const ParaList = (props) => {
   const { paraNo } = props;
   return (
     <div className="flex flex-col items-center border-2 rounded-md border-alternateOne hover:bg-secondaryLight dark:hover:bg-[#191f24] active:bg-alternateOne dark:active:bg-[#14191d]">
@@ -17,3 +17,5 @@ export const ParaList = (props) => {
     </div>
   );
 };
+
+export default ParaList;

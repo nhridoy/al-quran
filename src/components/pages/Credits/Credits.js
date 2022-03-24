@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Header } from "../../Header/Header";
 import { GoPrimitiveDot } from "react-icons/go";
 
-export const Credits = () => {
+const Credits = () => {
   useEffect(() => {
     document.querySelector("html").classList.remove("overflow-x-hidden");
     document.querySelector("body").classList.remove("overflow-x-hidden");
@@ -77,3 +77,4 @@ export const Credits = () => {
     </div>
   );
 };
+export default Credits;

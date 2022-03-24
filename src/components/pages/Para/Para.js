@@ -3,7 +3,9 @@ import { Header } from "../../Header/Header";
 import { useParams } from "react-router-dom";
 import { ParaHead } from "../ParaHead/ParaHead";
 import { paraCreation } from "../../../utilities/paraCreation";
-import { Player } from "../Surah/Player";
+// import { Player } from "../Surah/Player";
+import loadable from "@loadable/component";
+const Player = loadable(() => import("../Surah/Player"));
 
 export const Para = () => {
   const [currentPlaying, setCurrentPlaying] = React.useState({});

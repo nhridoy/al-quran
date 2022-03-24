@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import Drawer from "react-drag-drawer";
 import { BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { SurahList } from "../pages/SurahList/SurahList";
+// import SurahList from "../pages/SurahList/SurahList";
+import loadable from "@loadable/component";
+const SurahList = loadable(() => import("../pages/SurahList/SurahList"));
 
 const Search = () => {
   const [searchBar, setSearchBar] = React.useState(false);

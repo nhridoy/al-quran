@@ -5,7 +5,7 @@ import logo from "../../../logo.svg";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-export const Player = (props) => {
+const Player = (props) => {
   const { surah, currentPlaying, audioInstance } = props;
   const { id } = useParams();
   const [fullPlayList, setFullPlayList] = useState([]);
@@ -140,3 +140,5 @@ export const Player = (props) => {
     </div>
   );
 };
+
+export default Player;

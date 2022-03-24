@@ -8,7 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 
-export const Settings = () => {
+const Settings = () => {
   const [loading, setLoading] = useState(false);
   // const [toast, setToast] = useState(false);
   useEffect(() => {
@@ -109,3 +109,5 @@ export const Settings = () => {
     </div>
   );
 };
+
+export default Settings;

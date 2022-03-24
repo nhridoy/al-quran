@@ -12,7 +12,7 @@ import "swiper/css/effect-cards";
 // import required modules
 import { EffectCards } from "swiper";
 
-export const Donation = () => {
+const Donation = () => {
   useEffect(() => {
     document.querySelector("html").classList.add("overflow-x-hidden");
     document.querySelector("body").classList.add("overflow-x-hidden");
@@ -57,3 +57,5 @@ export const Donation = () => {
     </div>
   );
 };
+
+export default Donation;

@@ -2,8 +2,11 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Header } from "../../Header/Header";
 import { SurahHead } from "./SurahHead";
-import { Player } from "./Player";
-import { Ayahs } from "../Ayahs/Ayahs";
+// import Player from "./Player";
+// import Ayahs from "../Ayahs/Ayahs";
+import loadable from "@loadable/component";
+const Player = loadable(() => import("./Player"));
+const Ayahs = loadable(() => import("../Ayahs/Ayahs"));
 
 export const Surah = (props) => {
   const { id } = useParams();
@@ -22,7 +25,6 @@ export const Surah = (props) => {
   }, []);
 
   useEffect(() => {
-    console.log(ayahs);
     current = currentPlaying.totalNumber;
     if (current) {
       const currentayah = document.getElementById(`ayah-${current}`);
@@ -95,6 +97,7 @@ export const Surah = (props) => {
         audioInstance={setAudioInstance}
         currentPlaying={setCurrentPlaying}
         surah={[]}
+        fallback={<div>Loading...</div>}
       />
       <div className="flex gap-3 flex-col">
         {ayahs.map((ayah, index) => (

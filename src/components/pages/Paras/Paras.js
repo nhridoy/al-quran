@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Home } from "../Home/Home";
-import { ParaList } from "../ParaList/ParaList";
-
-export const Paras = (props) => {
+// import ParaList from "../ParaList/ParaList";
+import loadable from "@loadable/component";
+const ParaList = loadable(() => import("../ParaList/ParaList"));
+const Paras = (props) => {
   //   console.log("Paras.js: props: ", props);
 
   const totalPara = 30;
@@ -27,3 +28,5 @@ export const Paras = (props) => {
     </div>
   );
 };
+
+export default Paras;

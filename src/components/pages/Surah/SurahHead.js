@@ -1,10 +1,13 @@
 import React from "react";
 import { FiPlayCircle, FiPauseCircle } from "react-icons/fi";
 import { CgPlayTrackPrevO, CgPlayTrackNextO } from "react-icons/cg";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const SurahHead = (props) => {
   const { surah, audioInstance } = props;
   const [isPlaying, setIsPlaying] = React.useState(false);
+  const notify = () => toast.warning("Audio is Loading...");
   return (
     <div className="flex flex-col md:flex-row md:justify-around md:px-8 items-center px-5 py-1 gap-3 bg-gradient-to-tl rounded-2xl text-white from-alternateOne to-secondary mb-5 shadow-lg shadow-alternateOne">
       <div className="flex flex-col items-center gap-3 border-b md:border-b-0 py-5 px-3">
@@ -45,35 +48,62 @@ export const SurahHead = (props) => {
         <CgPlayTrackPrevO
           className="text-4xl cursor-pointer mb-4 md:mb-0"
           onClick={() => {
-            audioInstance.playPrev();
-            setIsPlaying(true);
+            try {
+              audioInstance.playPrev();
+              setIsPlaying(true);
+            } catch (e) {
+              notify();
+            }
           }}
         />
         {isPlaying ? (
           <FiPauseCircle
             className="text-4xl cursor-pointer mb-4 md:mb-0"
             onClick={() => {
-              audioInstance.pause();
-              setIsPlaying(false);
+              try {
+                audioInstance.pause();
+                setIsPlaying(false);
+              } catch (e) {
+                notify();
+              }
             }}
           />
         ) : (
           <FiPlayCircle
             className="text-4xl cursor-pointer mb-4 md:mb-0"
             onClick={() => {
-              audioInstance.play();
-              setIsPlaying(true);
+              try {
+                audioInstance.play();
+                setIsPlaying(true);
+              } catch (e) {
+                notify();
+              }
             }}
           />
         )}
         <CgPlayTrackNextO
           className="text-4xl cursor-pointer mb-4 md:mb-0"
           onClick={() => {
-            audioInstance.playNext();
-            setIsPlaying(true);
+            try {
+              audioInstance.playNext();
+              setIsPlaying(true);
+            } catch (e) {
+              notify();
+            }
           }}
         />
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };

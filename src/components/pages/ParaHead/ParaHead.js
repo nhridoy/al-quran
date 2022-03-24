@@ -1,7 +1,9 @@
 import React from "react";
 import { FiOctagon } from "react-icons/fi";
 import { useParams } from "react-router-dom";
-import { Ayahs } from "../Ayahs/Ayahs";
+// import Ayahs from "../Ayahs/Ayahs";
+import loadable from "@loadable/component";
+const Ayahs = loadable(() => import("../Ayahs/Ayahs"));
 
 export const ParaHead = ({ para }) => {
   const { id } = useParams();

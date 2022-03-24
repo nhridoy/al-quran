@@ -1,7 +1,7 @@
 import React from "react";
 import { FiOctagon } from "react-icons/fi";
 
-export const SurahList = (props) => {
+const SurahList = (props) => {
   return (
     <div className="py-4 px-3 hover:bg-secondaryLight dark:hover:bg-[#191f24] active:bg-alternateOne  dark:active:bg-[#14191d] rounded-md flex md:flex-col justify-between items-center gap-4 border-b-2 md:border-2 border-alternateOne lg:cursor-pointer">
       <div className="flex gap-4">
@@ -45,3 +45,5 @@ export const SurahList = (props) => {
     </div>
   );
 };
+
+export default SurahList;
