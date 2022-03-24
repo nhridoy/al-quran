@@ -31,7 +31,6 @@ let cacheList = [
   // "/static/js/main.67f5a4cc.js",
   // "/static/css/main.7dc91d28.css",
   // "/static/css/main.37d711dd.css",
-  // "/static/css/main.7dc91d28.css.map",
 
   // New Version
   "/static/js/main.51693738.js",
