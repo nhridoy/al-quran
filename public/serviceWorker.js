@@ -33,7 +33,8 @@ let cacheList = [
   // "/static/css/main.37d711dd.css",
 
   // New Version
-  // "/static/js/main.51693738.js",
+  "/static/js/main.cdecf905.js",
+  "/static/css/main.5d26cf31.css",
   // "/static/js/146.c0791d76.chunk.js",
   // "/static/js/src_components_Splash_js.chunk.js",
   // "/static/js/src_logo_svg.chunk.js",
