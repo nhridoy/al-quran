@@ -12,7 +12,11 @@ export const Player = (props) => {
   const fullAudioList = [];
 
   useEffect(() => {
-    id ? loadSingleSurahAudio(id) : loadSurahAudio();
+    id
+      ? surah.length
+        ? loadParaAudio()
+        : loadSingleSurahAudio(id)
+      : loadSurahAudio();
   }, []);
 
   // Load Full Surah
@@ -23,6 +27,7 @@ export const Player = (props) => {
       surah.verses.map((verse) => {
         fullAudioList.push({
           name: surah.enName,
+          totalNumber: verse.totalNumber,
           singer: verse.numberInSurah,
           cover: logo,
           musicSrc: verse.audioPrimary,
@@ -39,6 +44,7 @@ export const Player = (props) => {
     surah.verses.map((verse) => {
       fullAudioList.push({
         name: surah.enName,
+        totalNumber: verse.totalNumber,
         singer: verse.numberInSurah,
         cover: logo,
         musicSrc: verse.audioPrimary,
@@ -47,6 +53,23 @@ export const Player = (props) => {
     });
     setFullPlayList(fullAudioList);
   };
+  // Load Surah for Para
+  const loadParaAudio = () => {
+    surah.map((surah) => {
+      surah.verses.map((verse) => {
+        fullAudioList.push({
+          name: surah.enName,
+          totalNumber: verse.totalNumber,
+          singer: verse.numberInSurah,
+          cover: logo,
+          musicSrc: verse.audioPrimary,
+          lyric: `[00:00.01] ${verse.bnText}`,
+        });
+      });
+    });
+    setFullPlayList(fullAudioList);
+  };
+  // console.log(fullPlayList);
 
   // Player Settings/Options
   const options = {

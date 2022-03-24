@@ -7,7 +7,7 @@ export const Ayahs = (props) => {
   const { ayah } = props;
   return (
     <div
-      id={`ayah-${ayah.numberInSurah}`}
+      id={`ayah-${ayah.totalNumber}`}
       className="rounded-lg flex flex-col gap-4 border-b-2 p-4"
     >
       <div className="flex bg-secondaryLight dark:bg-[#191f24] p-3 rounded-lg justify-between items-center">

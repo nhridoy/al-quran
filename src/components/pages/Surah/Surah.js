@@ -22,9 +22,9 @@ export const Surah = (props) => {
   }, []);
 
   useEffect(() => {
-    current = currentPlaying.singer;
+    console.log(ayahs);
+    current = currentPlaying.totalNumber;
     if (current) {
-      const totalAyahs = surah.numberOfAyahs;
       const currentayah = document.getElementById(`ayah-${current}`);
 
       currentayah.scrollIntoView({
@@ -40,7 +40,11 @@ export const Surah = (props) => {
       ) {
         // dark mode
         currentayah.classList.add("bg-[#14191d]");
-        for (let index = 1; index <= totalAyahs; index++) {
+        for (
+          let index = ayahs[0]["totalNumber"];
+          index <= ayahs[ayahs.length - 1]["totalNumber"];
+          index++
+        ) {
           if (current === index) {
             continue;
           }
@@ -54,7 +58,11 @@ export const Surah = (props) => {
       } else {
         // Light Mode
         currentayah.classList.add("bg-alternateSecondDeep");
-        for (let index = 1; index <= totalAyahs; index++) {
+        for (
+          let index = ayahs[0]["totalNumber"];
+          index <= ayahs[ayahs.length - 1]["totalNumber"];
+          index++
+        ) {
           if (current === index) {
             continue;
           }
@@ -86,7 +94,7 @@ export const Surah = (props) => {
       <Player
         audioInstance={setAudioInstance}
         currentPlaying={setCurrentPlaying}
-        surah={surah}
+        surah={[]}
       />
       <div className="flex gap-3 flex-col">
         {ayahs.map((ayah, index) => (
