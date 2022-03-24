@@ -32,9 +32,7 @@ export const Splash = () => {
       </div>
       <div className="bg-primary pt-4 pb-10 h-full w-full rounded-3xl">
         <div className="h-full w-full grid justify-center items-end">
-          {/* <Suspense fallback={<div>Loading...</div>}> */}
           <SplashImage />
-          {/* </Suspense> */}
           <div
             className={`${
               loading ? "cursor-not-allowed" : "cursor-auto"
@@ -51,9 +49,6 @@ export const Splash = () => {
             </Link>
           </div>
         </div>
-        {/* <p className="text-red-400">
-          {loading ? "First time loading needed about 10Mb of Internet" : ""}
-        </p> */}
       </div>
     </div>
   );
