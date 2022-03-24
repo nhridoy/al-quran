@@ -1,6 +1,7 @@
 import React from "react";
-import { BiArrowBack, BiSearch } from "react-icons/bi";
+import { BiArrowBack } from "react-icons/bi";
 import HamBurger from "../Hamburger/HamBurger";
+import Search from "../Search/Search";
 
 export const Header = (props) => {
   const handleBackBtn = (e) => {
@@ -23,7 +24,7 @@ export const Header = (props) => {
             {!props.head ? props.surah.enName : props.head}
           </h2>
         </div>
-        <BiSearch className=" dark:text-white" />
+        <Search />
       </div>
     </div>
   );

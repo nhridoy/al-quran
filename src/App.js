@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { About } from "./components/pages/About/About";
 import { Credits } from "./components/pages/Credits/Credits";
@@ -14,7 +14,7 @@ import { Splash } from "./components/Splash";
 function App() {
   return (
     <BrowserRouter>
-      <div className="bg-white dark:bg-[#20282e]">
+      <div className="bg-white dark:bg-[#20282e] select-none">
         <div className="container mx-auto px-4 ">
           <Routes>
             <Route path="/" exact element={<Splash />} />
@@ -26,6 +26,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/credits" element={<Credits />} />
             <Route path="/donation" element={<Donation />} />
+            <Route path="*" element={<Navigate to="/surah" replace />} />
           </Routes>
         </div>
       </div>
