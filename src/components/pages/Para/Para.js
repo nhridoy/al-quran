@@ -11,12 +11,13 @@ export const Para = () => {
   const [currentPlaying, setCurrentPlaying] = React.useState({});
   const [audioInstance, setAudioInstance] = React.useState(null);
   const [ayahs, setAyahs] = React.useState([]);
+  const { id } = useParams();
   let current;
   useEffect(() => {
+    document.title = `Para - ${id}`;
     window.scrollTo(0, 0);
   }, []);
   const paraDetails = paraCreation();
-  const { id } = useParams();
   const para = paraDetails[id];
   useEffect(() => {
     setAyahs([]);

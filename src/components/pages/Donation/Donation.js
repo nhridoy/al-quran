@@ -14,6 +14,7 @@ import { EffectCards } from "swiper";
 
 const Donation = () => {
   useEffect(() => {
+    document.title = "Al Quran - Donation";
     document.querySelector("html").classList.add("overflow-x-hidden");
     document.querySelector("body").classList.add("overflow-x-hidden");
   }, []);

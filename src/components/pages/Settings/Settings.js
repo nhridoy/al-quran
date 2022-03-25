@@ -12,6 +12,7 @@ const Settings = () => {
   const [loading, setLoading] = useState(false);
   // const [toast, setToast] = useState(false);
   useEffect(() => {
+    document.title = "Al Quran - Settings";
     document.querySelector("html").classList.remove("overflow-x-hidden");
     document.querySelector("body").classList.remove("overflow-x-hidden");
   }, []);

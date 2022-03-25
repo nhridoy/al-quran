@@ -97,7 +97,6 @@ export const Surah = (props) => {
         audioInstance={setAudioInstance}
         currentPlaying={setCurrentPlaying}
         surah={[]}
-        fallback={<div>Loading...</div>}
       />
       <div className="flex gap-3 flex-col">
         {ayahs.map((ayah, index) => (

@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Home } from "../Home/Home";
 // import ParaList from "../ParaList/ParaList";
 import loadable from "@loadable/component";
 const ParaList = loadable(() => import("../ParaList/ParaList"));
 const Paras = (props) => {
-  //   console.log("Paras.js: props: ", props);
+  useEffect(() => {
+    document.title = "Al Quran - Para List";
+  }, []);
 
   const totalPara = 30;
 

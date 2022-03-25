@@ -4,6 +4,7 @@ import { GoPrimitiveDot } from "react-icons/go";
 
 const Credits = () => {
   useEffect(() => {
+    document.title = "Al Quran - Credits";
     document.querySelector("html").classList.remove("overflow-x-hidden");
     document.querySelector("body").classList.remove("overflow-x-hidden");
   }, []);
