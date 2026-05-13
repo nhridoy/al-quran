@@ -3,13 +3,23 @@ import { FiPlayCircle, FiPauseCircle } from "react-icons/fi";
 import { CgPlayTrackPrevO, CgPlayTrackNextO } from "react-icons/cg";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import type { SurahData } from "../../../types";
 
-export const SurahHead = (props) => {
-  const { surah, audioInstance } = props;
+interface SurahHeadProps {
+  surah: SurahData;
+  audioInstance: {
+    playPrev?: () => void;
+    playNext?: () => void;
+    play?: () => void;
+    pause?: () => void;
+  } | null;
+}
+
+export const SurahHead: React.FC<SurahHeadProps> = ({ surah, audioInstance }) => {
   const [isPlaying, setIsPlaying] = React.useState(false);
   const notify = () => toast.warning("Audio is Loading...");
   return (
-    <div className="flex flex-col md:flex-row md:justify-around md:px-8 items-center px-5 py-1 gap-3 bg-gradient-to-tl rounded-2xl text-white from-purple-300 to-purple-600 mb-5 shadow-lg shadow-purple-300">
+    <div className="flex flex-col md:flex-row md:justify-around md:px-8 items-center px-5 py-1 gap-3 bg-gradient-to-tl rounded-2xl text-white from-alternateOne to-secondary mb-5 shadow-lg shadow-alternateOne">
       <div className="flex flex-col items-center gap-3 border-b md:border-b-0 py-5 px-3">
         <div className="flex gap-3 md:gap-8">
           <h2 className="font-semibold text-xl">{surah.name}</h2>
@@ -37,7 +47,6 @@ export const SurahHead = (props) => {
           )}
           <span className="uppercase">{surah.revelationType}</span>
         </span>
-        {/* <p>{surah.revelationType}</p> */}
         <span>&bull;</span>
         <p>{surah.numberOfAyahs} Varses</p>
       </div>
@@ -49,7 +58,7 @@ export const SurahHead = (props) => {
           className="text-4xl cursor-pointer mb-4 md:mb-0"
           onClick={() => {
             try {
-              audioInstance.playPrev();
+              audioInstance?.playPrev?.();
               setIsPlaying(true);
             } catch (e) {
               notify();
@@ -61,7 +70,7 @@ export const SurahHead = (props) => {
             className="text-4xl cursor-pointer mb-4 md:mb-0"
             onClick={() => {
               try {
-                audioInstance.pause();
+                audioInstance?.pause?.();
                 setIsPlaying(false);
               } catch (e) {
                 notify();
@@ -73,7 +82,7 @@ export const SurahHead = (props) => {
             className="text-4xl cursor-pointer mb-4 md:mb-0"
             onClick={() => {
               try {
-                audioInstance.play();
+                audioInstance?.play?.();
                 setIsPlaying(true);
               } catch (e) {
                 notify();
@@ -85,7 +94,7 @@ export const SurahHead = (props) => {
           className="text-4xl cursor-pointer mb-4 md:mb-0"
           onClick={() => {
             try {
-              audioInstance.playNext();
+              audioInstance?.playNext?.();
               setIsPlaying(true);
             } catch (e) {
               notify();

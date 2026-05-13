@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { Header } from "../../Header/Header";
-import { GoPrimitiveDot } from "react-icons/go";
+import { GoDotFill } from "react-icons/go";
 
-const Credits = () => {
+const Credits: React.FC = () => {
   useEffect(() => {
     document.title = "Al Quran - Credits";
-    document.querySelector("html").classList.remove("overflow-x-hidden");
-    document.querySelector("body").classList.remove("overflow-x-hidden");
+    document.querySelector("html")?.classList.remove("overflow-x-hidden");
+    document.querySelector("body")?.classList.remove("overflow-x-hidden");
   }, []);
   return (
     <div className="h-screen">
@@ -17,7 +17,7 @@ const Credits = () => {
         <div className="row-span-1 flex items-center justify-center text-lg font-bold">
           <h2 className=" md:text-2xl dark:text-white">Credits</h2>
         </div>
-        <div className="row-span-4 bg-purple-600 text-white p-5 rounded-t-3xl flex flex-col divide-y">
+        <div className="row-span-4 bg-secondary text-white p-5 rounded-t-3xl flex flex-col divide-y">
           <a
             href="https://alquran.cloud/"
             target="_blank"
@@ -25,7 +25,7 @@ const Credits = () => {
             rel="noopener noreferrer"
           >
             <div className="flex items-center gap-3">
-              <GoPrimitiveDot />
+              <GoDotFill />
               <p className="text-xs md:text-sm">Al Quran Cloud</p>
             </div>
           </a>
@@ -36,7 +36,7 @@ const Credits = () => {
             rel="noopener noreferrer"
           >
             <div className="flex items-center gap-3">
-              <GoPrimitiveDot />
+              <GoDotFill />
               <p className="text-xs md:text-sm">Al Quran BD</p>
             </div>
           </a>
@@ -47,7 +47,7 @@ const Credits = () => {
             rel="noopener noreferrer"
           >
             <div className="flex items-center gap-3">
-              <GoPrimitiveDot />
+              <GoDotFill />
               <p className="text-xs md:text-sm">Sultan Labs</p>
             </div>
           </a>
@@ -58,7 +58,7 @@ const Credits = () => {
             rel="noopener noreferrer"
           >
             <div className="flex items-center gap-3">
-              <GoPrimitiveDot />
+              <GoDotFill />
               <p className="text-xs md:text-sm">Fawaz Ahmed</p>
             </div>
           </a>
@@ -69,7 +69,7 @@ const Credits = () => {
             rel="noopener noreferrer"
           >
             <div className="flex items-center gap-3">
-              <GoPrimitiveDot />
+              <GoDotFill />
               <p className="text-xs md:text-sm">Nahidujjaman Hridoy</p>
             </div>
           </a>

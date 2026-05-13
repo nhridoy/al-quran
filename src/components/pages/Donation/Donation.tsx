@@ -1,22 +1,16 @@
 import React, { useEffect } from "react";
 import { Header } from "../../Header/Header";
-// import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
-
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { EffectCards } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-cards";
 
-// import required modules
-import { EffectCards } from "swiper";
-
-const Donation = () => {
+const Donation: React.FC = () => {
   useEffect(() => {
     document.title = "Al Quran - Donation";
-    document.querySelector("html").classList.add("overflow-x-hidden");
-    document.querySelector("body").classList.add("overflow-x-hidden");
+    document.querySelector("html")?.classList.add("overflow-x-hidden");
+    document.querySelector("body")?.classList.add("overflow-x-hidden");
   }, []);
   return (
     <div className="h-screen">
@@ -27,7 +21,7 @@ const Donation = () => {
         <div className="row-span-1 flex items-center justify-center text-lg font-bold">
           <h2 className=" md:text-2xl dark:text-white">Donate</h2>
         </div>
-        <div className="row-span-4 bg-purple-600 text-white p-5 rounded-t-3xl flex flex-col items-center gap-4">
+        <div className="row-span-4 bg-secondary text-white p-5 rounded-t-3xl flex flex-col items-center gap-4">
           <p>
             50% of your donation will go directy to different mosque and islamic
             education center.
@@ -35,8 +29,7 @@ const Donation = () => {
           <p>Other 50% will be used for server maintenance fee.</p>
           <div className="">
             <Swiper
-              // install Swiper modules
-              effect={"cards"}
+              effect="cards"
               grabCursor={true}
               modules={[EffectCards, Navigation, Pagination, Scrollbar, A11y]}
               className="mySwiper"

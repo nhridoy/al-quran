@@ -9,16 +9,16 @@ import { VscBook } from "react-icons/vsc";
 import { MdMenuBook } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 
-const HamBurger = () => {
+const HamBurger: React.FC = () => {
   const [sidebarLeft, setSidebarLeft] = React.useState(false);
 
-  const toggle = (value) => (event) => {
+  const toggle = (value: boolean) => () => {
     setSidebarLeft(value);
   };
 
   return (
     <>
-      <button onClick={toggle(true)} className=" dark:text-white">
+      <button onClick={toggle(true)} className="dark:text-white">
         <HamburgerBtn
           size={20}
           toggled={sidebarLeft}
@@ -33,73 +33,73 @@ const HamBurger = () => {
         modalElementClass="bg-white dark:bg-[#20282e] h-screen left-0 absolute grid grid-rows-3 w-2/3 md:w-1/5"
         direction="left"
       >
-        <div className="row-span-1 bg-primary p-5 text-white flex items-center justify-center">
+        <div className="flex items-center justify-center row-span-1 p-5 text-white bg-primary">
           <h1 className="text-2xl font-bold">Al Quran</h1>
         </div>
         <div className="row-span-2">
           <nav className="flex flex-col">
             <NavLink
               to="/surah"
-              className="flex items-center p-3 hover:bg-purple-400 dark:hover:bg-[#191f24]"
+              className="flex items-center p-3 hover:bg-alternateOne dark:hover:bg-[#191f24]"
             >
               <div className="flex items-center gap-3">
                 <VscBook className="text-xl font-bold dark:text-white" />
-                <span className="text-primary dark:text-white font-bold">
+                <span className="font-bold text-primary dark:text-white">
                   Surah
                 </span>
               </div>
             </NavLink>
             <NavLink
               to="/para"
-              className="flex items-center p-3 hover:bg-purple-400  dark:hover:bg-[#191f24]"
+              className="flex items-center p-3 hover:bg-alternateOne dark:hover:bg-[#191f24]"
             >
               <div className="flex items-center gap-3">
                 <MdMenuBook className="text-xl font-bold dark:text-white" />
-                <span className="text-primary dark:text-white font-bold">
+                <span className="font-bold text-primary dark:text-white">
                   Para
                 </span>
               </div>
             </NavLink>
             <NavLink
               to="/settings"
-              className="flex items-center p-3 hover:bg-purple-400  dark:hover:bg-[#191f24]"
+              className="flex items-center p-3 hover:bg-alternateOne dark:hover:bg-[#191f24]"
             >
               <div className="flex items-center gap-3">
                 <IoSettingsOutline className="text-xl font-bold dark:text-white" />
-                <span className="text-primary dark:text-white font-bold">
+                <span className="font-bold text-primary dark:text-white">
                   Settings
                 </span>
               </div>
             </NavLink>
             <NavLink
               to="/about"
-              className="flex items-center p-3 hover:bg-purple-400  dark:hover:bg-[#191f24]"
+              className="flex items-center p-3 hover:bg-alternateOne dark:hover:bg-[#191f24]"
             >
               <div className="flex items-center gap-3">
                 <BsInfoCircle className="text-xl font-bold dark:text-white" />
-                <span className="text-primary dark:text-white font-bold">
+                <span className="font-bold text-primary dark:text-white">
                   About
                 </span>
               </div>
             </NavLink>
             <NavLink
               to="/credits"
-              className="flex items-center p-3 hover:bg-purple-400  dark:hover:bg-[#191f24]"
+              className="flex items-center p-3 hover:bg-alternateOne dark:hover:bg-[#191f24]"
             >
               <div className="flex items-center gap-3">
                 <AiOutlineHeart className="text-xl font-bold dark:text-white" />
-                <span className="text-primary dark:text-white font-bold">
+                <span className="font-bold text-primary dark:text-white">
                   Credits
                 </span>
               </div>
             </NavLink>
             <NavLink
               to="/donation"
-              className="flex  items-center p-3 hover:bg-purple-400  dark:hover:bg-[#191f24]"
+              className="flex items-center p-3 hover:bg-alternateOne dark:hover:bg-[#191f24]"
             >
               <div className="flex items-center gap-3">
                 <RiHandHeartLine className="text-xl font-bold dark:text-white" />
-                <span className="text-primary dark:text-white font-bold">
+                <span className="font-bold text-primary dark:text-white">
                   Donation
                 </span>
               </div>
@@ -107,10 +107,10 @@ const HamBurger = () => {
           </nav>
         </div>
         <button
-          className="bg-orange-700 font-semibold text-white py-3"
+          className="py-3 font-semibold text-white bg-alternateSecond"
           onClick={toggle(false)}
         >
-          <div className="flex gap-1 items-center justify-center">
+          <div className="flex items-center justify-center gap-1">
             <AiOutlineDoubleLeft />
             Close
           </div>

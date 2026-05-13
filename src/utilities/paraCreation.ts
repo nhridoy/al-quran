@@ -1,31 +1,18 @@
-export const paraCreation = () => {
-  let paraList = {};
+import type { ParaSurah, SurahData } from "../types";
+
+export const paraCreation = (): Record<string, ParaSurah[]> => {
+  const paraList: Record<string, ParaSurah[]> = {};
   const totalPara = 30;
-  [...Array(totalPara)].map((_, index) => {
+  [...Array(totalPara)].forEach((_, index) => {
     paraList[index + 1] = [];
   });
-  // console.log("paraCreation: paraList: ", paraList);
 
-  // Total Verses in a juz
-  //   if (Object.keys(paraList).length) {
-  //     for (let index = 1; index <= 114; index++) {
-  //       const surah = JSON.parse(localStorage.getItem(index));
-  //       surah.verses.map((verse) => {
-  //         paraList[verse.juz].push(verse);
-  //       });
-  //     }
-  //   }
-  //   console.log(paraList);
-
-  // Total Verses divided by Juz
   if (Object.keys(paraList).length) {
     let currentPara = 1;
     for (let index = 1; index <= 114; index++) {
-      const surah = JSON.parse(localStorage.getItem(index));
-      surah.verses.map((verse) => {
+      const surah: SurahData = JSON.parse(localStorage.getItem(String(index)) || "{}");
+      surah.verses.forEach((verse) => {
         if (currentPara === verse.juz) {
-          //   console.log(paraList[currentPara].length);
-          //   console.log(surah.no);
           if (
             paraList[currentPara].length < surah.no &&
             !paraList[currentPara].some((item) => item.no === surah.no)
@@ -39,11 +26,7 @@ export const paraCreation = () => {
               revelationType: surah.revelationType,
               verses: [verse],
             });
-          } /* if(paraList[currentPara] == surah.no) */ else {
-            // console.log(
-            //   paraList[currentPara][paraList[currentPara].length - 1]
-            // );
-            // console.log(Array.isArray(paraList[currentPara].verses));
+          } else {
             paraList[currentPara][paraList[currentPara].length - 1].verses.push(
               verse
             );
@@ -60,13 +43,12 @@ export const paraCreation = () => {
               revelationType: surah.revelationType,
               verses: [verse],
             });
-          } /* if(paraList[currentPara] == surah.no) */ else {
+          } else {
             paraList[currentPara][paraList[currentPara].length - 1].verses.push(
               verse
             );
           }
         }
-        //   paraList[verse.juz].push(verse);
       });
     }
   }

@@ -4,12 +4,27 @@ import logo from "../../../logo.svg";
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import type { ParaSurah, SurahData } from "../../../types";
 
-const Player = (props) => {
-  const { surah, currentPlaying, audioInstance } = props;
+interface AudioItem {
+  name: string;
+  totalNumber: number;
+  singer: number;
+  cover: string;
+  musicSrc: string;
+  lyric: string;
+}
+
+interface PlayerProps {
+  surah: SurahData[] | ParaSurah[];
+  currentPlaying: (index: AudioItem) => void;
+  audioInstance: (instance: unknown) => void;
+}
+
+const Player: React.FC<PlayerProps> = ({ surah, currentPlaying, audioInstance }) => {
   const { id } = useParams();
-  const [fullPlayList, setFullPlayList] = useState([]);
-  const fullAudioList = [];
+  const [fullPlayList, setFullPlayList] = useState<AudioItem[]>([]);
+  const fullAudioList: AudioItem[] = [];
 
   useEffect(() => {
     id
@@ -17,16 +32,18 @@ const Player = (props) => {
         ? loadParaAudio()
         : loadSingleSurahAudio(id)
       : loadSurahAudio();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Load Full Surah
   const loadSurahAudio = () => {
-    let totalSurah = parseInt(localStorage.getItem("isLoaded"));
+    const totalSurah = parseInt(localStorage.getItem("isLoaded") || "0");
     for (let index = 1; index <= totalSurah; index++) {
-      let surah = JSON.parse(localStorage.getItem(index));
-      surah.verses.map((verse) => {
+      const surahData: SurahData = JSON.parse(
+        localStorage.getItem(String(index)) || "{}"
+      );
+      surahData.verses.forEach((verse) => {
         fullAudioList.push({
-          name: surah.enName,
+          name: surahData.enName,
           totalNumber: verse.totalNumber,
           singer: verse.numberInSurah,
           cover: logo,
@@ -37,13 +54,14 @@ const Player = (props) => {
     }
     setFullPlayList(fullAudioList);
   };
-  // Load Single Surah
-  const loadSingleSurahAudio = (id) => {
-    let surah = JSON.parse(localStorage.getItem(id));
-    // console.log(surah);
-    surah.verses.map((verse) => {
+
+  const loadSingleSurahAudio = (surahId: string) => {
+    const surahData: SurahData = JSON.parse(
+      localStorage.getItem(surahId) || "{}"
+    );
+    surahData.verses.forEach((verse) => {
       fullAudioList.push({
-        name: surah.enName,
+        name: surahData.enName,
         totalNumber: verse.totalNumber,
         singer: verse.numberInSurah,
         cover: logo,
@@ -53,12 +71,12 @@ const Player = (props) => {
     });
     setFullPlayList(fullAudioList);
   };
-  // Load Surah for Para
+
   const loadParaAudio = () => {
-    surah.map((surah) => {
-      surah.verses.map((verse) => {
+    surah.forEach((surahItem) => {
+      surahItem.verses.forEach((verse) => {
         fullAudioList.push({
-          name: surah.enName,
+          name: surahItem.enName,
           totalNumber: verse.totalNumber,
           singer: verse.numberInSurah,
           cover: logo,
@@ -69,10 +87,9 @@ const Player = (props) => {
     });
     setFullPlayList(fullAudioList);
   };
-  // console.log(fullPlayList);
 
-  // Player Settings/Options
-  const options = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const options: any = {
     glassBg: true,
     drag: false,
     seeked: true,
@@ -97,7 +114,6 @@ const Player = (props) => {
     responsive: true,
     autoHiddenCover: true,
     quietUpdate: true,
-    // restartCurrentOnPrev: true,
     showMediaSession: true,
     theme: "auto",
     defaultPosition: { right: "4vw", bottom: "2vh" },
@@ -106,12 +122,6 @@ const Player = (props) => {
       sort: false,
       swap: false,
     },
-
-    // defaultPlayIndex: 0,
-    // theme: "dark",
-    // mode: "full",
-
-    // custom
     lyric: {
       color: "#fff",
       fontSize: "14px",
@@ -124,17 +134,18 @@ const Player = (props) => {
       <ReactJkMusicPlayer
         audioLists={fullPlayList}
         {...options}
-        getAudioInstance={(instance) => {
-          // console.log(instance);
+        getAudioInstance={(instance: unknown) => {
           audioInstance(instance);
         }}
-        onAudioPlay={(index) => {
+        onAudioPlay={(index: AudioItem) => {
           currentPlaying(index);
           localStorage.setItem(
             "currentAudioIndex",
-            JSON.stringify({ surahName: index.name, verseNumber: index.singer })
+            JSON.stringify({
+              surahName: index.name,
+              verseNumber: index.singer,
+            })
           );
-          // console.log(index);
         }}
       />
     </div>

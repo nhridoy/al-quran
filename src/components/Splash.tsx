@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { dataFetching } from "../utilities/dataFetching";
-// import SplashImage from "./SplashImage/SplashImage";
 import loadable from "@loadable/component";
 const SplashImage = loadable(() => import("./SplashImage/SplashImage"));
 
-const Splash = () => {
+const Splash: React.FC = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    // Enabling the loading state
     localStorage.getItem("isLoaded") === null && setLoading(true);
     dataFetching(setLoading);
   }, []);
   useEffect(() => {
-    document.querySelector("html").classList.remove("overflow-x-hidden");
-    document.querySelector("body").classList.remove("overflow-x-hidden");
+    document.querySelector("html")?.classList.remove("overflow-x-hidden");
+    document.querySelector("body")?.classList.remove("overflow-x-hidden");
   }, []);
 
   return (
@@ -30,7 +28,7 @@ const Splash = () => {
           Full Quran with Audio Player
         </p>
       </div>
-      <div className="w-full h-full pt-4 pb-10 bg-indigo-950 rounded-3xl">
+      <div className="w-full h-full pt-4 pb-10 bg-primary rounded-3xl">
         <div className="grid items-end justify-center w-full h-full">
           <SplashImage />
           <div
@@ -39,11 +37,10 @@ const Splash = () => {
             } flex items-center justify-center`}
           >
             <Link
-              disabled
               to="/surah"
               className={`${
                 loading ? "pointer-events-none" : "pointer-events-auto"
-              } text-center bg-orange-700 px-5 py-2 rounded-2xl text-white font-semibold`}
+              } text-center bg-alternateSecond px-5 py-2 rounded-2xl text-white font-semibold`}
             >
               {loading ? "Loading Surah Please Wait..." : "Browse Surah"}
             </Link>

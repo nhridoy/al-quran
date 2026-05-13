@@ -4,12 +4,11 @@ import { Header } from "../../Header/Header";
 import { SurahsHead } from "../Surahs/SurahsHead";
 import "./Home.css";
 
-export const Home = () => {
+export const Home: React.FC = () => {
   const currentLocation = useLocation();
   const [suraClassName, setSuraClassName] = React.useState("");
   const [paraClassName, setParaClassName] = React.useState("");
   useEffect(() => {
-    // const isActive = window.location.pathname === currentLocation.pathname;
     if (currentLocation.pathname === "/surah") {
       setSuraClassName("activeClass");
       setParaClassName("");
@@ -17,10 +16,10 @@ export const Home = () => {
       setParaClassName("activeClass");
       setSuraClassName("");
     }
-  }, []);
+  }, [currentLocation.pathname]);
   useEffect(() => {
-    document.querySelector("html").classList.remove("overflow-x-hidden");
-    document.querySelector("body").classList.remove("overflow-x-hidden");
+    document.querySelector("html")?.classList.remove("overflow-x-hidden");
+    document.querySelector("body")?.classList.remove("overflow-x-hidden");
   }, []);
   return (
     <div className="bg-white dark:bg-[#20282e] sticky top-0 left-0 w-full z-10">

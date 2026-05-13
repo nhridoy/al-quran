@@ -1,6 +1,5 @@
-import React, { Suspense, lazy } from "react";
+import { Suspense, lazy } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import "./App.css";
 import { Para } from "./components/pages/Para/Para";
 import { Surah } from "./components/pages/Surah/Surah";
 const About = lazy(() => import("./components/pages/About/About"));
@@ -18,12 +17,12 @@ function App() {
         <div className="container px-4 mx-auto ">
           <Suspense fallback={<div className="h-screen"></div>}>
             <Routes>
-              <Route path="/" exact element={<Splash />} />
-              <Route path="/surah" exact element={<Surahs />} />
-              <Route path="/para" exact element={<Paras />} />
-              <Route path="/surah/:id" exact element={<Surah />} />
-              <Route path="/para/:id" exact element={<Para />} />
-              <Route path="/settings" exact element={<Settings />} />
+              <Route path="/" element={<Splash />} />
+              <Route path="/surah" element={<Surahs />} />
+              <Route path="/para" element={<Paras />} />
+              <Route path="/surah/:id" element={<Surah />} />
+              <Route path="/para/:id" element={<Para />} />
+              <Route path="/settings" element={<Settings />} />
               <Route path="/about" element={<About />} />
               <Route path="/credits" element={<Credits />} />
               <Route path="/donation" element={<Donation />} />

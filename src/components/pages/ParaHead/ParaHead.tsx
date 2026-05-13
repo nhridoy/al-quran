@@ -1,15 +1,19 @@
 import React from "react";
 import { FiOctagon } from "react-icons/fi";
 import { useParams } from "react-router-dom";
-// import Ayahs from "../Ayahs/Ayahs";
 import loadable from "@loadable/component";
+import type { ParaSurah } from "../../../types";
 const Ayahs = loadable(() => import("../Ayahs/Ayahs"));
 
-export const ParaHead = ({ para }) => {
+interface ParaHeadProps {
+  para: ParaSurah;
+}
+
+export const ParaHead: React.FC<ParaHeadProps> = ({ para }) => {
   const { id } = useParams();
   return (
     <div className="">
-      <div className="flex sticky top-24 justify-between bg-purple-600 text-white p-4 rounded-lg">
+      <div className="flex sticky top-24 justify-between bg-secondary text-white p-4 rounded-lg">
         <div className="flex gap-3 items-center">
           <div className="relative">
             <FiOctagon className="font-bold text-4xl" />
@@ -34,7 +38,6 @@ export const ParaHead = ({ para }) => {
                 )}
                 <span className="uppercase">{para.revelationType}</span>
               </span>
-
               <span className="uppercase">
                 {para.verses.length} verses in para {id}
               </span>

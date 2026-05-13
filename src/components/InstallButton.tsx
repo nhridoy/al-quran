@@ -1,8 +1,8 @@
 import React from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
 
-export const InstallButton = () => {
-  let block__install = {
+export const InstallButton: React.FC = () => {
+  const block__install: React.CSSProperties = {
     display: "none",
     position: "fixed",
     bottom: 0,
@@ -14,27 +14,27 @@ export const InstallButton = () => {
     boxShadow: "0 0.5rem 1rem rgba(0, 0, 0, 0.5)",
   };
 
-  let inner = {
+  const inner: React.CSSProperties = {
     display: "flex",
     alignItems: "center",
     gap: "10px",
   };
 
-  let close = {};
-  let name = {};
-  let title = {
+  const close: React.CSSProperties = {};
+  const nameStyle: React.CSSProperties = {};
+  const title: React.CSSProperties = {
     fontSize: "1.125rem",
     lineHeight: 1,
     fontWeight: 600,
   };
-  let cta = {
+  const cta: React.CSSProperties = {
     marginLeft: "auto",
     background: "#2E0D8A",
     color: "white",
     padding: "0.5rem 1rem",
     borderRadius: "0.5rem",
   };
-  //   let isActive = { display: "block" };
+
   return (
     <div className="block__install" style={block__install} id="BlockInstall">
       <div className="inner" style={inner}>
@@ -51,10 +51,10 @@ export const InstallButton = () => {
         <div className="logo">
           <img
             src="https://img.icons8.com/external-others-bzzricon-studio/42/000000/external-quran-ramadan-others-bzzricon-studio.png"
-            all=""
+            alt=""
           />
         </div>
-        <div className="name" style={name}>
+        <div className="name" style={nameStyle}>
           <p className="title" style={title}>
             Al Quran
           </p>

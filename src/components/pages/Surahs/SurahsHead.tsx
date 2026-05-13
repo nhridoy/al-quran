@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { MdMenuBook } from "react-icons/md";
 import logo from "../../../logo.svg";
+import type { CurrentAudioIndex } from "../../../types";
 
-export const SurahsHead = () => {
-  const [readStatus, setReadStatus] = useState(null);
+export const SurahsHead: React.FC = () => {
+  const [readStatus, setReadStatus] = useState<CurrentAudioIndex | null>(null);
   useEffect(() => {
-    const currentAudioIndex = JSON.parse(
-      localStorage.getItem("currentAudioIndex") || null
+    const currentAudioIndex: CurrentAudioIndex | null = JSON.parse(
+      localStorage.getItem("currentAudioIndex") || "null"
     );
     setReadStatus(currentAudioIndex);
   }, []);
 
   return (
-    <div className="flex items-center justify-between gap-3 gap-10 px-5 py-3 mb-5 text-sm text-white shadow-lg md:px-8 bg-gradient-to-tl rounded-2xl from-purple-400 to-purple-600 shadow-purple-400 md:text-lg">
+    <div className="flex items-center justify-between gap-3 gap-10 px-5 py-3 mb-5 text-sm text-white shadow-lg md:px-8 bg-gradient-to-tl rounded-2xl from-alternateOne to-secondary shadow-alternateOne md:text-lg">
       <div className="flex flex-col gap-3">
         <div className="">
           <p className="">Assalamualaikum</p>

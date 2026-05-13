@@ -2,9 +2,15 @@ import React from "react";
 import { BiArrowBack } from "react-icons/bi";
 import HamBurger from "../Hamburger/HamBurger";
 import Search from "../Search/Search";
+import type { SurahData } from "../../types";
 
-export const Header = (props) => {
-  const handleBackBtn = (e) => {
+interface HeaderProps {
+  head?: string;
+  surah?: SurahData;
+}
+
+export const Header: React.FC<HeaderProps> = (props) => {
+  const handleBackBtn = () => {
     window.history.back();
   };
 
@@ -15,13 +21,13 @@ export const Header = (props) => {
           <div className="flex items-center gap-0">
             <HamBurger />
             <BiArrowBack
-              onClick={(e) => handleBackBtn(e)}
-              className="cursor-pointer  dark:text-white"
+              onClick={handleBackBtn}
+              className="cursor-pointer dark:text-white"
             />
           </div>
 
           <h2 className="text-primary dark:text-white font-bold">
-            {!props.head ? props.surah.enName : props.head}
+            {!props.head ? props.surah?.enName : props.head}
           </h2>
         </div>
         <Search />
