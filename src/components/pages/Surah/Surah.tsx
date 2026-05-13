@@ -16,7 +16,7 @@ export const Surah: React.FC = () => {
     name?: string;
     singer?: number;
   }>({} as { totalNumber: number; name?: string; singer?: number });
-  const [audioInstance, setAudioInstance] = React.useState<unknown>(null);
+  const [ setAudioInstance] = React.useState<unknown>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
