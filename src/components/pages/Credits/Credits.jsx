@@ -17,7 +17,7 @@ const Credits = () => {
         <div className="row-span-1 flex items-center justify-center text-lg font-bold">
           <h2 className=" md:text-2xl dark:text-white">Credits</h2>
         </div>
-        <div className="row-span-4 bg-secondary text-white p-5 rounded-t-3xl flex flex-col divide-y">
+        <div className="row-span-4 bg-purple-600 text-white p-5 rounded-t-3xl flex flex-col divide-y">
           <a
             href="https://alquran.cloud/"
             target="_blank"

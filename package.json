@@ -2,11 +2,15 @@
   "name": "quran-mazid",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
   "dependencies": {
     "@loadable/component": "^5.15.2",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.2",
-    "@testing-library/user-event": "^14.6.1",
+    "@tailwindcss/vite": "^4.3.0",
     "hamburger-react": "^2.4.1",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
@@ -20,33 +24,14 @@
     "swiper": "^12.1.4",
     "web-vitals": "^5.2.0"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "devDependencies": {
+    "@svgr/core": "^8.1.0",
+    "@svgr/plugin-jsx": "^8.1.0",
+    "@vitejs/plugin-react": "^6.0.0",
     "autoprefixer": "^10.4.4",
     "postcss": "^8.4.12",
-    "tailwindcss": "^4.3.0"
+    "tailwindcss": "^4.3.0",
+    "vite": "^8.0.0",
+    "typescript": "~6.0.2"
   }
 }

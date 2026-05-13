@@ -18,20 +18,20 @@ const Splash = () => {
   }, []);
 
   return (
-    <div className="h-screen grid place-items-center">
+    <div className="grid h-screen place-items-center">
       <div className="flex flex-col items-center gap-4">
-        <h2 className="text-primary dark:text-white font-bold text-3xl">
+        <h2 className="text-3xl font-bold text-primary dark:text-white">
           بِسْمِ ٱللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
         </h2>
-        <h2 className="text-primary dark:text-white font-bold text-3xl">
+        <h2 className="text-3xl font-bold text-primary dark:text-white">
           Al Quran
         </h2>
         <p className="text-gray-700 dark:text-gray-400">
           Full Quran with Audio Player
         </p>
       </div>
-      <div className="bg-primary pt-4 pb-10 h-full w-full rounded-3xl">
-        <div className="h-full w-full grid justify-center items-end">
+      <div className="w-full h-full pt-4 pb-10 bg-indigo-950 rounded-3xl">
+        <div className="grid items-end justify-center w-full h-full">
           <SplashImage />
           <div
             className={`${
@@ -43,7 +43,7 @@ const Splash = () => {
               to="/surah"
               className={`${
                 loading ? "pointer-events-none" : "pointer-events-auto"
-              } text-center bg-alternateSecond px-5 py-2 rounded-2xl text-white font-semibold`}
+              } text-center bg-orange-700 px-5 py-2 rounded-2xl text-white font-semibold`}
             >
               {loading ? "Loading Surah Please Wait..." : "Browse Surah"}
             </Link>

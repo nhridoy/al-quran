@@ -40,7 +40,7 @@ const HamBurger = () => {
           <nav className="flex flex-col">
             <NavLink
               to="/surah"
-              className="flex items-center p-3 hover:bg-alternateOne dark:hover:bg-[#191f24]"
+              className="flex items-center p-3 hover:bg-purple-400 dark:hover:bg-[#191f24]"
             >
               <div className="flex items-center gap-3">
                 <VscBook className="text-xl font-bold dark:text-white" />
@@ -51,7 +51,7 @@ const HamBurger = () => {
             </NavLink>
             <NavLink
               to="/para"
-              className="flex items-center p-3 hover:bg-alternateOne  dark:hover:bg-[#191f24]"
+              className="flex items-center p-3 hover:bg-purple-400  dark:hover:bg-[#191f24]"
             >
               <div className="flex items-center gap-3">
                 <MdMenuBook className="text-xl font-bold dark:text-white" />
@@ -62,7 +62,7 @@ const HamBurger = () => {
             </NavLink>
             <NavLink
               to="/settings"
-              className="flex items-center p-3 hover:bg-alternateOne  dark:hover:bg-[#191f24]"
+              className="flex items-center p-3 hover:bg-purple-400  dark:hover:bg-[#191f24]"
             >
               <div className="flex items-center gap-3">
                 <IoSettingsOutline className="text-xl font-bold dark:text-white" />
@@ -73,7 +73,7 @@ const HamBurger = () => {
             </NavLink>
             <NavLink
               to="/about"
-              className="flex items-center p-3 hover:bg-alternateOne  dark:hover:bg-[#191f24]"
+              className="flex items-center p-3 hover:bg-purple-400  dark:hover:bg-[#191f24]"
             >
               <div className="flex items-center gap-3">
                 <BsInfoCircle className="text-xl font-bold dark:text-white" />
@@ -84,7 +84,7 @@ const HamBurger = () => {
             </NavLink>
             <NavLink
               to="/credits"
-              className="flex items-center p-3 hover:bg-alternateOne  dark:hover:bg-[#191f24]"
+              className="flex items-center p-3 hover:bg-purple-400  dark:hover:bg-[#191f24]"
             >
               <div className="flex items-center gap-3">
                 <AiOutlineHeart className="text-xl font-bold dark:text-white" />
@@ -95,7 +95,7 @@ const HamBurger = () => {
             </NavLink>
             <NavLink
               to="/donation"
-              className="flex  items-center p-3 hover:bg-alternateOne  dark:hover:bg-[#191f24]"
+              className="flex  items-center p-3 hover:bg-purple-400  dark:hover:bg-[#191f24]"
             >
               <div className="flex items-center gap-3">
                 <RiHandHeartLine className="text-xl font-bold dark:text-white" />
@@ -107,7 +107,7 @@ const HamBurger = () => {
           </nav>
         </div>
         <button
-          className="bg-alternateSecond font-semibold text-white py-3"
+          className="bg-orange-700 font-semibold text-white py-3"
           onClick={toggle(false)}
         >
           <div className="flex gap-1 items-center justify-center">

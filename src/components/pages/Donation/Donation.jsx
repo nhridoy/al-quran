@@ -27,7 +27,7 @@ const Donation = () => {
         <div className="row-span-1 flex items-center justify-center text-lg font-bold">
           <h2 className=" md:text-2xl dark:text-white">Donate</h2>
         </div>
-        <div className="row-span-4 bg-secondary text-white p-5 rounded-t-3xl flex flex-col items-center gap-4">
+        <div className="row-span-4 bg-purple-600 text-white p-5 rounded-t-3xl flex flex-col items-center gap-4">
           <p>
             50% of your donation will go directy to different mosque and islamic
             education center.

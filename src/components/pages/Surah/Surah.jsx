@@ -1,33 +1,27 @@
 import React, { useEffect } from "react";
-import { Header } from "../../Header/Header";
 import { useParams } from "react-router-dom";
-import { ParaHead } from "../ParaHead/ParaHead";
-import { paraCreation } from "../../../utilities/paraCreation";
-// import { Player } from "../Surah/Player";
+import { Header } from "../../Header/Header";
+import { SurahHead } from "./SurahHead";
+// import Player from "./Player";
+// import Ayahs from "../Ayahs/Ayahs";
 import loadable from "@loadable/component";
-const Player = loadable(() => import("../Surah/Player"));
+const Player = loadable(() => import("./Player"));
+const Ayahs = loadable(() => import("../Ayahs/Ayahs"));
 
-export const Para = () => {
+export const Surah = (props) => {
+  const { id } = useParams();
+  const [surah, setSurah] = React.useState({});
+  const [ayahs, setAyahs] = React.useState([]);
   const [currentPlaying, setCurrentPlaying] = React.useState({});
   const [audioInstance, setAudioInstance] = React.useState(null);
-  const [ayahs, setAyahs] = React.useState([]);
-  const { id } = useParams();
   let current;
   useEffect(() => {
-    document.title = `Para - ${id}`;
     window.scrollTo(0, 0);
+    loadSurahAyahs();
   }, []);
-  const paraDetails = paraCreation();
-  const para = paraDetails[id];
   useEffect(() => {
-    setAyahs([]);
     document.querySelector("html").classList.remove("overflow-x-hidden");
     document.querySelector("body").classList.remove("overflow-x-hidden");
-    para.map((surah) => {
-      surah.verses.map((ayah) => {
-        setAyahs((ayahs) => [...ayahs, ayah]);
-      });
-    });
   }, []);
 
   useEffect(() => {
@@ -37,9 +31,11 @@ export const Para = () => {
 
       currentayah.scrollIntoView({
         behavior: "smooth",
-        block: "center",
+        block: "end",
       });
-
+      // currentayah.style.position = "relative";
+      // // currentayah.style.zIndex = "-1";
+      // currentayah.style.top = "25px";
       if (
         window.matchMedia &&
         window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -63,7 +59,7 @@ export const Para = () => {
         }
       } else {
         // Light Mode
-        currentayah.classList.add("bg-alternateSecondDeep");
+        currentayah.classList.add("bg-orange-700Deep");
         for (
           let index = ayahs[0]["totalNumber"];
           index <= ayahs[ayahs.length - 1]["totalNumber"];
@@ -74,27 +70,39 @@ export const Para = () => {
           }
           document
             .getElementById(`ayah-${index}`)
-            .classList.contains("bg-alternateSecondDeep") &&
+            .classList.contains("bg-orange-700Deep") &&
             document
               .getElementById(`ayah-${index}`)
-              .classList.remove("bg-alternateSecondDeep");
+              .classList.remove("bg-orange-700Deep");
         }
       }
     }
   }, [currentPlaying]);
+
+  // Load Sura ayahs from Local Storage
+  const loadSurahAyahs = () => {
+    const surah = JSON.parse(localStorage.getItem(id));
+    setSurah(surah);
+    document.title = surah.enName;
+    setAyahs(surah.verses);
+  };
+  // console.log(audioInstance);
   return (
-    <div className="">
-      <div className="bg-white sticky top-0 left-0 w-full z-10">
-        <Header head={`Para ${id}`} />
+    <div>
+      <div className="bg-white dark:bg-[#20282e] sticky top-0 left-0 w-full">
+        <Header surah={surah} />
+        <SurahHead audioInstance={audioInstance} surah={surah} />
       </div>
       <Player
         audioInstance={setAudioInstance}
         currentPlaying={setCurrentPlaying}
-        surah={para}
+        surah={[]}
       />
-      {para.map((para, index) => (
-        <ParaHead para={para} key={index} />
-      ))}
+      <div className="flex gap-3 flex-col">
+        {ayahs.map((ayah, index) => (
+          <Ayahs ayah={ayah} key={ayah.numberInSurah} />
+        ))}
+      </div>
     </div>
   );
 };

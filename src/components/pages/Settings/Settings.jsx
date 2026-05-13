@@ -48,7 +48,7 @@ const Settings = () => {
         <div className="row-span-1 flex items-center justify-center text-lg font-bold">
           <h2 className=" md:text-2xl dark:text-white">Configure Settings</h2>
         </div>
-        <div className="row-span-4 bg-secondary text-white p-5 rounded-t-3xl flex flex-col divide-y">
+        <div className="row-span-4 bg-purple-600 text-white p-5 rounded-t-3xl flex flex-col divide-y">
           {/* <div className="pb-5">
             <h2 className="md:text-2xl px-2 py-3">App Settings:</h2>
             <h2 className="text-sm md:text-xl bg-purple-500 p-3 flex justify-between">

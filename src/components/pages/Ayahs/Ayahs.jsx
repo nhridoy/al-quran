@@ -10,10 +10,10 @@ const Ayahs = (props) => {
       id={`ayah-${ayah.totalNumber}`}
       className="rounded-lg flex flex-col gap-4 border-b-2 p-4"
     >
-      <div className="flex bg-secondaryLight dark:bg-[#191f24] p-3 rounded-lg justify-between items-center">
+      <div className="flex bg-purple-600Light dark:bg-[#191f24] p-3 rounded-lg justify-between items-center">
         <p
           id="surahNumber"
-          className="bg-primary dark:bg-secondaryLight w-10 h-10 text-white dark:text-[#191f24] font-semibold flex justify-center items-center rounded-full"
+          className="bg-primary dark:bg-purple-600Light w-10 h-10 text-white dark:text-[#191f24] font-semibold flex justify-center items-center rounded-full"
         >
           {ayah.numberInSurah}
         </p>
@@ -31,20 +31,20 @@ const Ayahs = (props) => {
             />
           ))}
 
-        <div className="flex text-primary dark:text-secondaryLight text-2xl gap-4">
+        <div className="flex text-primary dark:text-purple-600Light text-2xl gap-4">
           <BiShareAlt className="cursor-pointer" />
           <IoPlayOutline className="cursor-pointer" />
           <BiBookmark className="cursor-pointer" />
         </div>
       </div>
-      <p className="text-right font-semibold text-3xl dark:text-secondaryLight">
+      <p className="text-right font-semibold text-3xl dark:text-purple-600Light">
         {ayah.text}
       </p>
-      <p className="text-right text-lg dark:text-secondaryLight">
+      <p className="text-right text-lg dark:text-purple-600Light">
         {ayah.enTextTransliteration}
       </p>
-      <p className=" text-lg dark:text-secondaryLight">{ayah.enText}</p>
-      <p className=" text-lg dark:text-secondaryLight">{ayah.bnText}</p>
+      <p className=" text-lg dark:text-purple-600Light">{ayah.enText}</p>
+      <p className=" text-lg dark:text-purple-600Light">{ayah.bnText}</p>
     </div>
   );
 };

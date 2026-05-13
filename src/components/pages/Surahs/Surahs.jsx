@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 
 import { Link, Outlet } from "react-router-dom";
 import { Home } from "../Home/Home";
-// import SurahList from "../SurahList/SurahList";
 import loadable from "@loadable/component";
 const SurahList = loadable(() => import("../SurahList/SurahList"));
 
@@ -32,7 +31,6 @@ const Surahs = () => {
     document.title = "Al Quran - Surah List";
   };
 
-  // console.log(surahs);
   return (
     <div className="">
       <Home />
