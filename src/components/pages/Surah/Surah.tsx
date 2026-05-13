@@ -16,12 +16,7 @@ export const Surah: React.FC = () => {
     name?: string;
     singer?: number;
   }>({} as { totalNumber: number; name?: string; singer?: number });
-  const [audioInstance, setAudioInstance] = React.useState<{
-    playPrev?: () => void;
-    playNext?: () => void;
-    play?: () => void;
-    pause?: () => void;
-  } | null>(null);
+  const [audioInstance, setAudioInstance] = React.useState<unknown>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -89,7 +84,7 @@ export const Surah: React.FC = () => {
     <div>
       <div className="bg-white dark:bg-[#20282e] sticky top-0 left-0 w-full">
         <Header surah={surah} />
-        <SurahHead surah={surah} audioInstance={audioInstance} />
+        <SurahHead surah={surah} audioInstance={null} />
       </div>
       <Player
         audioInstance={setAudioInstance}
