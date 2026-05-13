@@ -1,9 +1,10 @@
+import loadable from "@loadable/component";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import type { SurahData, Verse } from "../../../types";
 import { Header } from "../../Header/Header";
 import { SurahHead } from "./SurahHead";
-import loadable from "@loadable/component";
-import type { Verse, SurahData } from "../../../types";
+
 const Player = loadable(() => import("./Player"));
 const Ayahs = loadable(() => import("../Ayahs/Ayahs"));
 
@@ -16,7 +17,7 @@ export const Surah: React.FC = () => {
     name?: string;
     singer?: number;
   }>({} as { totalNumber: number; name?: string; singer?: number });
-  const [ setAudioInstance] = React.useState<unknown>(null);
+  const [audioInstance, setAudioInstance] = React.useState<unknown>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -72,9 +73,7 @@ export const Surah: React.FC = () => {
 
   const loadSurahAyahs = () => {
     if (!id) return;
-    const surahData: SurahData = JSON.parse(
-      localStorage.getItem(id) || "{}"
-    );
+    const surahData: SurahData = JSON.parse(localStorage.getItem(id) || "{}");
     setSurah(surahData);
     document.title = surahData.enName;
     setAyahs(surahData.verses);

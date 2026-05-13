@@ -1,12 +1,12 @@
-import React from "react";
 import { Spin as HamburgerBtn } from "hamburger-react";
+import React from "react";
 import Drawer from "react-drag-drawer";
+import { AiOutlineDoubleLeft, AiOutlineHeart } from "react-icons/ai";
 import { BsInfoCircle } from "react-icons/bs";
 import { IoSettingsOutline } from "react-icons/io5";
-import { RiHandHeartLine } from "react-icons/ri";
-import { AiOutlineDoubleLeft, AiOutlineHeart } from "react-icons/ai";
-import { VscBook } from "react-icons/vsc";
 import { MdMenuBook } from "react-icons/md";
+import { RiHandHeartLine } from "react-icons/ri";
+import { VscBook } from "react-icons/vsc";
 import { NavLink } from "react-router-dom";
 
 const HamBurger: React.FC = () => {

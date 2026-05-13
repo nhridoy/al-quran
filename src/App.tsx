@@ -1,7 +1,8 @@
-import { Suspense, lazy } from "react";
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Para } from "./components/pages/Para/Para";
 import { Surah } from "./components/pages/Surah/Surah";
+
 const About = lazy(() => import("./components/pages/About/About"));
 const Credits = lazy(() => import("./components/pages/Credits/Credits"));
 const Donation = lazy(() => import("./components/pages/Donation/Donation"));

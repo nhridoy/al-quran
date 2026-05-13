@@ -1,8 +1,9 @@
+import loadable from "@loadable/component";
 import React, { useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { Home } from "../Home/Home";
-import loadable from "@loadable/component";
 import type { SurahData } from "../../../types";
+import { Home } from "../Home/Home";
+
 const SurahList = loadable(() => import("../SurahList/SurahList"));
 
 const Surahs: React.FC = () => {
@@ -15,7 +16,7 @@ const Surahs: React.FC = () => {
     const surahList: SurahData[] = [];
     for (let index = 1; index <= isLoaded; index++) {
       const loadedSurah: SurahData = JSON.parse(
-        localStorage.getItem(String(index)) || "{}"
+        localStorage.getItem(String(index)) || "{}",
       );
       surahList.push(loadedSurah);
     }

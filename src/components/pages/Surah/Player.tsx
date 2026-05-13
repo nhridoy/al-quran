@@ -1,9 +1,10 @@
 import ReactJkMusicPlayer from "react-jinke-music-player";
 import "react-jinke-music-player/assets/index.css";
-import logo from "../../../logo.svg";
 
-import React, { useEffect, useState } from "react";
+import type React from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import logo from "../../../logo.svg";
 import type { ParaSurah, SurahData } from "../../../types";
 
 interface AudioItem {
@@ -21,7 +22,11 @@ interface PlayerProps {
   audioInstance: (instance: unknown) => void;
 }
 
-const Player: React.FC<PlayerProps> = ({ surah, currentPlaying, audioInstance }) => {
+const Player: React.FC<PlayerProps> = ({
+  surah,
+  currentPlaying,
+  audioInstance,
+}) => {
   const { id } = useParams();
   const [fullPlayList, setFullPlayList] = useState<AudioItem[]>([]);
   const fullAudioList: AudioItem[] = [];
@@ -39,7 +44,7 @@ const Player: React.FC<PlayerProps> = ({ surah, currentPlaying, audioInstance })
     const totalSurah = parseInt(localStorage.getItem("isLoaded") || "0");
     for (let index = 1; index <= totalSurah; index++) {
       const surahData: SurahData = JSON.parse(
-        localStorage.getItem(String(index)) || "{}"
+        localStorage.getItem(String(index)) || "{}",
       );
       surahData.verses.forEach((verse) => {
         fullAudioList.push({
@@ -57,7 +62,7 @@ const Player: React.FC<PlayerProps> = ({ surah, currentPlaying, audioInstance })
 
   const loadSingleSurahAudio = (surahId: string) => {
     const surahData: SurahData = JSON.parse(
-      localStorage.getItem(surahId) || "{}"
+      localStorage.getItem(surahId) || "{}",
     );
     surahData.verses.forEach((verse) => {
       fullAudioList.push({
@@ -144,7 +149,7 @@ const Player: React.FC<PlayerProps> = ({ surah, currentPlaying, audioInstance })
             JSON.stringify({
               surahName: index.name,
               verseNumber: index.singer,
-            })
+            }),
           );
         }}
       />

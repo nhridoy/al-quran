@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
-import { Header } from "../../Header/Header";
+import type React from "react";
+import { useEffect } from "react";
 import { GoDotFill } from "react-icons/go";
+import { Header } from "../../Header/Header";
 
 const Credits: React.FC = () => {
   useEffect(() => {

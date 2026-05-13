@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import loadable from "@loadable/component";
+import type React from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Home } from "../Home/Home";
-import loadable from "@loadable/component";
+
 const ParaList = loadable(() => import("../ParaList/ParaList"));
 
 const Paras: React.FC = () => {

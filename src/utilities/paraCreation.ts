@@ -10,7 +10,9 @@ export const paraCreation = (): Record<string, ParaSurah[]> => {
   if (Object.keys(paraList).length) {
     let currentPara = 1;
     for (let index = 1; index <= 114; index++) {
-      const surah: SurahData = JSON.parse(localStorage.getItem(String(index)) || "{}");
+      const surah: SurahData = JSON.parse(
+        localStorage.getItem(String(index)) || "{}",
+      );
       surah.verses.forEach((verse) => {
         if (currentPara === verse.juz) {
           if (
@@ -28,7 +30,7 @@ export const paraCreation = (): Record<string, ParaSurah[]> => {
             });
           } else {
             paraList[currentPara][paraList[currentPara].length - 1].verses.push(
-              verse
+              verse,
             );
           }
         } else if (currentPara + 1 === verse.juz) {
@@ -45,7 +47,7 @@ export const paraCreation = (): Record<string, ParaSurah[]> => {
             });
           } else {
             paraList[currentPara][paraList[currentPara].length - 1].verses.push(
-              verse
+              verse,
             );
           }
         }

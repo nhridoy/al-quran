@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
-import { Header } from "../../Header/Header";
-import { useParams } from "react-router-dom";
-import { ParaHead } from "../ParaHead/ParaHead";
-import { paraCreation } from "../../../utilities/paraCreation";
 import loadable from "@loadable/component";
-import type { Verse, ParaSurah } from "../../../types";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import type { ParaSurah, Verse } from "../../../types";
+import { paraCreation } from "../../../utilities/paraCreation";
+import { Header } from "../../Header/Header";
+import { ParaHead } from "../ParaHead/ParaHead";
+
 const Player = loadable(() => import("../Surah/Player"));
 
 export const Para: React.FC = () => {

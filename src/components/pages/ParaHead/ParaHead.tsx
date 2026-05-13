@@ -1,8 +1,9 @@
-import React from "react";
+import loadable from "@loadable/component";
+import type React from "react";
 import { FiOctagon } from "react-icons/fi";
 import { useParams } from "react-router-dom";
-import loadable from "@loadable/component";
 import type { ParaSurah } from "../../../types";
+
 const Ayahs = loadable(() => import("../Ayahs/Ayahs"));
 
 interface ParaHeadProps {

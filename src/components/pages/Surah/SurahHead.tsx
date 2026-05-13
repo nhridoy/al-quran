@@ -1,7 +1,7 @@
 import React from "react";
-import { FiPlayCircle, FiPauseCircle } from "react-icons/fi";
-import { CgPlayTrackPrevO, CgPlayTrackNextO } from "react-icons/cg";
-import { toast, ToastContainer } from "react-toastify";
+import { CgPlayTrackNextO, CgPlayTrackPrevO } from "react-icons/cg";
+import { FiPauseCircle, FiPlayCircle } from "react-icons/fi";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import type { SurahData } from "../../../types";
 
@@ -15,7 +15,10 @@ interface SurahHeadProps {
   } | null;
 }
 
-export const SurahHead: React.FC<SurahHeadProps> = ({ surah, audioInstance }) => {
+export const SurahHead: React.FC<SurahHeadProps> = ({
+  surah,
+  audioInstance,
+}) => {
   const [isPlaying, setIsPlaying] = React.useState(false);
   const notify = () => toast.warning("Audio is Loading...");
   return (

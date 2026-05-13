@@ -1,8 +1,14 @@
-import React, { useEffect } from "react";
-import { Header } from "../../Header/Header";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
-import { EffectCards } from "swiper/modules";
+import type React from "react";
+import { useEffect } from "react";
+import {
+  A11y,
+  EffectCards,
+  Navigation,
+  Pagination,
+  Scrollbar,
+} from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Header } from "../../Header/Header";
 import "swiper/css";
 import "swiper/css/effect-cards";
 

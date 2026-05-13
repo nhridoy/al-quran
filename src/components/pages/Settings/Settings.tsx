@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Header } from "../../Header/Header";
+import type React from "react";
+import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { dataFetching } from "../../../utilities/dataFetching";
-import { ToastContainer, toast } from "react-toastify";
+import { Header } from "../../Header/Header";
 import "react-toastify/dist/ReactToastify.css";
 
 const Settings: React.FC = () => {

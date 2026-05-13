@@ -1,12 +1,13 @@
-import React, { useEffect } from "react";
-import { Header } from "../../Header/Header";
-import { GoDotFill } from "react-icons/go";
+import type React from "react";
+import { useEffect } from "react";
 import {
   AiFillTwitterCircle,
-  AiOutlineMail,
   AiOutlineGithub,
+  AiOutlineMail,
 } from "react-icons/ai";
+import { GoDotFill } from "react-icons/go";
 import { IoLogoFacebook, IoLogoWhatsapp } from "react-icons/io5";
+import { Header } from "../../Header/Header";
 
 const About: React.FC = () => {
   useEffect(() => {
@@ -28,7 +29,11 @@ const About: React.FC = () => {
             <h2 className="text-4xl font-bold">01</h2>
             <p className="mb-1 md:text-lg">Contact Us</p>
             <div className="flex gap-3 items-center text-2xl">
-              <a href="https://github.com/nhridoy" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://github.com/nhridoy"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <AiOutlineGithub />
               </a>
               <a
@@ -38,13 +43,25 @@ const About: React.FC = () => {
               >
                 <IoLogoFacebook />
               </a>
-              <a href="https://twitter.com/hridoyboss12" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://twitter.com/hridoyboss12"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <AiFillTwitterCircle />
               </a>
-              <a href="mailto:nahidujjamanhridoy@gmail.com" target="_blank" rel="noopener noreferrer">
+              <a
+                href="mailto:nahidujjamanhridoy@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <AiOutlineMail />
               </a>
-              <a href="https://wa.me/8801768098882" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://wa.me/8801768098882"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <IoLogoWhatsapp />
               </a>
             </div>

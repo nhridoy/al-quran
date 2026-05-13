@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint-format": "biome check  --fix",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@loadable/component": "^5.15.2",
@@ -22,6 +24,7 @@
     "swiper": "^12.1.4"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.4.15",
     "@types/loadable__component": "^5.13.10",
     "@types/node": "^25.7.0",
     "@types/react": "^19.2.14",

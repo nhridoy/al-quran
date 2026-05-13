@@ -1,0 +1,7 @@
+#!/bin/sh
+echo "Pre Push hook triggered"
+
+# pnpm run build
+
+echo "📊 Running full test suite with coverage..."
+# pnpm run test:coverage

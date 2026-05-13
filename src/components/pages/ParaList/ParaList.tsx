@@ -1,6 +1,6 @@
-import React from "react";
-import { FaQuran } from "react-icons/fa";
+import type React from "react";
 import { BsBoxArrowInRight } from "react-icons/bs";
+import { FaQuran } from "react-icons/fa";
 
 interface ParaListProps {
   paraNo: number;

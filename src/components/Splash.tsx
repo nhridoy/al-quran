@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import loadable from "@loadable/component";
+import type React from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { dataFetching } from "../utilities/dataFetching";
-import loadable from "@loadable/component";
+
 const SplashImage = loadable(() => import("./SplashImage/SplashImage"));
 
 const Splash: React.FC = () => {

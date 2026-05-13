@@ -1,9 +1,10 @@
+import loadable from "@loadable/component";
 import React, { useEffect } from "react";
 import Drawer from "react-drag-drawer";
 import { BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import loadable from "@loadable/component";
 import type { SurahData } from "../../types";
+
 const SurahList = loadable(() => import("../pages/SurahList/SurahList"));
 
 const Search: React.FC = () => {
@@ -14,7 +15,7 @@ const Search: React.FC = () => {
     setSurahList([]);
     for (let index = 1; index <= 114; index++) {
       const surah: SurahData = JSON.parse(
-        localStorage.getItem(String(index)) || "{}"
+        localStorage.getItem(String(index)) || "{}",
       );
       setSurahList((prevState) => [...prevState, surah]);
     }

@@ -1,5 +1,6 @@
 declare module "react-drag-drawer" {
   import React from "react";
+
   interface DrawerProps {
     open: boolean;
     onRequestClose: () => void;

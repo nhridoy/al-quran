@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import type React from "react";
+import { useEffect, useState } from "react";
 import { MdMenuBook } from "react-icons/md";
 import logo from "../../../logo.svg";
 import type { CurrentAudioIndex } from "../../../types";
@@ -7,7 +8,7 @@ export const SurahsHead: React.FC = () => {
   const [readStatus, setReadStatus] = useState<CurrentAudioIndex | null>(null);
   useEffect(() => {
     const currentAudioIndex: CurrentAudioIndex | null = JSON.parse(
-      localStorage.getItem("currentAudioIndex") || "null"
+      localStorage.getItem("currentAudioIndex") || "null",
     );
     setReadStatus(currentAudioIndex);
   }, []);

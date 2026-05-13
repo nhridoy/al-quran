@@ -1,8 +1,8 @@
-import React from "react";
+import type React from "react";
 import { BiArrowBack } from "react-icons/bi";
+import type { SurahData } from "../../types";
 import HamBurger from "../Hamburger/HamBurger";
 import Search from "../Search/Search";
-import type { SurahData } from "../../types";
 
 interface HeaderProps {
   head?: string;

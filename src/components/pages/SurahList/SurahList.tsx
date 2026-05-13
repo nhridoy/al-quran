@@ -1,4 +1,4 @@
-import React from "react";
+import type React from "react";
 import { FiOctagon } from "react-icons/fi";
 import type { SurahData } from "../../../types";
 
@@ -34,9 +34,7 @@ const SurahList: React.FC<SurahListProps> = ({ data }) => {
                 )}
                 <span className="uppercase">{data.revelationType}</span>
               </span>
-              <span className="uppercase">
-                {data.numberOfAyahs} verses
-              </span>
+              <span className="uppercase">{data.numberOfAyahs} verses</span>
             </div>
           </div>
         </div>

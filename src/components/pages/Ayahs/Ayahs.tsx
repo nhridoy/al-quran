@@ -1,5 +1,5 @@
-import React from "react";
-import { BiShareAlt, BiBookmark } from "react-icons/bi";
+import type React from "react";
+import { BiBookmark, BiShareAlt } from "react-icons/bi";
 import { IoPlayOutline } from "react-icons/io5";
 import type { Verse } from "../../../types";
 
