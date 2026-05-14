@@ -53,30 +53,6 @@ code {
   font-family:
     source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
-.add-to-home-screen-pwa__notify {
-  display: flex !important;
-  justify-content: space-around;
-  align-items: center;
-}
-.add-to-home-screen-pwa__notify > .heading {
-  margin-top: 0 !important;
-}
-
-.isActive {
-  display: block !important;
-}
-
-.activeAyat {
-  background: rgb(255, 215, 141);
-}
-.active {
-  background: #b9a2d8;
-}
-@media (prefers-color-scheme: dark) {
-  .active {
-    background: #303439;
-  }
-}
 
 .swiper {
   width: 240px;

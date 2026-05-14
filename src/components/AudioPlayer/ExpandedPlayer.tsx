@@ -76,12 +76,13 @@ function PlaylistIcon() {
   );
 }
 
-function Spinner({ className }: { className?: string }) {
+function Spinner({ className }: Readonly<{ className?: string }>) {
   return (
     <svg
-      className={`${className ?? "w-5 h-5"} animate-[spin_1s_linear_infinite]`}
+      className={`${className ?? "w-5 h-5"} animate-spin`}
       viewBox="0 0 24 24"
       fill="none"
+      aria-hidden="true"
     >
       <circle
         cx="12"
@@ -113,7 +114,7 @@ function ChevronDownIcon() {
   );
 }
 
-function VolumeIcon({ volume }: { volume: number }) {
+function VolumeIcon({ volume }: Readonly<{ volume: number }>) {
   return (
     <svg
       className="w-5 h-5"
@@ -193,13 +194,13 @@ function SeekBar() {
   }, [isDragging]);
 
   return (
-    <div className="flex items-center gap-3 w-full">
-      <span className="text-xs text-gray-400 dark:text-gray-500 w-10 text-right tabular-nums">
+    <div className="flex items-center w-full gap-3">
+      <span className="w-10 text-xs text-right text-gray-400 dark:text-gray-500 tabular-nums">
         {formatTime(currentTime)}
       </span>
       <div
         ref={barRef}
-        className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full cursor-pointer relative group"
+        className="relative flex-1 h-2 bg-gray-200 rounded-full cursor-pointer dark:bg-gray-700 group"
         onMouseDown={handleMouseDown}
         role="slider"
         aria-label="Seek"
@@ -209,34 +210,34 @@ function SeekBar() {
         tabIndex={0}
       >
         <div
-          className="absolute top-0 left-0 h-full bg-gradient-to-r from-secondary to-primary rounded-full transition-[width] duration-100"
+          className="absolute top-0 left-0 h-full bg-linear-to-r from-secondary to-primary rounded-full transition-[width] duration-100"
           style={{ width: `${progress}%` }}
         />
         <div
-          className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-white dark:bg-gray-200 rounded-full shadow-md border-2 border-secondary opacity-0 group-hover:opacity-100 transition-opacity"
+          className="absolute w-4 h-4 transition-opacity -translate-y-1/2 bg-white border-2 rounded-full shadow-md opacity-0 top-1/2 dark:bg-gray-200 border-secondary group-hover:opacity-100"
           style={{ left: `calc(${progress}% - 8px)` }}
         />
       </div>
-      <span className="text-xs text-gray-400 dark:text-gray-500 w-10 tabular-nums">
+      <span className="w-10 text-xs text-gray-400 dark:text-gray-500 tabular-nums">
         {formatTime(duration)}
       </span>
     </div>
   );
 }
 
-function VinylDisc({ isPlaying }: { isPlaying: boolean }) {
+function VinylDisc({ isPlaying }: Readonly<{ isPlaying: boolean }>) {
   return (
-    <div className="relative flex-shrink-0">
+    <div className="relative shrink-0">
       <div
-        className={`w-12 h-12 rounded-full bg-gradient-to-br from-gray-800 to-gray-600 border-2 border-gray-300 dark:border-gray-600 flex items-center justify-center shadow-lg ${
+        className={`w-12 h-12 rounded-full bg-linear-to-br from-gray-800 to-gray-600 border-2 border-gray-300 dark:border-gray-600 flex items-center justify-center shadow-lg ${
           isPlaying ? "animate-[spin_4s_linear_infinite]" : ""
         }`}
       >
-        <div className="w-4 h-4 rounded-full bg-gradient-to-br from-secondary to-primary flex items-center justify-center">
+        <div className="flex items-center justify-center w-4 h-4 rounded-full bg-linear-to-br from-secondary to-primary">
           <div className="w-1.5 h-1.5 rounded-full bg-white" />
         </div>
       </div>
-      <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-black/10 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 rounded-full pointer-events-none bg-linear-to-tr from-black/10 to-transparent" />
     </div>
   );
 }
@@ -285,30 +286,30 @@ export default function ExpandedPlayer() {
         className={`hidden md:block fixed bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-[#1a1f24]/95 backdrop-blur-lg border-t border-gray-200 dark:border-gray-700 shadow-2xl ${
           leaving
             ? "transition-all duration-300 ease-in-out translate-y-full opacity-0"
-            : "animate-[slideUp_0.3s_ease-out]"
+            : "animate-slide-up"
         }`}
       >
         <div className="absolute top-0 left-0 right-0 h-1 bg-gray-200 dark:bg-gray-700">
           <div
-            className="h-full bg-gradient-to-r from-secondary to-primary transition-[width] duration-300"
+            className="h-full bg-linear-to-r from-secondary to-primary transition-[width] duration-300"
             style={{ width: `${progress}%` }}
           />
         </div>
 
-        <div className="flex items-center gap-4 px-4 h-20 max-w-7xl mx-auto">
-          <div className="flex items-center gap-3 min-w-0">
+        <div className="flex items-center h-20 gap-4 px-4 mx-auto max-w-7xl">
+          <div className="flex items-center min-w-0 gap-3">
             <VinylDisc isPlaying={isPlaying} />
             <div className="min-w-0">
-              <p className="text-sm font-semibold text-gray-900 dark:text-white truncate">
+              <p className="text-sm font-semibold text-gray-900 truncate dark:text-white">
                 {currentTrack.enName}
               </p>
-              <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
+              <p className="text-xs text-gray-500 truncate dark:text-gray-400">
                 Ayah {currentTrack.ayahNumber}
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3 flex-1 justify-center">
+          <div className="flex items-center justify-center flex-1 gap-3">
             <SeekBar />
             <div className="flex items-center gap-1">
               <button
@@ -327,7 +328,7 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={prev}
-                className="p-2 rounded-full cursor-pointer text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all active:scale-90"
+                className="p-2 text-gray-600 transition-all rounded-full cursor-pointer dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 active:scale-90"
                 aria-label="Previous"
                 title="Previous"
               >
@@ -343,7 +344,7 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={togglePlay}
-                className="p-3 rounded-full cursor-pointer bg-gradient-to-r from-primary to-secondary text-white shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all"
+                className="p-3 text-white transition-all rounded-full shadow-lg cursor-pointer bg-linear-to-r from-primary to-secondary hover:shadow-xl hover:scale-105 active:scale-95"
                 aria-label={
                   isLoading ? "Loading" : isPlaying ? "Pause" : "Play"
                 }
@@ -375,7 +376,7 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={next}
-                className="p-2 rounded-full cursor-pointer text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all active:scale-90"
+                className="p-2 text-gray-600 transition-all rounded-full cursor-pointer dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 active:scale-90"
                 aria-label="Next"
                 title="Next"
               >
@@ -392,9 +393,9 @@ export default function ExpandedPlayer() {
                 type="button"
                 onClick={cycleRepeat}
                 className={`p-2 rounded-full cursor-pointer transition-all active:scale-90 ${
-                  repeatMode !== "none"
-                    ? "text-secondary bg-secondary/10"
-                    : "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+                  repeatMode === "none"
+                    ? "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    : "text-secondary bg-secondary/10"
                 }`}
                 aria-label="Cycle repeat mode"
                 title={`${repeatMode === "none" ? "Repeat" : repeatMode === "all" ? "Repeat all" : "Repeat one"}`}
@@ -406,7 +407,7 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={() => setVolume(volume === 0 ? 0.7 : 0)}
-                className="p-2 rounded-full cursor-pointer text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all active:scale-90"
+                className="p-2 text-gray-500 transition-all rounded-full cursor-pointer dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 active:scale-90"
                 aria-label="Toggle mute"
                 title={volume === 0 ? "Unmute" : "Mute"}
               >
@@ -433,7 +434,7 @@ export default function ExpandedPlayer() {
             <button
               type="button"
               onClick={togglePlaylist}
-              className="p-2 rounded-full cursor-pointer text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all active:scale-90"
+              className="p-2 text-gray-500 transition-all rounded-full cursor-pointer dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 active:scale-90"
               aria-label="Playlist"
               title="Playlist"
             >
@@ -442,7 +443,7 @@ export default function ExpandedPlayer() {
             <button
               type="button"
               onClick={handleMinimize}
-              className="p-2 rounded-full cursor-pointer text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all active:scale-90"
+              className="p-2 text-gray-500 transition-all rounded-full cursor-pointer dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 active:scale-90"
               aria-label="Minimize"
               title="Minimize"
             >
@@ -453,29 +454,29 @@ export default function ExpandedPlayer() {
       </div>
 
       <div
-        className={`md:hidden fixed inset-0 z-50 bg-gradient-to-b from-[#1a1a2e] via-[#16213e] to-[#0f3460] flex flex-col ${
+        className={`md:hidden fixed inset-0 z-50 bg-linear-to-b from-[#1a1a2e] via-[#16213e] to-[#0f3460] flex flex-col ${
           leaving
             ? "transition-all duration-300 ease-in-out opacity-0"
-            : "animate-[fadeIn_0.2s_ease-out]"
+            : "animate-fade-in"
         }`}
       >
         <div className="flex items-center justify-between px-5 pt-12 pb-4">
           <button
             type="button"
             onClick={togglePlaylist}
-            className="p-2 rounded-full cursor-pointer text-white/70 hover:bg-white/10 transition-all active:scale-90"
+            className="p-2 transition-all rounded-full cursor-pointer text-white/70 hover:bg-white/10 active:scale-90"
             aria-label="Playlist"
             title="Playlist"
           >
             <PlaylistIcon />
           </button>
-          <h2 className="text-sm font-medium text-white/60 uppercase tracking-wider">
+          <h2 className="text-sm font-medium tracking-wider uppercase text-white/60">
             Now Playing
           </h2>
           <button
             type="button"
             onClick={handleMinimize}
-            className="p-2 rounded-full cursor-pointer text-white/70 hover:bg-white/10 transition-all active:scale-90"
+            className="p-2 transition-all rounded-full cursor-pointer text-white/70 hover:bg-white/10 active:scale-90"
             aria-label="Minimize"
             title="Minimize"
           >
@@ -483,19 +484,19 @@ export default function ExpandedPlayer() {
           </button>
         </div>
 
-        <div className="flex-1 flex flex-col items-center justify-center px-8 gap-8">
+        <div className="flex flex-col items-center justify-center flex-1 gap-8 px-8">
           <div
-            className={`w-64 h-64 rounded-full bg-gradient-to-br from-gray-800 to-gray-600 border-4 border-white/10 shadow-2xl flex items-center justify-center ${
+            className={`w-64 h-64 rounded-full bg-linear-to-br from-gray-800 to-gray-600 border-4 border-white/10 shadow-2xl flex items-center justify-center ${
               isPlaying ? "animate-[spin_8s_linear_infinite]" : ""
             }`}
           >
-            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-secondary to-primary flex items-center justify-center">
+            <div className="flex items-center justify-center w-24 h-24 rounded-full bg-linear-to-br from-secondary to-primary">
               <div className="w-8 h-8 rounded-full bg-white/30" />
             </div>
           </div>
 
-          <div className="text-center w-full max-w-sm">
-            <p className="text-2xl font-bold text-white mb-1">
+          <div className="w-full max-w-sm text-center">
+            <p className="mb-1 text-2xl font-bold text-white">
               {currentTrack.enName}
             </p>
             <p className="text-sm text-white/60">
@@ -525,7 +526,7 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={prev}
-            className="p-3 rounded-full cursor-pointer text-white/80 hover:bg-white/10 transition-all active:scale-90"
+            className="p-3 transition-all rounded-full cursor-pointer text-white/80 hover:bg-white/10 active:scale-90"
             aria-label="Previous"
             title="Previous"
           >
@@ -541,7 +542,7 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={togglePlay}
-            className="p-5 rounded-full cursor-pointer bg-white text-primary shadow-2xl hover:scale-105 active:scale-95 transition-transform"
+            className="p-5 transition-transform bg-white rounded-full shadow-2xl cursor-pointer text-primary hover:scale-105 active:scale-95"
             aria-label={isLoading ? "Loading" : isPlaying ? "Pause" : "Play"}
             title={isLoading ? "Loading" : isPlaying ? "Pause" : "Play"}
           >
@@ -571,7 +572,7 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={next}
-            className="p-3 rounded-full cursor-pointer text-white/80 hover:bg-white/10 transition-all active:scale-90"
+            className="p-3 transition-all rounded-full cursor-pointer text-white/80 hover:bg-white/10 active:scale-90"
             aria-label="Next"
             title="Next"
           >
@@ -588,9 +589,9 @@ export default function ExpandedPlayer() {
             type="button"
             onClick={cycleRepeat}
             className={`p-3 rounded-full cursor-pointer transition-all active:scale-90 ${
-              repeatMode !== "none"
-                ? "text-secondary bg-white/10"
-                : "text-white/60 hover:bg-white/10"
+              repeatMode === "none"
+                ? "text-white/60 hover:bg-white/10"
+                : "text-secondary bg-white/10"
             }`}
             aria-label="Cycle repeat mode"
             title={`${repeatMode === "none" ? "Repeat" : repeatMode === "all" ? "Repeat all" : "Repeat one"}`}
