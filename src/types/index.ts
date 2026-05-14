@@ -10,6 +10,9 @@ export interface Verse {
     recommended: boolean;
     obligatory: boolean;
   };
+  audioPrimary?: string;
+  audioSecond?: string;
+  audioThird?: string;
 }
 
 export interface SurahData {

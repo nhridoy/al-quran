@@ -33,6 +33,9 @@ export const dataFetching = (
               totalNumber: verse.totalNumber,
               juz: verse.juz,
               sajda: verse.sajda,
+              audioPrimary: verse.audioPrimary,
+              audioSecond: verse.audioSecond,
+              audioThird: verse.audioThird,
             })),
           };
         });

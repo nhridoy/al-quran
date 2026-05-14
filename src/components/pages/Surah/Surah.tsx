@@ -39,7 +39,7 @@ export const Surah: React.FC = () => {
 
       <div className="flex flex-col gap-3">
         {ayahs.map((ayah) => (
-          <Ayahs ayah={ayah} key={ayah.numberInSurah} />
+          <Ayahs ayah={ayah} key={ayah.numberInSurah} surah={surah} />
         ))}
       </div>
     </div>
