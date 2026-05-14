@@ -46,17 +46,17 @@ export const PlayerFull: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-gradient-to-b from-black via-gray-950 to-black flex flex-col">
+    <div className="fixed inset-0 z-50 flex flex-col bg-gradient-to-b from-black via-gray-950 to-black">
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-4 border-b border-white/10 backdrop-blur-sm">
         <button
           onClick={() => setIsPlayerOpen(false)}
-          className="p-2 hover:bg-white/10 rounded-full transition-colors"
+          className="p-2 transition-colors rounded-full hover:bg-white/10"
         >
           <FiChevronDown className="w-6 h-6 text-white" />
         </button>
 
-        <h1 className="text-sm font-semibold text-white uppercase tracking-widest">
+        <h1 className="text-sm font-semibold tracking-widest text-white uppercase">
           Now Playing
         </h1>
 
@@ -71,15 +71,15 @@ export const PlayerFull: React.FC = () => {
       </div>
 
       {/* Main content */}
-      <div className="flex-1 overflow-hidden flex">
+      <div className="flex flex-1 overflow-hidden">
         {/* Player view */}
         <div
           className={`flex-1 flex flex-col items-center justify-center p-6 transition-all ${showPlaylist ? "hidden md:flex" : ""}`}
         >
           {/* Album art with animated gradient */}
-          <div className="w-64 h-64 md:w-80 md:h-80 mb-8 relative group">
-            <div className="absolute inset-0 bg-gradient-to-br from-amber-500 via-orange-500 to-red-600 rounded-3xl opacity-0 group-hover:opacity-10 blur-3xl transition-opacity duration-500" />
-            <div className="relative w-full h-full bg-gradient-to-br from-amber-400 to-orange-600 rounded-3xl flex items-center justify-center shadow-2xl overflow-hidden">
+          <div className="relative w-64 h-64 mb-8 md:w-80 md:h-80 group">
+            <div className="absolute inset-0 transition-opacity duration-500 opacity-0 bg-gradient-to-br from-amber-500 via-orange-500 to-red-600 rounded-3xl group-hover:opacity-10 blur-3xl" />
+            <div className="relative flex items-center justify-center w-full h-full overflow-hidden shadow-2xl bg-gradient-to-br from-amber-400 to-orange-600 rounded-3xl">
               {/* Animated background pattern */}
               <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" />
               <div
@@ -94,7 +94,7 @@ export const PlayerFull: React.FC = () => {
 
               {/* Center display */}
               <div className="relative z-10 text-center">
-                <div className="text-6xl font-bold text-white mb-2">
+                <div className="mb-2 text-6xl font-bold text-white">
                   {currentTrack.verse.numberInSurah}
                 </div>
                 <div className="text-2xl font-light text-white/80">
@@ -105,11 +105,11 @@ export const PlayerFull: React.FC = () => {
           </div>
 
           {/* Track info */}
-          <div className="text-center mb-8 max-w-xs">
-            <h2 className="text-2xl font-bold text-white mb-2">
+          <div className="max-w-xs mb-8 text-center">
+            <h2 className="mb-2 text-2xl font-bold text-white">
               Ayah {currentTrack.verse.numberInSurah}
             </h2>
-            <p className="text-sm text-white/60 mb-4">
+            <p className="mb-4 text-sm text-white/60">
               {currentTrack.surahName}
             </p>
             <p className="text-xs text-white/40 line-clamp-2">
@@ -124,7 +124,7 @@ export const PlayerFull: React.FC = () => {
               className="w-full h-1 bg-white/20 rounded-full cursor-pointer group hover:h-1.5 transition-all"
             >
               <div
-                className="h-full bg-gradient-to-r from-amber-400 to-amber-500 rounded-full transition-all"
+                className="h-full transition-all rounded-full bg-gradient-to-r from-amber-400 to-amber-500"
                 style={{ width: `${progressPercent}%` }}
               />
             </div>
@@ -138,7 +138,7 @@ export const PlayerFull: React.FC = () => {
           <div className="flex items-center justify-center gap-8 mb-8">
             <button
               onClick={playPrev}
-              className="p-3 hover:bg-white/10 rounded-full transition-colors"
+              className="p-3 transition-colors rounded-full hover:bg-white/10"
               title="Previous"
             >
               <FiChevronLeft className="w-8 h-8 text-white" />
@@ -146,7 +146,7 @@ export const PlayerFull: React.FC = () => {
 
             <button
               onClick={togglePlayPause}
-              className="p-4 bg-gradient-to-br from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 rounded-full transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
+              className="p-4 transition-all transform rounded-full shadow-lg bg-gradient-to-br from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 hover:shadow-xl hover:scale-105"
               title={isPlaying ? "Pause" : "Play"}
             >
               {isPlaying ? (
@@ -158,7 +158,7 @@ export const PlayerFull: React.FC = () => {
 
             <button
               onClick={playNext}
-              className="p-3 hover:bg-white/10 rounded-full transition-colors"
+              className="p-3 transition-colors rounded-full hover:bg-white/10"
               title="Next"
             >
               <FiChevronRight className="w-8 h-8 text-white" />
@@ -189,7 +189,7 @@ export const PlayerFull: React.FC = () => {
               title={`Repeat: ${repeatMode}`}
             >
               {repeatMode === "one" ? (
-                <div className="w-5 h-5 relative">
+                <div className="relative w-5 h-5">
                   <FiRepeat className="w-full h-full" />
                   <span className="absolute inset-0 flex items-center justify-center text-xs font-bold">
                     1
@@ -205,7 +205,7 @@ export const PlayerFull: React.FC = () => {
               <select
                 value={playbackRate}
                 onChange={(e) => setPlaybackRate(parseFloat(e.target.value))}
-                className="bg-transparent text-white text-xs focus:outline-none cursor-pointer"
+                className="text-xs text-white bg-transparent cursor-pointer focus:outline-none"
               >
                 <option value="0.5">0.5x</option>
                 <option value="0.75">0.75x</option>
@@ -229,9 +229,9 @@ const PlaylistPanel: React.FC = () => {
   const { playlist, currentTrackIndex, playTrack } = usePlayer();
 
   return (
-    <div className="flex-1 md:w-80 bg-black/50 backdrop-blur-sm border-l border-white/10 overflow-y-auto">
+    <div className="flex-1 overflow-y-auto border-l md:w-80 bg-black/50 backdrop-blur-sm border-white/10">
       <div className="p-4">
-        <h3 className="text-sm font-semibold text-white mb-4">Playlist</h3>
+        <h3 className="mb-4 text-sm font-semibold text-white">Playlist</h3>
         <div className="space-y-1">
           {playlist.map((verse, index) => (
             <button
@@ -253,11 +253,11 @@ const PlaylistPanel: React.FC = () => {
                 >
                   {verse.numberInSurah}
                 </div>
-                <div className="min-w-0 flex-1">
+                <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium text-white truncate">
                     Ayah {verse.numberInSurah}
                   </p>
-                  <p className="text-xs text-white/40 truncate">
+                  <p className="text-xs truncate text-white/40">
                     {verse.bnText.substring(0, 40)}...
                   </p>
                 </div>
