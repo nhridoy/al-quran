@@ -20,8 +20,7 @@ export const Para: React.FC = () => {
   useEffect(() => {
     document.querySelector("html")?.classList.remove("overflow-x-hidden");
     document.querySelector("body")?.classList.remove("overflow-x-hidden");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
+  }, []);
 
   return (
     <div className="">

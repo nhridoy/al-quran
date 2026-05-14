@@ -16,8 +16,9 @@ const Paras: React.FC = () => {
   return (
     <div>
       <Home />
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-        {[...Array(totalPara)].map((_, index) => (
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
+        {[...new Array(totalPara)].map((_, index) => (
+          // biome-ignore lint/suspicious/noArrayIndexKey: <Ignore>
           <Link key={index + 1} to={`/para/${index + 1}`}>
             <ParaList paraNo={index + 1} />
           </Link>

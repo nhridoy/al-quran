@@ -36,22 +36,23 @@ const Settings: React.FC = () => {
 
   return (
     <div className="h-screen">
-      <div className="bg-white sticky top-0 left-0 w-full z-10">
+      <div className="sticky top-0 left-0 z-10 w-full bg-white">
         <Header head="Settings" />
       </div>
       <div className="grid grid-rows-5">
-        <div className="row-span-1 flex items-center justify-center text-lg font-bold">
+        <div className="flex items-center justify-center row-span-1 text-lg font-bold">
           <h2 className=" md:text-2xl dark:text-white">Configure Settings</h2>
         </div>
-        <div className="row-span-4 bg-secondary text-white p-5 rounded-t-3xl flex flex-col divide-y">
+        <div className="flex flex-col row-span-4 p-5 text-white divide-y bg-secondary rounded-t-3xl">
           <div className="pb-5">
-            <h2 className="md:text-2xl px-2 py-3">Data Settings:</h2>
-            <h2 className="text-sm md:text-xl bg-purple-500 p-3 flex justify-between">
+            <h2 className="px-2 py-3 md:text-2xl">Data Settings:</h2>
+            <h2 className="flex justify-between p-3 text-sm bg-purple-500 md:text-xl">
               <p>Clear Data:</p>
               <div
                 className={`${loading ? "cursor-not-allowed" : "cursor-auto"}`}
               >
                 <button
+                  type="button"
                   onClick={handleUpdate}
                   className={`${
                     loading ? "pointer-events-none" : "pointer-events-auto"

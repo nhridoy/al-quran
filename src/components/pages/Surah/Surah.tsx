@@ -12,17 +12,6 @@ export const Surah: React.FC = () => {
   const [surah, setSurah] = React.useState<SurahData>({} as SurahData);
   const [ayahs, setAyahs] = React.useState<Verse[]>([]);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    loadSurahAyahs();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    document.querySelector("html")?.classList.remove("overflow-x-hidden");
-    document.querySelector("body")?.classList.remove("overflow-x-hidden");
-  }, []);
-
   const loadSurahAyahs = () => {
     if (!id) return;
     const surahData: SurahData = JSON.parse(localStorage.getItem(id) || "{}");
@@ -30,6 +19,16 @@ export const Surah: React.FC = () => {
     document.title = surahData.enName;
     setAyahs(surahData.verses);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    loadSurahAyahs();
+  }, []);
+
+  useEffect(() => {
+    document.querySelector("html")?.classList.remove("overflow-x-hidden");
+    document.querySelector("body")?.classList.remove("overflow-x-hidden");
+  }, []);
 
   return (
     <div>

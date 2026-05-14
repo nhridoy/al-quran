@@ -8,7 +8,7 @@ export const dataFetching = (
   localStorage.getItem("isLoaded") === null &&
     localStorage.setItem("isLoaded", "0");
 
-  if (parseInt(localStorage.getItem("isLoaded") || "0") < 114) {
+  if (Number.parseInt(localStorage.getItem("isLoaded") || "0", 10) < 114) {
     return fetch(
       "https://cdn.jsdelivr.net/gh/nhridoy/quran-api@main/v2/singleSurah.min.json",
     )
@@ -41,10 +41,10 @@ export const dataFetching = (
           try {
             localStorage.setItem(key, JSON.stringify(loadedData[key]));
             localStorage.setItem("isLoaded", String(++count));
-            setLoading(parseInt(localStorage.getItem("isLoaded") || "0") < 114);
-          } catch (error) {
+            setLoading(Number.parseInt(localStorage.getItem("isLoaded") || "0", 10) < 114);
+          } catch {
             alert("Error Fetching Surah! Press OK to Try Again.");
-            window.location.reload();
+            globalThis.location.reload();
             localStorage.clear();
           }
         });

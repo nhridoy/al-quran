@@ -14,15 +14,15 @@ export const ParaHead: React.FC<ParaHeadProps> = ({ para }) => {
   const { id } = useParams();
   return (
     <div className="">
-      <div className="flex sticky top-24 justify-between bg-secondary text-white p-4 rounded-lg">
-        <div className="flex gap-3 items-center">
+      <div className="sticky flex justify-between p-4 text-white rounded-lg top-24 bg-secondary">
+        <div className="flex items-center gap-3">
           <div className="relative">
-            <FiOctagon className="font-bold text-4xl" />
-            <span className="absolute inset-0 font-semibold grid place-items-center">
+            <FiOctagon className="text-4xl font-bold" />
+            <span className="absolute inset-0 grid font-semibold place-items-center">
               {para.no}
             </span>
           </div>
-          <div className="flex gap-1 flex-col">
+          <div className="flex flex-col gap-1">
             <div className="font-semibold md:text-lg">{para.enName}</div>
             <div className="flex flex-col gap-1 text-xs">
               <span className="flex gap-1">
@@ -45,14 +45,14 @@ export const ParaHead: React.FC<ParaHeadProps> = ({ para }) => {
             </div>
           </div>
         </div>
-        <div className="text-right text-sm md:text-lg">
+        <div className="text-sm text-right md:text-lg">
           <p className=" md:font-semibold">{para.name}</p>
           <p>{para.enNameTranslation}</p>
           <p>{para.bnNameTranslation}</p>
         </div>
       </div>
-      {para.verses.map((verse, index) => (
-        <Ayahs ayah={verse} key={index} />
+      {para.verses.map((verse) => (
+        <Ayahs ayah={verse} key={`${verse.numberInSurah} + ${verse.juz}`} />
       ))}
     </div>
   );

@@ -35,7 +35,7 @@ const Search: React.FC = () => {
           surah.bnNameTranslation
             .toLowerCase()
             .includes(e.target.value.toLowerCase()) ||
-          (surah.no + "").includes(e.target.value)
+          `${surah.no}`.includes(e.target.value)
         );
       });
       setSearchResult(filtered.slice(0, 3));
@@ -46,7 +46,7 @@ const Search: React.FC = () => {
 
   return (
     <>
-      <button onClick={toggle(true)} className="dark:text-white">
+      <button type="button" onClick={toggle(true)} className="dark:text-white">
         <BiSearch className="dark:text-white" />
       </button>
       <Drawer

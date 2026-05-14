@@ -61,7 +61,11 @@ export const InstallButton: React.FC = () => {
           <p className="description">Full Quran with Audio</p>
         </div>
         <div className="cta" style={cta}>
-          <button id="BlockInstallButton" className="btn btnoutline">
+          <button
+            type="button"
+            id="BlockInstallButton"
+            className="btn btnoutline"
+          >
             Install
           </button>
         </div>

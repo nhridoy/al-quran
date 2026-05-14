@@ -12,7 +12,10 @@ const Surahs: React.FC = () => {
   useEffect(() => loadSurahList(), []);
 
   const loadSurahList = () => {
-    const isLoaded = parseInt(localStorage.getItem("isLoaded") || "0");
+    const isLoaded = Number.parseInt(
+      localStorage.getItem("isLoaded") || "0",
+      10,
+    );
     const surahList: SurahData[] = [];
     for (let index = 1; index <= isLoaded; index++) {
       const loadedSurah: SurahData = JSON.parse(

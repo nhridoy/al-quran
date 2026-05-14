@@ -18,7 +18,7 @@ const HamBurger: React.FC = () => {
 
   return (
     <>
-      <button onClick={toggle(true)} className="dark:text-white">
+      <button type="button" onClick={toggle(true)} className="dark:text-white">
         <HamburgerBtn
           size={20}
           toggled={sidebarLeft}
@@ -107,6 +107,7 @@ const HamBurger: React.FC = () => {
           </nav>
         </div>
         <button
+          type="button"
           className="py-3 font-semibold text-white bg-alternateSecond"
           onClick={toggle(false)}
         >

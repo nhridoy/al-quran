@@ -20,8 +20,7 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah }) => {
           {ayah.numberInSurah}
         </p>
         {ayah.sajda.recommended &&
-          (window.matchMedia &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches ? (
+          (globalThis.matchMedia?.("(prefers-color-scheme: dark)").matches ? (
             <img
               src="https://img.icons8.com/external-jumpicon-glyph-ayub-irawan/32/ffffff/external-_10-ramadan-jumpicon-(glyph)-jumpicon-glyph-ayub-irawan.png"
               alt="Sajdah Here"
