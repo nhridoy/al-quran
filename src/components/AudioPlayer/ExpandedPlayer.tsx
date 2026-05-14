@@ -256,7 +256,7 @@ export default function ExpandedPlayer() {
         </div>
 
         <div className="flex items-center gap-4 px-4 h-20 max-w-7xl mx-auto">
-          <div className="flex items-center gap-3 flex-1 min-w-0">
+          <div className="flex items-center gap-3 min-w-0">
             <VinylDisc isPlaying={isPlaying} />
             <div className="min-w-0">
               <p className="text-sm font-semibold text-gray-900 dark:text-white truncate">
@@ -265,100 +265,95 @@ export default function ExpandedPlayer() {
               <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
                 Ayah {currentTrack.ayahNumber}
               </p>
-              <p className="text-xs text-gray-400 dark:text-gray-500 truncate font-arabic">
-                {currentTrack.arabicText}
-              </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-1">
-            <button
-              type="button"
-              onClick={toggleShuffle}
-              className={`p-2 rounded-full transition-colors ${
-                isShuffled
-                  ? "text-secondary bg-secondary/10"
-                  : "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
-              }`}
-              aria-label="Toggle shuffle"
-            >
-              <ShuffleIcon />
-            </button>
-            <button
-              type="button"
-              onClick={prev}
-              className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-              aria-label="Previous"
-            >
-              <svg
-                className="w-5 h-5"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
-              </svg>
-            </button>
-            <button
-              type="button"
-              onClick={togglePlay}
-              className="p-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all"
-              aria-label={isPlaying ? "Pause" : "Play"}
-            >
-              {isPlaying ? (
-                <svg
-                  className="w-6 h-6"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <rect x="6" y="4" width="4" height="16" rx="1" />
-                  <rect x="14" y="4" width="4" height="16" rx="1" />
-                </svg>
-              ) : (
-                <svg
-                  className="w-6 h-6 ml-0.5"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <polygon points="6,4 20,12 6,20" />
-                </svg>
-              )}
-            </button>
-            <button
-              type="button"
-              onClick={next}
-              className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-              aria-label="Next"
-            >
-              <svg
-                className="w-5 h-5"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
-              </svg>
-            </button>
-            <button
-              type="button"
-              onClick={cycleRepeat}
-              className={`p-2 rounded-full transition-colors ${
-                repeatMode !== "none"
-                  ? "text-secondary bg-secondary/10"
-                  : "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
-              }`}
-              aria-label="Cycle repeat mode"
-            >
-              <RepeatIcon mode={repeatMode} />
-            </button>
-          </div>
-
-          <div className="flex items-center gap-2 flex-1 justify-end">
+          <div className="flex items-center gap-3 flex-1 justify-center">
             <SeekBar />
-
-            <div className="flex items-center gap-1 ml-2">
+            <div className="flex items-center gap-1">
+              <button
+                type="button"
+                onClick={toggleShuffle}
+                className={`p-2 rounded-full transition-colors ${
+                  isShuffled
+                    ? "text-secondary bg-secondary/10"
+                    : "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+                }`}
+                aria-label="Toggle shuffle"
+              >
+                <ShuffleIcon />
+              </button>
+              <button
+                type="button"
+                onClick={prev}
+                className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                aria-label="Previous"
+              >
+                <svg
+                  className="w-5 h-5"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                onClick={togglePlay}
+                className="p-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all"
+                aria-label={isPlaying ? "Pause" : "Play"}
+              >
+                {isPlaying ? (
+                  <svg
+                    className="w-6 h-6"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <rect x="6" y="4" width="4" height="16" rx="1" />
+                    <rect x="14" y="4" width="4" height="16" rx="1" />
+                  </svg>
+                ) : (
+                  <svg
+                    className="w-6 h-6 ml-0.5"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <polygon points="6,4 20,12 6,20" />
+                  </svg>
+                )}
+              </button>
+              <button
+                type="button"
+                onClick={next}
+                className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                aria-label="Next"
+              >
+                <svg
+                  className="w-5 h-5"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                onClick={cycleRepeat}
+                className={`p-2 rounded-full transition-colors ${
+                  repeatMode !== "none"
+                    ? "text-secondary bg-secondary/10"
+                    : "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+                }`}
+                aria-label="Cycle repeat mode"
+              >
+                <RepeatIcon mode={repeatMode} />
+              </button>
+            </div>
+            <div className="flex items-center gap-1">
               <button
                 type="button"
                 onClick={() => setVolume(volume === 0 ? 0.7 : 0)}
@@ -379,7 +374,9 @@ export default function ExpandedPlayer() {
                 aria-label="Volume"
               />
             </div>
+          </div>
 
+          <div className="flex items-center gap-1">
             <button
               type="button"
               onClick={togglePlaylist}
@@ -388,7 +385,6 @@ export default function ExpandedPlayer() {
             >
               <PlaylistIcon />
             </button>
-
             <button
               type="button"
               onClick={minimize}
@@ -439,17 +435,8 @@ export default function ExpandedPlayer() {
             <p className="text-2xl font-bold text-white mb-1">
               {currentTrack.enName}
             </p>
-            <p className="text-lg text-white/80 mb-1">
-              {currentTrack.surahName}
-            </p>
             <p className="text-sm text-white/60">
               Ayah {currentTrack.ayahNumber}
-            </p>
-            <p className="text-base text-white/70 mt-4 leading-relaxed font-arabic">
-              {currentTrack.arabicText}
-            </p>
-            <p className="text-sm text-white/50 mt-2 italic">
-              {currentTrack.transliterationText || currentTrack.translationText}
             </p>
           </div>
         </div>
