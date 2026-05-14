@@ -6,11 +6,8 @@ const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 
 function Spinner() {
   return (
-    <svg
-      className="w-5 h-5 animate-[spin_1s_linear_infinite]"
-      viewBox="0 0 24 24"
-      fill="none"
-    >
+    <svg className="w-5 h-5 animate-spin" viewBox="0 0 24 24" fill="none">
+      <title>Loading</title>
       <circle
         cx="12"
         cy="12"
@@ -62,7 +59,7 @@ export default function MiniPlayer() {
         <button
           type="button"
           onClick={expand}
-          className="w-full h-full rounded-full bg-gradient-to-br from-primary to-secondary shadow-2xl shadow-primary/40 flex items-center justify-center hover:scale-105 active:scale-95 transition-transform duration-200 cursor-pointer"
+          className="flex items-center justify-center w-full h-full transition-transform duration-200 rounded-full shadow-2xl cursor-pointer bg-linear-to-br from-primary to-secondary shadow-primary/40 hover:scale-105 active:scale-95"
           aria-label="Expand player"
           title="Expand"
         >
@@ -100,7 +97,7 @@ export default function MiniPlayer() {
             e.stopPropagation();
             togglePlay();
           }}
-          className="absolute inset-0 m-auto w-10 h-10 z-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 transition-colors cursor-pointer"
+          className="absolute inset-0 z-10 flex items-center justify-center w-10 h-10 m-auto text-white transition-colors rounded-full cursor-pointer bg-white/20 backdrop-blur-sm hover:bg-white/30"
           aria-label={isPlaying ? "Pause" : "Play"}
           title={isPlaying ? "Pause" : "Play"}
         >
