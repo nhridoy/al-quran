@@ -1,6 +1,8 @@
+import { useEffect, useState } from "react";
 import { useAudioPlayer } from "./AudioPlayerContext";
 
 export default function PlaylistDrawer() {
+  const [leaving, setLeaving] = useState(false);
   const {
     showPlaylist,
     setShowPlaylist,
@@ -11,7 +13,19 @@ export default function PlaylistDrawer() {
     duration,
   } = useAudioPlayer();
 
-  if (!showPlaylist) return null;
+  useEffect(() => {
+    if (showPlaylist) setLeaving(false);
+  }, [showPlaylist]);
+
+  const handleClose = () => {
+    setLeaving(true);
+    setTimeout(() => {
+      setShowPlaylist(false);
+      setLeaving(false);
+    }, 300);
+  };
+
+  if (!showPlaylist && !leaving) return null;
 
   const grouped = new Map<
     number,
@@ -34,19 +48,29 @@ export default function PlaylistDrawer() {
     <div className="fixed inset-0 z-[100] flex items-end justify-center">
       <button
         type="button"
-        className="absolute inset-0 bg-black/40 backdrop-blur-sm animate-[fadeIn_0.2s_ease-out] cursor-default"
-        onClick={() => setShowPlaylist(false)}
+        className={`absolute inset-0 bg-black/40 backdrop-blur-sm cursor-default ${
+          leaving
+            ? "transition-all duration-300 ease-in-out opacity-0"
+            : "animate-[fadeIn_0.2s_ease-out]"
+        }`}
+        onClick={handleClose}
         aria-label="Close playlist overlay"
       />
 
-      <div className="relative w-full max-w-2xl max-h-[75vh] bg-white dark:bg-[#1a1f24] rounded-t-2xl shadow-2xl overflow-hidden animate-[slideUp_0.3s_ease-out]">
+      <div
+        className={`relative w-full max-w-2xl max-h-[75vh] bg-white dark:bg-[#1a1f24] rounded-t-2xl shadow-2xl overflow-hidden ${
+          leaving
+            ? "transition-all duration-300 ease-in-out translate-y-full"
+            : "animate-[slideUp_0.3s_ease-out]"
+        }`}
+      >
         <div className="flex items-center justify-between px-5 py-4 border-b border-gray-200 dark:border-gray-700">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
             Playlist
           </h3>
           <button
             type="button"
-            onClick={() => setShowPlaylist(false)}
+            onClick={handleClose}
             className="p-1.5 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors"
             aria-label="Close playlist"
           >
