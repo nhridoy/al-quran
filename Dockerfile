@@ -3,6 +3,9 @@ FROM node:24-alpine AS builder
 
 WORKDIR /app
 
+# Update system packages to fix known vulnerabilities
+RUN apk update && apk upgrade --no-cache
+
 # Install pnpm
 RUN npm install -g pnpm
 
@@ -22,6 +25,9 @@ RUN pnpm run build
 FROM node:24-alpine
 
 WORKDIR /app
+
+# Update system packages to fix known vulnerabilities
+RUN apk update && apk upgrade --no-cache
 
 # Install serve to run the built app
 RUN npm install -g serve
