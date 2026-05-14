@@ -34,42 +34,41 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah }) => {
       className="flex flex-col gap-4 p-4 border-b-2 rounded-lg"
     >
       <div className="flex bg-secondaryLight dark:bg-[#191f24] p-3 rounded-lg justify-between items-center">
-        <button
-          type="button"
-          onClick={handlePlay}
-          className={`w-10 h-10 rounded-full font-semibold flex justify-center items-center cursor-pointer transition-all ${
-            isCurrentAyah
-              ? "bg-secondary text-white shadow-md"
-              : "bg-primary dark:bg-secondaryLight text-white dark:text-[#191f24] hover:bg-secondary"
-          }`}
-          aria-label={
-            isThisAyahPlaying ? "Pause" : `Play ayah ${ayah.numberInSurah}`
-          }
-          title={
-            isThisAyahPlaying ? "Pause" : `Play ayah ${ayah.numberInSurah}`
-          }
-        >
-          {isThisAyahPlaying ? (
-            <BiPause size={18} />
-          ) : (
-            <BiPlay size={18} className="ml-0.5" />
-          )}
-        </button>
-        {ayah.sajda.recommended &&
-          (globalThis.matchMedia?.("(prefers-color-scheme: dark)").matches ? (
-            <img
-              src="https://img.icons8.com/external-jumpicon-glyph-ayub-irawan/32/ffffff/external-_10-ramadan-jumpicon-(glyph)-jumpicon-glyph-ayub-irawan.png"
-              alt="Sajdah Here"
-            />
-          ) : (
-            <img
-              src="https://img.icons8.com/external-jumpicon-glyph-ayub-irawan/32/000000/external-_10-ramadan-jumpicon-(glyph)-jumpicon-glyph-ayub-irawan.png"
-              alt="Sajdah Here"
-            />
-          ))}
+        <div className="flex items-center gap-3">
+          <span className="w-10 h-10 rounded-full font-semibold flex justify-center items-center bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 select-none">
+            {ayah.numberInSurah}
+          </span>
+          {ayah.sajda.recommended &&
+            (globalThis.matchMedia?.("(prefers-color-scheme: dark)").matches ? (
+              <img
+                src="https://img.icons8.com/external-jumpicon-glyph-ayub-irawan/32/ffffff/external-_10-ramadan-jumpicon-(glyph)-jumpicon-glyph-ayub-irawan.png"
+                alt="Sajdah Here"
+              />
+            ) : (
+              <img
+                src="https://img.icons8.com/external-jumpicon-glyph-ayub-irawan/32/000000/external-_10-ramadan-jumpicon-(glyph)-jumpicon-glyph-ayub-irawan.png"
+                alt="Sajdah Here"
+              />
+            ))}
+        </div>
 
-        <div className="flex gap-4 text-2xl text-primary dark:text-secondaryLight">
+        <div className="flex gap-4 text-2xl text-primary dark:text-secondaryLight items-center">
           <BiShareAlt className="cursor-pointer" />
+          {isThisAyahPlaying ? (
+            <BiPause
+              size={18}
+              className="cursor-pointer text-secondary"
+              onClick={handlePlay}
+              title="Pause"
+            />
+          ) : (
+            <BiPlay
+              size={18}
+              className={`cursor-pointer ml-0.5 ${isCurrentAyah ? "text-secondary" : ""}`}
+              onClick={handlePlay}
+              title={`Play ayah ${ayah.numberInSurah}`}
+            />
+          )}
           <BiBookmark className="cursor-pointer" />
         </div>
       </div>
