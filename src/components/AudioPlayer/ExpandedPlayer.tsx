@@ -437,7 +437,7 @@ export default function ExpandedPlayer() {
           </h2>
           <button
             type="button"
-            onClick={minimize}
+            onClick={handleMinimize}
             className="p-2 rounded-full text-white/70 hover:bg-white/10 transition-colors"
             aria-label="Minimize"
           >
