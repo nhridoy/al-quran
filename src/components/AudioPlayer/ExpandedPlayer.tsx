@@ -350,7 +350,7 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={next}
-                className="p-2 rounded-full cursor-pointer text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="p-2 rounded-full cursor-pointer text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all active:scale-90"
                 aria-label="Next"
                 title="Next"
               >
@@ -381,7 +381,7 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={() => setVolume(volume === 0 ? 0.7 : 0)}
-                className="p-2 rounded-full cursor-pointer text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="p-2 rounded-full cursor-pointer text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all active:scale-90"
                 aria-label="Toggle mute"
                 title={volume === 0 ? "Unmute" : "Mute"}
               >
@@ -405,7 +405,7 @@ export default function ExpandedPlayer() {
             <button
               type="button"
               onClick={togglePlaylist}
-              className="p-2 rounded-full cursor-pointer text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="p-2 rounded-full cursor-pointer text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all active:scale-90"
               aria-label="Playlist"
               title="Playlist"
             >
@@ -414,7 +414,7 @@ export default function ExpandedPlayer() {
             <button
               type="button"
               onClick={handleMinimize}
-              className="p-2 rounded-full cursor-pointer text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="p-2 rounded-full cursor-pointer text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all active:scale-90"
               aria-label="Minimize"
               title="Minimize"
             >
@@ -435,7 +435,7 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={togglePlaylist}
-            className="p-2 rounded-full cursor-pointer text-white/70 hover:bg-white/10 transition-colors"
+            className="p-2 rounded-full cursor-pointer text-white/70 hover:bg-white/10 transition-all active:scale-90"
             aria-label="Playlist"
             title="Playlist"
           >
@@ -447,7 +447,7 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={handleMinimize}
-            className="p-2 rounded-full cursor-pointer text-white/70 hover:bg-white/10 transition-colors"
+            className="p-2 rounded-full cursor-pointer text-white/70 hover:bg-white/10 transition-all active:scale-90"
             aria-label="Minimize"
             title="Minimize"
           >
@@ -541,7 +541,7 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={next}
-            className="p-3 rounded-full cursor-pointer text-white/80 hover:bg-white/10 transition-colors"
+            className="p-3 rounded-full cursor-pointer text-white/80 hover:bg-white/10 transition-all active:scale-90"
             aria-label="Next"
             title="Next"
           >
