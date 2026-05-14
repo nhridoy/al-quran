@@ -76,6 +76,26 @@ function PlaylistIcon() {
   );
 }
 
+function Spinner({ className }: { className?: string }) {
+  return (
+    <svg
+      className={`${className ?? "w-5 h-5"} animate-[spin_1s_linear_infinite]`}
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <circle
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeDasharray="31.4 31.4"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 function ChevronDownIcon() {
   return (
     <svg
@@ -226,6 +246,7 @@ export default function ExpandedPlayer() {
   const {
     isExpanded,
     isPlaying,
+    isLoading,
     currentTrack,
     minimize,
     togglePlay,
@@ -323,10 +344,14 @@ export default function ExpandedPlayer() {
                 type="button"
                 onClick={togglePlay}
                 className="p-3 rounded-full cursor-pointer bg-gradient-to-r from-primary to-secondary text-white shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all"
-                aria-label={isPlaying ? "Pause" : "Play"}
-                title={isPlaying ? "Pause" : "Play"}
+                aria-label={
+                  isLoading ? "Loading" : isPlaying ? "Pause" : "Play"
+                }
+                title={isLoading ? "Loading" : isPlaying ? "Pause" : "Play"}
               >
-                {isPlaying ? (
+                {isLoading ? (
+                  <Spinner className="w-6 h-6" />
+                ) : isPlaying ? (
                   <svg
                     className="w-6 h-6"
                     viewBox="0 0 24 24"
@@ -517,10 +542,12 @@ export default function ExpandedPlayer() {
             type="button"
             onClick={togglePlay}
             className="p-5 rounded-full cursor-pointer bg-white text-primary shadow-2xl hover:scale-105 active:scale-95 transition-transform"
-            aria-label={isPlaying ? "Pause" : "Play"}
-            title={isPlaying ? "Pause" : "Play"}
+            aria-label={isLoading ? "Loading" : isPlaying ? "Pause" : "Play"}
+            title={isLoading ? "Loading" : isPlaying ? "Pause" : "Play"}
           >
-            {isPlaying ? (
+            {isLoading ? (
+              <Spinner className="w-8 h-8" />
+            ) : isPlaying ? (
               <svg
                 className="w-8 h-8"
                 viewBox="0 0 24 24"

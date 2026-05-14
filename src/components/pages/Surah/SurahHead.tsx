@@ -1,5 +1,9 @@
 import type React from "react";
-import { CgPlayTrackNextO, CgPlayTrackPrevO } from "react-icons/cg";
+import {
+  CgPlayTrackNextO,
+  CgPlayTrackPrevO,
+  CgSpinnerTwo,
+} from "react-icons/cg";
 import { FiPauseCircle, FiPlayCircle } from "react-icons/fi";
 import {
   buildPlaylistFromSurah,
@@ -12,8 +16,15 @@ interface SurahHeadProps {
 }
 
 export const SurahHead: React.FC<SurahHeadProps> = ({ surah }) => {
-  const { currentTrack, isPlaying, togglePlay, setPlaylist, prev, next } =
-    useAudioPlayer();
+  const {
+    currentTrack,
+    isPlaying,
+    isLoading,
+    togglePlay,
+    setPlaylist,
+    prev,
+    next,
+  } = useAudioPlayer();
 
   const isCurrentSurah = currentTrack?.surahNo === surah.no;
 
@@ -81,22 +92,24 @@ export const SurahHead: React.FC<SurahHeadProps> = ({ surah }) => {
       </p>
       <div className="flex gap-5">
         <CgPlayTrackPrevO
-          className="mb-4 text-4xl cursor-pointer md:mb-0 transition-transform active:scale-90"
+          className="mb-4 text-4xl transition-transform cursor-pointer md:mb-0 active:scale-90"
           onClick={handlePrev}
         />
-        {isCurrentSurah && isPlaying ? (
+        {isLoading ? (
+          <CgSpinnerTwo className="mb-4 text-4xl cursor-pointer md:mb-0 animate-spin" />
+        ) : isCurrentSurah && isPlaying ? (
           <FiPauseCircle
-            className="mb-4 text-4xl cursor-pointer md:mb-0 transition-transform active:scale-90"
+            className="mb-4 text-4xl transition-transform cursor-pointer md:mb-0 active:scale-90"
             onClick={handlePlay}
           />
         ) : (
           <FiPlayCircle
-            className="mb-4 text-4xl cursor-pointer md:mb-0 transition-transform active:scale-90"
+            className="mb-4 text-4xl transition-transform cursor-pointer md:mb-0 active:scale-90"
             onClick={handlePlay}
           />
         )}
         <CgPlayTrackNextO
-          className="mb-4 text-4xl cursor-pointer md:mb-0 transition-transform active:scale-90"
+          className="mb-4 text-4xl transition-transform cursor-pointer md:mb-0 active:scale-90"
           onClick={handleNext}
         />
       </div>

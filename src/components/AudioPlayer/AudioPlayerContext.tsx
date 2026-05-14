@@ -107,6 +107,7 @@ export function AudioPlayerProvider({
   const [repeatMode, setRepeatMode] = useState<RepeatMode>("none");
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
   const [showPlaylist, setShowPlaylist] = useState(false);
 
   const isPlayingRef = useRef(false);
@@ -191,14 +192,23 @@ export function AudioPlayerProvider({
         }
       }
     };
+    const onWaiting = () => {
+      setIsLoading(true);
+    };
+    const onCanPlay = () => {
+      setIsLoading(false);
+    };
     const onError = () => {
       setIsPlaying(false);
       isPlayingRef.current = false;
+      setIsLoading(false);
     };
 
     audio.addEventListener("timeupdate", onTimeUpdate);
     audio.addEventListener("loadedmetadata", onLoadedMetadata);
     audio.addEventListener("ended", onEnded);
+    audio.addEventListener("waiting", onWaiting);
+    audio.addEventListener("canplay", onCanPlay);
     audio.addEventListener("error", onError);
 
     return () => {
@@ -219,6 +229,7 @@ export function AudioPlayerProvider({
     currentIndexRef.current = index;
     setCurrentTrack(track);
     currentTrackRef.current = track;
+    setIsLoading(true);
     const audio = audioRef.current;
     if (!audio) return;
     audio.src = track.audioUrl;
@@ -394,6 +405,7 @@ export function AudioPlayerProvider({
   const value: AudioPlayerContextType = {
     isExpanded,
     isPlaying,
+    isLoading,
     currentTrack,
     playlist,
     currentIndex,

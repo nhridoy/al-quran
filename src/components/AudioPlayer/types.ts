@@ -16,6 +16,7 @@ export type RepeatMode = "none" | "all" | "one";
 export interface AudioPlayerState {
   isExpanded: boolean;
   isPlaying: boolean;
+  isLoading: boolean;
   currentTrack: Track | null;
   playlist: Track[];
   currentIndex: number;

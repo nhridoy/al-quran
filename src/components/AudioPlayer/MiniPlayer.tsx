@@ -4,12 +4,33 @@ import { useAudioPlayer } from "./AudioPlayerContext";
 const RADIUS = 28;
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 
+function Spinner() {
+  return (
+    <svg
+      className="w-5 h-5 animate-[spin_1s_linear_infinite]"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <circle
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeDasharray="31.4 31.4"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 export default function MiniPlayer() {
   const [entering, setEntering] = useState(true);
   const {
     currentTrack,
     isExpanded,
     isPlaying,
+    isLoading,
     currentTime,
     duration,
     expand,
@@ -83,7 +104,9 @@ export default function MiniPlayer() {
           aria-label={isPlaying ? "Pause" : "Play"}
           title={isPlaying ? "Pause" : "Play"}
         >
-          {isPlaying ? (
+          {isLoading ? (
+            <Spinner />
+          ) : isPlaying ? (
             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
               <title>Pause</title>
               <rect x="6" y="4" width="4" height="16" rx="1" />
