@@ -9,9 +9,7 @@ const SurahList = loadable(() => import("../SurahList/SurahList"));
 const Surahs: React.FC = () => {
   const [surahs, setSurahs] = React.useState<SurahData[]>([]);
 
-  useEffect(() => loadSurahList(), []);
-
-  const loadSurahList = () => {
+  useEffect(() => {
     const isLoaded = Number.parseInt(
       localStorage.getItem("isLoaded") || "0",
       10,
@@ -25,7 +23,7 @@ const Surahs: React.FC = () => {
     }
     setSurahs(surahList);
     document.title = "Al Quran - Surah List";
-  };
+  }, []);
 
   return (
     <div className="">
