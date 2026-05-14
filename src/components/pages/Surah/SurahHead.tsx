@@ -1,21 +1,19 @@
-import React from "react";
+import type React from "react";
 import { CgPlayTrackNextO, CgPlayTrackPrevO } from "react-icons/cg";
 import { FiPauseCircle, FiPlayCircle } from "react-icons/fi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useMusic } from "../../../context/MusicContext";
 import type { SurahData } from "../../../types";
 
 interface SurahHeadProps {
   surah: SurahData;
-  audioInstance:;
 }
 
-export const SurahHead: React.FC<SurahHeadProps> = ({
-  surah,
-  audioInstance,
-}) => {
-  const [isPlaying, setIsPlaying] = React.useState(false);
+export const SurahHead: React.FC<SurahHeadProps> = ({ surah }) => {
+  const { isPlaying, play, pause, playNext, playPrev } = useMusic();
   const notify = () => toast.warning("Audio is Loading...");
+
   return (
     <div className="flex flex-col items-center gap-3 px-5 py-1 mb-5 text-white shadow-lg md:flex-row md:justify-around md:px-8 bg-gradient-to-tl rounded-2xl from-alternateOne to-secondary shadow-alternateOne">
       <div className="flex flex-col items-center gap-3 px-3 py-5 border-b md:border-b-0">
@@ -53,11 +51,10 @@ export const SurahHead: React.FC<SurahHeadProps> = ({
       </p>
       <div className="flex gap-5">
         <CgPlayTrackPrevO
-          className="mb-4 text-4xl cursor-pointer md:mb-0"
+          className="mb-4 text-4xl transition-opacity cursor-pointer md:mb-0 hover:text-opacity-70"
           onClick={() => {
             try {
-              audioInstance.playPrev();
-              setIsPlaying(true);
+              playPrev();
             } catch (e) {
               notify();
             }
@@ -65,11 +62,10 @@ export const SurahHead: React.FC<SurahHeadProps> = ({
         />
         {isPlaying ? (
           <FiPauseCircle
-            className="mb-4 text-4xl cursor-pointer md:mb-0"
+            className="mb-4 text-4xl transition-opacity cursor-pointer md:mb-0 hover:text-opacity-70"
             onClick={() => {
               try {
-                audioInstance.pause();
-                setIsPlaying(false);
+                pause();
               } catch (e) {
                 notify();
               }
@@ -77,11 +73,10 @@ export const SurahHead: React.FC<SurahHeadProps> = ({
           />
         ) : (
           <FiPlayCircle
-            className="mb-4 text-4xl cursor-pointer md:mb-0"
+            className="mb-4 text-4xl transition-opacity cursor-pointer md:mb-0 hover:text-opacity-70"
             onClick={() => {
               try {
-                audioInstance.play();
-                setIsPlaying(true);
+                play();
               } catch (e) {
                 notify();
               }
@@ -89,11 +84,10 @@ export const SurahHead: React.FC<SurahHeadProps> = ({
           />
         )}
         <CgPlayTrackNextO
-          className="mb-4 text-4xl cursor-pointer md:mb-0"
+          className="mb-4 text-4xl transition-opacity cursor-pointer md:mb-0 hover:text-opacity-70"
           onClick={() => {
             try {
-              audioInstance.playNext();
-              setIsPlaying(true);
+              playNext();
             } catch (e) {
               notify();
             }

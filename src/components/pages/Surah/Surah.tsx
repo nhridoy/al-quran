@@ -1,6 +1,7 @@
 import loadable from "@loadable/component";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useMusic } from "../../../context/MusicContext";
 import type { SurahData, Verse } from "../../../types";
 import { Header } from "../../Header/Header";
 import { SurahHead } from "./SurahHead";
@@ -17,6 +18,7 @@ export const Surah: React.FC = () => {
     singer?: number;
   }>({} as { totalNumber: number; name?: string; singer?: number });
 
+  const { setPlaylist, currentTrack } = useMusic();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -70,19 +72,30 @@ export const Surah: React.FC = () => {
     }
   }, [currentPlaying, ayahs]);
 
+  // Sync current playing from music context
+  useEffect(() => {
+    if (currentTrack) {
+      setCurrentPlaying({
+        totalNumber: currentTrack.verse.totalNumber,
+        name: currentTrack.surahName,
+      });
+    }
+  }, [currentTrack]);
+
   const loadSurahAyahs = () => {
     if (!id) return;
     const surahData: SurahData = JSON.parse(localStorage.getItem(id) || "{}");
     setSurah(surahData);
     document.title = surahData.enName;
     setAyahs(surahData.verses);
+    setPlaylist(surahData.verses, surahData.name);
   };
 
   return (
     <div>
       <div className="bg-white dark:bg-[#20282e] sticky top-0 left-0 w-full">
         <Header surah={surah} />
-        <SurahHead surah={surah} audioInstance={} />
+        <SurahHead surah={surah} />
       </div>
 
       <div className="flex flex-col gap-3">

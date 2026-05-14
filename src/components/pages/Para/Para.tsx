@@ -1,6 +1,6 @@
-import loadable from "@loadable/component";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useMusic } from "../../../context/MusicContext";
 import type { ParaSurah, Verse } from "../../../types";
 import { paraCreation } from "../../../utilities/paraCreation";
 import { Header } from "../../Header/Header";
@@ -15,6 +15,7 @@ export const Para: React.FC = () => {
 
   const [ayahs, setAyahs] = React.useState<Verse[]>([]);
   const { id } = useParams();
+  const { setPlaylist, currentTrack } = useMusic();
 
   useEffect(() => {
     document.title = `Para - ${id}`;
@@ -28,13 +29,16 @@ export const Para: React.FC = () => {
     setAyahs([]);
     document.querySelector("html")?.classList.remove("overflow-x-hidden");
     document.querySelector("body")?.classList.remove("overflow-x-hidden");
+    const allAyahs: Verse[] = [];
     para?.forEach((surah) => {
       surah.verses.forEach((ayah) => {
-        setAyahs((prev) => [...prev, ayah]);
+        allAyahs.push(ayah);
       });
     });
+    setAyahs(allAyahs);
+    setPlaylist(allAyahs, `Para ${id}`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     const current = currentPlaying.totalNumber;
@@ -76,6 +80,16 @@ export const Para: React.FC = () => {
       }
     }
   }, [currentPlaying, ayahs]);
+
+  // Sync current playing from music context
+  useEffect(() => {
+    if (currentTrack) {
+      setCurrentPlaying({
+        totalNumber: currentTrack.verse.totalNumber,
+        name: currentTrack.surahName,
+      });
+    }
+  }, [currentTrack]);
 
   return (
     <div className="">
