@@ -7,12 +7,7 @@ import type { SurahData } from "../../../types";
 
 interface SurahHeadProps {
   surah: SurahData;
-  audioInstance: {
-    playPrev?: () => void;
-    playNext?: () => void;
-    play?: () => void;
-    pause?: () => void;
-  } | null;
+  audioInstance:;
 }
 
 export const SurahHead: React.FC<SurahHeadProps> = ({
@@ -22,18 +17,18 @@ export const SurahHead: React.FC<SurahHeadProps> = ({
   const [isPlaying, setIsPlaying] = React.useState(false);
   const notify = () => toast.warning("Audio is Loading...");
   return (
-    <div className="flex flex-col md:flex-row md:justify-around md:px-8 items-center px-5 py-1 gap-3 bg-gradient-to-tl rounded-2xl text-white from-alternateOne to-secondary mb-5 shadow-lg shadow-alternateOne">
-      <div className="flex flex-col items-center gap-3 border-b md:border-b-0 py-5 px-3">
+    <div className="flex flex-col items-center gap-3 px-5 py-1 mb-5 text-white shadow-lg md:flex-row md:justify-around md:px-8 bg-gradient-to-tl rounded-2xl from-alternateOne to-secondary shadow-alternateOne">
+      <div className="flex flex-col items-center gap-3 px-3 py-5 border-b md:border-b-0">
         <div className="flex gap-3 md:gap-8">
-          <h2 className="font-semibold text-xl">{surah.name}</h2>
-          <h2 className="font-semibold text-xl">{surah.bnNameTranslation}</h2>
+          <h2 className="text-xl font-semibold">{surah.name}</h2>
+          <h2 className="text-xl font-semibold">{surah.bnNameTranslation}</h2>
         </div>
         <div className="flex gap-3 md:gap-8">
-          <h2 className="font-semibold text-xl">{surah.enName}</h2>
-          <h2 className="font-semibold text-xl">{surah.enNameTranslation}</h2>
+          <h2 className="text-xl font-semibold">{surah.enName}</h2>
+          <h2 className="text-xl font-semibold">{surah.enNameTranslation}</h2>
         </div>
       </div>
-      <div className="flex uppercase gap-3">
+      <div className="flex gap-3 uppercase">
         <span className="flex items-center gap-1">
           {surah.revelationType === "Meccan" ? (
             <img
@@ -53,15 +48,15 @@ export const SurahHead: React.FC<SurahHeadProps> = ({
         <span>&bull;</span>
         <p>{surah.numberOfAyahs} Varses</p>
       </div>
-      <p className="text-2xl mb-4 md:mb-0">
+      <p className="mb-4 text-2xl md:mb-0">
         بِسْــــــــــــــــــمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ
       </p>
       <div className="flex gap-5">
         <CgPlayTrackPrevO
-          className="text-4xl cursor-pointer mb-4 md:mb-0"
+          className="mb-4 text-4xl cursor-pointer md:mb-0"
           onClick={() => {
             try {
-              audioInstance?.playPrev?.();
+              audioInstance.playPrev();
               setIsPlaying(true);
             } catch (e) {
               notify();
@@ -70,10 +65,10 @@ export const SurahHead: React.FC<SurahHeadProps> = ({
         />
         {isPlaying ? (
           <FiPauseCircle
-            className="text-4xl cursor-pointer mb-4 md:mb-0"
+            className="mb-4 text-4xl cursor-pointer md:mb-0"
             onClick={() => {
               try {
-                audioInstance?.pause?.();
+                audioInstance.pause();
                 setIsPlaying(false);
               } catch (e) {
                 notify();
@@ -82,10 +77,10 @@ export const SurahHead: React.FC<SurahHeadProps> = ({
           />
         ) : (
           <FiPlayCircle
-            className="text-4xl cursor-pointer mb-4 md:mb-0"
+            className="mb-4 text-4xl cursor-pointer md:mb-0"
             onClick={() => {
               try {
-                audioInstance?.play?.();
+                audioInstance.play();
                 setIsPlaying(true);
               } catch (e) {
                 notify();
@@ -94,10 +89,10 @@ export const SurahHead: React.FC<SurahHeadProps> = ({
           />
         )}
         <CgPlayTrackNextO
-          className="text-4xl cursor-pointer mb-4 md:mb-0"
+          className="mb-4 text-4xl cursor-pointer md:mb-0"
           onClick={() => {
             try {
-              audioInstance?.playNext?.();
+              audioInstance.playNext();
               setIsPlaying(true);
             } catch (e) {
               notify();

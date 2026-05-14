@@ -6,15 +6,13 @@ import { paraCreation } from "../../../utilities/paraCreation";
 import { Header } from "../../Header/Header";
 import { ParaHead } from "../ParaHead/ParaHead";
 
-const Player = loadable(() => import("../Surah/Player"));
-
 export const Para: React.FC = () => {
   const [currentPlaying, setCurrentPlaying] = React.useState<{
     totalNumber: number;
     name?: string;
     singer?: number;
   }>({} as { totalNumber: number; name?: string; singer?: number });
-  const [, setAudioInstance] = React.useState<unknown>(null);
+
   const [ayahs, setAyahs] = React.useState<Verse[]>([]);
   const { id } = useParams();
 
@@ -84,13 +82,9 @@ export const Para: React.FC = () => {
       <div className="sticky top-0 left-0 z-10 w-full bg-white">
         <Header head={`Para ${id}`} />
       </div>
-      <Player
-        audioInstance={setAudioInstance}
-        currentPlaying={setCurrentPlaying}
-        surah={para || []}
-      />
-      {para?.map((paraItem, index) => (
-        <ParaHead para={paraItem} key={index} />
+
+      {para?.map((paraItem) => (
+        <ParaHead para={paraItem} key={paraItem.no} />
       ))}
     </div>
   );

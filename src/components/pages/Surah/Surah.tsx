@@ -5,7 +5,6 @@ import type { SurahData, Verse } from "../../../types";
 import { Header } from "../../Header/Header";
 import { SurahHead } from "./SurahHead";
 
-const Player = loadable(() => import("./Player"));
 const Ayahs = loadable(() => import("../Ayahs/Ayahs"));
 
 export const Surah: React.FC = () => {
@@ -17,7 +16,7 @@ export const Surah: React.FC = () => {
     name?: string;
     singer?: number;
   }>({} as { totalNumber: number; name?: string; singer?: number });
-  const [setAudioInstance] = React.useState<unknown>(null);
+
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -83,13 +82,9 @@ export const Surah: React.FC = () => {
     <div>
       <div className="bg-white dark:bg-[#20282e] sticky top-0 left-0 w-full">
         <Header surah={surah} />
-        <SurahHead surah={surah} audioInstance={null} />
+        <SurahHead surah={surah} audioInstance={} />
       </div>
-      <Player
-        audioInstance={setAudioInstance}
-        currentPlaying={setCurrentPlaying}
-        surah={[]}
-      />
+
       <div className="flex flex-col gap-3">
         {ayahs.map((ayah) => (
           <Ayahs ayah={ayah} key={ayah.numberInSurah} />
