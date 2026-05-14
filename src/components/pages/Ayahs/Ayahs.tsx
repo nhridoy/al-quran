@@ -1,4 +1,5 @@
 import type React from "react";
+import { useEffect } from "react";
 import { BiBookmark, BiShareAlt } from "react-icons/bi";
 import { IoPauseOutline, IoPlayOutline } from "react-icons/io5";
 import {
@@ -18,6 +19,14 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah }) => {
   const isCurrentAyah = currentTrack?.totalNumber === ayah.totalNumber;
   const isThisAyahPlaying = isCurrentAyah && isPlaying;
 
+  useEffect(() => {
+    if (isCurrentAyah) {
+      document
+        .getElementById(`ayah-${ayah.totalNumber}`)
+        ?.scrollIntoView({ behavior: "smooth", block: "end" });
+    }
+  }, [isCurrentAyah, ayah.totalNumber]);
+
   const handlePlay = () => {
     if (!surah) return;
     if (isCurrentAyah) {
@@ -32,7 +41,9 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah }) => {
   return (
     <div
       id={`ayah-${ayah.totalNumber}`}
-      className="flex flex-col gap-4 p-4 border-b-2 rounded-lg"
+      className={`flex flex-col gap-4 p-4 border-b-2 border-[#20282e] dark:border-alternateOne rounded-lg transition-colors duration-300 ${
+        isCurrentAyah ? "bg-alternateSecondDeep dark:bg-[#14191d]" : ""
+      }`}
     >
       <div className="flex bg-secondaryLight dark:bg-[#191f24] p-3 rounded-lg justify-between items-center">
         <div className="flex items-center gap-3">
