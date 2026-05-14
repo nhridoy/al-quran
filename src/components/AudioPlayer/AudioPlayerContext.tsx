@@ -66,6 +66,23 @@ export function buildPlaylistFromSurah(surahData: {
   );
 }
 
+function generateShuffledOrder(length: number, startIndex: number): number[] {
+  const indices = Array.from({ length }, (_, i) => i);
+  if (startIndex >= 0) {
+    const without = indices.filter((i) => i !== startIndex);
+    for (let i = without.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [without[i], without[j]] = [without[j], without[i]];
+    }
+    return [startIndex, ...without];
+  }
+  for (let i = indices.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [indices[i], indices[j]] = [indices[j], indices[i]];
+  }
+  return indices;
+}
+
 const AudioPlayerContext = createContext<AudioPlayerContextType | null>(null);
 
 export function AudioPlayerProvider({
@@ -96,6 +113,8 @@ export function AudioPlayerProvider({
   const currentIndexRef = useRef(0);
   const repeatModeRef = useRef<RepeatMode>("none");
   const playAtIndexRef = useRef<(index: number) => void>(() => {});
+  const shuffledOrderRef = useRef<number[]>([]);
+  const shufflePositionRef = useRef(0);
 
   useEffect(() => {
     isPlayingRef.current = isPlaying;
@@ -132,15 +151,37 @@ export function AudioPlayerProvider({
       const mode = repeatModeRef.current;
       const idx = currentIndexRef.current;
       const pl = playlistRef.current;
+      const so = shuffledOrderRef.current;
+      const isShuff = so.length > 0;
+
+      const advanceShuffle = () => {
+        shufflePositionRef.current++;
+        if (shufflePositionRef.current >= so.length) {
+          shuffledOrderRef.current = generateShuffledOrder(pl.length, -1);
+          shufflePositionRef.current = 0;
+        }
+        return shuffledOrderRef.current[shufflePositionRef.current];
+      };
 
       if (mode === "one") {
         audio.currentTime = 0;
         audio.play().catch(() => {});
       } else if (mode === "all") {
-        const nextIndex = (idx + 1) % pl.length;
-        playAtIndexRef.current(nextIndex);
+        if (isShuff && so.length > 0) {
+          playAtIndexRef.current(advanceShuffle());
+        } else {
+          playAtIndexRef.current((idx + 1) % pl.length);
+        }
       } else {
-        if (idx < pl.length - 1) {
+        if (isShuff && so.length > 0) {
+          shufflePositionRef.current++;
+          if (shufflePositionRef.current < so.length) {
+            playAtIndexRef.current(so[shufflePositionRef.current]);
+          } else {
+            setIsPlaying(false);
+            isPlayingRef.current = false;
+          }
+        } else if (idx < pl.length - 1) {
           playAtIndexRef.current(idx + 1);
         } else {
           setIsPlaying(false);
@@ -247,21 +288,25 @@ export function AudioPlayerProvider({
   }, [isPlaying, currentTrack]);
 
   const next = useCallback(() => {
-    if (playlist.length === 0) return;
+    const pl = playlistRef.current;
+    if (pl.length === 0) return;
     let nextIdx: number;
     if (isShuffled) {
-      nextIdx = Math.floor(Math.random() * playlist.length);
-      while (nextIdx === currentIndex && playlist.length > 1) {
-        nextIdx = Math.floor(Math.random() * playlist.length);
+      shufflePositionRef.current++;
+      if (shufflePositionRef.current >= shuffledOrderRef.current.length) {
+        shuffledOrderRef.current = generateShuffledOrder(pl.length, -1);
+        shufflePositionRef.current = 0;
       }
+      nextIdx = shuffledOrderRef.current[shufflePositionRef.current];
     } else {
-      nextIdx = (currentIndex + 1) % playlist.length;
+      nextIdx = (currentIndexRef.current + 1) % pl.length;
     }
     playAtIndex(nextIdx);
-  }, [playlist, currentIndex, isShuffled, playAtIndex]);
+  }, [isShuffled, playAtIndex]);
 
   const prev = useCallback(() => {
-    if (playlist.length === 0) return;
+    const pl = playlistRef.current;
+    if (pl.length === 0) return;
     const audio = audioRef.current;
     if (audio && audio.currentTime > 3) {
       audio.currentTime = 0;
@@ -269,15 +314,15 @@ export function AudioPlayerProvider({
     }
     let prevIdx: number;
     if (isShuffled) {
-      prevIdx = Math.floor(Math.random() * playlist.length);
-      while (prevIdx === currentIndex && playlist.length > 1) {
-        prevIdx = Math.floor(Math.random() * playlist.length);
+      if (shufflePositionRef.current > 0) {
+        shufflePositionRef.current--;
       }
+      prevIdx = shuffledOrderRef.current[shufflePositionRef.current];
     } else {
-      prevIdx = (currentIndex - 1 + playlist.length) % playlist.length;
+      prevIdx = (currentIndexRef.current - 1 + pl.length) % pl.length;
     }
     playAtIndex(prevIdx);
-  }, [playlist, currentIndex, isShuffled, playAtIndex]);
+  }, [isShuffled, playAtIndex]);
 
   const seek = useCallback((time: number) => {
     const audio = audioRef.current;
@@ -297,7 +342,20 @@ export function AudioPlayerProvider({
   }, []);
 
   const toggleShuffle = useCallback(() => {
-    setIsShuffled((prev) => !prev);
+    setIsShuffled((prev) => {
+      if (!prev) {
+        const pl = playlistRef.current;
+        const idx = currentIndexRef.current;
+        if (pl.length > 0) {
+          shuffledOrderRef.current = generateShuffledOrder(pl.length, idx);
+          shufflePositionRef.current = 0;
+        }
+      } else {
+        shuffledOrderRef.current = [];
+        shufflePositionRef.current = 0;
+      }
+      return !prev;
+    });
   }, []);
 
   const cycleRepeat = useCallback(() => {
@@ -313,6 +371,13 @@ export function AudioPlayerProvider({
       setPlaylistState(tracks);
       playlistRef.current = tracks;
       if (tracks.length > 0 && tracks[startIndex]) {
+        if (shuffledOrderRef.current.length > 0) {
+          shuffledOrderRef.current = generateShuffledOrder(
+            tracks.length,
+            startIndex,
+          );
+          shufflePositionRef.current = 0;
+        }
         playAtIndex(startIndex);
         setIsExpanded(true);
       }
