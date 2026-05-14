@@ -87,8 +87,10 @@ const AudioPlayerContext = createContext<AudioPlayerContextType | null>(null);
 
 export function AudioPlayerProvider({
   children,
+  expandOnPlay = false,
 }: {
   children: React.ReactNode;
+  expandOnPlay?: boolean;
 }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -379,10 +381,10 @@ export function AudioPlayerProvider({
           shufflePositionRef.current = 0;
         }
         playAtIndex(startIndex);
-        setIsExpanded(true);
+        if (expandOnPlay) setIsExpanded(true);
       }
     },
-    [playAtIndex],
+    [playAtIndex, expandOnPlay],
   );
 
   const expand = useCallback(() => setIsExpanded(true), []);
