@@ -39,7 +39,7 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
       const idx = tracklist.findIndex(
         (t) => t.surahNo === surahNo && t.ayahNumber === ayah.numberInSurah,
       );
-      setPlaylist(tracklist, idx >= 0 ? idx : 0);
+      setPlaylist(tracklist, Math.max(idx, 0));
       return;
     }
     if (!surah) return;

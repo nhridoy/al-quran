@@ -38,25 +38,25 @@ export const SurahHead: React.FC<SurahHeadProps> = ({ surah }) => {
   };
 
   const handlePrev = () => {
-    if (!isCurrentSurah) {
+    if (isCurrentSurah) {
+      prev();
+    } else {
       const tracks = buildPlaylistFromSurah(surah);
       setPlaylist(tracks, 0);
-    } else {
-      prev();
     }
   };
 
   const handleNext = () => {
-    if (!isCurrentSurah) {
+    if (isCurrentSurah) {
+      next();
+    } else {
       const tracks = buildPlaylistFromSurah(surah);
       setPlaylist(tracks, 0);
-    } else {
-      next();
     }
   };
 
   return (
-    <div className="flex flex-col items-center gap-3 px-5 py-1 mb-5 text-white shadow-lg md:flex-row md:justify-around md:px-8 bg-gradient-to-tl rounded-2xl from-alternateOne to-secondary shadow-alternateOne">
+    <div className="flex flex-col items-center gap-3 px-5 py-1 mb-5 text-white shadow-lg md:flex-row md:justify-around md:px-8 bg-linear-to-tl rounded-2xl from-alternateOne to-secondary shadow-alternateOne">
       <div className="flex flex-col items-center gap-3 px-3 py-5 border-b md:border-b-0">
         <div className="flex gap-3 md:gap-8">
           <h2 className="text-xl font-semibold">{surah.name}</h2>

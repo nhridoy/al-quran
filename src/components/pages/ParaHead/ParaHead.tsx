@@ -55,23 +55,23 @@ export const ParaHead: React.FC<ParaHeadProps> = ({ para, allSegments }) => {
           t.surahNo === para.no &&
           t.ayahNumber === para.verses[0]?.numberInSurah,
       );
-      setPlaylist(paraTracks, idx >= 0 ? idx : 0);
+      setPlaylist(paraTracks, Math.max(idx, 0));
     }
   };
 
   const handlePrev = () => {
-    if (!isCurrentPara) {
-      setPlaylist(paraTracks, 0);
-    } else {
+    if (isCurrentPara) {
       prev();
+    } else {
+      setPlaylist(paraTracks, 0);
     }
   };
 
   const handleNext = () => {
-    if (!isCurrentPara) {
-      setPlaylist(paraTracks, 0);
-    } else {
+    if (isCurrentPara) {
       next();
+    } else {
+      setPlaylist(paraTracks, 0);
     }
   };
 
@@ -116,22 +116,22 @@ export const ParaHead: React.FC<ParaHeadProps> = ({ para, allSegments }) => {
           </div>
           <div className="flex gap-3">
             <CgPlayTrackPrevO
-              className="text-2xl cursor-pointer transition-transform active:scale-90"
+              className="text-2xl transition-transform cursor-pointer active:scale-90"
               onClick={handlePrev}
             />
             {isCurrentPara && isPlaying ? (
               <FiPauseCircle
-                className="text-2xl cursor-pointer transition-transform active:scale-90"
+                className="text-2xl transition-transform cursor-pointer active:scale-90"
                 onClick={handlePlay}
               />
             ) : (
               <FiPlayCircle
-                className="text-2xl cursor-pointer transition-transform active:scale-90"
+                className="text-2xl transition-transform cursor-pointer active:scale-90"
                 onClick={handlePlay}
               />
             )}
             <CgPlayTrackNextO
-              className="text-2xl cursor-pointer transition-transform active:scale-90"
+              className="text-2xl transition-transform cursor-pointer active:scale-90"
               onClick={handleNext}
             />
           </div>

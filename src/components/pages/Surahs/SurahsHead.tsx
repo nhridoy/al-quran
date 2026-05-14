@@ -18,7 +18,7 @@ export const SurahsHead: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex items-center justify-between gap-3 gap-10 px-5 py-3 mb-5 text-sm text-white shadow-lg md:px-8 bg-gradient-to-tl rounded-2xl from-alternateOne to-secondary shadow-alternateOne md:text-lg">
+    <div className="flex items-center justify-between gap-10 px-5 py-3 mb-5 text-sm text-white shadow-lg md:px-8 bg-linear-to-tl rounded-2xl from-alternateOne to-secondary shadow-alternateOne md:text-lg">
       <div className="flex flex-col gap-3">
         <div className="">
           <p className="">Assalamualaikum</p>
