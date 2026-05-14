@@ -1,9 +1,11 @@
+import { useEffect, useState } from "react";
 import { useAudioPlayer } from "./AudioPlayerContext";
 
 const RADIUS = 28;
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 
 export default function MiniPlayer() {
+  const [entering, setEntering] = useState(true);
   const {
     currentTrack,
     isExpanded,
@@ -14,15 +16,23 @@ export default function MiniPlayer() {
     togglePlay,
   } = useAudioPlayer();
 
+  useEffect(() => {
+    if (entering) {
+      const timer = setTimeout(() => setEntering(false), 50);
+      return () => clearTimeout(timer);
+    }
+  }, [entering]);
+
   if (!currentTrack) return null;
 
+  const hidden = isExpanded || entering;
   const progress = duration > 0 ? currentTime / duration : 0;
   const offset = CIRCUMFERENCE - progress * CIRCUMFERENCE;
 
   return (
     <div
       className={`fixed bottom-6 right-6 z-50 transition-all duration-300 ease-in-out origin-center ${
-        isExpanded
+        hidden
           ? "opacity-0 scale-75 translate-y-4 pointer-events-none"
           : "opacity-100 scale-100 translate-y-0 pointer-events-auto"
       }`}
