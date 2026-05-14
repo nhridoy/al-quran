@@ -40,6 +40,8 @@ export const ParaHead: React.FC<ParaHeadProps> = ({ para, allSegments }) => {
   const { currentTrack, isPlaying, togglePlay, setPlaylist, prev, next } =
     useAudioPlayer();
 
+  const paraTracks = buildPlaylistFromPara(allSegments);
+
   const isCurrentPara =
     currentTrack !== null &&
     allSegments.some((seg) => seg.no === currentTrack.surahNo);
@@ -48,20 +50,18 @@ export const ParaHead: React.FC<ParaHeadProps> = ({ para, allSegments }) => {
     if (isCurrentPara) {
       togglePlay();
     } else {
-      const tracks = buildPlaylistFromPara(allSegments);
-      const idx = tracks.findIndex(
+      const idx = paraTracks.findIndex(
         (t) =>
           t.surahNo === para.no &&
           t.ayahNumber === para.verses[0]?.numberInSurah,
       );
-      setPlaylist(tracks, idx >= 0 ? idx : 0);
+      setPlaylist(paraTracks, idx >= 0 ? idx : 0);
     }
   };
 
   const handlePrev = () => {
     if (!isCurrentPara) {
-      const tracks = buildPlaylistFromPara(allSegments);
-      setPlaylist(tracks, 0);
+      setPlaylist(paraTracks, 0);
     } else {
       prev();
     }
@@ -69,8 +69,7 @@ export const ParaHead: React.FC<ParaHeadProps> = ({ para, allSegments }) => {
 
   const handleNext = () => {
     if (!isCurrentPara) {
-      const tracks = buildPlaylistFromPara(allSegments);
-      setPlaylist(tracks, 0);
+      setPlaylist(paraTracks, 0);
     } else {
       next();
     }
@@ -139,7 +138,12 @@ export const ParaHead: React.FC<ParaHeadProps> = ({ para, allSegments }) => {
         </div>
       </div>
       {para.verses.map((verse) => (
-        <Ayahs ayah={verse} key={`${verse.numberInSurah} + ${verse.juz}`} />
+        <Ayahs
+          ayah={verse}
+          key={`${verse.numberInSurah} + ${verse.juz}`}
+          tracklist={paraTracks}
+          surahNo={para.no}
+        />
       ))}
     </div>
   );

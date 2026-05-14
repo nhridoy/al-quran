@@ -2,6 +2,7 @@ import type React from "react";
 import { useEffect } from "react";
 import { BiBookmark, BiShareAlt } from "react-icons/bi";
 import { IoPauseOutline, IoPlayOutline } from "react-icons/io5";
+import type { Track } from "../../../components/AudioPlayer";
 import {
   buildPlaylistFromSurah,
   useAudioPlayer,
@@ -11,9 +12,11 @@ import type { SurahData, Verse } from "../../../types";
 interface AyahsProps {
   ayah: Verse;
   surah?: SurahData;
+  tracklist?: Track[];
+  surahNo?: number;
 }
 
-const Ayahs: React.FC<AyahsProps> = ({ ayah, surah }) => {
+const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
   const { currentTrack, isPlaying, togglePlay, setPlaylist } = useAudioPlayer();
 
   const isCurrentAyah = currentTrack?.totalNumber === ayah.totalNumber;
@@ -28,11 +31,18 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah }) => {
   }, [isCurrentAyah, ayah.totalNumber]);
 
   const handlePlay = () => {
-    if (!surah) return;
     if (isCurrentAyah) {
       togglePlay();
       return;
     }
+    if (tracklist && surahNo !== undefined) {
+      const idx = tracklist.findIndex(
+        (t) => t.surahNo === surahNo && t.ayahNumber === ayah.numberInSurah,
+      );
+      setPlaylist(tracklist, idx >= 0 ? idx : 0);
+      return;
+    }
+    if (!surah) return;
     const idx = ayah.numberInSurah - 1;
     const tracks = buildPlaylistFromSurah(surah);
     setPlaylist(tracks, idx);
