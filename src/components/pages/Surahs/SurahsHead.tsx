@@ -2,12 +2,16 @@ import type React from "react";
 import { useEffect, useState } from "react";
 import { MdMenuBook } from "react-icons/md";
 import logo from "../../../logo.svg";
-import type { CurrentAudioIndex } from "../../../types";
+
+interface ReadStatus {
+  surahName: string;
+  verseNumber: number;
+}
 
 export const SurahsHead: React.FC = () => {
-  const [readStatus, setReadStatus] = useState<CurrentAudioIndex | null>(null);
+  const [readStatus, setReadStatus] = useState<ReadStatus | null>(null);
   useEffect(() => {
-    const currentAudioIndex: CurrentAudioIndex | null = JSON.parse(
+    const currentAudioIndex: ReadStatus | null = JSON.parse(
       localStorage.getItem("currentAudioIndex") || "null",
     );
     setReadStatus(currentAudioIndex);

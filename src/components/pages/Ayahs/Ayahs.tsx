@@ -1,6 +1,5 @@
 import type React from "react";
 import { BiBookmark, BiShareAlt } from "react-icons/bi";
-import { IoPlayOutline } from "react-icons/io5";
 import type { Verse } from "../../../types";
 
 interface AyahsProps {
@@ -36,7 +35,6 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah }) => {
 
         <div className="flex gap-4 text-2xl text-primary dark:text-secondaryLight">
           <BiShareAlt className="cursor-pointer" />
-          <IoPlayOutline className="cursor-pointer" />
           <BiBookmark className="cursor-pointer" />
         </div>
       </div>

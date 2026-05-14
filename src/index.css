@@ -22,28 +22,6 @@ code {
   font-family:
     source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
-.react-jinke-music-player-main ::-webkit-scrollbar {
-  width: 20px !important;
-}
-.react-jinke-music-player-main ::-webkit-scrollbar-thumb {
-  /* background-color: #3d10b8 !important; */
-  height: 50px;
-}
-.react-jinke-music-player-mobile-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.react-jinke-music-player-mobile-operation > .items > .item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-/* .react-jinke-music-player-mobile-operation > .items {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  place-items: center;
-} */
 .add-to-home-screen-pwa__notify {
   display: flex !important;
   justify-content: space-around;

@@ -3,7 +3,6 @@ export interface Verse {
   bnText: string;
   enText: string;
   enTextTransliteration: string;
-  audioPrimary: string;
   numberInSurah: number;
   totalNumber: number;
   juz: number;
@@ -32,9 +31,4 @@ export interface ParaSurah {
   no: number;
   revelationType: string;
   verses: Verse[];
-}
-
-export interface CurrentAudioIndex {
-  surahName: string;
-  verseNumber: number;
 }

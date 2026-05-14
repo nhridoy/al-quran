@@ -29,7 +29,6 @@ export const dataFetching = (
               bnText: verse.bnText,
               enText: verse.enText,
               enTextTransliteration: verse.enTextTransliteration,
-              audioPrimary: verse.audioPrimary,
               numberInSurah: verse.numberInSurah,
               totalNumber: verse.totalNumber,
               juz: verse.juz,
