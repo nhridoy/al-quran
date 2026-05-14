@@ -293,7 +293,7 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={toggleShuffle}
-                className={`p-2 rounded-full cursor-pointer transition-colors ${
+                className={`p-2 rounded-full cursor-pointer transition-all active:scale-90 ${
                   isShuffled
                     ? "text-secondary bg-secondary/10"
                     : "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
@@ -306,7 +306,7 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={prev}
-                className="p-2 rounded-full cursor-pointer text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="p-2 rounded-full cursor-pointer text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all active:scale-90"
                 aria-label="Previous"
                 title="Previous"
               >
@@ -366,7 +366,7 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={cycleRepeat}
-                className={`p-2 rounded-full cursor-pointer transition-colors ${
+                className={`p-2 rounded-full cursor-pointer transition-all active:scale-90 ${
                   repeatMode !== "none"
                     ? "text-secondary bg-secondary/10"
                     : "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
@@ -484,7 +484,7 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={toggleShuffle}
-            className={`p-3 rounded-full cursor-pointer transition-colors ${
+            className={`p-3 rounded-full cursor-pointer transition-all active:scale-90 ${
               isShuffled
                 ? "text-secondary bg-white/10"
                 : "text-white/60 hover:bg-white/10"
@@ -497,7 +497,7 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={prev}
-            className="p-3 rounded-full cursor-pointer text-white/80 hover:bg-white/10 transition-colors"
+            className="p-3 rounded-full cursor-pointer text-white/80 hover:bg-white/10 transition-all active:scale-90"
             aria-label="Previous"
             title="Previous"
           >
@@ -557,7 +557,7 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={cycleRepeat}
-            className={`p-3 rounded-full cursor-pointer transition-colors ${
+            className={`p-3 rounded-full cursor-pointer transition-all active:scale-90 ${
               repeatMode !== "none"
                 ? "text-secondary bg-white/10"
                 : "text-white/60 hover:bg-white/10"
