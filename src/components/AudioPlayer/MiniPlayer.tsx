@@ -4,8 +4,15 @@ const RADIUS = 28;
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 
 export default function MiniPlayer() {
-  const { currentTrack, isPlaying, currentTime, duration, expand, togglePlay } =
-    useAudioPlayer();
+  const {
+    currentTrack,
+    isExpanded,
+    isPlaying,
+    currentTime,
+    duration,
+    expand,
+    togglePlay,
+  } = useAudioPlayer();
 
   if (!currentTrack) return null;
 
@@ -13,7 +20,13 @@ export default function MiniPlayer() {
   const offset = CIRCUMFERENCE - progress * CIRCUMFERENCE;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 animate-[slideUp_0.3s_ease-out]">
+    <div
+      className={`fixed bottom-6 right-6 z-50 transition-all duration-300 ease-in-out ${
+        isExpanded
+          ? "opacity-0 scale-75 translate-y-4 pointer-events-none"
+          : "opacity-100 scale-100 translate-y-0 pointer-events-auto"
+      }`}
+    >
       <div className="relative w-16 h-16">
         <button
           type="button"
