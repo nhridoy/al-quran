@@ -33,6 +33,7 @@ export default function MiniPlayer() {
           onClick={expand}
           className="w-full h-full rounded-full bg-gradient-to-br from-primary to-secondary shadow-2xl shadow-primary/40 flex items-center justify-center hover:scale-105 active:scale-95 transition-transform duration-200 cursor-pointer"
           aria-label="Expand player"
+          title="Expand"
         >
           <svg
             className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none"
@@ -70,6 +71,7 @@ export default function MiniPlayer() {
           }}
           className="absolute inset-0 m-auto w-10 h-10 z-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 transition-colors cursor-pointer"
           aria-label={isPlaying ? "Pause" : "Play"}
+          title={isPlaying ? "Pause" : "Play"}
         >
           {isPlaying ? (
             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">

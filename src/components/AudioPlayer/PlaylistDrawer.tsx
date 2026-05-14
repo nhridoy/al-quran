@@ -55,6 +55,7 @@ export default function PlaylistDrawer() {
         }`}
         onClick={handleClose}
         aria-label="Close playlist overlay"
+        title="Close"
       />
 
       <div
@@ -71,8 +72,9 @@ export default function PlaylistDrawer() {
           <button
             type="button"
             onClick={handleClose}
-            className="p-1.5 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors"
+            className="p-1.5 rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors"
             aria-label="Close playlist"
+            title="Close"
           >
             <svg
               className="w-5 h-5"
@@ -126,9 +128,10 @@ export default function PlaylistDrawer() {
                         key={track.id}
                         type="button"
                         onClick={() => playTrack(track)}
-                        className={`w-full flex items-center gap-3 px-5 py-3 text-left transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/50 ${
+                        className={`w-full flex items-center gap-3 px-5 py-3 text-left cursor-pointer transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/50 ${
                           isActive ? "bg-primary/5 dark:bg-primary/10" : ""
                         }`}
+                        title={`${track.enName} - Ayah ${track.ayahNumber}`}
                       >
                         <span
                           className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium ${

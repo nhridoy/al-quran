@@ -37,12 +37,15 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah }) => {
         <button
           type="button"
           onClick={handlePlay}
-          className={`w-10 h-10 rounded-full font-semibold flex justify-center items-center transition-all ${
+          className={`w-10 h-10 rounded-full font-semibold flex justify-center items-center cursor-pointer transition-all ${
             isCurrentAyah
               ? "bg-secondary text-white shadow-md"
               : "bg-primary dark:bg-secondaryLight text-white dark:text-[#191f24] hover:bg-secondary"
           }`}
           aria-label={
+            isThisAyahPlaying ? "Pause" : `Play ayah ${ayah.numberInSurah}`
+          }
+          title={
             isThisAyahPlaying ? "Pause" : `Play ayah ${ayah.numberInSurah}`
           }
         >

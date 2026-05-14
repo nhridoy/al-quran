@@ -293,20 +293,22 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={toggleShuffle}
-                className={`p-2 rounded-full transition-colors ${
+                className={`p-2 rounded-full cursor-pointer transition-colors ${
                   isShuffled
                     ? "text-secondary bg-secondary/10"
                     : "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
                 }`}
                 aria-label="Toggle shuffle"
+                title="Shuffle"
               >
                 <ShuffleIcon />
               </button>
               <button
                 type="button"
                 onClick={prev}
-                className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="p-2 rounded-full cursor-pointer text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                 aria-label="Previous"
+                title="Previous"
               >
                 <svg
                   className="w-5 h-5"
@@ -320,8 +322,9 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={togglePlay}
-                className="p-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all"
+                className="p-3 rounded-full cursor-pointer bg-gradient-to-r from-primary to-secondary text-white shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all"
                 aria-label={isPlaying ? "Pause" : "Play"}
+                title={isPlaying ? "Pause" : "Play"}
               >
                 {isPlaying ? (
                   <svg
@@ -347,8 +350,9 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={next}
-                className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="p-2 rounded-full cursor-pointer text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                 aria-label="Next"
+                title="Next"
               >
                 <svg
                   className="w-5 h-5"
@@ -362,12 +366,13 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={cycleRepeat}
-                className={`p-2 rounded-full transition-colors ${
+                className={`p-2 rounded-full cursor-pointer transition-colors ${
                   repeatMode !== "none"
                     ? "text-secondary bg-secondary/10"
                     : "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
                 }`}
                 aria-label="Cycle repeat mode"
+                title={`${repeatMode === "none" ? "Repeat" : repeatMode === "all" ? "Repeat all" : "Repeat one"}`}
               >
                 <RepeatIcon mode={repeatMode} />
               </button>
@@ -376,8 +381,9 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={() => setVolume(volume === 0 ? 0.7 : 0)}
-                className="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="p-2 rounded-full cursor-pointer text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                 aria-label="Toggle mute"
+                title={volume === 0 ? "Unmute" : "Mute"}
               >
                 <VolumeIcon volume={volume} />
               </button>
@@ -399,16 +405,18 @@ export default function ExpandedPlayer() {
             <button
               type="button"
               onClick={togglePlaylist}
-              className="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="p-2 rounded-full cursor-pointer text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               aria-label="Playlist"
+              title="Playlist"
             >
               <PlaylistIcon />
             </button>
             <button
               type="button"
               onClick={handleMinimize}
-              className="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="p-2 rounded-full cursor-pointer text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               aria-label="Minimize"
+              title="Minimize"
             >
               <ChevronDownIcon />
             </button>
@@ -427,8 +435,9 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={togglePlaylist}
-            className="p-2 rounded-full text-white/70 hover:bg-white/10 transition-colors"
+            className="p-2 rounded-full cursor-pointer text-white/70 hover:bg-white/10 transition-colors"
             aria-label="Playlist"
+            title="Playlist"
           >
             <PlaylistIcon />
           </button>
@@ -438,8 +447,9 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={handleMinimize}
-            className="p-2 rounded-full text-white/70 hover:bg-white/10 transition-colors"
+            className="p-2 rounded-full cursor-pointer text-white/70 hover:bg-white/10 transition-colors"
             aria-label="Minimize"
+            title="Minimize"
           >
             <ChevronDownIcon />
           </button>
@@ -474,20 +484,22 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={toggleShuffle}
-            className={`p-3 rounded-full transition-colors ${
+            className={`p-3 rounded-full cursor-pointer transition-colors ${
               isShuffled
                 ? "text-secondary bg-white/10"
                 : "text-white/60 hover:bg-white/10"
             }`}
             aria-label="Toggle shuffle"
+            title="Shuffle"
           >
             <ShuffleIcon />
           </button>
           <button
             type="button"
             onClick={prev}
-            className="p-3 rounded-full text-white/80 hover:bg-white/10 transition-colors"
+            className="p-3 rounded-full cursor-pointer text-white/80 hover:bg-white/10 transition-colors"
             aria-label="Previous"
+            title="Previous"
           >
             <svg
               className="w-8 h-8"
@@ -501,8 +513,9 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={togglePlay}
-            className="p-5 rounded-full bg-white text-primary shadow-2xl hover:scale-105 active:scale-95 transition-transform"
+            className="p-5 rounded-full cursor-pointer bg-white text-primary shadow-2xl hover:scale-105 active:scale-95 transition-transform"
             aria-label={isPlaying ? "Pause" : "Play"}
+            title={isPlaying ? "Pause" : "Play"}
           >
             {isPlaying ? (
               <svg
@@ -528,8 +541,9 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={next}
-            className="p-3 rounded-full text-white/80 hover:bg-white/10 transition-colors"
+            className="p-3 rounded-full cursor-pointer text-white/80 hover:bg-white/10 transition-colors"
             aria-label="Next"
+            title="Next"
           >
             <svg
               className="w-8 h-8"
@@ -543,12 +557,13 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={cycleRepeat}
-            className={`p-3 rounded-full transition-colors ${
+            className={`p-3 rounded-full cursor-pointer transition-colors ${
               repeatMode !== "none"
                 ? "text-secondary bg-white/10"
                 : "text-white/60 hover:bg-white/10"
             }`}
             aria-label="Cycle repeat mode"
+            title={`${repeatMode === "none" ? "Repeat" : repeatMode === "all" ? "Repeat all" : "Repeat one"}`}
           >
             <RepeatIcon mode={repeatMode} />
           </button>
