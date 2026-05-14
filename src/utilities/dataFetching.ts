@@ -41,7 +41,10 @@ export const dataFetching = (
           try {
             localStorage.setItem(key, JSON.stringify(loadedData[key]));
             localStorage.setItem("isLoaded", String(++count));
-            setLoading(Number.parseInt(localStorage.getItem("isLoaded") || "0", 10) < 114);
+            setLoading(
+              Number.parseInt(localStorage.getItem("isLoaded") || "0", 10) <
+                114,
+            );
           } catch {
             alert("Error Fetching Surah! Press OK to Try Again.");
             globalThis.location.reload();
