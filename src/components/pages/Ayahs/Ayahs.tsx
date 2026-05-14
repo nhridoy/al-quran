@@ -1,6 +1,6 @@
 import type React from "react";
 import { BiBookmark, BiShareAlt } from "react-icons/bi";
-import { IoPlayOutline, IoPauseOutline } from "react-icons/io5";
+import { IoPauseOutline, IoPlayOutline } from "react-icons/io5";
 import {
   buildPlaylistFromSurah,
   useAudioPlayer,
