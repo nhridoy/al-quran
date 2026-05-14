@@ -1,5 +1,6 @@
 import type React from "react";
-import { BiBookmark, BiPause, BiPlay, BiShareAlt } from "react-icons/bi";
+import { BiBookmark, BiShareAlt } from "react-icons/bi";
+import { IoPlayOutline, IoPauseOutline } from "react-icons/io5";
 import {
   buildPlaylistFromSurah,
   useAudioPlayer,
@@ -35,7 +36,7 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah }) => {
     >
       <div className="flex bg-secondaryLight dark:bg-[#191f24] p-3 rounded-lg justify-between items-center">
         <div className="flex items-center gap-3">
-          <span className="w-10 h-10 rounded-full font-semibold flex justify-center items-center bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 select-none">
+          <span className="bg-primary dark:bg-secondaryLight w-10 h-10 text-white dark:text-[#191f24] font-semibold flex justify-center items-center rounded-full">
             {ayah.numberInSurah}
           </span>
           {ayah.sajda.recommended &&
@@ -52,19 +53,17 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah }) => {
             ))}
         </div>
 
-        <div className="flex gap-4 text-2xl text-primary dark:text-secondaryLight items-center">
+        <div className="flex items-center gap-4 text-2xl text-primary dark:text-secondaryLight">
           <BiShareAlt className="cursor-pointer" />
           {isThisAyahPlaying ? (
-            <BiPause
-              size={18}
-              className="cursor-pointer text-secondary"
+            <IoPauseOutline
+              className="cursor-pointer"
               onClick={handlePlay}
               title="Pause"
             />
           ) : (
-            <BiPlay
-              size={18}
-              className={`cursor-pointer ml-0.5 ${isCurrentAyah ? "text-secondary" : ""}`}
+            <IoPlayOutline
+              className="cursor-pointer"
               onClick={handlePlay}
               title={`Play ayah ${ayah.numberInSurah}`}
             />
