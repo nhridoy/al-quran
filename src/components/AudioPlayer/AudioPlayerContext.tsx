@@ -168,43 +168,45 @@ export function AudioPlayerProvider({
     };
   }, []);
 
+  const playAtIndex = useCallback((index: number) => {
+    const pl = playlistRef.current;
+    if (!pl[index]) return;
+    const track = pl[index];
+    setCurrentIndex(index);
+    currentIndexRef.current = index;
+    setCurrentTrack(track);
+    currentTrackRef.current = track;
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.src = track.audioUrl;
+    audio.currentTime = 0;
+    audio
+      .play()
+      .then(() => {
+        setIsPlaying(true);
+        isPlayingRef.current = true;
+      })
+      .catch(() => {
+        setIsPlaying(false);
+        isPlayingRef.current = false;
+      });
+  }, []);
+
   useEffect(() => {
     playAtIndexRef.current = playAtIndex;
   });
 
-  const playAtIndex = useCallback(
-    (index: number) => {
-      if (!playlist[index]) return;
-      const track = playlist[index];
-      setCurrentIndex(index);
-      setCurrentTrack(track);
-      currentTrackRef.current = track;
-      const audio = audioRef.current;
-      if (!audio) return;
-      audio.src = track.audioUrl;
-      audio.currentTime = 0;
-      audio
-        .play()
-        .then(() => {
-          setIsPlaying(true);
-          isPlayingRef.current = true;
-        })
-        .catch(() => {
-          setIsPlaying(false);
-          isPlayingRef.current = false;
-        });
-    },
-    [playlist],
-  );
-
   const playTrack = useCallback(
     (track: Track) => {
-      const idx = playlist.findIndex((t) => t.id === track.id);
+      const pl = playlistRef.current;
+      const idx = pl.findIndex((t) => t.id === track.id);
       if (idx !== -1) {
         playAtIndex(idx);
       } else {
         setPlaylistState([track]);
+        playlistRef.current = [track];
         setCurrentIndex(0);
+        currentIndexRef.current = 0;
         setCurrentTrack(track);
         currentTrackRef.current = track;
         const audio = audioRef.current;
@@ -223,7 +225,7 @@ export function AudioPlayerProvider({
           });
       }
     },
-    [playlist, playAtIndex],
+    [playAtIndex],
   );
 
   const togglePlay = useCallback(() => {
@@ -309,7 +311,8 @@ export function AudioPlayerProvider({
   const setPlaylist = useCallback(
     (tracks: Track[], startIndex = 0) => {
       setPlaylistState(tracks);
-      if (tracks.length > 0) {
+      playlistRef.current = tracks;
+      if (tracks.length > 0 && tracks[startIndex]) {
         playAtIndex(startIndex);
         setIsExpanded(true);
       }
