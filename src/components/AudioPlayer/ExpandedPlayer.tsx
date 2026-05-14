@@ -222,6 +222,7 @@ function VinylDisc({ isPlaying }: { isPlaying: boolean }) {
 }
 
 export default function ExpandedPlayer() {
+  const [leaving, setLeaving] = useState(false);
   const {
     isExpanded,
     isPlaying,
@@ -241,13 +242,31 @@ export default function ExpandedPlayer() {
     duration,
   } = useAudioPlayer();
 
-  if (!isExpanded || !currentTrack) return null;
+  const handleMinimize = () => {
+    setLeaving(true);
+    setTimeout(() => {
+      minimize();
+      setLeaving(false);
+    }, 300);
+  };
+
+  useEffect(() => {
+    if (isExpanded) setLeaving(false);
+  }, [isExpanded]);
+
+  if ((!isExpanded && !leaving) || !currentTrack) return null;
 
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
     <>
-      <div className="hidden md:block fixed bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-[#1a1f24]/95 backdrop-blur-lg border-t border-gray-200 dark:border-gray-700 shadow-2xl animate-[slideUp_0.3s_ease-out]">
+      <div
+        className={`hidden md:block fixed bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-[#1a1f24]/95 backdrop-blur-lg border-t border-gray-200 dark:border-gray-700 shadow-2xl ${
+          leaving
+            ? "transition-all duration-300 ease-in-out translate-y-full opacity-0"
+            : "animate-[slideUp_0.3s_ease-out]"
+        }`}
+      >
         <div className="absolute top-0 left-0 right-0 h-1 bg-gray-200 dark:bg-gray-700">
           <div
             className="h-full bg-gradient-to-r from-secondary to-primary transition-[width] duration-300"
@@ -387,7 +406,7 @@ export default function ExpandedPlayer() {
             </button>
             <button
               type="button"
-              onClick={minimize}
+              onClick={handleMinimize}
               className="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               aria-label="Minimize"
             >
@@ -397,7 +416,13 @@ export default function ExpandedPlayer() {
         </div>
       </div>
 
-      <div className="md:hidden fixed inset-0 z-50 bg-gradient-to-b from-[#1a1a2e] via-[#16213e] to-[#0f3460] animate-[fadeIn_0.2s_ease-out] flex flex-col">
+      <div
+        className={`md:hidden fixed inset-0 z-50 bg-gradient-to-b from-[#1a1a2e] via-[#16213e] to-[#0f3460] flex flex-col ${
+          leaving
+            ? "transition-all duration-300 ease-in-out opacity-0"
+            : "animate-[fadeIn_0.2s_ease-out]"
+        }`}
+      >
         <div className="flex items-center justify-between px-5 pt-12 pb-4">
           <button
             type="button"
