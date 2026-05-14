@@ -1,17 +1,81 @@
 import loadable from "@loadable/component";
 import type React from "react";
-import { FiOctagon } from "react-icons/fi";
+import { CgPlayTrackNextO, CgPlayTrackPrevO } from "react-icons/cg";
+import { FiOctagon, FiPauseCircle, FiPlayCircle } from "react-icons/fi";
 import { useParams } from "react-router-dom";
+import type { Track } from "../../../components/AudioPlayer";
+import { getAudioUrl, useAudioPlayer } from "../../../components/AudioPlayer";
 import type { ParaSurah } from "../../../types";
 
 const Ayahs = loadable(() => import("../Ayahs/Ayahs"));
 
 interface ParaHeadProps {
   para: ParaSurah;
+  allSegments: ParaSurah[];
 }
 
-export const ParaHead: React.FC<ParaHeadProps> = ({ para }) => {
+function buildPlaylistFromPara(segments: ParaSurah[]): Track[] {
+  const tracks: Track[] = [];
+  for (const segment of segments) {
+    for (const verse of segment.verses) {
+      tracks.push({
+        id: `${segment.no}-${verse.numberInSurah}`,
+        surahNo: segment.no,
+        ayahNumber: verse.numberInSurah,
+        totalNumber: verse.totalNumber,
+        surahName: segment.name,
+        enName: segment.enName,
+        arabicText: verse.text,
+        translationText: verse.enText,
+        transliterationText: verse.enTextTransliteration,
+        audioUrl: verse.audioSecond || getAudioUrl(verse.totalNumber),
+      });
+    }
+  }
+  return tracks;
+}
+
+export const ParaHead: React.FC<ParaHeadProps> = ({ para, allSegments }) => {
   const { id } = useParams();
+  const { currentTrack, isPlaying, togglePlay, setPlaylist, prev, next } =
+    useAudioPlayer();
+
+  const isCurrentPara =
+    currentTrack !== null &&
+    allSegments.some((seg) => seg.no === currentTrack.surahNo);
+
+  const handlePlay = () => {
+    if (isCurrentPara) {
+      togglePlay();
+    } else {
+      const tracks = buildPlaylistFromPara(allSegments);
+      const idx = tracks.findIndex(
+        (t) =>
+          t.surahNo === para.no &&
+          t.ayahNumber === para.verses[0]?.numberInSurah,
+      );
+      setPlaylist(tracks, idx >= 0 ? idx : 0);
+    }
+  };
+
+  const handlePrev = () => {
+    if (!isCurrentPara) {
+      const tracks = buildPlaylistFromPara(allSegments);
+      setPlaylist(tracks, 0);
+    } else {
+      prev();
+    }
+  };
+
+  const handleNext = () => {
+    if (!isCurrentPara) {
+      const tracks = buildPlaylistFromPara(allSegments);
+      setPlaylist(tracks, 0);
+    } else {
+      next();
+    }
+  };
+
   return (
     <div className="">
       <div className="sticky flex justify-between p-4 text-white rounded-lg top-24 bg-secondary">
@@ -45,10 +109,33 @@ export const ParaHead: React.FC<ParaHeadProps> = ({ para }) => {
             </div>
           </div>
         </div>
-        <div className="text-sm text-right md:text-lg">
-          <p className=" md:font-semibold">{para.name}</p>
-          <p>{para.enNameTranslation}</p>
-          <p>{para.bnNameTranslation}</p>
+        <div className="flex flex-col items-end gap-2">
+          <div className="text-sm text-right md:text-lg">
+            <p className="md:font-semibold">{para.name}</p>
+            <p>{para.enNameTranslation}</p>
+            <p>{para.bnNameTranslation}</p>
+          </div>
+          <div className="flex gap-3">
+            <CgPlayTrackPrevO
+              className="text-2xl cursor-pointer transition-transform active:scale-90"
+              onClick={handlePrev}
+            />
+            {isCurrentPara && isPlaying ? (
+              <FiPauseCircle
+                className="text-2xl cursor-pointer transition-transform active:scale-90"
+                onClick={handlePlay}
+              />
+            ) : (
+              <FiPlayCircle
+                className="text-2xl cursor-pointer transition-transform active:scale-90"
+                onClick={handlePlay}
+              />
+            )}
+            <CgPlayTrackNextO
+              className="text-2xl cursor-pointer transition-transform active:scale-90"
+              onClick={handleNext}
+            />
+          </div>
         </div>
       </div>
       {para.verses.map((verse) => (

@@ -29,7 +29,7 @@ export const Para: React.FC = () => {
       </div>
 
       {para?.map((paraItem) => (
-        <ParaHead para={paraItem} key={paraItem.no} />
+        <ParaHead para={paraItem} key={paraItem.no} allSegments={para} />
       ))}
     </div>
   );
