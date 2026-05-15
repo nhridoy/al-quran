@@ -43,7 +43,13 @@ export default function HamBurger() {
             <NavLink
               to="/surah"
               onClick={close}
-              className="flex items-center p-3 hover:bg-alternateOne dark:hover:bg-[#191f24]"
+              className={({ isActive }) =>
+                `flex items-center p-3 transition-colors ${
+                  isActive
+                    ? "bg-alternateOne dark:bg-[#191f24]"
+                    : "hover:bg-alternateOne dark:hover:bg-[#191f24]"
+                }`
+              }
             >
               <div className="flex items-center gap-3">
                 <VscBook className="text-xl font-bold dark:text-white" />
@@ -55,7 +61,13 @@ export default function HamBurger() {
             <NavLink
               to="/para"
               onClick={close}
-              className="flex items-center p-3 hover:bg-alternateOne dark:hover:bg-[#191f24]"
+              className={({ isActive }) =>
+                `flex items-center p-3 transition-colors ${
+                  isActive
+                    ? "bg-alternateOne dark:bg-[#191f24]"
+                    : "hover:bg-alternateOne dark:hover:bg-[#191f24]"
+                }`
+              }
             >
               <div className="flex items-center gap-3">
                 <MdMenuBook className="text-xl font-bold dark:text-white" />
@@ -67,7 +79,13 @@ export default function HamBurger() {
             <NavLink
               to="/settings"
               onClick={close}
-              className="flex items-center p-3 hover:bg-alternateOne dark:hover:bg-[#191f24]"
+              className={({ isActive }) =>
+                `flex items-center p-3 transition-colors ${
+                  isActive
+                    ? "bg-alternateOne dark:bg-[#191f24]"
+                    : "hover:bg-alternateOne dark:hover:bg-[#191f24]"
+                }`
+              }
             >
               <div className="flex items-center gap-3">
                 <IoSettingsOutline className="text-xl font-bold dark:text-white" />
@@ -79,7 +97,13 @@ export default function HamBurger() {
             <NavLink
               to="/about"
               onClick={close}
-              className="flex items-center p-3 hover:bg-alternateOne dark:hover:bg-[#191f24]"
+              className={({ isActive }) =>
+                `flex items-center p-3 transition-colors ${
+                  isActive
+                    ? "bg-alternateOne dark:bg-[#191f24]"
+                    : "hover:bg-alternateOne dark:hover:bg-[#191f24]"
+                }`
+              }
             >
               <div className="flex items-center gap-3">
                 <BsInfoCircle className="text-xl font-bold dark:text-white" />
@@ -91,7 +115,13 @@ export default function HamBurger() {
             <NavLink
               to="/credits"
               onClick={close}
-              className="flex items-center p-3 hover:bg-alternateOne dark:hover:bg-[#191f24]"
+              className={({ isActive }) =>
+                `flex items-center p-3 transition-colors ${
+                  isActive
+                    ? "bg-alternateOne dark:bg-[#191f24]"
+                    : "hover:bg-alternateOne dark:hover:bg-[#191f24]"
+                }`
+              }
             >
               <div className="flex items-center gap-3">
                 <AiOutlineHeart className="text-xl font-bold dark:text-white" />
@@ -103,7 +133,13 @@ export default function HamBurger() {
             <NavLink
               to="/donation"
               onClick={close}
-              className="flex items-center p-3 hover:bg-alternateOne dark:hover:bg-[#191f24]"
+              className={({ isActive }) =>
+                `flex items-center p-3 transition-colors ${
+                  isActive
+                    ? "bg-alternateOne dark:bg-[#191f24]"
+                    : "hover:bg-alternateOne dark:hover:bg-[#191f24]"
+                }`
+              }
             >
               <div className="flex items-center gap-3">
                 <RiHandHeartLine className="text-xl font-bold dark:text-white" />
