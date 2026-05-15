@@ -1,10 +1,8 @@
-import loadable from "@loadable/component";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { dataFetching } from "../utilities/dataFetching";
-
-const SplashImage = loadable(() => import("./SplashImage/SplashImage"));
+import SplashImage from "./SplashImage/SplashImage";
 
 const Splash: React.FC = () => {
   const [loading, setLoading] = useState(false);

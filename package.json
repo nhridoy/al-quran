@@ -10,7 +10,6 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@loadable/component": "^5.15.2",
     "@tailwindcss/vite": "^4.3.0",
     "hamburger-react": "^2.4.1",
     "react": "^19.2.6",

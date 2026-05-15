@@ -1,10 +1,8 @@
-import loadable from "@loadable/component";
 import React, { useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import type { SurahData } from "../../../types";
 import { Home } from "../Home/Home";
-
-const SurahList = loadable(() => import("../SurahList/SurahList"));
+import SurahList from "../SurahList/SurahList";
 
 const Surahs: React.FC = () => {
   const [surahs, setSurahs] = React.useState<SurahData[]>([]);

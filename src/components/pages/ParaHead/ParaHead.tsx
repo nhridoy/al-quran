@@ -1,4 +1,3 @@
-import loadable from "@loadable/component";
 import type React from "react";
 import { CgPlayTrackNextO, CgPlayTrackPrevO } from "react-icons/cg";
 import { FiOctagon, FiPauseCircle, FiPlayCircle } from "react-icons/fi";
@@ -6,8 +5,7 @@ import { useParams } from "react-router-dom";
 import type { Track } from "../../../components/AudioPlayer";
 import { getAudioUrl, useAudioPlayer } from "../../../components/AudioPlayer";
 import type { ParaSurah } from "../../../types";
-
-const Ayahs = loadable(() => import("../Ayahs/Ayahs"));
+import Ayahs from "../Ayahs/Ayahs";
 
 interface ParaHeadProps {
   para: ParaSurah;

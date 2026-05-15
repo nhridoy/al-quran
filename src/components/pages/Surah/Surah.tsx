@@ -1,11 +1,9 @@
-import loadable from "@loadable/component";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import type { SurahData, Verse } from "../../../types";
 import { Header } from "../../Header/Header";
+import Ayahs from "../Ayahs/Ayahs";
 import { SurahHead } from "./SurahHead";
-
-const Ayahs = loadable(() => import("../Ayahs/Ayahs"));
 
 export const Surah: React.FC = () => {
   const { id } = useParams();
