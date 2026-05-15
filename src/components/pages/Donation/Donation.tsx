@@ -6,7 +6,7 @@ import "swiper/css/effect-cards";
 
 const Donation: React.FC = () => {
   return (
-    <div className="h-screen">
+    <div className="min-h-screen">
       <div className="bg-white sticky top-0 left-0 w-full z-10">
         <Header head="Donation" />
       </div>
@@ -27,16 +27,14 @@ const Donation: React.FC = () => {
               modules={[EffectCards]}
               className="mySwiper"
             >
-              <SwiperSlide>Slide 1</SwiperSlide>
-              <SwiperSlide>Slide 2</SwiperSlide>
-              <SwiperSlide>Slide 3</SwiperSlide>
-              <SwiperSlide>Slide 4</SwiperSlide>
-              <SwiperSlide>Slide 5</SwiperSlide>
-              <SwiperSlide>Slide 6</SwiperSlide>
-              <SwiperSlide>Slide 7</SwiperSlide>
-              <SwiperSlide>Slide 8</SwiperSlide>
-              <SwiperSlide>Slide 9</SwiperSlide>
-              <SwiperSlide>Slide 10</SwiperSlide>
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
+                <SwiperSlide
+                  key={n}
+                  className="flex! items-center! justify-center!"
+                >
+                  Slide {n}
+                </SwiperSlide>
+              ))}
             </Swiper>
           </div>
         </div>
