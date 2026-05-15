@@ -1,23 +1,19 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import type { SurahData, Verse } from "../../../types";
+import { useSurah } from "../../../hooks/useSurah";
 import { Header } from "../../Header/Header";
 import Ayahs from "../Ayahs/Ayahs";
 import { SurahHead } from "./SurahHead";
 
-export const Surah: React.FC = () => {
+export default function SurahPage() {
   const { id } = useParams();
-  const [surah, setSurah] = React.useState<SurahData>({} as SurahData);
-  const [ayahs, setAyahs] = React.useState<Verse[]>([]);
+  const { surah } = useSurah(id);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (!id) return;
-    const surahData: SurahData = JSON.parse(localStorage.getItem(id) || "{}");
-    setSurah(surahData);
-    document.title = surahData.enName;
-    setAyahs(surahData.verses);
-  }, [id]);
+  }, []);
+
+  if (!surah) return null;
 
   return (
     <div>
@@ -27,10 +23,10 @@ export const Surah: React.FC = () => {
       </div>
 
       <div className="flex flex-col gap-3">
-        {ayahs.map((ayah) => (
+        {surah.verses.map((ayah) => (
           <Ayahs ayah={ayah} key={ayah.numberInSurah} surah={surah} />
         ))}
       </div>
     </div>
   );
-};
+}

@@ -1,11 +1,4 @@
-import type React from "react";
-import {
-  A11y,
-  EffectCards,
-  Navigation,
-  Pagination,
-  Scrollbar,
-} from "swiper/modules";
+import { EffectCards } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Header } from "../../Header/Header";
 import "swiper/css";
@@ -31,7 +24,7 @@ const Donation: React.FC = () => {
             <Swiper
               effect="cards"
               grabCursor={true}
-              modules={[EffectCards, Navigation, Pagination, Scrollbar, A11y]}
+              modules={[EffectCards]}
               className="mySwiper"
             >
               <SwiperSlide>Slide 1</SwiperSlide>

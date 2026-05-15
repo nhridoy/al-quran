@@ -1,4 +1,3 @@
-import type React from "react";
 import { GoDotFill } from "react-icons/go";
 import { Header } from "../../Header/Header";
 

@@ -1,8 +1,8 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AudioPlayer, { AudioPlayerProvider } from "./components/AudioPlayer";
-import { Para } from "./components/pages/Para/Para";
-import { Surah } from "./components/pages/Surah/Surah";
+import Para from "./components/pages/Para/Para";
+import SurahPage from "./components/pages/Surah/Surah";
 
 const About = lazy(() => import("./components/pages/About/About"));
 const Credits = lazy(() => import("./components/pages/Credits/Credits"));
@@ -23,7 +23,7 @@ function App() {
                 <Route path="/" element={<Splash />} />
                 <Route path="/surah" element={<Surahs />} />
                 <Route path="/para" element={<Paras />} />
-                <Route path="/surah/:id" element={<Surah />} />
+                <Route path="/surah/:id" element={<SurahPage />} />
                 <Route path="/para/:id" element={<Para />} />
                 <Route path="/settings" element={<Settings />} />
                 <Route path="/about" element={<About />} />

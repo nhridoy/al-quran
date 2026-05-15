@@ -1,6 +1,5 @@
 import { Spin as HamburgerBtn } from "hamburger-react";
-import React from "react";
-import Drawer from "react-drag-drawer";
+import { useState } from "react";
 import { AiOutlineDoubleLeft, AiOutlineHeart } from "react-icons/ai";
 import { BsInfoCircle } from "react-icons/bs";
 import { IoSettingsOutline } from "react-icons/io5";
@@ -8,17 +7,20 @@ import { MdMenuBook } from "react-icons/md";
 import { RiHandHeartLine } from "react-icons/ri";
 import { VscBook } from "react-icons/vsc";
 import { NavLink } from "react-router-dom";
+import Drawer from "../Drawer/Drawer";
 
-const HamBurger: React.FC = () => {
-  const [sidebarLeft, setSidebarLeft] = React.useState(false);
+export default function HamBurger() {
+  const [sidebarLeft, setSidebarLeft] = useState(false);
 
-  const toggle = (value: boolean) => () => {
-    setSidebarLeft(value);
-  };
+  const close = () => setSidebarLeft(false);
 
   return (
     <>
-      <button type="button" onClick={toggle(true)} className="dark:text-white">
+      <button
+        type="button"
+        onClick={() => setSidebarLeft(true)}
+        className="dark:text-white"
+      >
         <HamburgerBtn
           size={20}
           toggled={sidebarLeft}
@@ -29,9 +31,9 @@ const HamBurger: React.FC = () => {
 
       <Drawer
         open={sidebarLeft}
-        onRequestClose={toggle(false)}
-        modalElementClass="bg-white dark:bg-[#20282e] h-screen left-0 absolute grid grid-rows-3 w-2/3 md:w-1/5"
+        onClose={close}
         direction="left"
+        className="bg-white dark:bg-[#20282e] h-screen w-2/3 md:w-1/5 grid grid-rows-3"
       >
         <div className="flex items-center justify-center row-span-1 p-5 text-white bg-primary">
           <h1 className="text-2xl font-bold">Al Quran</h1>
@@ -40,6 +42,7 @@ const HamBurger: React.FC = () => {
           <nav className="flex flex-col">
             <NavLink
               to="/surah"
+              onClick={close}
               className="flex items-center p-3 hover:bg-alternateOne dark:hover:bg-[#191f24]"
             >
               <div className="flex items-center gap-3">
@@ -51,6 +54,7 @@ const HamBurger: React.FC = () => {
             </NavLink>
             <NavLink
               to="/para"
+              onClick={close}
               className="flex items-center p-3 hover:bg-alternateOne dark:hover:bg-[#191f24]"
             >
               <div className="flex items-center gap-3">
@@ -62,6 +66,7 @@ const HamBurger: React.FC = () => {
             </NavLink>
             <NavLink
               to="/settings"
+              onClick={close}
               className="flex items-center p-3 hover:bg-alternateOne dark:hover:bg-[#191f24]"
             >
               <div className="flex items-center gap-3">
@@ -73,6 +78,7 @@ const HamBurger: React.FC = () => {
             </NavLink>
             <NavLink
               to="/about"
+              onClick={close}
               className="flex items-center p-3 hover:bg-alternateOne dark:hover:bg-[#191f24]"
             >
               <div className="flex items-center gap-3">
@@ -84,6 +90,7 @@ const HamBurger: React.FC = () => {
             </NavLink>
             <NavLink
               to="/credits"
+              onClick={close}
               className="flex items-center p-3 hover:bg-alternateOne dark:hover:bg-[#191f24]"
             >
               <div className="flex items-center gap-3">
@@ -95,6 +102,7 @@ const HamBurger: React.FC = () => {
             </NavLink>
             <NavLink
               to="/donation"
+              onClick={close}
               className="flex items-center p-3 hover:bg-alternateOne dark:hover:bg-[#191f24]"
             >
               <div className="flex items-center gap-3">
@@ -108,8 +116,8 @@ const HamBurger: React.FC = () => {
         </div>
         <button
           type="button"
-          className="py-3 font-semibold text-white bg-alternateSecond"
-          onClick={toggle(false)}
+          className="py-3 font-semibold text-white bg-alternateSecond cursor-pointer"
+          onClick={close}
         >
           <div className="flex items-center justify-center gap-1">
             <AiOutlineDoubleLeft />
@@ -119,6 +127,4 @@ const HamBurger: React.FC = () => {
       </Drawer>
     </>
   );
-};
-
-export default HamBurger;
+}

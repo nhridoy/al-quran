@@ -1,10 +1,10 @@
-import React from "react";
+import { createElement } from "react";
 import logo from "../../logo.svg";
 
-const SplashImage: React.FC = () => {
+export default function SplashImage() {
   return (
     <div className="relative">
-      {React.createElement("lottie-player", {
+      {createElement("lottie-player", {
         rel: "preconnect",
         src: "https://assets9.lottiefiles.com/packages/lf20_5mpwodai.json",
         background: "transparent",
@@ -16,6 +16,4 @@ const SplashImage: React.FC = () => {
       <img src={logo} className="absolute inset-0 p-16 w-full" alt="logo" />
     </div>
   );
-};
-
-export default SplashImage;
+}

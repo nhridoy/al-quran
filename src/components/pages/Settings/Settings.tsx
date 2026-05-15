@@ -1,15 +1,13 @@
-import type React from "react";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import Swal from "sweetalert2";
-import { dataFetching } from "../../../utilities/dataFetching";
+import { useSurahs } from "../../../hooks/useSurahs";
 import { Header } from "../../Header/Header";
-import "react-toastify/dist/ReactToastify.css";
 
-const Settings: React.FC = () => {
+export default function Settings() {
   const [loading, setLoading] = useState(false);
+  const { refresh } = useSurahs();
 
-  const notify = () => toast.success("Your file has been updated!");
   const handleUpdate = () => {
     Swal.fire({
       title: "Are you sure?",
@@ -19,13 +17,16 @@ const Settings: React.FC = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, update it!",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.value) {
-        localStorage.clear();
-        localStorage.getItem("isLoaded") === null && setLoading(true);
-        dataFetching(setLoading).then(() => {
-          notify();
-        });
+        setLoading(true);
+        try {
+          await refresh();
+          toast.success("Data has been refreshed!");
+        } catch {
+          toast.error("Failed to refresh data");
+        }
+        setLoading(false);
       }
     });
   };
@@ -37,7 +38,7 @@ const Settings: React.FC = () => {
       </div>
       <div className="grid grid-rows-5">
         <div className="flex items-center justify-center row-span-1 text-lg font-bold">
-          <h2 className=" md:text-2xl dark:text-white">Configure Settings</h2>
+          <h2 className="md:text-2xl dark:text-white">Configure Settings</h2>
         </div>
         <div className="flex flex-col row-span-4 p-5 text-white divide-y bg-secondary rounded-t-3xl">
           <div className="pb-5">
@@ -52,9 +53,9 @@ const Settings: React.FC = () => {
                   onClick={handleUpdate}
                   className={`${
                     loading ? "pointer-events-none" : "pointer-events-auto"
-                  } bg-red-500 text-white px-2 py-1 active:scale-95 rounded text-sm`}
+                  } bg-red-500 text-white px-2 py-1 active:scale-95 rounded text-sm cursor-pointer`}
                 >
-                  {loading ? "Updating..." : "Update Data"}
+                  {loading ? "Updating..." : "Refresh Data"}
                 </button>
               </div>
             </h2>
@@ -76,6 +77,4 @@ const Settings: React.FC = () => {
       />
     </div>
   );
-};
-
-export default Settings;
+}

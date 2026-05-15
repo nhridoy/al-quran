@@ -1,40 +1,26 @@
-import React, { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Header } from "../../Header/Header";
 import { SurahsHead } from "../Surahs/SurahsHead";
-import "./Home.css";
 
-export const Home: React.FC = () => {
-  const currentLocation = useLocation();
-  const [suraClassName, setSuraClassName] = React.useState("");
-  const [paraClassName, setParaClassName] = React.useState("");
-  useEffect(() => {
-    if (currentLocation.pathname === "/surah") {
-      setSuraClassName("activeClass");
-      setParaClassName("");
-    } else if (currentLocation.pathname === "/para") {
-      setParaClassName("activeClass");
-      setSuraClassName("");
-    }
-  }, [currentLocation.pathname]);
+export const Home = () => {
+  const linkClass = ({ isActive }: { isActive: boolean }) =>
+    `font-semibold py-4 flex items-center justify-center border-b-2 transition-colors ${
+      isActive
+        ? "text-primary dark:text-white border-primary dark:border-secondary bg-white dark:bg-[#191f24]"
+        : "text-gray-400 border-b-gray-400"
+    }`;
 
   return (
     <div className="bg-white dark:bg-[#20282e] sticky top-0 left-0 w-full z-10">
       <Header head="Al Quran" />
       <SurahsHead />
       <div className="grid grid-cols-2 my-3">
-        <Link
-          to="/surah"
-          className={`${suraClassName} font-semibold text-gray-400 py-4 flex items-center justify-center border-b-2 border-b-gray-400`}
-        >
+        <NavLink to="/surah" end className={linkClass}>
           Surah
-        </Link>
-        <Link
-          to="/para"
-          className={`${paraClassName} font-semibold text-gray-400 py-4 flex items-center justify-center border-b-2 border-b-gray-400`}
-        >
+        </NavLink>
+        <NavLink to="/para" end className={linkClass}>
           Para
-        </Link>
+        </NavLink>
       </div>
     </div>
   );
