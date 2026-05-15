@@ -1,5 +1,4 @@
 import type React from "react";
-import { useEffect } from "react";
 import {
   A11y,
   EffectCards,
@@ -13,11 +12,6 @@ import "swiper/css";
 import "swiper/css/effect-cards";
 
 const Donation: React.FC = () => {
-  useEffect(() => {
-    document.title = "Al Quran - Donation";
-    document.querySelector("html")?.classList.add("overflow-x-hidden");
-    document.querySelector("body")?.classList.add("overflow-x-hidden");
-  }, []);
   return (
     <div className="h-screen">
       <div className="bg-white sticky top-0 left-0 w-full z-10">

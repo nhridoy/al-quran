@@ -10,10 +10,6 @@ const Splash: React.FC = () => {
     localStorage.getItem("isLoaded") === null && setLoading(true);
     dataFetching(setLoading);
   }, []);
-  useEffect(() => {
-    document.querySelector("html")?.classList.remove("overflow-x-hidden");
-    document.querySelector("body")?.classList.remove("overflow-x-hidden");
-  }, []);
 
   return (
     <div className="grid h-screen place-items-center">

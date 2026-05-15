@@ -19,11 +19,6 @@ export const Surah: React.FC = () => {
     setAyahs(surahData.verses);
   }, [id]);
 
-  useEffect(() => {
-    document.querySelector("html")?.classList.remove("overflow-x-hidden");
-    document.querySelector("body")?.classList.remove("overflow-x-hidden");
-  }, []);
-
   return (
     <div>
       <div className="bg-white dark:bg-[#20282e] sticky top-0 left-0 w-full">

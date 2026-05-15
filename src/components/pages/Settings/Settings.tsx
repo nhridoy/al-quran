@@ -1,5 +1,5 @@
 import type React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { dataFetching } from "../../../utilities/dataFetching";
@@ -8,11 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Settings: React.FC = () => {
   const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    document.title = "Al Quran - Settings";
-    document.querySelector("html")?.classList.remove("overflow-x-hidden");
-    document.querySelector("body")?.classList.remove("overflow-x-hidden");
-  }, []);
+
   const notify = () => toast.success("Your file has been updated!");
   const handleUpdate = () => {
     Swal.fire({

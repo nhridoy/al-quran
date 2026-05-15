@@ -1,5 +1,4 @@
 import type React from "react";
-import { useEffect } from "react";
 import {
   AiFillTwitterCircle,
   AiOutlineGithub,
@@ -10,11 +9,6 @@ import { IoLogoFacebook, IoLogoWhatsapp } from "react-icons/io5";
 import { Header } from "../../Header/Header";
 
 const About: React.FC = () => {
-  useEffect(() => {
-    document.title = "Al Quran - About";
-    document.querySelector("html")?.classList.remove("overflow-x-hidden");
-    document.querySelector("body")?.classList.remove("overflow-x-hidden");
-  }, []);
   return (
     <div>
       <div className="bg-white sticky top-0 left-0 w-full z-10">

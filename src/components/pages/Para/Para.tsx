@@ -17,11 +17,6 @@ export const Para: React.FC = () => {
   const paraDetails = paraCreation();
   const para: ParaSurah[] | undefined = id ? paraDetails[id] : undefined;
 
-  useEffect(() => {
-    document.querySelector("html")?.classList.remove("overflow-x-hidden");
-    document.querySelector("body")?.classList.remove("overflow-x-hidden");
-  }, []);
-
   return (
     <div className="">
       <div className="sticky top-0 left-0 z-10 w-full bg-white">

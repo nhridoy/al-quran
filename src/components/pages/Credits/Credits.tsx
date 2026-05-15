@@ -1,14 +1,8 @@
 import type React from "react";
-import { useEffect } from "react";
 import { GoDotFill } from "react-icons/go";
 import { Header } from "../../Header/Header";
 
 const Credits: React.FC = () => {
-  useEffect(() => {
-    document.title = "Al Quran - Credits";
-    document.querySelector("html")?.classList.remove("overflow-x-hidden");
-    document.querySelector("body")?.classList.remove("overflow-x-hidden");
-  }, []);
   return (
     <div className="h-screen">
       <div className="bg-white sticky top-0 left-0 w-full z-10">
