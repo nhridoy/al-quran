@@ -3,7 +3,7 @@ import { Header } from "../../Header/Header";
 
 const Credits: React.FC = () => {
   return (
-    <div className="h-screen">
+    <div className="min-h-screen">
       <div className="bg-white sticky top-0 left-0 w-full z-10">
         <Header head="Credits" />
       </div>

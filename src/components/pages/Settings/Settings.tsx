@@ -32,7 +32,7 @@ export default function Settings() {
   };
 
   return (
-    <div className="h-screen">
+    <div className="min-h-screen">
       <div className="sticky top-0 left-0 z-10 w-full bg-white">
         <Header head="Settings" />
       </div>
