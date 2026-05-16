@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AudioPlayer, { AudioPlayerProvider } from "./components/AudioPlayer";
+import LastReadTracker from "./components/LastReadTracker";
 import Layout from "./components/Layout/Layout";
 import Para from "./components/pages/Para/Para";
 import SurahPage from "./components/pages/Surah/Surah";
@@ -34,6 +35,7 @@ function App() {
           </Suspense>
         </Layout>
         <AudioPlayer />
+        <LastReadTracker />
       </AudioPlayerProvider>
     </BrowserRouter>
   );

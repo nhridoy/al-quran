@@ -18,7 +18,7 @@ export const SurahsHead: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative mx-4 mb-6 overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-primary-light to-secondary p-6 text-white shadow-xl shadow-primary/20 md:mx-6">
+    <div className="relative mx-4 mb-6 overflow-hidden rounded-2xl bg-linear-to-br from-primary via-primary-light to-secondary p-6 text-white shadow-xl shadow-primary/20 md:mx-6">
       <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/5" />
       <div className="pointer-events-none absolute -bottom-10 -left-10 h-32 w-32 rounded-full bg-white/5" />
       <div className="relative flex items-center justify-between">

@@ -20,7 +20,7 @@ export default function Sidebar() {
   return (
     <aside className="fixed top-0 left-0 z-40 hidden h-screen w-64 flex-col border-r border-border bg-surface dark:border-dark-border dark:bg-dark-surface md:flex">
       <div className="flex items-center gap-3 px-6 pt-8 pb-6">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary shadow-lg shadow-primary/20">
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-primary to-secondary shadow-lg shadow-primary/20">
           <FaQuran className="text-lg text-white" />
         </div>
         <div>
@@ -47,7 +47,7 @@ export default function Sidebar() {
               to={item.to}
               className={`flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200 ${
                 isActive
-                  ? "bg-gradient-to-r from-primary/10 to-secondary/10 text-primary dark:from-primary/20 dark:to-secondary/20 dark:text-secondary-light"
+                  ? "bg-linear-to-r from-primary/10 to-secondary/10 text-primary dark:from-primary/20 dark:to-secondary/20 dark:text-secondary-light"
                   : "text-text-secondary hover:bg-surface-alt hover:text-text-primary dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt dark:hover:text-dark-text-primary"
               }`}
             >
@@ -58,7 +58,7 @@ export default function Sidebar() {
               />
               <span>{item.label}</span>
               {isActive && (
-                <div className="ml-auto h-1.5 w-1.5 rounded-full bg-gradient-to-r from-primary to-secondary" />
+                <div className="ml-auto h-1.5 w-1.5 rounded-full bg-linear-to-r from-primary to-secondary" />
               )}
             </NavLink>
           );
@@ -66,7 +66,7 @@ export default function Sidebar() {
       </nav>
 
       <div className="border-t border-border p-6 dark:border-dark-border">
-        <div className="rounded-xl bg-gradient-to-br from-primary/5 to-secondary/5 p-4 dark:from-primary/10 dark:to-secondary/10">
+        <div className="rounded-xl bg-linear-to-br from-primary/5 to-secondary/5 p-4 dark:from-primary/10 dark:to-secondary/10">
           <p className="text-xs font-medium text-text-muted dark:text-dark-text-muted">
             Quranic Verse
           </p>
