@@ -5,13 +5,6 @@ import "./index.css";
 import { registerSW } from "virtual:pwa-register";
 import App from "./App";
 
-const rootElement = document.getElementById("root");
-if (!rootElement) throw new Error("Root element not found");
-createRoot(rootElement).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-);
 registerSW({
   // onNeedRefresh() {
   //   console.log("New content available, please refresh.");
@@ -21,3 +14,11 @@ registerSW({
   },
   immediate: true,
 });
+
+const rootElement = document.getElementById("root");
+if (!rootElement) throw new Error("Root element not found");
+createRoot(rootElement).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+);
