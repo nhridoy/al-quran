@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useAudioPlayer } from "./AudioPlayerContext";
+import VinylDisc from "./VinylDisc";
 
 function RepeatIcon({ mode }: { mode: "none" | "all" | "one" }) {
   return (
@@ -221,23 +222,6 @@ function SeekBar() {
       <span className="w-10 text-xs tabular-nums text-text-muted dark:text-dark-text-muted">
         {formatTime(duration)}
       </span>
-    </div>
-  );
-}
-
-function VinylDisc({ isPlaying }: Readonly<{ isPlaying: boolean }>) {
-  return (
-    <div className="relative shrink-0">
-      <div
-        className={`flex h-12 w-12 items-center justify-center rounded-full bg-linear-to-br from-gray-800 to-gray-600 shadow-lg ring-2 ring-gray-300 dark:ring-gray-600 ${
-          isPlaying ? "animate-[spin_4s_linear_infinite]" : ""
-        }`}
-      >
-        <div className="flex h-4 w-4 items-center justify-center rounded-full bg-linear-to-br from-secondary to-primary">
-          <div className="h-1.5 w-1.5 rounded-full bg-white" />
-        </div>
-      </div>
-      <div className="pointer-events-none absolute inset-0 rounded-full bg-linear-to-tr from-black/10 to-transparent" />
     </div>
   );
 }
@@ -484,15 +468,7 @@ export default function ExpandedPlayer() {
         </div>
 
         <div className="flex flex-1 flex-col items-center justify-center gap-8 px-8">
-          <div
-            className={`flex h-64 w-64 items-center justify-center rounded-full bg-linear-to-br from-gray-800 to-gray-600 shadow-2xl ring-4 ring-white/10 ${
-              isPlaying ? "animate-[spin_8s_linear_infinite]" : ""
-            }`}
-          >
-            <div className="flex h-24 w-24 items-center justify-center rounded-full bg-linear-to-br from-secondary to-primary">
-              <div className="h-8 w-8 rounded-full bg-white/30" />
-            </div>
-          </div>
+          <VinylDisc isPlaying={isPlaying} size="lg" />
 
           <div className="w-full max-w-sm text-center">
             <p className="mb-1 text-2xl font-bold text-white">
