@@ -86,7 +86,7 @@ export default function Search() {
       </button>
 
       {open && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/40 backdrop-blur-sm pt-[15vh]">
+        <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/60 backdrop-blur-xl pt-[15vh]">
           <button
             type="button"
             className="absolute inset-0 cursor-default"
