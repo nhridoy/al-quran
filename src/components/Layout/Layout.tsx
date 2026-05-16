@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 import BottomNav from "../BottomNav/BottomNav";
+import InstallPrompt from "../InstallPrompt/InstallPrompt";
 import Sidebar from "../Sidebar/Sidebar";
 
 interface LayoutProps {
@@ -22,6 +23,7 @@ export default function Layout({ children }: Readonly<LayoutProps>) {
         <div className="page-enter">{children}</div>
       </main>
       {!isSplash && <BottomNav />}
+      {!isSplash && <InstallPrompt />}
     </div>
   );
 }
