@@ -1,0 +1,22 @@
+#!/bin/sh
+echo "🚦 Running Pre-commit hook..."
+
+pnpm lint-format
+
+# Run TypeScript type check
+echo "📦 Running TypeScript type check..."
+pnpm typecheck
+if [ $? -ne 0 ]; then
+  echo "❌ TypeScript check failed. Commit aborted."
+  exit 1
+fi
+
+# Get staged test files only
+# TEST_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(test|spec)\.(ts|tsx)$' | xargs)
+
+# if [ -n "$TEST_FILES" ]; then
+#   echo "🔍 Running tests for staged test files..."
+#   pnpm jest $TEST_FILES
+# else
+#   echo "✅ No staged test files found, skipping tests."
+# fi
