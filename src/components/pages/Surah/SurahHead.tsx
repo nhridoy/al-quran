@@ -91,7 +91,7 @@ export const SurahHead: React.FC<SurahHeadProps> = ({ surah }) => {
           <button
             type="button"
             onClick={handlePrev}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
+            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
             aria-label="Previous"
           >
             <CgPlayTrackPrevO className="text-xl" />
@@ -99,7 +99,7 @@ export const SurahHead: React.FC<SurahHeadProps> = ({ surah }) => {
           <button
             type="button"
             onClick={handlePlay}
-            className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-primary shadow-lg transition-all hover:scale-105 active:scale-95"
+            className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-white text-primary shadow-lg transition-all hover:scale-105 active:scale-95"
             aria-label={isLoading ? "Loading" : isPlaying ? "Pause" : "Play"}
           >
             {isLoading ? (
@@ -113,7 +113,7 @@ export const SurahHead: React.FC<SurahHeadProps> = ({ surah }) => {
           <button
             type="button"
             onClick={handleNext}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
+            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
             aria-label="Next"
           >
             <CgPlayTrackNextO className="text-xl" />

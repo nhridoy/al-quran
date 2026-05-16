@@ -74,7 +74,7 @@ export default function Search() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="btn-ghost flex items-center gap-2 rounded-xl px-3 py-2 text-sm"
+        className="btn-ghost flex cursor-pointer items-center gap-2 rounded-xl px-3 py-2 text-sm"
       >
         <BiSearch className="text-lg" />
         <span className="hidden text-text-muted dark:text-dark-text-muted md:inline">
@@ -109,7 +109,7 @@ export default function Search() {
                   <button
                     type="button"
                     onClick={() => setQuery("")}
-                    className="rounded-lg p-1 text-text-muted hover:bg-surface-alt hover:text-text-primary dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
+                    className="cursor-pointer rounded-lg p-1 text-text-muted hover:bg-surface-alt hover:text-text-primary dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
                   >
                     <IoClose className="text-lg" />
                   </button>
@@ -117,7 +117,7 @@ export default function Search() {
                 <button
                   type="button"
                   onClick={handleClose}
-                  className="rounded-lg px-2 py-1 text-xs font-medium text-text-muted hover:bg-surface-alt dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
+                  className="cursor-pointer rounded-lg px-2 py-1 text-xs font-medium text-text-muted hover:bg-surface-alt dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
                 >
                   Esc
                 </button>

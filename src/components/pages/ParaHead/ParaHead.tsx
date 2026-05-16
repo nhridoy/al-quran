@@ -102,7 +102,7 @@ export const ParaHead: React.FC<ParaHeadProps> = ({ para, allSegments }) => {
             <button
               type="button"
               onClick={handlePrev}
-              className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
+              className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
               aria-label="Previous"
             >
               <CgPlayTrackPrevO className="text-lg text-white" />
@@ -110,7 +110,7 @@ export const ParaHead: React.FC<ParaHeadProps> = ({ para, allSegments }) => {
             <button
               type="button"
               onClick={handlePlay}
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-primary shadow transition-all hover:scale-105 active:scale-95"
+              className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-white text-primary shadow transition-all hover:scale-105 active:scale-95"
               aria-label={isPlaying ? "Pause" : "Play"}
             >
               {isCurrentPara && isPlaying ? (
@@ -122,7 +122,7 @@ export const ParaHead: React.FC<ParaHeadProps> = ({ para, allSegments }) => {
             <button
               type="button"
               onClick={handleNext}
-              className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
+              className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
               aria-label="Next"
             >
               <CgPlayTrackNextO className="text-lg text-white" />

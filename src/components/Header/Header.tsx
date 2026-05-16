@@ -22,7 +22,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
             <button
               type="button"
               onClick={handleBackBtn}
-              className="btn-ghost flex items-center justify-center rounded-xl p-2"
+              className="btn-ghost flex cursor-pointer items-center justify-center rounded-xl p-2"
               aria-label="Go back"
             >
               <BiArrowBack className="text-xl" />

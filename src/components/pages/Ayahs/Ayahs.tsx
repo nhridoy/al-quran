@@ -79,7 +79,7 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
           <div className="flex items-center gap-2">
             <button
               type="button"
-              className="btn-ghost flex h-8 w-8 items-center justify-center rounded-lg"
+              className="btn-ghost flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg"
               aria-label="Share"
               title="Share"
             >
@@ -88,7 +88,7 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
             <button
               type="button"
               onClick={handlePlay}
-              className={`flex h-8 w-8 items-center justify-center rounded-lg transition-all active:scale-90 ${
+              className={`flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg transition-all active:scale-90 ${
                 isThisAyahPlaying
                   ? "bg-linear-to-br from-primary to-secondary text-white shadow-md"
                   : "btn-ghost"
@@ -106,7 +106,7 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
             </button>
             <button
               type="button"
-              className="btn-ghost flex h-8 w-8 items-center justify-center rounded-lg"
+              className="btn-ghost flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg"
               aria-label="Bookmark"
               title="Bookmark"
             >

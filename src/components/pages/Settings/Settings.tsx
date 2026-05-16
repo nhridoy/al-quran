@@ -82,7 +82,7 @@ export default function Settings() {
               className={`rounded-xl px-4 py-2 text-sm font-semibold text-white transition-all ${
                 loading
                   ? "cursor-not-allowed bg-text-muted"
-                  : "bg-linear-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/20 active:scale-95"
+                  : "cursor-pointer bg-linear-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/20 active:scale-95"
               }`}
             >
               {loading ? "Refreshing..." : "Refresh"}
