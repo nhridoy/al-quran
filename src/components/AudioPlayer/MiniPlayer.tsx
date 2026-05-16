@@ -59,7 +59,7 @@ export default function MiniPlayer() {
         <button
           type="button"
           onClick={expand}
-          className="flex h-full w-full items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary shadow-2xl shadow-primary/40 transition-transform duration-200 hover:scale-105 active:scale-95"
+          className="flex h-full w-full items-center justify-center rounded-full bg-linear-to-br from-primary to-secondary shadow-2xl shadow-primary/40 transition-transform duration-200 hover:scale-105 active:scale-95"
           aria-label="Expand player"
           title="Expand"
         >

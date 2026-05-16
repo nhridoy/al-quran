@@ -185,11 +185,11 @@ function SeekBar() {
     if (!isDragging) return;
     const onMouseMove = (e: MouseEvent) => handleSeekRef.current(e.clientX);
     const onMouseUp = () => setIsDragging(false);
-    window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("mouseup", onMouseUp);
+    globalThis.addEventListener("mousemove", onMouseMove);
+    globalThis.addEventListener("mouseup", onMouseUp);
     return () => {
-      window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("mouseup", onMouseUp);
+      globalThis.removeEventListener("mousemove", onMouseMove);
+      globalThis.removeEventListener("mouseup", onMouseUp);
     };
   }, [isDragging]);
 
@@ -210,7 +210,7 @@ function SeekBar() {
         tabIndex={0}
       >
         <div
-          className="absolute top-0 left-0 h-full rounded-full bg-gradient-to-r from-secondary to-primary transition-[width] duration-100"
+          className="absolute top-0 left-0 h-full rounded-full bg-linear-to-r from-secondary to-primary transition-[width] duration-100"
           style={{ width: `${progress}%` }}
         />
         <div
@@ -229,15 +229,15 @@ function VinylDisc({ isPlaying }: Readonly<{ isPlaying: boolean }>) {
   return (
     <div className="relative shrink-0">
       <div
-        className={`flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-gray-800 to-gray-600 shadow-lg ring-2 ring-gray-300 dark:ring-gray-600 ${
+        className={`flex h-12 w-12 items-center justify-center rounded-full bg-linear-to-br from-gray-800 to-gray-600 shadow-lg ring-2 ring-gray-300 dark:ring-gray-600 ${
           isPlaying ? "animate-[spin_4s_linear_infinite]" : ""
         }`}
       >
-        <div className="flex h-4 w-4 items-center justify-center rounded-full bg-gradient-to-br from-secondary to-primary">
+        <div className="flex h-4 w-4 items-center justify-center rounded-full bg-linear-to-br from-secondary to-primary">
           <div className="h-1.5 w-1.5 rounded-full bg-white" />
         </div>
       </div>
-      <div className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-tr from-black/10 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 rounded-full bg-linear-to-tr from-black/10 to-transparent" />
     </div>
   );
 }
@@ -285,13 +285,13 @@ export default function ExpandedPlayer() {
       <div
         className={`fixed bottom-0 left-0 right-0 z-50 hidden border-t border-border bg-surface/95 shadow-2xl backdrop-blur-lg dark:border-dark-border dark:bg-dark-surface/95 md:block ${
           leaving
-            ? "translate-y-full translate-y-full translate-y-full opacity-0 transition-all duration-300 ease-in-out"
+            ? "translate-y-full opacity-0 transition-all duration-300 ease-in-out"
             : "animate-slide-up"
         }`}
       >
         <div className="absolute top-0 left-0 right-0 h-1 bg-border dark:bg-dark-border">
           <div
-            className="h-full bg-gradient-to-r from-secondary to-primary transition-[width] duration-300"
+            className="h-full bg-linear-to-r from-secondary to-primary transition-[width] duration-300"
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -344,7 +344,7 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={togglePlay}
-                className="rounded-full bg-gradient-to-r from-primary to-secondary p-3 text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl active:scale-95"
+                className="rounded-full bg-linear-to-r from-primary to-secondary p-3 text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl active:scale-95"
                 aria-label={
                   isLoading ? "Loading" : isPlaying ? "Pause" : "Play"
                 }
@@ -453,7 +453,7 @@ export default function ExpandedPlayer() {
       </div>
 
       <div
-        className={`fixed inset-0 z-50 flex flex-col bg-gradient-to-b from-[#1a0a2e] via-[#2e0d8a] to-[#1a0a2e] md:hidden ${
+        className={`fixed inset-0 z-50 flex flex-col bg-linear-to-b from-[#1a0a2e] via-primary to-[#1a0a2e] md:hidden ${
           leaving
             ? "opacity-0 transition-all duration-300 ease-in-out"
             : "animate-fade-in"
@@ -485,11 +485,11 @@ export default function ExpandedPlayer() {
 
         <div className="flex flex-1 flex-col items-center justify-center gap-8 px-8">
           <div
-            className={`flex h-64 w-64 items-center justify-center rounded-full bg-gradient-to-br from-gray-800 to-gray-600 shadow-2xl ring-4 ring-white/10 ${
+            className={`flex h-64 w-64 items-center justify-center rounded-full bg-linear-to-br from-gray-800 to-gray-600 shadow-2xl ring-4 ring-white/10 ${
               isPlaying ? "animate-[spin_8s_linear_infinite]" : ""
             }`}
           >
-            <div className="flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-secondary to-primary">
+            <div className="flex h-24 w-24 items-center justify-center rounded-full bg-linear-to-br from-secondary to-primary">
               <div className="h-8 w-8 rounded-full bg-white/30" />
             </div>
           </div>
