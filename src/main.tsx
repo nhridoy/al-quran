@@ -6,13 +6,13 @@ import { registerSW } from "virtual:pwa-register";
 import App from "./App";
 
 registerSW({
-  // onNeedRefresh() {
-  //   console.log("New content available, please refresh.");
-  // },
+  onNeedRefresh() {
+    console.log("New content available, please refresh.");
+  },
   onOfflineReady() {
     console.log("Content cached for offline use.");
   },
-  immediate: true,
+  // immediate: true,
 });
 
 // updateSW();
