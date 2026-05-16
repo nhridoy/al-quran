@@ -9,7 +9,7 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["logo192.png", "logo512.png"],
+      includeAssets: ["logo192.png", "logo512.png", "screenshots/*.svg"],
       manifest: {
         name: "Al Quran",
         short_name: "Al Quran",
@@ -35,13 +35,26 @@ export default defineConfig({
             purpose: "maskable",
           },
         ],
+        screenshots: [
+          {
+            src: "screenshots/mobile.svg",
+            sizes: "414x896",
+            type: "image/svg+xml",
+            form_factor: "narrow",
+          },
+          {
+            src: "screenshots/desktop.svg",
+            sizes: "1280x800",
+            type: "image/svg+xml",
+            form_factor: "wide",
+          },
+        ],
       },
       workbox: {
         globPatterns: ["**/*.{js,css,html,ico,png,svg,webp}"],
         runtimeCaching: [
           {
-            urlPattern:
-              /^https:\/\/cdn\.islamic\.network\/quran\/audio\/.*/i,
+            urlPattern: /^https:\/\/cdn\.islamic\.network\/quran\/audio\/.*/i,
             handler: "CacheFirst",
             options: {
               cacheName: "quran-audio-cache",

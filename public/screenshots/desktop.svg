@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f0a1e"/>
+      <stop offset="100%" stop-color="#1a0a2e"/>
+    </linearGradient>
+    <linearGradient id="sidebarGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d0820"/>
+      <stop offset="100%" stop-color="#120a28"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#A078FF"/>
+      <stop offset="100%" stop-color="#9345F2"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.06)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.02)"/>
+    </linearGradient>
+    <linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#A078FF"/>
+      <stop offset="100%" stop-color="#9345F2"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="1280" height="800" fill="url(#bg)"/>
+  <!-- Sidebar -->
+  <rect width="256" height="800" fill="url(#sidebarGrad)" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <rect x="24" y="32" width="32" height="32" rx="10" fill="url(#accent)"/>
+  <rect x="62" y="38" width="160" height="20" rx="4" fill="rgba(255,255,255,0.9)"/>
+  <rect x="62" y="56" width="80" height="14" rx="4" fill="rgba(255,255,255,0.3)"/>
+  <!-- Sidebar nav items -->
+  <rect x="12" y="90" width="232" height="44" rx="12" fill="rgba(162,120,255,0.12)"/>
+  <text x="48" y="116" fill="#A078FF" font-family="system-ui" font-size="14" font-weight="600">📖 Surah</text>
+  <rect x="12" y="138" width="232" height="44" rx="12" fill="rgba(255,255,255,0.03)"/>
+  <text x="48" y="164" fill="rgba(255,255,255,0.5)" font-family="system-ui" font-size="14">📗 Para</text>
+  <rect x="12" y="186" width="232" height="44" rx="12" fill="rgba(255,255,255,0.03)"/>
+  <text x="48" y="212" fill="rgba(255,255,255,0.5)" font-family="system-ui" font-size="14">⚙️ Settings</text>
+  <!-- Sidebar footer -->
+  <rect x="16" y="700" width="224" height="72" rx="12" fill="rgba(162,120,255,0.06)"/>
+  <text x="30" y="724" fill="rgba(255,255,255,0.35)" font-family="system-ui" font-size="10">Quranic Verse</text>
+  <text x="30" y="744" fill="rgba(255,255,255,0.7)" font-family="system-ui" font-size="12" font-weight="600">"Read! In the Name of your Lord"</text>
+  <text x="30" y="760" fill="rgba(255,255,255,0.3)" font-family="system-ui" font-size="10">Al-Alaq 96:1</text>
+  <!-- Header -->
+  <rect x="256" y="0" width="1024" height="60" fill="rgba(255,255,255,0.03)"/>
+  <text x="280" y="36" fill="white" font-family="system-ui" font-size="18" font-weight="bold">Surah</text>
+  <rect x="1120" y="16" width="80" height="28" rx="14" fill="rgba(255,255,255,0.08)"/>
+  <text x="1136" y="34" fill="rgba(255,255,255,0.5)" font-family="system-ui" font-size="10">🔍 Search</text>
+  <!-- Content area -->
+  <rect x="280" y="80" width="924" height="80" rx="16" fill="rgba(162,120,255,0.08)" stroke="rgba(162,120,255,0.15)" stroke-width="1"/>
+  <text x="296" y="106" fill="rgba(255,255,255,0.5)" font-family="system-ui" font-size="12">Last Read</text>
+  <text x="296" y="130" fill="white" font-family="system-ui" font-size="16" font-weight="600">Al-Fatiha</text>
+  <rect x="1100" y="100" width="80" height="40" rx="20" fill="url(#accent)"/>
+  <text x="1140" y="126" fill="white" font-family="system-ui" font-size="20" text-anchor="middle">▶</text>
+  <!-- Surah cards -->
+  <rect x="280" y="176" width="924" height="64" rx="14" fill="url(#card)"/>
+  <rect x="296" y="194" width="28" height="28" rx="14" fill="rgba(255,255,255,0.06)"/>
+  <text x="310" y="213" fill="rgba(255,255,255,0.5)" font-family="system-ui" font-size="11" text-anchor="middle">1</text>
+  <text x="340" y="204" fill="white" font-family="system-ui" font-size="15" font-weight="600">Al-Fatiha</text>
+  <text x="340" y="224" fill="rgba(255,255,255,0.35)" font-family="system-ui" font-size="12">The Opening · 7 verses</text>
+  <text x="1160" y="214" fill="rgba(255,255,255,0.4)" font-family="system-ui" font-size="14" text-anchor="end" font-style="italic">الفاتحة</text>
+  <rect x="280" y="248" width="924" height="64" rx="14" fill="url(#card)"/>
+  <rect x="296" y="266" width="28" height="28" rx="14" fill="rgba(255,255,255,0.06)"/>
+  <text x="310" y="285" fill="rgba(255,255,255,0.5)" font-family="system-ui" font-size="11" text-anchor="middle">2</text>
+  <text x="340" y="276" fill="white" font-family="system-ui" font-size="15" font-weight="600">Al-Baqarah</text>
+  <text x="340" y="296" fill="rgba(255,255,255,0.35)" font-family="system-ui" font-size="12">The Cow · 286 verses</text>
+  <text x="1160" y="286" fill="rgba(255,255,255,0.4)" font-family="system-ui" font-size="14" text-anchor="end" font-style="italic">البقرة</text>
+  <rect x="280" y="320" width="924" height="64" rx="14" fill="url(#card)"/>
+  <rect x="296" y="338" width="28" height="28" rx="14" fill="rgba(255,255,255,0.06)"/>
+  <text x="310" y="357" fill="rgba(255,255,255,0.5)" font-family="system-ui" font-size="11" text-anchor="middle">3</text>
+  <text x="340" y="348" fill="white" font-family="system-ui" font-size="15" font-weight="600">Ali 'Imran</text>
+  <text x="340" y="368" fill="rgba(255,255,255,0.35)" font-family="system-ui" font-size="12">Family of Imran · 200 verses</text>
+  <text x="1160" y="358" fill="rgba(255,255,255,0.4)" font-family="system-ui" font-size="14" text-anchor="end" font-style="italic">آل عمران</text>
+  <rect x="280" y="392" width="924" height="64" rx="14" fill="url(#card)"/>
+  <rect x="296" y="410" width="28" height="28" rx="14" fill="rgba(255,255,255,0.06)"/>
+  <text x="310" y="429" fill="rgba(255,255,255,0.5)" font-family="system-ui" font-size="11" text-anchor="middle">4</text>
+  <text x="340" y="420" fill="white" font-family="system-ui" font-size="15" font-weight="600">An-Nisa</text>
+  <text x="340" y="440" fill="rgba(255,255,255,0.35)" font-family="system-ui" font-size="12">The Women · 176 verses</text>
+  <text x="1160" y="430" fill="rgba(255,255,255,0.4)" font-family="system-ui" font-size="14" text-anchor="end" font-style="italic">النساء</text>
+  <rect x="280" y="464" width="924" height="64" rx="14" fill="url(#card)"/>
+  <rect x="296" y="482" width="28" height="28" rx="14" fill="rgba(255,255,255,0.06)"/>
+  <text x="310" y="501" fill="rgba(255,255,255,0.5)" font-family="system-ui" font-size="11" text-anchor="middle">5</text>
+  <text x="340" y="492" fill="white" font-family="system-ui" font-size="15" font-weight="600">Al-Ma'idah</text>
+  <text x="340" y="512" fill="rgba(255,255,255,0.35)" font-family="system-ui" font-size="12">The Table · 120 verses</text>
+  <text x="1160" y="502" fill="rgba(255,255,255,0.4)" font-family="system-ui" font-size="14" text-anchor="end" font-style="italic">المائدة</text>
+</svg>
