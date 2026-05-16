@@ -64,7 +64,8 @@ export default function InstallPrompt() {
     if (dismissed || isStandalone()) return;
 
     const handler = (e: BeforeInstallPromptEvent) => {
-      e.preventDefault();
+      // e.preventDefault();
+      e.prompt();
       setDeferredPrompt(e);
       setShowFallback(false);
       clearTimeout(fallbackTimerRef.current);
