@@ -53,30 +53,30 @@ export default defineConfig({
       workbox: {
         cleanupOutdatedCaches: true,
         globPatterns: ["**/*.{js,css,html,ico,png,svg,webp}"],
-        // runtimeCaching: [
-        //   {
-        //     urlPattern: /^https:\/\/cdn\.islamic\.network\/quran\/audio\/.*/i,
-        //     handler: "CacheFirst",
-        //     options: {
-        //       cacheName: "quran-audio-cache",
-        //       expiration: {
-        //         maxEntries: 10,
-        //         maxAgeSeconds: 60 * 60 * 24 * 30,
-        //       },
-        //     },
-        //   },
-        //   {
-        //     urlPattern: /^https:\/\/fonts\.(googleapis|gstatic)\.com\/.*/i,
-        //     handler: "CacheFirst",
-        //     options: {
-        //       cacheName: "google-fonts-cache",
-        //       expiration: {
-        //         maxEntries: 10,
-        //         maxAgeSeconds: 60 * 60 * 24 * 365,
-        //       },
-        //     },
-        //   },
-        // ],
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/cdn\.islamic\.network\/quran\/audio\/.*/i,
+            handler: "CacheFirst",
+            options: {
+              cacheName: "quran-audio-cache",
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 30,
+              },
+            },
+          },
+          {
+            urlPattern: /^https:\/\/fonts\.(googleapis|gstatic)\.com\/.*/i,
+            handler: "CacheFirst",
+            options: {
+              cacheName: "google-fonts-cache",
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365,
+              },
+            },
+          },
+        ],
       },
     }),
   ],

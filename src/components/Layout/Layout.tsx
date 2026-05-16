@@ -4,7 +4,7 @@ import BottomNav from "../BottomNav/BottomNav";
 import InstallPrompt from "../InstallPrompt/InstallPrompt";
 import Sidebar from "../Sidebar/Sidebar";
 
-import UpdateBanner from "../UpdateBanner/UpdateBanner";
+// import UpdateBanner from "../UpdateBanner/UpdateBanner";
 
 interface LayoutProps {
   children: ReactNode;
@@ -25,7 +25,7 @@ export default function Layout({ children }: Readonly<LayoutProps>) {
         <div className="page-enter">{children}</div>
       </main>
       {!isSplash && <BottomNav />}
-      {!isSplash && <UpdateBanner />}
+      {/* {!isSplash && <UpdateBanner />} */}
       {!isSplash && <InstallPrompt />}
     </div>
   );
