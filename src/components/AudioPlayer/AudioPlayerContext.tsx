@@ -120,11 +120,21 @@ export function AudioPlayerProvider({
   const shuffleIndicesRef = useRef<number[]>([]);
   const shuffleCursorRef = useRef(0);
 
-  useEffect(() => { isPlayingRef.current = isPlaying; }, [isPlaying]);
-  useEffect(() => { currentTrackRef.current = currentTrack; }, [currentTrack]);
-  useEffect(() => { playlistRef.current = playlist; }, [playlist]);
-  useEffect(() => { activeIndexRef.current = activeIndex; }, [activeIndex]);
-  useEffect(() => { repeatModeRef.current = repeatMode; }, [repeatMode]);
+  useEffect(() => {
+    isPlayingRef.current = isPlaying;
+  }, [isPlaying]);
+  useEffect(() => {
+    currentTrackRef.current = currentTrack;
+  }, [currentTrack]);
+  useEffect(() => {
+    playlistRef.current = playlist;
+  }, [playlist]);
+  useEffect(() => {
+    activeIndexRef.current = activeIndex;
+  }, [activeIndex]);
+  useEffect(() => {
+    repeatModeRef.current = repeatMode;
+  }, [repeatMode]);
 
   useEffect(() => {
     audioRef.current = new Audio();
@@ -310,8 +320,7 @@ export function AudioPlayerProvider({
       }
       prevIndex = shuffleIndicesRef.current[shuffleCursorRef.current];
     } else {
-      prevIndex =
-        (activeIndexRef.current - 1 + tracks.length) % tracks.length;
+      prevIndex = (activeIndexRef.current - 1 + tracks.length) % tracks.length;
     }
     playByIndex(prevIndex);
   }, [isShuffleActive, playByIndex]);
@@ -339,7 +348,10 @@ export function AudioPlayerProvider({
         const tracks = playlistRef.current;
         const index = activeIndexRef.current;
         if (tracks.length > 0) {
-          shuffleIndicesRef.current = createShuffledIndices(tracks.length, index);
+          shuffleIndicesRef.current = createShuffledIndices(
+            tracks.length,
+            index,
+          );
           shuffleCursorRef.current = 0;
         }
       } else {
