@@ -9,9 +9,9 @@ const updateSW = registerSW({
   // onNeedRefresh() {
   //   console.log("New content available, please refresh.");
   // },
-  onOfflineReady() {
-    console.log("Content cached for offline use.");
-  },
+  // onOfflineReady() {
+  //   console.log("Content cached for offline use.");
+  // },
   immediate: true,
 });
 
