@@ -5,7 +5,7 @@ import "./index.css";
 import { registerSW } from "virtual:pwa-register";
 import App from "./App";
 
-const updateSW = registerSW({
+registerSW({
   // onNeedRefresh() {
   //   console.log("New content available, please refresh.");
   // },
@@ -15,7 +15,7 @@ const updateSW = registerSW({
   immediate: true,
 });
 
-updateSW();
+// updateSW();
 
 const rootElement = document.getElementById("root");
 if (!rootElement) throw new Error("Root element not found");
