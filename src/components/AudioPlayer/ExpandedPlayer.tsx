@@ -315,7 +315,7 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={toggleShuffle}
-                className={`rounded-full p-2 transition-all active:scale-90 ${
+                className={`cursor-pointer rounded-full p-2 transition-all active:scale-90 ${
                   isShuffled
                     ? "bg-secondary/10 text-secondary"
                     : "text-text-muted hover:bg-surface-alt dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
@@ -328,7 +328,7 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={prev}
-                className="rounded-full p-2 text-text-secondary transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
+                className="cursor-pointer rounded-full p-2 text-text-secondary transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
                 aria-label="Previous"
                 title="Previous"
               >
@@ -344,7 +344,7 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={togglePlay}
-                className="rounded-full bg-linear-to-r from-primary to-secondary p-3 text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl active:scale-95"
+                className="cursor-pointer rounded-full bg-linear-to-r from-primary to-secondary p-3 text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl active:scale-95"
                 aria-label={
                   isLoading ? "Loading" : isPlaying ? "Pause" : "Play"
                 }
@@ -376,7 +376,7 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={next}
-                className="rounded-full p-2 text-text-secondary transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
+                className="cursor-pointer rounded-full p-2 text-text-secondary transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
                 aria-label="Next"
                 title="Next"
               >
@@ -392,7 +392,7 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={cycleRepeat}
-                className={`rounded-full p-2 transition-all active:scale-90 ${
+                className={`cursor-pointer rounded-full p-2 transition-all active:scale-90 ${
                   repeatMode === "none"
                     ? "text-text-muted hover:bg-surface-alt dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
                     : "bg-secondary/10 text-secondary"
@@ -407,7 +407,7 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={() => setVolume(volume === 0 ? 0.7 : 0)}
-                className="rounded-full p-2 text-text-muted transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
+                className="cursor-pointer rounded-full p-2 text-text-muted transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
                 aria-label="Toggle mute"
                 title={volume === 0 ? "Unmute" : "Mute"}
               >
@@ -420,7 +420,7 @@ export default function ExpandedPlayer() {
                 step={0.01}
                 value={volume}
                 onChange={(e) => setVolume(Number.parseFloat(e.target.value))}
-                className="h-1.5 w-20 appearance-none rounded-full bg-border dark:bg-dark-border [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-secondary [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:shadow-md"
+                className="h-1.5 w-20 cursor-pointer appearance-none rounded-full bg-border dark:bg-dark-border [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-secondary [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:shadow-md"
                 style={{
                   backgroundImage: `linear-gradient(to right, #9345f2 ${volume * 100}%, transparent ${volume * 100}%)`,
                 }}
@@ -433,7 +433,7 @@ export default function ExpandedPlayer() {
             <button
               type="button"
               onClick={togglePlaylist}
-              className="rounded-full p-2 text-text-muted transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
+              className="cursor-pointer rounded-full p-2 text-text-muted transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
               aria-label="Playlist"
               title="Playlist"
             >
@@ -442,7 +442,7 @@ export default function ExpandedPlayer() {
             <button
               type="button"
               onClick={handleMinimize}
-              className="rounded-full p-2 text-text-muted transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
+              className="cursor-pointer rounded-full p-2 text-text-muted transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
               aria-label="Minimize"
               title="Minimize"
             >
@@ -463,7 +463,7 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={togglePlaylist}
-            className="rounded-full p-2 text-white/70 transition-all hover:bg-white/10 active:scale-90"
+            className="cursor-pointer rounded-full p-2 text-white/70 transition-all hover:bg-white/10 active:scale-90"
             aria-label="Playlist"
             title="Playlist"
           >
@@ -475,7 +475,7 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={handleMinimize}
-            className="rounded-full p-2 text-white/70 transition-all hover:bg-white/10 active:scale-90"
+            className="cursor-pointer rounded-full p-2 text-white/70 transition-all hover:bg-white/10 active:scale-90"
             aria-label="Minimize"
             title="Minimize"
           >
@@ -512,7 +512,7 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={toggleShuffle}
-            className={`rounded-full p-3 transition-all active:scale-90 ${
+            className={`cursor-pointer rounded-full p-3 transition-all active:scale-90 ${
               isShuffled
                 ? "bg-white/10 text-secondary"
                 : "text-white/60 hover:bg-white/10"
@@ -525,7 +525,7 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={prev}
-            className="rounded-full p-3 text-white/80 transition-all hover:bg-white/10 active:scale-90"
+            className="cursor-pointer rounded-full p-3 text-white/80 transition-all hover:bg-white/10 active:scale-90"
             aria-label="Previous"
             title="Previous"
           >
@@ -541,7 +541,7 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={togglePlay}
-            className="rounded-full bg-white p-5 text-primary shadow-2xl transition-transform hover:scale-105 active:scale-95"
+            className="cursor-pointer rounded-full bg-white p-5 text-primary shadow-2xl transition-transform hover:scale-105 active:scale-95"
             aria-label={isLoading ? "Loading" : isPlaying ? "Pause" : "Play"}
             title={isLoading ? "Loading" : isPlaying ? "Pause" : "Play"}
           >
@@ -571,7 +571,7 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={next}
-            className="rounded-full p-3 text-white/80 transition-all hover:bg-white/10 active:scale-90"
+            className="cursor-pointer rounded-full p-3 text-white/80 transition-all hover:bg-white/10 active:scale-90"
             aria-label="Next"
             title="Next"
           >
@@ -587,7 +587,7 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={cycleRepeat}
-            className={`rounded-full p-3 transition-all active:scale-90 ${
+            className={`cursor-pointer rounded-full p-3 transition-all active:scale-90 ${
               repeatMode === "none"
                 ? "text-white/60 hover:bg-white/10"
                 : "bg-white/10 text-secondary"

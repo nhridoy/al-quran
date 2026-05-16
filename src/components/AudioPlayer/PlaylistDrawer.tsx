@@ -72,7 +72,7 @@ export default function PlaylistDrawer() {
           <button
             type="button"
             onClick={handleClose}
-            className="rounded-full p-1.5 text-text-muted transition-colors hover:bg-surface-alt dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
+            className="cursor-pointer rounded-full p-1.5 text-text-muted transition-colors hover:bg-surface-alt dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
             aria-label="Close playlist"
             title="Close"
           >

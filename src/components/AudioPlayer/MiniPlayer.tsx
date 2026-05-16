@@ -59,7 +59,7 @@ export default function MiniPlayer() {
         <button
           type="button"
           onClick={expand}
-          className="flex h-full w-full items-center justify-center rounded-full bg-linear-to-br from-primary to-secondary shadow-2xl shadow-primary/40 transition-transform duration-200 hover:scale-105 active:scale-95"
+          className="flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-linear-to-br from-primary to-secondary shadow-2xl shadow-primary/40 transition-transform duration-200 hover:scale-105 active:scale-95"
           aria-label="Expand player"
           title="Expand"
         >
@@ -97,7 +97,7 @@ export default function MiniPlayer() {
             e.stopPropagation();
             togglePlay();
           }}
-          className="absolute inset-0 z-10 m-auto flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-sm transition-colors hover:bg-white/30"
+          className="absolute inset-0 z-10 m-auto flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-sm transition-colors hover:bg-white/30"
           aria-label={isPlaying ? "Pause" : "Play"}
           title={isPlaying ? "Pause" : "Play"}
         >
