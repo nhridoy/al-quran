@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AudioPlayer, { AudioPlayerProvider } from "./components/AudioPlayer";
 import LastReadTracker from "./components/LastReadTracker";
 import Layout from "./components/Layout/Layout";
+import HomeLayout from "./components/pages/HomeLayout";
 import Para from "./components/pages/Para/Para";
 import SurahPage from "./components/pages/Surah/Surah";
 
@@ -22,8 +23,10 @@ function App() {
           <Suspense fallback={<div className="h-screen" />}>
             <Routes>
               <Route path="/" element={<Splash />} />
-              <Route path="/surah" element={<Surahs />} />
-              <Route path="/para" element={<Paras />} />
+              <Route element={<HomeLayout />}>
+                <Route path="/surah" element={<Surahs />} />
+                <Route path="/para" element={<Paras />} />
+              </Route>
               <Route path="/surah/:id" element={<SurahPage />} />
               <Route path="/para/:id" element={<Para />} />
               <Route path="/settings" element={<Settings />} />

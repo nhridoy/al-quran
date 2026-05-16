@@ -7,7 +7,7 @@ interface LayoutProps {
   children: ReactNode;
 }
 
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ children }: Readonly<LayoutProps>) {
   const location = useLocation();
   const isSplash = location.pathname === "/";
 
@@ -16,7 +16,7 @@ export default function Layout({ children }: LayoutProps) {
       {!isSplash && <Sidebar />}
       <main
         className={`transition-all duration-300 ${
-          !isSplash ? "md:ml-64 pb-20 md:pb-0" : ""
+          isSplash ? "" : "md:ml-64 pb-20 md:pb-0"
         }`}
       >
         <div className="page-enter">{children}</div>

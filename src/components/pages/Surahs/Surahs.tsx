@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { useSurahs } from "../../../hooks/useSurahs";
-import { Home } from "../Home/Home";
 import SurahList from "../SurahList/SurahList";
 
 export default function Surahs() {
@@ -27,7 +26,6 @@ export default function Surahs() {
 
   return (
     <div>
-      <Home />
       <div className="mx-4 mb-3 md:mx-6">
         <div className="flex items-center gap-2 rounded-xl border border-border bg-surface px-3 dark:border-dark-border dark:bg-dark-surface-card">
           <BiSearch className="text-text-muted dark:text-dark-text-muted" />

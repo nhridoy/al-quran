@@ -24,7 +24,7 @@ const About: React.FC = () => {
 
         <div className="overflow-hidden rounded-2xl border border-border bg-surface dark:border-dark-border dark:bg-dark-surface-card">
           <div className="flex items-center gap-3 border-b border-border p-4 dark:border-dark-border">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20">
               <BsInfoCircle className="text-lg text-primary dark:text-secondary-light" />
             </div>
             <div>
@@ -81,7 +81,7 @@ const About: React.FC = () => {
 
         <div className="overflow-hidden rounded-2xl border border-border bg-surface dark:border-dark-border dark:bg-dark-surface-card">
           <div className="flex items-center gap-3 border-b border-border p-4 dark:border-dark-border">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20">
               <span className="text-lg font-bold text-primary dark:text-secondary-light">
                 01
               </span>
@@ -106,7 +106,7 @@ const About: React.FC = () => {
 
         <div className="overflow-hidden rounded-2xl border border-border bg-surface dark:border-dark-border dark:bg-dark-surface-card">
           <div className="flex items-center gap-3 border-b border-border p-4 dark:border-dark-border">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20">
               <span className="text-lg font-bold text-primary dark:text-secondary-light">
                 02
               </span>
@@ -135,7 +135,7 @@ const About: React.FC = () => {
           </div>
         </div>
 
-        <div className="rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 p-4 text-center text-sm font-medium text-text-muted dark:from-primary/10 dark:to-secondary/10 dark:text-dark-text-muted">
+        <div className="rounded-2xl bg-linear-to-br from-primary/5 to-secondary/5 p-4 text-center text-sm font-medium text-text-muted dark:from-primary/10 dark:to-secondary/10 dark:text-dark-text-muted">
           www.binarytech.com
         </div>
       </div>

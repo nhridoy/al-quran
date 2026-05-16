@@ -14,7 +14,7 @@ export default function Splash() {
   }, []);
 
   return (
-    <div className="relative flex h-screen flex-col overflow-hidden bg-gradient-to-b from-surface via-surface-alt to-surface dark:from-dark-surface dark:via-dark-surface-alt dark:to-dark-surface">
+    <div className="relative flex h-screen flex-col overflow-hidden bg-linear-to-b from-surface via-surface-alt to-surface dark:from-dark-surface dark:via-dark-surface-alt dark:to-dark-surface">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-32 -top-32 h-96 w-96 rounded-full bg-primary/5 blur-[120px] dark:bg-primary/10" />
         <div className="absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-secondary/5 blur-[120px] dark:bg-secondary/10" />
