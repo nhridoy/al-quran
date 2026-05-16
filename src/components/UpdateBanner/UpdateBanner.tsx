@@ -3,9 +3,17 @@ import { MdClose, MdRefresh } from "react-icons/md";
 
 export default function UpdateBanner() {
   const {
+    // offlineReady: [offlineReady, setOfflineReady],
     needRefresh: [needRefresh, setNeedRefresh],
     updateServiceWorker,
-  } = useRegisterSW();
+  } = useRegisterSW({
+    onRegistered(r) {
+      console.log(`SW Registered: ${r}`);
+    },
+    onRegisterError(error) {
+      console.log(`SW registration error: ${error}`);
+    },
+  });
 
   if (!needRefresh) return null;
 
