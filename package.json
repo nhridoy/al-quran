@@ -19,7 +19,8 @@
     "react-router-dom": "^7.15.0",
     "react-toastify": "^11.1.0",
     "sweetalert2": "^11.4.6",
-    "swiper": "^12.1.4"
+    "swiper": "^12.1.4",
+    "workbox-window": "^7.4.1"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.15",
