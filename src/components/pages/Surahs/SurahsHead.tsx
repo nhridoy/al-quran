@@ -25,7 +25,7 @@ export const SurahsHead: React.FC = () => {
         <div className="space-y-3">
           <div>
             <p className="text-sm font-medium text-white/70">
-              Assalamualaikum...!!!@
+              Assalamualaikum...!!!#
             </p>
             <div className="mt-1 flex items-center gap-1.5 text-xs text-white/50">
               <MdMenuBook className="text-sm" />
