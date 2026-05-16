@@ -1,6 +1,9 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AudioPlayer, { AudioPlayerProvider } from "./components/AudioPlayer";
+import LastReadTracker from "./components/LastReadTracker";
+import Layout from "./components/Layout/Layout";
+import HomeLayout from "./components/pages/HomeLayout";
 import Para from "./components/pages/Para/Para";
 import SurahPage from "./components/pages/Surah/Surah";
 
@@ -16,25 +19,26 @@ function App() {
   return (
     <BrowserRouter>
       <AudioPlayerProvider>
-        <div className="bg-white dark:bg-[#20282e] select-none">
-          <div className="container px-4 mx-auto ">
-            <Suspense fallback={<div className="h-screen"></div>}>
-              <Routes>
-                <Route path="/" element={<Splash />} />
+        <Layout>
+          <Suspense fallback={<div className="h-screen" />}>
+            <Routes>
+              <Route path="/" element={<Splash />} />
+              <Route element={<HomeLayout />}>
                 <Route path="/surah" element={<Surahs />} />
                 <Route path="/para" element={<Paras />} />
-                <Route path="/surah/:id" element={<SurahPage />} />
-                <Route path="/para/:id" element={<Para />} />
-                <Route path="/settings" element={<Settings />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/credits" element={<Credits />} />
-                <Route path="/donation" element={<Donation />} />
-                <Route path="*" element={<Navigate to="/surah" replace />} />
-              </Routes>
-            </Suspense>
-          </div>
-        </div>
+              </Route>
+              <Route path="/surah/:id" element={<SurahPage />} />
+              <Route path="/para/:id" element={<Para />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/credits" element={<Credits />} />
+              <Route path="/donation" element={<Donation />} />
+              <Route path="*" element={<Navigate to="/surah" replace />} />
+            </Routes>
+          </Suspense>
+        </Layout>
         <AudioPlayer />
+        <LastReadTracker />
       </AudioPlayerProvider>
     </BrowserRouter>
   );

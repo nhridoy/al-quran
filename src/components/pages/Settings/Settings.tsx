@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { HiOutlineTrash } from "react-icons/hi";
+import { IoSettingsOutline } from "react-icons/io5";
 import { ToastContainer, toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { useSurahs } from "../../../hooks/useSurahs";
@@ -10,19 +12,21 @@ export default function Settings() {
 
   const handleUpdate = () => {
     Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      title: "Refresh Data?",
+      text: "This will clear the cached data and fetch fresh content.",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, update it!",
+      confirmButtonColor: "#9345f2",
+      cancelButtonColor: "#ef4444",
+      confirmButtonText: "Yes, refresh!",
+      background: "#1a1228",
+      color: "#f0ecf8",
     }).then(async (result) => {
       if (result.value) {
         setLoading(true);
         try {
           await refresh();
-          toast.success("Data has been refreshed!");
+          toast.success("Data refreshed successfully!");
         } catch {
           toast.error("Failed to refresh data");
         }
@@ -33,32 +37,56 @@ export default function Settings() {
 
   return (
     <div className="min-h-screen">
-      <div className="sticky top-0 left-0 z-10 w-full bg-white">
-        <Header head="Settings" />
-      </div>
-      <div className="grid grid-rows-5">
-        <div className="flex items-center justify-center row-span-1 text-lg font-bold">
-          <h2 className="md:text-2xl dark:text-white">Configure Settings</h2>
+      <Header head="Settings" />
+      <div className="mx-4 space-y-4 md:mx-6">
+        <div className="mb-2">
+          <h2 className="text-lg font-bold text-text-primary dark:text-dark-text-primary">
+            Settings
+          </h2>
+          <p className="text-sm text-text-muted dark:text-dark-text-muted">
+            Manage application data and preferences
+          </p>
         </div>
-        <div className="flex flex-col row-span-4 p-5 text-white divide-y bg-secondary rounded-t-3xl">
-          <div className="pb-5">
-            <h2 className="px-2 py-3 md:text-2xl">Data Settings:</h2>
-            <h2 className="flex justify-between p-3 text-sm bg-purple-500 md:text-xl">
-              <p>Clear Data:</p>
-              <div
-                className={`${loading ? "cursor-not-allowed" : "cursor-auto"}`}
-              >
-                <button
-                  type="button"
-                  onClick={handleUpdate}
-                  className={`${
-                    loading ? "pointer-events-none" : "pointer-events-auto"
-                  } bg-red-500 text-white px-2 py-1 active:scale-95 rounded text-sm cursor-pointer`}
-                >
-                  {loading ? "Updating..." : "Refresh Data"}
-                </button>
+
+        <div className="overflow-hidden rounded-2xl border border-border bg-surface dark:border-dark-border dark:bg-dark-surface-card">
+          <div className="flex items-center gap-3 border-b border-border p-4 dark:border-dark-border">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20">
+              <IoSettingsOutline className="text-lg text-primary dark:text-secondary-light" />
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold text-text-primary dark:text-dark-text-primary">
+                Data Settings
+              </h3>
+              <p className="text-xs text-text-muted dark:text-dark-text-muted">
+                Clear and refresh cached Quran data
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between p-4">
+            <div className="flex items-center gap-3">
+              <HiOutlineTrash className="text-lg text-text-muted dark:text-dark-text-muted" />
+              <div>
+                <p className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
+                  Cached Data
+                </p>
+                <p className="text-xs text-text-muted dark:text-dark-text-muted">
+                  Quran verses and surah data
+                </p>
               </div>
-            </h2>
+            </div>
+            <button
+              type="button"
+              onClick={handleUpdate}
+              disabled={loading}
+              className={`rounded-xl px-4 py-2 text-sm font-semibold text-white transition-all ${
+                loading
+                  ? "cursor-not-allowed bg-text-muted"
+                  : "cursor-pointer bg-linear-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/20 active:scale-95"
+              }`}
+            >
+              {loading ? "Refreshing..." : "Refresh"}
+            </button>
           </div>
         </div>
       </div>
@@ -73,7 +101,7 @@ export default function Settings() {
         pauseOnFocusLoss
         draggable
         pauseOnHover={false}
-        theme="light"
+        theme="dark"
       />
     </div>
   );

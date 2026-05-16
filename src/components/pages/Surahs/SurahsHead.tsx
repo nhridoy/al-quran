@@ -1,7 +1,7 @@
 import type React from "react";
 import { useEffect, useState } from "react";
+import { FaQuran } from "react-icons/fa";
 import { MdMenuBook } from "react-icons/md";
-import logo from "../../../logo.svg";
 
 interface ReadStatus {
   surahName: string;
@@ -18,23 +18,32 @@ export const SurahsHead: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex items-center justify-between gap-10 px-5 py-3 mb-5 text-sm text-white shadow-lg md:px-8 bg-linear-to-tl rounded-2xl from-alternateOne to-secondary shadow-alternateOne md:text-lg">
-      <div className="flex flex-col gap-3">
-        <div className="">
-          <p className="">Assalamualaikum</p>
-          <div className="flex items-center gap-1">
-            <MdMenuBook /> <span>Last Read</span>
+    <div className="relative mx-4 mb-6 overflow-hidden rounded-2xl bg-linear-to-br from-primary via-primary-light to-secondary p-6 text-white shadow-xl shadow-primary/20 md:mx-6">
+      <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/5" />
+      <div className="pointer-events-none absolute -bottom-10 -left-10 h-32 w-32 rounded-full bg-white/5" />
+      <div className="relative flex items-center justify-between">
+        <div className="space-y-3">
+          <div>
+            <p className="text-sm font-medium text-white/70">Assalamualaikum</p>
+            <div className="mt-1 flex items-center gap-1.5 text-xs text-white/50">
+              <MdMenuBook className="text-sm" />
+              <span>Last Read</span>
+            </div>
+          </div>
+          <div>
+            <p className="text-base font-semibold">
+              {readStatus ? readStatus.surahName : "No reading history"}
+            </p>
+            <p className="text-sm text-white/70">
+              {readStatus
+                ? `Ayah ${readStatus.verseNumber}`
+                : "Start reading to track progress"}
+            </p>
           </div>
         </div>
-        <div className="">
-          <p className="font-semibold">
-            {readStatus ? readStatus.surahName : "No Data Found"}
-          </p>
-          <p>Ayat - {readStatus ? readStatus.verseNumber : "No Data Found"}</p>
+        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-sm">
+          <FaQuran className="text-2xl text-white/80" />
         </div>
-      </div>
-      <div className="flex justify-end">
-        <img className="w-1/2 md:w-1/5" src={logo} alt="logo" />
       </div>
     </div>
   );

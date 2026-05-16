@@ -1,6 +1,6 @@
 import type React from "react";
 import { CgPlayTrackNextO, CgPlayTrackPrevO } from "react-icons/cg";
-import { FiOctagon, FiPauseCircle, FiPlayCircle } from "react-icons/fi";
+import { FiPauseCircle, FiPlayCircle } from "react-icons/fi";
 import { useParams } from "react-router-dom";
 import type { Track } from "../../../components/AudioPlayer";
 import { getAudioUrl, useAudioPlayer } from "../../../components/AudioPlayer";
@@ -74,75 +74,72 @@ export const ParaHead: React.FC<ParaHeadProps> = ({ para, allSegments }) => {
   };
 
   return (
-    <div className="">
-      <div className="sticky flex justify-between p-4 text-white rounded-lg top-24 bg-secondary">
-        <div className="flex items-center gap-3">
-          <div className="relative">
-            <FiOctagon className="text-4xl font-bold" />
-            <span className="absolute inset-0 grid font-semibold place-items-center">
+    <div className="mb-4">
+      <div className="sticky top-0 z-20 mx-4 mb-4 overflow-hidden rounded-2xl bg-linear-to-r from-primary to-secondary shadow-lg md:mx-6">
+        <div className="flex items-center justify-between p-4">
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 text-sm font-bold text-white">
               {para.no}
-            </span>
-          </div>
-          <div className="flex flex-col gap-1">
-            <div className="font-semibold md:text-lg">{para.enName}</div>
-            <div className="flex flex-col gap-1 text-xs">
-              <span className="flex gap-1">
-                {para.revelationType === "Meccan" ? (
-                  <img
-                    src="https://img.icons8.com/external-color-outline-adri-ansyah/16/000000/external-islam-islam-and-ramadhan-color-outline-adri-ansyah-8.png"
-                    alt="Meccan"
-                  />
-                ) : (
-                  <img
-                    src="https://img.icons8.com/external-color-outline-adri-ansyah/16/000000/external-islam-islam-and-ramadhan-color-outline-adri-ansyah-13.png"
-                    alt="Medinan"
-                  />
-                )}
-                <span className="uppercase">{para.revelationType}</span>
-              </span>
-              <span className="uppercase">
-                {para.verses.length} verses in para {id}
-              </span>
+            </div>
+            <div>
+              <div className="font-semibold text-white">{para.enName}</div>
+              <div className="flex gap-2 text-xs text-white/60">
+                <span className="uppercase">
+                  {para.revelationType === "Meccan" ? "Makkah" : "Madinah"}
+                </span>
+                <span>&bull;</span>
+                <span>
+                  {para.verses.length} verses in para {id}
+                </span>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="flex flex-col items-end gap-2">
-          <div className="text-sm text-right md:text-lg">
-            <p className="md:font-semibold">{para.name}</p>
-            <p>{para.enNameTranslation}</p>
-            <p>{para.bnNameTranslation}</p>
-          </div>
-          <div className="flex gap-3">
-            <CgPlayTrackPrevO
-              className="text-2xl transition-transform cursor-pointer active:scale-90"
+          <div className="flex items-center gap-2">
+            <div className="mr-2 text-right">
+              <p className="font-arabic text-sm text-white">{para.name}</p>
+              <p className="text-xs text-white/60">{para.enNameTranslation}</p>
+            </div>
+            <button
+              type="button"
               onClick={handlePrev}
-            />
-            {isCurrentPara && isPlaying ? (
-              <FiPauseCircle
-                className="text-2xl transition-transform cursor-pointer active:scale-90"
-                onClick={handlePlay}
-              />
-            ) : (
-              <FiPlayCircle
-                className="text-2xl transition-transform cursor-pointer active:scale-90"
-                onClick={handlePlay}
-              />
-            )}
-            <CgPlayTrackNextO
-              className="text-2xl transition-transform cursor-pointer active:scale-90"
+              className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
+              aria-label="Previous"
+            >
+              <CgPlayTrackPrevO className="text-lg text-white" />
+            </button>
+            <button
+              type="button"
+              onClick={handlePlay}
+              className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-white text-primary shadow transition-all hover:scale-105 active:scale-95"
+              aria-label={isPlaying ? "Pause" : "Play"}
+            >
+              {isCurrentPara && isPlaying ? (
+                <FiPauseCircle className="text-xl" />
+              ) : (
+                <FiPlayCircle className="text-xl" />
+              )}
+            </button>
+            <button
+              type="button"
               onClick={handleNext}
-            />
+              className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
+              aria-label="Next"
+            >
+              <CgPlayTrackNextO className="text-lg text-white" />
+            </button>
           </div>
         </div>
       </div>
-      {para.verses.map((verse) => (
-        <Ayahs
-          ayah={verse}
-          key={`${verse.numberInSurah} + ${verse.juz}`}
-          tracklist={paraTracks}
-          surahNo={para.no}
-        />
-      ))}
+      <div className="mx-4 space-y-3 md:mx-6">
+        {para.verses.map((verse) => (
+          <Ayahs
+            ayah={verse}
+            key={`${verse.numberInSurah} + ${verse.juz}`}
+            tracklist={paraTracks}
+            surahNo={para.no}
+          />
+        ))}
+      </div>
     </div>
   );
 };

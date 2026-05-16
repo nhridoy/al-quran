@@ -19,13 +19,12 @@ export default function Para() {
 
   return (
     <div>
-      <div className="sticky top-0 left-0 z-10 w-full bg-white">
-        <Header head={`Para ${id}`} />
+      <Header head={`Para ${id}`} showBack />
+      <div className="py-2">
+        {para.map((paraItem) => (
+          <ParaHead para={paraItem} key={paraItem.no} allSegments={para} />
+        ))}
       </div>
-
-      {para.map((paraItem) => (
-        <ParaHead para={paraItem} key={paraItem.no} allSegments={para} />
-      ))}
     </div>
   );
 }

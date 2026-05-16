@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useAudioPlayer } from "./AudioPlayerContext";
 
 export default function PlaylistDrawer() {
   const [leaving, setLeaving] = useState(false);
+  const [entered, setEntered] = useState(false);
   const {
     showPlaylist,
     setShowPlaylist,
@@ -14,16 +15,21 @@ export default function PlaylistDrawer() {
   } = useAudioPlayer();
 
   useEffect(() => {
-    if (showPlaylist) setLeaving(false);
+    if (showPlaylist) {
+      setLeaving(false);
+      setEntered(false);
+      requestAnimationFrame(() => setEntered(true));
+    }
   }, [showPlaylist]);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setLeaving(true);
     setTimeout(() => {
       setShowPlaylist(false);
       setLeaving(false);
+      setEntered(false);
     }, 300);
-  };
+  }, [setShowPlaylist]);
 
   if (!showPlaylist && !leaving) return null;
 
@@ -45,13 +51,11 @@ export default function PlaylistDrawer() {
   }
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-end justify-center">
+    <div className="fixed inset-0 z-100 flex items-end justify-center">
       <button
         type="button"
-        className={`absolute inset-0 bg-black/40 backdrop-blur-sm cursor-default ${
-          leaving
-            ? "transition-all duration-300 ease-in-out opacity-0"
-            : "animate-[fadeIn_0.2s_ease-out]"
+        className={`absolute inset-0 cursor-default bg-black/40 backdrop-blur-sm transition-all duration-300 ease-in-out ${
+          leaving || !entered ? "opacity-0" : "opacity-100"
         }`}
         onClick={handleClose}
         aria-label="Close playlist overlay"
@@ -59,25 +63,23 @@ export default function PlaylistDrawer() {
       />
 
       <div
-        className={`relative w-full max-w-2xl max-h-[75vh] bg-white dark:bg-[#1a1f24] rounded-t-2xl shadow-2xl overflow-hidden ${
-          leaving
-            ? "transition-all duration-300 ease-in-out translate-y-full"
-            : "animate-[slideUp_0.3s_ease-out]"
+        className={`relative w-full max-w-2xl max-h-[75vh] overflow-hidden rounded-t-2xl bg-white shadow-2xl dark:bg-dark-surface-card transition-all duration-300 ease-in-out ${
+          leaving || !entered ? "translate-y-full" : "translate-y-0"
         }`}
       >
-        <div className="flex items-center justify-between px-5 py-4 border-b border-gray-200 dark:border-gray-700">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+        <div className="flex items-center justify-between border-b border-border px-5 py-4 dark:border-dark-border">
+          <h3 className="text-lg font-semibold text-text-primary dark:text-dark-text-primary">
             Playlist
           </h3>
           <button
             type="button"
             onClick={handleClose}
-            className="p-1.5 rounded-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors"
+            className="cursor-pointer rounded-full p-1.5 text-text-muted transition-colors hover:bg-surface-alt dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
             aria-label="Close playlist"
             title="Close"
           >
             <svg
-              className="w-5 h-5"
+              className="h-5 w-5"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -91,11 +93,11 @@ export default function PlaylistDrawer() {
             </svg>
           </button>
         </div>
-        <div className="overflow-y-auto max-h-[calc(75vh-60px)]">
+        <div className="max-h-[calc(75vh-60px)] overflow-y-auto">
           {playlist.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-16 text-gray-400 dark:text-gray-500">
+            <div className="flex flex-col items-center justify-center py-16 text-text-muted dark:text-dark-text-muted">
               <svg
-                className="w-16 h-16 mb-4 opacity-50"
+                className="mb-4 h-16 w-16 opacity-50"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -108,16 +110,16 @@ export default function PlaylistDrawer() {
                 <circle cx="18" cy="16" r="3" />
               </svg>
               <p className="text-lg">No tracks in playlist</p>
-              <p className="text-sm mt-1">
+              <p className="mt-1 text-sm">
                 Tap a play button on any ayah to start
               </p>
             </div>
           ) : (
-            <div className="divide-y divide-gray-100 dark:divide-gray-800">
+            <div className="divide-y divide-border dark:divide-dark-border">
               {Array.from(grouped.entries()).map(([surahNo, group]) => (
                 <div key={surahNo}>
-                  <div className="px-5 py-2 bg-gray-50 dark:bg-gray-800/50">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                  <div className="bg-surface-alt px-5 py-2 dark:bg-dark-surface-alt">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-text-muted dark:text-dark-text-muted">
                       {surahNo}. {group.enName}
                     </span>
                   </div>
@@ -128,35 +130,35 @@ export default function PlaylistDrawer() {
                         key={track.id}
                         type="button"
                         onClick={() => playTrack(track)}
-                        className={`w-full flex items-center gap-3 px-5 py-3 text-left cursor-pointer transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/50 ${
+                        className={`flex w-full cursor-pointer items-center gap-3 px-5 py-3 text-left transition-colors hover:bg-surface-alt dark:hover:bg-dark-surface-alt ${
                           isActive ? "bg-primary/5 dark:bg-primary/10" : ""
                         }`}
                         title={`${track.enName} - Ayah ${track.ayahNumber}`}
                       >
                         <span
-                          className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium ${
+                          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-medium ${
                             isActive
-                              ? "bg-primary text-white"
-                              : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300"
+                              ? "bg-linear-to-br from-primary to-secondary text-white"
+                              : "bg-surface-alt text-text-secondary dark:bg-dark-surface-alt dark:text-dark-text-secondary"
                           }`}
                         >
                           {track.ayahNumber}
                         </span>
-                        <div className="flex-1 min-w-0">
+                        <div className="min-w-0 flex-1">
                           <p
-                            className={`text-sm truncate ${
+                            className={`truncate text-sm ${
                               isActive
-                                ? "text-primary font-semibold dark:text-secondary"
-                                : "text-gray-900 dark:text-white"
+                                ? "font-semibold text-primary dark:text-secondary-light"
+                                : "text-text-primary dark:text-dark-text-primary"
                             }`}
                           >
                             {track.transliterationText || track.translationText}
                           </p>
-                          <p className="text-xs text-gray-400 dark:text-gray-500 truncate">
+                          <p className="truncate text-xs text-text-muted dark:text-dark-text-muted">
                             {track.arabicText}
                           </p>
                         </div>
-                        <span className="flex-shrink-0 text-xs text-gray-400 dark:text-gray-500">
+                        <span className="shrink-0 text-xs text-text-muted dark:text-dark-text-muted">
                           {formatTime(duration)}
                         </span>
                       </button>

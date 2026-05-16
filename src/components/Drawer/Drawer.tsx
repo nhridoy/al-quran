@@ -42,7 +42,7 @@ export default function Drawer({
   children,
   className = "",
   direction = "bottom",
-}: DrawerProps) {
+}: Readonly<DrawerProps>) {
   const [phase, setPhase] = useState<Phase>("hidden");
   const prevOpen = useRef(open);
 
@@ -76,10 +76,10 @@ export default function Drawer({
   }, [open, onClose]);
 
   useEffect(() => {
-    if (phase !== "hidden") {
-      document.body.style.overflow = "hidden";
-    } else {
+    if (phase === "hidden") {
       document.body.style.overflow = "";
+    } else {
+      document.body.style.overflow = "hidden";
     }
     return () => {
       document.body.style.overflow = "";

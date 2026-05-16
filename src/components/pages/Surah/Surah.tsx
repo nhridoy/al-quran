@@ -17,12 +17,9 @@ export default function SurahPage() {
 
   return (
     <div>
-      <div className="bg-white dark:bg-[#20282e] sticky top-0 left-0 w-full">
-        <Header surah={surah} />
-        <SurahHead surah={surah} />
-      </div>
-
-      <div className="flex flex-col gap-3">
+      <Header surah={surah} showBack />
+      <SurahHead surah={surah} />
+      <div className="mx-4 space-y-3 pb-24 md:mx-6 md:pb-8">
         {surah.verses.map((ayah) => (
           <Ayahs ayah={ayah} key={ayah.numberInSurah} surah={surah} />
         ))}

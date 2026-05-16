@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useAudioPlayer } from "./AudioPlayerContext";
+import VinylDisc from "./VinylDisc";
 
 function RepeatIcon({ mode }: { mode: "none" | "all" | "one" }) {
   return (
     <svg
-      className="w-5 h-5"
+      className="h-5 w-5"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -36,7 +37,7 @@ function RepeatIcon({ mode }: { mode: "none" | "all" | "one" }) {
 function ShuffleIcon() {
   return (
     <svg
-      className="w-5 h-5"
+      className="h-5 w-5"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -57,7 +58,7 @@ function ShuffleIcon() {
 function PlaylistIcon() {
   return (
     <svg
-      className="w-5 h-5"
+      className="h-5 w-5"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -79,7 +80,7 @@ function PlaylistIcon() {
 function Spinner({ className }: Readonly<{ className?: string }>) {
   return (
     <svg
-      className={`${className ?? "w-5 h-5"} animate-spin`}
+      className={`${className ?? "h-5 w-5"} animate-spin`}
       viewBox="0 0 24 24"
       fill="none"
       aria-hidden="true"
@@ -100,7 +101,7 @@ function Spinner({ className }: Readonly<{ className?: string }>) {
 function ChevronDownIcon() {
   return (
     <svg
-      className="w-5 h-5"
+      className="h-5 w-5"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -117,7 +118,7 @@ function ChevronDownIcon() {
 function VolumeIcon({ volume }: Readonly<{ volume: number }>) {
   return (
     <svg
-      className="w-5 h-5"
+      className="h-5 w-5"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -185,22 +186,22 @@ function SeekBar() {
     if (!isDragging) return;
     const onMouseMove = (e: MouseEvent) => handleSeekRef.current(e.clientX);
     const onMouseUp = () => setIsDragging(false);
-    window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("mouseup", onMouseUp);
+    globalThis.addEventListener("mousemove", onMouseMove);
+    globalThis.addEventListener("mouseup", onMouseUp);
     return () => {
-      window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("mouseup", onMouseUp);
+      globalThis.removeEventListener("mousemove", onMouseMove);
+      globalThis.removeEventListener("mouseup", onMouseUp);
     };
   }, [isDragging]);
 
   return (
-    <div className="flex items-center w-full gap-3">
-      <span className="w-10 text-xs text-right text-gray-400 dark:text-gray-500 tabular-nums">
+    <div className="flex w-full items-center gap-3">
+      <span className="w-10 text-right text-xs tabular-nums text-text-muted dark:text-dark-text-muted">
         {formatTime(currentTime)}
       </span>
       <div
         ref={barRef}
-        className="relative flex-1 h-2 bg-gray-200 rounded-full cursor-pointer dark:bg-gray-700 group"
+        className="relative flex-1 h-2 cursor-pointer rounded-full bg-border dark:bg-dark-border group"
         onMouseDown={handleMouseDown}
         role="slider"
         aria-label="Seek"
@@ -210,34 +211,17 @@ function SeekBar() {
         tabIndex={0}
       >
         <div
-          className="absolute top-0 left-0 h-full bg-linear-to-r from-secondary to-primary rounded-full transition-[width] duration-100"
+          className="absolute top-0 left-0 h-full rounded-full bg-linear-to-r from-secondary to-primary transition-[width] duration-100"
           style={{ width: `${progress}%` }}
         />
         <div
-          className="absolute w-4 h-4 transition-opacity -translate-y-1/2 bg-white border-2 rounded-full shadow-md opacity-0 top-1/2 dark:bg-gray-200 border-secondary group-hover:opacity-100"
+          className="absolute top-1/2 h-4 w-4 -translate-y-1/2 rounded-full border-2 border-secondary bg-white shadow-md opacity-0 transition-opacity dark:bg-gray-200 group-hover:opacity-100"
           style={{ left: `calc(${progress}% - 8px)` }}
         />
       </div>
-      <span className="w-10 text-xs text-gray-400 dark:text-gray-500 tabular-nums">
+      <span className="w-10 text-xs tabular-nums text-text-muted dark:text-dark-text-muted">
         {formatTime(duration)}
       </span>
-    </div>
-  );
-}
-
-function VinylDisc({ isPlaying }: Readonly<{ isPlaying: boolean }>) {
-  return (
-    <div className="relative shrink-0">
-      <div
-        className={`w-12 h-12 rounded-full bg-linear-to-br from-gray-800 to-gray-600 border-2 border-gray-300 dark:border-gray-600 flex items-center justify-center shadow-lg ${
-          isPlaying ? "animate-[spin_4s_linear_infinite]" : ""
-        }`}
-      >
-        <div className="flex items-center justify-center w-4 h-4 rounded-full bg-linear-to-br from-secondary to-primary">
-          <div className="w-1.5 h-1.5 rounded-full bg-white" />
-        </div>
-      </div>
-      <div className="absolute inset-0 rounded-full pointer-events-none bg-linear-to-tr from-black/10 to-transparent" />
     </div>
   );
 }
@@ -283,42 +267,42 @@ export default function ExpandedPlayer() {
   return (
     <>
       <div
-        className={`hidden md:block fixed bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-[#1a1f24]/95 backdrop-blur-lg border-t border-gray-200 dark:border-gray-700 shadow-2xl ${
+        className={`fixed bottom-0 left-0 right-0 z-50 hidden border-t border-border bg-surface/95 shadow-2xl backdrop-blur-lg dark:border-dark-border dark:bg-dark-surface/95 md:block ${
           leaving
-            ? "transition-all duration-300 ease-in-out translate-y-full opacity-0"
+            ? "translate-y-full opacity-0 transition-all duration-300 ease-in-out"
             : "animate-slide-up"
         }`}
       >
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gray-200 dark:bg-gray-700">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-border dark:bg-dark-border">
           <div
             className="h-full bg-linear-to-r from-secondary to-primary transition-[width] duration-300"
             style={{ width: `${progress}%` }}
           />
         </div>
 
-        <div className="flex items-center h-20 gap-4 px-4 mx-auto max-w-7xl">
-          <div className="flex items-center min-w-0 gap-3">
+        <div className="mx-auto flex h-20 max-w-7xl items-center gap-4 px-4">
+          <div className="flex min-w-0 items-center gap-3">
             <VinylDisc isPlaying={isPlaying} />
             <div className="min-w-0">
-              <p className="text-sm font-semibold text-gray-900 truncate dark:text-white">
+              <p className="truncate text-sm font-semibold text-text-primary dark:text-dark-text-primary">
                 {currentTrack.enName}
               </p>
-              <p className="text-xs text-gray-500 truncate dark:text-gray-400">
+              <p className="truncate text-xs text-text-muted dark:text-dark-text-muted">
                 Ayah {currentTrack.ayahNumber}
               </p>
             </div>
           </div>
 
-          <div className="flex items-center justify-center flex-1 gap-3">
+          <div className="flex flex-1 items-center justify-center gap-3">
             <SeekBar />
             <div className="flex items-center gap-1">
               <button
                 type="button"
                 onClick={toggleShuffle}
-                className={`p-2 rounded-full cursor-pointer transition-all active:scale-90 ${
+                className={`cursor-pointer rounded-full p-2 transition-all active:scale-90 ${
                   isShuffled
-                    ? "text-secondary bg-secondary/10"
-                    : "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    ? "bg-secondary/10 text-secondary"
+                    : "text-text-muted hover:bg-surface-alt dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
                 }`}
                 aria-label="Toggle shuffle"
                 title="Shuffle"
@@ -328,12 +312,12 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={prev}
-                className="p-2 text-gray-600 transition-all rounded-full cursor-pointer dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 active:scale-90"
+                className="cursor-pointer rounded-full p-2 text-text-secondary transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
                 aria-label="Previous"
                 title="Previous"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="h-5 w-5"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                   aria-hidden="true"
@@ -344,17 +328,17 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={togglePlay}
-                className="p-3 text-white transition-all rounded-full shadow-lg cursor-pointer bg-linear-to-r from-primary to-secondary hover:shadow-xl hover:scale-105 active:scale-95"
+                className="cursor-pointer rounded-full bg-linear-to-r from-primary to-secondary p-3 text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl active:scale-95"
                 aria-label={
                   isLoading ? "Loading" : isPlaying ? "Pause" : "Play"
                 }
                 title={isLoading ? "Loading" : isPlaying ? "Pause" : "Play"}
               >
                 {isLoading ? (
-                  <Spinner className="w-6 h-6" />
+                  <Spinner className="h-6 w-6" />
                 ) : isPlaying ? (
                   <svg
-                    className="w-6 h-6"
+                    className="h-6 w-6"
                     viewBox="0 0 24 24"
                     fill="currentColor"
                     aria-hidden="true"
@@ -364,7 +348,7 @@ export default function ExpandedPlayer() {
                   </svg>
                 ) : (
                   <svg
-                    className="w-6 h-6 ml-0.5"
+                    className="ml-0.5 h-6 w-6"
                     viewBox="0 0 24 24"
                     fill="currentColor"
                     aria-hidden="true"
@@ -376,12 +360,12 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={next}
-                className="p-2 text-gray-600 transition-all rounded-full cursor-pointer dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 active:scale-90"
+                className="cursor-pointer rounded-full p-2 text-text-secondary transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
                 aria-label="Next"
                 title="Next"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="h-5 w-5"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                   aria-hidden="true"
@@ -392,10 +376,10 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={cycleRepeat}
-                className={`p-2 rounded-full cursor-pointer transition-all active:scale-90 ${
+                className={`cursor-pointer rounded-full p-2 transition-all active:scale-90 ${
                   repeatMode === "none"
-                    ? "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
-                    : "text-secondary bg-secondary/10"
+                    ? "text-text-muted hover:bg-surface-alt dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
+                    : "bg-secondary/10 text-secondary"
                 }`}
                 aria-label="Cycle repeat mode"
                 title={`${repeatMode === "none" ? "Repeat" : repeatMode === "all" ? "Repeat all" : "Repeat one"}`}
@@ -407,7 +391,7 @@ export default function ExpandedPlayer() {
               <button
                 type="button"
                 onClick={() => setVolume(volume === 0 ? 0.7 : 0)}
-                className="p-2 text-gray-500 transition-all rounded-full cursor-pointer dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 active:scale-90"
+                className="cursor-pointer rounded-full p-2 text-text-muted transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
                 aria-label="Toggle mute"
                 title={volume === 0 ? "Unmute" : "Mute"}
               >
@@ -420,8 +404,7 @@ export default function ExpandedPlayer() {
                 step={0.01}
                 value={volume}
                 onChange={(e) => setVolume(Number.parseFloat(e.target.value))}
-                className="w-20 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full appearance-none cursor-pointer
-                  [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-secondary [&::-webkit-slider-thumb]:shadow-md"
+                className="h-1.5 w-20 cursor-pointer appearance-none rounded-full bg-border dark:bg-dark-border [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-secondary [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:shadow-md"
                 style={{
                   backgroundImage: `linear-gradient(to right, #9345f2 ${volume * 100}%, transparent ${volume * 100}%)`,
                 }}
@@ -434,7 +417,7 @@ export default function ExpandedPlayer() {
             <button
               type="button"
               onClick={togglePlaylist}
-              className="p-2 text-gray-500 transition-all rounded-full cursor-pointer dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 active:scale-90"
+              className="cursor-pointer rounded-full p-2 text-text-muted transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
               aria-label="Playlist"
               title="Playlist"
             >
@@ -443,7 +426,7 @@ export default function ExpandedPlayer() {
             <button
               type="button"
               onClick={handleMinimize}
-              className="p-2 text-gray-500 transition-all rounded-full cursor-pointer dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 active:scale-90"
+              className="cursor-pointer rounded-full p-2 text-text-muted transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
               aria-label="Minimize"
               title="Minimize"
             >
@@ -454,9 +437,9 @@ export default function ExpandedPlayer() {
       </div>
 
       <div
-        className={`md:hidden fixed inset-0 z-50 bg-linear-to-b from-[#1a1a2e] via-[#16213e] to-[#0f3460] flex flex-col ${
+        className={`fixed inset-0 z-50 flex flex-col bg-linear-to-b from-[#1a0a2e] via-primary to-[#1a0a2e] md:hidden ${
           leaving
-            ? "transition-all duration-300 ease-in-out opacity-0"
+            ? "opacity-0 transition-all duration-300 ease-in-out"
             : "animate-fade-in"
         }`}
       >
@@ -464,19 +447,19 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={togglePlaylist}
-            className="p-2 transition-all rounded-full cursor-pointer text-white/70 hover:bg-white/10 active:scale-90"
+            className="cursor-pointer rounded-full p-2 text-white/70 transition-all hover:bg-white/10 active:scale-90"
             aria-label="Playlist"
             title="Playlist"
           >
             <PlaylistIcon />
           </button>
-          <h2 className="text-sm font-medium tracking-wider uppercase text-white/60">
+          <h2 className="text-sm font-medium uppercase tracking-wider text-white/60">
             Now Playing
           </h2>
           <button
             type="button"
             onClick={handleMinimize}
-            className="p-2 transition-all rounded-full cursor-pointer text-white/70 hover:bg-white/10 active:scale-90"
+            className="cursor-pointer rounded-full p-2 text-white/70 transition-all hover:bg-white/10 active:scale-90"
             aria-label="Minimize"
             title="Minimize"
           >
@@ -484,16 +467,8 @@ export default function ExpandedPlayer() {
           </button>
         </div>
 
-        <div className="flex flex-col items-center justify-center flex-1 gap-8 px-8">
-          <div
-            className={`w-64 h-64 rounded-full bg-linear-to-br from-gray-800 to-gray-600 border-4 border-white/10 shadow-2xl flex items-center justify-center ${
-              isPlaying ? "animate-[spin_8s_linear_infinite]" : ""
-            }`}
-          >
-            <div className="flex items-center justify-center w-24 h-24 rounded-full bg-linear-to-br from-secondary to-primary">
-              <div className="w-8 h-8 rounded-full bg-white/30" />
-            </div>
-          </div>
+        <div className="flex flex-1 flex-col items-center justify-center gap-8 px-8">
+          <VinylDisc isPlaying={isPlaying} size="lg" />
 
           <div className="w-full max-w-sm text-center">
             <p className="mb-1 text-2xl font-bold text-white">
@@ -513,9 +488,9 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={toggleShuffle}
-            className={`p-3 rounded-full cursor-pointer transition-all active:scale-90 ${
+            className={`cursor-pointer rounded-full p-3 transition-all active:scale-90 ${
               isShuffled
-                ? "text-secondary bg-white/10"
+                ? "bg-white/10 text-secondary"
                 : "text-white/60 hover:bg-white/10"
             }`}
             aria-label="Toggle shuffle"
@@ -526,12 +501,12 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={prev}
-            className="p-3 transition-all rounded-full cursor-pointer text-white/80 hover:bg-white/10 active:scale-90"
+            className="cursor-pointer rounded-full p-3 text-white/80 transition-all hover:bg-white/10 active:scale-90"
             aria-label="Previous"
             title="Previous"
           >
             <svg
-              className="w-8 h-8"
+              className="h-8 w-8"
               viewBox="0 0 24 24"
               fill="currentColor"
               aria-hidden="true"
@@ -542,15 +517,15 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={togglePlay}
-            className="p-5 transition-transform bg-white rounded-full shadow-2xl cursor-pointer text-primary hover:scale-105 active:scale-95"
+            className="cursor-pointer rounded-full bg-white p-5 text-primary shadow-2xl transition-transform hover:scale-105 active:scale-95"
             aria-label={isLoading ? "Loading" : isPlaying ? "Pause" : "Play"}
             title={isLoading ? "Loading" : isPlaying ? "Pause" : "Play"}
           >
             {isLoading ? (
-              <Spinner className="w-8 h-8" />
+              <Spinner className="h-8 w-8" />
             ) : isPlaying ? (
               <svg
-                className="w-8 h-8"
+                className="h-8 w-8"
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 aria-hidden="true"
@@ -560,7 +535,7 @@ export default function ExpandedPlayer() {
               </svg>
             ) : (
               <svg
-                className="w-8 h-8 ml-1"
+                className="ml-1 h-8 w-8"
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 aria-hidden="true"
@@ -572,12 +547,12 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={next}
-            className="p-3 transition-all rounded-full cursor-pointer text-white/80 hover:bg-white/10 active:scale-90"
+            className="cursor-pointer rounded-full p-3 text-white/80 transition-all hover:bg-white/10 active:scale-90"
             aria-label="Next"
             title="Next"
           >
             <svg
-              className="w-8 h-8"
+              className="h-8 w-8"
               viewBox="0 0 24 24"
               fill="currentColor"
               aria-hidden="true"
@@ -588,10 +563,10 @@ export default function ExpandedPlayer() {
           <button
             type="button"
             onClick={cycleRepeat}
-            className={`p-3 rounded-full cursor-pointer transition-all active:scale-90 ${
+            className={`cursor-pointer rounded-full p-3 transition-all active:scale-90 ${
               repeatMode === "none"
                 ? "text-white/60 hover:bg-white/10"
-                : "text-secondary bg-white/10"
+                : "bg-white/10 text-secondary"
             }`}
             aria-label="Cycle repeat mode"
             title={`${repeatMode === "none" ? "Repeat" : repeatMode === "all" ? "Repeat all" : "Repeat one"}`}
