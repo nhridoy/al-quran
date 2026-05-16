@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
     VitePWA({
-      registerType: "autoUpdate",
+      registerType: "prompt",
       includeAssets: ["logo192.png", "logo512.png", "screenshots/*.svg"],
       manifest: {
         name: "Al Quran",
