@@ -24,7 +24,7 @@ export default function Layout({ children }: Readonly<LayoutProps>) {
         <div className="page-enter">{children}</div>
       </main>
       {!isSplash && <BottomNav />}
-      {!isSplash && <UpdateBanner />}
+      {/* {!isSplash && <UpdateBanner />} */}
       {!isSplash && <InstallPrompt />}
     </div>
   );
