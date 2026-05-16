@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 export default function InstallPrompt() {
-  const [deferredPrompt, setDeferredPrompt] =
-    useState<Event | null>(null);
+  const [deferredPrompt, setDeferredPrompt] = useState<Event | null>(null);
   const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
