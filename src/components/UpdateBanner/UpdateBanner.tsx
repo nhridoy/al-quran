@@ -1,5 +1,5 @@
-import { MdClose, MdRefresh } from "react-icons/md";
 import { useRegisterSW } from "virtual:pwa-register/react";
+import { MdClose, MdRefresh } from "react-icons/md";
 
 export default function UpdateBanner() {
   const {
