@@ -2,18 +2,18 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
-// import { registerSW } from "virtual:pwa-register";
+import { registerSW } from "virtual:pwa-register";
 import App from "./App";
 
-// registerSW({
-//   // onNeedRefresh() {
-//   //   console.log("New content available, please refresh.");
-//   // },
-//   // onOfflineReady() {
-//   //   console.log("Content cached for offline use.");
-//   // },
-//   immediate: true,
-// });
+registerSW({
+  // onNeedRefresh() {
+  //   console.log("New content available, please refresh.");
+  // },
+  onOfflineReady() {
+    console.log("Content cached for offline use.");
+  },
+  immediate: true,
+});
 
 // updateSW();
 
