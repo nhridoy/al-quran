@@ -13,7 +13,7 @@ const credits = [
 
 const Credits: React.FC = () => {
   return (
-    <div>
+    <div className="min-h-screen">
       <Header head="Credits" />
       <div className="mx-4 space-y-4 md:mx-6">
         <div className="mb-2">

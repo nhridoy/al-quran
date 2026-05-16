@@ -10,7 +10,7 @@ import { Header } from "../../Header/Header";
 
 const About: React.FC = () => {
   return (
-    <div>
+    <div className="min-h-screen">
       <Header head="About" />
       <div className="mx-4 space-y-4 md:mx-6">
         <div className="mb-2">
