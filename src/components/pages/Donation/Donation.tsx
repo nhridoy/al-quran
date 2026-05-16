@@ -31,7 +31,10 @@ const Donation: React.FC = () => {
             </div>
           </div>
           <div className="space-y-3 p-4 text-sm text-text-secondary dark:text-dark-text-secondary">
-            <p>50% of your donation will go directly to different mosque and islamic education center.</p>
+            <p>
+              50% of your donation will go directly to different mosque and
+              islamic education center.
+            </p>
             <p>Other 50% will be used for server maintenance fee.</p>
           </div>
         </div>

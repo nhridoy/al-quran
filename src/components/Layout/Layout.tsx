@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { useLocation } from "react-router-dom";
-import Sidebar from "../Sidebar/Sidebar";
 import BottomNav from "../BottomNav/BottomNav";
+import Sidebar from "../Sidebar/Sidebar";
 
 interface LayoutProps {
   children: ReactNode;

@@ -49,63 +49,127 @@
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-24px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideLeft {
-  from { opacity: 0; transform: translateX(-24px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes slideRight {
-  from { opacity: 0; transform: translateX(24px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.92); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes scaleOut {
-  from { opacity: 1; transform: scale(1); }
-  to { opacity: 0; transform: scale(0.92); }
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.92);
+  }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @keyframes glow {
-  from { box-shadow: 0 0 20px rgba(147, 69, 242, 0.3); }
-  to { box-shadow: 0 0 40px rgba(147, 69, 242, 0.6); }
+  from {
+    box-shadow: 0 0 20px rgba(147, 69, 242, 0.3);
+  }
+  to {
+    box-shadow: 0 0 40px rgba(147, 69, 242, 0.6);
+  }
 }
 
 @keyframes shimmer {
-  from { background-position: -200% 0; }
-  to { background-position: 200% 0; }
+  from {
+    background-position: -200% 0;
+  }
+  to {
+    background-position: 200% 0;
+  }
 }
 
 @keyframes pageEnter {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes pulse-soft {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
 }
 
 body {
@@ -176,14 +240,23 @@ html {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-gold {
-  background: linear-gradient(135deg, var(--color-gold-dark), var(--color-gold), var(--color-gold-light));
+  background: linear-gradient(
+    135deg,
+    var(--color-gold-dark),
+    var(--color-gold),
+    var(--color-gold-light)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -203,7 +276,11 @@ html {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
   color: white;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -248,13 +325,33 @@ html {
   color: #fff;
 }
 
-.swiper-slide:nth-child(1n) { background-color: rgb(206, 17, 17); }
-.swiper-slide:nth-child(2n) { background-color: rgb(0, 140, 255); }
-.swiper-slide:nth-child(3n) { background-color: rgb(10, 184, 111); }
-.swiper-slide:nth-child(4n) { background-color: rgb(211, 122, 7); }
-.swiper-slide:nth-child(5n) { background-color: rgb(118, 163, 12); }
-.swiper-slide:nth-child(6n) { background-color: rgb(180, 10, 47); }
-.swiper-slide:nth-child(7n) { background-color: rgb(35, 99, 19); }
-.swiper-slide:nth-child(8n) { background-color: rgb(0, 68, 255); }
-.swiper-slide:nth-child(9n) { background-color: rgb(218, 12, 218); }
-.swiper-slide:nth-child(10n) { background-color: rgb(54, 94, 77); }
+.swiper-slide:nth-child(1n) {
+  background-color: rgb(206, 17, 17);
+}
+.swiper-slide:nth-child(2n) {
+  background-color: rgb(0, 140, 255);
+}
+.swiper-slide:nth-child(3n) {
+  background-color: rgb(10, 184, 111);
+}
+.swiper-slide:nth-child(4n) {
+  background-color: rgb(211, 122, 7);
+}
+.swiper-slide:nth-child(5n) {
+  background-color: rgb(118, 163, 12);
+}
+.swiper-slide:nth-child(6n) {
+  background-color: rgb(180, 10, 47);
+}
+.swiper-slide:nth-child(7n) {
+  background-color: rgb(35, 99, 19);
+}
+.swiper-slide:nth-child(8n) {
+  background-color: rgb(0, 68, 255);
+}
+.swiper-slide:nth-child(9n) {
+  background-color: rgb(218, 12, 218);
+}
+.swiper-slide:nth-child(10n) {
+  background-color: rgb(54, 94, 77);
+}

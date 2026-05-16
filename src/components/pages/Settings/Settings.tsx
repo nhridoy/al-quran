@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import { IoSettingsOutline } from "react-icons/io5";
 import { HiOutlineTrash } from "react-icons/hi";
+import { IoSettingsOutline } from "react-icons/io5";
+import { ToastContainer, toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { useSurahs } from "../../../hooks/useSurahs";
 import { Header } from "../../Header/Header";

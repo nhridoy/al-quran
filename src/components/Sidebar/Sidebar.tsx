@@ -1,7 +1,7 @@
-import { FaQuran, FaBookOpen } from "react-icons/fa";
-import { IoSettingsOutline } from "react-icons/io5";
+import { AiOutlineGift, AiOutlineHeart } from "react-icons/ai";
 import { BsInfoCircle } from "react-icons/bs";
-import { AiOutlineHeart, AiOutlineGift } from "react-icons/ai";
+import { FaBookOpen, FaQuran } from "react-icons/fa";
+import { IoSettingsOutline } from "react-icons/io5";
 import { MdMenuBook } from "react-icons/md";
 import { NavLink, useLocation } from "react-router-dom";
 
@@ -36,7 +36,8 @@ export default function Sidebar() {
       <nav className="flex-1 space-y-1 px-3">
         {navItems.map((item) => {
           const Icon = item.icon;
-          const isActive = location.pathname === item.to ||
+          const isActive =
+            location.pathname === item.to ||
             (item.to === "/surah" && location.pathname.startsWith("/surah")) ||
             (item.to === "/para" && location.pathname.startsWith("/para"));
 
@@ -52,9 +53,7 @@ export default function Sidebar() {
             >
               <Icon
                 className={`text-lg ${
-                  isActive
-                    ? "text-secondary dark:text-secondary-light"
-                    : ""
+                  isActive ? "text-secondary dark:text-secondary-light" : ""
                 }`}
               />
               <span>{item.label}</span>

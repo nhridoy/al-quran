@@ -1,5 +1,5 @@
 import type React from "react";
-import { useEffect, useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { BiBookmark, BiShareAlt } from "react-icons/bi";
 import { IoPauseOutline, IoPlayOutline } from "react-icons/io5";
 import type { Track } from "../../../components/AudioPlayer";
@@ -94,7 +94,9 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
                   : "btn-ghost"
               }`}
               aria-label={isThisAyahPlaying ? "Pause" : "Play"}
-              title={isThisAyahPlaying ? "Pause" : `Play ayah ${ayah.numberInSurah}`}
+              title={
+                isThisAyahPlaying ? "Pause" : `Play ayah ${ayah.numberInSurah}`
+              }
             >
               {isThisAyahPlaying ? (
                 <IoPauseOutline className="text-base" />

@@ -1,7 +1,7 @@
 import type React from "react";
 import { useEffect, useState } from "react";
-import { MdMenuBook } from "react-icons/md";
 import { FaQuran } from "react-icons/fa";
+import { MdMenuBook } from "react-icons/md";
 
 interface ReadStatus {
   surahName: string;

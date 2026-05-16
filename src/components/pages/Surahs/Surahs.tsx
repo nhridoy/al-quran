@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
 import { BiSearch } from "react-icons/bi";
+import { Link } from "react-router-dom";
 import { useSurahs } from "../../../hooks/useSurahs";
 import { Home } from "../Home/Home";
 import SurahList from "../SurahList/SurahList";

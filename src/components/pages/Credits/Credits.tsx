@@ -1,6 +1,6 @@
 import { AiOutlineHeart } from "react-icons/ai";
-import { GoDotFill } from "react-icons/go";
 import { BiLinkExternal } from "react-icons/bi";
+import { GoDotFill } from "react-icons/go";
 import { Header } from "../../Header/Header";
 
 const credits = [

@@ -1,7 +1,7 @@
+import { AiOutlineGift } from "react-icons/ai";
+import { BsInfoCircle } from "react-icons/bs";
 import { FaBookOpen } from "react-icons/fa";
 import { IoSettingsOutline } from "react-icons/io5";
-import { BsInfoCircle } from "react-icons/bs";
-import { AiOutlineGift } from "react-icons/ai";
 import { MdMenuBook } from "react-icons/md";
 import { NavLink, useLocation } from "react-router-dom";
 
@@ -21,7 +21,8 @@ export default function BottomNav() {
       <div className="flex items-center justify-around px-2 py-1">
         {tabs.map((tab) => {
           const Icon = tab.icon;
-          const isActive = location.pathname === tab.to ||
+          const isActive =
+            location.pathname === tab.to ||
             (tab.to === "/surah" && location.pathname.startsWith("/surah")) ||
             (tab.to === "/para" && location.pathname.startsWith("/para"));
 

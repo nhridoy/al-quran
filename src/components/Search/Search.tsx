@@ -25,7 +25,9 @@ export default function Search() {
     } else {
       document.body.style.overflow = "";
     }
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
   useEffect(() => {
@@ -139,7 +141,9 @@ export default function Search() {
                   <div className="flex flex-col items-center py-12 text-text-muted dark:text-dark-text-muted">
                     <BiSearch className="text-3xl mb-2 opacity-40" />
                     <p className="text-sm font-medium">No results found</p>
-                    <p className="text-xs mt-0.5">Try a different search term</p>
+                    <p className="text-xs mt-0.5">
+                      Try a different search term
+                    </p>
                   </div>
                 ) : (
                   <div className="flex flex-col items-center py-12 text-text-muted dark:text-dark-text-muted">

@@ -3,9 +3,9 @@ import {
   AiOutlineGithub,
   AiOutlineMail,
 } from "react-icons/ai";
-import { IoLogoFacebook, IoLogoWhatsapp } from "react-icons/io5";
 import { BsInfoCircle } from "react-icons/bs";
 import { GoDotFill } from "react-icons/go";
+import { IoLogoFacebook, IoLogoWhatsapp } from "react-icons/io5";
 import { Header } from "../../Header/Header";
 
 const About: React.FC = () => {
@@ -82,7 +82,9 @@ const About: React.FC = () => {
         <div className="overflow-hidden rounded-2xl border border-border bg-surface dark:border-dark-border dark:bg-dark-surface-card">
           <div className="flex items-center gap-3 border-b border-border p-4 dark:border-dark-border">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20">
-              <span className="text-lg font-bold text-primary dark:text-secondary-light">01</span>
+              <span className="text-lg font-bold text-primary dark:text-secondary-light">
+                01
+              </span>
             </div>
             <div>
               <h3 className="text-sm font-semibold text-text-primary dark:text-dark-text-primary">
@@ -105,7 +107,9 @@ const About: React.FC = () => {
         <div className="overflow-hidden rounded-2xl border border-border bg-surface dark:border-dark-border dark:bg-dark-surface-card">
           <div className="flex items-center gap-3 border-b border-border p-4 dark:border-dark-border">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20">
-              <span className="text-lg font-bold text-primary dark:text-secondary-light">02</span>
+              <span className="text-lg font-bold text-primary dark:text-secondary-light">
+                02
+              </span>
             </div>
             <div>
               <h3 className="text-sm font-semibold text-text-primary dark:text-dark-text-primary">
@@ -120,7 +124,10 @@ const About: React.FC = () => {
               "We have years of experience in developing web and mobile applications.",
               "We use latest technologies to develop web and mobile applications.",
             ].map((item, i) => (
-              <div key={i} className="flex items-start gap-2 text-sm text-text-secondary dark:text-dark-text-secondary">
+              <div
+                key={i}
+                className="flex items-start gap-2 text-sm text-text-secondary dark:text-dark-text-secondary"
+              >
                 <GoDotFill className="mt-0.5 shrink-0 text-xs text-primary dark:text-secondary-light" />
                 <span>{item}</span>
               </div>

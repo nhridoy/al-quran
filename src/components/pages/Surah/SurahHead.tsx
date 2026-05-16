@@ -73,7 +73,9 @@ export const SurahHead: React.FC<SurahHeadProps> = ({ surah }) => {
             {surah.enName} &mdash; {surah.enNameTranslation}
           </h2>
           <div className="mt-1 flex items-center gap-2 text-xs font-medium uppercase text-white/60">
-            <span>{surah.revelationType === "Meccan" ? "Makkah" : "Madinah"}</span>
+            <span>
+              {surah.revelationType === "Meccan" ? "Makkah" : "Madinah"}
+            </span>
             <span>&bull;</span>
             <span>{surah.numberOfAyahs} verses</span>
           </div>

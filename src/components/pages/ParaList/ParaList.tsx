@@ -1,6 +1,6 @@
 import type React from "react";
-import { FaQuran } from "react-icons/fa";
 import { BiChevronRight } from "react-icons/bi";
+import { FaQuran } from "react-icons/fa";
 
 interface ParaListProps {
   paraNo: number;

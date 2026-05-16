@@ -88,7 +88,9 @@ export const ParaHead: React.FC<ParaHeadProps> = ({ para, allSegments }) => {
                   {para.revelationType === "Meccan" ? "Makkah" : "Madinah"}
                 </span>
                 <span>&bull;</span>
-                <span>{para.verses.length} verses in para {id}</span>
+                <span>
+                  {para.verses.length} verses in para {id}
+                </span>
               </div>
             </div>
           </div>
