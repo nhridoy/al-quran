@@ -1,32 +1,79 @@
 import { useCallback, useEffect, useState } from "react";
+import { IoMdClose } from "react-icons/io";
+import { MdOutlineFileDownload } from "react-icons/md";
+
+// 1. Properly extend the global WindowEventMap to include the custom PWA events
+interface BeforeInstallPromptEvent extends Event {
+  readonly platforms?: string[];
+  prompt: () => Promise<void>;
+  userChoice: Promise<{
+    outcome: "accepted" | "dismissed";
+    platform: string;
+  }>;
+}
+
+declare global {
+  interface WindowEventMap {
+    beforeinstallprompt: BeforeInstallPromptEvent;
+    appinstalled: Event;
+  }
+}
+
+const DISMISSED_KEY = "installPromptDismissed";
 
 export default function InstallPrompt() {
-  const [deferredPrompt, setDeferredPrompt] = useState<Event | null>(null);
-  const [dismissed, setDismissed] = useState(false);
+  const [deferredPrompt, setDeferredPrompt] =
+    useState<BeforeInstallPromptEvent | null>(null);
+
+  const [dismissed, setDismissed] = useState<boolean>(() => {
+    if (typeof window === "undefined") return false;
+    return localStorage.getItem(DISMISSED_KEY) === "true";
+  });
 
   useEffect(() => {
-    const handler = (e: Event) => {
+    // 2. Safely check for matchMedia in SSR environments
+    if (
+      dismissed ||
+      (typeof window !== "undefined" &&
+        window.matchMedia("(display-mode: standalone)").matches)
+    )
+      return;
+
+    // 3. Explicitly type the event parameter
+    const handler = (e: BeforeInstallPromptEvent) => {
       e.preventDefault();
       setDeferredPrompt(e);
     };
+
     window.addEventListener("beforeinstallprompt", handler);
     return () => window.removeEventListener("beforeinstallprompt", handler);
+  }, [dismissed]);
+
+  useEffect(() => {
+    const handleAppInstalled = () => {
+      setDismissed(true);
+    };
+    window.addEventListener("appinstalled", handleAppInstalled);
+    return () => window.removeEventListener("appinstalled", handleAppInstalled);
+  }, []);
+
+  const handleDismiss = useCallback(() => {
+    setDismissed(true);
+    if (typeof window !== "undefined") {
+      localStorage.setItem(DISMISSED_KEY, "true");
+    }
   }, []);
 
   const handleInstall = useCallback(async () => {
     if (!deferredPrompt) return;
-    (deferredPrompt as any).prompt();
-    const result = await (deferredPrompt as any).userChoice;
+    await deferredPrompt.prompt();
+    const result = await deferredPrompt.userChoice;
     if (result.outcome === "accepted") {
       setDeferredPrompt(null);
     } else {
-      setDismissed(true);
+      handleDismiss();
     }
-  }, [deferredPrompt]);
-
-  const handleDismiss = useCallback(() => {
-    setDismissed(true);
-  }, []);
+  }, [deferredPrompt, handleDismiss]);
 
   if (!deferredPrompt || dismissed) return null;
 
@@ -38,19 +85,8 @@ export default function InstallPrompt() {
           onClick={handleInstall}
           className="flex items-center gap-2"
         >
-          <svg
-            className="h-5 w-5 text-primary dark:text-secondary-light"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-            <polyline points="7 10 12 15 17 10" />
-            <line x1="12" y1="15" x2="12" y2="3" />
-          </svg>
+          <MdOutlineFileDownload className="size-5 text-primary dark:text-secondary-light" />
+
           <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary whitespace-nowrap">
             Install App
           </span>
@@ -61,17 +97,7 @@ export default function InstallPrompt() {
           className="ml-1 rounded-full p-0.5 text-text-muted transition-colors hover:bg-surface-alt dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
           aria-label="Dismiss install prompt"
         >
-          <svg
-            className="h-3.5 w-3.5"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-          >
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
+          <IoMdClose className="size-3.5" />
         </button>
       </div>
     </div>
