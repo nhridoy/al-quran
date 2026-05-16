@@ -25,7 +25,7 @@ export default function Layout({ children }: Readonly<LayoutProps>) {
       </main>
       {!isSplash && <BottomNav />}
       {/* {!isSplash && <UpdateBanner />} */}
-      {!isSplash && <InstallPrompt />}
+      {/* {!isSplash && <InstallPrompt />} */}
     </div>
   );
 }
