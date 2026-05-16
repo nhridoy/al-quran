@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import BottomNav from "../BottomNav/BottomNav";
 import InstallPrompt from "../InstallPrompt/InstallPrompt";
 import Sidebar from "../Sidebar/Sidebar";
-import UpdateBanner from "../UpdateBanner/UpdateBanner";
+// import UpdateBanner from "../UpdateBanner/UpdateBanner";
 
 interface LayoutProps {
   children: ReactNode;
@@ -25,7 +25,7 @@ export default function Layout({ children }: Readonly<LayoutProps>) {
       </main>
       {!isSplash && <BottomNav />}
       {/* {!isSplash && <UpdateBanner />} */}
-      {/* {!isSplash && <InstallPrompt />} */}
+      {!isSplash && <InstallPrompt />}
     </div>
   );
 }
