@@ -123,9 +123,9 @@ const About: React.FC = () => {
               "We develop web and mobile applications.",
               "We have years of experience in developing web and mobile applications.",
               "We use latest technologies to develop web and mobile applications.",
-            ].map((item, i) => (
+            ].map((item) => (
               <div
-                key={i}
+                key={item}
                 className="flex items-start gap-2 text-sm text-text-secondary dark:text-dark-text-secondary"
               >
                 <GoDotFill className="mt-0.5 shrink-0 text-xs text-primary dark:text-secondary-light" />
