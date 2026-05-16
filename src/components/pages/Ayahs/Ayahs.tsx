@@ -63,7 +63,7 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
             <span
               className={`flex h-8 w-8 items-center justify-center rounded-lg text-xs font-semibold ${
                 isCurrentAyah
-                  ? "bg-gradient-to-br from-primary to-secondary text-white"
+                  ? "bg-linear-to-br from-primary to-secondary text-white"
                   : "bg-surface-alt text-text-secondary dark:bg-dark-surface-alt dark:text-dark-text-secondary"
               }`}
             >
@@ -90,7 +90,7 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
               onClick={handlePlay}
               className={`flex h-8 w-8 items-center justify-center rounded-lg transition-all active:scale-90 ${
                 isThisAyahPlaying
-                  ? "bg-gradient-to-br from-primary to-secondary text-white shadow-md"
+                  ? "bg-linear-to-br from-primary to-secondary text-white shadow-md"
                   : "btn-ghost"
               }`}
               aria-label={isThisAyahPlaying ? "Pause" : "Play"}
@@ -115,7 +115,7 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
           </div>
         </div>
 
-        <p className="font-arabic mb-3 text-right text-2xl leading-[2] text-text-primary dark:text-dark-text-primary md:text-3xl">
+        <p className="font-arabic mb-3 text-right text-2xl leading-loose text-text-primary dark:text-dark-text-primary md:text-3xl">
           {ayah.text}
         </p>
 
