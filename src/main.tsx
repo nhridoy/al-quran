@@ -13,10 +13,11 @@ createRoot(rootElement).render(
   </StrictMode>,
 );
 registerSW({
-  onNeedRefresh() {
-    console.log("New content available, please refresh.");
-  },
+  // onNeedRefresh() {
+  //   console.log("New content available, please refresh.");
+  // },
   onOfflineReady() {
     console.log("Content cached for offline use.");
   },
+  immediate: true,
 });
