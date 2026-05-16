@@ -9,7 +9,7 @@ interface SurahListProps {
 const SurahList: React.FC<SurahListProps> = ({ data }) => {
   return (
     <div className="group flex cursor-pointer items-center gap-4 px-4 py-3.5 transition-all duration-200">
-      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 font-semibold text-primary dark:from-primary/20 dark:to-secondary/20 dark:text-secondary-light">
+      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-primary/10 to-secondary/10 font-semibold text-primary dark:from-primary/20 dark:to-secondary/20 dark:text-secondary-light">
         <span className="text-xs">{data.no}</span>
       </div>
       <div className="flex min-w-0 flex-1 items-center gap-3">

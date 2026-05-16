@@ -29,7 +29,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
             </button>
           )}
           <h1 className="text-lg font-bold text-text-primary dark:text-dark-text-primary md:text-xl">
-            {!props.head ? props.surah?.enName : props.head}
+            {props.head ? props.head : props.surah?.enName}
           </h1>
         </div>
         <Search />

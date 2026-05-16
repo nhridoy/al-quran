@@ -50,7 +50,7 @@ export default function Settings() {
 
         <div className="overflow-hidden rounded-2xl border border-border bg-surface dark:border-dark-border dark:bg-dark-surface-card">
           <div className="flex items-center gap-3 border-b border-border p-4 dark:border-dark-border">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20">
               <IoSettingsOutline className="text-lg text-primary dark:text-secondary-light" />
             </div>
             <div>
@@ -82,7 +82,7 @@ export default function Settings() {
               className={`rounded-xl px-4 py-2 text-sm font-semibold text-white transition-all ${
                 loading
                   ? "cursor-not-allowed bg-text-muted"
-                  : "bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/20 active:scale-95"
+                  : "bg-linear-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/20 active:scale-95"
               }`}
             >
               {loading ? "Refreshing..." : "Refresh"}

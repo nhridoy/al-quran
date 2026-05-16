@@ -45,7 +45,7 @@ export default function PlaylistDrawer() {
   }
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-end justify-center">
+    <div className="fixed inset-0 z-100 flex items-end justify-center">
       <button
         type="button"
         className={`absolute inset-0 cursor-default bg-black/40 backdrop-blur-sm ${
@@ -61,7 +61,7 @@ export default function PlaylistDrawer() {
       <div
         className={`relative w-full max-w-2xl max-h-[75vh] overflow-hidden rounded-t-2xl bg-white shadow-2xl dark:bg-dark-surface-card ${
           leaving
-            ? "translate-y-full translate-y-full transition-all duration-300 ease-in-out"
+            ? "translate-y-full transition-all duration-300 ease-in-out"
             : "animate-[slideUp_0.3s_ease-out]"
         }`}
       >
@@ -136,7 +136,7 @@ export default function PlaylistDrawer() {
                         <span
                           className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-medium ${
                             isActive
-                              ? "bg-gradient-to-br from-primary to-secondary text-white"
+                              ? "bg-linear-to-br from-primary to-secondary text-white"
                               : "bg-surface-alt text-text-secondary dark:bg-dark-surface-alt dark:text-dark-text-secondary"
                           }`}
                         >

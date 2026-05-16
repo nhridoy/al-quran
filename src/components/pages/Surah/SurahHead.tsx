@@ -56,7 +56,7 @@ export const SurahHead: React.FC<SurahHeadProps> = ({ surah }) => {
   };
 
   return (
-    <div className="relative mx-4 mb-6 overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-primary-light to-secondary p-6 text-white shadow-xl shadow-primary/20 md:mx-6 md:p-8">
+    <div className="relative mx-4 mb-6 overflow-hidden rounded-2xl bg-linear-to-br from-primary via-primary-light to-secondary p-6 text-white shadow-xl shadow-primary/20 md:mx-6 md:p-8">
       <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/5" />
       <div className="pointer-events-none absolute -bottom-8 -left-8 h-24 w-24 rounded-full bg-white/5" />
 

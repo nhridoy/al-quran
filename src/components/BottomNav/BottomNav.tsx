@@ -39,7 +39,7 @@ export default function BottomNav() {
               <div
                 className={`flex items-center justify-center rounded-lg p-1.5 transition-all duration-200 ${
                   isActive
-                    ? "bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20"
+                    ? "bg-linear-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20"
                     : ""
                 }`}
               >

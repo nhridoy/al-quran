@@ -21,7 +21,7 @@ const Donation: React.FC = () => {
 
         <div className="overflow-hidden rounded-2xl border border-border bg-surface dark:border-dark-border dark:bg-dark-surface-card">
           <div className="flex items-center gap-3 border-b border-border p-4 dark:border-dark-border">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20">
               <AiOutlineGift className="text-lg text-primary dark:text-secondary-light" />
             </div>
             <div>
@@ -49,7 +49,7 @@ const Donation: React.FC = () => {
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
               <SwiperSlide
                 key={n}
-                className="flex! items-center! justify-center! rounded-2xl! bg-gradient-to-br! from-primary! to-secondary!"
+                className="flex! items-center! justify-center! rounded-2xl! bg-linear-to-br! from-primary! to-secondary!"
               >
                 <span className="text-lg font-bold text-white">
                   Donation {n}

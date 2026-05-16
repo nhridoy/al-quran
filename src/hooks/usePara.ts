@@ -21,8 +21,10 @@ export function usePara(
       for (const verse of surah.verses) {
         if (currentPara === verse.juz) {
           const target = paraList[currentPara];
-          const last = target[target.length - 1];
-          if (!last || last.no !== surah.no) {
+          const last = target.at(-1);
+          if (last?.no === surah.no) {
+            last.verses.push(verse);
+          } else {
             target.push({
               name: surah.name,
               enName: surah.enName,
@@ -32,14 +34,14 @@ export function usePara(
               revelationType: surah.revelationType,
               verses: [verse],
             });
-          } else {
-            last.verses.push(verse);
           }
         } else if (currentPara + 1 === verse.juz) {
           currentPara += 1;
           const target = paraList[currentPara];
-          const last = target[target.length - 1];
-          if (!last || last.no !== surah.no) {
+          const last = target.at(-1);
+          if (last?.no === surah.no) {
+            last.verses.push(verse);
+          } else {
             target.push({
               name: surah.name,
               enName: surah.enName,
@@ -49,8 +51,6 @@ export function usePara(
               revelationType: surah.revelationType,
               verses: [verse],
             });
-          } else {
-            last.verses.push(verse);
           }
         }
       }

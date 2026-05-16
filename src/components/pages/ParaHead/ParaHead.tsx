@@ -75,7 +75,7 @@ export const ParaHead: React.FC<ParaHeadProps> = ({ para, allSegments }) => {
 
   return (
     <div className="mb-4">
-      <div className="sticky top-0 z-20 mx-4 mb-4 overflow-hidden rounded-2xl bg-gradient-to-r from-primary to-secondary shadow-lg md:mx-6">
+      <div className="sticky top-0 z-20 mx-4 mb-4 overflow-hidden rounded-2xl bg-linear-to-r from-primary to-secondary shadow-lg md:mx-6">
         <div className="flex items-center justify-between p-4">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 text-sm font-bold text-white">

@@ -27,7 +27,7 @@ const Credits: React.FC = () => {
 
         <div className="overflow-hidden rounded-2xl border border-border bg-surface dark:border-dark-border dark:bg-dark-surface-card">
           <div className="flex items-center gap-3 border-b border-border p-4 dark:border-dark-border">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20">
               <AiOutlineHeart className="text-lg text-primary dark:text-secondary-light" />
             </div>
             <div>
