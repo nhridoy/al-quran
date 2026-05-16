@@ -1,5 +1,5 @@
 import type React from "react";
-import { FiOctagon } from "react-icons/fi";
+import { BiChevronRight } from "react-icons/bi";
 import type { SurahData } from "../../../types";
 
 interface SurahListProps {
@@ -8,42 +8,30 @@ interface SurahListProps {
 
 const SurahList: React.FC<SurahListProps> = ({ data }) => {
   return (
-    <div className="py-4 px-3 hover:bg-secondaryLight dark:hover:bg-[#191f24] dark:active:bg-[#14191d] rounded-md flex md:flex-col justify-between items-center gap-4 border-b-2 md:border-2 border-alternateOne lg:cursor-pointer">
-      <div className="flex gap-4">
-        <div className="flex items-center gap-3 md:flex-col">
-          <div className="relative">
-            <FiOctagon className="text-6xl font-bold text-primary dark:text-white" />
-            <span className="absolute inset-0 grid font-semibold place-items-center dark:text-white">
-              {data.no}
-            </span>
-          </div>
-          <div className="flex flex-col gap-1 md:items-center dark:text-white">
-            <div className="font-semibold">{data.enName}</div>
-            <div className="flex flex-col gap-2 text-xs text-gray-600 md:flex-row dark:text-gray-400">
-              <span className="flex gap-1">
-                {data.revelationType === "Meccan" ? (
-                  <img
-                    src="https://img.icons8.com/external-color-outline-adri-ansyah/16/000000/external-islam-islam-and-ramadhan-color-outline-adri-ansyah-8.png"
-                    alt="Meccan"
-                  />
-                ) : (
-                  <img
-                    src="https://img.icons8.com/external-color-outline-adri-ansyah/16/000000/external-islam-islam-and-ramadhan-color-outline-adri-ansyah-13.png"
-                    alt="Medinan"
-                  />
-                )}
-                <span className="uppercase">{data.revelationType}</span>
-              </span>
-              <span className="uppercase">{data.numberOfAyahs} verses</span>
-            </div>
-          </div>
+    <div className="group flex cursor-pointer items-center gap-4 px-4 py-3.5 transition-all duration-200">
+      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 font-semibold text-primary dark:from-primary/20 dark:to-secondary/20 dark:text-secondary-light">
+        <span className="text-xs">{data.no}</span>
+      </div>
+      <div className="flex min-w-0 flex-1 items-center gap-3">
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-sm font-semibold text-text-primary dark:text-dark-text-primary">
+            {data.enName}
+          </p>
+          <p className="truncate text-xs text-text-muted dark:text-dark-text-muted">
+            {data.enNameTranslation}
+          </p>
+        </div>
+        <div className="text-right">
+          <p className="font-arabic text-lg leading-none text-text-primary dark:text-dark-text-primary">
+            {data.name}
+          </p>
+          <p className="mt-0.5 text-[10px] uppercase text-text-muted dark:text-dark-text-muted">
+            {data.revelationType === "Meccan" ? "Makkah" : "Madinah"} &middot;{" "}
+            {data.numberOfAyahs}
+          </p>
         </div>
       </div>
-      <div className="text-sm text-right md:w-full dark:text-white">
-        <p>{data.name}</p>
-        <p>{data.enNameTranslation}</p>
-        <p>{data.bnNameTranslation}</p>
-      </div>
+      <BiChevronRight className="text-lg text-text-muted opacity-0 transition-all duration-200 group-hover:opacity-100 dark:text-dark-text-muted" />
     </div>
   );
 };

@@ -56,62 +56,73 @@ export const SurahHead: React.FC<SurahHeadProps> = ({ surah }) => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-3 px-5 py-1 mb-5 text-white shadow-lg md:flex-row md:justify-around md:px-8 bg-linear-to-tl rounded-2xl from-alternateOne to-secondary shadow-alternateOne">
-      <div className="flex flex-col items-center gap-3 px-3 py-5 border-b md:border-b-0">
-        <div className="flex gap-3 md:gap-8">
-          <h2 className="text-xl font-semibold">{surah.name}</h2>
-          <h2 className="text-xl font-semibold">{surah.bnNameTranslation}</h2>
+    <div className="relative mx-4 mb-6 overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-primary-light to-secondary p-6 text-white shadow-xl shadow-primary/20 md:mx-6 md:p-8">
+      <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/5" />
+      <div className="pointer-events-none absolute -bottom-8 -left-8 h-24 w-24 rounded-full bg-white/5" />
+
+      <div className="relative flex flex-col items-center gap-4 md:flex-row md:justify-between">
+        <div className="flex flex-col items-center gap-2 text-center md:items-start md:text-left">
+          <div className="flex items-center gap-3">
+            <h2 className="text-2xl font-bold">{surah.name}</h2>
+            <span className="text-white/60">|</span>
+            <h2 className="text-xl font-semibold text-white/90">
+              {surah.bnNameTranslation}
+            </h2>
+          </div>
+          <h2 className="text-lg font-semibold text-white/80">
+            {surah.enName} &mdash; {surah.enNameTranslation}
+          </h2>
+          <div className="mt-1 flex items-center gap-2 text-xs font-medium uppercase text-white/60">
+            <span>{surah.revelationType === "Meccan" ? "Makkah" : "Madinah"}</span>
+            <span>&bull;</span>
+            <span>{surah.numberOfAyahs} verses</span>
+          </div>
         </div>
-        <div className="flex gap-3 md:gap-8">
-          <h2 className="text-xl font-semibold">{surah.enName}</h2>
-          <h2 className="text-xl font-semibold">{surah.enNameTranslation}</h2>
+
+        <div className="hidden flex-col items-center md:flex">
+          <p className="mb-2 font-arabic text-2xl text-gold-light">
+            بِسْــــــــــــــــــمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ
+          </p>
+        </div>
+
+        <div className="flex items-center gap-4">
+          <button
+            type="button"
+            onClick={handlePrev}
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
+            aria-label="Previous"
+          >
+            <CgPlayTrackPrevO className="text-xl" />
+          </button>
+          <button
+            type="button"
+            onClick={handlePlay}
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-primary shadow-lg transition-all hover:scale-105 active:scale-95"
+            aria-label={isLoading ? "Loading" : isPlaying ? "Pause" : "Play"}
+          >
+            {isLoading ? (
+              <CgSpinnerTwo className="animate-spin text-xl" />
+            ) : isPlaying ? (
+              <FiPauseCircle className="text-2xl" />
+            ) : (
+              <FiPlayCircle className="text-2xl" />
+            )}
+          </button>
+          <button
+            type="button"
+            onClick={handleNext}
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
+            aria-label="Next"
+          >
+            <CgPlayTrackNextO className="text-xl" />
+          </button>
         </div>
       </div>
-      <div className="flex gap-3 uppercase">
-        <span className="flex items-center gap-1">
-          {surah.revelationType === "Meccan" ? (
-            <img
-              style={{ width: "16px", height: "16px" }}
-              src="https://img.icons8.com/external-color-outline-adri-ansyah/64/000000/external-islam-islam-and-ramadhan-color-outline-adri-ansyah-8.png"
-              alt="Meccan"
-            />
-          ) : (
-            <img
-              style={{ width: "16px", height: "16px" }}
-              src="https://img.icons8.com/external-color-outline-adri-ansyah/16/000000/external-islam-islam-and-ramadhan-color-outline-adri-ansyah-13.png"
-              alt="Medinan"
-            />
-          )}
-          <span className="uppercase">{surah.revelationType}</span>
-        </span>
-        <span>&bull;</span>
-        <p>{surah.numberOfAyahs} Varses</p>
-      </div>
-      <p className="mb-4 text-2xl md:mb-0">
-        بِسْــــــــــــــــــمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ
-      </p>
-      <div className="flex gap-5">
-        <CgPlayTrackPrevO
-          className="mb-4 text-4xl transition-transform cursor-pointer md:mb-0 active:scale-90"
-          onClick={handlePrev}
-        />
-        {isLoading ? (
-          <CgSpinnerTwo className="mb-4 text-4xl cursor-pointer md:mb-0 animate-spin" />
-        ) : isCurrentSurah && isPlaying ? (
-          <FiPauseCircle
-            className="mb-4 text-4xl transition-transform cursor-pointer md:mb-0 active:scale-90"
-            onClick={handlePlay}
-          />
-        ) : (
-          <FiPlayCircle
-            className="mb-4 text-4xl transition-transform cursor-pointer md:mb-0 active:scale-90"
-            onClick={handlePlay}
-          />
-        )}
-        <CgPlayTrackNextO
-          className="mb-4 text-4xl transition-transform cursor-pointer md:mb-0 active:scale-90"
-          onClick={handleNext}
-        />
+
+      <div className="mt-4 text-center md:hidden">
+        <p className="font-arabic text-lg text-gold-light">
+          بِسْــــــــــــــــــمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ
+        </p>
       </div>
     </div>
   );

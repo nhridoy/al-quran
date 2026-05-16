@@ -1,5 +1,5 @@
 import type React from "react";
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { BiBookmark, BiShareAlt } from "react-icons/bi";
 import { IoPauseOutline, IoPlayOutline } from "react-icons/io5";
 import type { Track } from "../../../components/AudioPlayer";
@@ -26,11 +26,11 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
     if (isCurrentAyah) {
       document
         .getElementById(`ayah-${ayah.totalNumber}`)
-        ?.scrollIntoView({ behavior: "smooth", block: "end" });
+        ?.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }, [isCurrentAyah, ayah.totalNumber]);
 
-  const handlePlay = () => {
+  const handlePlay = useCallback(() => {
     if (isCurrentAyah) {
       togglePlay();
       return;
@@ -46,60 +46,90 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
     const idx = ayah.numberInSurah - 1;
     const tracks = buildPlaylistFromSurah(surah);
     setPlaylist(tracks, idx);
-  };
+  }, [isCurrentAyah, togglePlay, tracklist, surahNo, ayah, surah, setPlaylist]);
 
   return (
     <div
       id={`ayah-${ayah.totalNumber}`}
-      className={`flex flex-col gap-4 p-4 border-b-2 border-[#20282e] dark:border-alternateOne rounded-lg transition-colors duration-300 ${
-        isCurrentAyah ? "bg-alternateSecondDeep dark:bg-[#14191d]" : ""
+      className={`rounded-2xl border transition-all duration-300 ${
+        isCurrentAyah
+          ? "border-accent/30 bg-accent-soft/50 shadow-lg shadow-accent/5 dark:border-accent/20 dark:bg-accent/5"
+          : "border-transparent bg-surface dark:bg-dark-surface-card"
       }`}
     >
-      <div className="flex bg-secondaryLight dark:bg-[#191f24] p-3 rounded-lg justify-between items-center">
-        <div className="flex items-center gap-3">
-          <span className="bg-primary dark:bg-secondaryLight w-10 h-10 text-white dark:text-[#191f24] font-semibold flex justify-center items-center rounded-full">
-            {ayah.numberInSurah}
-          </span>
-          {ayah.sajda.recommended &&
-            (globalThis.matchMedia?.("(prefers-color-scheme: dark)").matches ? (
-              <img
-                src="https://img.icons8.com/external-jumpicon-glyph-ayub-irawan/32/ffffff/external-_10-ramadan-jumpicon-(glyph)-jumpicon-glyph-ayub-irawan.png"
-                alt="Sajdah Here"
-              />
-            ) : (
-              <img
-                src="https://img.icons8.com/external-jumpicon-glyph-ayub-irawan/32/000000/external-_10-ramadan-jumpicon-(glyph)-jumpicon-glyph-ayub-irawan.png"
-                alt="Sajdah Here"
-              />
-            ))}
+      <div className="p-4 md:p-5">
+        <div className="mb-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <span
+              className={`flex h-8 w-8 items-center justify-center rounded-lg text-xs font-semibold ${
+                isCurrentAyah
+                  ? "bg-gradient-to-br from-primary to-secondary text-white"
+                  : "bg-surface-alt text-text-secondary dark:bg-dark-surface-alt dark:text-dark-text-secondary"
+              }`}
+            >
+              {ayah.numberInSurah}
+            </span>
+            {ayah.sajda.recommended && (
+              <span className="rounded-md bg-accent-soft px-2 py-0.5 text-[10px] font-medium text-accent dark:bg-accent/10">
+                Sajdah
+              </span>
+            )}
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              className="btn-ghost flex h-8 w-8 items-center justify-center rounded-lg"
+              aria-label="Share"
+              title="Share"
+            >
+              <BiShareAlt className="text-base" />
+            </button>
+            <button
+              type="button"
+              onClick={handlePlay}
+              className={`flex h-8 w-8 items-center justify-center rounded-lg transition-all active:scale-90 ${
+                isThisAyahPlaying
+                  ? "bg-gradient-to-br from-primary to-secondary text-white shadow-md"
+                  : "btn-ghost"
+              }`}
+              aria-label={isThisAyahPlaying ? "Pause" : "Play"}
+              title={isThisAyahPlaying ? "Pause" : `Play ayah ${ayah.numberInSurah}`}
+            >
+              {isThisAyahPlaying ? (
+                <IoPauseOutline className="text-base" />
+              ) : (
+                <IoPlayOutline className="text-base" />
+              )}
+            </button>
+            <button
+              type="button"
+              className="btn-ghost flex h-8 w-8 items-center justify-center rounded-lg"
+              aria-label="Bookmark"
+              title="Bookmark"
+            >
+              <BiBookmark className="text-base" />
+            </button>
+          </div>
         </div>
 
-        <div className="flex items-center gap-4 text-2xl text-primary dark:text-secondaryLight">
-          <BiShareAlt className="cursor-pointer" />
-          {isThisAyahPlaying ? (
-            <IoPauseOutline
-              className="cursor-pointer"
-              onClick={handlePlay}
-              title="Pause"
-            />
-          ) : (
-            <IoPlayOutline
-              className="cursor-pointer"
-              onClick={handlePlay}
-              title={`Play ayah ${ayah.numberInSurah}`}
-            />
-          )}
-          <BiBookmark className="cursor-pointer" />
+        <p className="font-arabic mb-3 text-right text-2xl leading-[2] text-text-primary dark:text-dark-text-primary md:text-3xl">
+          {ayah.text}
+        </p>
+
+        <p className="mb-2 text-right text-sm italic text-text-muted dark:text-dark-text-muted">
+          {ayah.enTextTransliteration}
+        </p>
+
+        <div className="space-y-1.5 border-t border-border pt-3 dark:border-dark-border">
+          <p className="text-sm leading-relaxed text-text-primary dark:text-dark-text-primary">
+            {ayah.enText}
+          </p>
+          <p className="text-sm leading-relaxed text-text-secondary dark:text-dark-text-secondary">
+            {ayah.bnText}
+          </p>
         </div>
       </div>
-      <p className="text-3xl font-semibold text-right dark:text-secondaryLight">
-        {ayah.text}
-      </p>
-      <p className="text-lg text-right dark:text-secondaryLight">
-        {ayah.enTextTransliteration}
-      </p>
-      <p className="text-lg dark:text-secondaryLight">{ayah.enText}</p>
-      <p className="text-lg dark:text-secondaryLight">{ayah.bnText}</p>
     </div>
   );
 };

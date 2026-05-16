@@ -3,22 +3,35 @@ import { Header } from "../../Header/Header";
 import { SurahsHead } from "../Surahs/SurahsHead";
 
 export const Home = () => {
-  const linkClass = ({ isActive }: { isActive: boolean }) =>
-    `font-semibold py-4 flex items-center justify-center border-b-2 transition-colors ${
-      isActive
-        ? "text-primary dark:text-white border-primary dark:border-secondary bg-white dark:bg-[#191f24]"
-        : "text-gray-400 border-b-gray-400"
-    }`;
-
   return (
-    <div className="bg-white dark:bg-[#20282e] sticky top-0 left-0 w-full z-10">
+    <div>
       <Header head="Al Quran" />
       <SurahsHead />
-      <div className="grid grid-cols-2 my-3">
-        <NavLink to="/surah" end className={linkClass}>
+      <div className="mx-4 mb-6 flex rounded-xl bg-surface-alt p-1 dark:bg-dark-surface-alt md:mx-6">
+        <NavLink
+          to="/surah"
+          end
+          className={({ isActive }) =>
+            `flex-1 rounded-lg py-2.5 text-center text-sm font-semibold transition-all duration-200 ${
+              isActive
+                ? "bg-white text-primary shadow-sm dark:bg-dark-surface-card dark:text-secondary-light"
+                : "text-text-muted hover:text-text-primary dark:text-dark-text-muted dark:hover:text-dark-text-primary"
+            }`
+          }
+        >
           Surah
         </NavLink>
-        <NavLink to="/para" end className={linkClass}>
+        <NavLink
+          to="/para"
+          end
+          className={({ isActive }) =>
+            `flex-1 rounded-lg py-2.5 text-center text-sm font-semibold transition-all duration-200 ${
+              isActive
+                ? "bg-white text-primary shadow-sm dark:bg-dark-surface-card dark:text-secondary-light"
+                : "text-text-muted hover:text-text-primary dark:text-dark-text-muted dark:hover:text-dark-text-primary"
+            }`
+          }
+        >
           Para
         </NavLink>
       </div>

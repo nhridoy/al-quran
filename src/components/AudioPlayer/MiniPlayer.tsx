@@ -6,7 +6,7 @@ const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 
 function Spinner() {
   return (
-    <svg className="w-5 h-5 animate-spin" viewBox="0 0 24 24" fill="none">
+    <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none">
       <title>Loading</title>
       <circle
         cx="12"
@@ -49,22 +49,22 @@ export default function MiniPlayer() {
 
   return (
     <div
-      className={`fixed bottom-6 right-6 z-50 transition-all duration-300 ease-in-out origin-center ${
+      className={`fixed bottom-24 right-5 z-50 origin-center transition-all duration-300 ease-out md:bottom-6 ${
         hidden
-          ? "opacity-0 scale-75 translate-y-4 pointer-events-none"
-          : "opacity-100 scale-100 translate-y-0 pointer-events-auto"
+          ? "pointer-events-none scale-75 translate-y-4 opacity-0"
+          : "pointer-events-auto scale-100 translate-y-0 opacity-100"
       }`}
     >
-      <div className="relative w-16 h-16">
+      <div className="relative h-16 w-16">
         <button
           type="button"
           onClick={expand}
-          className="flex items-center justify-center w-full h-full transition-transform duration-200 rounded-full shadow-2xl cursor-pointer bg-linear-to-br from-primary to-secondary shadow-primary/40 hover:scale-105 active:scale-95"
+          className="flex h-full w-full items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary shadow-2xl shadow-primary/40 transition-transform duration-200 hover:scale-105 active:scale-95"
           aria-label="Expand player"
           title="Expand"
         >
           <svg
-            className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none"
+            className="pointer-events-none absolute inset-0 h-full w-full -rotate-90"
             viewBox="0 0 64 64"
             aria-hidden="true"
           >
@@ -97,21 +97,21 @@ export default function MiniPlayer() {
             e.stopPropagation();
             togglePlay();
           }}
-          className="absolute inset-0 z-10 flex items-center justify-center w-10 h-10 m-auto text-white transition-colors rounded-full cursor-pointer bg-white/20 backdrop-blur-sm hover:bg-white/30"
+          className="absolute inset-0 z-10 m-auto flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-sm transition-colors hover:bg-white/30"
           aria-label={isPlaying ? "Pause" : "Play"}
           title={isPlaying ? "Pause" : "Play"}
         >
           {isLoading ? (
             <Spinner />
           ) : isPlaying ? (
-            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+            <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
               <title>Pause</title>
               <rect x="6" y="4" width="4" height="16" rx="1" />
               <rect x="14" y="4" width="4" height="16" rx="1" />
             </svg>
           ) : (
             <svg
-              className="w-5 h-5 ml-0.5"
+              className="ml-0.5 h-5 w-5"
               viewBox="0 0 24 24"
               fill="currentColor"
             >
