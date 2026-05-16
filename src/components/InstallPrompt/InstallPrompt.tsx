@@ -26,7 +26,7 @@ export default function InstallPrompt() {
     useState<BeforeInstallPromptEvent | null>(null);
 
   const [dismissed, setDismissed] = useState<boolean>(() => {
-    if (typeof window === "undefined") return false;
+    if (globalThis.window === undefined) return false;
     return localStorage.getItem(DISMISSED_KEY) === "true";
   });
 
@@ -34,8 +34,8 @@ export default function InstallPrompt() {
     // 2. Safely check for matchMedia in SSR environments
     if (
       dismissed ||
-      (typeof window !== "undefined" &&
-        window.matchMedia("(display-mode: standalone)").matches)
+      (globalThis.window !== undefined &&
+        globalThis.matchMedia("(display-mode: standalone)").matches)
     )
       return;
 
@@ -45,21 +45,22 @@ export default function InstallPrompt() {
       setDeferredPrompt(e);
     };
 
-    window.addEventListener("beforeinstallprompt", handler);
-    return () => window.removeEventListener("beforeinstallprompt", handler);
+    globalThis.addEventListener("beforeinstallprompt", handler);
+    return () => globalThis.removeEventListener("beforeinstallprompt", handler);
   }, [dismissed]);
 
   useEffect(() => {
     const handleAppInstalled = () => {
       setDismissed(true);
     };
-    window.addEventListener("appinstalled", handleAppInstalled);
-    return () => window.removeEventListener("appinstalled", handleAppInstalled);
+    globalThis.addEventListener("appinstalled", handleAppInstalled);
+    return () =>
+      globalThis.removeEventListener("appinstalled", handleAppInstalled);
   }, []);
 
   const handleDismiss = useCallback(() => {
     setDismissed(true);
-    if (typeof window !== "undefined") {
+    if (globalThis.window !== undefined) {
       localStorage.setItem(DISMISSED_KEY, "true");
     }
   }, []);
