@@ -19,11 +19,7 @@ function VinylDisc({ isPlaying, size = "sm" }: VinylDiscProps) {
     : [88, 78, 68, 58];
 
   return (
-    <div
-      className={`relative shrink-0 ${
-        isLarge ? "h-64 w-64" : "h-12 w-12"
-      }`}
-    >
+    <div className={`relative shrink-0 ${isLarge ? "h-64 w-64" : "h-12 w-12"}`}>
       <div
         className={`h-full w-full rounded-full bg-black ${spinClass}`}
         style={{

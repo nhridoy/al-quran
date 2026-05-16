@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useAudioPlayer } from "./AudioPlayerContext";
 
 export default function PlaylistDrawer() {
   const [leaving, setLeaving] = useState(false);
+  const [entered, setEntered] = useState(false);
   const {
     showPlaylist,
     setShowPlaylist,
@@ -14,16 +15,21 @@ export default function PlaylistDrawer() {
   } = useAudioPlayer();
 
   useEffect(() => {
-    if (showPlaylist) setLeaving(false);
+    if (showPlaylist) {
+      setLeaving(false);
+      setEntered(false);
+      requestAnimationFrame(() => setEntered(true));
+    }
   }, [showPlaylist]);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setLeaving(true);
     setTimeout(() => {
       setShowPlaylist(false);
       setLeaving(false);
+      setEntered(false);
     }, 300);
-  };
+  }, [setShowPlaylist]);
 
   if (!showPlaylist && !leaving) return null;
 
@@ -48,10 +54,8 @@ export default function PlaylistDrawer() {
     <div className="fixed inset-0 z-100 flex items-end justify-center">
       <button
         type="button"
-        className={`absolute inset-0 cursor-default bg-black/40 backdrop-blur-sm ${
-          leaving
-            ? "opacity-0 transition-all duration-300 ease-in-out"
-            : "animate-[fadeIn_0.2s_ease-out]"
+        className={`absolute inset-0 cursor-default bg-black/40 backdrop-blur-sm transition-all duration-300 ease-in-out ${
+          leaving || !entered ? "opacity-0" : "opacity-100"
         }`}
         onClick={handleClose}
         aria-label="Close playlist overlay"
@@ -59,10 +63,8 @@ export default function PlaylistDrawer() {
       />
 
       <div
-        className={`relative w-full max-w-2xl max-h-[75vh] overflow-hidden rounded-t-2xl bg-white shadow-2xl dark:bg-dark-surface-card ${
-          leaving
-            ? "translate-y-full transition-all duration-300 ease-in-out"
-            : "animate-[slideUp_0.3s_ease-out]"
+        className={`relative w-full max-w-2xl max-h-[75vh] overflow-hidden rounded-t-2xl bg-white shadow-2xl dark:bg-dark-surface-card transition-all duration-300 ease-in-out ${
+          leaving || !entered ? "translate-y-full" : "translate-y-0"
         }`}
       >
         <div className="flex items-center justify-between border-b border-border px-5 py-4 dark:border-dark-border">
