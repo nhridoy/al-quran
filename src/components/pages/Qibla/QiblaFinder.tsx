@@ -5,6 +5,26 @@ import { Header } from "../../Header/Header";
 const KAABA = { lat: 21.4225, lng: 39.8262 };
 const SMOOTHING = 0.25;
 
+// Haversine formula to accurately calculate distance in km
+function calculateDistance(
+  lat1: number,
+  lng1: number,
+  lat2: number,
+  lng2: number,
+): number {
+  const R = 6371; // Earth's radius in km
+  const dLat = ((lat2 - lat1) * Math.PI) / 180;
+  const dLng = ((lng2 - lng1) * Math.PI) / 180;
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos((lat1 * Math.PI) / 180) *
+      Math.cos((lat2 * Math.PI) / 180) *
+      Math.sin(dLng / 2) *
+      Math.sin(dLng / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
+}
+
 function bearing(
   lat1: number,
   lng1: number,
@@ -41,20 +61,14 @@ function tiltCompensatedHeading(
 }
 
 function getHeadingFromEvent(event: DeviceOrientationEvent): number | null {
-  const e = event as DeviceOrientationEvent & {
-    webkitCompassHeading?: number;
-  };
-
+  const e = event as DeviceOrientationEvent & { webkitCompassHeading?: number };
   if (e.webkitCompassHeading !== undefined && e.webkitCompassHeading !== null) {
     return e.webkitCompassHeading;
   }
-
   if (e.alpha === null) return null;
-
   if (e.beta !== null && e.gamma !== null) {
     return tiltCompensatedHeading(e.alpha, e.beta, e.gamma);
   }
-
   return e.alpha;
 }
 
@@ -70,12 +84,16 @@ export default function QiblaFinder() {
   const [compassSupported, setCompassSupported] = useState<boolean | null>(
     null,
   );
+  const [permissionRequested, setPermissionRequested] =
+    useState<boolean>(false);
   const smoothedRef = useRef<number | null>(null);
 
-  const coords = lat !== null && lng !== null ? { lat, lng } : null;
-
-  const qiblaDirection = coords
-    ? bearing(coords.lat, coords.lng, KAABA.lat, KAABA.lng)
+  const hasCoords = lat !== null && lng !== null;
+  const qiblaDirection = hasCoords
+    ? bearing(lat, lng, KAABA.lat, KAABA.lng)
+    : 0;
+  const distanceToKaaba = hasCoords
+    ? calculateDistance(lat, lng, KAABA.lat, KAABA.lng)
     : 0;
 
   const needleRotation =
@@ -107,34 +125,44 @@ export default function QiblaFinder() {
     setDisplayHeading(smoothedRef.current);
   }, []);
 
-  useEffect(() => {
-    if (!coords) return;
-
-    const requestPermission = async () => {
-      const devEvent = DeviceOrientationEvent as unknown as {
-        requestPermission?: () => Promise<"granted" | "denied">;
-      };
-      if (typeof devEvent.requestPermission === "function") {
-        try {
-          const result = await devEvent.requestPermission();
-          if (result !== "granted") {
-            setCompassSupported(false);
-            return;
-          }
-        } catch {
-          /* ignore */
-        }
-      }
-
-      window.addEventListener("deviceorientation", handleOrientation);
+  // Dedicated explicit permission trigger for iOS devices
+  const startCompass = async () => {
+    setPermissionRequested(true);
+    const devEvent = DeviceOrientationEvent as unknown as {
+      requestPermission?: () => Promise<"granted" | "denied">;
     };
 
-    requestPermission();
+    if (typeof devEvent.requestPermission === "function") {
+      try {
+        const result = await devEvent.requestPermission();
+        if (result !== "granted") {
+          setCompassSupported(false);
+          return;
+        }
+      } catch {
+        setCompassSupported(false);
+        return;
+      }
+    }
+    window.addEventListener("deviceorientation", handleOrientation);
+  };
+
+  useEffect(() => {
+    if (!hasCoords) return;
+
+    const devEvent = DeviceOrientationEvent as unknown as {
+      requestPermission?: () => Promise<unknown>;
+    };
+
+    // Automatically bind on Android/Desktop where explicit user gesture permissions aren't required
+    if (typeof devEvent.requestPermission !== "function") {
+      window.addEventListener("deviceorientation", handleOrientation);
+    }
 
     return () => {
       window.removeEventListener("deviceorientation", handleOrientation);
     };
-  }, [coords, handleOrientation]);
+  }, [hasCoords, handleOrientation]);
 
   return (
     <div className="min-h-screen">
@@ -149,7 +177,7 @@ export default function QiblaFinder() {
           </p>
         </div>
 
-        {!coords && geoLoading && (
+        {!hasCoords && geoLoading && (
           <div className="flex flex-col items-center gap-3 py-10">
             <div className="h-8 w-8 animate-spin rounded-full border-4 border-border border-t-secondary" />
             <p className="text-sm text-text-muted">
@@ -173,8 +201,30 @@ export default function QiblaFinder() {
           </div>
         )}
 
-        {coords && (
+        {hasCoords && (
           <>
+            {/* Call to action for iOS users who must manually grant permissions via user interaction click */}
+            {!permissionRequested &&
+              typeof (
+                DeviceOrientationEvent as unknown as {
+                  requestPermission?: () => Promise<unknown>;
+                }
+              ).requestPermission === "function" && (
+                <div className="flex flex-col items-center gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-center dark:border-amber-900/30 dark:bg-amber-950/20">
+                  <p className="text-sm text-amber-800 dark:text-amber-300">
+                    Compass sensor access is required to point towards the
+                    Qibla.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={startCompass}
+                    className="rounded-lg bg-amber-600 px-4 py-1.5 text-xs font-semibold text-white hover:bg-amber-700"
+                  >
+                    Enable Compass
+                  </button>
+                </div>
+              )}
+
             <div className="flex flex-col items-center gap-4">
               <div className="relative flex h-64 w-64 items-center justify-center">
                 <div className="absolute inset-0 rounded-full border-4 border-border dark:border-dark-border" />
@@ -192,7 +242,6 @@ export default function QiblaFinder() {
                   </div>
                 </div>
 
-                {/* Compass cardinals */}
                 <span className="absolute top-2 left-1/2 -translate-x-1/2 text-xs font-bold text-text-muted">
                   N
                 </span>
@@ -206,18 +255,14 @@ export default function QiblaFinder() {
                   W
                 </span>
 
-                {/* Needle */}
+                {/* Transition classes removed to eliminate 360° to 0° wild spinning edge-case bugs */}
                 <div
-                  className="absolute flex h-full w-full items-center justify-center transition-[transform] duration-500 ease-out"
-                  style={{
-                    transform: `rotate(${needleRotation}deg)`,
-                  }}
+                  className="absolute flex h-full w-full items-center justify-center will-change-transform"
+                  style={{ transform: `rotate(${needleRotation}deg)` }}
                 >
                   <div className="relative flex h-full w-2 flex-col items-center">
                     <div
-                      className={`h-1/2 w-2 rounded-t-full ${
-                        isFacingQibla ? "bg-green-500" : "bg-secondary"
-                      }`}
+                      className={`h-1/2 w-2 rounded-t-full ${isFacingQibla ? "bg-green-500" : "bg-secondary"}`}
                     />
                     <div className="h-1/2 w-2 rounded-b-full bg-text-muted" />
                   </div>
@@ -244,7 +289,7 @@ export default function QiblaFinder() {
                 <div className="flex items-center justify-between p-4">
                   <span className="text-sm text-text-muted">Location</span>
                   <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
-                    {coords.lat.toFixed(4)}&deg;N, {coords.lng.toFixed(4)}&deg;E
+                    {lat.toFixed(4)}&deg;N, {lng.toFixed(4)}&deg;E
                   </span>
                 </div>
                 <div className="flex items-center justify-between p-4">
@@ -259,7 +304,7 @@ export default function QiblaFinder() {
                 <div className="flex items-center justify-between p-4">
                   <span className="text-sm text-text-muted">Distance</span>
                   <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
-                    ~{(bearing(0, 0, KAABA.lat, KAABA.lng) * 111).toFixed(0)} km
+                    ~{distanceToKaaba.toFixed(0)} km
                   </span>
                 </div>
                 <div className="flex items-center justify-between p-4">
@@ -279,8 +324,8 @@ export default function QiblaFinder() {
               <div className="rounded-2xl border border-border bg-surface-alt p-4 text-center dark:border-dark-border dark:bg-dark-surface-alt">
                 <p className="text-sm text-text-muted">
                   Compass not available on this device. Use the bearing above (
-                  {qiblaDirection.toFixed(0)}&deg;) to determine Qibla direction
-                  manually.
+                  {qiblaDirection.toFixed(0)}
+                  &deg;) to determine Qibla direction manually.
                 </p>
               </div>
             )}
