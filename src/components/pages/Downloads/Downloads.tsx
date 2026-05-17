@@ -237,7 +237,6 @@ export default function DownloadsPage() {
   const qariId = useSettings((s) => s.qariId);
   const qariBase = QARIS.find((q) => q.id === qariId)?.baseUrl;
   const loadDownloads = useDownloadsStore((s) => s.load);
-  const items = useDownloadsStore((s) => s.items);
   const [search, setSearch] = useState("");
   const [cacheSize, setCacheSize] = useState(0);
 
@@ -261,14 +260,6 @@ export default function DownloadsPage() {
       ),
     [surahList, search],
   );
-
-  // const notDownloaded = useMemo(
-  //   () =>
-  //     surahList.filter(
-  //       (s) => !items.some((i) => i.surahNo === s.no && i.progress === 100),
-  //     ),
-  //   [surahList, items],
-  // );
 
   const handleClearAll = useCallback(async () => {
     const result = await Swal.fire({
