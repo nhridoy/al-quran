@@ -83,7 +83,7 @@ export default function AsmaUlHusna() {
 
       {selected &&
         createPortal(
-          <div className="fixed inset-0 z-[999] bg-black/60 backdrop-blur-sm">
+          <div className="fixed inset-0 z-999 bg-black/60 backdrop-blur-sm">
             <button
               type="button"
               className="absolute inset-0 cursor-default"
