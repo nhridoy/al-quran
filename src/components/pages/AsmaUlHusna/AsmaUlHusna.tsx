@@ -18,7 +18,7 @@ export default function AsmaUlHusna() {
   const [selected, setSelected] = useState<NameEntry | null>(null);
 
   const filtered = useMemo(() => {
-    if (!query) return namesData as NameEntry[];
+    if (!query) return namesData;
     const q = query.toLowerCase();
     return (namesData as NameEntry[]).filter(
       (n) =>
