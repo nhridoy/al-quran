@@ -262,13 +262,13 @@ export default function DownloadsPage() {
     [surahList, search],
   );
 
-  const notDownloaded = useMemo(
-    () =>
-      surahList.filter(
-        (s) => !items.some((i) => i.surahNo === s.no && i.progress === 100),
-      ),
-    [surahList, items],
-  );
+  // const notDownloaded = useMemo(
+  //   () =>
+  //     surahList.filter(
+  //       (s) => !items.some((i) => i.surahNo === s.no && i.progress === 100),
+  //     ),
+  //   [surahList, items],
+  // );
 
   const handleClearAll = useCallback(async () => {
     const result = await Swal.fire({
