@@ -3,11 +3,7 @@ import { useLocationStore } from "../../../store/location";
 import { Header } from "../../Header/Header";
 
 const KAABA = { lat: 21.4225, lng: 39.8262 };
-
-// Physics configurations for the snap-back bounce at the end of a turn
-const BOUNCE_STIFFNESS = 0.12;
-const BOUNCE_DAMPING = 0.6;
-const MOVEMENT_THRESHOLD = 0.5; // Degree change threshold to differentiate moving vs stopped
+const SMOOTHING = 0.2; // Slightly reduced for snappier real-time response
 
 function calculateDistance(
   lat1: number,
@@ -64,12 +60,7 @@ export default function QiblaFinder() {
   );
   const [permissionRequested, setPermissionRequested] =
     useState<boolean>(false);
-
-  const targetHeadingRef = useRef<number | null>(null);
-  const currentHeadingRef = useRef<number | null>(null);
-  const velocityRef = useRef<number>(0);
-  const lastRawHeadingRef = useRef<number | null>(null);
-  const animationFrameRef = useRef<number | null>(null);
+  const smoothedRef = useRef<number | null>(null);
 
   const hasCoords = lat !== null && lng !== null;
   const qiblaDirection = hasCoords
@@ -79,67 +70,18 @@ export default function QiblaFinder() {
     ? calculateDistance(lat, lng, KAABA.lat, KAABA.lng)
     : 0;
 
+  // Outer Ring Dial Rotation (Rotates opposite to device heading to keep North pointing up)
   const dialRotation = heading === null ? 0 : -heading;
+
+  // Needle Relative Rotation pointing to Qibla relative to the phone's current direction
   const needleRotation = heading === null ? 0 : qiblaDirection - heading;
 
+  // Calculate shortest angle path to check if facing Qibla
   const angularDiff =
     heading === null
       ? 0
       : ((((qiblaDirection - heading) % 360) + 540) % 360) - 180;
   const isFacingQibla = heading !== null && Math.abs(angularDiff) < 8;
-
-  // Frame Loop Execution Environment
-  useEffect(() => {
-    const updatePhysics = () => {
-      if (
-        targetHeadingRef.current !== null &&
-        currentHeadingRef.current !== null
-      ) {
-        let diff = targetHeadingRef.current - currentHeadingRef.current;
-
-        // Shortest path handling over modular 360 boundary limits
-        if (diff > 180) diff -= 360;
-        if (diff < -180) diff += 360;
-
-        // Check how fast the sensor target is shifting
-        let deviceDelta = 0;
-        if (lastRawHeadingRef.current !== null) {
-          deviceDelta = targetHeadingRef.current - lastRawHeadingRef.current;
-          if (deviceDelta > 180) deviceDelta -= 360;
-          if (deviceDelta < -180) deviceDelta += 360;
-        }
-        lastRawHeadingRef.current = targetHeadingRef.current;
-
-        if (Math.abs(deviceDelta) > MOVEMENT_THRESHOLD) {
-          // 1. ACTIVE SPINNING: 1:1 raw snappiness. Kill physics lag and lock visually to sensor.
-          currentHeadingRef.current = targetHeadingRef.current;
-          // Inject residual velocity directly from current hand speed so it bounces naturally on release
-          velocityRef.current = deviceDelta * 0.4;
-          setHeading(targetHeadingRef.current);
-        } else {
-          // 2. STOPPED SPINNING: Trigger spring physics to shake out residual momentum
-          const springForce = diff * BOUNCE_STIFFNESS;
-          velocityRef.current += springForce;
-          velocityRef.current *= BOUNCE_DAMPING;
-
-          let nextHeading = currentHeadingRef.current + velocityRef.current;
-          nextHeading = ((nextHeading % 360) + 360) % 360;
-
-          currentHeadingRef.current = nextHeading;
-          setHeading(nextHeading);
-        }
-      }
-
-      animationFrameRef.current = requestAnimationFrame(updatePhysics);
-    };
-
-    animationFrameRef.current = requestAnimationFrame(updatePhysics);
-
-    return () => {
-      if (animationFrameRef.current)
-        cancelAnimationFrame(animationFrameRef.current);
-    };
-  }, []);
 
   const handleOrientation = useCallback((event: DeviceOrientationEvent) => {
     let rawHeading: number | null = null;
@@ -148,13 +90,17 @@ export default function QiblaFinder() {
       absolute?: boolean;
     };
 
+    // 1. Primary choice: iOS native webkitCompassHeading (True Magnetic North)
     if (
       e.webkitCompassHeading !== undefined &&
       e.webkitCompassHeading !== null
     ) {
       rawHeading = e.webkitCompassHeading;
-    } else if (e.absolute === true || e.absolute === undefined) {
+    }
+    // 2. Secondary choice: Android absolute orientation
+    else if (e.absolute === true || e.absolute === undefined) {
       if (e.alpha !== null) {
+        // Convert alpha to compass heading (360 - alpha transforms counter-clockwise to clockwise)
         rawHeading = (360 - e.alpha) % 360;
       }
     }
@@ -162,13 +108,20 @@ export default function QiblaFinder() {
     if (rawHeading === null) return;
     setCompassSupported(true);
 
-    if (currentHeadingRef.current === null) {
-      currentHeadingRef.current = rawHeading;
-      lastRawHeadingRef.current = rawHeading;
+    if (smoothedRef.current === null) {
+      smoothedRef.current = rawHeading;
       setHeading(rawHeading);
+      return;
     }
 
-    targetHeadingRef.current = rawHeading;
+    // Smooth heading changes over 0/360 boundary transitions
+    let diff = rawHeading - smoothedRef.current;
+    if (diff > 180) diff -= 360;
+    if (diff < -180) diff += 360;
+
+    const smoothed = smoothedRef.current + diff * SMOOTHING;
+    smoothedRef.current = ((smoothed % 360) + 360) % 360;
+    setHeading(smoothedRef.current);
   }, []);
 
   const startCompass = async () => {
@@ -190,6 +143,7 @@ export default function QiblaFinder() {
       }
     }
 
+    // Bind listeners for standard iOS
     globalThis.addEventListener("deviceorientation", handleOrientation);
   };
 
@@ -201,6 +155,7 @@ export default function QiblaFinder() {
     };
 
     if (typeof devEvent.requestPermission !== "function") {
+      // Android / Desktop absolute positioning preference
       if ("ondeviceorientationabsolute" in globalThis) {
         globalThis.addEventListener(
           "deviceorientationabsolute",
@@ -228,6 +183,7 @@ export default function QiblaFinder() {
           <h2 className="text-lg font-bold text-text-primary dark:text-dark-text-primary">
             Qibla Finder
           </h2>
+
           <p className="text-sm text-text-muted dark:text-dark-text-muted">
             Find the direction of the Kaaba in Makkah
           </p>
@@ -236,6 +192,7 @@ export default function QiblaFinder() {
         {!hasCoords && geoLoading && (
           <div className="flex flex-col items-center gap-3 py-10">
             <div className="h-8 w-8 animate-spin rounded-full border-4 border-border border-t-secondary" />
+
             <p className="text-sm text-text-muted">
               Detecting your location...
             </p>
@@ -247,6 +204,7 @@ export default function QiblaFinder() {
             <p className="text-sm text-text-muted">
               {geoError}. Location is required.
             </p>
+
             <button
               type="button"
               onClick={request}
@@ -270,6 +228,7 @@ export default function QiblaFinder() {
                     Compass sensor access is required to point towards the
                     Qibla.
                   </p>
+
                   <button
                     type="button"
                     onClick={startCompass}
@@ -281,52 +240,59 @@ export default function QiblaFinder() {
               )}
 
             <div className="flex flex-col items-center gap-4">
+              {/* Compass Frame Container */}
               <div className="relative flex h-64 w-64 items-center justify-center overflow-hidden rounded-full bg-surface-alt dark:bg-dark-surface-alt">
-                {/* 1. ROTATING DIAL COMPASS */}
+                {/* 1. ROTATING DIAL COMPASS (N E S W) */}
+
                 <div
                   className="absolute inset-0 flex items-center justify-center will-change-transform"
                   style={{ transform: `rotate(${dialRotation}deg)` }}
                 >
                   <div className="absolute inset-4 rounded-full border-2 border-border/40 dark:border-dark-border/40" />
+
                   <span className="absolute top-3 text-sm font-black text-red-500">
                     N
                   </span>
+
                   <span className="absolute right-3 text-sm font-bold text-text-primary dark:text-dark-text-primary">
                     E
                   </span>
+
                   <span className="absolute bottom-3 text-sm font-bold text-text-primary dark:text-dark-text-primary">
                     S
                   </span>
+
                   <span className="absolute left-3 text-sm font-bold text-text-primary dark:text-dark-text-primary">
                     W
                   </span>
                 </div>
 
-                {/* 2. STATIONARY LABELS */}
+                {/* 2. STATIONARY LABELS (Center Text Indicator) */}
+
                 <div className="absolute inset-16 z-10 flex items-center justify-center rounded-full bg-surface shadow-sm dark:bg-dark-surface-card">
                   <div className="text-center">
                     <p className="text-xl font-black text-text-primary dark:text-dark-text-primary">
                       {qiblaDirection.toFixed(0)}&deg;
                     </p>
+
                     <p className="text-xs font-semibold text-text-muted">
                       {toCompassDirection(qiblaDirection)}
                     </p>
                   </div>
                 </div>
-
                 {/* 3. INDEPENDENT ROTATING QIBLA NEEDLE */}
+
                 <div
                   className="absolute z-20 flex h-full w-full items-center justify-center will-change-transform"
                   style={{ transform: `rotate(${needleRotation}deg)` }}
                 >
                   <div className="relative flex h-[82%] w-3 flex-col items-center">
+                    {/* Upper pointed arrow side toward Qibla */}
+
                     <div
-                      className={`h-1/2 w-full rounded-t-full shadow-xs ${
-                        isFacingQibla
-                          ? "bg-green-500 animate-pulse"
-                          : "bg-secondary"
-                      }`}
+                      className={`h-1/2 w-full rounded-t-full shadow-xs ${isFacingQibla ? "bg-green-500 animate-pulse" : "bg-secondary"}`}
                     />
+
                     <div className="h-1/2 w-1.5 bg-text-muted/30" />
                   </div>
                 </div>
@@ -353,16 +319,20 @@ export default function QiblaFinder() {
                   <span className="text-sm text-text-muted">
                     Your Coordinates
                   </span>
+
                   <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
-                    {lat.toFixed(4)}&deg;N, {lng.toFixed(4)}&deg;E
+                    {lat.toFixed(4)}&deg;N, {lng.toFixed(4)}
+                    &deg;E
                   </span>
                 </div>
+
                 <div className="flex items-center justify-between p-4">
                   <span className="text-sm text-text-muted">
                     Qibla Direction
                   </span>
+
                   <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
-                    {qiblaDirection.toFixed(1)}&deg;{" "}
+                    {qiblaDirection.toFixed(1)}&deg;
                     {toCompassDirection(qiblaDirection)}
                   </span>
                 </div>
