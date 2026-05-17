@@ -24,6 +24,7 @@ const primaryTabs: Tab[] = [
 
 const overflowTabs: Tab[] = [
   { to: "/bookmarks", icon: BiBookmark, label: "Bookmarks" },
+  { to: "/last-ten-surahs", icon: FaBookOpen, label: "Last 10" },
   { to: "/asma-ul-husna", icon: FaStar, label: "Asma ul-Husna" },
   { to: "/duas", icon: MdMenuBook, label: "Duas" },
   { to: "/qibla", icon: MdExplore, label: "Qibla Finder" },

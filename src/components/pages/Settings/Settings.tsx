@@ -273,6 +273,53 @@ export default function Settings() {
                 onChange={(v) => updateSettings({ prayerAsrMethod: v })}
               />
             </div>
+            <div>
+              <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
+                Hijri Date Adjustment: {settings.hijriAdjust > 0 ? "+" : ""}
+                {settings.hijriAdjust} day
+                {settings.hijriAdjust !== 1 ? "s" : ""}
+              </p>
+              <div className="flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() =>
+                    updateSettings({
+                      hijriAdjust: Math.max(-3, settings.hijriAdjust - 1),
+                    })
+                  }
+                  className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border border-border bg-surface-alt text-sm font-medium text-text-primary transition-colors hover:bg-surface dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
+                >
+                  −
+                </button>
+                <input
+                  type="range"
+                  min="-3"
+                  max="3"
+                  step="1"
+                  value={settings.hijriAdjust}
+                  onChange={(e) =>
+                    updateSettings({
+                      hijriAdjust: Number.parseInt(e.target.value, 10),
+                    })
+                  }
+                  className="w-full accent-secondary"
+                />
+                <button
+                  type="button"
+                  onClick={() =>
+                    updateSettings({
+                      hijriAdjust: Math.min(3, settings.hijriAdjust + 1),
+                    })
+                  }
+                  className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border border-border bg-surface-alt text-sm font-medium text-text-primary transition-colors hover:bg-surface dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
+                >
+                  +
+                </button>
+              </div>
+              <p className="mt-1 text-[11px] text-text-muted">
+                Adjust if the displayed date differs from your local observation
+              </p>
+            </div>
           </div>
         </SettingCard>
 
