@@ -135,6 +135,7 @@ export const ParaHead: React.FC<ParaHeadProps> = ({ para, allSegments }) => {
           <Ayahs
             ayah={verse}
             key={`${verse.numberInSurah} + ${verse.juz}`}
+            surah={para}
             tracklist={paraTracks}
             surahNo={para.no}
           />

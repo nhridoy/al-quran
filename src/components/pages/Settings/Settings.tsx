@@ -1,16 +1,104 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { HiOutlineTrash } from "react-icons/hi";
-import { IoSettingsOutline } from "react-icons/io5";
+import {
+  IoColorPaletteOutline,
+  IoSettingsOutline,
+  IoVolumeHighOutline,
+} from "react-icons/io5";
+import { MdOutlineTranslate } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import Swal from "sweetalert2";
+import { QARIS } from "../../../data/qaris";
 import { useSurahs } from "../../../hooks/useSurahs";
+import { useSettings } from "../../../store/settings";
 import { Header } from "../../Header/Header";
+
+const THEME_OPTIONS = [
+  { value: "system", label: "System" },
+  { value: "light", label: "Light" },
+  { value: "dark", label: "Dark" },
+] as const;
+
+const LANG_OPTIONS = [
+  { value: "en", label: "English" },
+  { value: "bn", label: "বাংলা" },
+] as const;
+
+const CALC_METHODS = [
+  { value: "MWL", label: "Muslim World League" },
+  { value: "ISNA", label: "Islamic Society of North America" },
+  { value: "Egypt", label: "Egyptian General Authority" },
+  { value: "UmmAlQura", label: "Umm al-Qura (Makkah)" },
+  { value: "Karachi", label: "University of Islamic Sciences, Karachi" },
+] as const;
+
+function SettingCard({
+  icon,
+  title,
+  description,
+  children,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="overflow-hidden rounded-2xl border border-border bg-surface dark:border-dark-border dark:bg-dark-surface-card">
+      <div className="flex items-center gap-3 border-b border-border p-4 dark:border-dark-border">
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20">
+          {icon}
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold text-text-primary dark:text-dark-text-primary">
+            {title}
+          </h3>
+          <p className="text-xs text-text-muted dark:text-dark-text-muted">
+            {description}
+          </p>
+        </div>
+      </div>
+      <div className="p-4">{children}</div>
+    </div>
+  );
+}
+
+function SegmentedControl<T extends string>({
+  options,
+  value,
+  onChange,
+}: {
+  options: readonly { value: T; label: string }[];
+  value: T;
+  onChange: (v: T) => void;
+}) {
+  return (
+    <div className="flex overflow-hidden rounded-xl border border-border bg-surface-alt p-0.5 dark:border-dark-border dark:bg-dark-surface-alt">
+      {options.map((opt) => (
+        <button
+          key={opt.value}
+          type="button"
+          onClick={() => onChange(opt.value)}
+          className={`flex-1 cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
+            value === opt.value
+              ? "bg-white text-primary shadow-sm dark:bg-dark-surface-card dark:text-secondary-light"
+              : "text-text-muted hover:text-text-primary dark:hover:text-dark-text-primary"
+          }`}
+        >
+          {opt.label}
+        </button>
+      ))}
+    </div>
+  );
+}
 
 export default function Settings() {
   const [loading, setLoading] = useState(false);
   const { refresh } = useSurahs();
+  const settings = useSettings();
+  const updateSettings = useSettings((s) => s.update);
 
-  const handleUpdate = () => {
+  const handleUpdate = useCallback(() => {
     Swal.fire({
       title: "Refresh Data?",
       text: "This will clear the cached data and fetch fresh content.",
@@ -33,12 +121,12 @@ export default function Settings() {
         setLoading(false);
       }
     });
-  };
+  }, [refresh]);
 
   return (
     <div className="min-h-screen">
       <Header head="Settings" />
-      <div className="mx-4 space-y-4 md:mx-6">
+      <div className="mx-4 space-y-4 pb-8 md:mx-6">
         <div className="mb-2">
           <h2 className="text-lg font-bold text-text-primary dark:text-dark-text-primary">
             Settings
@@ -48,22 +136,155 @@ export default function Settings() {
           </p>
         </div>
 
-        <div className="overflow-hidden rounded-2xl border border-border bg-surface dark:border-dark-border dark:bg-dark-surface-card">
-          <div className="flex items-center gap-3 border-b border-border p-4 dark:border-dark-border">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20">
-              <IoSettingsOutline className="text-lg text-primary dark:text-secondary-light" />
+        {/* Appearance */}
+        <SettingCard
+          icon={
+            <IoColorPaletteOutline className="text-lg text-primary dark:text-secondary-light" />
+          }
+          title="Appearance"
+          description="Theme and font size preferences"
+        >
+          <div className="space-y-4">
+            <div>
+              <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
+                Theme
+              </p>
+              <SegmentedControl
+                options={THEME_OPTIONS}
+                value={settings.theme}
+                onChange={(v) => updateSettings({ theme: v })}
+              />
             </div>
             <div>
-              <h3 className="text-sm font-semibold text-text-primary dark:text-dark-text-primary">
-                Data Settings
-              </h3>
-              <p className="text-xs text-text-muted dark:text-dark-text-muted">
-                Clear and refresh cached Quran data
+              <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
+                Arabic Font Size: {settings.arabicFontSize.toFixed(2)}x
               </p>
+              <input
+                type="range"
+                min="1"
+                max="2"
+                step="0.125"
+                value={settings.arabicFontSize}
+                onChange={(e) =>
+                  updateSettings({
+                    arabicFontSize: Number.parseFloat(e.target.value),
+                  })
+                }
+                className="w-full accent-secondary"
+              />
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
+                Translation Font Size: {settings.translationFontSize.toFixed(2)}
+                x
+              </p>
+              <input
+                type="range"
+                min="0.75"
+                max="1.5"
+                step="0.125"
+                value={settings.translationFontSize}
+                onChange={(e) =>
+                  updateSettings({
+                    translationFontSize: Number.parseFloat(e.target.value),
+                  })
+                }
+                className="w-full accent-secondary"
+              />
             </div>
           </div>
+        </SettingCard>
 
-          <div className="flex items-center justify-between p-4">
+        {/* Reading */}
+        <SettingCard
+          icon={
+            <MdOutlineTranslate className="text-lg text-primary dark:text-secondary-light" />
+          }
+          title="Reading"
+          description="Language and reciter preferences"
+        >
+          <div className="space-y-4">
+            <div>
+              <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
+                Translation Language
+              </p>
+              <SegmentedControl
+                options={LANG_OPTIONS}
+                value={settings.translationLang}
+                onChange={(v) => updateSettings({ translationLang: v })}
+              />
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
+                Qari / Reciter
+              </p>
+              <select
+                value={settings.qariId}
+                onChange={(e) => updateSettings({ qariId: e.target.value })}
+                className="w-full rounded-xl border border-border bg-surface-alt px-3 py-2 text-sm text-text-primary outline-none transition-colors focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
+              >
+                {QARIS.map((qari) => (
+                  <option key={qari.id} value={qari.id}>
+                    {qari.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+        </SettingCard>
+
+        {/* Prayer */}
+        <SettingCard
+          icon={
+            <IoVolumeHighOutline className="text-lg text-primary dark:text-secondary-light" />
+          }
+          title="Prayer Times"
+          description="Calculation method preferences"
+        >
+          <div className="space-y-4">
+            <div>
+              <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
+                Calculation Method
+              </p>
+              <select
+                value={settings.prayerCalcMethod}
+                onChange={(e) =>
+                  updateSettings({ prayerCalcMethod: e.target.value })
+                }
+                className="w-full rounded-xl border border-border bg-surface-alt px-3 py-2 text-sm text-text-primary outline-none transition-colors focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
+              >
+                {CALC_METHODS.map((m) => (
+                  <option key={m.value} value={m.value}>
+                    {m.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
+                Asr Calculation
+              </p>
+              <SegmentedControl
+                options={[
+                  { value: "shafii", label: "Shafii" },
+                  { value: "hanafi", label: "Hanafi" },
+                ]}
+                value={settings.prayerAsrMethod}
+                onChange={(v) => updateSettings({ prayerAsrMethod: v })}
+              />
+            </div>
+          </div>
+        </SettingCard>
+
+        {/* Data */}
+        <SettingCard
+          icon={
+            <IoSettingsOutline className="text-lg text-primary dark:text-secondary-light" />
+          }
+          title="Data Settings"
+          description="Clear and refresh cached Quran data"
+        >
+          <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <HiOutlineTrash className="text-lg text-text-muted dark:text-dark-text-muted" />
               <div>
@@ -88,7 +309,7 @@ export default function Settings() {
               {loading ? "Refreshing..." : "Refresh"}
             </button>
           </div>
-        </div>
+        </SettingCard>
       </div>
 
       <ToastContainer

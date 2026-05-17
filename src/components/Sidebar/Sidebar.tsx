@@ -1,18 +1,60 @@
 import { AiOutlineGift, AiOutlineHeart } from "react-icons/ai";
+import { BiBookmark } from "react-icons/bi";
 import { BsInfoCircle } from "react-icons/bs";
-import { FaBookOpen, FaQuran } from "react-icons/fa";
+import { FaBookOpen, FaQuran, FaStar } from "react-icons/fa";
 import { IoSettingsOutline } from "react-icons/io5";
-import { MdMenuBook } from "react-icons/md";
+import { MdAccessTime, MdExplore, MdLoop, MdMenuBook } from "react-icons/md";
 import { NavLink, useLocation } from "react-router-dom";
+import HijriDate from "../HijriDate/HijriDate";
 
-const navItems = [
-  { to: "/surah", icon: FaBookOpen, label: "Surah" },
-  { to: "/para", icon: MdMenuBook, label: "Para" },
-  { to: "/settings", icon: IoSettingsOutline, label: "Settings" },
-  { to: "/about", icon: BsInfoCircle, label: "About" },
-  { to: "/credits", icon: AiOutlineHeart, label: "Credits" },
-  { to: "/donation", icon: AiOutlineGift, label: "Donation" },
+interface NavItem {
+  to: string;
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+}
+
+interface NavSection {
+  label: string;
+  items: NavItem[];
+}
+
+const navSections: NavSection[] = [
+  {
+    label: "QURAN",
+    items: [
+      { to: "/surah", icon: FaBookOpen, label: "Surah" },
+      { to: "/para", icon: MdMenuBook, label: "Para" },
+      { to: "/last-ten-surahs", icon: FaBookOpen, label: "Last 10 Surahs" },
+      { to: "/bookmarks", icon: BiBookmark, label: "Bookmarks" },
+    ],
+  },
+  {
+    label: "TOOLS",
+    items: [
+      { to: "/prayer-times", icon: MdAccessTime, label: "Prayer Times" },
+      { to: "/qibla", icon: MdExplore, label: "Qibla Finder" },
+      { to: "/asma-ul-husna", icon: FaStar, label: "Asma ul-Husna" },
+      { to: "/duas", icon: MdMenuBook, label: "Duas" },
+      { to: "/tasbih", icon: MdLoop, label: "Tasbih" },
+    ],
+  },
+  {
+    label: "MORE",
+    items: [
+      { to: "/settings", icon: IoSettingsOutline, label: "Settings" },
+      { to: "/about", icon: BsInfoCircle, label: "About" },
+      { to: "/credits", icon: AiOutlineHeart, label: "Credits" },
+      { to: "/donation", icon: AiOutlineGift, label: "Donation" },
+    ],
+  },
 ];
+
+function isActiveMatch(pathname: string, to: string): boolean {
+  if (pathname === to) return true;
+  if (to === "/surah" && pathname.startsWith("/surah")) return true;
+  if (to === "/para" && pathname.startsWith("/para")) return true;
+  return false;
+}
 
 export default function Sidebar() {
   const location = useLocation();
@@ -33,50 +75,48 @@ export default function Sidebar() {
         </div>
       </div>
 
-      <nav className="flex-1 space-y-1 px-3">
-        {navItems.map((item) => {
-          const Icon = item.icon;
-          const isActive =
-            location.pathname === item.to ||
-            (item.to === "/surah" && location.pathname.startsWith("/surah")) ||
-            (item.to === "/para" && location.pathname.startsWith("/para"));
+      <nav className="flex-1 space-y-5 overflow-y-auto px-3 pb-4">
+        {navSections.map((section) => (
+          <div key={section.label}>
+            <p className="mb-1.5 px-4 text-[10px] font-semibold uppercase tracking-widest text-text-muted dark:text-dark-text-muted">
+              {section.label}
+            </p>
+            <div className="space-y-0.5">
+              {section.items.map((item) => {
+                const Icon = item.icon;
+                const isActive = isActiveMatch(location.pathname, item.to);
 
-          return (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              className={`flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200 ${
-                isActive
-                  ? "bg-linear-to-r from-primary/10 to-secondary/10 text-primary dark:from-primary/20 dark:to-secondary/20 dark:text-secondary-light"
-                  : "text-text-secondary hover:bg-surface-alt hover:text-text-primary dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt dark:hover:text-dark-text-primary"
-              }`}
-            >
-              <Icon
-                className={`text-lg ${
-                  isActive ? "text-secondary dark:text-secondary-light" : ""
-                }`}
-              />
-              <span>{item.label}</span>
-              {isActive && (
-                <div className="ml-auto h-1.5 w-1.5 rounded-full bg-linear-to-r from-primary to-secondary" />
-              )}
-            </NavLink>
-          );
-        })}
+                return (
+                  <NavLink
+                    key={item.to}
+                    to={item.to}
+                    className={`flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-200 ${
+                      isActive
+                        ? "bg-linear-to-r from-primary/10 to-secondary/10 text-primary dark:from-primary/20 dark:to-secondary/20 dark:text-secondary-light"
+                        : "text-text-secondary hover:bg-surface-alt hover:text-text-primary dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt dark:hover:text-dark-text-primary"
+                    }`}
+                  >
+                    <Icon
+                      className={`text-base ${
+                        isActive
+                          ? "text-secondary dark:text-secondary-light"
+                          : ""
+                      }`}
+                    />
+                    <span>{item.label}</span>
+                    {isActive && (
+                      <div className="ml-auto h-1.5 w-1.5 rounded-full bg-linear-to-r from-primary to-secondary" />
+                    )}
+                  </NavLink>
+                );
+              })}
+            </div>
+          </div>
+        ))}
       </nav>
 
-      <div className="border-t border-border p-6 dark:border-dark-border">
-        <div className="rounded-xl bg-linear-to-br from-primary/5 to-secondary/5 p-4 dark:from-primary/10 dark:to-secondary/10">
-          <p className="text-xs font-medium text-text-muted dark:text-dark-text-muted">
-            Quranic Verse
-          </p>
-          <p className="mt-1 text-sm font-semibold text-text-primary dark:text-dark-text-primary">
-            "Read! In the Name of your Lord"
-          </p>
-          <p className="mt-0.5 text-xs text-text-muted dark:text-dark-text-muted">
-            Al-Alaq 96:1
-          </p>
-        </div>
+      <div className="border-t border-border p-4 dark:border-dark-border">
+        <HijriDate />
       </div>
     </aside>
   );

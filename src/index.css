@@ -211,6 +211,9 @@ html {
   line-height: 2;
 }
 
+/* Font size is controlled via CSS variables set by ThemeController.
+   Apply by adding style={{ fontSize: 'var(--arabic-font-size)' }} to override text-* utility classes. */
+
 .page-enter {
   animation: pageEnter 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

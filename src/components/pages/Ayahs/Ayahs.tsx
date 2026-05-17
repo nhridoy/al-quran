@@ -7,20 +7,27 @@ import {
   buildPlaylistFromSurah,
   useAudioPlayer,
 } from "../../../components/AudioPlayer";
-import type { SurahData, Verse } from "../../../types";
+import { useBookmarkStore } from "../../../store/bookmarks";
+import type { Verse } from "../../../types";
 
 interface AyahsProps {
   ayah: Verse;
-  surah?: SurahData;
+  surah?: { no: number; name: string; enName: string; verses?: Verse[] };
   tracklist?: Track[];
   surahNo?: number;
 }
 
 const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
   const { currentTrack, isPlaying, togglePlay, setPlaylist } = useAudioPlayer();
+  const bookmarks = useBookmarkStore((s) => s.bookmarks);
+  const addBookmark = useBookmarkStore((s) => s.add);
+  const removeBookmark = useBookmarkStore((s) => s.remove);
 
   const isCurrentAyah = currentTrack?.totalNumber === ayah.totalNumber;
   const isThisAyahPlaying = isCurrentAyah && isPlaying;
+
+  const ayahId = `${surah?.no || surahNo}-${ayah.numberInSurah}`;
+  const isBookmarked = bookmarks.some((b) => b.id === ayahId);
 
   useEffect(() => {
     if (isCurrentAyah) {
@@ -29,6 +36,15 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
         ?.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }, [isCurrentAyah, ayah.totalNumber]);
+
+  const handleShare = useCallback(() => {
+    const text = `${ayah.text}\n\n${ayah.enText}\n${ayah.enTextTransliteration}\n\n— ${surah?.enName || ""} ${ayah.numberInSurah}`;
+    if (navigator.share) {
+      navigator.share({ title: "Al Quran", text }).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(text).catch(() => {});
+    }
+  }, [ayah, surah]);
 
   const handlePlay = useCallback(() => {
     if (isCurrentAyah) {
@@ -42,9 +58,11 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
       setPlaylist(tracklist, Math.max(idx, 0));
       return;
     }
-    if (!surah) return;
+    if (!surah?.verses) return;
     const idx = ayah.numberInSurah - 1;
-    const tracks = buildPlaylistFromSurah(surah);
+    const tracks = buildPlaylistFromSurah(
+      surah as Parameters<typeof buildPlaylistFromSurah>[0],
+    );
     setPlaylist(tracks, idx);
   }, [isCurrentAyah, togglePlay, tracklist, surahNo, ayah, surah, setPlaylist]);
 
@@ -79,6 +97,7 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
           <div className="flex items-center gap-2">
             <button
               type="button"
+              onClick={handleShare}
               className="btn-ghost flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg"
               aria-label="Share"
               title="Share"
@@ -106,11 +125,33 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
             </button>
             <button
               type="button"
-              className="btn-ghost flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg"
-              aria-label="Bookmark"
-              title="Bookmark"
+              onClick={() => {
+                if (isBookmarked) {
+                  removeBookmark(ayahId);
+                } else if (surah || surahNo) {
+                  addBookmark({
+                    id: ayahId,
+                    surahNo: surah?.no ?? surahNo ?? 0,
+                    ayahNo: ayah.numberInSurah,
+                    surahName: surah?.name || "",
+                    enName: surah?.enName || "",
+                    arabicText: ayah.text,
+                    enText: ayah.enText,
+                    bnText: ayah.bnText,
+                  });
+                }
+              }}
+              className={`flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg transition-all active:scale-90 ${
+                isBookmarked
+                  ? "bg-linear-to-br from-primary/10 to-secondary/10 text-secondary dark:from-primary/20 dark:to-secondary/20 dark:text-secondary-light"
+                  : "btn-ghost"
+              }`}
+              aria-label={isBookmarked ? "Remove bookmark" : "Bookmark"}
+              title={isBookmarked ? "Remove bookmark" : "Bookmark"}
             >
-              <BiBookmark className="text-base" />
+              <BiBookmark
+                className={`text-base ${isBookmarked ? "fill-current" : ""}`}
+              />
             </button>
           </div>
         </div>
