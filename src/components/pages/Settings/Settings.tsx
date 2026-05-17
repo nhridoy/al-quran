@@ -5,7 +5,7 @@ import {
   IoSettingsOutline,
   IoVolumeHighOutline,
 } from "react-icons/io5";
-import { MdOutlineTranslate } from "react-icons/md";
+import { MdFormatColorFill, MdOutlineTranslate } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { QARIS } from "../../../data/qaris";
@@ -229,6 +229,33 @@ export default function Settings() {
                   </option>
                 ))}
               </select>
+            </div>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <MdFormatColorFill className="text-base text-text-muted dark:text-dark-text-muted" />
+                <p className="text-xs font-medium text-text-primary dark:text-dark-text-primary">
+                  Tajweed Color
+                </p>
+              </div>
+              <button
+                type="button"
+                role="switch"
+                aria-checked={settings.tajweedEnabled}
+                onClick={() =>
+                  updateSettings({ tajweedEnabled: !settings.tajweedEnabled })
+                }
+                className={`relative h-6 w-11 cursor-pointer rounded-full transition-colors ${
+                  settings.tajweedEnabled
+                    ? "bg-linear-to-r from-primary to-secondary"
+                    : "bg-surface-alt dark:bg-dark-surface-alt"
+                }`}
+              >
+                <span
+                  className={`absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white shadow-sm transition-transform ${
+                    settings.tajweedEnabled ? "translate-x-5" : "translate-x-0"
+                  }`}
+                />
+              </button>
             </div>
           </div>
         </SettingCard>

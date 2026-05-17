@@ -7,6 +7,7 @@ import HomeLayout from "./components/pages/HomeLayout";
 import Para from "./components/pages/Para/Para";
 import SurahPage from "./components/pages/Surah/Surah";
 import { useBookmarkStore } from "./store/bookmarks";
+import { useDownloadsStore } from "./store/downloads";
 import { useLocationStore } from "./store/location";
 import { useSettings } from "./store/settings";
 
@@ -17,6 +18,7 @@ const AsmaUlHusna = lazy(
 const Bookmarks = lazy(() => import("./components/pages/Bookmarks/Bookmarks"));
 const Credits = lazy(() => import("./components/pages/Credits/Credits"));
 const Donation = lazy(() => import("./components/pages/Donation/Donation"));
+const Downloads = lazy(() => import("./components/pages/Downloads/Downloads"));
 const Paras = lazy(() => import("./components/pages/Paras/Paras"));
 const Settings = lazy(() => import("./components/pages/Settings/Settings"));
 const Surahs = lazy(() => import("./components/pages/Surahs/Surahs"));
@@ -25,6 +27,10 @@ const LastTenSurahs = lazy(
 );
 const Duas = lazy(() => import("./components/pages/Duas/Duas"));
 const DuaCategory = lazy(() => import("./components/pages/Duas/DuaCategory"));
+const HadithCollections = lazy(
+  () => import("./components/pages/Hadith/HadithCollections"),
+);
+const HadithBook = lazy(() => import("./components/pages/Hadith/HadithBook"));
 const PrayerTimes = lazy(
   () => import("./components/pages/PrayerTimes/PrayerTimes"),
 );
@@ -37,10 +43,20 @@ function DataLoader() {
   const settingsLoaded = useSettings((s) => s.loaded);
   const loadBookmarks = useBookmarkStore((s) => s.load);
   const bookmarksLoaded = useBookmarkStore((s) => s.loaded);
+  const loadDownloads = useDownloadsStore((s) => s.load);
+  const downloadsLoaded = useDownloadsStore((s) => s.loaded);
   useEffect(() => {
     if (!settingsLoaded) loadSettings();
     if (!bookmarksLoaded) loadBookmarks();
-  }, [loadSettings, settingsLoaded, loadBookmarks, bookmarksLoaded]);
+    if (!downloadsLoaded) loadDownloads();
+  }, [
+    loadSettings,
+    settingsLoaded,
+    loadBookmarks,
+    bookmarksLoaded,
+    loadDownloads,
+    downloadsLoaded,
+  ]);
   return null;
 }
 
@@ -109,6 +125,8 @@ function App() {
               <Route path="/last-ten-surahs" element={<LastTenSurahs />} />
               <Route path="/duas" element={<Duas />} />
               <Route path="/duas/:categoryId" element={<DuaCategory />} />
+              <Route path="/hadith" element={<HadithCollections />} />
+              <Route path="/hadith/:bookId" element={<HadithBook />} />
               <Route path="/prayer-times" element={<PrayerTimes />} />
               <Route path="/qibla" element={<QiblaFinder />} />
               <Route path="/asma-ul-husna" element={<AsmaUlHusna />} />
@@ -116,6 +134,7 @@ function App() {
               <Route path="/settings" element={<Settings />} />
               <Route path="/about" element={<About />} />
               <Route path="/credits" element={<Credits />} />
+              <Route path="/downloads" element={<Downloads />} />
               <Route path="/donation" element={<Donation />} />
               <Route path="*" element={<Navigate to="/surah" replace />} />
             </Routes>

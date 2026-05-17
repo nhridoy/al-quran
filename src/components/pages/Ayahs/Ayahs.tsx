@@ -1,5 +1,5 @@
 import type React from "react";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { BiBookmark, BiShareAlt } from "react-icons/bi";
 import { IoPauseOutline, IoPlayOutline } from "react-icons/io5";
 import type { Track } from "../../../components/AudioPlayer";
@@ -8,6 +8,7 @@ import {
   useAudioPlayer,
 } from "../../../components/AudioPlayer";
 import { QARIS } from "../../../data/qaris";
+import { colorizeArabic } from "../../../lib/tajweed";
 import { useBookmarkStore } from "../../../store/bookmarks";
 import { useSettings } from "../../../store/settings";
 import type { Verse } from "../../../types";
@@ -26,6 +27,12 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
   const removeBookmark = useBookmarkStore((s) => s.remove);
   const qariId = useSettings((s) => s.qariId);
   const qariBase = QARIS.find((q) => q.id === qariId)?.baseUrl;
+  const tajweedEnabled = useSettings((s) => s.tajweedEnabled);
+
+  const coloredSegments = useMemo(
+    () => (tajweedEnabled ? colorizeArabic(ayah.text) : null),
+    [tajweedEnabled, ayah.text],
+  );
 
   const isCurrentAyah = currentTrack?.totalNumber === ayah.totalNumber;
   const isThisAyahPlaying = isCurrentAyah && isPlaying;
@@ -170,9 +177,26 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
           </div>
         </div>
 
-        <p className="font-arabic mb-3 text-right text-2xl leading-loose text-text-primary dark:text-dark-text-primary md:text-3xl">
-          {ayah.text}
-        </p>
+        {coloredSegments ? (
+          <p className="font-arabic mb-3 text-right text-2xl leading-loose md:text-3xl">
+            {coloredSegments.map((seg) => (
+              <span
+                key={`${seg.text}-${seg.color ?? "none"}`}
+                className={
+                  seg.color
+                    ? `tajweed-${seg.color}`
+                    : "text-text-primary dark:text-dark-text-primary"
+                }
+              >
+                {seg.text}
+              </span>
+            ))}
+          </p>
+        ) : (
+          <p className="font-arabic mb-3 text-right text-2xl leading-loose text-text-primary dark:text-dark-text-primary md:text-3xl">
+            {ayah.text}
+          </p>
+        )}
 
         <p className="mb-2 text-right text-sm italic text-text-muted dark:text-dark-text-muted">
           {ayah.enTextTransliteration}

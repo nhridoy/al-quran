@@ -19,6 +19,8 @@ interface BookmarkState {
   load: () => Promise<void>;
   add: (bookmark: Omit<Bookmark, "timestamp">) => Promise<void>;
   remove: (id: string) => Promise<void>;
+  clearBySurah: (surahNo: number) => Promise<void>;
+  clearAll: () => Promise<void>;
 }
 
 export const useBookmarkStore = create<BookmarkState>((set, get) => ({
@@ -42,5 +44,22 @@ export const useBookmarkStore = create<BookmarkState>((set, get) => ({
     await deleteFromStore("bookmarks", id);
     const current = get().bookmarks;
     set({ bookmarks: current.filter((b) => b.id !== id) });
+  },
+
+  clearBySurah: async (surahNo) => {
+    const current = get().bookmarks;
+    const toRemove = current.filter((b) => b.surahNo === surahNo);
+    for (const b of toRemove) {
+      await deleteFromStore("bookmarks", b.id);
+    }
+    set({ bookmarks: current.filter((b) => b.surahNo !== surahNo) });
+  },
+
+  clearAll: async () => {
+    const current = get().bookmarks;
+    for (const b of current) {
+      await deleteFromStore("bookmarks", b.id);
+    }
+    set({ bookmarks: [] });
   },
 }));

@@ -1,5 +1,9 @@
-import { AiOutlineGift, AiOutlineHeart } from "react-icons/ai";
-import { BiBookmark } from "react-icons/bi";
+import {
+  AiOutlineCloudDownload,
+  AiOutlineGift,
+  AiOutlineHeart,
+} from "react-icons/ai";
+import { BiBook, BiBookmark } from "react-icons/bi";
 import { BsInfoCircle } from "react-icons/bs";
 import { FaBookOpen, FaQuran, FaStar } from "react-icons/fa";
 import { IoSettingsOutline } from "react-icons/io5";
@@ -35,7 +39,9 @@ const navSections: NavSection[] = [
       { to: "/qibla", icon: MdExplore, label: "Qibla Finder" },
       { to: "/asma-ul-husna", icon: FaStar, label: "Asma ul-Husna" },
       { to: "/duas", icon: MdMenuBook, label: "Duas" },
+      { to: "/hadith", icon: BiBook, label: "Hadith" },
       { to: "/tasbih", icon: MdLoop, label: "Tasbih" },
+      { to: "/downloads", icon: AiOutlineCloudDownload, label: "Downloads" },
     ],
   },
   {

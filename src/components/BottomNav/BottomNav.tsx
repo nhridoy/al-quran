@@ -1,6 +1,10 @@
 import { useState } from "react";
-import { AiOutlineGift, AiOutlineHeart } from "react-icons/ai";
-import { BiBookmark } from "react-icons/bi";
+import {
+  AiOutlineCloudDownload,
+  AiOutlineGift,
+  AiOutlineHeart,
+} from "react-icons/ai";
+import { BiBook, BiBookmark } from "react-icons/bi";
 import { BsInfoCircle } from "react-icons/bs";
 import { FaBookOpen, FaStar } from "react-icons/fa";
 import { HiDotsHorizontal } from "react-icons/hi";
@@ -28,6 +32,8 @@ const overflowTabs: Tab[] = [
   { to: "/asma-ul-husna", icon: FaStar, label: "Asma ul-Husna" },
   { to: "/duas", icon: MdMenuBook, label: "Duas" },
   { to: "/qibla", icon: MdExplore, label: "Qibla Finder" },
+  { to: "/hadith", icon: BiBook, label: "Hadith" },
+  { to: "/downloads", icon: AiOutlineCloudDownload, label: "Downloads" },
   { to: "/settings", icon: IoSettingsOutline, label: "Settings" },
   { to: "/about", icon: BsInfoCircle, label: "About" },
   { to: "/credits", icon: AiOutlineHeart, label: "Credits" },

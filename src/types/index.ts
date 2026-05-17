@@ -35,6 +35,7 @@ export interface AppSettings {
   prayerCalcMethod: string;
   prayerAsrMethod: "shafii" | "hanafi";
   hijriAdjust: number;
+  tajweedEnabled: boolean;
 }
 
 export interface ParaSurah {

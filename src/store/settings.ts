@@ -13,6 +13,7 @@ const DEFAULTS: AppSettings = {
   prayerCalcMethod: "MWL",
   prayerAsrMethod: "shafii",
   hijriAdjust: 0,
+  tajweedEnabled: false,
 };
 
 interface SettingsState extends AppSettings {
@@ -47,6 +48,7 @@ export const useSettings = create<SettingsState>((set, get) => ({
       prayerCalcMethod: next.prayerCalcMethod,
       prayerAsrMethod: next.prayerAsrMethod,
       hijriAdjust: next.hijriAdjust,
+      tajweedEnabled: next.tajweedEnabled,
     } as AppSettings);
     set(partial);
   },

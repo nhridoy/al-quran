@@ -2,7 +2,7 @@ import { type IDBPDatabase, openDB } from "idb";
 import type { SurahData } from "../types";
 
 const DB_NAME = "al-quran";
-const DB_VERSION = 4;
+const DB_VERSION = 5;
 
 const STORE_NAMES = [
   "surahs",
@@ -10,6 +10,7 @@ const STORE_NAMES = [
   "settings",
   "duas",
   "prayerSettings",
+  "tafsir",
 ] as const;
 
 export type StoreName = (typeof STORE_NAMES)[number];
