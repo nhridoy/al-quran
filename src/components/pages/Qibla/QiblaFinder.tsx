@@ -1,0 +1,246 @@
+import { useEffect, useState } from "react";
+import { useLocationStore } from "../../../store/location";
+import { Header } from "../../Header/Header";
+
+const KAABA = { lat: 21.4225, lng: 39.8262 };
+
+function bearing(
+  lat1: number,
+  lng1: number,
+  lat2: number,
+  lng2: number,
+): number {
+  const dLng = ((lng2 - lng1) * Math.PI) / 180;
+  const lat1Rad = (lat1 * Math.PI) / 180;
+  const lat2Rad = (lat2 * Math.PI) / 180;
+  const y = Math.sin(dLng) * Math.cos(lat2Rad);
+  const x =
+    Math.cos(lat1Rad) * Math.sin(lat2Rad) -
+    Math.sin(lat1Rad) * Math.cos(lat2Rad) * Math.cos(dLng);
+  return ((Math.atan2(y, x) * 180) / Math.PI + 360) % 360;
+}
+
+function toCompassDirection(deg: number): string {
+  const dirs = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
+  const index = Math.round(deg / 45) % 8;
+  return dirs[index];
+}
+
+export default function QiblaFinder() {
+  const {
+    lat,
+    lng,
+    loading: geoLoading,
+    error: geoError,
+    request,
+  } = useLocationStore();
+  const [heading, setHeading] = useState<number | null>(null);
+  const [compassSupported, setCompassSupported] = useState(true);
+
+  const coords = lat !== null && lng !== null ? { lat, lng } : null;
+
+  const qiblaDirection = coords
+    ? bearing(coords.lat, coords.lng, KAABA.lat, KAABA.lng)
+    : 0;
+
+  const needleRotation = heading !== null ? qiblaDirection - heading : 0;
+  const isFacingQibla = heading !== null && Math.abs(needleRotation % 360) < 10;
+
+  useEffect(() => {
+    if (!coords) return;
+
+    const handleOrientation = (event: DeviceOrientationEvent) => {
+      let alpha: number | null = null;
+      if ("webkitCompassHeading" in event) {
+        alpha = (
+          event as DeviceOrientationEvent & { webkitCompassHeading: number }
+        ).webkitCompassHeading;
+      } else if (event.alpha !== null) {
+        alpha = event.alpha;
+      }
+      if (alpha !== null) {
+        setHeading(alpha);
+      }
+    };
+
+    const requestPermission = async () => {
+      const devEvent = DeviceOrientationEvent as unknown as {
+        requestPermission?: () => Promise<"granted" | "denied">;
+      };
+      if (typeof devEvent.requestPermission === "function") {
+        try {
+          const result = await devEvent.requestPermission();
+          if (result === "granted") {
+            window.addEventListener("deviceorientation", handleOrientation);
+          } else {
+            setCompassSupported(false);
+          }
+        } catch {
+          window.addEventListener("deviceorientation", handleOrientation);
+        }
+      } else {
+        window.addEventListener("deviceorientation", handleOrientation);
+      }
+    };
+
+    requestPermission();
+
+    return () => {
+      window.removeEventListener("deviceorientation", handleOrientation);
+    };
+  }, [coords]);
+
+  return (
+    <div className="min-h-screen">
+      <Header head="Qibla Finder" showBack />
+      <div className="mx-4 space-y-6 pb-8 md:mx-6">
+        <div className="mb-2">
+          <h2 className="text-lg font-bold text-text-primary dark:text-dark-text-primary">
+            Qibla Finder
+          </h2>
+          <p className="text-sm text-text-muted dark:text-dark-text-muted">
+            Find the direction of the Kaaba in Makkah
+          </p>
+        </div>
+
+        {!coords && geoLoading && (
+          <div className="flex flex-col items-center gap-3 py-10">
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-border border-t-secondary" />
+            <p className="text-sm text-text-muted">
+              Detecting your location...
+            </p>
+          </div>
+        )}
+
+        {geoError && (
+          <div className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-surface p-6 text-center dark:border-dark-border dark:bg-dark-surface-card">
+            <p className="text-sm text-text-muted">
+              {geoError}. Location is needed to calculate Qibla direction.
+            </p>
+            <button
+              type="button"
+              onClick={request}
+              className="cursor-pointer rounded-xl bg-linear-to-r from-primary to-secondary px-5 py-2 text-sm font-semibold text-white transition-all hover:shadow-lg hover:shadow-primary/20 active:scale-95"
+            >
+              Try Again
+            </button>
+          </div>
+        )}
+
+        {coords && (
+          <>
+            <div className="flex flex-col items-center gap-4">
+              <div className="relative flex h-64 w-64 items-center justify-center">
+                <div className="absolute inset-0 rounded-full border-4 border-border dark:border-dark-border" />
+                <div className="absolute inset-4 rounded-full border-2 border-border/50 dark:border-dark-border/50" />
+                <div className="absolute inset-12 rounded-full border border-border/30 dark:border-dark-border/30" />
+
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center">
+                    <p className="text-2xl font-bold text-text-primary dark:text-dark-text-primary">
+                      {qiblaDirection.toFixed(0)}&deg;
+                    </p>
+                    <p className="text-xs text-text-muted">
+                      {toCompassDirection(qiblaDirection)}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Compass cardinals */}
+                <span className="absolute top-2 left-1/2 -translate-x-1/2 text-xs font-bold text-text-muted">
+                  N
+                </span>
+                <span className="absolute right-2 top-1/2 -translate-y-1/2 text-xs font-bold text-text-muted">
+                  E
+                </span>
+                <span className="absolute bottom-2 left-1/2 -translate-x-1/2 text-xs font-bold text-text-muted">
+                  S
+                </span>
+                <span className="absolute left-2 top-1/2 -translate-y-1/2 text-xs font-bold text-text-muted">
+                  W
+                </span>
+
+                {/* Needle */}
+                <div
+                  className="absolute flex h-full w-full items-center justify-center transition-all duration-150"
+                  style={{
+                    transform: `rotate(${needleRotation}deg)`,
+                  }}
+                >
+                  <div className="relative flex h-full w-2 flex-col items-center">
+                    <div
+                      className={`h-1/2 w-2 rounded-t-full ${
+                        isFacingQibla ? "bg-green-500" : "bg-secondary"
+                      }`}
+                    />
+                    <div className="h-1/2 w-2 rounded-b-full bg-text-muted" />
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className={`rounded-xl px-4 py-2 text-center text-sm font-medium ${
+                  isFacingQibla
+                    ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
+                    : "bg-surface-alt text-text-muted dark:bg-dark-surface-alt"
+                }`}
+              >
+                {isFacingQibla
+                  ? "✓ Facing Qibla!"
+                  : heading !== null
+                    ? `Rotate ${needleRotation.toFixed(0)}° to face Qibla`
+                    : "Point device North to see direction"}
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-border bg-surface dark:border-dark-border dark:bg-dark-surface-card">
+              <div className="divide-y divide-border dark:divide-dark-border">
+                <div className="flex items-center justify-between p-4">
+                  <span className="text-sm text-text-muted">Location</span>
+                  <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
+                    {coords.lat.toFixed(4)}&deg;N, {coords.lng.toFixed(4)}&deg;E
+                  </span>
+                </div>
+                <div className="flex items-center justify-between p-4">
+                  <span className="text-sm text-text-muted">
+                    Qibla Direction
+                  </span>
+                  <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
+                    {qiblaDirection.toFixed(1)}&deg;{" "}
+                    {toCompassDirection(qiblaDirection)}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between p-4">
+                  <span className="text-sm text-text-muted">Distance</span>
+                  <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
+                    ~{(bearing(0, 0, KAABA.lat, KAABA.lng) * 111).toFixed(0)} km
+                  </span>
+                </div>
+                <div className="flex items-center justify-between p-4">
+                  <span className="text-sm text-text-muted">Compass</span>
+                  <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
+                    {compassSupported
+                      ? heading !== null
+                        ? `${heading.toFixed(1)}°`
+                        : "Calibrating..."
+                      : "Not available"}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {!compassSupported && (
+              <div className="rounded-2xl border border-border bg-surface-alt p-4 text-center dark:border-dark-border dark:bg-dark-surface-alt">
+                <p className="text-sm text-text-muted">
+                  Compass not available on this device. Use the bearing above (
+                  {qiblaDirection.toFixed(0)}&deg;) to determine Qibla direction
+                  manually.
+                </p>
+              </div>
+            )}
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
