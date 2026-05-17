@@ -105,10 +105,10 @@ export default function Search() {
     setQuery("");
   };
 
-  const handleVerseClick = (surahNo: number) => {
+  const handleVerseClick = (surahNo: number, ayahNo?: number) => {
     setOpen(false);
     setQuery("");
-    navigate(`/surah/${surahNo}`);
+    navigate(ayahNo ? `/surah/${surahNo}?ayah=${ayahNo}` : `/surah/${surahNo}`);
   };
 
   return (
@@ -224,7 +224,9 @@ export default function Search() {
                         <button
                           key={`${r.surahNo}-${r.verse.numberInSurah}`}
                           type="button"
-                          onClick={() => handleVerseClick(r.surahNo)}
+                          onClick={() =>
+                            handleVerseClick(r.surahNo, r.verse.numberInSurah)
+                          }
                           className="w-full cursor-pointer rounded-xl p-3 text-left transition-colors hover:bg-surface-alt dark:hover:bg-dark-surface-alt"
                         >
                           <p className="font-arabic text-right text-lg leading-relaxed text-text-primary dark:text-dark-text-primary">

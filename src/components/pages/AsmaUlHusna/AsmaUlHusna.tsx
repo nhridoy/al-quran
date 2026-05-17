@@ -90,7 +90,7 @@ export default function AsmaUlHusna() {
               onClick={() => setSelected(null)}
               aria-label="Close"
             />
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 mx-4 w-full max-w-sm animate-scale-in rounded-2xl bg-surface p-6 shadow-2xl dark:bg-dark-surface-card">
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-sm animate-scale-in rounded-2xl bg-surface p-6 shadow-2xl dark:bg-dark-surface-card">
               <button
                 type="button"
                 onClick={() => setSelected(null)}
