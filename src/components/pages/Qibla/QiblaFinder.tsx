@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocationStore } from "../../../store/location";
 import { Header } from "../../Header/Header";
 
 const KAABA = { lat: 21.4225, lng: 39.8262 };
-const SMOOTHING = 0.3;
+const SMOOTHING = 0.25;
 
 function bearing(
   lat1: number,
@@ -27,6 +27,37 @@ function toCompassDirection(deg: number): string {
   return dirs[index];
 }
 
+function tiltCompensatedHeading(
+  alpha: number,
+  beta: number,
+  gamma: number,
+): number {
+  const a = (alpha * Math.PI) / 180;
+  const b = (beta * Math.PI) / 180;
+  const g = (gamma * Math.PI) / 180;
+  const x = Math.cos(a) * Math.cos(g) + Math.sin(a) * Math.sin(b) * Math.sin(g);
+  const y = Math.sin(a) * Math.cos(g) - Math.cos(a) * Math.sin(b) * Math.sin(g);
+  return ((Math.atan2(y, x) * 180) / Math.PI + 360) % 360;
+}
+
+function getHeadingFromEvent(event: DeviceOrientationEvent): number | null {
+  const e = event as DeviceOrientationEvent & {
+    webkitCompassHeading?: number;
+  };
+
+  if (e.webkitCompassHeading !== undefined && e.webkitCompassHeading !== null) {
+    return e.webkitCompassHeading;
+  }
+
+  if (e.alpha === null) return null;
+
+  if (e.beta !== null && e.gamma !== null) {
+    return tiltCompensatedHeading(e.alpha, e.beta, e.gamma);
+  }
+
+  return e.alpha;
+}
+
 export default function QiblaFinder() {
   const {
     lat,
@@ -36,7 +67,9 @@ export default function QiblaFinder() {
     request,
   } = useLocationStore();
   const [displayHeading, setDisplayHeading] = useState<number | null>(null);
-  const [compassSupported, setCompassSupported] = useState(true);
+  const [compassSupported, setCompassSupported] = useState<boolean | null>(
+    null,
+  );
   const smoothedRef = useRef<number | null>(null);
 
   const coords = lat !== null && lng !== null ? { lat, lng } : null;
@@ -52,35 +85,30 @@ export default function QiblaFinder() {
   const isFacingQibla =
     displayHeading !== null && Math.abs(needleRotation) < 10;
 
+  const handleOrientation = useCallback((event: DeviceOrientationEvent) => {
+    const heading = getHeadingFromEvent(event);
+    if (heading === null) return;
+
+    setCompassSupported(true);
+
+    if (smoothedRef.current === null) {
+      smoothedRef.current = heading;
+      setDisplayHeading(heading);
+      return;
+    }
+
+    const prev = smoothedRef.current;
+    let diff = heading - prev;
+    if (diff > 180) diff -= 360;
+    if (diff < -180) diff += 360;
+
+    const smoothed = prev + diff * SMOOTHING;
+    smoothedRef.current = ((smoothed % 360) + 360) % 360;
+    setDisplayHeading(smoothedRef.current);
+  }, []);
+
   useEffect(() => {
     if (!coords) return;
-
-    const handleOrientation = (event: DeviceOrientationEvent) => {
-      let alpha: number | null = null;
-      if ("webkitCompassHeading" in event) {
-        alpha = (
-          event as DeviceOrientationEvent & { webkitCompassHeading: number }
-        ).webkitCompassHeading;
-      } else if (event.alpha !== null) {
-        alpha = event.alpha;
-      }
-      if (alpha === null) return;
-
-      if (smoothedRef.current === null) {
-        smoothedRef.current = alpha;
-        setDisplayHeading(alpha);
-        return;
-      }
-
-      const prev = smoothedRef.current;
-      let diff = alpha - prev;
-      if (diff > 180) diff -= 360;
-      if (diff < -180) diff += 360;
-
-      const smoothed = prev + diff * SMOOTHING;
-      smoothedRef.current = ((smoothed % 360) + 360) % 360;
-      setDisplayHeading(smoothedRef.current);
-    };
 
     const requestPermission = async () => {
       const devEvent = DeviceOrientationEvent as unknown as {
@@ -89,17 +117,16 @@ export default function QiblaFinder() {
       if (typeof devEvent.requestPermission === "function") {
         try {
           const result = await devEvent.requestPermission();
-          if (result === "granted") {
-            window.addEventListener("deviceorientation", handleOrientation);
-          } else {
+          if (result !== "granted") {
             setCompassSupported(false);
+            return;
           }
         } catch {
-          window.addEventListener("deviceorientation", handleOrientation);
+          /* ignore */
         }
-      } else {
-        window.addEventListener("deviceorientation", handleOrientation);
       }
+
+      window.addEventListener("deviceorientation", handleOrientation);
     };
 
     requestPermission();
@@ -107,7 +134,7 @@ export default function QiblaFinder() {
     return () => {
       window.removeEventListener("deviceorientation", handleOrientation);
     };
-  }, [coords]);
+  }, [coords, handleOrientation]);
 
   return (
     <div className="min-h-screen">
@@ -238,17 +265,17 @@ export default function QiblaFinder() {
                 <div className="flex items-center justify-between p-4">
                   <span className="text-sm text-text-muted">Compass</span>
                   <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
-                    {compassSupported
-                      ? displayHeading !== null
+                    {compassSupported === false
+                      ? "Not available"
+                      : displayHeading !== null
                         ? `${displayHeading.toFixed(1)}°`
-                        : "Calibrating..."
-                      : "Not available"}
+                        : "Calibrating..."}
                   </span>
                 </div>
               </div>
             </div>
 
-            {!compassSupported && (
+            {compassSupported === false && (
               <div className="rounded-2xl border border-border bg-surface-alt p-4 text-center dark:border-dark-border dark:bg-dark-surface-alt">
                 <p className="text-sm text-text-muted">
                   Compass not available on this device. Use the bearing above (
