@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.0",
+    "adhan": "^4.4.3",
     "hamburger-react": "^2.4.1",
     "idb": "^8.0.3",
     "react": "^19.2.6",

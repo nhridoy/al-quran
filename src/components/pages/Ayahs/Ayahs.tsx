@@ -7,7 +7,9 @@ import {
   buildPlaylistFromSurah,
   useAudioPlayer,
 } from "../../../components/AudioPlayer";
+import { QARIS } from "../../../data/qaris";
 import { useBookmarkStore } from "../../../store/bookmarks";
+import { useSettings } from "../../../store/settings";
 import type { Verse } from "../../../types";
 
 interface AyahsProps {
@@ -22,6 +24,8 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
   const bookmarks = useBookmarkStore((s) => s.bookmarks);
   const addBookmark = useBookmarkStore((s) => s.add);
   const removeBookmark = useBookmarkStore((s) => s.remove);
+  const qariId = useSettings((s) => s.qariId);
+  const qariBase = QARIS.find((q) => q.id === qariId)?.baseUrl;
 
   const isCurrentAyah = currentTrack?.totalNumber === ayah.totalNumber;
   const isThisAyahPlaying = isCurrentAyah && isPlaying;
@@ -62,9 +66,19 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
     const idx = ayah.numberInSurah - 1;
     const tracks = buildPlaylistFromSurah(
       surah as Parameters<typeof buildPlaylistFromSurah>[0],
+      qariBase,
     );
     setPlaylist(tracks, idx);
-  }, [isCurrentAyah, togglePlay, tracklist, surahNo, ayah, surah, setPlaylist]);
+  }, [
+    isCurrentAyah,
+    togglePlay,
+    tracklist,
+    surahNo,
+    ayah,
+    surah,
+    setPlaylist,
+    qariBase,
+  ]);
 
   return (
     <div

@@ -11,6 +11,9 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.3.0
         version: 4.3.0(vite@8.0.12(@types/node@25.7.0)(jiti@2.7.0)(terser@5.47.1))
+      adhan:
+        specifier: ^4.4.3
+        version: 4.4.3
       hamburger-react:
         specifier: ^2.4.1
         version: 2.5.2(react@19.2.6)
@@ -1082,6 +1085,9 @@ packages:
     resolution: {integrity: sha512-UVJyE9MttOsBQIDKw1skb9nAwQuR5wuGD3+82K6JgJlm/Y+KI92oNsMNGZCYdDsVtRHSak0pcV5Dno5+4jh9sw==}
     engines: {node: '>=0.4.0'}
     hasBin: true
+
+  adhan@4.4.3:
+    resolution: {integrity: sha512-568KkQd8OMLUj7o7+d2FDcm6vZHWQrE7vsm/Evssh8sfUDpPyaboj3PVsScZAr7L7sNRgPrtLMmDZZfM7VeAYw==}
 
   ajv@8.20.0:
     resolution: {integrity: sha512-Thbli+OlOj+iMPYFBVBfJ3OmCAnaSyNn4M1vz9T6Gka5Jt9ba/HIR56joy65tY6kx/FCF5VXNB819Y7/GUrBGA==}
@@ -3224,6 +3230,8 @@ snapshots:
       vite: 8.0.12(@types/node@25.7.0)(jiti@2.7.0)(terser@5.47.1)
 
   acorn@8.16.0: {}
+
+  adhan@4.4.3: {}
 
   ajv@8.20.0:
     dependencies:

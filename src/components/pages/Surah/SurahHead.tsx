@@ -1,4 +1,5 @@
 import type React from "react";
+import { useCallback } from "react";
 import {
   CgPlayTrackNextO,
   CgPlayTrackPrevO,
@@ -9,6 +10,8 @@ import {
   buildPlaylistFromSurah,
   useAudioPlayer,
 } from "../../../components/AudioPlayer";
+import { QARIS } from "../../../data/qaris";
+import { useSettings } from "../../../store/settings";
 import type { SurahData } from "../../../types";
 
 interface SurahHeadProps {
@@ -25,35 +28,37 @@ export const SurahHead: React.FC<SurahHeadProps> = ({ surah }) => {
     prev,
     next,
   } = useAudioPlayer();
+  const qariId = useSettings((s) => s.qariId);
+  const qariBase = QARIS.find((q) => q.id === qariId)?.baseUrl;
 
   const isCurrentSurah = currentTrack?.surahNo === surah.no;
 
-  const handlePlay = () => {
+  const handlePlay = useCallback(() => {
     if (isCurrentSurah) {
       togglePlay();
     } else {
-      const tracks = buildPlaylistFromSurah(surah);
+      const tracks = buildPlaylistFromSurah(surah, qariBase);
       setPlaylist(tracks, 0);
     }
-  };
+  }, [isCurrentSurah, togglePlay, surah, qariBase, setPlaylist]);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     if (isCurrentSurah) {
       prev();
     } else {
-      const tracks = buildPlaylistFromSurah(surah);
+      const tracks = buildPlaylistFromSurah(surah, qariBase);
       setPlaylist(tracks, 0);
     }
-  };
+  }, [isCurrentSurah, prev, surah, qariBase, setPlaylist]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (isCurrentSurah) {
       next();
     } else {
-      const tracks = buildPlaylistFromSurah(surah);
+      const tracks = buildPlaylistFromSurah(surah, qariBase);
       setPlaylist(tracks, 0);
     }
-  };
+  }, [isCurrentSurah, next, surah, qariBase, setPlaylist]);
 
   return (
     <div className="relative mx-4 mb-6 overflow-hidden rounded-2xl bg-linear-to-br from-primary via-primary-light to-secondary p-6 text-white shadow-xl shadow-primary/20 md:mx-6 md:p-8">

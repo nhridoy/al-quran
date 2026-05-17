@@ -8,11 +8,12 @@ import {
 } from "react";
 import type { AudioPlayerContextType, RepeatMode, Track } from "./types";
 
-const AUDIO_BASE = "https://cdn.islamic.network/quran/audio/128/ar.alafasy";
 const VOLUME_STORAGE_KEY = "audioPlayerVolume";
 
-export function getAudioUrl(totalNumber: number): string {
-  return `${AUDIO_BASE}/${totalNumber}.mp3`;
+export function getAudioUrl(totalNumber: number, qariBase?: string): string {
+  const base =
+    qariBase || "https://cdn.islamic.network/quran/audio/128/ar.alafasy";
+  return `${base}/${totalNumber}.mp3`;
 }
 
 export function formatTime(seconds: number): string {
@@ -34,6 +35,7 @@ function buildTrack(
     enTextTransliteration: string;
     audioSecond?: string;
   },
+  qariBase?: string,
 ): Track {
   return {
     id: `${surahNo}-${verse.numberInSurah}`,
@@ -45,25 +47,28 @@ function buildTrack(
     arabicText: verse.text,
     translationText: verse.enText,
     transliterationText: verse.enTextTransliteration,
-    audioUrl: verse.audioSecond || getAudioUrl(verse.totalNumber),
+    audioUrl: verse.audioSecond || getAudioUrl(verse.totalNumber, qariBase),
   };
 }
 
-export function buildPlaylistFromSurah(surahData: {
-  no: number;
-  name: string;
-  enName: string;
-  verses: Array<{
-    numberInSurah: number;
-    totalNumber: number;
-    text: string;
-    enText: string;
-    enTextTransliteration: string;
-    audioSecond?: string;
-  }>;
-}): Track[] {
+export function buildPlaylistFromSurah(
+  surahData: {
+    no: number;
+    name: string;
+    enName: string;
+    verses: Array<{
+      numberInSurah: number;
+      totalNumber: number;
+      text: string;
+      enText: string;
+      enTextTransliteration: string;
+      audioSecond?: string;
+    }>;
+  },
+  qariBase?: string,
+): Track[] {
   return surahData.verses.map((verse) =>
-    buildTrack(surahData.no, surahData.name, surahData.enName, verse),
+    buildTrack(surahData.no, surahData.name, surahData.enName, verse, qariBase),
   );
 }
 

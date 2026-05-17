@@ -1,9 +1,12 @@
 import type React from "react";
+import { useMemo } from "react";
 import { CgPlayTrackNextO, CgPlayTrackPrevO } from "react-icons/cg";
 import { FiPauseCircle, FiPlayCircle } from "react-icons/fi";
 import { useParams } from "react-router-dom";
 import type { Track } from "../../../components/AudioPlayer";
 import { getAudioUrl, useAudioPlayer } from "../../../components/AudioPlayer";
+import { QARIS } from "../../../data/qaris";
+import { useSettings } from "../../../store/settings";
 import type { ParaSurah } from "../../../types";
 import Ayahs from "../Ayahs/Ayahs";
 
@@ -12,7 +15,10 @@ interface ParaHeadProps {
   allSegments: ParaSurah[];
 }
 
-function buildPlaylistFromPara(segments: ParaSurah[]): Track[] {
+function buildPlaylistFromPara(
+  segments: ParaSurah[],
+  qariBase?: string,
+): Track[] {
   const tracks: Track[] = [];
   for (const segment of segments) {
     for (const verse of segment.verses) {
@@ -26,7 +32,7 @@ function buildPlaylistFromPara(segments: ParaSurah[]): Track[] {
         arabicText: verse.text,
         translationText: verse.enText,
         transliterationText: verse.enTextTransliteration,
-        audioUrl: verse.audioSecond || getAudioUrl(verse.totalNumber),
+        audioUrl: verse.audioSecond || getAudioUrl(verse.totalNumber, qariBase),
       });
     }
   }
@@ -37,8 +43,13 @@ export const ParaHead: React.FC<ParaHeadProps> = ({ para, allSegments }) => {
   const { id } = useParams();
   const { currentTrack, isPlaying, togglePlay, setPlaylist, prev, next } =
     useAudioPlayer();
+  const qariId = useSettings((s) => s.qariId);
+  const qariBase = QARIS.find((q) => q.id === qariId)?.baseUrl;
 
-  const paraTracks = buildPlaylistFromPara(allSegments);
+  const paraTracks = useMemo(
+    () => buildPlaylistFromPara(allSegments, qariBase),
+    [allSegments, qariBase],
+  );
 
   const isCurrentPara =
     currentTrack !== null &&

@@ -7,6 +7,7 @@ import HomeLayout from "./components/pages/HomeLayout";
 import Para from "./components/pages/Para/Para";
 import SurahPage from "./components/pages/Surah/Surah";
 import { useBookmarkStore } from "./store/bookmarks";
+import { useLocationStore } from "./store/location";
 import { useSettings } from "./store/settings";
 
 const About = lazy(() => import("./components/pages/About/About"));
@@ -19,6 +20,15 @@ const Donation = lazy(() => import("./components/pages/Donation/Donation"));
 const Paras = lazy(() => import("./components/pages/Paras/Paras"));
 const Settings = lazy(() => import("./components/pages/Settings/Settings"));
 const Surahs = lazy(() => import("./components/pages/Surahs/Surahs"));
+const LastTenSurahs = lazy(
+  () => import("./components/pages/LastTenSurahs/LastTenSurahs"),
+);
+const Duas = lazy(() => import("./components/pages/Duas/Duas"));
+const DuaCategory = lazy(() => import("./components/pages/Duas/DuaCategory"));
+const PrayerTimes = lazy(
+  () => import("./components/pages/PrayerTimes/PrayerTimes"),
+);
+const QiblaFinder = lazy(() => import("./components/pages/Qibla/QiblaFinder"));
 const Tasbih = lazy(() => import("./components/pages/Tasbih/Tasbih"));
 const Splash = lazy(() => import("./components/Splash"));
 
@@ -31,6 +41,15 @@ function DataLoader() {
     if (!settingsLoaded) loadSettings();
     if (!bookmarksLoaded) loadBookmarks();
   }, [loadSettings, settingsLoaded, loadBookmarks, bookmarksLoaded]);
+  return null;
+}
+
+function LocationLoader() {
+  const requested = useLocationStore((s) => s.requested);
+  const request = useLocationStore((s) => s.request);
+  useEffect(() => {
+    if (!requested) request();
+  }, [requested, request]);
   return null;
 }
 
@@ -74,6 +93,7 @@ function App() {
     <BrowserRouter>
       <AudioPlayerProvider>
         <DataLoader />
+        <LocationLoader />
         <ThemeController />
         <Layout>
           <Suspense fallback={<div className="h-screen" />}>
@@ -86,6 +106,11 @@ function App() {
               <Route path="/surah/:id" element={<SurahPage />} />
               <Route path="/para/:id" element={<Para />} />
               <Route path="/bookmarks" element={<Bookmarks />} />
+              <Route path="/last-ten-surahs" element={<LastTenSurahs />} />
+              <Route path="/duas" element={<Duas />} />
+              <Route path="/duas/:categoryId" element={<DuaCategory />} />
+              <Route path="/prayer-times" element={<PrayerTimes />} />
+              <Route path="/qibla" element={<QiblaFinder />} />
               <Route path="/asma-ul-husna" element={<AsmaUlHusna />} />
               <Route path="/tasbih" element={<Tasbih />} />
               <Route path="/settings" element={<Settings />} />
