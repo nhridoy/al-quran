@@ -10,6 +10,7 @@ import { useSettings } from "../../../store/settings";
 import { Header } from "../../Header/Header";
 
 interface PrayerEntry {
+  key: string;
   name: string;
   nameBn: string;
   time: Date;
