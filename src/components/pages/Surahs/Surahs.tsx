@@ -8,6 +8,8 @@ export default function Surahs() {
   const { surahList } = useSurahs();
   const [search, setSearch] = useState("");
 
+  console.log({ surahList });
+
   useEffect(() => {
     document.title = "Al Quran - Surah List";
   }, []);
