@@ -3,7 +3,7 @@ import { useLocationStore } from "../../../store/location";
 import { Header } from "../../Header/Header";
 
 const KAABA = { lat: 21.4225, lng: 39.8262 };
-const SMOOTHING = 0.15; // Slightly lowered to reduce raw microscopic sensor noise
+const SMOOTHING = 0.15;
 
 function calculateDistance(
   lat1: number,
@@ -60,6 +60,7 @@ export default function QiblaFinder() {
   );
   const [permissionRequested, setPermissionRequested] =
     useState<boolean>(false);
+  const [sensorTimeout, setSensorTimeout] = useState<boolean>(false);
   const smoothedRef = useRef<number | null>(null);
 
   const hasCoords = lat !== null && lng !== null;
@@ -70,13 +71,9 @@ export default function QiblaFinder() {
     ? calculateDistance(lat, lng, KAABA.lat, KAABA.lng)
     : 0;
 
-  // Outer Ring Dial Rotation
   const dialRotation = heading === null ? 0 : -heading;
-
-  // Needle Relative Rotation
   const needleRotation = heading === null ? 0 : qiblaDirection - heading;
 
-  // Calculate shortest angle path
   const angularDiff =
     heading === null
       ? 0
@@ -141,6 +138,7 @@ export default function QiblaFinder() {
     globalThis.addEventListener("deviceorientation", handleOrientation);
   };
 
+  // Setup device orientation listening
   useEffect(() => {
     if (!hasCoords) return;
 
@@ -167,6 +165,20 @@ export default function QiblaFinder() {
       globalThis.removeEventListener("deviceorientation", handleOrientation);
     };
   }, [hasCoords, handleOrientation]);
+
+  // NEW: Timeout effect if coordinates are ready but no heading events fire within 5 seconds
+  useEffect(() => {
+    if (!hasCoords || heading !== null || compassSupported === false) return;
+
+    const timer = setTimeout(() => {
+      if (heading === null) {
+        setSensorTimeout(true);
+        setCompassSupported(false);
+      }
+    }, 5000); // 5 seconds wait period
+
+    return () => clearTimeout(timer);
+  }, [hasCoords, heading, compassSupported]);
 
   return (
     <div className="min-h-screen">
@@ -281,7 +293,7 @@ export default function QiblaFinder() {
                       />
                     </div>
 
-                    {/* Lower Trailing Needle (Subtle complementary pointer) */}
+                    {/* Lower Trailing Needle */}
                     <div className="absolute top-1/2 bottom-0 left-0 right-0 flex flex-col items-center justify-start">
                       <div className="w-0 h-0 border-l-[6px] border-r-[6px] border-t-55 border-l-transparent border-r-transparent border-t-text-muted/20 dark:border-t-dark-text-muted/20" />
                     </div>
@@ -292,21 +304,27 @@ export default function QiblaFinder() {
                 </div>
               </div>
 
+              {/* Status Indicator Bar */}
               <div
                 className={`rounded-xl px-4 py-2 text-center text-sm font-semibold tracking-wide transition-colors ${
                   isFacingQibla
                     ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
-                    : "bg-surface-alt text-text-muted dark:bg-dark-surface-alt"
+                    : sensorTimeout
+                      ? "bg-red-50 text-red-700 dark:bg-red-950/20 dark:text-red-400"
+                      : "bg-surface-alt text-text-muted dark:bg-dark-surface-alt"
                 }`}
               >
                 {isFacingQibla
                   ? "✓ Facing Qibla!"
-                  : heading === null
-                    ? "Calibrating Compass Sensor..."
-                    : `Turn ${Math.abs(angularDiff).toFixed(0)}° ${angularDiff > 0 ? "Right" : "Left"}`}
+                  : heading !== null
+                    ? `Turn ${Math.abs(angularDiff).toFixed(0)}° ${angularDiff > 0 ? "Right" : "Left"}`
+                    : sensorTimeout
+                      ? "⚠ Compass sensor not detected"
+                      : "Calibrating Compass Sensor..."}
               </div>
             </div>
 
+            {/* Bottom Metadata Panel */}
             <div className="rounded-2xl border border-border bg-surface dark:border-dark-border dark:bg-dark-surface-card">
               <div className="divide-y divide-border dark:divide-dark-border">
                 <div className="flex items-center justify-between p-4">
@@ -339,8 +357,8 @@ export default function QiblaFinder() {
                     Current Device Heading
                   </span>
                   <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
-                    {compassSupported === false
-                      ? "Not available"
+                    {compassSupported === false || sensorTimeout
+                      ? "Sensor not found / unavailable"
                       : heading === null
                         ? "Calibrating..."
                         : `${heading.toFixed(1)}°`}
