@@ -4,10 +4,10 @@ import { Header } from "../../Header/Header";
 
 const KAABA = { lat: 21.4225, lng: 39.8262 };
 
-// Physics Coefficients for Spring Animation
-// Tune these variables to alter the spring characteristics:
-const SPRING_STIFFNESS = 0.08; // High values make the animation faster/snappier
-const SPRING_DAMPING = 0.65; // Friction control: Lower values create a more elastic/bouncy effect
+// Physics configurations for the snap-back bounce at the end of a turn
+const BOUNCE_STIFFNESS = 0.12;
+const BOUNCE_DAMPING = 0.6;
+const MOVEMENT_THRESHOLD = 0.5; // Degree change threshold to differentiate moving vs stopped
 
 function calculateDistance(
   lat1: number,
@@ -65,10 +65,10 @@ export default function QiblaFinder() {
   const [permissionRequested, setPermissionRequested] =
     useState<boolean>(false);
 
-  // References to preserve mutable physics metrics outside the React render rendering tree
   const targetHeadingRef = useRef<number | null>(null);
   const currentHeadingRef = useRef<number | null>(null);
   const velocityRef = useRef<number>(0);
+  const lastRawHeadingRef = useRef<number | null>(null);
   const animationFrameRef = useRef<number | null>(null);
 
   const hasCoords = lat !== null && lng !== null;
@@ -88,7 +88,7 @@ export default function QiblaFinder() {
       : ((((qiblaDirection - heading) % 360) + 540) % 360) - 180;
   const isFacingQibla = heading !== null && Math.abs(angularDiff) < 8;
 
-  // Real-time Frame Physics Loop Engine
+  // Frame Loop Execution Environment
   useEffect(() => {
     const updatePhysics = () => {
       if (
@@ -97,23 +97,37 @@ export default function QiblaFinder() {
       ) {
         let diff = targetHeadingRef.current - currentHeadingRef.current;
 
-        // Correct directional shortest-path shortcuts over standard 0/360 modular wrapper limits
+        // Shortest path handling over modular 360 boundary limits
         if (diff > 180) diff -= 360;
         if (diff < -180) diff += 360;
 
-        // Hooke's Law Spring Equation: Force = (Stiffness * Distance)
-        const springForce = diff * SPRING_STIFFNESS;
+        // Check how fast the sensor target is shifting
+        let deviceDelta = 0;
+        if (lastRawHeadingRef.current !== null) {
+          deviceDelta = targetHeadingRef.current - lastRawHeadingRef.current;
+          if (deviceDelta > 180) deviceDelta -= 360;
+          if (deviceDelta < -180) deviceDelta += 360;
+        }
+        lastRawHeadingRef.current = targetHeadingRef.current;
 
-        // Accumulate and resolve structural friction damping forces
-        velocityRef.current += springForce;
-        velocityRef.current *= SPRING_DAMPING;
+        if (Math.abs(deviceDelta) > MOVEMENT_THRESHOLD) {
+          // 1. ACTIVE SPINNING: 1:1 raw snappiness. Kill physics lag and lock visually to sensor.
+          currentHeadingRef.current = targetHeadingRef.current;
+          // Inject residual velocity directly from current hand speed so it bounces naturally on release
+          velocityRef.current = deviceDelta * 0.4;
+          setHeading(targetHeadingRef.current);
+        } else {
+          // 2. STOPPED SPINNING: Trigger spring physics to shake out residual momentum
+          const springForce = diff * BOUNCE_STIFFNESS;
+          velocityRef.current += springForce;
+          velocityRef.current *= BOUNCE_DAMPING;
 
-        // Apply updated transformations to current frame state tracker
-        let nextHeading = currentHeadingRef.current + velocityRef.current;
-        nextHeading = ((nextHeading % 360) + 360) % 360;
+          let nextHeading = currentHeadingRef.current + velocityRef.current;
+          nextHeading = ((nextHeading % 360) + 360) % 360;
 
-        currentHeadingRef.current = nextHeading;
-        setHeading(nextHeading);
+          currentHeadingRef.current = nextHeading;
+          setHeading(nextHeading);
+        }
       }
 
       animationFrameRef.current = requestAnimationFrame(updatePhysics);
@@ -122,9 +136,8 @@ export default function QiblaFinder() {
     animationFrameRef.current = requestAnimationFrame(updatePhysics);
 
     return () => {
-      if (animationFrameRef.current) {
+      if (animationFrameRef.current)
         cancelAnimationFrame(animationFrameRef.current);
-      }
     };
   }, []);
 
@@ -149,9 +162,9 @@ export default function QiblaFinder() {
     if (rawHeading === null) return;
     setCompassSupported(true);
 
-    // Bootstrap values on initial device orientation load handshake
     if (currentHeadingRef.current === null) {
       currentHeadingRef.current = rawHeading;
+      lastRawHeadingRef.current = rawHeading;
       setHeading(rawHeading);
     }
 
@@ -269,7 +282,7 @@ export default function QiblaFinder() {
 
             <div className="flex flex-col items-center gap-4">
               <div className="relative flex h-64 w-64 items-center justify-center overflow-hidden rounded-full bg-surface-alt dark:bg-dark-surface-alt">
-                {/* 1. ROTATING DIAL COMPASS (N E S W) */}
+                {/* 1. ROTATING DIAL COMPASS */}
                 <div
                   className="absolute inset-0 flex items-center justify-center will-change-transform"
                   style={{ transform: `rotate(${dialRotation}deg)` }}
