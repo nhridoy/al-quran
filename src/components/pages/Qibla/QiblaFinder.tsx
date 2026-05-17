@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocationStore } from "../../../store/location";
 import { Header } from "../../Header/Header";
 
 const KAABA = { lat: 21.4225, lng: 39.8262 };
+const SMOOTHING = 0.3;
 
 function bearing(
   lat1: number,
@@ -34,8 +35,9 @@ export default function QiblaFinder() {
     error: geoError,
     request,
   } = useLocationStore();
-  const [heading, setHeading] = useState<number | null>(null);
+  const [displayHeading, setDisplayHeading] = useState<number | null>(null);
   const [compassSupported, setCompassSupported] = useState(true);
+  const smoothedRef = useRef<number | null>(null);
 
   const coords = lat !== null && lng !== null ? { lat, lng } : null;
 
@@ -43,8 +45,12 @@ export default function QiblaFinder() {
     ? bearing(coords.lat, coords.lng, KAABA.lat, KAABA.lng)
     : 0;
 
-  const needleRotation = heading !== null ? qiblaDirection - heading : 0;
-  const isFacingQibla = heading !== null && Math.abs(needleRotation % 360) < 10;
+  const needleRotation =
+    displayHeading !== null
+      ? ((((qiblaDirection - displayHeading) % 360) + 540) % 360) - 180
+      : 0;
+  const isFacingQibla =
+    displayHeading !== null && Math.abs(needleRotation) < 10;
 
   useEffect(() => {
     if (!coords) return;
@@ -58,9 +64,22 @@ export default function QiblaFinder() {
       } else if (event.alpha !== null) {
         alpha = event.alpha;
       }
-      if (alpha !== null) {
-        setHeading(alpha);
+      if (alpha === null) return;
+
+      if (smoothedRef.current === null) {
+        smoothedRef.current = alpha;
+        setDisplayHeading(alpha);
+        return;
       }
+
+      const prev = smoothedRef.current;
+      let diff = alpha - prev;
+      if (diff > 180) diff -= 360;
+      if (diff < -180) diff += 360;
+
+      const smoothed = prev + diff * SMOOTHING;
+      smoothedRef.current = ((smoothed % 360) + 360) % 360;
+      setDisplayHeading(smoothedRef.current);
     };
 
     const requestPermission = async () => {
@@ -162,7 +181,7 @@ export default function QiblaFinder() {
 
                 {/* Needle */}
                 <div
-                  className="absolute flex h-full w-full items-center justify-center transition-all duration-150"
+                  className="absolute flex h-full w-full items-center justify-center transition-[transform] duration-500 ease-out"
                   style={{
                     transform: `rotate(${needleRotation}deg)`,
                   }}
@@ -187,7 +206,7 @@ export default function QiblaFinder() {
               >
                 {isFacingQibla
                   ? "✓ Facing Qibla!"
-                  : heading !== null
+                  : displayHeading !== null
                     ? `Rotate ${needleRotation.toFixed(0)}° to face Qibla`
                     : "Point device North to see direction"}
               </div>
@@ -220,8 +239,8 @@ export default function QiblaFinder() {
                   <span className="text-sm text-text-muted">Compass</span>
                   <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
                     {compassSupported
-                      ? heading !== null
-                        ? `${heading.toFixed(1)}°`
+                      ? displayHeading !== null
+                        ? `${displayHeading.toFixed(1)}°`
                         : "Calibrating..."
                       : "Not available"}
                   </span>
