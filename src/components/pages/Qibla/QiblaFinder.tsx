@@ -3,7 +3,11 @@ import { useLocationStore } from "../../../store/location";
 import { Header } from "../../Header/Header";
 
 const KAABA = { lat: 21.4225, lng: 39.8262 };
-const SMOOTHING = 0.2; // Slightly reduced for snappier real-time response
+
+// Physics Coefficients for Spring Animation
+// Tune these variables to alter the spring characteristics:
+const SPRING_STIFFNESS = 0.08; // High values make the animation faster/snappier
+const SPRING_DAMPING = 0.65; // Friction control: Lower values create a more elastic/bouncy effect
 
 function calculateDistance(
   lat1: number,
@@ -60,7 +64,12 @@ export default function QiblaFinder() {
   );
   const [permissionRequested, setPermissionRequested] =
     useState<boolean>(false);
-  const smoothedRef = useRef<number | null>(null);
+
+  // References to preserve mutable physics metrics outside the React render rendering tree
+  const targetHeadingRef = useRef<number | null>(null);
+  const currentHeadingRef = useRef<number | null>(null);
+  const velocityRef = useRef<number>(0);
+  const animationFrameRef = useRef<number | null>(null);
 
   const hasCoords = lat !== null && lng !== null;
   const qiblaDirection = hasCoords
@@ -70,18 +79,54 @@ export default function QiblaFinder() {
     ? calculateDistance(lat, lng, KAABA.lat, KAABA.lng)
     : 0;
 
-  // Outer Ring Dial Rotation (Rotates opposite to device heading to keep North pointing up)
   const dialRotation = heading === null ? 0 : -heading;
-
-  // Needle Relative Rotation pointing to Qibla relative to the phone's current direction
   const needleRotation = heading === null ? 0 : qiblaDirection - heading;
 
-  // Calculate shortest angle path to check if facing Qibla
   const angularDiff =
     heading === null
       ? 0
       : ((((qiblaDirection - heading) % 360) + 540) % 360) - 180;
   const isFacingQibla = heading !== null && Math.abs(angularDiff) < 8;
+
+  // Real-time Frame Physics Loop Engine
+  useEffect(() => {
+    const updatePhysics = () => {
+      if (
+        targetHeadingRef.current !== null &&
+        currentHeadingRef.current !== null
+      ) {
+        let diff = targetHeadingRef.current - currentHeadingRef.current;
+
+        // Correct directional shortest-path shortcuts over standard 0/360 modular wrapper limits
+        if (diff > 180) diff -= 360;
+        if (diff < -180) diff += 360;
+
+        // Hooke's Law Spring Equation: Force = (Stiffness * Distance)
+        const springForce = diff * SPRING_STIFFNESS;
+
+        // Accumulate and resolve structural friction damping forces
+        velocityRef.current += springForce;
+        velocityRef.current *= SPRING_DAMPING;
+
+        // Apply updated transformations to current frame state tracker
+        let nextHeading = currentHeadingRef.current + velocityRef.current;
+        nextHeading = ((nextHeading % 360) + 360) % 360;
+
+        currentHeadingRef.current = nextHeading;
+        setHeading(nextHeading);
+      }
+
+      animationFrameRef.current = requestAnimationFrame(updatePhysics);
+    };
+
+    animationFrameRef.current = requestAnimationFrame(updatePhysics);
+
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, []);
 
   const handleOrientation = useCallback((event: DeviceOrientationEvent) => {
     let rawHeading: number | null = null;
@@ -90,17 +135,13 @@ export default function QiblaFinder() {
       absolute?: boolean;
     };
 
-    // 1. Primary choice: iOS native webkitCompassHeading (True Magnetic North)
     if (
       e.webkitCompassHeading !== undefined &&
       e.webkitCompassHeading !== null
     ) {
       rawHeading = e.webkitCompassHeading;
-    }
-    // 2. Secondary choice: Android absolute orientation
-    else if (e.absolute === true || e.absolute === undefined) {
+    } else if (e.absolute === true || e.absolute === undefined) {
       if (e.alpha !== null) {
-        // Convert alpha to compass heading (360 - alpha transforms counter-clockwise to clockwise)
         rawHeading = (360 - e.alpha) % 360;
       }
     }
@@ -108,20 +149,13 @@ export default function QiblaFinder() {
     if (rawHeading === null) return;
     setCompassSupported(true);
 
-    if (smoothedRef.current === null) {
-      smoothedRef.current = rawHeading;
+    // Bootstrap values on initial device orientation load handshake
+    if (currentHeadingRef.current === null) {
+      currentHeadingRef.current = rawHeading;
       setHeading(rawHeading);
-      return;
     }
 
-    // Smooth heading changes over 0/360 boundary transitions
-    let diff = rawHeading - smoothedRef.current;
-    if (diff > 180) diff -= 360;
-    if (diff < -180) diff += 360;
-
-    const smoothed = smoothedRef.current + diff * SMOOTHING;
-    smoothedRef.current = ((smoothed % 360) + 360) % 360;
-    setHeading(smoothedRef.current);
+    targetHeadingRef.current = rawHeading;
   }, []);
 
   const startCompass = async () => {
@@ -143,7 +177,6 @@ export default function QiblaFinder() {
       }
     }
 
-    // Bind listeners for standard iOS
     globalThis.addEventListener("deviceorientation", handleOrientation);
   };
 
@@ -155,7 +188,6 @@ export default function QiblaFinder() {
     };
 
     if (typeof devEvent.requestPermission !== "function") {
-      // Android / Desktop absolute positioning preference
       if ("ondeviceorientationabsolute" in globalThis) {
         globalThis.addEventListener(
           "deviceorientationabsolute",
@@ -236,7 +268,6 @@ export default function QiblaFinder() {
               )}
 
             <div className="flex flex-col items-center gap-4">
-              {/* Compass Frame Container */}
               <div className="relative flex h-64 w-64 items-center justify-center overflow-hidden rounded-full bg-surface-alt dark:bg-dark-surface-alt">
                 {/* 1. ROTATING DIAL COMPASS (N E S W) */}
                 <div
@@ -258,7 +289,7 @@ export default function QiblaFinder() {
                   </span>
                 </div>
 
-                {/* 2. STATIONARY LABELS (Center Text Indicator) */}
+                {/* 2. STATIONARY LABELS */}
                 <div className="absolute inset-16 z-10 flex items-center justify-center rounded-full bg-surface shadow-sm dark:bg-dark-surface-card">
                   <div className="text-center">
                     <p className="text-xl font-black text-text-primary dark:text-dark-text-primary">
@@ -276,9 +307,12 @@ export default function QiblaFinder() {
                   style={{ transform: `rotate(${needleRotation}deg)` }}
                 >
                   <div className="relative flex h-[82%] w-3 flex-col items-center">
-                    {/* Upper pointed arrow side toward Qibla */}
                     <div
-                      className={`h-1/2 w-full rounded-t-full shadow-xs ${isFacingQibla ? "bg-green-500 animate-pulse" : "bg-secondary"}`}
+                      className={`h-1/2 w-full rounded-t-full shadow-xs ${
+                        isFacingQibla
+                          ? "bg-green-500 animate-pulse"
+                          : "bg-secondary"
+                      }`}
                     />
                     <div className="h-1/2 w-1.5 bg-text-muted/30" />
                   </div>
