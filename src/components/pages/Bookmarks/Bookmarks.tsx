@@ -33,8 +33,8 @@ export default function Bookmarks() {
         b.enName.toLowerCase().includes(q) ||
         b.surahName.includes(q) ||
         b.arabicText.toLowerCase().includes(q) ||
-        (b.enText && b.enText.toLowerCase().includes(q)) ||
-        (b.bnText && b.bnText.toLowerCase().includes(q)) ||
+        b.enText?.toLowerCase().includes(q) ||
+        b.bnText?.toLowerCase().includes(q) ||
         `${b.ayahNo}` === q ||
         `${b.surahNo}` === q,
     );
@@ -93,7 +93,7 @@ export default function Bookmarks() {
               Bookmarks
             </h2>
             <p className="text-sm text-text-muted dark:text-dark-text-muted">
-              {bookmarks.length} ayah{bookmarks.length !== 1 ? "s" : ""}{" "}
+              {bookmarks.length} ayah{bookmarks.length === 1 ? "" : "s"}{" "}
               bookmarked
             </p>
           </div>
