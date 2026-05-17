@@ -10,9 +10,9 @@ export default defineConfig({
     VitePWA({
       registerType: "prompt",
       includeAssets: ["logo192.png", "logo512.png", "screenshots/*.svg"],
-      devOptions: {
-        enabled: true,
-      },
+      // devOptions: {
+      //   enabled: true,
+      // },
       manifest: {
         name: "Al Quran",
         short_name: "Al Quran",
