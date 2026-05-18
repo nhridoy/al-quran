@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { useAudioPlayer, useAudioProgress } from "./AudioPlayerContext";
 
 const RADIUS = 28;
@@ -26,6 +26,14 @@ export default function MiniPlayer() {
   const { currentTrack, isExpanded, isPlaying, isLoading, expand, togglePlay } =
     useAudioPlayer();
   const { currentTime, duration } = useAudioProgress();
+
+  const handleTogglePlay = useCallback(
+    (e: React.MouseEvent) => {
+      e.stopPropagation();
+      togglePlay();
+    },
+    [togglePlay],
+  );
 
   useEffect(() => {
     if (entering) {
@@ -86,10 +94,7 @@ export default function MiniPlayer() {
         </button>
         <button
           type="button"
-          onClick={(e) => {
-            e.stopPropagation();
-            togglePlay();
-          }}
+          onClick={handleTogglePlay}
           className="absolute inset-0 z-10 m-auto flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-sm transition-colors hover:bg-white/30"
           aria-label={isPlaying ? "Pause" : "Play"}
           title={isPlaying ? "Pause" : "Play"}

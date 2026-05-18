@@ -250,7 +250,7 @@ export function AudioPlayerProvider({
 
   useEffect(() => {
     playByIndexRef.current = playByIndex;
-  });
+  }, [playByIndex]);
 
   const playTrack = useCallback(
     (track: Track) => {

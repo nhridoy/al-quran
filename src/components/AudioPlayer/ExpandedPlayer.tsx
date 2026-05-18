@@ -1,4 +1,4 @@
-import { memo, useEffect, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useAudioPlayer, useAudioProgress } from "./AudioPlayerContext";
 import VinylDisc from "./VinylDisc";
 
@@ -729,13 +729,27 @@ export default function ExpandedPlayer() {
     togglePlaylist,
   } = useAudioPlayer();
 
-  const handleMinimize = () => {
+  const handleMinimize = useCallback(() => {
     setLeaving(true);
     setTimeout(() => {
       minimize();
       setLeaving(false);
     }, 300);
-  };
+  }, [minimize]);
+
+  const handleTogglePlay = useCallback(() => togglePlay(), [togglePlay]);
+  const handlePrev = useCallback(() => prev(), [prev]);
+  const handleNext = useCallback(() => next(), [next]);
+  const handleToggleShuffle = useCallback(
+    () => toggleShuffle(),
+    [toggleShuffle],
+  );
+  const handleCycleRepeat = useCallback(() => cycleRepeat(), [cycleRepeat]);
+  const handleSetVolume = useCallback((v: number) => setVolume(v), [setVolume]);
+  const handleTogglePlaylist = useCallback(
+    () => togglePlaylist(),
+    [togglePlaylist],
+  );
 
   useEffect(() => {
     if (isExpanded) setLeaving(false);
@@ -760,13 +774,13 @@ export default function ExpandedPlayer() {
           isShuffled={isShuffled}
           repeatMode={repeatMode}
           volume={volume}
-          togglePlay={togglePlay}
-          prev={prev}
-          next={next}
-          toggleShuffle={toggleShuffle}
-          cycleRepeat={cycleRepeat}
-          setVolume={setVolume}
-          togglePlaylist={togglePlaylist}
+          togglePlay={handleTogglePlay}
+          prev={handlePrev}
+          next={handleNext}
+          toggleShuffle={handleToggleShuffle}
+          cycleRepeat={handleCycleRepeat}
+          setVolume={handleSetVolume}
+          togglePlaylist={handleTogglePlaylist}
           onMinimize={handleMinimize}
         />
       </div>
@@ -784,12 +798,12 @@ export default function ExpandedPlayer() {
           currentTrack={currentTrack}
           isShuffled={isShuffled}
           repeatMode={repeatMode}
-          togglePlay={togglePlay}
-          prev={prev}
-          next={next}
-          toggleShuffle={toggleShuffle}
-          cycleRepeat={cycleRepeat}
-          togglePlaylist={togglePlaylist}
+          togglePlay={handleTogglePlay}
+          prev={handlePrev}
+          next={handleNext}
+          toggleShuffle={handleToggleShuffle}
+          cycleRepeat={handleCycleRepeat}
+          togglePlaylist={handleTogglePlaylist}
           onMinimize={handleMinimize}
         />
       </div>
