@@ -22,5 +22,6 @@ export {
   formatTime,
   getAudioUrl,
   useAudioPlayer,
+  useAudioProgress,
 } from "./AudioPlayerContext";
 export type { RepeatMode, Track } from "./types";

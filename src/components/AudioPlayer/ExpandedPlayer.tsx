@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useAudioPlayer } from "./AudioPlayerContext";
+import { useAudioPlayer, useAudioProgress } from "./AudioPlayerContext";
 import VinylDisc from "./VinylDisc";
 
 function RepeatIcon({ mode }: { mode: "none" | "all" | "one" }) {
@@ -150,7 +150,7 @@ function VolumeIcon({ volume }: Readonly<{ volume: number }>) {
 }
 
 function SeekBar() {
-  const { currentTime, duration, seek, formatTime } = useAudioPlayer();
+  const { currentTime, duration, seek, formatTime } = useAudioProgress();
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
   const barRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -244,9 +244,8 @@ export default function ExpandedPlayer() {
     volume,
     setVolume,
     togglePlaylist,
-    currentTime,
-    duration,
   } = useAudioPlayer();
+  const { currentTime, duration } = useAudioProgress();
 
   const handleMinimize = () => {
     setLeaving(true);

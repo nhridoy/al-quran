@@ -3,10 +3,16 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from "react";
-import type { AudioPlayerContextType, RepeatMode, Track } from "./types";
+import type {
+  AudioPlayerContextType,
+  AudioProgressType,
+  RepeatMode,
+  Track,
+} from "./types";
 
 const VOLUME_STORAGE_KEY = "audioPlayerVolume";
 
@@ -90,6 +96,9 @@ function createShuffledIndices(length: number, startIndex: number): number[] {
 }
 
 const AudioPlayerContext = createContext<AudioPlayerContextType | null>(null);
+const AudioPlayerProgressContext = createContext<AudioProgressType | null>(
+  null,
+);
 
 export function AudioPlayerProvider({
   children,
@@ -398,38 +407,71 @@ export function AudioPlayerProvider({
   const minimize = useCallback(() => setIsExpanded(false), []);
   const togglePlaylist = useCallback(() => setShowPlaylist((p) => !p), []);
 
-  const value: AudioPlayerContextType = {
-    isExpanded,
-    isPlaying,
-    isLoading,
-    currentTrack,
-    playlist,
-    currentIndex: activeIndex,
-    volume,
-    isShuffled: isShuffleActive,
-    repeatMode,
-    currentTime,
-    duration,
-    showPlaylist,
-    playTrack,
-    togglePlay,
-    next,
-    prev,
-    seek,
-    setVolume: updateVolume,
-    toggleShuffle,
-    cycleRepeat,
-    setPlaylist: updatePlaylist,
-    expand,
-    minimize,
-    togglePlaylist,
-    setShowPlaylist,
-    formatTime,
-  };
+  const value = useMemo<AudioPlayerContextType>(
+    () => ({
+      isExpanded,
+      isPlaying,
+      isLoading,
+      currentTrack,
+      playlist,
+      currentIndex: activeIndex,
+      volume,
+      isShuffled: isShuffleActive,
+      repeatMode,
+      showPlaylist,
+      playTrack,
+      togglePlay,
+      next,
+      prev,
+      setVolume: updateVolume,
+      toggleShuffle,
+      cycleRepeat,
+      setPlaylist: updatePlaylist,
+      expand,
+      minimize,
+      togglePlaylist,
+      setShowPlaylist,
+    }),
+    [
+      isExpanded,
+      isPlaying,
+      isLoading,
+      currentTrack,
+      playlist,
+      activeIndex,
+      volume,
+      isShuffleActive,
+      repeatMode,
+      showPlaylist,
+      playTrack,
+      togglePlay,
+      next,
+      prev,
+      updateVolume,
+      toggleShuffle,
+      cycleRepeat,
+      updatePlaylist,
+      expand,
+      minimize,
+      togglePlaylist,
+    ],
+  );
+
+  const progressValue = useMemo<AudioProgressType>(
+    () => ({
+      currentTime,
+      duration,
+      seek,
+      formatTime,
+    }),
+    [currentTime, duration, seek],
+  );
 
   return (
     <AudioPlayerContext.Provider value={value}>
-      {children}
+      <AudioPlayerProgressContext.Provider value={progressValue}>
+        {children}
+      </AudioPlayerProgressContext.Provider>
     </AudioPlayerContext.Provider>
   );
 }
@@ -438,6 +480,14 @@ export function useAudioPlayer(): AudioPlayerContextType {
   const context = useContext(AudioPlayerContext);
   if (!context) {
     throw new Error("useAudioPlayer must be used within AudioPlayerProvider");
+  }
+  return context;
+}
+
+export function useAudioProgress(): AudioProgressType {
+  const context = useContext(AudioPlayerProgressContext);
+  if (!context) {
+    throw new Error("useAudioProgress must be used within AudioPlayerProvider");
   }
   return context;
 }

@@ -1,18 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
-import { useAudioPlayer } from "./AudioPlayerContext";
+import { useAudioPlayer, useAudioProgress } from "./AudioPlayerContext";
 
 export default function PlaylistDrawer() {
   const [leaving, setLeaving] = useState(false);
   const [entered, setEntered] = useState(false);
-  const {
-    showPlaylist,
-    setShowPlaylist,
-    playlist,
-    currentTrack,
-    playTrack,
-    formatTime,
-    duration,
-  } = useAudioPlayer();
+  const { showPlaylist, setShowPlaylist, playlist, currentTrack, playTrack } =
+    useAudioPlayer();
+  const { duration, formatTime } = useAudioProgress();
 
   useEffect(() => {
     if (showPlaylist) {
