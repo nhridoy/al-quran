@@ -1,28 +1,11 @@
-import { useEffect, useState } from "react";
-import { BiBookOpen } from "react-icons/bi";
+import { BiBookOpen, BiErrorCircle, BiRefresh } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import { useHadithBooks } from "../../../hooks/useHadith";
 import { Header } from "../../Header/Header";
-
-interface HadithBook {
-  name: string;
-  id: string;
-  available: number;
-}
 
 export default function HadithCollections() {
   const navigate = useNavigate();
-  const [books, setBooks] = useState<HadithBook[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch("https://api.hadith.gading.dev/books")
-      .then((r) => r.json())
-      .then((d) => {
-        setBooks(d.data);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, []);
+  const { books, loading, error, refetch } = useHadithBooks();
 
   return (
     <div className="min-h-screen">
@@ -45,6 +28,19 @@ export default function HadithCollections() {
                 className="h-24 animate-pulse rounded-2xl bg-surface-alt dark:bg-dark-surface-alt"
               />
             ))}
+          </div>
+        ) : error ? (
+          <div className="flex flex-col items-center gap-4 rounded-2xl border border-border bg-surface p-8 text-center dark:border-dark-border dark:bg-dark-surface-card">
+            <BiErrorCircle className="text-4xl text-red-400" />
+            <p className="text-sm text-text-muted">{error}</p>
+            <button
+              type="button"
+              onClick={refetch}
+              className="btn-primary flex cursor-pointer items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-medium"
+            >
+              <BiRefresh className="text-base" />
+              Try Again
+            </button>
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
