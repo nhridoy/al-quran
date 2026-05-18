@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { useAudioPlayer, useAudioProgress } from "./AudioPlayerContext";
 
 const RADIUS = 28;
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 
-function Spinner() {
+const Spinner = memo(function Spinner() {
   return (
     <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none">
       <title>Loading</title>
@@ -19,7 +19,7 @@ function Spinner() {
       />
     </svg>
   );
-}
+});
 
 export default function MiniPlayer() {
   const [entering, setEntering] = useState(true);

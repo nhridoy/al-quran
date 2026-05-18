@@ -1,8 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { useAudioPlayer, useAudioProgress } from "./AudioPlayerContext";
 import VinylDisc from "./VinylDisc";
 
-function RepeatIcon({ mode }: { mode: "none" | "all" | "one" }) {
+const RepeatIcon = memo(function RepeatIcon({
+  mode,
+}: {
+  mode: "none" | "all" | "one";
+}) {
   return (
     <svg
       className="h-5 w-5"
@@ -32,9 +36,9 @@ function RepeatIcon({ mode }: { mode: "none" | "all" | "one" }) {
       )}
     </svg>
   );
-}
+});
 
-function ShuffleIcon() {
+const ShuffleIcon = memo(function ShuffleIcon() {
   return (
     <svg
       className="h-5 w-5"
@@ -53,9 +57,9 @@ function ShuffleIcon() {
       <line x1="4" y1="4" x2="9" y2="9" />
     </svg>
   );
-}
+});
 
-function PlaylistIcon() {
+const PlaylistIcon = memo(function PlaylistIcon() {
   return (
     <svg
       className="h-5 w-5"
@@ -75,9 +79,11 @@ function PlaylistIcon() {
       <line x1="3" y1="18" x2="3.01" y2="18" />
     </svg>
   );
-}
+});
 
-function Spinner({ className }: Readonly<{ className?: string }>) {
+const Spinner = memo(function Spinner({
+  className,
+}: Readonly<{ className?: string }>) {
   return (
     <svg
       className={`${className ?? "h-5 w-5"} animate-spin`}
@@ -96,9 +102,9 @@ function Spinner({ className }: Readonly<{ className?: string }>) {
       />
     </svg>
   );
-}
+});
 
-function ChevronDownIcon() {
+const ChevronDownIcon = memo(function ChevronDownIcon() {
   return (
     <svg
       className="h-5 w-5"
@@ -113,9 +119,11 @@ function ChevronDownIcon() {
       <polyline points="6 9 12 15 18 9" />
     </svg>
   );
-}
+});
 
-function VolumeIcon({ volume }: Readonly<{ volume: number }>) {
+const VolumeIcon = memo(function VolumeIcon({
+  volume,
+}: Readonly<{ volume: number }>) {
   return (
     <svg
       className="h-5 w-5"
@@ -147,7 +155,7 @@ function VolumeIcon({ volume }: Readonly<{ volume: number }>) {
       )}
     </svg>
   );
-}
+});
 
 function SeekBar() {
   const { currentTime, duration, seek, formatTime } = useAudioProgress();
@@ -226,6 +234,481 @@ function SeekBar() {
   );
 }
 
+function PlayPauseButton({
+  isPlaying,
+  isLoading,
+  onClick,
+}: {
+  isPlaying: boolean;
+  isLoading: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="cursor-pointer rounded-full bg-linear-to-r from-primary to-secondary p-3 text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl active:scale-95"
+      aria-label={isLoading ? "Loading" : isPlaying ? "Pause" : "Play"}
+      title={isLoading ? "Loading" : isPlaying ? "Pause" : "Play"}
+    >
+      {isLoading ? (
+        <Spinner className="h-6 w-6" />
+      ) : isPlaying ? (
+        <svg
+          className="h-6 w-6"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <rect x="6" y="4" width="4" height="16" rx="1" />
+          <rect x="14" y="4" width="4" height="16" rx="1" />
+        </svg>
+      ) : (
+        <svg
+          className="ml-0.5 h-6 w-6"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <polygon points="6,4 20,12 6,20" />
+        </svg>
+      )}
+    </button>
+  );
+}
+
+const PrevButton = memo(function PrevButton({
+  onClick,
+}: {
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="cursor-pointer rounded-full p-2 text-text-secondary transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
+      aria-label="Previous"
+      title="Previous"
+    >
+      <svg
+        className="h-5 w-5"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
+      </svg>
+    </button>
+  );
+});
+
+const NextButton = memo(function NextButton({
+  onClick,
+}: {
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="cursor-pointer rounded-full p-2 text-text-secondary transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
+      aria-label="Next"
+      title="Next"
+    >
+      <svg
+        className="h-5 w-5"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
+      </svg>
+    </button>
+  );
+});
+
+const ShuffleButton = memo(function ShuffleButton({
+  isShuffled,
+  onClick,
+}: {
+  isShuffled: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`cursor-pointer rounded-full p-2 transition-all active:scale-90 ${
+        isShuffled
+          ? "bg-secondary/10 text-secondary"
+          : "text-text-muted hover:bg-surface-alt dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
+      }`}
+      aria-label="Toggle shuffle"
+      title="Shuffle"
+    >
+      <ShuffleIcon />
+    </button>
+  );
+});
+
+const RepeatButton = memo(function RepeatButton({
+  mode,
+  onClick,
+}: {
+  mode: "none" | "all" | "one";
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`cursor-pointer rounded-full p-2 transition-all active:scale-90 ${
+        mode === "none"
+          ? "text-text-muted hover:bg-surface-alt dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
+          : "bg-secondary/10 text-secondary"
+      }`}
+      aria-label="Cycle repeat mode"
+      title={
+        mode === "none"
+          ? "Repeat"
+          : mode === "all"
+            ? "Repeat all"
+            : "Repeat one"
+      }
+    >
+      <RepeatIcon mode={mode} />
+    </button>
+  );
+});
+
+const MuteButton = memo(function MuteButton({
+  volume,
+  onToggle,
+}: {
+  volume: number;
+  onToggle: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onToggle}
+      className="cursor-pointer rounded-full p-2 text-text-muted transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
+      aria-label="Toggle mute"
+      title={volume === 0 ? "Unmute" : "Mute"}
+    >
+      <VolumeIcon volume={volume} />
+    </button>
+  );
+});
+
+const PlaylistButton = memo(function PlaylistButton({
+  onClick,
+}: {
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="cursor-pointer rounded-full p-2 text-text-muted transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
+      aria-label="Playlist"
+      title="Playlist"
+    >
+      <PlaylistIcon />
+    </button>
+  );
+});
+
+const MinimizeButton = memo(function MinimizeButton({
+  onClick,
+}: {
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="cursor-pointer rounded-full p-2 text-text-muted transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
+      aria-label="Minimize"
+      title="Minimize"
+    >
+      <ChevronDownIcon />
+    </button>
+  );
+});
+
+function DesktopPlayerContent({
+  isPlaying,
+  isLoading,
+  currentTrack,
+  isShuffled,
+  repeatMode,
+  volume,
+  togglePlay,
+  prev,
+  next,
+  toggleShuffle,
+  cycleRepeat,
+  setVolume,
+  togglePlaylist,
+  onMinimize,
+}: Readonly<{
+  isPlaying: boolean;
+  isLoading: boolean;
+  currentTrack: { enName: string; ayahNumber: number };
+  isShuffled: boolean;
+  repeatMode: "none" | "all" | "one";
+  volume: number;
+  togglePlay: () => void;
+  prev: () => void;
+  next: () => void;
+  toggleShuffle: () => void;
+  cycleRepeat: () => void;
+  setVolume: (v: number) => void;
+  togglePlaylist: () => void;
+  onMinimize: () => void;
+}>) {
+  return (
+    <div className="mx-auto flex h-20 max-w-7xl items-center gap-4 px-4">
+      <div className="flex min-w-0 items-center gap-3">
+        <VinylDisc isPlaying={isPlaying} />
+        <div className="min-w-0">
+          <p className="truncate text-sm font-semibold text-text-primary dark:text-dark-text-primary">
+            {currentTrack.enName}
+          </p>
+          <p className="truncate text-xs text-text-muted dark:text-dark-text-muted">
+            Ayah {currentTrack.ayahNumber}
+          </p>
+        </div>
+      </div>
+
+      <div className="flex flex-1 items-center justify-center gap-3">
+        <SeekBar />
+        <div className="flex items-center gap-1">
+          <ShuffleButton isShuffled={isShuffled} onClick={toggleShuffle} />
+          <PrevButton onClick={prev} />
+          <PlayPauseButton
+            isPlaying={isPlaying}
+            isLoading={isLoading}
+            onClick={togglePlay}
+          />
+          <NextButton onClick={next} />
+          <RepeatButton mode={repeatMode} onClick={cycleRepeat} />
+        </div>
+        <div className="flex items-center gap-1">
+          <MuteButton
+            volume={volume}
+            onToggle={() => setVolume(volume === 0 ? 0.7 : 0)}
+          />
+          <input
+            type="range"
+            min={0}
+            max={1}
+            step={0.01}
+            value={volume}
+            onChange={(e) => setVolume(Number.parseFloat(e.target.value))}
+            className="h-1.5 w-20 cursor-pointer appearance-none rounded-full bg-border dark:bg-dark-border [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-secondary [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:shadow-md"
+            style={{
+              backgroundImage: `linear-gradient(to right, #9345f2 ${volume * 100}%, transparent ${volume * 100}%)`,
+            }}
+            aria-label="Volume"
+          />
+        </div>
+      </div>
+
+      <div className="flex items-center gap-1">
+        <PlaylistButton onClick={togglePlaylist} />
+        <MinimizeButton onClick={onMinimize} />
+      </div>
+    </div>
+  );
+}
+
+function MobilePlayerContent({
+  isPlaying,
+  isLoading,
+  currentTrack,
+  isShuffled,
+  repeatMode,
+  togglePlay,
+  prev,
+  next,
+  toggleShuffle,
+  cycleRepeat,
+  togglePlaylist,
+  onMinimize,
+}: Readonly<{
+  isPlaying: boolean;
+  isLoading: boolean;
+  currentTrack: { enName: string; ayahNumber: number };
+  isShuffled: boolean;
+  repeatMode: "none" | "all" | "one";
+  togglePlay: () => void;
+  prev: () => void;
+  next: () => void;
+  toggleShuffle: () => void;
+  cycleRepeat: () => void;
+  togglePlaylist: () => void;
+  onMinimize: () => void;
+}>) {
+  return (
+    <div className="flex flex-1 flex-col bg-linear-to-b from-[#1a0a2e] via-primary to-[#1a0a2e]">
+      <div className="flex items-center justify-between px-5 pt-12 pb-4">
+        <button
+          type="button"
+          onClick={togglePlaylist}
+          className="cursor-pointer rounded-full p-2 text-white/70 transition-all hover:bg-white/10 active:scale-90"
+          aria-label="Playlist"
+          title="Playlist"
+        >
+          <PlaylistIcon />
+        </button>
+        <h2 className="text-sm font-medium uppercase tracking-wider text-white/60">
+          Now Playing
+        </h2>
+        <button
+          type="button"
+          onClick={onMinimize}
+          className="cursor-pointer rounded-full p-2 text-white/70 transition-all hover:bg-white/10 active:scale-90"
+          aria-label="Minimize"
+          title="Minimize"
+        >
+          <ChevronDownIcon />
+        </button>
+      </div>
+
+      <div className="flex flex-1 flex-col items-center justify-center gap-8 px-8">
+        <VinylDisc isPlaying={isPlaying} size="lg" />
+        <div className="w-full max-w-sm text-center">
+          <p className="mb-1 text-2xl font-bold text-white">
+            {currentTrack.enName}
+          </p>
+          <p className="text-sm text-white/60">
+            Ayah {currentTrack.ayahNumber}
+          </p>
+        </div>
+      </div>
+
+      <div className="px-6 pb-4">
+        <SeekBar />
+      </div>
+
+      <div className="flex items-center justify-center gap-4 px-6 pb-12">
+        <button
+          type="button"
+          onClick={toggleShuffle}
+          className={`cursor-pointer rounded-full p-3 transition-all active:scale-90 ${
+            isShuffled
+              ? "bg-white/10 text-secondary"
+              : "text-white/60 hover:bg-white/10"
+          }`}
+          aria-label="Toggle shuffle"
+          title="Shuffle"
+        >
+          <ShuffleIcon />
+        </button>
+        <button
+          type="button"
+          onClick={prev}
+          className="cursor-pointer rounded-full p-3 text-white/80 transition-all hover:bg-white/10 active:scale-90"
+          aria-label="Previous"
+          title="Previous"
+        >
+          <svg
+            className="h-8 w-8"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          onClick={togglePlay}
+          className="cursor-pointer rounded-full bg-white p-5 text-primary shadow-2xl transition-transform hover:scale-105 active:scale-95"
+          aria-label={isLoading ? "Loading" : isPlaying ? "Pause" : "Play"}
+          title={isLoading ? "Loading" : isPlaying ? "Pause" : "Play"}
+        >
+          {isLoading ? (
+            <Spinner className="h-8 w-8" />
+          ) : isPlaying ? (
+            <svg
+              className="h-8 w-8"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <rect x="6" y="4" width="4" height="16" rx="1" />
+              <rect x="14" y="4" width="4" height="16" rx="1" />
+            </svg>
+          ) : (
+            <svg
+              className="ml-1 h-8 w-8"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <polygon points="6,4 20,12 6,20" />
+            </svg>
+          )}
+        </button>
+        <button
+          type="button"
+          onClick={next}
+          className="cursor-pointer rounded-full p-3 text-white/80 transition-all hover:bg-white/10 active:scale-90"
+          aria-label="Next"
+          title="Next"
+        >
+          <svg
+            className="h-8 w-8"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          onClick={cycleRepeat}
+          className={`cursor-pointer rounded-full p-3 transition-all active:scale-90 ${
+            repeatMode === "none"
+              ? "text-white/60 hover:bg-white/10"
+              : "bg-white/10 text-secondary"
+          }`}
+          aria-label="Cycle repeat mode"
+          title={
+            repeatMode === "none"
+              ? "Repeat"
+              : repeatMode === "all"
+                ? "Repeat all"
+                : "Repeat one"
+          }
+        >
+          <RepeatIcon mode={repeatMode} />
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function TopProgressBar() {
+  const { currentTime, duration } = useAudioProgress();
+  const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
+  return (
+    <div className="absolute top-0 left-0 right-0 h-1 bg-border dark:bg-dark-border">
+      <div
+        className="h-full bg-linear-to-r from-secondary to-primary transition-[width] duration-300"
+        style={{ width: `${progress}%` }}
+      />
+    </div>
+  );
+}
+
+const MemoizedDesktopContent = memo(DesktopPlayerContent);
+const MemoizedMobileContent = memo(MobilePlayerContent);
+
 export default function ExpandedPlayer() {
   const [leaving, setLeaving] = useState(false);
   const {
@@ -245,7 +728,6 @@ export default function ExpandedPlayer() {
     setVolume,
     togglePlaylist,
   } = useAudioPlayer();
-  const { currentTime, duration } = useAudioProgress();
 
   const handleMinimize = () => {
     setLeaving(true);
@@ -261,8 +743,6 @@ export default function ExpandedPlayer() {
 
   if ((!isExpanded && !leaving) || !currentTrack) return null;
 
-  const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
-
   return (
     <>
       <div
@@ -272,307 +752,46 @@ export default function ExpandedPlayer() {
             : "animate-slide-up"
         }`}
       >
-        <div className="absolute top-0 left-0 right-0 h-1 bg-border dark:bg-dark-border">
-          <div
-            className="h-full bg-linear-to-r from-secondary to-primary transition-[width] duration-300"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
-
-        <div className="mx-auto flex h-20 max-w-7xl items-center gap-4 px-4">
-          <div className="flex min-w-0 items-center gap-3">
-            <VinylDisc isPlaying={isPlaying} />
-            <div className="min-w-0">
-              <p className="truncate text-sm font-semibold text-text-primary dark:text-dark-text-primary">
-                {currentTrack.enName}
-              </p>
-              <p className="truncate text-xs text-text-muted dark:text-dark-text-muted">
-                Ayah {currentTrack.ayahNumber}
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-1 items-center justify-center gap-3">
-            <SeekBar />
-            <div className="flex items-center gap-1">
-              <button
-                type="button"
-                onClick={toggleShuffle}
-                className={`cursor-pointer rounded-full p-2 transition-all active:scale-90 ${
-                  isShuffled
-                    ? "bg-secondary/10 text-secondary"
-                    : "text-text-muted hover:bg-surface-alt dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
-                }`}
-                aria-label="Toggle shuffle"
-                title="Shuffle"
-              >
-                <ShuffleIcon />
-              </button>
-              <button
-                type="button"
-                onClick={prev}
-                className="cursor-pointer rounded-full p-2 text-text-secondary transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
-                aria-label="Previous"
-                title="Previous"
-              >
-                <svg
-                  className="h-5 w-5"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
-                </svg>
-              </button>
-              <button
-                type="button"
-                onClick={togglePlay}
-                className="cursor-pointer rounded-full bg-linear-to-r from-primary to-secondary p-3 text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl active:scale-95"
-                aria-label={
-                  isLoading ? "Loading" : isPlaying ? "Pause" : "Play"
-                }
-                title={isLoading ? "Loading" : isPlaying ? "Pause" : "Play"}
-              >
-                {isLoading ? (
-                  <Spinner className="h-6 w-6" />
-                ) : isPlaying ? (
-                  <svg
-                    className="h-6 w-6"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <rect x="6" y="4" width="4" height="16" rx="1" />
-                    <rect x="14" y="4" width="4" height="16" rx="1" />
-                  </svg>
-                ) : (
-                  <svg
-                    className="ml-0.5 h-6 w-6"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <polygon points="6,4 20,12 6,20" />
-                  </svg>
-                )}
-              </button>
-              <button
-                type="button"
-                onClick={next}
-                className="cursor-pointer rounded-full p-2 text-text-secondary transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
-                aria-label="Next"
-                title="Next"
-              >
-                <svg
-                  className="h-5 w-5"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
-                </svg>
-              </button>
-              <button
-                type="button"
-                onClick={cycleRepeat}
-                className={`cursor-pointer rounded-full p-2 transition-all active:scale-90 ${
-                  repeatMode === "none"
-                    ? "text-text-muted hover:bg-surface-alt dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
-                    : "bg-secondary/10 text-secondary"
-                }`}
-                aria-label="Cycle repeat mode"
-                title={`${repeatMode === "none" ? "Repeat" : repeatMode === "all" ? "Repeat all" : "Repeat one"}`}
-              >
-                <RepeatIcon mode={repeatMode} />
-              </button>
-            </div>
-            <div className="flex items-center gap-1">
-              <button
-                type="button"
-                onClick={() => setVolume(volume === 0 ? 0.7 : 0)}
-                className="cursor-pointer rounded-full p-2 text-text-muted transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
-                aria-label="Toggle mute"
-                title={volume === 0 ? "Unmute" : "Mute"}
-              >
-                <VolumeIcon volume={volume} />
-              </button>
-              <input
-                type="range"
-                min={0}
-                max={1}
-                step={0.01}
-                value={volume}
-                onChange={(e) => setVolume(Number.parseFloat(e.target.value))}
-                className="h-1.5 w-20 cursor-pointer appearance-none rounded-full bg-border dark:bg-dark-border [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-secondary [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:shadow-md"
-                style={{
-                  backgroundImage: `linear-gradient(to right, #9345f2 ${volume * 100}%, transparent ${volume * 100}%)`,
-                }}
-                aria-label="Volume"
-              />
-            </div>
-          </div>
-
-          <div className="flex items-center gap-1">
-            <button
-              type="button"
-              onClick={togglePlaylist}
-              className="cursor-pointer rounded-full p-2 text-text-muted transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
-              aria-label="Playlist"
-              title="Playlist"
-            >
-              <PlaylistIcon />
-            </button>
-            <button
-              type="button"
-              onClick={handleMinimize}
-              className="cursor-pointer rounded-full p-2 text-text-muted transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
-              aria-label="Minimize"
-              title="Minimize"
-            >
-              <ChevronDownIcon />
-            </button>
-          </div>
-        </div>
+        <TopProgressBar />
+        <MemoizedDesktopContent
+          isPlaying={isPlaying}
+          isLoading={isLoading}
+          currentTrack={currentTrack}
+          isShuffled={isShuffled}
+          repeatMode={repeatMode}
+          volume={volume}
+          togglePlay={togglePlay}
+          prev={prev}
+          next={next}
+          toggleShuffle={toggleShuffle}
+          cycleRepeat={cycleRepeat}
+          setVolume={setVolume}
+          togglePlaylist={togglePlaylist}
+          onMinimize={handleMinimize}
+        />
       </div>
 
       <div
-        className={`fixed inset-0 z-50 flex flex-col bg-linear-to-b from-[#1a0a2e] via-primary to-[#1a0a2e] md:hidden ${
+        className={`fixed inset-0 z-50 flex flex-col md:hidden ${
           leaving
             ? "opacity-0 transition-all duration-300 ease-in-out"
             : "animate-fade-in"
         }`}
       >
-        <div className="flex items-center justify-between px-5 pt-12 pb-4">
-          <button
-            type="button"
-            onClick={togglePlaylist}
-            className="cursor-pointer rounded-full p-2 text-white/70 transition-all hover:bg-white/10 active:scale-90"
-            aria-label="Playlist"
-            title="Playlist"
-          >
-            <PlaylistIcon />
-          </button>
-          <h2 className="text-sm font-medium uppercase tracking-wider text-white/60">
-            Now Playing
-          </h2>
-          <button
-            type="button"
-            onClick={handleMinimize}
-            className="cursor-pointer rounded-full p-2 text-white/70 transition-all hover:bg-white/10 active:scale-90"
-            aria-label="Minimize"
-            title="Minimize"
-          >
-            <ChevronDownIcon />
-          </button>
-        </div>
-
-        <div className="flex flex-1 flex-col items-center justify-center gap-8 px-8">
-          <VinylDisc isPlaying={isPlaying} size="lg" />
-
-          <div className="w-full max-w-sm text-center">
-            <p className="mb-1 text-2xl font-bold text-white">
-              {currentTrack.enName}
-            </p>
-            <p className="text-sm text-white/60">
-              Ayah {currentTrack.ayahNumber}
-            </p>
-          </div>
-        </div>
-
-        <div className="px-6 pb-4">
-          <SeekBar />
-        </div>
-
-        <div className="flex items-center justify-center gap-4 px-6 pb-12">
-          <button
-            type="button"
-            onClick={toggleShuffle}
-            className={`cursor-pointer rounded-full p-3 transition-all active:scale-90 ${
-              isShuffled
-                ? "bg-white/10 text-secondary"
-                : "text-white/60 hover:bg-white/10"
-            }`}
-            aria-label="Toggle shuffle"
-            title="Shuffle"
-          >
-            <ShuffleIcon />
-          </button>
-          <button
-            type="button"
-            onClick={prev}
-            className="cursor-pointer rounded-full p-3 text-white/80 transition-all hover:bg-white/10 active:scale-90"
-            aria-label="Previous"
-            title="Previous"
-          >
-            <svg
-              className="h-8 w-8"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
-            </svg>
-          </button>
-          <button
-            type="button"
-            onClick={togglePlay}
-            className="cursor-pointer rounded-full bg-white p-5 text-primary shadow-2xl transition-transform hover:scale-105 active:scale-95"
-            aria-label={isLoading ? "Loading" : isPlaying ? "Pause" : "Play"}
-            title={isLoading ? "Loading" : isPlaying ? "Pause" : "Play"}
-          >
-            {isLoading ? (
-              <Spinner className="h-8 w-8" />
-            ) : isPlaying ? (
-              <svg
-                className="h-8 w-8"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <rect x="6" y="4" width="4" height="16" rx="1" />
-                <rect x="14" y="4" width="4" height="16" rx="1" />
-              </svg>
-            ) : (
-              <svg
-                className="ml-1 h-8 w-8"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <polygon points="6,4 20,12 6,20" />
-              </svg>
-            )}
-          </button>
-          <button
-            type="button"
-            onClick={next}
-            className="cursor-pointer rounded-full p-3 text-white/80 transition-all hover:bg-white/10 active:scale-90"
-            aria-label="Next"
-            title="Next"
-          >
-            <svg
-              className="h-8 w-8"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
-            </svg>
-          </button>
-          <button
-            type="button"
-            onClick={cycleRepeat}
-            className={`cursor-pointer rounded-full p-3 transition-all active:scale-90 ${
-              repeatMode === "none"
-                ? "text-white/60 hover:bg-white/10"
-                : "bg-white/10 text-secondary"
-            }`}
-            aria-label="Cycle repeat mode"
-            title={`${repeatMode === "none" ? "Repeat" : repeatMode === "all" ? "Repeat all" : "Repeat one"}`}
-          >
-            <RepeatIcon mode={repeatMode} />
-          </button>
-        </div>
+        <MemoizedMobileContent
+          isPlaying={isPlaying}
+          isLoading={isLoading}
+          currentTrack={currentTrack}
+          isShuffled={isShuffled}
+          repeatMode={repeatMode}
+          togglePlay={togglePlay}
+          prev={prev}
+          next={next}
+          toggleShuffle={toggleShuffle}
+          cycleRepeat={cycleRepeat}
+          togglePlaylist={togglePlaylist}
+          onMinimize={handleMinimize}
+        />
       </div>
     </>
   );
