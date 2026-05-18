@@ -452,6 +452,7 @@ function DesktopPlayerContent({
   setVolume,
   togglePlaylist,
   onMinimize,
+  muteToggle,
 }: Readonly<{
   isPlaying: boolean;
   isLoading: boolean;
@@ -467,7 +468,14 @@ function DesktopPlayerContent({
   setVolume: (v: number) => void;
   togglePlaylist: () => void;
   onMinimize: () => void;
+  muteToggle: () => void;
 }>) {
+  const handleVolumeChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) =>
+      setVolume(Number.parseFloat(e.target.value)),
+    [setVolume],
+  );
+
   return (
     <div className="mx-auto flex h-20 max-w-7xl items-center gap-4 px-4">
       <div className="flex min-w-0 items-center gap-3">
@@ -496,17 +504,14 @@ function DesktopPlayerContent({
           <RepeatButton mode={repeatMode} onClick={cycleRepeat} />
         </div>
         <div className="flex items-center gap-1">
-          <MuteButton
-            volume={volume}
-            onToggle={() => setVolume(volume === 0 ? 0.7 : 0)}
-          />
+          <MuteButton volume={volume} onToggle={muteToggle} />
           <input
             type="range"
             min={0}
             max={1}
             step={0.01}
             value={volume}
-            onChange={(e) => setVolume(Number.parseFloat(e.target.value))}
+            onChange={handleVolumeChange}
             className="h-1.5 w-20 cursor-pointer appearance-none rounded-full bg-border dark:bg-dark-border [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-secondary [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:shadow-md"
             style={{
               backgroundImage: `linear-gradient(to right, #9345f2 ${volume * 100}%, transparent ${volume * 100}%)`,
@@ -746,6 +751,10 @@ export default function ExpandedPlayer() {
   );
   const handleCycleRepeat = useCallback(() => cycleRepeat(), [cycleRepeat]);
   const handleSetVolume = useCallback((v: number) => setVolume(v), [setVolume]);
+  const handleMuteToggle = useCallback(
+    () => setVolume(volume === 0 ? 0.7 : 0),
+    [setVolume, volume],
+  );
   const handleTogglePlaylist = useCallback(
     () => togglePlaylist(),
     [togglePlaylist],
@@ -782,6 +791,7 @@ export default function ExpandedPlayer() {
           setVolume={handleSetVolume}
           togglePlaylist={handleTogglePlaylist}
           onMinimize={handleMinimize}
+          muteToggle={handleMuteToggle}
         />
       </div>
 
