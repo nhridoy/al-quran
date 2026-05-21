@@ -2,8 +2,8 @@ import { useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import { BiSearch } from "react-icons/bi";
 import { IoClose } from "react-icons/io5";
-import namesData from "../../data/asmaUlHusna.json";
 import { Header } from "../../components/common/Header/Header";
+import namesData from "../../data/asmaUlHusna.json";
 
 interface NameEntry {
   id: number;
@@ -137,4 +137,3 @@ export default function AsmaUlHusna() {
     </div>
   );
 }
-

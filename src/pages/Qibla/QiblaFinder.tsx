@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useLocationStore } from "../../store/location";
 import { Header } from "../../components/common/Header/Header";
+import { useLocationStore } from "../../store/location";
 
 const KAABA = { lat: 21.4225, lng: 39.8262 };
 const SMOOTHING = 0.15;
@@ -372,4 +372,3 @@ export default function QiblaFinder() {
     </div>
   );
 }
-

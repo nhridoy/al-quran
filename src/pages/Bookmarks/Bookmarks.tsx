@@ -4,8 +4,8 @@ import { FaQuran } from "react-icons/fa";
 import { IoOpenOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { useBookmarkStore } from "../../store/bookmarks";
 import { Header } from "../../components/common/Header/Header";
+import { useBookmarkStore } from "../../store/bookmarks";
 
 export default function Bookmarks() {
   const bookmarks = useBookmarkStore((s) => s.bookmarks);
@@ -253,4 +253,3 @@ export default function Bookmarks() {
     </div>
   );
 }
-

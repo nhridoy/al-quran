@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { useSurahs } from "../../hooks/useSurahs";
 import { Header } from "../../components/common/Header/Header";
+import { useSurahs } from "../../hooks/useSurahs";
 
 const LAST_TEN_IDS = [105, 106, 107, 108, 109, 110, 111, 112, 113, 114];
 
@@ -66,4 +66,3 @@ export default function LastTenSurahs() {
     </div>
   );
 }
-

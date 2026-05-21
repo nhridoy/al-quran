@@ -89,6 +89,3 @@ export default function TafsirDrawer({
     </Drawer>
   );
 }
-
-
-

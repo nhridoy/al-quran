@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FiTrash2 } from "react-icons/fi";
 import { IoPlayCircleOutline } from "react-icons/io5";
 import Swal from "sweetalert2";
+import { Header } from "../../components/common/Header/Header";
 import { QARIS } from "../../data/qaris";
 import { useSurahs } from "../../hooks/useSurahs";
 import {
@@ -14,7 +15,6 @@ import {
 import { useDownloadsStore } from "../../store/downloads";
 import { useSettings } from "../../store/settings";
 import type { SurahData } from "../../types";
-import { Header } from "../../components/common/Header/Header";
 
 interface SurahDownloadCardProps {
   surah: SurahData;
@@ -350,4 +350,3 @@ export default function DownloadsPage() {
     </div>
   );
 }
-

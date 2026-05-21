@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
-import { useSurah } from "../../hooks/useSurah";
 import { Header } from "../../components/common/Header/Header";
 import TafsirDrawer from "../../components/features/Tafsir/TafsirDrawer";
 import Ayah from "../../components/quran/Ayah/Ayah";
+import { useSurah } from "../../hooks/useSurah";
 import { SurahHead } from "./SurahHead";
 
 export default function SurahPage() {
@@ -69,4 +69,3 @@ export default function SurahPage() {
     </div>
   );
 }
-

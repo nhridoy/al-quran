@@ -2,16 +2,16 @@ import type React from "react";
 import { useCallback, useEffect, useMemo } from "react";
 import { BiBookmark, BiShareAlt } from "react-icons/bi";
 import { IoPauseOutline, IoPlayOutline } from "react-icons/io5";
-import type { Track } from "../../features/AudioPlayer";
-import {
-  buildPlaylistFromSurah,
-  useAudioPlayer,
-} from "../../features/AudioPlayer";
 import { QARIS } from "../../../data/qaris";
 import { colorizeArabic } from "../../../lib/tajweed";
 import { useBookmarkStore } from "../../../store/bookmarks";
 import { useSettings } from "../../../store/settings";
 import type { Verse } from "../../../types";
+import type { Track } from "../../features/AudioPlayer";
+import {
+  buildPlaylistFromSurah,
+  useAudioPlayer,
+} from "../../features/AudioPlayer";
 
 interface AyahsProps {
   ayah: Verse;
@@ -216,7 +216,3 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
 };
 
 export default Ayahs;
-
-
-
-

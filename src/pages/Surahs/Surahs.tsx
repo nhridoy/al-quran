@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { BiChevronRight, BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { useSurahs } from "../../hooks/useSurahs";
 import SurahItem from "../../components/quran/SurahItem/SurahItem";
+import { useSurahs } from "../../hooks/useSurahs";
 
 function SkeletonRow() {
   return (
@@ -88,4 +88,3 @@ export default function Surahs() {
     </div>
   );
 }
-

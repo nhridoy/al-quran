@@ -37,7 +37,3 @@ const SurahList: React.FC<SurahListProps> = ({ data }) => {
 };
 
 export default SurahList;
-
-
-
-

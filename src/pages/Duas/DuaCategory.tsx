@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { useParams } from "react-router-dom";
-import duas from "../../data/duas.json";
 import { Header } from "../../components/common/Header/Header";
+import duas from "../../data/duas.json";
 
 export default function DuaCategory() {
   const { categoryId } = useParams();
@@ -107,4 +107,3 @@ export default function DuaCategory() {
     </div>
   );
 }
-

@@ -279,7 +279,3 @@ export default function Search() {
     </>
   );
 }
-
-
-
-

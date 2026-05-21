@@ -8,10 +8,10 @@ import {
 import { MdFormatColorFill, MdOutlineTranslate } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import Swal from "sweetalert2";
+import { Header } from "../../components/common/Header/Header";
 import { QARIS } from "../../data/qaris";
 import { useSurahs } from "../../hooks/useSurahs";
 import { useSettings } from "../../store/settings";
-import { Header } from "../../components/common/Header/Header";
 
 const THEME_OPTIONS = [
   { value: "system", label: "System" },
@@ -408,4 +408,3 @@ export default function Settings() {
     </div>
   );
 }
-

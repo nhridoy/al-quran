@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { usePara } from "../../hooks/usePara";
-import { useSurahs } from "../../hooks/useSurahs";
 import { Header } from "../../components/common/Header/Header";
 import { ParaHeader } from "../../components/quran/ParaHeader/ParaHeader";
+import { usePara } from "../../hooks/usePara";
+import { useSurahs } from "../../hooks/useSurahs";
 
 export default function Para() {
   const { id } = useParams();
@@ -28,4 +28,3 @@ export default function Para() {
     </div>
   );
 }
-

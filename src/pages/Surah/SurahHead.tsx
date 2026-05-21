@@ -134,5 +134,3 @@ export const SurahHead: React.FC<SurahHeadProps> = ({ surah }) => {
     </div>
   );
 };
-
-

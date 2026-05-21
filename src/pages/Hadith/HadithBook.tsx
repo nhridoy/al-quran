@@ -6,13 +6,13 @@ import {
   BiRefresh,
 } from "react-icons/bi";
 import { useParams } from "react-router-dom";
+import { Header } from "../../components/common/Header/Header";
 import {
   getPreferredText,
   PAGE_SIZE,
   useHadithPage,
 } from "../../hooks/useHadith";
 import { useSettings } from "../../store/settings";
-import { Header } from "../../components/common/Header/Header";
 
 const LANG_LABELS: Record<string, string> = {
   en: "English",
@@ -239,4 +239,3 @@ export default function HadithBook() {
     </div>
   );
 }
-

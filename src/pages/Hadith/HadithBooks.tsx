@@ -1,8 +1,8 @@
 import { BiBookAlt, BiErrorCircle, BiRefresh } from "react-icons/bi";
 import { useNavigate, useParams } from "react-router-dom";
+import { Header } from "../../components/common/Header/Header";
 import { useEditionBooks } from "../../hooks/useHadith";
 import { useSettings } from "../../store/settings";
-import { Header } from "../../components/common/Header/Header";
 
 function getBookName(name: Record<string, string>, lang: string): string {
   return name[lang] || name.en || name.ar || `Book`;
@@ -85,4 +85,3 @@ export default function HadithBooks() {
     </div>
   );
 }
-

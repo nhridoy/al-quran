@@ -3,11 +3,11 @@ import { useMemo } from "react";
 import { CgPlayTrackNextO, CgPlayTrackPrevO } from "react-icons/cg";
 import { FiPauseCircle, FiPlayCircle } from "react-icons/fi";
 import { useParams } from "react-router-dom";
-import type { Track } from "../../features/AudioPlayer";
-import { getAudioUrl, useAudioPlayer } from "../../features/AudioPlayer";
 import { QARIS } from "../../../data/qaris";
 import { useSettings } from "../../../store/settings";
 import type { ParaSurah } from "../../../types";
+import type { Track } from "../../features/AudioPlayer";
+import { getAudioUrl, useAudioPlayer } from "../../features/AudioPlayer";
 import Ayahs from "../Ayah/Ayah";
 
 interface ParaHeadProps {
@@ -155,8 +155,3 @@ export const ParaHeader: React.FC<ParaHeadProps> = ({ para, allSegments }) => {
     </div>
   );
 };
-
-
-
-
-

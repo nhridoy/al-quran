@@ -1,10 +1,9 @@
 import type { ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 import BottomNav from "../../components/common/BottomNav/BottomNav";
-import InstallPrompt from "../../components/features/InstallPrompt/InstallPrompt";
 import Sidebar from "../../components/common/Sidebar/Sidebar";
-
 import UpdateBanner from "../../components/common/UpdateBanner/UpdateBanner";
+import InstallPrompt from "../../components/features/InstallPrompt/InstallPrompt";
 
 interface LayoutProps {
   children: ReactNode;

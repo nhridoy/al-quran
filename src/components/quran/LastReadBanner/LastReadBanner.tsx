@@ -48,4 +48,3 @@ export const LastReadBanner: React.FC = () => {
     </div>
   );
 };
-

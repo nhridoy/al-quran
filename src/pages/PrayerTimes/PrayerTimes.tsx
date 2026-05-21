@@ -5,9 +5,9 @@ import {
   Madhab,
 } from "adhan";
 import { useEffect, useMemo, useState } from "react";
+import { Header } from "../../components/common/Header/Header";
 import { useLocationStore } from "../../store/location";
 import { useSettings } from "../../store/settings";
-import { Header } from "../../components/common/Header/Header";
 
 interface PrayerEntry {
   key: string;
@@ -228,4 +228,3 @@ export default function PrayerTimesPage() {
     </div>
   );
 }
-
