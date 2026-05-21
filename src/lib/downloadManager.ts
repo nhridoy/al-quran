@@ -1,4 +1,4 @@
-import { getAudioUrl } from "../components/AudioPlayer";
+import { getAudioUrl } from "../components/features/AudioPlayer";
 
 const CACHE_NAME = "quran-audio-cache";
 

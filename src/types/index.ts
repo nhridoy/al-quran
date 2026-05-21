@@ -30,7 +30,7 @@ export interface AppSettings {
   theme: "system" | "light" | "dark";
   arabicFontSize: number;
   translationFontSize: number;
-  translationLang: "en" | "bn";
+  translationLang: "en" | "bn" | "ar" | "fr" | "tr" | "ur" | "id" | "ta" | "ru";
   qariId: string;
   prayerCalcMethod: string;
   prayerAsrMethod: "shafii" | "hanafi";
