@@ -11,7 +11,6 @@ import Para from "./pages/Para/Para";
 import SurahPage from "./pages/Surah/Surah";
 import { useBookmarkStore } from "./store/bookmarks";
 import { useDownloadsStore } from "./store/downloads";
-import { useLocationStore } from "./store/location";
 import { useSettings } from "./store/settings";
 
 const About = lazy(() => import("./pages/About/About"));
@@ -55,15 +54,6 @@ function DataLoader() {
     loadDownloads,
     downloadsLoaded,
   ]);
-  return null;
-}
-
-function LocationLoader() {
-  const requested = useLocationStore((s) => s.requested);
-  const request = useLocationStore((s) => s.request);
-  useEffect(() => {
-    if (!requested) request();
-  }, [requested, request]);
   return null;
 }
 
@@ -117,7 +107,6 @@ function App() {
     <BrowserRouter>
       <AudioPlayerProvider>
         <DataLoader />
-        <LocationLoader />
         <ThemeController />
         {showOnboarding && (
           <Onboarding onComplete={() => setShowOnboarding(false)} />

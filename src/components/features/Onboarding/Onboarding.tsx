@@ -18,6 +18,7 @@ import {
   cacheAllJuzTafsirFor,
   cacheAllTafsirFor,
 } from "../../../lib/db";
+import { useLocationStore } from "../../../store/location";
 import { useSettings } from "../../../store/settings";
 import { LANGUAGES, RECITERS, TAFSIR_LIST } from "../../../types";
 
@@ -89,17 +90,14 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
     onComplete();
   }, [language, reciterId, tafsirId, updateSettings, refresh, onComplete]);
 
+  const requestLocation = useLocationStore((s) => s.request);
+
   const handleRequestLocation = useCallback(() => {
     if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        () => setLocationGranted(true),
-        () => setLocationGranted(true),
-        { timeout: 5000 },
-      );
-    } else {
-      setLocationGranted(true);
+      requestLocation();
     }
-  }, []);
+    setLocationGranted(true);
+  }, [requestLocation]);
 
   const handleRequestNotification = useCallback(() => {
     if ("Notification" in window && Notification.permission === "default") {
