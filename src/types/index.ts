@@ -26,6 +26,18 @@ export interface SurahData {
   verses: Verse[];
 }
 
+export interface AppSettings {
+  theme: "system" | "light" | "dark";
+  arabicFontSize: number;
+  translationFontSize: number;
+  translationLang: "en" | "bn" | "ar" | "fr" | "tr" | "ur" | "id" | "ta" | "ru";
+  qariId: string;
+  prayerCalcMethod: string;
+  prayerAsrMethod: "shafii" | "hanafi";
+  hijriAdjust: number;
+  tajweedEnabled: boolean;
+}
+
 export interface ParaSurah {
   name: string;
   enName: string;

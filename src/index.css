@@ -211,6 +211,22 @@ html {
   line-height: 2;
 }
 
+/* Font size is controlled via CSS variables set by ThemeController.
+   Apply by adding style={{ fontSize: 'var(--arabic-font-size)' }} to override text-* utility classes. */
+
+.tajweed-madd {
+  color: #e53935;
+}
+.tajweed-ghunnah {
+  color: #43a047;
+}
+.tajweed-qalqalah {
+  color: #1e88e5;
+}
+.tajweed-shaddah {
+  color: #fb8c00;
+}
+
 .page-enter {
   animation: pageEnter 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

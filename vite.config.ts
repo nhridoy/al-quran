@@ -63,8 +63,8 @@ export default defineConfig({
             options: {
               cacheName: "quran-audio-cache",
               expiration: {
-                maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 30,
+                maxEntries: 5000,
+                maxAgeSeconds: 60 * 60 * 24 * 365,
               },
             },
           },
