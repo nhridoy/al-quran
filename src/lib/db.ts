@@ -276,6 +276,72 @@ export async function getTafsirData(
   }
 }
 
+const tafsirFetchPromises = new Map<string, Promise<unknown>>();
+
+async function fetchAndCacheSurahTafsir(
+  tafsirId: string,
+  surahNo: number,
+): Promise<unknown> {
+  const key = String(surahNo);
+  const cached = await getFromStore("surah-tafsir", key);
+  if (cached) return cached;
+
+  const fetchKey = `${tafsirId}-${surahNo}`;
+  const inflight = tafsirFetchPromises.get(fetchKey);
+  if (inflight) return inflight;
+
+  const lang = tafsirId.split("-")[0];
+  const promise = (async () => {
+    const res = await fetch(
+      `${BASE}/surah/tafsir/${lang}/${tafsirId}/${surahNo}.min.json`,
+    );
+    if (!res.ok) throw new Error(`Failed to fetch tafsir for surah ${surahNo}`);
+    const data = await res.json();
+    await putInStore("surah-tafsir", key, data);
+    return data;
+  })().finally(() => tafsirFetchPromises.delete(fetchKey));
+
+  tafsirFetchPromises.set(fetchKey, promise);
+  return promise;
+}
+
+export async function getVerseTafsirData(
+  tafsirId: string,
+  surahNo: number,
+  verseNumber: number,
+): Promise<{
+  lang: string;
+  authorName: string;
+  tafsirName: string;
+  text: string;
+} | null> {
+  try {
+    const data = await fetchAndCacheSurahTafsir(tafsirId, surahNo);
+    const verses =
+      (
+        data as {
+          verses?: {
+            numberInSurah?: number;
+            lang?: string;
+            authorName?: string;
+            tafsirName?: string;
+            tafsir?: string;
+          }[];
+        }
+      ).verses ?? [];
+    const verse = verses[verseNumber - 1];
+    if (!verse) return null;
+    return {
+      lang: verse.lang ?? tafsirId.split("-")[0],
+      authorName: verse.authorName ?? "",
+      tafsirName: verse.tafsirName ?? "",
+      text: verse.tafsir ?? "",
+    };
+  } catch {
+    return null;
+  }
+}
+
 export async function mergeAudioWithSurah(
   surah: SurahData,
   audioUrls: VerseAudioUrls[],

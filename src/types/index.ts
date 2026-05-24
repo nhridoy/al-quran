@@ -282,6 +282,7 @@ export interface AppSettings {
   prayerAsrMethod: "shafii" | "hanafi";
   hijriAdjust: number;
   tajweedEnabled: boolean;
+  tafsirEnabled: boolean;
   onboardingComplete: boolean;
 }
 

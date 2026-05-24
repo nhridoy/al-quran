@@ -15,6 +15,7 @@ const DEFAULTS: AppSettings = {
   prayerAsrMethod: "shafii",
   hijriAdjust: 0,
   tajweedEnabled: false,
+  tafsirEnabled: false,
   onboardingComplete: false,
 };
 
@@ -52,6 +53,7 @@ export const useSettings = create<SettingsState>((set, get) => ({
       prayerAsrMethod: next.prayerAsrMethod,
       hijriAdjust: next.hijriAdjust,
       tajweedEnabled: next.tajweedEnabled,
+      tafsirEnabled: next.tafsirEnabled,
       onboardingComplete: next.onboardingComplete,
     } as AppSettings);
     set(partial);

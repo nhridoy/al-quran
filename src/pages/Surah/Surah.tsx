@@ -1,18 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { Header } from "../../components/common/Header/Header";
-import TafsirDrawer from "../../components/features/Tafsir/TafsirDrawer";
 import Ayah from "../../components/quran/Ayah/Ayah";
 import { useSurah } from "../../hooks/useSurah";
-import { useSettings } from "../../store/settings";
 import { SurahHead } from "./SurahHead";
 
 export default function SurahPage() {
   const { id } = useParams();
   const { surah } = useSurah(id);
   const [searchParams] = useSearchParams();
-  const [tafsirOpen, setTafsirOpen] = useState(false);
-  const tafsirId = useSettings((s) => s.tafsirId);
   const scrollToAyah = searchParams.get("ayah")
     ? Number(searchParams.get("ayah"))
     : undefined;
@@ -44,31 +40,7 @@ export default function SurahPage() {
         {surah.verses.map((ayah) => (
           <Ayah ayah={ayah} key={ayah.numberInSurah} surah={surah} />
         ))}
-        <button
-          type="button"
-          onClick={() => setTafsirOpen(true)}
-          className="mt-6 flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl border border-border bg-surface p-4 text-sm font-medium text-text-secondary transition-all hover:bg-surface-alt active:scale-[0.98] dark:border-dark-border dark:bg-dark-surface-card dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
-        >
-          <svg
-            className="h-5 w-5"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            aria-hidden="true"
-          >
-            <path d="M4 6h16M4 12h16M4 18h12" />
-          </svg>
-          View Tafsir ({surah.enName})
-        </button>
       </div>
-      <TafsirDrawer
-        open={tafsirOpen}
-        onClose={() => setTafsirOpen(false)}
-        chapterNumber={surah.no}
-        tafsirId={tafsirId}
-        surahName={surah.enName}
-      />
     </div>
   );
 }

@@ -1,8 +1,9 @@
 import type React from "react";
-import { useCallback, useEffect, useMemo } from "react";
-import { BiBookmark, BiShareAlt } from "react-icons/bi";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { BiBook, BiBookmark, BiShareAlt } from "react-icons/bi";
 import { IoPauseOutline, IoPlayOutline } from "react-icons/io5";
 import { RECITERS } from "../../../data/qaris";
+import { useVerseTafsir } from "../../../hooks/useVerseTafsir";
 import { colorizeArabic } from "../../../lib/tajweed";
 import { useBookmarkStore } from "../../../store/bookmarks";
 import { useSettings } from "../../../store/settings";
@@ -31,6 +32,15 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
     ? `https://cdn.islamic.network/quran/audio/128/${reciterId}`
     : undefined;
   const tajweedEnabled = useSettings((s) => s.tajweedEnabled);
+  const tafsirEnabled = useSettings((s) => s.tafsirEnabled);
+  const tafsirId = useSettings((s) => s.tafsirId);
+  const [tafsirOpen, setTafsirOpen] = useState(false);
+  const currentSurahNo = surah?.no ?? surahNo ?? 0;
+  const { data: verseTafsir, loading: tafsirLoading } = useVerseTafsir(
+    tafsirEnabled ? tafsirId : undefined,
+    currentSurahNo,
+    ayah.numberInSurah,
+  );
 
   const coloredSegments = useMemo(
     () => (tajweedEnabled ? colorizeArabic(ayah.text.arText) : null),
@@ -40,7 +50,7 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
   const isCurrentAyah = currentTrack?.totalNumber === ayah.totalNumber;
   const isThisAyahPlaying = isCurrentAyah && isPlaying;
 
-  const ayahId = `${surah?.no || surahNo}-${ayah.numberInSurah}`;
+  const ayahId = `${surah?.no || currentSurahNo}-${ayah.numberInSurah}`;
   const isBookmarked = bookmarks.some((b) => b.id === ayahId);
 
   useEffect(() => {
@@ -213,6 +223,62 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
             {ayah.text.bnText}
           </p>
         </div>
+
+        {tafsirEnabled && (
+          <>
+            <button
+              type="button"
+              onClick={() => setTafsirOpen((v) => !v)}
+              className="mt-2 flex w-full cursor-pointer items-center justify-between rounded-xl border border-border bg-surface-alt/50 px-3 py-2 text-xs font-medium text-text-secondary transition-all hover:bg-surface-alt dark:border-dark-border dark:bg-dark-surface-alt/50 dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
+            >
+              <span className="flex items-center gap-1.5">
+                <BiBook className="text-sm" />
+                {tafsirOpen ? "Hide Tafsir" : "Show Tafsir"}
+              </span>
+              <svg
+                className={`h-3.5 w-3.5 transition-transform ${tafsirOpen ? "rotate-180" : ""}`}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                aria-hidden="true"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
+            {tafsirOpen && (
+              <div className="mt-1 overflow-hidden rounded-xl border border-border bg-surface-alt/30 dark:border-dark-border dark:bg-dark-surface-alt/30">
+                {tafsirLoading ? (
+                  <div className="space-y-2 p-3">
+                    <div
+                      className="h-3 animate-pulse rounded bg-surface-alt dark:bg-dark-surface-alt"
+                      style={{ width: "80%" }}
+                    />
+                    <div
+                      className="h-3 animate-pulse rounded bg-surface-alt dark:bg-dark-surface-alt"
+                      style={{ width: "60%" }}
+                    />
+                    <div
+                      className="h-3 animate-pulse rounded bg-surface-alt dark:bg-dark-surface-alt"
+                      style={{ width: "70%" }}
+                    />
+                  </div>
+                ) : verseTafsir ? (
+                  <div className="prose-sm prose max-w-none p-3 text-sm leading-relaxed text-text-secondary dark:prose-invert dark:text-dark-text-secondary">
+                    <div
+                      // biome-ignore lint/security/noDangerouslySetInnerHtml: tafsir content from trusted API
+                      dangerouslySetInnerHTML={{ __html: verseTafsir.text }}
+                    />
+                  </div>
+                ) : (
+                  <p className="p-3 text-xs text-text-muted dark:text-dark-text-muted">
+                    Tafsir not available for this verse
+                  </p>
+                )}
+              </div>
+            )}
+          </>
+        )}
       </div>
     </div>
   );

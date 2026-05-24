@@ -116,6 +116,7 @@ export default function Settings() {
     translationLang: storeSettings.translationLang,
     reciterId: storeSettings.reciterId,
     tafsirId: storeSettings.tafsirId,
+    tafsirEnabled: storeSettings.tafsirEnabled,
     tajweedEnabled: storeSettings.tajweedEnabled,
     prayerCalcMethod: storeSettings.prayerCalcMethod,
     prayerAsrMethod: storeSettings.prayerAsrMethod,
@@ -129,6 +130,7 @@ export default function Settings() {
     local.translationLang !== storeSettings.translationLang ||
     local.reciterId !== storeSettings.reciterId ||
     local.tafsirId !== storeSettings.tafsirId ||
+    local.tafsirEnabled !== storeSettings.tafsirEnabled ||
     local.tajweedEnabled !== storeSettings.tajweedEnabled ||
     local.prayerCalcMethod !== storeSettings.prayerCalcMethod ||
     local.prayerAsrMethod !== storeSettings.prayerAsrMethod ||
@@ -177,6 +179,7 @@ export default function Settings() {
       translationLang: storeSettings.translationLang,
       reciterId: storeSettings.reciterId,
       tafsirId: storeSettings.tafsirId,
+      tafsirEnabled: storeSettings.tafsirEnabled,
       tajweedEnabled: storeSettings.tajweedEnabled,
       prayerCalcMethod: storeSettings.prayerCalcMethod,
       prayerAsrMethod: storeSettings.prayerAsrMethod,
@@ -359,6 +362,30 @@ export default function Settings() {
           title="Tafsir"
           description="Preferred tafsir/exegesis resource"
         >
+          <div className="mb-4">
+            <div className="flex items-center justify-between">
+              <p className="text-xs font-medium text-text-primary dark:text-dark-text-primary">
+                Show Tafsir Under Verses
+              </p>
+              <button
+                type="button"
+                role="switch"
+                aria-checked={local.tafsirEnabled}
+                onClick={() => set("tafsirEnabled", !local.tafsirEnabled)}
+                className={`relative h-6 w-11 cursor-pointer rounded-full transition-colors ${
+                  local.tafsirEnabled
+                    ? "bg-linear-to-r from-primary to-secondary"
+                    : "bg-surface-alt dark:bg-dark-surface-alt"
+                }`}
+              >
+                <span
+                  className={`absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white shadow-sm transition-transform ${
+                    local.tafsirEnabled ? "translate-x-5" : "translate-x-0"
+                  }`}
+                />
+              </button>
+            </div>
+          </div>
           <div>
             <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
               Tafsir Resource
@@ -476,6 +503,7 @@ export default function Settings() {
                   translationLang: storeSettings.translationLang,
                   reciterId: storeSettings.reciterId,
                   tafsirId: storeSettings.tafsirId,
+                  tafsirEnabled: storeSettings.tafsirEnabled,
                   tajweedEnabled: storeSettings.tajweedEnabled,
                   prayerCalcMethod: storeSettings.prayerCalcMethod,
                   prayerAsrMethod: storeSettings.prayerAsrMethod,
