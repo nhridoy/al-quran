@@ -98,11 +98,11 @@ export const ParaHeader: React.FC<ParaHeadProps> = ({ para, allSegments }) => {
             </div>
             <div>
               <div className="font-semibold text-white">{para.enName}</div>
-              <div className="flex gap-2 text-xs text-white/60">
+              <div className="flex flex-col md:flex-row md:gap-2 text-xs text-white/60">
                 <span className="uppercase">
                   {para.revelationType === "Meccan" ? "Makkah" : "Madinah"}
                 </span>
-                <span>&bull;</span>
+                <span className="hidden md:inline">&bull;</span>
                 <span>
                   {para.verses.length} verses in para {id}
                 </span>
