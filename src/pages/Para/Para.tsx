@@ -3,12 +3,10 @@ import { useParams } from "react-router-dom";
 import { Header } from "../../components/common/Header/Header";
 import { ParaHeader } from "../../components/quran/ParaHeader/ParaHeader";
 import { usePara } from "../../hooks/usePara";
-import { useSurahs } from "../../hooks/useSurahs";
 
 export default function Para() {
   const { id } = useParams();
-  const { surahs } = useSurahs();
-  const para = usePara(id, surahs);
+  const { para } = usePara(id);
 
   useEffect(() => {
     document.title = `Para - ${id}`;

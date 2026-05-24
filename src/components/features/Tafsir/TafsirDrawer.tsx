@@ -1,11 +1,11 @@
-import { type TafsirId, useTafsir } from "../../../hooks/useTafsir";
+import { useTafsir } from "../../../hooks/useTafsir";
 import Drawer from "../../common/Drawer/Drawer";
 
 interface TafsirDrawerProps {
   open: boolean;
   onClose: () => void;
   chapterNumber: number;
-  tafsirId?: TafsirId;
+  tafsirId?: string;
   surahName?: string;
 }
 
@@ -13,7 +13,7 @@ function TafsirContent({ html }: { html: string }) {
   return (
     <div
       className="tafsir-content prose-sm prose prose-headings:text-text-primary prose-headings:font-semibold prose-p:text-text-secondary prose-strong:text-text-primary max-w-none leading-relaxed dark:prose-headings:text-dark-text-primary dark:prose-p:text-dark-text-secondary dark:prose-strong:text-dark-text-primary [&_h1]:text-lg [&_h2]:text-base [&_h2]:font-semibold [&_p]:mb-3 [&_p]:text-sm [&_ul]:mb-3 [&_li]:text-sm"
-      // biome-ignore lint/security/noDangerouslySetInnerHtml: tafsir text from trusted quran.com API
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: tafsir text from trusted CDN API
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );
@@ -23,7 +23,7 @@ export default function TafsirDrawer({
   open,
   onClose,
   chapterNumber,
-  tafsirId = 169,
+  tafsirId,
   surahName,
 }: TafsirDrawerProps) {
   const { data, loading, error } = useTafsir(chapterNumber, tafsirId);
@@ -43,7 +43,7 @@ export default function TafsirDrawer({
             </h2>
             {surahName && (
               <p className="text-sm text-text-muted dark:text-dark-text-muted">
-                {surahName} &mdash; {data?.resourceName ?? ""}
+                {surahName} &mdash; {data?.tafsirName ?? ""}
               </p>
             )}
           </div>

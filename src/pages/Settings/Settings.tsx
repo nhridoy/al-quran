@@ -1,6 +1,8 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { HiOutlineTrash } from "react-icons/hi";
 import {
+  IoBookOutline,
+  IoCheckmarkCircle,
   IoColorPaletteOutline,
   IoSettingsOutline,
   IoVolumeHighOutline,
@@ -9,9 +11,17 @@ import { MdFormatColorFill, MdOutlineTranslate } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { Header } from "../../components/common/Header/Header";
-import { QARIS } from "../../data/qaris";
 import { useSurahs } from "../../hooks/useSurahs";
+import {
+  cacheAllAudioForReciter,
+  cacheAllJuzAudioForReciter,
+  cacheAllJuzTafsirFor,
+  cacheAllTafsirFor,
+  clearAudioCache,
+  clearTafsirCache,
+} from "../../lib/db";
 import { useSettings } from "../../store/settings";
+import { LANGUAGES, RECITERS, TAFSIR_LIST } from "../../types";
 
 const THEME_OPTIONS = [
   { value: "system", label: "System" },
@@ -22,13 +32,6 @@ const THEME_OPTIONS = [
 const LANG_OPTIONS = [
   { value: "en", label: "English" },
   { value: "bn", label: "বাংলা" },
-  { value: "ar", label: "العربية" },
-  { value: "fr", label: "Français" },
-  { value: "tr", label: "Türkçe" },
-  { value: "ur", label: "اردو" },
-  { value: "id", label: "Indonesia" },
-  { value: "ta", label: "தமிழ்" },
-  { value: "ru", label: "Русский" },
 ] as const;
 
 const CALC_METHODS = [
@@ -101,9 +104,85 @@ function SegmentedControl<T extends string>({
 
 export default function Settings() {
   const [loading, setLoading] = useState(false);
+  const [saving, setSaving] = useState(false);
   const { refresh } = useSurahs();
-  const settings = useSettings();
+  const storeSettings = useSettings();
   const updateSettings = useSettings((s) => s.update);
+
+  const [local, setLocal] = useState({
+    theme: storeSettings.theme,
+    arabicFontSize: storeSettings.arabicFontSize,
+    translationFontSize: storeSettings.translationFontSize,
+    translationLang: storeSettings.translationLang,
+    reciterId: storeSettings.reciterId,
+    tafsirId: storeSettings.tafsirId,
+    tajweedEnabled: storeSettings.tajweedEnabled,
+    prayerCalcMethod: storeSettings.prayerCalcMethod,
+    prayerAsrMethod: storeSettings.prayerAsrMethod,
+    hijriAdjust: storeSettings.hijriAdjust,
+  });
+
+  const hasChanges =
+    local.theme !== storeSettings.theme ||
+    local.arabicFontSize !== storeSettings.arabicFontSize ||
+    local.translationFontSize !== storeSettings.translationFontSize ||
+    local.translationLang !== storeSettings.translationLang ||
+    local.reciterId !== storeSettings.reciterId ||
+    local.tafsirId !== storeSettings.tafsirId ||
+    local.tajweedEnabled !== storeSettings.tajweedEnabled ||
+    local.prayerCalcMethod !== storeSettings.prayerCalcMethod ||
+    local.prayerAsrMethod !== storeSettings.prayerAsrMethod ||
+    local.hijriAdjust !== storeSettings.hijriAdjust;
+
+  const set = useCallback(
+    <K extends keyof typeof local>(key: K, value: (typeof local)[K]) => {
+      setLocal((prev) => ({ ...prev, [key]: value }));
+    },
+    [],
+  );
+
+  const handleSave = useCallback(async () => {
+    setSaving(true);
+    try {
+      await updateSettings(local);
+
+      if (local.reciterId !== storeSettings.reciterId) {
+        await clearAudioCache();
+        await Promise.all([
+          cacheAllAudioForReciter(local.reciterId),
+          cacheAllJuzAudioForReciter(local.reciterId),
+        ]);
+      }
+
+      if (local.tafsirId !== storeSettings.tafsirId) {
+        await clearTafsirCache();
+        await Promise.all([
+          cacheAllTafsirFor(local.tafsirId),
+          cacheAllJuzTafsirFor(local.tafsirId),
+        ]);
+      }
+
+      toast.success("Settings saved!");
+    } catch {
+      toast.error("Failed to save settings");
+    }
+    setSaving(false);
+  }, [local, storeSettings, updateSettings]);
+
+  useEffect(() => {
+    setLocal({
+      theme: storeSettings.theme,
+      arabicFontSize: storeSettings.arabicFontSize,
+      translationFontSize: storeSettings.translationFontSize,
+      translationLang: storeSettings.translationLang,
+      reciterId: storeSettings.reciterId,
+      tafsirId: storeSettings.tafsirId,
+      tajweedEnabled: storeSettings.tajweedEnabled,
+      prayerCalcMethod: storeSettings.prayerCalcMethod,
+      prayerAsrMethod: storeSettings.prayerAsrMethod,
+      hijriAdjust: storeSettings.hijriAdjust,
+    });
+  }, [storeSettings]);
 
   const handleUpdate = useCallback(() => {
     Swal.fire({
@@ -129,6 +208,18 @@ export default function Settings() {
       }
     });
   }, [refresh]);
+
+  const filteredTafsirs = TAFSIR_LIST.filter(
+    (t) => t.lang === "en" || t.lang === "bn",
+  );
+  const groupedTafsirs = filteredTafsirs.reduce<
+    Record<string, typeof filteredTafsirs>
+  >((acc, t) => {
+    const langName = LANGUAGES[t.lang] ?? t.lang;
+    if (!acc[langName]) acc[langName] = [];
+    acc[langName].push(t);
+    return acc;
+  }, {});
 
   return (
     <div className="min-h-screen">
@@ -158,43 +249,38 @@ export default function Settings() {
               </p>
               <SegmentedControl
                 options={THEME_OPTIONS}
-                value={settings.theme}
-                onChange={(v) => updateSettings({ theme: v })}
+                value={local.theme}
+                onChange={(v) => set("theme", v)}
               />
             </div>
             <div>
               <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
-                Arabic Font Size: {settings.arabicFontSize.toFixed(2)}x
+                Arabic Font Size: {local.arabicFontSize.toFixed(2)}x
               </p>
               <input
                 type="range"
                 min="1"
                 max="2"
                 step="0.125"
-                value={settings.arabicFontSize}
+                value={local.arabicFontSize}
                 onChange={(e) =>
-                  updateSettings({
-                    arabicFontSize: Number.parseFloat(e.target.value),
-                  })
+                  set("arabicFontSize", Number.parseFloat(e.target.value))
                 }
                 className="w-full accent-secondary"
               />
             </div>
             <div>
               <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
-                Translation Font Size: {settings.translationFontSize.toFixed(2)}
-                x
+                Translation Font Size: {local.translationFontSize.toFixed(2)}x
               </p>
               <input
                 type="range"
                 min="0.75"
                 max="1.5"
                 step="0.125"
-                value={settings.translationFontSize}
+                value={local.translationFontSize}
                 onChange={(e) =>
-                  updateSettings({
-                    translationFontSize: Number.parseFloat(e.target.value),
-                  })
+                  set("translationFontSize", Number.parseFloat(e.target.value))
                 }
                 className="w-full accent-secondary"
               />
@@ -217,22 +303,22 @@ export default function Settings() {
               </p>
               <SegmentedControl
                 options={LANG_OPTIONS}
-                value={settings.translationLang}
-                onChange={(v) => updateSettings({ translationLang: v })}
+                value={local.translationLang}
+                onChange={(v) => set("translationLang", v)}
               />
             </div>
             <div>
               <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
-                Qari / Reciter
+                Reciter
               </p>
               <select
-                value={settings.qariId}
-                onChange={(e) => updateSettings({ qariId: e.target.value })}
+                value={local.reciterId}
+                onChange={(e) => set("reciterId", e.target.value)}
                 className="w-full rounded-xl border border-border bg-surface-alt px-3 py-2 text-sm text-text-primary outline-none transition-colors focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
               >
-                {QARIS.map((qari) => (
-                  <option key={qari.id} value={qari.id}>
-                    {qari.name}
+                {RECITERS.map((reciter) => (
+                  <option key={reciter.identifier} value={reciter.identifier}>
+                    {reciter.englishName}
                   </option>
                 ))}
               </select>
@@ -247,23 +333,51 @@ export default function Settings() {
               <button
                 type="button"
                 role="switch"
-                aria-checked={settings.tajweedEnabled}
-                onClick={() =>
-                  updateSettings({ tajweedEnabled: !settings.tajweedEnabled })
-                }
+                aria-checked={local.tajweedEnabled}
+                onClick={() => set("tajweedEnabled", !local.tajweedEnabled)}
                 className={`relative h-6 w-11 cursor-pointer rounded-full transition-colors ${
-                  settings.tajweedEnabled
+                  local.tajweedEnabled
                     ? "bg-linear-to-r from-primary to-secondary"
                     : "bg-surface-alt dark:bg-dark-surface-alt"
                 }`}
               >
                 <span
                   className={`absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white shadow-sm transition-transform ${
-                    settings.tajweedEnabled ? "translate-x-5" : "translate-x-0"
+                    local.tajweedEnabled ? "translate-x-5" : "translate-x-0"
                   }`}
                 />
               </button>
             </div>
+          </div>
+        </SettingCard>
+
+        {/* Tafsir */}
+        <SettingCard
+          icon={
+            <IoBookOutline className="text-lg text-primary dark:text-secondary-light" />
+          }
+          title="Tafsir"
+          description="Preferred tafsir/exegesis resource"
+        >
+          <div>
+            <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
+              Tafsir Resource
+            </p>
+            <select
+              value={local.tafsirId}
+              onChange={(e) => set("tafsirId", e.target.value)}
+              className="w-full rounded-xl border border-border bg-surface-alt px-3 py-2 text-sm text-text-primary outline-none transition-colors focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
+            >
+              {Object.entries(groupedTafsirs).map(([langName, tafsirs]) => (
+                <optgroup key={langName} label={langName}>
+                  {tafsirs.map((t) => (
+                    <option key={t.id} value={t.id}>
+                      {t.name} — {t.authorName}
+                    </option>
+                  ))}
+                </optgroup>
+              ))}
+            </select>
           </div>
         </SettingCard>
 
@@ -281,10 +395,8 @@ export default function Settings() {
                 Calculation Method
               </p>
               <select
-                value={settings.prayerCalcMethod}
-                onChange={(e) =>
-                  updateSettings({ prayerCalcMethod: e.target.value })
-                }
+                value={local.prayerCalcMethod}
+                onChange={(e) => set("prayerCalcMethod", e.target.value)}
                 className="w-full rounded-xl border border-border bg-surface-alt px-3 py-2 text-sm text-text-primary outline-none transition-colors focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
               >
                 {CALC_METHODS.map((m) => (
@@ -303,23 +415,21 @@ export default function Settings() {
                   { value: "shafii", label: "Shafii" },
                   { value: "hanafi", label: "Hanafi" },
                 ]}
-                value={settings.prayerAsrMethod}
-                onChange={(v) => updateSettings({ prayerAsrMethod: v })}
+                value={local.prayerAsrMethod}
+                onChange={(v) => set("prayerAsrMethod", v)}
               />
             </div>
             <div>
               <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
-                Hijri Date Adjustment: {settings.hijriAdjust > 0 ? "+" : ""}
-                {settings.hijriAdjust} day
-                {settings.hijriAdjust !== 1 ? "s" : ""}
+                Hijri Date Adjustment: {local.hijriAdjust > 0 ? "+" : ""}
+                {local.hijriAdjust} day
+                {local.hijriAdjust !== 1 ? "s" : ""}
               </p>
               <div className="flex items-center gap-3">
                 <button
                   type="button"
                   onClick={() =>
-                    updateSettings({
-                      hijriAdjust: Math.max(-3, settings.hijriAdjust - 1),
-                    })
+                    set("hijriAdjust", Math.max(-3, local.hijriAdjust - 1))
                   }
                   className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border border-border bg-surface-alt text-sm font-medium text-text-primary transition-colors hover:bg-surface dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
                 >
@@ -330,20 +440,16 @@ export default function Settings() {
                   min="-3"
                   max="3"
                   step="1"
-                  value={settings.hijriAdjust}
+                  value={local.hijriAdjust}
                   onChange={(e) =>
-                    updateSettings({
-                      hijriAdjust: Number.parseInt(e.target.value, 10),
-                    })
+                    set("hijriAdjust", Number.parseInt(e.target.value, 10))
                   }
                   className="w-full accent-secondary"
                 />
                 <button
                   type="button"
                   onClick={() =>
-                    updateSettings({
-                      hijriAdjust: Math.min(3, settings.hijriAdjust + 1),
-                    })
+                    set("hijriAdjust", Math.min(3, local.hijriAdjust + 1))
                   }
                   className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border border-border bg-surface-alt text-sm font-medium text-text-primary transition-colors hover:bg-surface dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
                 >
@@ -356,6 +462,45 @@ export default function Settings() {
             </div>
           </div>
         </SettingCard>
+
+        {/* Save / Discard */}
+        {hasChanges && (
+          <div className="flex items-center justify-end gap-3 rounded-2xl border border-border bg-surface px-5 py-4 dark:border-dark-border dark:bg-dark-surface">
+            <button
+              type="button"
+              onClick={() =>
+                setLocal({
+                  theme: storeSettings.theme,
+                  arabicFontSize: storeSettings.arabicFontSize,
+                  translationFontSize: storeSettings.translationFontSize,
+                  translationLang: storeSettings.translationLang,
+                  reciterId: storeSettings.reciterId,
+                  tafsirId: storeSettings.tafsirId,
+                  tajweedEnabled: storeSettings.tajweedEnabled,
+                  prayerCalcMethod: storeSettings.prayerCalcMethod,
+                  prayerAsrMethod: storeSettings.prayerAsrMethod,
+                  hijriAdjust: storeSettings.hijriAdjust,
+                })
+              }
+              className="cursor-pointer rounded-xl px-5 py-2 text-sm font-semibold text-white transition-colors hover:text-text-muted"
+            >
+              Discard
+            </button>
+            <button
+              type="button"
+              onClick={handleSave}
+              disabled={saving}
+              className={`flex cursor-pointer items-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold text-white transition-all ${
+                saving
+                  ? "cursor-not-allowed bg-text-muted"
+                  : "bg-linear-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/20 active:scale-95"
+              }`}
+            >
+              <IoCheckmarkCircle className="text-base" />
+              {saving ? "Saving..." : "Save"}
+            </button>
+          </div>
+        )}
 
         {/* Data */}
         <SettingCard

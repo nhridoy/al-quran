@@ -2,7 +2,7 @@ import type React from "react";
 import { useCallback, useEffect, useMemo } from "react";
 import { BiBookmark, BiShareAlt } from "react-icons/bi";
 import { IoPauseOutline, IoPlayOutline } from "react-icons/io5";
-import { QARIS } from "../../../data/qaris";
+import { RECITERS } from "../../../data/qaris";
 import { colorizeArabic } from "../../../lib/tajweed";
 import { useBookmarkStore } from "../../../store/bookmarks";
 import { useSettings } from "../../../store/settings";
@@ -25,13 +25,16 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
   const bookmarks = useBookmarkStore((s) => s.bookmarks);
   const addBookmark = useBookmarkStore((s) => s.add);
   const removeBookmark = useBookmarkStore((s) => s.remove);
-  const qariId = useSettings((s) => s.qariId);
-  const qariBase = QARIS.find((q) => q.id === qariId)?.baseUrl;
+  const reciterId = useSettings((s) => s.reciterId);
+  const reciter = RECITERS.find((r) => r.identifier === reciterId);
+  const qariBase = reciter
+    ? `https://cdn.islamic.network/quran/audio/128/${reciterId}`
+    : undefined;
   const tajweedEnabled = useSettings((s) => s.tajweedEnabled);
 
   const coloredSegments = useMemo(
-    () => (tajweedEnabled ? colorizeArabic(ayah.text) : null),
-    [tajweedEnabled, ayah.text],
+    () => (tajweedEnabled ? colorizeArabic(ayah.text.arText) : null),
+    [tajweedEnabled, ayah.text.arText],
   );
 
   const isCurrentAyah = currentTrack?.totalNumber === ayah.totalNumber;
@@ -49,7 +52,7 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
   }, [isCurrentAyah, ayah.totalNumber]);
 
   const handleShare = useCallback(() => {
-    const text = `${ayah.text}\n\n${ayah.enText}\n${ayah.enTextTransliteration}\n\n— ${surah?.enName || ""} ${ayah.numberInSurah}`;
+    const text = `${ayah.text.arText}\n\n${ayah.text.enText}\n${ayah.text.enTextTransliteration}\n\n— ${surah?.enName || ""} ${ayah.numberInSurah}`;
     if (navigator.share) {
       navigator.share({ title: "Al Quran", text }).catch(() => {});
     } else {
@@ -156,9 +159,9 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
                     ayahNo: ayah.numberInSurah,
                     surahName: surah?.name || "",
                     enName: surah?.enName || "",
-                    arabicText: ayah.text,
-                    enText: ayah.enText,
-                    bnText: ayah.bnText,
+                    arabicText: ayah.text.arText,
+                    enText: ayah.text.enText,
+                    bnText: ayah.text.bnText,
                   });
                 }
               }}
@@ -194,20 +197,20 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
           </p>
         ) : (
           <p className="font-arabic mb-3 text-right text-2xl leading-loose text-text-primary dark:text-dark-text-primary md:text-3xl">
-            {ayah.text}
+            {ayah.text.arText}
           </p>
         )}
 
         <p className="mb-2 text-right text-sm italic text-text-muted dark:text-dark-text-muted">
-          {ayah.enTextTransliteration}
+          {ayah.text.enTextTransliteration}
         </p>
 
         <div className="space-y-1.5 border-t border-border pt-3 dark:border-dark-border">
           <p className="text-sm leading-relaxed text-text-primary dark:text-dark-text-primary">
-            {ayah.enText}
+            {ayah.text.enText}
           </p>
           <p className="text-sm leading-relaxed text-text-secondary dark:text-dark-text-secondary">
-            {ayah.bnText}
+            {ayah.text.bnText}
           </p>
         </div>
       </div>

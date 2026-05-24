@@ -78,9 +78,9 @@ export default function Search() {
     for (const surah of Object.values(surahs)) {
       for (const verse of surah.verses) {
         if (
-          verse.text.toLowerCase().includes(q) ||
-          verse.enText.toLowerCase().includes(q) ||
-          verse.bnText.toLowerCase().includes(q)
+          verse.text.arText.toLowerCase().includes(q) ||
+          verse.text.enText.toLowerCase().includes(q) ||
+          verse.text.bnText.toLowerCase().includes(q)
         ) {
           results.push({
             surahNo: surah.no,
@@ -230,13 +230,13 @@ export default function Search() {
                           className="w-full cursor-pointer rounded-xl p-3 text-left transition-colors hover:bg-surface-alt dark:hover:bg-dark-surface-alt"
                         >
                           <p className="font-arabic text-right text-lg leading-relaxed text-text-primary dark:text-dark-text-primary">
-                            {r.verse.text}
+                            {r.verse.text.arText}
                           </p>
                           <p className="mt-1 text-xs italic text-text-muted dark:text-dark-text-muted line-clamp-1">
-                            {r.verse.enText}
+                            {r.verse.text.enText}
                           </p>
                           <p className="text-[11px] text-text-muted/60 dark:text-dark-text-muted/60 line-clamp-1">
-                            {r.verse.bnText}
+                            {r.verse.text.bnText}
                           </p>
                           <p className="mt-1 text-[11px] font-medium text-secondary dark:text-secondary-light">
                             {r.enName} — Ayah {r.verse.numberInSurah}

@@ -9,11 +9,13 @@ const DEFAULTS: AppSettings = {
   arabicFontSize: 1.5,
   translationFontSize: 1,
   translationLang: "en",
-  qariId: "alafasy",
+  reciterId: "ar.alafasy",
+  tafsirId: "en-tafsir-maarif-ul-quran",
   prayerCalcMethod: "MWL",
   prayerAsrMethod: "shafii",
   hijriAdjust: 0,
   tajweedEnabled: false,
+  onboardingComplete: false,
 };
 
 interface SettingsState extends AppSettings {
@@ -44,17 +46,19 @@ export const useSettings = create<SettingsState>((set, get) => ({
       arabicFontSize: next.arabicFontSize,
       translationFontSize: next.translationFontSize,
       translationLang: next.translationLang,
-      qariId: next.qariId,
+      reciterId: next.reciterId,
+      tafsirId: next.tafsirId,
       prayerCalcMethod: next.prayerCalcMethod,
       prayerAsrMethod: next.prayerAsrMethod,
       hijriAdjust: next.hijriAdjust,
       tajweedEnabled: next.tajweedEnabled,
+      onboardingComplete: next.onboardingComplete,
     } as AppSettings);
     set(partial);
   },
 
   reset: async () => {
-    await putInStore("settings", SETTINGS_KEY, DEFAULTS);
+    await putInStore("settings", SETTINGS_KEY, { ...DEFAULTS });
     set({ ...DEFAULTS });
   },
 }));

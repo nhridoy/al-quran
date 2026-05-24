@@ -3,7 +3,7 @@ import { FiTrash2 } from "react-icons/fi";
 import { IoPlayCircleOutline } from "react-icons/io5";
 import Swal from "sweetalert2";
 import { Header } from "../../components/common/Header/Header";
-import { QARIS } from "../../data/qaris";
+import { RECITERS } from "../../data/qaris";
 import { useSurahs } from "../../hooks/useSurahs";
 import {
   clearAllAudio,
@@ -18,7 +18,7 @@ import type { SurahData } from "../../types";
 
 interface SurahDownloadCardProps {
   surah: SurahData;
-  qariId: string;
+  reciterId: string;
   qariBase?: string;
   onDownloaded?: () => void;
 }
@@ -31,7 +31,7 @@ function formatBytes(bytes: number): string {
 
 function SurahDownloadCard({
   surah,
-  qariId,
+  reciterId,
   qariBase,
   onDownloaded,
 }: SurahDownloadCardProps) {
@@ -44,7 +44,7 @@ function SurahDownloadCard({
   const paused = useRef(false);
 
   const downloadItem = useDownloadsStore((s) =>
-    s.items.find((i) => i.surahNo === surah.no && i.qariId === qariId),
+    s.items.find((i) => i.surahNo === surah.no && i.qariId === reciterId),
   );
   const isDownloaded = downloadItem?.progress === 100;
   const isPaused =
@@ -66,12 +66,12 @@ function SurahDownloadCard({
     const total = surah.verses.length;
     const storeItems = useDownloadsStore.getState().items;
     const existing = storeItems.find(
-      (i) => i.surahNo === surah.no && i.qariId === qariId,
+      (i) => i.surahNo === surah.no && i.qariId === reciterId,
     );
     if (!existing) {
       addItem({
         surahNo: surah.no,
-        qariId,
+        qariId: reciterId,
         surahName: surah.enName,
         totalAyahs: total,
         downloadedAyahs: 0,
@@ -103,9 +103,9 @@ function SurahDownloadCard({
 
     if (cancelled.current) {
       await removeFromCache(surah.verses, qariBase);
-      await removeItem(surah.no, qariId);
+      await removeItem(surah.no, reciterId);
     } else {
-      updateItem(surah.no, qariId, {
+      updateItem(surah.no, reciterId, {
         downloadedAyahs: Math.round((finalPct / 100) * total),
         progress: finalPct,
       });
@@ -113,7 +113,15 @@ function SurahDownloadCard({
     if (!paused.current && !cancelled.current) {
       onDownloaded?.();
     }
-  }, [surah, qariBase, qariId, addItem, updateItem, removeItem, onDownloaded]);
+  }, [
+    surah,
+    qariBase,
+    reciterId,
+    addItem,
+    updateItem,
+    removeItem,
+    onDownloaded,
+  ]);
 
   const handlePause = useCallback(() => {
     paused.current = true;
@@ -125,9 +133,9 @@ function SurahDownloadCard({
 
   const handleDelete = useCallback(async () => {
     await removeFromCache(surah.verses, qariBase);
-    await removeItem(surah.no, qariId);
+    await removeItem(surah.no, reciterId);
     onDownloaded?.();
-  }, [surah, qariBase, qariId, removeItem, onDownloaded]);
+  }, [surah, qariBase, reciterId, removeItem, onDownloaded]);
 
   return (
     <div className="flex items-center gap-3 rounded-xl border border-border bg-surface p-3 transition-all hover:bg-surface-alt dark:border-dark-border dark:bg-dark-surface-card dark:hover:bg-dark-surface-alt">
@@ -234,8 +242,11 @@ function SurahDownloadCard({
 
 export default function DownloadsPage() {
   const { surahList, loading } = useSurahs();
-  const qariId = useSettings((s) => s.qariId);
-  const qariBase = QARIS.find((q) => q.id === qariId)?.baseUrl;
+  const reciterId = useSettings((s) => s.reciterId);
+  const reciter = RECITERS.find((r) => r.identifier === reciterId);
+  const qariBase = reciter
+    ? `https://cdn.islamic.network/quran/audio/128/${reciterId}`
+    : undefined;
   const loadDownloads = useDownloadsStore((s) => s.load);
   const [search, setSearch] = useState("");
   const [cacheSize, setCacheSize] = useState(0);
@@ -340,7 +351,7 @@ export default function DownloadsPage() {
             <SurahDownloadCard
               key={surah.no}
               surah={surah}
-              qariId={qariId}
+              reciterId={reciterId}
               qariBase={qariBase}
               onDownloaded={refreshCacheSize}
             />

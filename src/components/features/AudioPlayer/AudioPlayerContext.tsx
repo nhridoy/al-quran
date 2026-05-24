@@ -36,10 +36,8 @@ function buildTrack(
   verse: {
     numberInSurah: number;
     totalNumber: number;
-    text: string;
-    enText: string;
-    enTextTransliteration: string;
-    audioSecond?: string;
+    text: { arText: string; enText: string; enTextTransliteration: string };
+    audio?: { primary: string };
   },
   qariBase?: string,
 ): Track {
@@ -50,10 +48,10 @@ function buildTrack(
     totalNumber: verse.totalNumber,
     surahName,
     enName,
-    arabicText: verse.text,
-    translationText: verse.enText,
-    transliterationText: verse.enTextTransliteration,
-    audioUrl: verse.audioSecond || getAudioUrl(verse.totalNumber, qariBase),
+    arabicText: verse.text.arText,
+    translationText: verse.text.enText,
+    transliterationText: verse.text.enTextTransliteration,
+    audioUrl: verse.audio?.primary || getAudioUrl(verse.totalNumber, qariBase),
   };
 }
 
@@ -65,10 +63,8 @@ export function buildPlaylistFromSurah(
     verses: Array<{
       numberInSurah: number;
       totalNumber: number;
-      text: string;
-      enText: string;
-      enTextTransliteration: string;
-      audioSecond?: string;
+      text: { arText: string; enText: string; enTextTransliteration: string };
+      audio?: { primary: string };
     }>;
   },
   qariBase?: string,

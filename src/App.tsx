@@ -1,9 +1,10 @@
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AudioPlayer, {
   AudioPlayerProvider,
 } from "./components/features/AudioPlayer";
 import LastReadTracker from "./components/features/LastReadTracker";
+import Onboarding from "./components/features/Onboarding/Onboarding";
 import HomeLayout from "./layouts/HomeLayout/HomeLayout";
 import MainLayout from "./layouts/MainLayout/MainLayout";
 import Para from "./pages/Para/Para";
@@ -102,12 +103,25 @@ function ThemeController() {
 }
 
 function App() {
+  const [showOnboarding, setShowOnboarding] = useState(false);
+  const settingsLoaded = useSettings((s) => s.loaded);
+  const onboardingComplete = useSettings((s) => s.onboardingComplete);
+
+  useEffect(() => {
+    if (settingsLoaded) {
+      setShowOnboarding(!onboardingComplete);
+    }
+  }, [settingsLoaded, onboardingComplete]);
+
   return (
     <BrowserRouter>
       <AudioPlayerProvider>
         <DataLoader />
         <LocationLoader />
         <ThemeController />
+        {showOnboarding && (
+          <Onboarding onComplete={() => setShowOnboarding(false)} />
+        )}
         <MainLayout>
           <Suspense fallback={<div className="h-screen" />}>
             <Routes>

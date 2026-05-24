@@ -4,6 +4,7 @@ import { Header } from "../../components/common/Header/Header";
 import TafsirDrawer from "../../components/features/Tafsir/TafsirDrawer";
 import Ayah from "../../components/quran/Ayah/Ayah";
 import { useSurah } from "../../hooks/useSurah";
+import { useSettings } from "../../store/settings";
 import { SurahHead } from "./SurahHead";
 
 export default function SurahPage() {
@@ -11,6 +12,7 @@ export default function SurahPage() {
   const { surah } = useSurah(id);
   const [searchParams] = useSearchParams();
   const [tafsirOpen, setTafsirOpen] = useState(false);
+  const tafsirId = useSettings((s) => s.tafsirId);
   const scrollToAyah = searchParams.get("ayah")
     ? Number(searchParams.get("ayah"))
     : undefined;
@@ -64,6 +66,7 @@ export default function SurahPage() {
         open={tafsirOpen}
         onClose={() => setTafsirOpen(false)}
         chapterNumber={surah.no}
+        tafsirId={tafsirId}
         surahName={surah.enName}
       />
     </div>

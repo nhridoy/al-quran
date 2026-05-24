@@ -22,8 +22,8 @@ Always run `pnpm lint-format && pnpm typecheck` before committing.
 ## Architecture
 
 - **SPA** with React Router v7. Routes: `/` (splash), `/surah`, `/surah/:id`, `/para`, `/para/:id`, `/settings`, `/about`, `/credits`, `/donation`. Catch-all redirects to `/surah`.
-- **Data source**: `cdn.jsdelivr.net/gh/nhridoy/quran-api@main/v2/singleSurah.min.json` — cached in **IndexedDB** (`idb` lib, `src/lib/db.ts`).
-- **Audio**: `cdn.islamic.network/quran/audio/128/ar.alafasy/{totalNumber}.mp3`. Workbox runtime cache (30-day, max 10 entries).
+- **Data source v4**: `cdn.jsdelivr.net/gh/nhridoy/quran-api@main/v4/surah/verse/{id}.min.json` (id 1–114, fetched in parallel) — cached in **IndexedDB** (`idb` lib, `src/lib/db.ts`). Per-surah audio, tafsir, and juz data fetched on demand from the same base..
+- **Audio**: `cdn.islamic.network/quran/audio/128/ar.alafasy/{totalNumber}.mp3`. Workbox runtime cache (30-day, max 10 entries). Audio URLs also available via v4 API per-verse `audio.primary` field.
 - **PWA**: `vite-plugin-pwa` with `registerType: "prompt"`. SW in `main.tsx`. Install prompt + update banner components.
 - **Responsive layout**: Desktop sidebar (`md:block`), mobile bottom nav (`md:hidden`).
 - **Dark mode**: via `.dark` class on ancestor. CSS custom properties.
@@ -42,7 +42,7 @@ Always run `pnpm lint-format && pnpm typecheck` before committing.
 1. Splash fetches all surah data from API → cached in IndexedDB (`surahs` store)
 2. `useSurahs()` → reads from IDB (fetches on miss)
 3. `useSurah(id)` → reads single surah from cache
-4. `usePara(id, surahs)` → computes juz/para data client-side
+4. `usePara(id)` → fetches juz/para data from v4 API `/v4/juz/verse/{id}.json`
 5. Settings "Refresh" clears cache + re-fetches
 
 ## Build & Deploy

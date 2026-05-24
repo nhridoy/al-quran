@@ -1,61 +1,54 @@
-import { useMemo } from "react";
-import type { ParaSurah, SurahData } from "../types";
+import { useCallback, useEffect, useState } from "react";
+import { getJuzData, getSurahs } from "../lib/db";
+import type { ParaSurah } from "../types";
 
-export function usePara(
-  id: string | undefined,
-  surahs: Record<string, SurahData>,
-) {
-  return useMemo(() => {
-    if (!id || Object.keys(surahs).length === 0) return null;
+export function usePara(id: string | undefined) {
+  const [para, setPara] = useState<ParaSurah[] | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-    const paraList: Record<string, ParaSurah[]> = {};
-    for (let i = 1; i <= 30; i++) {
-      paraList[i] = [];
+  const fetchPara = useCallback(async () => {
+    if (!id) {
+      setPara(null);
+      return;
     }
-
-    let currentPara = 1;
-    for (let index = 1; index <= 114; index++) {
-      const surah = surahs[String(index)];
-      if (!surah) continue;
-
-      for (const verse of surah.verses) {
-        if (currentPara === verse.juz) {
-          const target = paraList[currentPara];
-          const last = target.at(-1);
-          if (last?.no === surah.no) {
-            last.verses.push(verse);
-          } else {
-            target.push({
-              name: surah.name,
-              enName: surah.enName,
-              enNameTranslation: surah.enNameTranslation,
-              bnNameTranslation: surah.bnNameTranslation,
-              no: surah.no,
-              revelationType: surah.revelationType,
-              verses: [verse],
-            });
-          }
-        } else if (currentPara + 1 === verse.juz) {
-          currentPara += 1;
-          const target = paraList[currentPara];
-          const last = target.at(-1);
-          if (last?.no === surah.no) {
-            last.verses.push(verse);
-          } else {
-            target.push({
-              name: surah.name,
-              enName: surah.enName,
-              enNameTranslation: surah.enNameTranslation,
-              bnNameTranslation: surah.bnNameTranslation,
-              no: surah.no,
-              revelationType: surah.revelationType,
-              verses: [verse],
-            });
-          }
-        }
+    setLoading(true);
+    setError(null);
+    try {
+      const juzNo = Number.parseInt(id, 10);
+      if (Number.isNaN(juzNo) || juzNo < 1 || juzNo > 30) {
+        setError("Invalid para number");
+        setLoading(false);
+        return;
       }
+      const juzData = await getJuzData(juzNo);
+      const allSurahs = await getSurahs();
+      const result: ParaSurah[] = [];
+      for (let i = 1; i <= 114; i++) {
+        const juzSurah = juzData[String(i)];
+        const fullSurah = allSurahs[String(i)];
+        if (!juzSurah || !fullSurah || juzSurah.verses.length === 0) continue;
+        result.push({
+          name: fullSurah.name,
+          enName: fullSurah.enName,
+          enNameTranslation: fullSurah.enNameTranslation,
+          bnNameTranslation: fullSurah.bnNameTranslation,
+          no: fullSurah.no,
+          revelationType: fullSurah.revelationType,
+          verses: juzSurah.verses,
+        });
+      }
+      setPara(result);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Failed to load para");
+    } finally {
+      setLoading(false);
     }
+  }, [id]);
 
-    return id ? (paraList[id] ?? null) : null;
-  }, [id, surahs]);
+  useEffect(() => {
+    fetchPara();
+  }, [fetchPara]);
+
+  return { para, loading, error };
 }

@@ -10,7 +10,7 @@ import {
   buildPlaylistFromSurah,
   useAudioPlayer,
 } from "../../components/features/AudioPlayer";
-import { QARIS } from "../../data/qaris";
+import { RECITERS } from "../../data/qaris";
 import { useSettings } from "../../store/settings";
 import type { SurahData } from "../../types";
 
@@ -28,8 +28,11 @@ export const SurahHead: React.FC<SurahHeadProps> = ({ surah }) => {
     prev,
     next,
   } = useAudioPlayer();
-  const qariId = useSettings((s) => s.qariId);
-  const qariBase = QARIS.find((q) => q.id === qariId)?.baseUrl;
+  const reciterId = useSettings((s) => s.reciterId);
+  const reciter = RECITERS.find((r) => r.identifier === reciterId);
+  const qariBase = reciter
+    ? `https://cdn.islamic.network/quran/audio/128/${reciterId}`
+    : undefined;
 
   const isCurrentSurah = currentTrack?.surahNo === surah.no;
 
