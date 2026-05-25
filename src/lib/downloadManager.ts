@@ -41,6 +41,18 @@ export async function downloadAyahAudio(url: string): Promise<boolean> {
   }
 }
 
+export async function downloadAudioWithFallback(
+  urls: string[],
+): Promise<string | null> {
+  for (const url of urls) {
+    const cached = await isAudioCached(url);
+    if (cached) return url;
+    const ok = await downloadAyahAudio(url);
+    if (ok) return url;
+  }
+  return null;
+}
+
 export async function removeFromCache(urls: string[]): Promise<void> {
   const cache = await caches.open(CACHE_NAME);
   for (const url of urls) {

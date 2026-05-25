@@ -28,6 +28,7 @@ export function buildPlaylistFromSurah(surahData: SurahData): Track[] {
   const tracks: Track[] = [];
   for (const verse of surahData.verses) {
     if (!verse.audio?.primary) continue;
+    const { primary, secondary, tertiary, alternative } = verse.audio;
     tracks.push({
       id: `${surahData.no}-${verse.numberInSurah}`,
       surahNo: surahData.no,
@@ -38,7 +39,10 @@ export function buildPlaylistFromSurah(surahData: SurahData): Track[] {
       arabicText: verse.text.arText,
       translationText: verse.text.enText,
       transliterationText: verse.text.enTextTransliteration,
-      audioUrl: verse.audio.primary,
+      audioUrl: primary,
+      fallbackUrls: [secondary, tertiary, alternative].filter(
+        (u) => u && u !== primary,
+      ),
     });
   }
   return tracks;
@@ -99,6 +103,7 @@ export function AudioPlayerProvider({
   const playByIndexRef = useRef<(index: number) => void>(() => {});
   const shuffleIndicesRef = useRef<number[]>([]);
   const shuffleCursorRef = useRef(0);
+  const fallbackIndexRef = useRef(0);
 
   useEffect(() => {
     isPlayingRef.current = isPlaying;
@@ -126,6 +131,15 @@ export function AudioPlayerProvider({
     const handleWaiting = () => setIsLoading(true);
     const handleCanPlay = () => setIsLoading(false);
     const handleError = () => {
+      const track = currentTrackRef.current;
+      if (track && fallbackIndexRef.current < track.fallbackUrls.length) {
+        const nextUrl = track.fallbackUrls[fallbackIndexRef.current];
+        fallbackIndexRef.current++;
+        setIsLoading(true);
+        audio.src = nextUrl;
+        audio.play().catch(() => {});
+        return;
+      }
       setIsPlaying(false);
       isPlayingRef.current = false;
       setIsLoading(false);
@@ -197,6 +211,7 @@ export function AudioPlayerProvider({
     activeIndexRef.current = index;
     setCurrentTrack(track);
     currentTrackRef.current = track;
+    fallbackIndexRef.current = 0;
     setIsLoading(true);
     const audio = audioRef.current;
     if (!audio) return;
@@ -232,6 +247,7 @@ export function AudioPlayerProvider({
       activeIndexRef.current = 0;
       setCurrentTrack(track);
       currentTrackRef.current = track;
+      fallbackIndexRef.current = 0;
       const audio = audioRef.current;
       if (!audio) return;
       audio.src = track.audioUrl;

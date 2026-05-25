@@ -20,6 +20,7 @@ function buildPlaylistFromPara(segments: ParaSurah[]): Track[] {
   for (const segment of segments) {
     for (const verse of segment.verses) {
       if (!verse.audio?.primary) continue;
+      const { primary, secondary, tertiary, alternative } = verse.audio;
       tracks.push({
         id: `${segment.no}-${verse.numberInSurah}`,
         surahNo: segment.no,
@@ -30,7 +31,10 @@ function buildPlaylistFromPara(segments: ParaSurah[]): Track[] {
         arabicText: verse.text.arText,
         translationText: verse.text.enText,
         transliterationText: verse.text.enTextTransliteration,
-        audioUrl: verse.audio.primary,
+        audioUrl: primary,
+        fallbackUrls: [secondary, tertiary, alternative].filter(
+          (u) => u && u !== primary,
+        ),
       });
     }
   }

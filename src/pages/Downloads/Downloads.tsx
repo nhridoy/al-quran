@@ -7,9 +7,8 @@ import { useSurahs } from "../../hooks/useSurahs";
 import { getAudioData, mergeAudioWithSurah } from "../../lib/db";
 import {
   clearAllAudio,
-  downloadAyahAudio,
+  downloadAudioWithFallback,
   getCacheSize,
-  isAudioCached,
   removeFromCache,
 } from "../../lib/downloadManager";
 import { useDownloadsStore } from "../../store/downloads";
@@ -79,36 +78,37 @@ function SurahDownloadCard({
     const audioUrls = await getAudioData(reciterId, surah.no);
     const merged = await mergeAudioWithSurah(surah, audioUrls);
 
+    let downloadedCount = 0;
     for (let i = 0; i < merged.verses.length; i++) {
       if (cancelled.current || paused.current) break;
       const verse = merged.verses[i];
       if (!verse.audio?.primary) continue;
-      const cached = await isAudioCached(verse.audio.primary);
-      if (!cached) {
-        await downloadAyahAudio(verse.audio.primary);
-      }
+      const { primary, secondary, tertiary, alternative } = verse.audio;
+      const urls = [primary, secondary, tertiary, alternative].filter(
+        (u, idx, arr) => u && arr.indexOf(u) === idx,
+      );
+      const ok = await downloadAudioWithFallback(urls);
+      if (ok) downloadedCount++;
       const pct = Math.round(((i + 1) / total) * 100);
       setProgress(pct);
     }
     setDownloading(false);
 
-    let cachedCount = 0;
-    if (paused.current) {
-      const urls = merged.verses
-        .map((v) => v.audio?.primary)
-        .filter((u): u is string => !!u);
-      for (const url of urls) {
-        if (await isAudioCached(url)) cachedCount++;
-      }
-    }
-    const finalPct = paused.current
-      ? Math.round((cachedCount / total) * 100)
-      : 100;
+    const finalPct = cancelled.current
+      ? 0
+      : Math.round((downloadedCount / total) * 100);
 
     if (cancelled.current) {
-      const urls = merged.verses
-        .map((v) => v.audio?.primary)
-        .filter((u): u is string => !!u);
+      const urls: string[] = [];
+      for (const v of merged.verses) {
+        if (!v.audio) continue;
+        const { primary, secondary, tertiary, alternative } = v.audio;
+        urls.push(
+          ...[primary, secondary, tertiary, alternative].filter(
+            (u, idx, arr) => u && arr.indexOf(u) === idx,
+          ),
+        );
+      }
       await removeFromCache(urls);
       await removeItem(surah.no, reciterId);
     } else {
@@ -133,9 +133,16 @@ function SurahDownloadCard({
   const handleDelete = useCallback(async () => {
     const audioUrls = await getAudioData(reciterId, surah.no);
     const merged = await mergeAudioWithSurah(surah, audioUrls);
-    const urls = merged.verses
-      .map((v) => v.audio?.primary)
-      .filter((u): u is string => !!u);
+    const urls: string[] = [];
+    for (const v of merged.verses) {
+      if (!v.audio) continue;
+      const { primary, secondary, tertiary, alternative } = v.audio;
+      urls.push(
+        ...[primary, secondary, tertiary, alternative].filter(
+          (u, idx, arr) => u && arr.indexOf(u) === idx,
+        ),
+      );
+    }
     await removeFromCache(urls);
     await removeItem(surah.no, reciterId);
     onDownloaded?.();

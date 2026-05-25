@@ -9,6 +9,7 @@ export interface Track {
   translationText: string;
   transliterationText: string;
   audioUrl: string;
+  fallbackUrls: string[];
 }
 
 export type RepeatMode = "none" | "all" | "one";
