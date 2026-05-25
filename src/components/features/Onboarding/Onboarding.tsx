@@ -11,6 +11,7 @@ import {
   IoNotificationsOutline,
 } from "react-icons/io5";
 import { useSurahs } from "../../../hooks/useSurahs";
+import { LANGUAGES, RECITERS, TAFSIR_LIST } from "../../../lib/const";
 import {
   cacheAllAudioForReciter,
   cacheAllJuz,
@@ -20,7 +21,6 @@ import {
 } from "../../../lib/db";
 import { useLocationStore } from "../../../store/location";
 import { useSettings } from "../../../store/settings";
-import { LANGUAGES, RECITERS, TAFSIR_LIST } from "../../../lib/const";
 
 type Step = 0 | 1 | 2 | 3 | 4;
 

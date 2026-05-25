@@ -12,6 +12,7 @@ import { ToastContainer, toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { Header } from "../../components/common/Header/Header";
 import { useSurahs } from "../../hooks/useSurahs";
+import { LANGUAGES, RECITERS, TAFSIR_LIST } from "../../lib/const";
 import {
   cacheAllAudioForReciter,
   cacheAllJuzAudioForReciter,
@@ -21,7 +22,6 @@ import {
   clearTafsirCache,
 } from "../../lib/db";
 import { useSettings } from "../../store/settings";
-import { LANGUAGES, RECITERS, TAFSIR_LIST } from "../../lib/const";
 
 const THEME_OPTIONS = [
   { value: "system", label: "System" },
