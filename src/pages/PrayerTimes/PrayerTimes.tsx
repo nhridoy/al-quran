@@ -80,6 +80,12 @@ export default function PrayerTimesPage() {
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    if (lat === null && lng === null && !geoLoading && !geoError) {
+      request();
+    }
+  }, [lat, lng, geoLoading, geoError, request]);
+
   const times = useMemo(() => {
     if (!coords) return null;
     const coordinates = new Coordinates(coords.lat, coords.lng);

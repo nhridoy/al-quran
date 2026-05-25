@@ -138,6 +138,12 @@ export default function QiblaFinder() {
     globalThis.addEventListener("deviceorientation", handleOrientation);
   };
 
+  useEffect(() => {
+    if (lat === null && lng === null && !geoLoading && !geoError) {
+      request();
+    }
+  }, [lat, lng, geoLoading, geoError, request]);
+
   // Setup device orientation listening
   useEffect(() => {
     if (!hasCoords) return;
