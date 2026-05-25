@@ -29,12 +29,7 @@ export function usePara(id: string | undefined) {
         const fullSurah = allSurahs[String(i)];
         if (!juzSurah || !fullSurah || juzSurah.verses.length === 0) continue;
         result.push({
-          name: fullSurah.name,
-          enName: fullSurah.enName,
-          enNameTranslation: fullSurah.enNameTranslation,
-          bnNameTranslation: fullSurah.bnNameTranslation,
-          no: fullSurah.no,
-          revelationType: fullSurah.revelationType,
+          ...fullSurah,
           verses: juzSurah.verses,
         });
       }

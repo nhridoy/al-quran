@@ -5,7 +5,7 @@ import { FiPauseCircle, FiPlayCircle } from "react-icons/fi";
 import { useParams } from "react-router-dom";
 import { getAudioData, mergeAudioWithSurah } from "../../../lib/db";
 import { useSettings } from "../../../store/settings";
-import type { ParaSurah, SurahData } from "../../../types";
+import type { ParaSurah } from "../../../types";
 import type { Track } from "../../features/AudioPlayer";
 import { useAudioPlayer } from "../../features/AudioPlayer";
 import Ayahs from "../Ayah/Ayah";
@@ -54,11 +54,8 @@ export const ParaHeader: React.FC<ParaHeadProps> = ({ para, allSegments }) => {
       const merged = await Promise.all(
         allSegments.map(async (seg) => {
           const audioUrls = await getAudioData(reciterId, seg.no);
-          const mergedSurah = await mergeAudioWithSurah(
-            seg as SurahData,
-            audioUrls,
-          );
-          return { ...seg, verses: mergedSurah.verses } as ParaSurah;
+          const mergedSurah = await mergeAudioWithSurah(seg, audioUrls);
+          return { ...seg, verses: mergedSurah.verses };
         }),
       );
       setSegmentsWithAudio(merged);

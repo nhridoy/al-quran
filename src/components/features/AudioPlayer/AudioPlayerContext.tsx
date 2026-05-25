@@ -7,6 +7,7 @@ import {
   useRef,
   useState,
 } from "react";
+import type { SurahData } from "../../../types";
 import type {
   AudioPlayerContextType,
   AudioProgressType,
@@ -23,45 +24,24 @@ export function formatTime(seconds: number): string {
   return `${minutes}:${secs.toString().padStart(2, "0")}`;
 }
 
-function buildTrack(
-  surahNo: number,
-  surahName: string,
-  enName: string,
-  verse: {
-    numberInSurah: number;
-    totalNumber: number;
-    text: { arText: string; enText: string; enTextTransliteration: string };
-    audio: { primary: string };
-  },
-): Track {
-  return {
-    id: `${surahNo}-${verse.numberInSurah}`,
-    surahNo,
-    ayahNumber: verse.numberInSurah,
-    totalNumber: verse.totalNumber,
-    surahName,
-    enName,
-    arabicText: verse.text.arText,
-    translationText: verse.text.enText,
-    transliterationText: verse.text.enTextTransliteration,
-    audioUrl: verse.audio.primary,
-  };
-}
-
-export function buildPlaylistFromSurah(surahData: {
-  no: number;
-  name: string;
-  enName: string;
-  verses: Array<{
-    numberInSurah: number;
-    totalNumber: number;
-    text: { arText: string; enText: string; enTextTransliteration: string };
-    audio: { primary: string };
-  }>;
-}): Track[] {
-  return surahData.verses.map((verse) =>
-    buildTrack(surahData.no, surahData.name, surahData.enName, verse),
-  );
+export function buildPlaylistFromSurah(surahData: SurahData): Track[] {
+  const tracks: Track[] = [];
+  for (const verse of surahData.verses) {
+    if (!verse.audio?.primary) continue;
+    tracks.push({
+      id: `${surahData.no}-${verse.numberInSurah}`,
+      surahNo: surahData.no,
+      ayahNumber: verse.numberInSurah,
+      totalNumber: verse.totalNumber,
+      surahName: surahData.name,
+      enName: surahData.enName,
+      arabicText: verse.text.arText,
+      translationText: verse.text.enText,
+      transliterationText: verse.text.enTextTransliteration,
+      audioUrl: verse.audio.primary,
+    });
+  }
+  return tracks;
 }
 
 function createShuffledIndices(length: number, startIndex: number): number[] {

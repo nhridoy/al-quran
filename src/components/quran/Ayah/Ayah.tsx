@@ -7,7 +7,7 @@ import { getAudioData, mergeAudioWithSurah } from "../../../lib/db";
 import { colorizeArabic } from "../../../lib/tajweed";
 import { useBookmarkStore } from "../../../store/bookmarks";
 import { useSettings } from "../../../store/settings";
-import type { Verse } from "../../../types";
+import type { SurahData, Verse } from "../../../types";
 import type { Track } from "../../features/AudioPlayer";
 import {
   buildPlaylistFromSurah,
@@ -16,7 +16,7 @@ import {
 
 interface AyahsProps {
   ayah: Verse;
-  surah?: { no: number; name: string; enName: string; verses?: Verse[] };
+  surah?: SurahData;
   tracklist?: Track[];
   surahNo?: number;
 }
@@ -79,21 +79,14 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
       setPlaylist(tracklist, Math.max(idx, 0));
       return;
     }
-    if (!surah?.verses) return;
+    if (!surah) return;
     const idx = ayah.numberInSurah - 1;
     if (!audioPromiseRef.current) {
+      const currentSurah = surah;
       audioPromiseRef.current = (async () => {
-        const audioUrls = await getAudioData(reciterId, surah.no);
+        const audioUrls = await getAudioData(reciterId, currentSurah.no);
         if (audioUrls.length === 0) return [];
-        const merged = await mergeAudioWithSurah(
-          surah as {
-            no: number;
-            name: string;
-            enName: string;
-            verses: Verse[];
-          },
-          audioUrls,
-        );
+        const merged = await mergeAudioWithSurah(currentSurah, audioUrls);
         return buildPlaylistFromSurah(merged);
       })();
     }
