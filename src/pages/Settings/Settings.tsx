@@ -21,7 +21,7 @@ import {
   clearTafsirCache,
 } from "../../lib/db";
 import { useSettings } from "../../store/settings";
-import { LANGUAGES, RECITERS, TAFSIR_LIST } from "../../types";
+import { LANGUAGES, RECITERS, TAFSIR_LIST } from "../../lib/const";
 
 const THEME_OPTIONS = [
   { value: "system", label: "System" },
