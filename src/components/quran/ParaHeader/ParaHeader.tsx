@@ -1,13 +1,13 @@
 import type React from "react";
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { CgPlayTrackNextO, CgPlayTrackPrevO } from "react-icons/cg";
 import { FiPauseCircle, FiPlayCircle } from "react-icons/fi";
 import { useParams } from "react-router-dom";
-import { RECITERS } from "../../../data/qaris";
+import { getAudioData, mergeAudioWithSurah } from "../../../lib/db";
 import { useSettings } from "../../../store/settings";
-import type { ParaSurah } from "../../../types";
+import type { ParaSurah, SurahData } from "../../../types";
 import type { Track } from "../../features/AudioPlayer";
-import { getAudioUrl, useAudioPlayer } from "../../features/AudioPlayer";
+import { useAudioPlayer } from "../../features/AudioPlayer";
 import Ayahs from "../Ayah/Ayah";
 
 interface ParaHeadProps {
@@ -15,13 +15,11 @@ interface ParaHeadProps {
   allSegments: ParaSurah[];
 }
 
-function buildPlaylistFromPara(
-  segments: ParaSurah[],
-  qariBase?: string,
-): Track[] {
+function buildPlaylistFromPara(segments: ParaSurah[]): Track[] {
   const tracks: Track[] = [];
   for (const segment of segments) {
     for (const verse of segment.verses) {
+      if (!verse.audio?.primary) continue;
       tracks.push({
         id: `${segment.no}-${verse.numberInSurah}`,
         surahNo: segment.no,
@@ -32,8 +30,7 @@ function buildPlaylistFromPara(
         arabicText: verse.text.arText,
         translationText: verse.text.enText,
         transliterationText: verse.text.enTextTransliteration,
-        audioUrl:
-          verse.audio?.primary || getAudioUrl(verse.totalNumber, qariBase),
+        audioUrl: verse.audio.primary,
       });
     }
   }
@@ -45,14 +42,32 @@ export const ParaHeader: React.FC<ParaHeadProps> = ({ para, allSegments }) => {
   const { currentTrack, isPlaying, togglePlay, setPlaylist, prev, next } =
     useAudioPlayer();
   const reciterId = useSettings((s) => s.reciterId);
-  const reciter = RECITERS.find((r) => r.identifier === reciterId);
-  const qariBase = reciter
-    ? `https://cdn.islamic.network/quran/audio/128/${reciterId}`
-    : undefined;
+  const [segmentsWithAudio, setSegmentsWithAudio] = useState<
+    ParaSurah[] | null
+  >(null);
+  const loadingRef = useRef(false);
+
+  useEffect(() => {
+    if (segmentsWithAudio || loadingRef.current) return;
+    loadingRef.current = true;
+    (async () => {
+      const merged = await Promise.all(
+        allSegments.map(async (seg) => {
+          const audioUrls = await getAudioData(reciterId, seg.no);
+          const mergedSurah = await mergeAudioWithSurah(
+            seg as SurahData,
+            audioUrls,
+          );
+          return { ...seg, verses: mergedSurah.verses } as ParaSurah;
+        }),
+      );
+      setSegmentsWithAudio(merged);
+    })();
+  }, [allSegments, reciterId, segmentsWithAudio]);
 
   const paraTracks = useMemo(
-    () => buildPlaylistFromPara(allSegments, qariBase),
-    [allSegments, qariBase],
+    () => (segmentsWithAudio ? buildPlaylistFromPara(segmentsWithAudio) : []),
+    [segmentsWithAudio],
   );
 
   const isCurrentPara =

@@ -3,8 +3,8 @@ import { FiTrash2 } from "react-icons/fi";
 import { IoPlayCircleOutline } from "react-icons/io5";
 import Swal from "sweetalert2";
 import { Header } from "../../components/common/Header/Header";
-import { RECITERS } from "../../data/qaris";
 import { useSurahs } from "../../hooks/useSurahs";
+import { getAudioData, mergeAudioWithSurah } from "../../lib/db";
 import {
   clearAllAudio,
   downloadAyahAudio,
@@ -19,7 +19,6 @@ import type { SurahData } from "../../types";
 interface SurahDownloadCardProps {
   surah: SurahData;
   reciterId: string;
-  qariBase?: string;
   onDownloaded?: () => void;
 }
 
@@ -32,7 +31,6 @@ function formatBytes(bytes: number): string {
 function SurahDownloadCard({
   surah,
   reciterId,
-  qariBase,
   onDownloaded,
 }: SurahDownloadCardProps) {
   const addItem = useDownloadsStore((s) => s.add);
@@ -58,7 +56,6 @@ function SurahDownloadCard({
     : (downloadItem?.progress ?? 0);
 
   const runDownload = useCallback(async () => {
-    if (!qariBase) return;
     cancelled.current = false;
     paused.current = false;
     setDownloading(true);
@@ -79,12 +76,16 @@ function SurahDownloadCard({
       });
     }
 
-    for (let i = 0; i < surah.verses.length; i++) {
+    const audioUrls = await getAudioData(reciterId, surah.no);
+    const merged = await mergeAudioWithSurah(surah, audioUrls);
+
+    for (let i = 0; i < merged.verses.length; i++) {
       if (cancelled.current || paused.current) break;
-      const verse = surah.verses[i];
-      const cached = await isAudioCached(verse.totalNumber, qariBase);
+      const verse = merged.verses[i];
+      if (!verse.audio?.primary) continue;
+      const cached = await isAudioCached(verse.audio.primary);
       if (!cached) {
-        await downloadAyahAudio(verse.totalNumber, qariBase);
+        await downloadAyahAudio(verse.audio.primary);
       }
       const pct = Math.round(((i + 1) / total) * 100);
       setProgress(pct);
@@ -93,8 +94,11 @@ function SurahDownloadCard({
 
     let cachedCount = 0;
     if (paused.current) {
-      for (const v of surah.verses) {
-        if (await isAudioCached(v.totalNumber, qariBase)) cachedCount++;
+      const urls = merged.verses
+        .map((v) => v.audio?.primary)
+        .filter((u): u is string => !!u);
+      for (const url of urls) {
+        if (await isAudioCached(url)) cachedCount++;
       }
     }
     const finalPct = paused.current
@@ -102,7 +106,10 @@ function SurahDownloadCard({
       : 100;
 
     if (cancelled.current) {
-      await removeFromCache(surah.verses, qariBase);
+      const urls = merged.verses
+        .map((v) => v.audio?.primary)
+        .filter((u): u is string => !!u);
+      await removeFromCache(urls);
       await removeItem(surah.no, reciterId);
     } else {
       updateItem(surah.no, reciterId, {
@@ -113,15 +120,7 @@ function SurahDownloadCard({
     if (!paused.current && !cancelled.current) {
       onDownloaded?.();
     }
-  }, [
-    surah,
-    qariBase,
-    reciterId,
-    addItem,
-    updateItem,
-    removeItem,
-    onDownloaded,
-  ]);
+  }, [surah, reciterId, addItem, updateItem, removeItem, onDownloaded]);
 
   const handlePause = useCallback(() => {
     paused.current = true;
@@ -132,10 +131,15 @@ function SurahDownloadCard({
   }, []);
 
   const handleDelete = useCallback(async () => {
-    await removeFromCache(surah.verses, qariBase);
+    const audioUrls = await getAudioData(reciterId, surah.no);
+    const merged = await mergeAudioWithSurah(surah, audioUrls);
+    const urls = merged.verses
+      .map((v) => v.audio?.primary)
+      .filter((u): u is string => !!u);
+    await removeFromCache(urls);
     await removeItem(surah.no, reciterId);
     onDownloaded?.();
-  }, [surah, qariBase, reciterId, removeItem, onDownloaded]);
+  }, [surah, reciterId, removeItem, onDownloaded]);
 
   return (
     <div className="flex items-center gap-3 rounded-xl border border-border bg-surface p-3 transition-all hover:bg-surface-alt dark:border-dark-border dark:bg-dark-surface-card dark:hover:bg-dark-surface-alt">
@@ -243,10 +247,6 @@ function SurahDownloadCard({
 export default function DownloadsPage() {
   const { surahList, loading } = useSurahs();
   const reciterId = useSettings((s) => s.reciterId);
-  const reciter = RECITERS.find((r) => r.identifier === reciterId);
-  const qariBase = reciter
-    ? `https://cdn.islamic.network/quran/audio/128/${reciterId}`
-    : undefined;
   const loadDownloads = useDownloadsStore((s) => s.load);
   const [search, setSearch] = useState("");
   const [cacheSize, setCacheSize] = useState(0);
@@ -352,7 +352,6 @@ export default function DownloadsPage() {
               key={surah.no}
               surah={surah}
               reciterId={reciterId}
-              qariBase={qariBase}
               onDownloaded={refreshCacheSize}
             />
           ))}

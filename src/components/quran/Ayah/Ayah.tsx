@@ -1,9 +1,9 @@
 import type React from "react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { BiBook, BiBookmark, BiShareAlt } from "react-icons/bi";
 import { IoPauseOutline, IoPlayOutline } from "react-icons/io5";
-import { RECITERS } from "../../../data/qaris";
 import { useVerseTafsir } from "../../../hooks/useVerseTafsir";
+import { getAudioData, mergeAudioWithSurah } from "../../../lib/db";
 import { colorizeArabic } from "../../../lib/tajweed";
 import { useBookmarkStore } from "../../../store/bookmarks";
 import { useSettings } from "../../../store/settings";
@@ -27,13 +27,10 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
   const addBookmark = useBookmarkStore((s) => s.add);
   const removeBookmark = useBookmarkStore((s) => s.remove);
   const reciterId = useSettings((s) => s.reciterId);
-  const reciter = RECITERS.find((r) => r.identifier === reciterId);
-  const qariBase = reciter
-    ? `https://cdn.islamic.network/quran/audio/128/${reciterId}`
-    : undefined;
   const tajweedEnabled = useSettings((s) => s.tajweedEnabled);
   const tafsirEnabled = useSettings((s) => s.tafsirEnabled);
   const tafsirId = useSettings((s) => s.tafsirId);
+  const audioPromiseRef = useRef<Promise<Track[]> | null>(null);
   const [tafsirOpen, setTafsirOpen] = useState(false);
   const currentSurahNo = surah?.no ?? surahNo ?? 0;
   const { data: verseTafsir, loading: tafsirLoading } = useVerseTafsir(
@@ -84,11 +81,25 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
     }
     if (!surah?.verses) return;
     const idx = ayah.numberInSurah - 1;
-    const tracks = buildPlaylistFromSurah(
-      surah as Parameters<typeof buildPlaylistFromSurah>[0],
-      qariBase,
-    );
-    setPlaylist(tracks, idx);
+    if (!audioPromiseRef.current) {
+      audioPromiseRef.current = (async () => {
+        const audioUrls = await getAudioData(reciterId, surah.no);
+        if (audioUrls.length === 0) return [];
+        const merged = await mergeAudioWithSurah(
+          surah as {
+            no: number;
+            name: string;
+            enName: string;
+            verses: Verse[];
+          },
+          audioUrls,
+        );
+        return buildPlaylistFromSurah(merged);
+      })();
+    }
+    audioPromiseRef.current.then((tracks) => {
+      setPlaylist(tracks, idx);
+    });
   }, [
     isCurrentAyah,
     togglePlay,
@@ -97,7 +108,7 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
     ayah,
     surah,
     setPlaylist,
-    qariBase,
+    reciterId,
   ]);
 
   return (

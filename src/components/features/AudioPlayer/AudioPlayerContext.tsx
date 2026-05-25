@@ -16,12 +16,6 @@ import type {
 
 const VOLUME_STORAGE_KEY = "audioPlayerVolume";
 
-export function getAudioUrl(totalNumber: number, qariBase?: string): string {
-  const base =
-    qariBase || "https://cdn.islamic.network/quran/audio/128/ar.alafasy";
-  return `${base}/${totalNumber}.mp3`;
-}
-
 export function formatTime(seconds: number): string {
   if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
   const minutes = Math.floor(seconds / 60);
@@ -37,9 +31,8 @@ function buildTrack(
     numberInSurah: number;
     totalNumber: number;
     text: { arText: string; enText: string; enTextTransliteration: string };
-    audio?: { primary: string };
+    audio: { primary: string };
   },
-  qariBase?: string,
 ): Track {
   return {
     id: `${surahNo}-${verse.numberInSurah}`,
@@ -51,26 +44,23 @@ function buildTrack(
     arabicText: verse.text.arText,
     translationText: verse.text.enText,
     transliterationText: verse.text.enTextTransliteration,
-    audioUrl: verse.audio?.primary || getAudioUrl(verse.totalNumber, qariBase),
+    audioUrl: verse.audio.primary,
   };
 }
 
-export function buildPlaylistFromSurah(
-  surahData: {
-    no: number;
-    name: string;
-    enName: string;
-    verses: Array<{
-      numberInSurah: number;
-      totalNumber: number;
-      text: { arText: string; enText: string; enTextTransliteration: string };
-      audio?: { primary: string };
-    }>;
-  },
-  qariBase?: string,
-): Track[] {
+export function buildPlaylistFromSurah(surahData: {
+  no: number;
+  name: string;
+  enName: string;
+  verses: Array<{
+    numberInSurah: number;
+    totalNumber: number;
+    text: { arText: string; enText: string; enTextTransliteration: string };
+    audio: { primary: string };
+  }>;
+}): Track[] {
   return surahData.verses.map((verse) =>
-    buildTrack(surahData.no, surahData.name, surahData.enName, verse, qariBase),
+    buildTrack(surahData.no, surahData.name, surahData.enName, verse),
   );
 }
 

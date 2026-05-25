@@ -1,5 +1,3 @@
-import { getAudioUrl } from "../components/features/AudioPlayer";
-
 const CACHE_NAME = "quran-audio-cache";
 
 const ESTIMATED_AYAH_SIZE = 50000;
@@ -26,21 +24,13 @@ export async function getCachedUrls(): Promise<Set<string>> {
   return new Set(keys.map((r) => r.url));
 }
 
-export async function isAudioCached(
-  totalNumber: number,
-  qariBase?: string,
-): Promise<boolean> {
-  const url = getAudioUrl(totalNumber, qariBase);
+export async function isAudioCached(url: string): Promise<boolean> {
   const cache = await caches.open(CACHE_NAME);
   const match = await cache.match(url);
   return !!match;
 }
 
-export async function downloadAyahAudio(
-  totalNumber: number,
-  qariBase?: string,
-): Promise<boolean> {
-  const url = getAudioUrl(totalNumber, qariBase);
+export async function downloadAyahAudio(url: string): Promise<boolean> {
   const cache = await caches.open(CACHE_NAME);
   try {
     const res = await fetch(url, { mode: "no-cors" });
@@ -51,13 +41,9 @@ export async function downloadAyahAudio(
   }
 }
 
-export async function removeFromCache(
-  verses: { totalNumber: number }[],
-  qariBase?: string,
-): Promise<void> {
+export async function removeFromCache(urls: string[]): Promise<void> {
   const cache = await caches.open(CACHE_NAME);
-  for (const v of verses) {
-    const url = getAudioUrl(v.totalNumber, qariBase);
+  for (const url of urls) {
     await cache.delete(url);
   }
 }

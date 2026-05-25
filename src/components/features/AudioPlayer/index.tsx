@@ -20,7 +20,6 @@ export {
   AudioPlayerProvider,
   buildPlaylistFromSurah,
   formatTime,
-  getAudioUrl,
   useAudioPlayer,
   useAudioProgress,
 } from "./AudioPlayerContext";

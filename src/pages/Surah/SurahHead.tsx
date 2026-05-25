@@ -1,5 +1,5 @@
 import type React from "react";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import {
   CgPlayTrackNextO,
   CgPlayTrackPrevO,
@@ -10,7 +10,7 @@ import {
   buildPlaylistFromSurah,
   useAudioPlayer,
 } from "../../components/features/AudioPlayer";
-import { RECITERS } from "../../data/qaris";
+import { getAudioData, mergeAudioWithSurah } from "../../lib/db";
 import { useSettings } from "../../store/settings";
 import type { SurahData } from "../../types";
 
@@ -22,46 +22,58 @@ export const SurahHead: React.FC<SurahHeadProps> = ({ surah }) => {
   const {
     currentTrack,
     isPlaying,
-    isLoading,
+    isLoading: playerLoading,
     togglePlay,
     setPlaylist,
     prev,
     next,
   } = useAudioPlayer();
   const reciterId = useSettings((s) => s.reciterId);
-  const reciter = RECITERS.find((r) => r.identifier === reciterId);
-  const qariBase = reciter
-    ? `https://cdn.islamic.network/quran/audio/128/${reciterId}`
-    : undefined;
+  const [loadingAudio, setLoadingAudio] = useState(false);
 
   const isCurrentSurah = currentTrack?.surahNo === surah.no;
+
+  const ensureAudioAndPlay = useCallback(
+    async (startIndex: number) => {
+      setLoadingAudio(true);
+      try {
+        const audioUrls = await getAudioData(reciterId, surah.no);
+        if (audioUrls.length === 0) return;
+        const merged = await mergeAudioWithSurah(surah, audioUrls);
+        const tracks = buildPlaylistFromSurah(merged);
+        setPlaylist(tracks, startIndex);
+      } finally {
+        setLoadingAudio(false);
+      }
+    },
+    [reciterId, surah, setPlaylist],
+  );
 
   const handlePlay = useCallback(() => {
     if (isCurrentSurah) {
       togglePlay();
     } else {
-      const tracks = buildPlaylistFromSurah(surah, qariBase);
-      setPlaylist(tracks, 0);
+      ensureAudioAndPlay(0);
     }
-  }, [isCurrentSurah, togglePlay, surah, qariBase, setPlaylist]);
+  }, [isCurrentSurah, togglePlay, ensureAudioAndPlay]);
 
   const handlePrev = useCallback(() => {
     if (isCurrentSurah) {
       prev();
     } else {
-      const tracks = buildPlaylistFromSurah(surah, qariBase);
-      setPlaylist(tracks, 0);
+      ensureAudioAndPlay(0);
     }
-  }, [isCurrentSurah, prev, surah, qariBase, setPlaylist]);
+  }, [isCurrentSurah, prev, ensureAudioAndPlay]);
 
   const handleNext = useCallback(() => {
     if (isCurrentSurah) {
       next();
     } else {
-      const tracks = buildPlaylistFromSurah(surah, qariBase);
-      setPlaylist(tracks, 0);
+      ensureAudioAndPlay(0);
     }
-  }, [isCurrentSurah, next, surah, qariBase, setPlaylist]);
+  }, [isCurrentSurah, next, ensureAudioAndPlay]);
+
+  const isLoading = playerLoading || loadingAudio;
 
   return (
     <div className="relative mx-4 mb-6 overflow-hidden rounded-2xl bg-linear-to-br from-primary via-primary-light to-secondary p-6 text-white shadow-xl shadow-primary/20 md:mx-6 md:p-8">
