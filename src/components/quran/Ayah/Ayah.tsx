@@ -9,8 +9,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { useVerseTafsir } from "../../../hooks/useVerseTafsir";
 import { useSurahAudio } from "../../../hooks/useSurahAudio";
+import { useVerseTafsir } from "../../../hooks/useVerseTafsir";
 import { colorizeArabic } from "../../../lib/tajweed";
 import { useBookmarkStore, useIsBookmarked } from "../../../store/bookmarks";
 import { useSettings } from "../../../store/settings";
@@ -83,9 +83,7 @@ const Ayahs = memo(({ ayah, surah, tracklist, surahNo }: AyahsProps) => {
     }
     if (!surah) return;
     const idx = ayah.numberInSurah - 1;
-    if (!audioPromiseRef.current) {
-      audioPromiseRef.current = fetchAudio();
-    }
+    audioPromiseRef.current ??= fetchAudio();
     audioPromiseRef.current.then((tracks) => {
       if (tracks.length > 0) setPlaylist(tracks, idx);
     });
@@ -95,6 +93,7 @@ const Ayahs = memo(({ ayah, surah, tracklist, surahNo }: AyahsProps) => {
     tracklist,
     surahNo,
     ayah,
+    surah,
     setPlaylist,
     fetchAudio,
   ]);
