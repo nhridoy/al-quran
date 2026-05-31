@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FiTrash2 } from "react-icons/fi";
 import { IoPlayCircleOutline } from "react-icons/io5";
-import Swal from "sweetalert2";
 import { Header } from "../../components/common/Header/Header";
 import { useSurahs } from "../../hooks/useSurahs";
+import { confirm } from "../../lib/confirm";
 import { getAudioData, mergeAudioWithSurah } from "../../lib/db";
 import {
   clearAllAudio,
@@ -278,18 +278,12 @@ export default function DownloadsPage() {
   );
 
   const handleClearAll = useCallback(async () => {
-    const result = await Swal.fire({
+    const ok = await confirm({
       title: "Clear all downloads?",
-      text: "This will remove all cached audio files.",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#ef4444",
-      cancelButtonColor: "#6b5e80",
-      confirmButtonText: "Clear All",
-      background: "#1a1228",
-      color: "#f0ecf8",
+      message: "This will remove all cached audio files.",
+      confirmText: "Clear All",
     });
-    if (!result.value) return;
+    if (!ok) return;
     await clearAllAudio();
     const storeItems = useDownloadsStore.getState().items;
     for (const item of storeItems) {

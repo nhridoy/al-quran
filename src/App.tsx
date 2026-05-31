@@ -1,5 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import ConfirmModal from "./components/common/ConfirmModal/ConfirmModal";
 import AudioPlayer, {
   AudioPlayerProvider,
 } from "./components/features/AudioPlayer";
@@ -155,6 +157,19 @@ function App() {
         </MainLayout>
         <AudioPlayer />
         <LastReadTracker />
+        <ConfirmModal />
+        <ToastContainer
+          position="bottom-right"
+          autoClose={4000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover={false}
+          theme="dark"
+        />
       </AudioPlayerProvider>
     </BrowserRouter>
   );

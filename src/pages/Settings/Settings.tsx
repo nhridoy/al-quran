@@ -8,10 +8,10 @@ import {
   IoVolumeHighOutline,
 } from "react-icons/io5";
 import { MdFormatColorFill, MdOutlineTranslate } from "react-icons/md";
-import { ToastContainer, toast } from "react-toastify";
-import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 import { Header } from "../../components/common/Header/Header";
 import { useSurahs } from "../../hooks/useSurahs";
+import { confirm } from "../../lib/confirm";
 import { LANGUAGES, RECITERS, TAFSIR_LIST } from "../../lib/const";
 import {
   cacheAllAudioForReciter,
@@ -156,19 +156,13 @@ export default function Settings() {
           .getState()
           .items.filter((d) => d.qariId === oldReciterId);
         if (oldDownloads.length > 0) {
-          const result = await Swal.fire({
+          const result = await confirm({
             title: "Delete old reciter's downloads?",
-            text: `You have ${oldDownloads.length} surah(s) downloaded for the old reciter. Delete cached audio for the old reciter?`,
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#ef4444",
-            cancelButtonColor: "#6b5e80",
-            confirmButtonText: "Delete",
-            cancelButtonText: "Keep",
-            background: "#1a1228",
-            color: "#f0ecf8",
+            message: `You have ${oldDownloads.length} surah(s) downloaded for the old reciter. Delete cached audio for the old reciter?`,
+            confirmText: "Delete",
+            cancelText: "Keep",
           });
-          if (result.value) {
+          if (result) {
             const urls = oldDownloads.flatMap((d) => d.cachedUrls);
             await removeFromCache(urls);
             for (const d of oldDownloads) {
@@ -592,19 +586,6 @@ export default function Settings() {
           </div>
         </SettingCard>
       </div>
-
-      <ToastContainer
-        position="bottom-right"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover={false}
-        theme="dark"
-      />
     </div>
   );
 }

@@ -3,8 +3,8 @@ import { BiBookmark, BiChevronDown, BiSearch, BiTrash } from "react-icons/bi";
 import { FaQuran } from "react-icons/fa";
 import { IoOpenOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 import { Header } from "../../components/common/Header/Header";
+import { confirm } from "../../lib/confirm";
 import { useBookmarkStore } from "../../store/bookmarks";
 
 export default function Bookmarks() {
@@ -51,36 +51,22 @@ export default function Bookmarks() {
     [filtered],
   );
 
-  const handleClearSurah = (surahNo: number, enName: string) => {
-    Swal.fire({
+  const handleClearSurah = async (surahNo: number, enName: string) => {
+    const ok = await confirm({
       title: `Clear ${enName}?`,
-      text: "Remove all bookmarks in this surah",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#ef4444",
-      cancelButtonColor: "#6b7280",
-      confirmButtonText: "Clear",
-      background: "#1a1228",
-      color: "#f0ecf8",
-    }).then((result) => {
-      if (result.isConfirmed) clearBySurah(surahNo);
+      message: "Remove all bookmarks in this surah",
+      confirmText: "Clear",
     });
+    if (ok) clearBySurah(surahNo);
   };
 
-  const handleClearAll = () => {
-    Swal.fire({
+  const handleClearAll = async () => {
+    const ok = await confirm({
       title: "Clear All Bookmarks?",
-      text: `Remove all ${bookmarks.length} bookmarks`,
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#ef4444",
-      cancelButtonColor: "#6b7280",
-      confirmButtonText: "Clear All",
-      background: "#1a1228",
-      color: "#f0ecf8",
-    }).then((result) => {
-      if (result.isConfirmed) clearAll();
+      message: `Remove all ${bookmarks.length} bookmarks`,
+      confirmText: "Clear All",
     });
+    if (ok) clearAll();
   };
 
   return (
