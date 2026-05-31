@@ -208,29 +208,22 @@ export default function Settings() {
     });
   }, [storeSettings]);
 
-  const handleUpdate = useCallback(() => {
-    Swal.fire({
+  const handleUpdate = useCallback(async () => {
+    const ok = await confirm({
       title: "Refresh Data?",
-      text: "This will clear the cached data and fetch fresh content.",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#9345f2",
-      cancelButtonColor: "#ef4444",
-      confirmButtonText: "Yes, refresh!",
-      background: "#1a1228",
-      color: "#f0ecf8",
-    }).then(async (result) => {
-      if (result.value) {
-        setLoading(true);
-        try {
-          await refresh();
-          toast.success("Data refreshed successfully!");
-        } catch {
-          toast.error("Failed to refresh data");
-        }
-        setLoading(false);
-      }
+      message: "This will clear the cached data and fetch fresh content.",
+      confirmText: "Yes, refresh!",
+      confirmColor: "#9345f2",
     });
+    if (!ok) return;
+    setLoading(true);
+    try {
+      await refresh();
+      toast.success("Data refreshed successfully!");
+    } catch {
+      toast.error("Failed to refresh data");
+    }
+    setLoading(false);
   }, [refresh]);
 
   const filteredTafsirs = TAFSIR_LIST.filter(
