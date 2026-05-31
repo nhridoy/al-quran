@@ -72,6 +72,7 @@ function SurahDownloadCard({
         totalAyahs: total,
         downloadedAyahs: 0,
         progress: 0,
+        cachedUrls: [],
       });
     }
 
@@ -79,6 +80,7 @@ function SurahDownloadCard({
     const merged = await mergeAudioWithSurah(surah, audioUrls);
 
     let downloadedCount = 0;
+    const cached: string[] = existing?.cachedUrls ?? [];
     for (let i = 0; i < merged.verses.length; i++) {
       if (cancelled.current || paused.current) break;
       const verse = merged.verses[i];
@@ -87,8 +89,11 @@ function SurahDownloadCard({
       const urls = [primary, secondary, tertiary, alternative].filter(
         (u, idx, arr) => u && arr.indexOf(u) === idx,
       );
-      const ok = await downloadAudioWithFallback(urls);
-      if (ok) downloadedCount++;
+      const result = await downloadAudioWithFallback(urls);
+      if (result) {
+        downloadedCount++;
+        if (!cached.includes(result)) cached.push(result);
+      }
       const pct = Math.round(((i + 1) / total) * 100);
       setProgress(pct);
     }
@@ -99,22 +104,13 @@ function SurahDownloadCard({
       : Math.round((downloadedCount / total) * 100);
 
     if (cancelled.current) {
-      const urls: string[] = [];
-      for (const v of merged.verses) {
-        if (!v.audio) continue;
-        const { primary, secondary, tertiary, alternative } = v.audio;
-        urls.push(
-          ...[primary, secondary, tertiary, alternative].filter(
-            (u, idx, arr) => u && arr.indexOf(u) === idx,
-          ),
-        );
-      }
-      await removeFromCache(urls);
+      await removeFromCache(cached);
       await removeItem(surah.no, reciterId);
     } else {
       updateItem(surah.no, reciterId, {
         downloadedAyahs: Math.round((finalPct / 100) * total),
         progress: finalPct,
+        cachedUrls: cached,
       });
     }
     if (!paused.current && !cancelled.current) {
@@ -131,22 +127,24 @@ function SurahDownloadCard({
   }, []);
 
   const handleDelete = useCallback(async () => {
-    const audioUrls = await getAudioData(reciterId, surah.no);
-    const merged = await mergeAudioWithSurah(surah, audioUrls);
-    const urls: string[] = [];
-    for (const v of merged.verses) {
-      if (!v.audio) continue;
-      const { primary, secondary, tertiary, alternative } = v.audio;
-      urls.push(
-        ...[primary, secondary, tertiary, alternative].filter(
-          (u, idx, arr) => u && arr.indexOf(u) === idx,
-        ),
-      );
+    const urls = downloadItem?.cachedUrls ?? [];
+    if (urls.length === 0) {
+      const audioUrls = await getAudioData(reciterId, surah.no);
+      const merged = await mergeAudioWithSurah(surah, audioUrls);
+      for (const v of merged.verses) {
+        if (!v.audio) continue;
+        const { primary, secondary, tertiary, alternative } = v.audio;
+        urls.push(
+          ...[primary, secondary, tertiary, alternative].filter(
+            (u, idx, arr) => u && arr.indexOf(u) === idx,
+          ),
+        );
+      }
     }
     await removeFromCache(urls);
     await removeItem(surah.no, reciterId);
     onDownloaded?.();
-  }, [surah, reciterId, removeItem, onDownloaded]);
+  }, [surah, reciterId, downloadItem, removeItem, onDownloaded]);
 
   return (
     <div className="flex items-center gap-3 rounded-xl border border-border bg-surface p-3 transition-all hover:bg-surface-alt dark:border-dark-border dark:bg-dark-surface-card dark:hover:bg-dark-surface-alt">

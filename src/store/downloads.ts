@@ -8,6 +8,7 @@ interface DownloadItem {
   totalAyahs: number;
   downloadedAyahs: number;
   progress: number;
+  cachedUrls: string[];
 }
 
 interface DownloadsState {

@@ -21,6 +21,8 @@ import {
   clearAudioCache,
   clearTafsirCache,
 } from "../../lib/db";
+import { removeFromCache } from "../../lib/downloadManager";
+import { useDownloadsStore } from "../../store/downloads";
 import { useSettings } from "../../store/settings";
 
 const THEME_OPTIONS = [
@@ -149,6 +151,31 @@ export default function Settings() {
       await updateSettings(local);
 
       if (local.reciterId !== storeSettings.reciterId) {
+        const oldReciterId = storeSettings.reciterId;
+        const oldDownloads = useDownloadsStore
+          .getState()
+          .items.filter((d) => d.qariId === oldReciterId);
+        if (oldDownloads.length > 0) {
+          const result = await Swal.fire({
+            title: "Delete old reciter's downloads?",
+            text: `You have ${oldDownloads.length} surah(s) downloaded for the old reciter. Delete cached audio for the old reciter?`,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#ef4444",
+            cancelButtonColor: "#6b5e80",
+            confirmButtonText: "Delete",
+            cancelButtonText: "Keep",
+            background: "#1a1228",
+            color: "#f0ecf8",
+          });
+          if (result.value) {
+            const urls = oldDownloads.flatMap((d) => d.cachedUrls);
+            await removeFromCache(urls);
+            for (const d of oldDownloads) {
+              await useDownloadsStore.getState().remove(d.surahNo, d.qariId);
+            }
+          }
+        }
         await clearAudioCache();
         await Promise.all([
           cacheAllAudioForReciter(local.reciterId),
