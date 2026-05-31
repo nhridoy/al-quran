@@ -1,12 +1,12 @@
 import { NavLink } from "react-router-dom";
 import { Header } from "../../components/common/Header/Header";
-import { LastReadBanner as SurahsHead } from "../../components/quran/LastReadBanner/LastReadBanner";
+import { LastReadBanner } from "../../components/quran/LastReadBanner/LastReadBanner";
 
 export const Home = () => {
   return (
     <div>
       <Header head="Al Quran" />
-      <SurahsHead />
+      <LastReadBanner />
       <div className="mx-4 mb-6 flex rounded-xl bg-surface-alt p-1 dark:bg-dark-surface-alt md:mx-6">
         <NavLink
           to="/surah"

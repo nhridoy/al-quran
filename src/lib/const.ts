@@ -1,5 +1,15 @@
 import type { ReciterInfo, TafsirInfo } from "../types";
 
+export const LAST_TEN_SURAH_IDS = [
+  105, 106, 107, 108, 109, 110, 111, 112, 113, 114,
+];
+
+export const KAABA_COORDS = { lat: 21.4225, lng: 39.8262 } as const;
+
+export const QIBLA_SMOOTHING = 0.15;
+
+export const VOLUME_STORAGE_KEY = "audioPlayerVolume";
+
 export const LANGUAGES: Record<string, string> = {
   en: "English",
   bn: "বাংলা",

@@ -1,5 +1,4 @@
-import type React from "react";
-import { useCallback, useEffect, useMemo, useRef } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef } from "react";
 import { BiBook, BiBookmark, BiShareAlt } from "react-icons/bi";
 import { IoPauseOutline, IoPlayOutline } from "react-icons/io5";
 import {
@@ -28,7 +27,7 @@ interface AyahsProps {
   surahNo?: number;
 }
 
-const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
+const Ayahs = memo(({ ayah, surah, tracklist, surahNo }: AyahsProps) => {
   const { currentTrack, isPlaying, togglePlay, setPlaylist } = useAudioPlayer();
   const bookmarks = useBookmarkStore((s) => s.bookmarks);
   const addBookmark = useBookmarkStore((s) => s.add);
@@ -277,6 +276,6 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
       </div>
     </div>
   );
-};
+});
 
 export default Ayahs;

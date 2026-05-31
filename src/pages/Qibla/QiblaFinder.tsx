@@ -1,10 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Header } from "../../components/common/Header/Header";
+import { KAABA_COORDS, QIBLA_SMOOTHING } from "../../lib/const";
 import { useLocationStore } from "../../store/location";
-
-const KAABA = { lat: 21.4225, lng: 39.8262 };
-const SMOOTHING = 0.15;
 
 function calculateDistance(
   lat1: number,
@@ -66,10 +64,10 @@ export default function QiblaFinder() {
 
   const hasCoords = lat !== null && lng !== null;
   const qiblaDirection = hasCoords
-    ? bearing(lat, lng, KAABA.lat, KAABA.lng)
+    ? bearing(lat, lng, KAABA_COORDS.lat, KAABA_COORDS.lng)
     : 0;
   const distanceToKaaba = hasCoords
-    ? calculateDistance(lat, lng, KAABA.lat, KAABA.lng)
+    ? calculateDistance(lat, lng, KAABA_COORDS.lat, KAABA_COORDS.lng)
     : 0;
 
   const dialRotation = heading === null ? 0 : -heading;
@@ -112,7 +110,7 @@ export default function QiblaFinder() {
     if (diff > 180) diff -= 360;
     if (diff < -180) diff += 360;
 
-    const smoothed = smoothedRef.current + diff * SMOOTHING;
+    const smoothed = smoothedRef.current + diff * QIBLA_SMOOTHING;
     smoothedRef.current = ((smoothed % 360) + 360) % 360;
     setHeading(smoothedRef.current);
   }, []);

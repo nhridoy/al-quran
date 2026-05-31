@@ -1,5 +1,5 @@
 import { MusicIcon, XIcon } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useAudioPlayer, useAudioProgress } from "./AudioPlayerContext";
 
 export default function PlaylistDrawer() {
@@ -26,24 +26,27 @@ export default function PlaylistDrawer() {
     }, 300);
   }, [setShowPlaylist]);
 
-  if (!showPlaylist && !leaving) return null;
-
-  const grouped = new Map<
-    number,
-    { name: string; enName: string; tracks: typeof playlist }
-  >();
-  for (const track of playlist) {
-    const existing = grouped.get(track.surahNo);
-    if (existing) {
-      existing.tracks.push(track);
-    } else {
-      grouped.set(track.surahNo, {
-        name: track.surahName,
-        enName: track.enName,
-        tracks: [track],
-      });
+  const grouped = useMemo(() => {
+    const map = new Map<
+      number,
+      { name: string; enName: string; tracks: typeof playlist }
+    >();
+    for (const track of playlist) {
+      const existing = map.get(track.surahNo);
+      if (existing) {
+        existing.tracks.push(track);
+      } else {
+        map.set(track.surahNo, {
+          name: track.surahName,
+          enName: track.enName,
+          tracks: [track],
+        });
+      }
     }
-  }
+    return map;
+  }, [playlist]);
+
+  if (!showPlaylist && !leaving) return null;
 
   return (
     <div className="fixed inset-0 z-100 flex items-end justify-center">

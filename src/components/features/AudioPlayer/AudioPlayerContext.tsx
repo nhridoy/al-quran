@@ -7,6 +7,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { VOLUME_STORAGE_KEY } from "../../../lib/const";
 import type { SurahData } from "../../../types";
 import type {
   AudioPlayerContextType,
@@ -14,8 +15,6 @@ import type {
   RepeatMode,
   Track,
 } from "./types";
-
-const VOLUME_STORAGE_KEY = "audioPlayerVolume";
 
 export function formatTime(seconds: number): string {
   if (!Number.isFinite(seconds) || seconds < 0) return "0:00";

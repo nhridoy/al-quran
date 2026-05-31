@@ -1,4 +1,4 @@
-import type React from "react";
+import { memo } from "react";
 import { BiArrowBack } from "react-icons/bi";
 import { Button } from "@/components/ui/button";
 import type { SurahData } from "../../../types";
@@ -10,7 +10,7 @@ interface HeaderProps {
   showBack?: boolean;
 }
 
-export const Header: React.FC<HeaderProps> = (props) => {
+const Header = memo((props: HeaderProps) => {
   const handleBackBtn = () => {
     window.history.back();
   };
@@ -38,4 +38,6 @@ export const Header: React.FC<HeaderProps> = (props) => {
       </div>
     </header>
   );
-};
+});
+
+export { Header };

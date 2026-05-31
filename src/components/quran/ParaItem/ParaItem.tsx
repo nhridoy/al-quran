@@ -1,4 +1,4 @@
-import type React from "react";
+import { memo } from "react";
 import { BiChevronRight } from "react-icons/bi";
 import { FaQuran } from "react-icons/fa";
 
@@ -6,7 +6,7 @@ interface ParaListProps {
   paraNo: number;
 }
 
-const ParaList: React.FC<ParaListProps> = ({ paraNo }) => {
+const ParaList = memo(({ paraNo }: ParaListProps) => {
   return (
     <div className="group relative overflow-hidden rounded-2xl border border-border bg-surface transition-all duration-300 card-hover dark:border-dark-border dark:bg-dark-surface-card">
       <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-linear-to-br from-primary/5 to-secondary/5 dark:from-primary/10 dark:to-secondary/10" />
@@ -29,6 +29,6 @@ const ParaList: React.FC<ParaListProps> = ({ paraNo }) => {
       </div>
     </div>
   );
-};
+});
 
 export default ParaList;

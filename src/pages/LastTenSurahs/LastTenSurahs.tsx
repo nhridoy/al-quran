@@ -1,15 +1,18 @@
+import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Header } from "../../components/common/Header/Header";
 import { useSurahs } from "../../hooks/useSurahs";
-
-const LAST_TEN_IDS = [105, 106, 107, 108, 109, 110, 111, 112, 113, 114];
+import { LAST_TEN_SURAH_IDS } from "../../lib/const";
 
 export default function LastTenSurahs() {
   const { surahList, loading } = useSurahs();
   const navigate = useNavigate();
 
-  const surahs = surahList.filter((s) => LAST_TEN_IDS.includes(s.no));
+  const surahs = useMemo(
+    () => surahList.filter((s) => LAST_TEN_SURAH_IDS.includes(s.no)),
+    [surahList],
+  );
 
   return (
     <div className="min-h-screen">
@@ -26,7 +29,7 @@ export default function LastTenSurahs() {
 
         {loading ? (
           <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-            {LAST_TEN_IDS.map((id) => (
+            {LAST_TEN_SURAH_IDS.map((id) => (
               <div
                 key={id}
                 className="h-28 animate-pulse rounded-2xl bg-surface-alt dark:bg-dark-surface-alt"
