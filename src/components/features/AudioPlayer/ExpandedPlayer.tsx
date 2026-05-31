@@ -14,11 +14,21 @@ import {
   VolumeXIcon,
 } from "lucide-react";
 import { memo, useCallback, useEffect, useRef, useState } from "react";
-import { useAudioPlayer, useAudioProgress } from "./AudioPlayerContext";
+import {
+  useAudioProgressStore,
+  useAudioVolumeStore,
+} from "../../../store/audio";
+import {
+  formatTime,
+  useAudioPlayerActions,
+  useAudioPlayerState,
+} from "./AudioPlayerContext";
 import VinylDisc from "./VinylDisc";
 
 function SeekBar() {
-  const { currentTime, duration, seek, formatTime } = useAudioProgress();
+  const currentTime = useAudioProgressStore((s) => s.currentTime);
+  const duration = useAudioProgressStore((s) => s.duration);
+  const { seek } = useAudioPlayerActions();
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
   const barRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -515,7 +525,8 @@ function MobilePlayerContent({
 }
 
 function TopProgressBar() {
-  const { currentTime, duration } = useAudioProgress();
+  const currentTime = useAudioProgressStore((s) => s.currentTime);
+  const duration = useAudioProgressStore((s) => s.duration);
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
   return (
     <div className="absolute top-0 left-0 right-0 h-1 bg-border dark:bg-dark-border">
@@ -537,18 +548,20 @@ export default function ExpandedPlayer() {
     isPlaying,
     isLoading,
     currentTrack,
+    isShuffled,
+    repeatMode,
+  } = useAudioPlayerState();
+  const volume = useAudioVolumeStore((s) => s.volume);
+  const {
     minimize,
     togglePlay,
     next,
     prev,
     toggleShuffle,
-    isShuffled,
     cycleRepeat,
-    repeatMode,
-    volume,
     setVolume,
     togglePlaylist,
-  } = useAudioPlayer();
+  } = useAudioPlayerActions();
 
   const handleMinimize = useCallback(() => {
     setLeaving(true);

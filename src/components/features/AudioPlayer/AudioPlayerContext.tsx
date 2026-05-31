@@ -7,11 +7,15 @@ import {
   useRef,
   useState,
 } from "react";
-import { VOLUME_STORAGE_KEY } from "../../../lib/const";
+import {
+  useAudioProgressStore,
+  useAudioVolumeStore,
+} from "../../../store/audio";
 import type { SurahData } from "../../../types";
 import type {
+  AudioPlayerActions,
   AudioPlayerContextType,
-  AudioProgressType,
+  AudioPlayerState,
   RepeatMode,
   Track,
 } from "./types";
@@ -70,8 +74,8 @@ function createShuffledIndices(length: number, startIndex: number): number[] {
   return indices;
 }
 
-const AudioPlayerContext = createContext<AudioPlayerContextType | null>(null);
-const AudioPlayerProgressContext = createContext<AudioProgressType | null>(
+const AudioPlayerStateContext = createContext<AudioPlayerState | null>(null);
+const AudioPlayerActionsContext = createContext<AudioPlayerActions | null>(
   null,
 );
 
@@ -90,12 +94,6 @@ export function AudioPlayerProvider({
   const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [playlist, setPlaylist] = useState<Track[]>([]);
-  const [volume, setVolume] = useState(() => {
-    const saved = localStorage.getItem(VOLUME_STORAGE_KEY);
-    return saved ? Number.parseFloat(saved) : 1;
-  });
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
   const [repeatMode, setRepeatMode] = useState<RepeatMode>("none");
   const [isShuffleActive, setIsShuffleActive] = useState(false);
   const [showPlaylist, setShowPlaylist] = useState(false);
@@ -110,6 +108,8 @@ export function AudioPlayerProvider({
   const shuffleCursorRef = useRef(0);
   const fallbackIndexRef = useRef(0);
   const playGenRef = useRef(0);
+  const isShuffleActiveRef = useRef(false);
+  const expandOnPlayRef = useRef(expandOnPlay);
 
   useEffect(() => {
     isPlayingRef.current = isPlaying;
@@ -126,14 +126,24 @@ export function AudioPlayerProvider({
   useEffect(() => {
     repeatModeRef.current = repeatMode;
   }, [repeatMode]);
+  useEffect(() => {
+    isShuffleActiveRef.current = isShuffleActive;
+  }, [isShuffleActive]);
+  useEffect(() => {
+    expandOnPlayRef.current = expandOnPlay;
+  }, [expandOnPlay]);
 
   useEffect(() => {
     audioRef.current = new Audio();
     const audio = audioRef.current;
     audio.preload = "metadata";
 
-    const handleTimeUpdate = () => setCurrentTime(audio.currentTime);
-    const handleMetadata = () => setDuration(audio.duration);
+    const handleTimeUpdate = () => {
+      useAudioProgressStore.getState().setCurrentTime(audio.currentTime);
+    };
+    const handleMetadata = () => {
+      useAudioProgressStore.getState().setDuration(audio.duration);
+    };
     const handleWaiting = () => setIsLoading(true);
     const handleCanPlay = () => setIsLoading(false);
     const handleError = () => {
@@ -258,46 +268,43 @@ export function AudioPlayerProvider({
     playByIndexRef.current = playByIndex;
   }, [playByIndex]);
 
-  const playTrack = useCallback(
-    (track: Track) => {
-      const tracks = playlistRef.current;
-      const foundIndex = tracks.findIndex((t) => t.id === track.id);
-      if (foundIndex !== -1) {
-        playByIndex(foundIndex);
-        return;
-      }
-      setPlaylist([track]);
-      playlistRef.current = [track];
-      setActiveIndex(0);
-      activeIndexRef.current = 0;
-      setCurrentTrack(track);
-      currentTrackRef.current = track;
-      fallbackIndexRef.current = 0;
-      const audio = audioRef.current;
-      if (!audio) return;
-      const gen = ++playGenRef.current;
-      audio.src = track.audioUrl;
-      audio.currentTime = 0;
-      audio
-        .play()
-        .then(() => {
-          if (playGenRef.current !== gen) return;
-          setIsPlaying(true);
-          isPlayingRef.current = true;
-        })
-        .catch(() => {
-          if (playGenRef.current !== gen) return;
-          setIsPlaying(false);
-          isPlayingRef.current = false;
-        });
-    },
-    [playByIndex],
-  );
+  const playTrack = useCallback((track: Track) => {
+    const tracks = playlistRef.current;
+    const foundIndex = tracks.findIndex((t) => t.id === track.id);
+    if (foundIndex !== -1) {
+      playByIndexRef.current(foundIndex);
+      return;
+    }
+    setPlaylist([track]);
+    playlistRef.current = [track];
+    setActiveIndex(0);
+    activeIndexRef.current = 0;
+    setCurrentTrack(track);
+    currentTrackRef.current = track;
+    fallbackIndexRef.current = 0;
+    const audio = audioRef.current;
+    if (!audio) return;
+    const gen = ++playGenRef.current;
+    audio.src = track.audioUrl;
+    audio.currentTime = 0;
+    audio
+      .play()
+      .then(() => {
+        if (playGenRef.current !== gen) return;
+        setIsPlaying(true);
+        isPlayingRef.current = true;
+      })
+      .catch(() => {
+        if (playGenRef.current !== gen) return;
+        setIsPlaying(false);
+        isPlayingRef.current = false;
+      });
+  }, []);
 
   const togglePlay = useCallback(() => {
     const audio = audioRef.current;
-    if (!audio || !currentTrack) return;
-    if (isPlaying) {
+    if (!audio || !currentTrackRef.current) return;
+    if (isPlayingRef.current) {
       audio.pause();
       setIsPlaying(false);
       isPlayingRef.current = false;
@@ -310,13 +317,13 @@ export function AudioPlayerProvider({
         })
         .catch(() => {});
     }
-  }, [isPlaying, currentTrack]);
+  }, []);
 
   const next = useCallback(() => {
     const tracks = playlistRef.current;
     if (tracks.length === 0) return;
     let nextIndex: number;
-    if (isShuffleActive) {
+    if (isShuffleActiveRef.current) {
       shuffleCursorRef.current++;
       if (shuffleCursorRef.current >= shuffleIndicesRef.current.length) {
         shuffleIndicesRef.current = createShuffledIndices(tracks.length, -1);
@@ -326,8 +333,8 @@ export function AudioPlayerProvider({
     } else {
       nextIndex = (activeIndexRef.current + 1) % tracks.length;
     }
-    playByIndex(nextIndex);
-  }, [isShuffleActive, playByIndex]);
+    playByIndexRef.current(nextIndex);
+  }, []);
 
   const prev = useCallback(() => {
     const tracks = playlistRef.current;
@@ -338,7 +345,7 @@ export function AudioPlayerProvider({
       return;
     }
     let prevIndex: number;
-    if (isShuffleActive) {
+    if (isShuffleActiveRef.current) {
       if (shuffleCursorRef.current > 0) {
         shuffleCursorRef.current--;
       }
@@ -346,14 +353,14 @@ export function AudioPlayerProvider({
     } else {
       prevIndex = (activeIndexRef.current - 1 + tracks.length) % tracks.length;
     }
-    playByIndex(prevIndex);
-  }, [isShuffleActive, playByIndex]);
+    playByIndexRef.current(prevIndex);
+  }, []);
 
   const seek = useCallback((time: number) => {
     const audio = audioRef.current;
     if (audio) {
       audio.currentTime = time;
-      setCurrentTime(time);
+      useAudioProgressStore.getState().setCurrentTime(time);
     }
   }, []);
 
@@ -362,8 +369,7 @@ export function AudioPlayerProvider({
     if (audio) {
       audio.volume = newVolume;
     }
-    setVolume(newVolume);
-    localStorage.setItem(VOLUME_STORAGE_KEY, String(newVolume));
+    useAudioVolumeStore.getState().setVolume(newVolume);
   }, []);
 
   const toggleShuffle = useCallback(() => {
@@ -394,30 +400,27 @@ export function AudioPlayerProvider({
     });
   }, []);
 
-  const updatePlaylist = useCallback(
-    (tracks: Track[], startIndex = 0) => {
-      setPlaylist(tracks);
-      playlistRef.current = tracks;
-      if (tracks.length > 0 && tracks[startIndex]) {
-        if (shuffleIndicesRef.current.length > 0) {
-          shuffleIndicesRef.current = createShuffledIndices(
-            tracks.length,
-            startIndex,
-          );
-          shuffleCursorRef.current = 0;
-        }
-        playByIndex(startIndex);
-        if (expandOnPlay) setIsExpanded(true);
+  const updatePlaylist = useCallback((tracks: Track[], startIndex = 0) => {
+    setPlaylist(tracks);
+    playlistRef.current = tracks;
+    if (tracks.length > 0 && tracks[startIndex]) {
+      if (shuffleIndicesRef.current.length > 0) {
+        shuffleIndicesRef.current = createShuffledIndices(
+          tracks.length,
+          startIndex,
+        );
+        shuffleCursorRef.current = 0;
       }
-    },
-    [playByIndex, expandOnPlay],
-  );
+      playByIndexRef.current(startIndex);
+      if (expandOnPlayRef.current) setIsExpanded(true);
+    }
+  }, []);
 
   const expand = useCallback(() => setIsExpanded(true), []);
   const minimize = useCallback(() => setIsExpanded(false), []);
   const togglePlaylist = useCallback(() => setShowPlaylist((p) => !p), []);
 
-  const value = useMemo<AudioPlayerContextType>(
+  const stateValue = useMemo<AudioPlayerState>(
     () => ({
       isExpanded,
       isPlaying,
@@ -425,15 +428,31 @@ export function AudioPlayerProvider({
       currentTrack,
       playlist,
       currentIndex: activeIndex,
-      volume,
       isShuffled: isShuffleActive,
       repeatMode,
       showPlaylist,
+    }),
+    [
+      isExpanded,
+      isPlaying,
+      isLoading,
+      currentTrack,
+      playlist,
+      activeIndex,
+      isShuffleActive,
+      repeatMode,
+      showPlaylist,
+    ],
+  );
+
+  const actionsValue = useMemo<AudioPlayerActions>(
+    () => ({
       playTrack,
       togglePlay,
       next,
       prev,
       setVolume: updateVolume,
+      seek,
       toggleShuffle,
       cycleRepeat,
       setPlaylist: updatePlaylist,
@@ -443,21 +462,12 @@ export function AudioPlayerProvider({
       setShowPlaylist,
     }),
     [
-      isExpanded,
-      isPlaying,
-      isLoading,
-      currentTrack,
-      playlist,
-      activeIndex,
-      volume,
-      isShuffleActive,
-      repeatMode,
-      showPlaylist,
       playTrack,
       togglePlay,
       next,
       prev,
       updateVolume,
+      seek,
       toggleShuffle,
       cycleRepeat,
       updatePlaylist,
@@ -467,37 +477,37 @@ export function AudioPlayerProvider({
     ],
   );
 
-  const progressValue = useMemo<AudioProgressType>(
-    () => ({
-      currentTime,
-      duration,
-      seek,
-      formatTime,
-    }),
-    [currentTime, duration, seek],
-  );
-
   return (
-    <AudioPlayerContext.Provider value={value}>
-      <AudioPlayerProgressContext.Provider value={progressValue}>
+    <AudioPlayerStateContext.Provider value={stateValue}>
+      <AudioPlayerActionsContext.Provider value={actionsValue}>
         {children}
-      </AudioPlayerProgressContext.Provider>
-    </AudioPlayerContext.Provider>
+      </AudioPlayerActionsContext.Provider>
+    </AudioPlayerStateContext.Provider>
   );
+}
+
+export function useAudioPlayerState(): AudioPlayerState {
+  const context = useContext(AudioPlayerStateContext);
+  if (!context) {
+    throw new Error(
+      "useAudioPlayerState must be used within AudioPlayerProvider",
+    );
+  }
+  return context;
+}
+
+export function useAudioPlayerActions(): AudioPlayerActions {
+  const context = useContext(AudioPlayerActionsContext);
+  if (!context) {
+    throw new Error(
+      "useAudioPlayerActions must be used within AudioPlayerProvider",
+    );
+  }
+  return context;
 }
 
 export function useAudioPlayer(): AudioPlayerContextType {
-  const context = useContext(AudioPlayerContext);
-  if (!context) {
-    throw new Error("useAudioPlayer must be used within AudioPlayerProvider");
-  }
-  return context;
-}
-
-export function useAudioProgress(): AudioProgressType {
-  const context = useContext(AudioPlayerProgressContext);
-  if (!context) {
-    throw new Error("useAudioProgress must be used within AudioPlayerProvider");
-  }
-  return context;
+  const state = useAudioPlayerState();
+  const actions = useAudioPlayerActions();
+  return { ...state, ...actions };
 }

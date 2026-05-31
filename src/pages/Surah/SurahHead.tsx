@@ -7,7 +7,10 @@ import {
 } from "react-icons/cg";
 import { FiPauseCircle, FiPlayCircle } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
-import { useAudioPlayer } from "../../components/features/AudioPlayer";
+import {
+  useAudioPlayerActions,
+  useAudioPlayerState,
+} from "../../components/features/AudioPlayer";
 import { useSurahAudio } from "../../hooks/useSurahAudio";
 import type { SurahData } from "../../types";
 
@@ -20,11 +23,8 @@ export const SurahHead: React.FC<SurahHeadProps> = ({ surah }) => {
     currentTrack,
     isPlaying,
     isLoading: playerLoading,
-    togglePlay,
-    setPlaylist,
-    prev,
-    next,
-  } = useAudioPlayer();
+  } = useAudioPlayerState();
+  const { togglePlay, setPlaylist, prev, next } = useAudioPlayerActions();
   const [loadingAudio, setLoadingAudio] = useState(false);
   const { fetchAudio } = useSurahAudio(surah);
 

@@ -1,15 +1,21 @@
 import { Loader2Icon, PauseIcon, PlayIcon } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
-import { useAudioPlayer, useAudioProgress } from "./AudioPlayerContext";
+import { useAudioProgressStore } from "../../../store/audio";
+import {
+  useAudioPlayerActions,
+  useAudioPlayerState,
+} from "./AudioPlayerContext";
 
 const RADIUS = 28;
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 
 export default function MiniPlayer() {
   const [entering, setEntering] = useState(true);
-  const { currentTrack, isExpanded, isPlaying, isLoading, expand, togglePlay } =
-    useAudioPlayer();
-  const { currentTime, duration } = useAudioProgress();
+  const { currentTrack, isExpanded, isPlaying, isLoading } =
+    useAudioPlayerState();
+  const { expand, togglePlay } = useAudioPlayerActions();
+  const currentTime = useAudioProgressStore((s) => s.currentTime);
+  const duration = useAudioProgressStore((s) => s.duration);
 
   const handleTogglePlay = useCallback(
     (e: React.MouseEvent) => {

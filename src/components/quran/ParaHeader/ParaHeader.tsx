@@ -7,10 +7,10 @@ import { Button } from "@/components/ui/button";
 import { getAudioData, mergeAudioWithSurah } from "../../../lib/db";
 import { useSettings } from "../../../store/settings";
 import type { ParaSurah } from "../../../types";
-import type { Track } from "../../features/AudioPlayer";
 import {
   buildPlaylistFromSurahs,
-  useAudioPlayer,
+  useAudioPlayerActions,
+  useAudioPlayerState,
 } from "../../features/AudioPlayer";
 import Ayahs from "../Ayah/Ayah";
 
@@ -21,8 +21,8 @@ interface ParaHeadProps {
 
 export const ParaHeader: React.FC<ParaHeadProps> = ({ para, allSegments }) => {
   const { id } = useParams();
-  const { currentTrack, isPlaying, togglePlay, setPlaylist, prev, next } =
-    useAudioPlayer();
+  const { currentTrack, isPlaying } = useAudioPlayerState();
+  const { togglePlay, setPlaylist, prev, next } = useAudioPlayerActions();
   const reciterId = useSettings((s) => s.reciterId);
   const [segmentsWithAudio, setSegmentsWithAudio] = useState<
     ParaSurah[] | null

@@ -1,13 +1,18 @@
 import { MusicIcon, XIcon } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { useAudioPlayer, useAudioProgress } from "./AudioPlayerContext";
+import { useAudioProgressStore } from "../../../store/audio";
+import {
+  formatTime,
+  useAudioPlayerActions,
+  useAudioPlayerState,
+} from "./AudioPlayerContext";
 
 export default function PlaylistDrawer() {
   const [leaving, setLeaving] = useState(false);
   const [entered, setEntered] = useState(false);
-  const { showPlaylist, setShowPlaylist, playlist, currentTrack, playTrack } =
-    useAudioPlayer();
-  const { duration, formatTime } = useAudioProgress();
+  const { showPlaylist, playlist, currentTrack } = useAudioPlayerState();
+  const { setShowPlaylist, playTrack } = useAudioPlayerActions();
+  const duration = useAudioProgressStore((s) => s.duration);
 
   useEffect(() => {
     if (showPlaylist) {

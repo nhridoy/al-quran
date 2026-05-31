@@ -16,7 +16,10 @@ import { useBookmarkStore, useIsBookmarked } from "../../../store/bookmarks";
 import { useSettings } from "../../../store/settings";
 import type { SurahData, Verse } from "../../../types";
 import type { Track } from "../../features/AudioPlayer";
-import { useAudioPlayer } from "../../features/AudioPlayer";
+import {
+  useAudioPlayerActions,
+  useAudioPlayerState,
+} from "../../features/AudioPlayer";
 
 interface AyahsProps {
   ayah: Verse;
@@ -26,7 +29,8 @@ interface AyahsProps {
 }
 
 const Ayahs = memo(({ ayah, surah, tracklist, surahNo }: AyahsProps) => {
-  const { currentTrack, isPlaying, togglePlay, setPlaylist } = useAudioPlayer();
+  const { currentTrack, isPlaying } = useAudioPlayerState();
+  const { togglePlay, setPlaylist } = useAudioPlayerActions();
   const addBookmark = useBookmarkStore((s) => s.add);
   const removeBookmark = useBookmarkStore((s) => s.remove);
   const tajweedEnabled = useSettings((s) => s.tajweedEnabled);

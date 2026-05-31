@@ -21,18 +21,18 @@ export interface AudioPlayerState {
   currentTrack: Track | null;
   playlist: Track[];
   currentIndex: number;
-  volume: number;
   isShuffled: boolean;
   repeatMode: RepeatMode;
   showPlaylist: boolean;
 }
 
-export interface AudioPlayerContextType extends AudioPlayerState {
+export interface AudioPlayerActions {
   playTrack: (track: Track) => void;
   togglePlay: () => void;
   next: () => void;
   prev: () => void;
   setVolume: (volume: number) => void;
+  seek: (time: number) => void;
   toggleShuffle: () => void;
   cycleRepeat: () => void;
   setPlaylist: (tracks: Track[], startIndex?: number) => void;
@@ -42,9 +42,6 @@ export interface AudioPlayerContextType extends AudioPlayerState {
   setShowPlaylist: (show: boolean) => void;
 }
 
-export interface AudioProgressType {
-  currentTime: number;
-  duration: number;
-  seek: (time: number) => void;
-  formatTime: (seconds: number) => string;
-}
+export interface AudioPlayerContextType
+  extends AudioPlayerState,
+    AudioPlayerActions {}
