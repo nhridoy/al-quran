@@ -11,6 +11,7 @@ import Para from "./pages/Para/Para";
 import SurahPage from "./pages/Surah/Surah";
 import { useBookmarkStore } from "./store/bookmarks";
 import { useDownloadsStore } from "./store/downloads";
+import { useLocationStore } from "./store/location";
 import { useSettings } from "./store/settings";
 
 const About = lazy(() => import("./pages/About/About"));
@@ -38,6 +39,9 @@ const Splash = lazy(() => import("./components/features/Splash/Splash"));
 function DataLoader() {
   const loadSettings = useSettings((s) => s.load);
   const settingsLoaded = useSettings((s) => s.loaded);
+  const onboardingComplete = useSettings((s) => s.onboardingComplete);
+  const requestLocation = useLocationStore((s) => s.request);
+  const locationRequested = useLocationStore((s) => s.requested);
   const loadBookmarks = useBookmarkStore((s) => s.load);
   const bookmarksLoaded = useBookmarkStore((s) => s.loaded);
   const loadDownloads = useDownloadsStore((s) => s.load);
@@ -54,6 +58,11 @@ function DataLoader() {
     loadDownloads,
     downloadsLoaded,
   ]);
+  useEffect(() => {
+    if (settingsLoaded && onboardingComplete && !locationRequested) {
+      requestLocation();
+    }
+  }, [settingsLoaded, onboardingComplete, locationRequested, requestLocation]);
   return null;
 }
 
