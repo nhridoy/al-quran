@@ -8,38 +8,12 @@ import { getAudioData, mergeAudioWithSurah } from "../../../lib/db";
 import { useSettings } from "../../../store/settings";
 import type { ParaSurah } from "../../../types";
 import type { Track } from "../../features/AudioPlayer";
-import { useAudioPlayer } from "../../features/AudioPlayer";
+import { buildPlaylistFromSurahs, useAudioPlayer } from "../../features/AudioPlayer";
 import Ayahs from "../Ayah/Ayah";
 
 interface ParaHeadProps {
   para: ParaSurah;
   allSegments: ParaSurah[];
-}
-
-function buildPlaylistFromPara(segments: ParaSurah[]): Track[] {
-  const tracks: Track[] = [];
-  for (const segment of segments) {
-    for (const verse of segment.verses) {
-      if (!verse.audio?.primary) continue;
-      const { primary, secondary, tertiary, alternative } = verse.audio;
-      tracks.push({
-        id: `${segment.no}-${verse.numberInSurah}`,
-        surahNo: segment.no,
-        ayahNumber: verse.numberInSurah,
-        totalNumber: verse.totalNumber,
-        surahName: segment.name,
-        enName: segment.enName,
-        arabicText: verse.text.arText,
-        translationText: verse.text.enText,
-        transliterationText: verse.text.enTextTransliteration,
-        audioUrl: primary,
-        fallbackUrls: [secondary, tertiary, alternative].filter(
-          (u) => u && u !== primary,
-        ),
-      });
-    }
-  }
-  return tracks;
 }
 
 export const ParaHeader: React.FC<ParaHeadProps> = ({ para, allSegments }) => {
@@ -68,7 +42,7 @@ export const ParaHeader: React.FC<ParaHeadProps> = ({ para, allSegments }) => {
   }, [allSegments, reciterId, segmentsWithAudio]);
 
   const paraTracks = useMemo(
-    () => (segmentsWithAudio ? buildPlaylistFromPara(segmentsWithAudio) : []),
+    () => (segmentsWithAudio ? buildPlaylistFromSurahs(segmentsWithAudio) : []),
     [segmentsWithAudio],
   );
 

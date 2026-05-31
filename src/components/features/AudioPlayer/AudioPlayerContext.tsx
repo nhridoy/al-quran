@@ -23,28 +23,34 @@ export function formatTime(seconds: number): string {
   return `${minutes}:${secs.toString().padStart(2, "0")}`;
 }
 
-export function buildPlaylistFromSurah(surahData: SurahData): Track[] {
+export function buildPlaylistFromSurahs(surahsData: SurahData[]): Track[] {
   const tracks: Track[] = [];
-  for (const verse of surahData.verses) {
-    if (!verse.audio?.primary) continue;
-    const { primary, secondary, tertiary, alternative } = verse.audio;
-    tracks.push({
-      id: `${surahData.no}-${verse.numberInSurah}`,
-      surahNo: surahData.no,
-      ayahNumber: verse.numberInSurah,
-      totalNumber: verse.totalNumber,
-      surahName: surahData.name,
-      enName: surahData.enName,
-      arabicText: verse.text.arText,
-      translationText: verse.text.enText,
-      transliterationText: verse.text.enTextTransliteration,
-      audioUrl: primary,
-      fallbackUrls: [secondary, tertiary, alternative].filter(
-        (u) => u && u !== primary,
-      ),
-    });
+  for (const surahData of surahsData) {
+    for (const verse of surahData.verses) {
+      if (!verse.audio?.primary) continue;
+      const { primary, secondary, tertiary, alternative } = verse.audio;
+      tracks.push({
+        id: `${surahData.no}-${verse.numberInSurah}`,
+        surahNo: surahData.no,
+        ayahNumber: verse.numberInSurah,
+        totalNumber: verse.totalNumber,
+        surahName: surahData.name,
+        enName: surahData.enName,
+        arabicText: verse.text.arText,
+        translationText: verse.text.enText,
+        transliterationText: verse.text.enTextTransliteration,
+        audioUrl: primary,
+        fallbackUrls: [secondary, tertiary, alternative].filter(
+          (u) => u && u !== primary,
+        ),
+      });
+    }
   }
   return tracks;
+}
+
+export function buildPlaylistFromSurah(surahData: SurahData): Track[] {
+  return buildPlaylistFromSurahs([surahData]);
 }
 
 function createShuffledIndices(length: number, startIndex: number): number[] {

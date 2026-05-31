@@ -19,6 +19,7 @@ export default function AudioPlayer() {
 export {
   AudioPlayerProvider,
   buildPlaylistFromSurah,
+  buildPlaylistFromSurahs,
   formatTime,
   useAudioPlayer,
   useAudioProgress,
