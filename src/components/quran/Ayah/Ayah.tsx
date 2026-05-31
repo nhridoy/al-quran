@@ -1,3 +1,4 @@
+import DOMPurify from "dompurify";
 import { memo, useCallback, useEffect, useMemo, useRef } from "react";
 import { BiBook, BiBookmark, BiShareAlt } from "react-icons/bi";
 import { IoPauseOutline, IoPlayOutline } from "react-icons/io5";
@@ -259,8 +260,10 @@ const Ayahs = memo(({ ayah, surah, tracklist, surahNo }: AyahsProps) => {
                 ) : verseTafsir ? (
                   <div className="prose-sm prose max-w-none p-3 text-sm leading-relaxed text-text-secondary dark:prose-invert dark:text-dark-text-secondary">
                     <div
-                      // biome-ignore lint/security/noDangerouslySetInnerHtml: tafsir content from trusted API
-                      dangerouslySetInnerHTML={{ __html: verseTafsir.text }}
+                      // biome-ignore lint/security/noDangerouslySetInnerHtml: sanitized via DOMPurify
+                      dangerouslySetInnerHTML={{
+                        __html: DOMPurify.sanitize(verseTafsir.text),
+                      }}
                     />
                   </div>
                 ) : (
