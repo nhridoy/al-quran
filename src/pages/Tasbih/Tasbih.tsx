@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { BiReset } from "react-icons/bi";
 import { MdLoop } from "react-icons/md";
+import { Button } from "@/components/ui/button";
 import { Header } from "../../components/common/Header/Header";
 
 interface Dhikr {
@@ -109,18 +110,18 @@ export default function Tasbih() {
 
         <div className="flex gap-2 overflow-x-auto pb-2">
           {PRESETS.map((dhikr) => (
-            <button
+            <Button
               key={dhikr.id}
-              type="button"
               onClick={() => setActiveId(dhikr.id)}
-              className={`cursor-pointer whitespace-nowrap rounded-xl px-4 py-2 text-sm font-medium transition-all ${
+              variant={activeId === dhikr.id ? "gradient" : "secondary-ghost"}
+              className={`whitespace-nowrap rounded-xl px-4 py-2 text-sm font-medium transition-all ${
                 activeId === dhikr.id
-                  ? "bg-linear-to-r from-primary to-secondary text-white shadow-md"
-                  : "border border-border bg-surface text-text-secondary hover:bg-surface-alt dark:border-dark-border dark:bg-dark-surface-card dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
+                  ? "shadow-md"
+                  : "border border-border bg-surface hover:bg-surface-alt dark:border-dark-border dark:bg-dark-surface-card dark:hover:bg-dark-surface-alt"
               }`}
             >
               {dhikr.label} ({dhikr.target})
-            </button>
+            </Button>
           ))}
         </div>
 
@@ -178,22 +179,22 @@ export default function Tasbih() {
           </button>
 
           <div className="flex items-center gap-3">
-            <button
-              type="button"
+            <Button
               onClick={resetCurrent}
-              className="flex cursor-pointer items-center gap-2 rounded-xl border border-border px-4 py-2 text-sm text-text-secondary transition-colors hover:bg-surface-alt dark:border-dark-border dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
+              variant="secondary-ghost"
+              className="gap-2 rounded-xl border border-border px-4 py-2 text-sm text-text-secondary hover:bg-surface-alt dark:border-dark-border dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
             >
               <BiReset className="text-base" />
               Reset
-            </button>
-            <button
-              type="button"
+            </Button>
+            <Button
               onClick={resetAll}
-              className="flex cursor-pointer items-center gap-2 rounded-xl border border-border px-4 py-2 text-sm text-text-secondary transition-colors hover:bg-surface-alt dark:border-dark-border dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
+              variant="secondary-ghost"
+              className="gap-2 rounded-xl border border-border px-4 py-2 text-sm text-text-secondary hover:bg-surface-alt dark:border-dark-border dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
             >
               <MdLoop className="text-base" />
               Reset All
-            </button>
+            </Button>
           </div>
         </div>
       </div>

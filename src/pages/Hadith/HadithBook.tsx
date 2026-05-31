@@ -6,6 +6,12 @@ import {
   BiRefresh,
 } from "react-icons/bi";
 import { useParams } from "react-router-dom";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Header } from "../../components/common/Header/Header";
 import {
   getPreferredText,
@@ -31,7 +37,6 @@ export default function HadithBook() {
   const { slug, bookIndex } = useParams();
   const bi = bookIndex ? Number.parseInt(bookIndex, 10) : undefined;
   const [page, setPage] = useState(1);
-  const [expanded, setExpanded] = useState<number | null>(null);
   const [displayLang, setDisplayLang] = useState<string | null>(null);
   const translationLang = useSettings((s) => s.translationLang);
   const { data, loading, error, refetch } = useHadithPage(slug, bi, page);
@@ -55,13 +60,11 @@ export default function HadithBook() {
 
   const handlePrev = useCallback(() => {
     setPage((p) => Math.max(1, p - 1));
-    setExpanded(null);
   }, []);
 
   const handleNext = useCallback(() => {
     if (data) {
       setPage((p) => Math.min(Math.ceil(data.total / PAGE_SIZE), p + 1));
-      setExpanded(null);
     }
   }, [data]);
 
@@ -125,88 +128,80 @@ export default function HadithBook() {
           </div>
         ) : (
           data && (
-            <div className="space-y-2">
+            <Accordion className="gap-2">
               {data.items.map((h) => {
-                const isOpen = expanded === h.hadithIndex;
                 const { text: displayText, lang: actualLang } =
                   getPreferredText(h.text, activeLang);
                 const altText =
                   actualLang !== "ar" && h.text.ar ? h.text.ar : undefined;
                 return (
-                  <div
+                  <AccordionItem
                     key={h._id}
-                    className="overflow-hidden rounded-2xl border border-border bg-surface dark:border-dark-border dark:bg-dark-surface-card"
+                    value={String(h.hadithIndex)}
+                    className="overflow-hidden rounded-2xl border border-border bg-surface not-last:border-b-0 dark:border-dark-border dark:bg-dark-surface-card"
                   >
-                    <button
-                      type="button"
-                      onClick={() => setExpanded(isOpen ? null : h.hadithIndex)}
-                      className="flex w-full cursor-pointer items-center justify-between p-4 text-left transition-colors hover:bg-surface-alt dark:hover:bg-dark-surface-alt"
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10 text-xs font-bold text-primary dark:bg-primary/20">
-                          {h.bookHadithIndex}
-                        </div>
-                        <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
-                          Hadith {h.bookHadithIndex}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        {actualLang !== translationLang && (
-                          <span className="rounded bg-secondary/10 px-1.5 py-0.5 text-[10px] font-medium text-secondary">
-                            {actualLang}
+                    <AccordionTrigger className="[&_[data-slot=accordion-trigger-icon]]:hidden p-4 text-left transition-colors hover:bg-surface-alt dark:hover:bg-dark-surface-alt">
+                      <div className="flex w-full items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10 text-xs font-bold text-primary dark:bg-primary/20">
+                            {h.bookHadithIndex}
+                          </div>
+                          <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
+                            Hadith {h.bookHadithIndex}
                           </span>
-                        )}
-                        <span
-                          className={`text-xs text-text-muted transition-transform ${
-                            isOpen ? "rotate-180" : ""
-                          }`}
-                        >
-                          ▾
-                        </span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          {actualLang !== translationLang && (
+                            <span className="rounded bg-secondary/10 px-1.5 py-0.5 text-[10px] font-medium text-secondary">
+                              {actualLang}
+                            </span>
+                          )}
+                          <span className="text-xs text-text-muted transition-transform group-aria-expanded/accordion-trigger:rotate-180">
+                            ▾
+                          </span>
+                        </div>
                       </div>
-                    </button>
-                    {isOpen && (
-                      <div className="space-y-3 border-t border-border p-4 dark:border-dark-border">
-                        <p
-                          dir={
-                            actualLang === "ar" ||
-                            actualLang === "ar-diacritics" ||
-                            actualLang === "ur"
-                              ? "rtl"
-                              : "ltr"
-                          }
-                          className="text-sm leading-relaxed text-text-secondary dark:text-dark-text-secondary"
-                        >
-                          {displayText}
-                        </p>
-                        {altText && (
-                          <div className="border-t border-border pt-3 dark:border-dark-border">
-                            <p
-                              dir="rtl"
-                              className="font-arabic text-lg leading-loose text-text-primary dark:text-dark-text-primary"
+                    </AccordionTrigger>
+                    <AccordionContent className="space-y-3 border-t border-border p-4 pb-4 dark:border-dark-border">
+                      <p
+                        dir={
+                          actualLang === "ar" ||
+                          actualLang === "ar-diacritics" ||
+                          actualLang === "ur"
+                            ? "rtl"
+                            : "ltr"
+                        }
+                        className="text-sm leading-relaxed text-text-secondary dark:text-dark-text-secondary"
+                      >
+                        {displayText}
+                      </p>
+                      {altText && (
+                        <div className="border-t border-border pt-3 dark:border-dark-border">
+                          <p
+                            dir="rtl"
+                            className="font-arabic text-lg leading-loose text-text-primary dark:text-dark-text-primary"
+                          >
+                            {altText}
+                          </p>
+                        </div>
+                      )}
+                      {h.grades.length > 0 && (
+                        <div className="flex flex-wrap gap-2">
+                          {h.grades.map((g) => (
+                            <span
+                              key={`${g.name}-${g.grade}`}
+                              className="rounded-full bg-green-50 px-2.5 py-1 text-xs font-medium text-green-700 dark:bg-green-900/30 dark:text-green-400"
                             >
-                              {altText}
-                            </p>
-                          </div>
-                        )}
-                        {h.grades.length > 0 && (
-                          <div className="flex flex-wrap gap-2">
-                            {h.grades.map((g) => (
-                              <span
-                                key={`${g.name}-${g.grade}`}
-                                className="rounded-full bg-green-50 px-2.5 py-1 text-xs font-medium text-green-700 dark:bg-green-900/30 dark:text-green-400"
-                              >
-                                {g.grade}
-                              </span>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
+                              {g.grade}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </AccordionContent>
+                  </AccordionItem>
                 );
               })}
-            </div>
+            </Accordion>
           )
         )}
 

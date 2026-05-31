@@ -1,5 +1,6 @@
 import { BiBookOpen, BiErrorCircle, BiRefresh } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import { Header } from "../../components/common/Header/Header";
 import { useEditions } from "../../hooks/useHadith";
 import { useSettings } from "../../store/settings";
@@ -39,23 +40,23 @@ export default function HadithCollections() {
           <div className="flex flex-col items-center gap-4 rounded-2xl border border-border bg-surface p-8 text-center dark:border-dark-border dark:bg-dark-surface-card">
             <BiErrorCircle className="text-4xl text-red-400" />
             <p className="text-sm text-text-muted">{error}</p>
-            <button
-              type="button"
+            <Button
               onClick={refetch}
-              className="btn-primary flex cursor-pointer items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-medium"
+              variant="gradient"
+              className="rounded-xl px-5 py-2.5 text-sm font-medium"
             >
               <BiRefresh className="text-base" />
               Try Again
-            </button>
+            </Button>
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
             {editions.map((edition) => (
-              <button
+              <Button
                 key={edition.slug}
-                type="button"
                 onClick={() => navigate(`/hadith/${edition.slug}`)}
-                className="flex cursor-pointer items-center gap-4 rounded-2xl border border-border bg-surface p-5 text-left transition-all hover:border-secondary/30 hover:shadow-md dark:border-dark-border dark:bg-dark-surface-card dark:hover:border-secondary/20"
+                variant="secondary-ghost"
+                className="w-full justify-start h-auto gap-4 rounded-2xl border border-border bg-surface p-5 text-left hover:border-secondary/30 hover:shadow-md dark:border-dark-border dark:bg-dark-surface-card dark:hover:border-secondary/20"
               >
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20">
                   <BiBookOpen className="text-lg text-secondary" />
@@ -75,7 +76,7 @@ export default function HadithCollections() {
                   </p>
                 </div>
                 <span className="text-xs text-secondary">&rarr;</span>
-              </button>
+              </Button>
             ))}
           </div>
         )}

@@ -10,6 +10,7 @@ import {
   IoMusicalNotesOutline,
   IoNotificationsOutline,
 } from "react-icons/io5";
+import { Button } from "@/components/ui/button";
 import { useSurahs } from "../../../hooks/useSurahs";
 import { LANGUAGES, RECITERS, TAFSIR_LIST } from "../../../lib/const";
 import {
@@ -118,14 +119,14 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
 
       <div className="relative z-10 flex flex-1 flex-col px-6 pt-12 pb-8">
         {step > 0 && (
-          <button
-            type="button"
+          <Button
+            variant="white-ghost"
+            className="mb-6 h-10 w-10 rounded-full border border-white/10 bg-white/5 hover:bg-white/10"
             onClick={prev}
-            className="mb-6 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/60 backdrop-blur-sm transition-all hover:bg-white/10 hover:text-white active:scale-90"
             aria-label="Back"
           >
             <IoChevronBack className="text-lg" />
-          </button>
+          </Button>
         )}
 
         <div className="mb-8 flex items-center justify-center gap-2">
@@ -252,15 +253,15 @@ function StepWelcome({
               ["bn", "বাংলা"],
             ] as const
           ).map(([val, label]) => (
-            <button
+            <Button
               key={val}
-              type="button"
-              onClick={() => onSelect(val)}
-              className={`flex flex-1 cursor-pointer flex-col items-center gap-3 rounded-2xl border p-5 text-center transition-all duration-300 active:scale-[0.97] ${
+              variant="white-ghost"
+              className={`flex flex-1 flex-col items-center gap-3 rounded-2xl border p-5 h-auto ${
                 language === val
                   ? "border-[#9345f2]/50 bg-[#9345f2]/10 shadow-lg shadow-[#9345f2]/10"
                   : "border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/10"
               }`}
+              onClick={() => onSelect(val)}
             >
               <div
                 className={`flex h-12 w-12 items-center justify-center rounded-xl text-lg transition-colors ${
@@ -278,7 +279,7 @@ function StepWelcome({
               >
                 {label}
               </span>
-            </button>
+            </Button>
           ))}
         </div>
       </div>
@@ -310,13 +311,13 @@ function StepReciter({
       <div className="flex-1 overflow-y-auto rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm scrollbar-thin scrollbar-thumb-white/10">
         <div className="divide-y divide-white/5">
           {RECITERS.map((r) => (
-            <button
+            <Button
               key={r.identifier}
-              type="button"
-              onClick={() => onSelect(r.identifier)}
-              className={`flex w-full cursor-pointer items-center gap-4 px-4 py-3.5 text-left transition-all hover:bg-white/5 ${
+              variant="white-ghost"
+              className={`flex w-full items-center gap-4 px-4 py-3.5 h-auto rounded-none justify-start ${
                 selected === r.identifier ? "bg-[#9345f2]/10" : ""
               }`}
+              onClick={() => onSelect(r.identifier)}
             >
               <div
                 className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-sm font-bold transition-all ${
@@ -340,19 +341,19 @@ function StepReciter({
               {selected === r.identifier && (
                 <IoCheckmarkCircle className="text-lg text-[#b87aff]" />
               )}
-            </button>
+            </Button>
           ))}
         </div>
       </div>
 
-      <button
-        type="button"
+      <Button
+        variant="gradient"
+        className="flex w-full items-center justify-center gap-2 py-3.5 h-auto text-sm shadow-lg shadow-[#9345f2]/20 hover:shadow-xl hover:shadow-[#9345f2]/30"
         onClick={onContinue}
-        className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#2e0d8a] to-[#9345f2] py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#9345f2]/20 transition-all hover:shadow-xl hover:shadow-[#9345f2]/30 active:scale-[0.98]"
       >
         Continue
         <IoChevronForward className="text-base" />
-      </button>
+      </Button>
     </div>
   );
 }
@@ -387,13 +388,13 @@ function StepTafsir({
       <div className="flex-1 overflow-y-auto rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
         <div className="divide-y divide-white/5">
           {filtered.map((t) => (
-            <button
+            <Button
               key={t.id}
-              type="button"
-              onClick={() => onSelect(t.id)}
-              className={`flex w-full cursor-pointer items-center gap-4 px-4 py-3.5 text-left transition-all hover:bg-white/5 ${
+              variant="white-ghost"
+              className={`flex w-full items-center gap-4 px-4 py-3.5 h-auto rounded-none justify-start ${
                 selected === t.id ? "bg-[#9345f2]/10" : ""
               }`}
+              onClick={() => onSelect(t.id)}
             >
               <div
                 className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-sm font-bold transition-all ${
@@ -420,19 +421,19 @@ function StepTafsir({
               {selected === t.id && (
                 <IoCheckmarkCircle className="text-lg text-[#b87aff]" />
               )}
-            </button>
+            </Button>
           ))}
         </div>
       </div>
 
-      <button
-        type="button"
+      <Button
+        variant="gradient"
+        className="flex w-full items-center justify-center gap-2 py-3.5 h-auto text-sm shadow-lg shadow-[#9345f2]/20 hover:shadow-xl hover:shadow-[#9345f2]/30"
         onClick={onContinue}
-        className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#2e0d8a] to-[#9345f2] py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#9345f2]/20 transition-all hover:shadow-xl hover:shadow-[#9345f2]/30 active:scale-[0.98]"
       >
         Continue
         <IoChevronForward className="text-base" />
-      </button>
+      </Button>
     </div>
   );
 }
@@ -492,13 +493,13 @@ function StepPermissions({
             </div>
           </div>
           {!locationGranted && (
-            <button
-              type="button"
+            <Button
+              variant="white-ghost"
+              className="mt-4 w-full rounded-xl bg-white/10 py-2.5 h-auto text-sm font-semibold text-white hover:bg-white/20"
               onClick={onRequestLocation}
-              className="mt-4 w-full cursor-pointer rounded-xl bg-white/10 py-2.5 text-sm font-semibold text-white transition-all hover:bg-white/20 active:scale-[0.98]"
             >
               Grant Location Access
-            </button>
+            </Button>
           )}
         </div>
 
@@ -534,25 +535,25 @@ function StepPermissions({
             </div>
           </div>
           {!notificationGranted && (
-            <button
-              type="button"
+            <Button
+              variant="white-ghost"
+              className="mt-4 w-full rounded-xl bg-white/10 py-2.5 h-auto text-sm font-semibold text-white hover:bg-white/20"
               onClick={onRequestNotification}
-              className="mt-4 w-full cursor-pointer rounded-xl bg-white/10 py-2.5 text-sm font-semibold text-white transition-all hover:bg-white/20 active:scale-[0.98]"
             >
               Enable Notifications
-            </button>
+            </Button>
           )}
         </div>
       </div>
 
-      <button
-        type="button"
+      <Button
+        variant="gradient"
+        className="flex w-full items-center justify-center gap-2 py-3.5 h-auto text-sm shadow-lg shadow-[#9345f2]/20 hover:shadow-xl hover:shadow-[#9345f2]/30"
         onClick={onNext}
-        className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#2e0d8a] to-[#9345f2] py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#9345f2]/20 transition-all hover:shadow-xl hover:shadow-[#9345f2]/30 active:scale-[0.98]"
       >
         Continue
         <IoChevronForward className="text-base" />
-      </button>
+      </Button>
     </div>
   );
 }
@@ -592,14 +593,14 @@ function StepDone({ onFinish }: { onFinish: () => void }) {
         <p className="text-center text-xs text-white/40">
           Everything is cached in IndexedDB for offline-first performance.
         </p>
-        <button
-          type="button"
+        <Button
+          variant="gradient"
+          className="flex w-full items-center justify-center gap-2 py-4 h-auto text-base shadow-lg shadow-[#9345f2]/20 hover:shadow-xl hover:shadow-[#9345f2]/30"
           onClick={onFinish}
-          className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#2e0d8a] to-[#9345f2] py-4 text-base font-semibold text-white shadow-lg shadow-[#9345f2]/20 transition-all hover:shadow-xl hover:shadow-[#9345f2]/30 active:scale-[0.98]"
         >
           <FaQuran className="text-sm" />
           Start Reading
-        </button>
+        </Button>
       </div>
     </div>
   );

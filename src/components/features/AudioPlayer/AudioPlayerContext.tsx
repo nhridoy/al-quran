@@ -104,6 +104,7 @@ export function AudioPlayerProvider({
   const shuffleIndicesRef = useRef<number[]>([]);
   const shuffleCursorRef = useRef(0);
   const fallbackIndexRef = useRef(0);
+  const playGenRef = useRef(0);
 
   useEffect(() => {
     isPlayingRef.current = isPlaying;
@@ -136,8 +137,16 @@ export function AudioPlayerProvider({
         const nextUrl = track.fallbackUrls[fallbackIndexRef.current];
         fallbackIndexRef.current++;
         setIsLoading(true);
+        const fbGen = ++playGenRef.current;
         audio.src = nextUrl;
-        audio.play().catch(() => {});
+        audio
+          .play()
+          .then(() => {
+            if (playGenRef.current !== fbGen) return;
+            setIsPlaying(true);
+            isPlayingRef.current = true;
+          })
+          .catch(() => {});
         return;
       }
       setIsPlaying(false);
@@ -161,8 +170,16 @@ export function AudioPlayerProvider({
       };
 
       if (mode === "one") {
+        const repGen = ++playGenRef.current;
         audio.currentTime = 0;
-        audio.play().catch(() => {});
+        audio
+          .play()
+          .then(() => {
+            if (playGenRef.current !== repGen) return;
+            setIsPlaying(true);
+            isPlayingRef.current = true;
+          })
+          .catch(() => {});
       } else if (mode === "all") {
         const nextIndex = hasShuffle
           ? advanceShuffle()
@@ -215,15 +232,18 @@ export function AudioPlayerProvider({
     setIsLoading(true);
     const audio = audioRef.current;
     if (!audio) return;
+    const gen = ++playGenRef.current;
     audio.src = track.audioUrl;
     audio.currentTime = 0;
     audio
       .play()
       .then(() => {
+        if (playGenRef.current !== gen) return;
         setIsPlaying(true);
         isPlayingRef.current = true;
       })
       .catch(() => {
+        if (playGenRef.current !== gen) return;
         setIsPlaying(false);
         isPlayingRef.current = false;
       });
@@ -250,15 +270,18 @@ export function AudioPlayerProvider({
       fallbackIndexRef.current = 0;
       const audio = audioRef.current;
       if (!audio) return;
+      const gen = ++playGenRef.current;
       audio.src = track.audioUrl;
       audio.currentTime = 0;
       audio
         .play()
         .then(() => {
+          if (playGenRef.current !== gen) return;
           setIsPlaying(true);
           isPlayingRef.current = true;
         })
         .catch(() => {
+          if (playGenRef.current !== gen) return;
           setIsPlaying(false);
           isPlayingRef.current = false;
         });

@@ -1,5 +1,6 @@
 import { BiBookAlt, BiErrorCircle, BiRefresh } from "react-icons/bi";
 import { useNavigate, useParams } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import { Header } from "../../components/common/Header/Header";
 import { useEditionBooks } from "../../hooks/useHadith";
 import { useSettings } from "../../store/settings";
@@ -45,25 +46,25 @@ export default function HadithBooks() {
           <div className="flex flex-col items-center gap-4 rounded-2xl border border-border bg-surface p-8 text-center dark:border-dark-border dark:bg-dark-surface-card">
             <BiErrorCircle className="text-4xl text-red-400" />
             <p className="text-sm text-text-muted">{error}</p>
-            <button
-              type="button"
+            <Button
               onClick={refetch}
-              className="btn-primary flex cursor-pointer items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-medium"
+              variant="gradient"
+              className="rounded-xl px-5 py-2.5 text-sm font-medium"
             >
               <BiRefresh className="text-base" />
               Try Again
-            </button>
+            </Button>
           </div>
         ) : (
           <div className="space-y-2">
             {books.map((book) => (
-              <button
+              <Button
                 key={book._id}
-                type="button"
                 onClick={() =>
                   navigate(`/hadith/${slug}/books/${book.bookIndex}`)
                 }
-                className="flex w-full cursor-pointer items-center gap-4 rounded-2xl border border-border bg-surface p-4 text-left transition-all hover:border-secondary/30 hover:shadow-md dark:border-dark-border dark:bg-dark-surface-card dark:hover:border-secondary/20"
+                variant="secondary-ghost"
+                className="w-full justify-start h-auto gap-4 rounded-2xl border border-border bg-surface p-4 text-left hover:border-secondary/30 hover:shadow-md dark:border-dark-border dark:bg-dark-surface-card dark:hover:border-secondary/20"
               >
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-xs font-bold text-primary dark:bg-primary/20">
                   {book.bookIndex}
@@ -77,7 +78,7 @@ export default function HadithBooks() {
                   </p>
                 </div>
                 <BiBookAlt className="text-base text-text-muted" />
-              </button>
+              </Button>
             ))}
           </div>
         )}

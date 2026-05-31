@@ -9,6 +9,7 @@ import {
 } from "react-icons/io5";
 import { MdFormatColorFill, MdOutlineTranslate } from "react-icons/md";
 import { toast } from "react-toastify";
+import { Button } from "@/components/ui/button";
 import { Header } from "../../components/common/Header/Header";
 import { useSurahs } from "../../hooks/useSurahs";
 import { confirm } from "../../lib/confirm";
@@ -87,18 +88,18 @@ function SegmentedControl<T extends string>({
   return (
     <div className="flex overflow-hidden rounded-xl border border-border bg-surface-alt p-0.5 dark:border-dark-border dark:bg-dark-surface-alt">
       {options.map((opt) => (
-        <button
+        <Button
           key={opt.value}
-          type="button"
           onClick={() => onChange(opt.value)}
-          className={`flex-1 cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
+          variant="secondary-ghost"
+          className={`flex-1 rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
             value === opt.value
               ? "bg-white text-primary shadow-sm dark:bg-dark-surface-card dark:text-secondary-light"
               : "text-text-muted hover:text-text-primary dark:hover:text-dark-text-primary"
           }`}
         >
           {opt.label}
-        </button>
+        </Button>
       ))}
     </div>
   );
@@ -347,12 +348,12 @@ export default function Settings() {
                   Tajweed Color
                 </p>
               </div>
-              <button
-                type="button"
+              <Button
                 role="switch"
                 aria-checked={local.tajweedEnabled}
                 onClick={() => set("tajweedEnabled", !local.tajweedEnabled)}
-                className={`relative h-6 w-11 cursor-pointer rounded-full transition-colors ${
+                variant="secondary-ghost"
+                className={`relative h-6 w-11 rounded-full transition-colors ${
                   local.tajweedEnabled
                     ? "bg-linear-to-r from-primary to-secondary"
                     : "bg-surface-alt dark:bg-dark-surface-alt"
@@ -363,7 +364,7 @@ export default function Settings() {
                     local.tajweedEnabled ? "translate-x-5" : "translate-x-0"
                   }`}
                 />
-              </button>
+              </Button>
             </div>
           </div>
         </SettingCard>
@@ -381,12 +382,12 @@ export default function Settings() {
               <p className="text-xs font-medium text-text-primary dark:text-dark-text-primary">
                 Show Tafsir Under Verses
               </p>
-              <button
-                type="button"
+              <Button
                 role="switch"
                 aria-checked={local.tafsirEnabled}
                 onClick={() => set("tafsirEnabled", !local.tafsirEnabled)}
-                className={`relative h-6 w-11 cursor-pointer rounded-full transition-colors ${
+                variant="secondary-ghost"
+                className={`relative h-6 w-11 rounded-full transition-colors ${
                   local.tafsirEnabled
                     ? "bg-linear-to-r from-primary to-secondary"
                     : "bg-surface-alt dark:bg-dark-surface-alt"
@@ -397,7 +398,7 @@ export default function Settings() {
                     local.tafsirEnabled ? "translate-x-5" : "translate-x-0"
                   }`}
                 />
-              </button>
+              </Button>
             </div>
           </div>
           <div>
@@ -467,15 +468,16 @@ export default function Settings() {
                 {local.hijriAdjust !== 1 ? "s" : ""}
               </p>
               <div className="flex items-center gap-3">
-                <button
-                  type="button"
+                <Button
                   onClick={() =>
                     set("hijriAdjust", Math.max(-3, local.hijriAdjust - 1))
                   }
-                  className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border border-border bg-surface-alt text-sm font-medium text-text-primary transition-colors hover:bg-surface dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
+                  variant="secondary-ghost"
+                  size="icon"
+                  className="rounded-lg border border-border bg-surface-alt text-sm font-medium text-text-primary hover:bg-surface dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
                 >
                   −
-                </button>
+                </Button>
                 <input
                   type="range"
                   min="-3"
@@ -487,15 +489,16 @@ export default function Settings() {
                   }
                   className="w-full accent-secondary"
                 />
-                <button
-                  type="button"
+                <Button
                   onClick={() =>
                     set("hijriAdjust", Math.min(3, local.hijriAdjust + 1))
                   }
-                  className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border border-border bg-surface-alt text-sm font-medium text-text-primary transition-colors hover:bg-surface dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
+                  variant="secondary-ghost"
+                  size="icon"
+                  className="rounded-lg border border-border bg-surface-alt text-sm font-medium text-text-primary hover:bg-surface dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
                 >
                   +
-                </button>
+                </Button>
               </div>
               <p className="mt-1 text-[11px] text-text-muted">
                 Adjust if the displayed date differs from your local observation
@@ -507,8 +510,7 @@ export default function Settings() {
         {/* Save / Discard */}
         {hasChanges && (
           <div className="flex items-center justify-end gap-3 rounded-2xl border border-border bg-surface px-5 py-4 dark:border-dark-border dark:bg-dark-surface">
-            <button
-              type="button"
+            <Button
               onClick={() =>
                 setLocal({
                   theme: storeSettings.theme,
@@ -524,23 +526,20 @@ export default function Settings() {
                   hijriAdjust: storeSettings.hijriAdjust,
                 })
               }
-              className="cursor-pointer rounded-xl px-5 py-2 text-sm font-semibold text-white transition-colors hover:text-text-muted"
+              variant="secondary-ghost"
+              className="rounded-xl px-5 py-2 text-sm font-semibold text-white hover:text-text-muted"
             >
               Discard
-            </button>
-            <button
-              type="button"
+            </Button>
+            <Button
               onClick={handleSave}
               disabled={saving}
-              className={`flex cursor-pointer items-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold text-white transition-all ${
-                saving
-                  ? "cursor-not-allowed bg-text-muted"
-                  : "bg-linear-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/20 active:scale-95"
-              }`}
+              variant="gradient"
+              className="rounded-xl px-5 py-2 text-sm font-semibold"
             >
               <IoCheckmarkCircle className="text-base" />
               {saving ? "Saving..." : "Save"}
-            </button>
+            </Button>
           </div>
         )}
 
@@ -564,18 +563,14 @@ export default function Settings() {
                 </p>
               </div>
             </div>
-            <button
-              type="button"
+            <Button
               onClick={handleUpdate}
               disabled={loading}
-              className={`rounded-xl px-4 py-2 text-sm font-semibold text-white transition-all ${
-                loading
-                  ? "cursor-not-allowed bg-text-muted"
-                  : "cursor-pointer bg-linear-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/20 active:scale-95"
-              }`}
+              variant="gradient"
+              className="rounded-xl px-4 py-2 text-sm font-semibold"
             >
               {loading ? "Refreshing..." : "Refresh"}
-            </button>
+            </Button>
           </div>
         </SettingCard>
       </div>

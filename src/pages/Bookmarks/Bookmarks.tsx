@@ -1,8 +1,15 @@
 import { useMemo, useState } from "react";
-import { BiBookmark, BiChevronDown, BiSearch, BiTrash } from "react-icons/bi";
+import { BiBookmark, BiSearch, BiTrash } from "react-icons/bi";
 import { FaQuran } from "react-icons/fa";
 import { IoOpenOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Header } from "../../components/common/Header/Header";
 import { confirm } from "../../lib/confirm";
 import { useBookmarkStore } from "../../store/bookmarks";
@@ -14,16 +21,6 @@ export default function Bookmarks() {
   const clearAll = useBookmarkStore((s) => s.clearAll);
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
-  const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
-
-  const toggleCollapse = (key: string) => {
-    setCollapsed((prev) => {
-      const next = new Set(prev);
-      if (next.has(key)) next.delete(key);
-      else next.add(key);
-      return next;
-    });
-  };
 
   const filtered = useMemo(() => {
     if (!search) return bookmarks;
@@ -84,13 +81,13 @@ export default function Bookmarks() {
             </p>
           </div>
           {bookmarks.length > 0 && (
-            <button
-              type="button"
+            <Button
+              variant="danger"
+              className="rounded-xl px-3 py-1.5 text-xs font-medium"
               onClick={handleClearAll}
-              className="cursor-pointer rounded-xl px-3 py-1.5 text-xs font-medium text-error transition-colors hover:bg-error/10"
             >
               Clear All
-            </button>
+            </Button>
           )}
         </div>
 
@@ -127,19 +124,14 @@ export default function Bookmarks() {
             </p>
           </div>
         ) : (
-          Object.entries(grouped).map(([key, items]) => {
-            const surahKey = key;
-            const isCollapsed = collapsed.has(surahKey);
-            return (
-              <div
+          <Accordion className="space-y-4">
+            {Object.entries(grouped).map(([key, items]) => (
+              <AccordionItem
                 key={key}
+                value={key}
                 className="overflow-hidden rounded-2xl border border-border bg-surface dark:border-dark-border dark:bg-dark-surface-card"
               >
-                <button
-                  type="button"
-                  onClick={() => toggleCollapse(surahKey)}
-                  className="flex w-full cursor-pointer items-center gap-3 border-b border-border p-4 text-left transition-colors hover:bg-surface-alt dark:border-dark-border dark:hover:bg-dark-surface-alt"
-                >
+                <AccordionTrigger className="flex w-full items-center gap-3 border-b border-border p-4 text-left text-sm font-medium transition-colors hover:bg-surface-alt hover:no-underline dark:border-dark-border dark:hover:bg-dark-surface-alt [&>[data-slot=accordion-trigger-icon]]:hidden">
                   <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-linear-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20">
                     <FaQuran className="text-xs text-secondary" />
                   </div>
@@ -152,39 +144,33 @@ export default function Bookmarks() {
                     </p>
                   </div>
                   <div className="flex items-center gap-2">
-                    <button
-                      type="button"
+                    <Button
+                      variant="secondary-ghost"
+                      size="icon-xs"
+                      className="rounded-lg"
                       onClick={(e) => {
                         e.stopPropagation();
                         navigate(`/surah/${items[0].surahNo}`);
                       }}
-                      className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg text-text-muted transition-colors hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20 dark:hover:text-secondary-light"
                       aria-label="Go to surah"
                     >
                       <IoOpenOutline className="text-xs" />
-                    </button>
-                    {isCollapsed && (
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleClearSurah(items[0].surahNo, items[0].enName);
-                        }}
-                        className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg text-text-muted transition-colors hover:bg-surface-alt hover:text-error dark:hover:bg-dark-surface-alt"
-                        aria-label="Clear surah bookmarks"
-                      >
-                        <BiTrash className="text-xs" />
-                      </button>
-                    )}
-                    <BiChevronDown
-                      className={`text-lg text-text-muted transition-transform ${
-                        isCollapsed ? "-rotate-90" : ""
-                      }`}
-                    />
+                    </Button>
+                    <Button
+                      variant="danger"
+                      size="icon-xs"
+                      className="rounded-lg"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleClearSurah(items[0].surahNo, items[0].enName);
+                      }}
+                      aria-label="Clear surah bookmarks"
+                    >
+                      <BiTrash className="text-xs" />
+                    </Button>
                   </div>
-                </button>
-
-                {!isCollapsed && (
+                </AccordionTrigger>
+                <AccordionContent className="border-0 pb-0">
                   <div className="divide-y divide-border dark:divide-dark-border">
                     {items.map((b) => (
                       <div
@@ -219,21 +205,22 @@ export default function Bookmarks() {
                             Ayah {b.ayahNo}
                           </p>
                         </button>
-                        <button
-                          type="button"
+                        <Button
+                          variant="danger"
+                          size="icon"
+                          className="rounded-lg"
                           onClick={() => remove(b.id)}
-                          className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg text-text-muted transition-colors hover:bg-surface-alt hover:text-error dark:hover:bg-dark-surface-alt"
                           aria-label="Remove bookmark"
                         >
                           <BiTrash className="text-sm" />
-                        </button>
+                        </Button>
                       </div>
                     ))}
                   </div>
-                )}
-              </div>
-            );
-          })
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         )}
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FiTrash2 } from "react-icons/fi";
 import { IoPlayCircleOutline } from "react-icons/io5";
+import { Button } from "@/components/ui/button";
 import { Header } from "../../components/common/Header/Header";
 import { useSurahs } from "../../hooks/useSurahs";
 import { confirm } from "../../lib/confirm";
@@ -174,45 +175,49 @@ function SurahDownloadCard({
       </div>
       <div className="shrink-0">
         {isDownloaded ? (
-          <button
-            type="button"
+          <Button
             onClick={handleDelete}
-            className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg text-text-muted transition-all hover:bg-red-50 hover:text-red-500 dark:hover:bg-red-900/20"
+            variant="danger"
+            size="icon"
+            className="rounded-lg"
             title="Remove download"
           >
             <FiTrash2 className="text-sm" />
-          </button>
+          </Button>
         ) : isPaused ? (
           <div className="flex items-center gap-1">
             <span className="text-xs font-medium text-warning">
               {displayProgress}%
             </span>
-            <button
-              type="button"
+            <Button
               onClick={runDownload}
-              className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg text-text-muted transition-all hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20 dark:hover:text-secondary-light"
+              variant="secondary-ghost"
+              size="icon-sm"
+              className="rounded-lg text-text-muted hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20 dark:hover:text-secondary-light"
               title="Resume download"
             >
               <IoPlayCircleOutline className="text-sm" />
-            </button>
-            <button
-              type="button"
+            </Button>
+            <Button
               onClick={handleCancel}
-              className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg text-text-muted transition-all hover:bg-red-50 hover:text-red-500 dark:hover:bg-red-900/20"
+              variant="danger"
+              size="icon-sm"
+              className="rounded-lg"
               title="Cancel download"
             >
               <FiTrash2 className="text-xs" />
-            </button>
+            </Button>
           </div>
         ) : downloading ? (
           <div className="flex items-center gap-1">
             <span className="text-xs font-medium text-secondary">
               {displayProgress}%
             </span>
-            <button
-              type="button"
+            <Button
               onClick={handlePause}
-              className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg text-text-muted transition-all hover:bg-warning/10 hover:text-warning dark:hover:bg-warning/20"
+              variant="secondary-ghost"
+              size="icon-sm"
+              className="rounded-lg text-text-muted hover:bg-warning/10 hover:text-warning dark:hover:bg-warning/20"
               title="Pause download"
             >
               <svg
@@ -224,25 +229,27 @@ function SurahDownloadCard({
                 <rect x="6" y="4" width="4" height="16" rx="1" />
                 <rect x="14" y="4" width="4" height="16" rx="1" />
               </svg>
-            </button>
-            <button
-              type="button"
+            </Button>
+            <Button
               onClick={handleCancel}
-              className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg text-text-muted transition-all hover:bg-red-50 hover:text-red-500 dark:hover:bg-red-900/20"
+              variant="danger"
+              size="icon-sm"
+              className="rounded-lg"
               title="Cancel download"
             >
               <FiTrash2 className="text-xs" />
-            </button>
+            </Button>
           </div>
         ) : (
-          <button
-            type="button"
+          <Button
             onClick={runDownload}
-            className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg text-text-muted transition-all hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20 dark:hover:text-secondary-light"
+            variant="secondary-ghost"
+            size="icon"
+            className="rounded-lg text-text-muted hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20 dark:hover:text-secondary-light"
             title="Download"
           >
             <IoPlayCircleOutline className="text-lg" />
-          </button>
+          </Button>
         )}
       </div>
     </div>
@@ -323,14 +330,14 @@ export default function DownloadsPage() {
           </div>
           <div className="flex items-center gap-2">
             {cacheSize > 0 && (
-              <button
-                type="button"
+              <Button
                 onClick={handleClearAll}
-                className="flex cursor-pointer items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium text-red-500 transition-all hover:bg-red-50 dark:hover:bg-red-900/20"
+                variant="danger"
+                className="gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium"
               >
                 <FiTrash2 />
                 Clear All
-              </button>
+              </Button>
             )}
           </div>
         </div>

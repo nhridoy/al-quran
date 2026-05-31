@@ -7,7 +7,17 @@ import { MdMenuBook } from "react-icons/md";
 import { RiHandHeartLine } from "react-icons/ri";
 import { VscBook } from "react-icons/vsc";
 import { NavLink } from "react-router-dom";
-import Drawer from "../../common/Drawer/Drawer";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent } from "@/components/ui/sheet";
+
+const navLinks = [
+  { to: "/surah", icon: VscBook, label: "Surah" },
+  { to: "/para", icon: MdMenuBook, label: "Para" },
+  { to: "/settings", icon: IoSettingsOutline, label: "Settings" },
+  { to: "/about", icon: BsInfoCircle, label: "About" },
+  { to: "/credits", icon: AiOutlineHeart, label: "Credits" },
+  { to: "/donation", icon: RiHandHeartLine, label: "Donation" },
+];
 
 export default function HamBurger() {
   const [sidebarLeft, setSidebarLeft] = useState(false);
@@ -15,11 +25,12 @@ export default function HamBurger() {
   const close = () => setSidebarLeft(false);
 
   return (
-    <>
-      <button
-        type="button"
+    <Sheet open={sidebarLeft} onOpenChange={setSidebarLeft}>
+      <Button
+        variant="ghost"
+        className="dark:text-white bg-transparent hover:bg-transparent dark:bg-transparent dark:hover:bg-transparent"
         onClick={() => setSidebarLeft(true)}
-        className="dark:text-white"
+        aria-label="Open menu"
       >
         <HamburgerBtn
           size={20}
@@ -27,140 +38,45 @@ export default function HamBurger() {
           hideOutline={false}
           rounded
         />
-      </button>
+      </Button>
 
-      <Drawer
-        open={sidebarLeft}
-        onClose={close}
-        direction="left"
-        className="bg-white dark:bg-[#20282e] h-screen w-2/3 md:w-1/5 grid grid-rows-3"
-      >
-        <div className="flex items-center justify-center row-span-1 p-5 text-white bg-primary">
+      <SheetContent side="left" className="flex flex-col p-0 w-2/3 md:w-80">
+        <div className="flex items-center justify-center p-5 text-white bg-primary">
           <h1 className="text-2xl font-bold">Al Quran</h1>
         </div>
-        <div className="row-span-2">
-          <nav className="flex flex-col">
-            <NavLink
-              to="/surah"
-              onClick={close}
-              className={({ isActive }) =>
-                `flex items-center p-3 transition-colors ${
-                  isActive
-                    ? "bg-alternateOne dark:bg-[#191f24]"
-                    : "hover:bg-alternateOne dark:hover:bg-[#191f24]"
-                }`
-              }
-            >
-              <div className="flex items-center gap-3">
-                <VscBook className="text-xl font-bold dark:text-white" />
-                <span className="font-bold text-primary dark:text-white">
-                  Surah
-                </span>
-              </div>
-            </NavLink>
-            <NavLink
-              to="/para"
-              onClick={close}
-              className={({ isActive }) =>
-                `flex items-center p-3 transition-colors ${
-                  isActive
-                    ? "bg-alternateOne dark:bg-[#191f24]"
-                    : "hover:bg-alternateOne dark:hover:bg-[#191f24]"
-                }`
-              }
-            >
-              <div className="flex items-center gap-3">
-                <MdMenuBook className="text-xl font-bold dark:text-white" />
-                <span className="font-bold text-primary dark:text-white">
-                  Para
-                </span>
-              </div>
-            </NavLink>
-            <NavLink
-              to="/settings"
-              onClick={close}
-              className={({ isActive }) =>
-                `flex items-center p-3 transition-colors ${
-                  isActive
-                    ? "bg-alternateOne dark:bg-[#191f24]"
-                    : "hover:bg-alternateOne dark:hover:bg-[#191f24]"
-                }`
-              }
-            >
-              <div className="flex items-center gap-3">
-                <IoSettingsOutline className="text-xl font-bold dark:text-white" />
-                <span className="font-bold text-primary dark:text-white">
-                  Settings
-                </span>
-              </div>
-            </NavLink>
-            <NavLink
-              to="/about"
-              onClick={close}
-              className={({ isActive }) =>
-                `flex items-center p-3 transition-colors ${
-                  isActive
-                    ? "bg-alternateOne dark:bg-[#191f24]"
-                    : "hover:bg-alternateOne dark:hover:bg-[#191f24]"
-                }`
-              }
-            >
-              <div className="flex items-center gap-3">
-                <BsInfoCircle className="text-xl font-bold dark:text-white" />
-                <span className="font-bold text-primary dark:text-white">
-                  About
-                </span>
-              </div>
-            </NavLink>
-            <NavLink
-              to="/credits"
-              onClick={close}
-              className={({ isActive }) =>
-                `flex items-center p-3 transition-colors ${
-                  isActive
-                    ? "bg-alternateOne dark:bg-[#191f24]"
-                    : "hover:bg-alternateOne dark:hover:bg-[#191f24]"
-                }`
-              }
-            >
-              <div className="flex items-center gap-3">
-                <AiOutlineHeart className="text-xl font-bold dark:text-white" />
-                <span className="font-bold text-primary dark:text-white">
-                  Credits
-                </span>
-              </div>
-            </NavLink>
-            <NavLink
-              to="/donation"
-              onClick={close}
-              className={({ isActive }) =>
-                `flex items-center p-3 transition-colors ${
-                  isActive
-                    ? "bg-alternateOne dark:bg-[#191f24]"
-                    : "hover:bg-alternateOne dark:hover:bg-[#191f24]"
-                }`
-              }
-            >
-              <div className="flex items-center gap-3">
-                <RiHandHeartLine className="text-xl font-bold dark:text-white" />
-                <span className="font-bold text-primary dark:text-white">
-                  Donation
-                </span>
-              </div>
-            </NavLink>
-          </nav>
-        </div>
-        <button
-          type="button"
-          className="py-3 font-semibold text-white bg-alternateSecond cursor-pointer"
+
+        <nav className="flex-1 flex flex-col">
+          {navLinks.map((link) => {
+            const Icon = link.icon;
+            return (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                onClick={close}
+                className={({ isActive }) =>
+                  `flex items-center gap-3 p-3 transition-colors ${
+                    isActive
+                      ? "bg-surface-alt dark:bg-dark-surface-alt text-primary dark:text-secondary-light"
+                      : "hover:bg-surface-alt dark:hover:bg-dark-surface-alt text-text-primary dark:text-dark-text-primary"
+                  }`
+                }
+              >
+                <Icon className="text-xl" />
+                <span className="font-bold">{link.label}</span>
+              </NavLink>
+            );
+          })}
+        </nav>
+
+        <Button
+          variant="default"
           onClick={close}
+          className="flex w-full items-center justify-center gap-1 py-3 h-auto rounded-none"
         >
-          <div className="flex items-center justify-center gap-1">
-            <AiOutlineDoubleLeft />
-            Close
-          </div>
-        </button>
-      </Drawer>
-    </>
+          <AiOutlineDoubleLeft />
+          Close
+        </Button>
+      </SheetContent>
+    </Sheet>
   );
 }

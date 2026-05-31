@@ -1,7 +1,14 @@
 import type React from "react";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { BiBook, BiBookmark, BiShareAlt } from "react-icons/bi";
 import { IoPauseOutline, IoPlayOutline } from "react-icons/io5";
+import { Button } from "@/components/ui/button";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { useVerseTafsir } from "../../../hooks/useVerseTafsir";
 import { getAudioData, mergeAudioWithSurah } from "../../../lib/db";
 import { colorizeArabic } from "../../../lib/tajweed";
@@ -31,7 +38,6 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
   const tafsirEnabled = useSettings((s) => s.tafsirEnabled);
   const tafsirId = useSettings((s) => s.tafsirId);
   const audioPromiseRef = useRef<Promise<Track[]> | null>(null);
-  const [tafsirOpen, setTafsirOpen] = useState(false);
   const currentSurahNo = surah?.no ?? surahNo ?? 0;
   const { data: verseTafsir, loading: tafsirLoading } = useVerseTafsir(
     tafsirEnabled ? tafsirId : undefined,
@@ -133,23 +139,21 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
           </div>
 
           <div className="flex items-center gap-2">
-            <button
-              type="button"
+            <Button
+              variant="secondary-ghost"
+              size="icon"
+              className="rounded-lg"
               onClick={handleShare}
-              className="btn-ghost flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg"
               aria-label="Share"
               title="Share"
             >
               <BiShareAlt className="text-base" />
-            </button>
-            <button
-              type="button"
+            </Button>
+            <Button
+              variant={isThisAyahPlaying ? "gradient" : "secondary-ghost"}
+              size="icon"
+              className={`rounded-lg ${isThisAyahPlaying ? "shadow-md" : ""}`}
               onClick={handlePlay}
-              className={`flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg transition-all active:scale-90 ${
-                isThisAyahPlaying
-                  ? "bg-linear-to-br from-primary to-secondary text-white shadow-md"
-                  : "btn-ghost"
-              }`}
               aria-label={isThisAyahPlaying ? "Pause" : "Play"}
               title={
                 isThisAyahPlaying ? "Pause" : `Play ayah ${ayah.numberInSurah}`
@@ -160,9 +164,15 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
               ) : (
                 <IoPlayOutline className="text-base" />
               )}
-            </button>
-            <button
-              type="button"
+            </Button>
+            <Button
+              variant={isBookmarked ? "gradient" : "secondary-ghost"}
+              size="icon"
+              className={`rounded-lg ${
+                isBookmarked
+                  ? "from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20 text-secondary dark:text-secondary-light"
+                  : ""
+              }`}
               onClick={() => {
                 if (isBookmarked) {
                   removeBookmark(ayahId);
@@ -179,18 +189,13 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
                   });
                 }
               }}
-              className={`flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg transition-all active:scale-90 ${
-                isBookmarked
-                  ? "bg-linear-to-br from-primary/10 to-secondary/10 text-secondary dark:from-primary/20 dark:to-secondary/20 dark:text-secondary-light"
-                  : "btn-ghost"
-              }`}
               aria-label={isBookmarked ? "Remove bookmark" : "Bookmark"}
               title={isBookmarked ? "Remove bookmark" : "Bookmark"}
             >
               <BiBookmark
                 className={`text-base ${isBookmarked ? "fill-current" : ""}`}
               />
-            </button>
+            </Button>
           </div>
         </div>
 
@@ -229,29 +234,15 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
         </div>
 
         {tafsirEnabled && (
-          <>
-            <button
-              type="button"
-              onClick={() => setTafsirOpen((v) => !v)}
-              className="mt-2 flex w-full cursor-pointer items-center justify-between rounded-xl border border-border bg-surface-alt/50 px-3 py-2 text-xs font-medium text-text-secondary transition-all hover:bg-surface-alt dark:border-dark-border dark:bg-dark-surface-alt/50 dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
-            >
-              <span className="flex items-center gap-1.5">
-                <BiBook className="text-sm" />
-                {tafsirOpen ? "Hide Tafsir" : "Show Tafsir"}
-              </span>
-              <svg
-                className={`h-3.5 w-3.5 transition-transform ${tafsirOpen ? "rotate-180" : ""}`}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                aria-hidden="true"
-              >
-                <path d="M6 9l6 6 6-6" />
-              </svg>
-            </button>
-            {tafsirOpen && (
-              <div className="mt-1 overflow-hidden rounded-xl border border-border bg-surface-alt/30 dark:border-dark-border dark:bg-dark-surface-alt/30">
+          <Accordion className="mt-2">
+            <AccordionItem value="tafsir" className="border-0">
+              <AccordionTrigger className="flex w-full items-center justify-between rounded-xl border border-border bg-surface-alt/50 px-3 py-2 text-xs font-medium text-text-secondary transition-all hover:bg-surface-alt hover:no-underline dark:border-dark-border dark:bg-dark-surface-alt/50 dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt">
+                <span className="flex items-center gap-1.5">
+                  <BiBook className="text-sm" />
+                  Show Tafsir
+                </span>
+              </AccordionTrigger>
+              <AccordionContent className="mt-1 overflow-hidden rounded-xl border border-border bg-surface-alt/30 dark:border-dark-border dark:bg-dark-surface-alt/30">
                 {tafsirLoading ? (
                   <div className="space-y-2 p-3">
                     <div
@@ -279,9 +270,9 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
                     Tafsir not available for this verse
                   </p>
                 )}
-              </div>
-            )}
-          </>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         )}
       </div>
     </div>

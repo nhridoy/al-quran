@@ -5,6 +5,7 @@ import {
   Madhab,
 } from "adhan";
 import { useEffect, useMemo, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Header } from "../../components/common/Header/Header";
 import { useLocationStore } from "../../store/location";
 import { useSettings } from "../../store/settings";
@@ -145,13 +146,13 @@ export default function PrayerTimesPage() {
             <p className="text-sm text-text-muted">
               {geoError}. Please enable location access.
             </p>
-            <button
-              type="button"
+            <Button
               onClick={request}
-              className="cursor-pointer rounded-xl bg-linear-to-r from-primary to-secondary px-5 py-2 text-sm font-semibold text-white transition-all hover:shadow-lg hover:shadow-primary/20 active:scale-95"
+              variant="gradient"
+              className="rounded-xl px-5 py-2 text-sm font-semibold hover:shadow-lg hover:shadow-primary/20 active:scale-95"
             >
               Try Again
-            </button>
+            </Button>
           </div>
         )}
 

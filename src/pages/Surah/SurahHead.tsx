@@ -6,6 +6,7 @@ import {
   CgSpinnerTwo,
 } from "react-icons/cg";
 import { FiPauseCircle, FiPlayCircle } from "react-icons/fi";
+import { Button } from "@/components/ui/button";
 import {
   buildPlaylistFromSurah,
   useAudioPlayer,
@@ -108,36 +109,38 @@ export const SurahHead: React.FC<SurahHeadProps> = ({ surah }) => {
         </div>
 
         <div className="flex items-center gap-4">
-          <button
-            type="button"
-            onClick={handlePrev}
+          <Button
+            variant="white-ghost"
+            size="icon"
             className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
+            onClick={handlePrev}
             aria-label="Previous"
           >
-            <CgPlayTrackPrevO className="text-xl" />
-          </button>
-          <button
-            type="button"
+            <CgPlayTrackPrevO className="text-xl text-white size-5" />
+          </Button>
+          <Button
+            size="icon"
+            className="rounded-full h-12 w-12 bg-white text-primary shadow-lg hover:scale-105 active:scale-95 border-0 hover:bg-white"
             onClick={handlePlay}
-            className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-white text-primary shadow-lg transition-all hover:scale-105 active:scale-95"
             aria-label={isLoading ? "Loading" : isPlaying ? "Pause" : "Play"}
           >
             {isLoading ? (
-              <CgSpinnerTwo className="animate-spin text-xl" />
+              <CgSpinnerTwo className="animate-spin text-xl size-5" />
             ) : isPlaying ? (
-              <FiPauseCircle className="text-2xl" />
+              <FiPauseCircle className="text-2xl size-6" />
             ) : (
-              <FiPlayCircle className="text-2xl" />
+              <FiPlayCircle className="text-2xl size-6" />
             )}
-          </button>
-          <button
-            type="button"
-            onClick={handleNext}
+          </Button>
+          <Button
+            variant="white-ghost"
+            size="icon"
             className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
+            onClick={handleNext}
             aria-label="Next"
           >
-            <CgPlayTrackNextO className="text-xl" />
-          </button>
+            <CgPlayTrackNextO className="text-xl text-white size-5" />
+          </Button>
         </div>
       </div>
 

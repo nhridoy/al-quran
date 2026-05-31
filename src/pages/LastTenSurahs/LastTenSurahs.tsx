@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import { Header } from "../../components/common/Header/Header";
 import { useSurahs } from "../../hooks/useSurahs";
 
@@ -35,11 +36,11 @@ export default function LastTenSurahs() {
         ) : (
           <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
             {surahs.map((surah) => (
-              <button
+              <Button
                 key={surah.no}
-                type="button"
                 onClick={() => navigate(`/surah/${surah.no}`)}
-                className="flex cursor-pointer items-center gap-4 rounded-2xl border border-border bg-surface p-5 text-left transition-all hover:border-secondary/30 hover:shadow-md hover:shadow-secondary/5 dark:border-dark-border dark:bg-dark-surface-card dark:hover:border-secondary/20"
+                variant="secondary-ghost"
+                className="w-full justify-start h-auto gap-4 rounded-2xl border border-border bg-surface p-5 text-left hover:border-secondary/30 hover:shadow-md hover:shadow-secondary/5 dark:border-dark-border dark:bg-dark-surface-card dark:hover:border-secondary/20"
               >
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-primary/10 to-secondary/10 text-sm font-bold text-secondary dark:from-primary/20 dark:to-secondary/20">
                   {surah.no}
@@ -58,7 +59,7 @@ export default function LastTenSurahs() {
                 <p className="font-arabic text-lg text-text-primary dark:text-dark-text-primary">
                   {surah.name}
                 </p>
-              </button>
+              </Button>
             ))}
           </div>
         )}

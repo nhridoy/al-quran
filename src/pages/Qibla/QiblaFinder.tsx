@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Header } from "../../components/common/Header/Header";
 import { useLocationStore } from "../../store/location";
 
@@ -207,13 +208,13 @@ export default function QiblaFinder() {
             <p className="text-sm text-text-muted">
               {geoError}. Location is required.
             </p>
-            <button
-              type="button"
+            <Button
               onClick={request}
-              className="rounded-xl bg-linear-to-r from-primary to-secondary px-5 py-2 text-sm font-semibold text-white"
+              variant="gradient"
+              className="rounded-xl px-5 py-2 text-sm font-semibold"
             >
               Try Again
-            </button>
+            </Button>
           </div>
         )}
 
@@ -230,13 +231,13 @@ export default function QiblaFinder() {
                     Compass sensor access is required to point towards the
                     Qibla.
                   </p>
-                  <button
-                    type="button"
+                  <Button
                     onClick={startCompass}
+                    variant="secondary-ghost"
                     className="rounded-lg bg-amber-600 px-4 py-1.5 text-xs font-semibold text-white"
                   >
                     Enable Compass
-                  </button>
+                  </Button>
                 </div>
               )}
 

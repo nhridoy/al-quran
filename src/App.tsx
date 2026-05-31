@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import ConfirmModal from "./components/common/ConfirmModal/ConfirmModal";
 import AudioPlayer, {
   AudioPlayerProvider,
@@ -117,59 +118,61 @@ function App() {
   return (
     <BrowserRouter>
       <AudioPlayerProvider>
-        <DataLoader />
-        <ThemeController />
-        {showOnboarding && (
-          <Onboarding onComplete={() => setShowOnboarding(false)} />
-        )}
-        <MainLayout>
-          <Suspense fallback={<div className="h-screen" />}>
-            <Routes>
-              <Route path="/" element={<Splash />} />
-              <Route element={<HomeLayout />}>
-                <Route path="/surah" element={<Surahs />} />
-                <Route path="/para" element={<Paras />} />
-              </Route>
-              <Route path="/surah/:id" element={<SurahPage />} />
-              <Route path="/para/:id" element={<Para />} />
-              <Route path="/bookmarks" element={<Bookmarks />} />
-              <Route path="/last-ten-surahs" element={<LastTenSurahs />} />
-              <Route path="/duas" element={<Duas />} />
-              <Route path="/duas/:categoryId" element={<DuaCategory />} />
-              <Route path="/hadith" element={<HadithCollections />} />
-              <Route path="/hadith/:slug" element={<HadithBooks />} />
-              <Route
-                path="/hadith/:slug/books/:bookIndex"
-                element={<HadithBook />}
-              />
-              <Route path="/prayer-times" element={<PrayerTimes />} />
-              <Route path="/qibla" element={<QiblaFinder />} />
-              <Route path="/asma-ul-husna" element={<AsmaUlHusna />} />
-              <Route path="/tasbih" element={<Tasbih />} />
-              <Route path="/settings" element={<Settings />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/credits" element={<Credits />} />
-              <Route path="/downloads" element={<Downloads />} />
-              <Route path="/donation" element={<Donation />} />
-              <Route path="*" element={<Navigate to="/surah" replace />} />
-            </Routes>
-          </Suspense>
-        </MainLayout>
-        <AudioPlayer />
-        <LastReadTracker />
-        <ConfirmModal />
-        <ToastContainer
-          position="bottom-right"
-          autoClose={2000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover={false}
-          theme="dark"
-        />
+        <TooltipProvider>
+          <DataLoader />
+          <ThemeController />
+          {showOnboarding && (
+            <Onboarding onComplete={() => setShowOnboarding(false)} />
+          )}
+          <MainLayout>
+            <Suspense fallback={<div className="h-screen" />}>
+              <Routes>
+                <Route path="/" element={<Splash />} />
+                <Route element={<HomeLayout />}>
+                  <Route path="/surah" element={<Surahs />} />
+                  <Route path="/para" element={<Paras />} />
+                </Route>
+                <Route path="/surah/:id" element={<SurahPage />} />
+                <Route path="/para/:id" element={<Para />} />
+                <Route path="/bookmarks" element={<Bookmarks />} />
+                <Route path="/last-ten-surahs" element={<LastTenSurahs />} />
+                <Route path="/duas" element={<Duas />} />
+                <Route path="/duas/:categoryId" element={<DuaCategory />} />
+                <Route path="/hadith" element={<HadithCollections />} />
+                <Route path="/hadith/:slug" element={<HadithBooks />} />
+                <Route
+                  path="/hadith/:slug/books/:bookIndex"
+                  element={<HadithBook />}
+                />
+                <Route path="/prayer-times" element={<PrayerTimes />} />
+                <Route path="/qibla" element={<QiblaFinder />} />
+                <Route path="/asma-ul-husna" element={<AsmaUlHusna />} />
+                <Route path="/tasbih" element={<Tasbih />} />
+                <Route path="/settings" element={<Settings />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/credits" element={<Credits />} />
+                <Route path="/downloads" element={<Downloads />} />
+                <Route path="/donation" element={<Donation />} />
+                <Route path="*" element={<Navigate to="/surah" replace />} />
+              </Routes>
+            </Suspense>
+          </MainLayout>
+          <AudioPlayer />
+          <LastReadTracker />
+          <ConfirmModal />
+          <ToastContainer
+            position="bottom-right"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover={false}
+            theme="dark"
+          />
+        </TooltipProvider>
       </AudioPlayerProvider>
     </BrowserRouter>
   );

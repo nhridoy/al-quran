@@ -33,7 +33,9 @@ Always run `pnpm lint-format && pnpm typecheck` before committing.
 - **Tailwind v4**: Use `@theme` in CSS, not JS. No `@apply`.
 - **Lazy loading**: All page components via `React.lazy` + `Suspense`.
 - **AudioPlayer**: Context-based (`AudioPlayerContext.tsx`). Use `buildPlaylistFromSurah()` + `setPlaylist()` to play. Hook: `useAudioPlayer()`.
-- **Utility classes** in `index.css`: `.glass`, `.glass-strong`, `.text-gradient`, `.text-gradient-gold`, `.btn-primary`, `.btn-ghost`, `.card-hover`, `.page-enter`.
+- **UI**: shadcn/ui with `base-nova` preset (Base UI primitives). All buttons use `<Button>` from `@/components/ui/button`.
+- **Button variants**: `secondary-ghost` (transparent, hover-primary-tint), `gradient` (primary→secondary gradient), `white-ghost` (white-on-dark), plus default shadcn ones.
+- **Utility classes** in `index.css`: `.glass`, `.glass-strong`, `.text-gradient`, `.text-gradient-gold`, `.card-hover`, `.page-enter`.
 - **Animations** in `@theme`: `animate-slide-up`, `animate-fade-in`, `animate-scale-in`, etc.
 - **Custom scrollbar** defined in `index.css` (thin, themed by mode).
 

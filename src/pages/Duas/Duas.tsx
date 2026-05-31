@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { BiSearch } from "react-icons/bi";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Header } from "../../components/common/Header/Header";
 import duas from "../../data/duas.json";
 
@@ -38,7 +38,6 @@ const categoryIcons: Record<string, string> = {
 };
 
 export default function Duas() {
-  const navigate = useNavigate();
   const [search, setSearch] = useState("");
 
   const filtered = useMemo(() => {
@@ -84,20 +83,19 @@ export default function Duas() {
           {filtered.map((cat) => {
             const count = duas.filter((d) => d.category === cat).length;
             return (
-              <button
+              <Link
                 key={cat}
-                type="button"
-                onClick={() => navigate(`/duas/${encodeURIComponent(cat)}`)}
-                className="flex cursor-pointer flex-col items-center gap-2 rounded-2xl border border-border bg-surface p-5 text-center transition-all hover:border-secondary/30 hover:shadow-md dark:border-dark-border dark:bg-dark-surface-card dark:hover:border-secondary/20"
+                to={`/duas/${encodeURIComponent(cat)}`}
+                className="flex flex-col items-center gap-2 rounded-2xl border border-border bg-surface p-5 text-center transition-all duration-200 hover:border-secondary/30 hover:shadow-md dark:border-dark-border dark:bg-dark-surface-card dark:hover:border-secondary/20"
               >
                 <span className="text-2xl">{categoryIcons[cat] || "🤲"}</span>
                 <span className="text-sm font-semibold text-text-primary dark:text-dark-text-primary">
                   {cat}
                 </span>
                 <span className="text-xs text-text-muted">
-                  {count} dua{count !== 1 ? "s" : ""}
+                  {count} dua{count === 1 ? "" : "s"}
                 </span>
-              </button>
+              </Link>
             );
           })}
         </div>

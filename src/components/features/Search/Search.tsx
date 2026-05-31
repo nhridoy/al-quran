@@ -10,6 +10,7 @@ import { createPortal } from "react-dom";
 import { BiSearch } from "react-icons/bi";
 import { IoClose } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import { useSurahs } from "../../../hooks/useSurahs";
 import type { Verse } from "../../../types";
 import SurahList from "../../quran/SurahItem/SurahItem";
@@ -113,10 +114,10 @@ export default function Search() {
 
   return (
     <>
-      <button
-        type="button"
+      <Button
+        variant="secondary-ghost"
+        className="gap-2 rounded-xl px-3 py-2 h-auto"
         onClick={() => setOpen(true)}
-        className="btn-ghost flex cursor-pointer items-center gap-2 rounded-xl px-3 py-2 text-sm"
       >
         <BiSearch className="text-lg" />
         <span className="hidden text-text-muted dark:text-dark-text-muted md:inline">
@@ -125,7 +126,7 @@ export default function Search() {
         <kbd className="hidden rounded-md border border-border bg-surface-alt px-1.5 py-0.5 text-[10px] font-medium text-text-muted dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-muted md:inline">
           ⌘K
         </kbd>
-      </button>
+      </Button>
 
       {open &&
         createPortal(
@@ -140,7 +141,7 @@ export default function Search() {
               <div className="overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/5 dark:bg-dark-surface-card dark:ring-white/10">
                 <div className="border-b border-border dark:border-dark-border">
                   <div className="flex items-center gap-3 px-4">
-                    <BiSearch className="text-lg text-text-muted" />
+                    <BiSearch className="text-lg shrink-0 text-text-muted" />
                     <input
                       ref={inputRef}
                       onChange={handleChange}
@@ -239,7 +240,7 @@ export default function Search() {
                             {r.verse.text.bnText}
                           </p>
                           <p className="mt-1 text-[11px] font-medium text-secondary dark:text-secondary-light">
-                            {r.enName} — Ayah {r.verse.numberInSurah}
+                            {r.enName} &mdash; Ayah {r.verse.numberInSurah}
                           </p>
                         </button>
                       ))}

@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { CgPlayTrackNextO, CgPlayTrackPrevO } from "react-icons/cg";
 import { FiPauseCircle, FiPlayCircle } from "react-icons/fi";
 import { useParams } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import { getAudioData, mergeAudioWithSurah } from "../../../lib/db";
 import { useSettings } from "../../../store/settings";
 import type { ParaSurah } from "../../../types";
@@ -130,34 +131,33 @@ export const ParaHeader: React.FC<ParaHeadProps> = ({ para, allSegments }) => {
               <p className="font-arabic text-sm text-white">{para.name}</p>
               <p className="text-xs text-white/60">{para.enNameTranslation}</p>
             </div>
-            <button
-              type="button"
+            <Button
+              variant="white-ghost"
+              className="h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
               onClick={handlePrev}
-              className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
               aria-label="Previous"
             >
-              <CgPlayTrackPrevO className="text-lg text-white" />
-            </button>
-            <button
-              type="button"
+              <CgPlayTrackPrevO className="text-lg text-white size-5" />
+            </Button>
+            <Button
+              className="rounded-full h-9 w-9 bg-white text-primary shadow hover:scale-105 active:scale-95 border-0 hover:bg-white"
               onClick={handlePlay}
-              className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-white text-primary shadow transition-all hover:scale-105 active:scale-95"
               aria-label={isPlaying ? "Pause" : "Play"}
             >
               {isCurrentPara && isPlaying ? (
-                <FiPauseCircle className="text-xl" />
+                <FiPauseCircle className="text-xl size-6" />
               ) : (
-                <FiPlayCircle className="text-xl" />
+                <FiPlayCircle className="text-xl size-6" />
               )}
-            </button>
-            <button
-              type="button"
+            </Button>
+            <Button
+              variant="white-ghost"
+              className="h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
               onClick={handleNext}
-              className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
               aria-label="Next"
             >
-              <CgPlayTrackNextO className="text-lg text-white" />
-            </button>
+              <CgPlayTrackNextO className="text-lg text-white size-5" />
+            </Button>
           </div>
         </div>
       </div>

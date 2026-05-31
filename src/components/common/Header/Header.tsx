@@ -1,5 +1,6 @@
 import type React from "react";
 import { BiArrowBack } from "react-icons/bi";
+import { Button } from "@/components/ui/button";
 import type { SurahData } from "../../../types";
 import Search from "../../features/Search/Search";
 
@@ -19,14 +20,15 @@ export const Header: React.FC<HeaderProps> = (props) => {
       <div className="flex items-center justify-between px-4 py-4 md:px-6 md:py-5">
         <div className="flex items-center gap-3">
           {props.showBack && (
-            <button
-              type="button"
+            <Button
+              variant="secondary-ghost"
+              size="icon"
+              className="rounded-xl"
               onClick={handleBackBtn}
-              className="btn-ghost flex cursor-pointer items-center justify-center rounded-xl p-2"
               aria-label="Go back"
             >
               <BiArrowBack className="text-xl" />
-            </button>
+            </Button>
           )}
           <h1 className="text-lg font-bold text-text-primary dark:text-dark-text-primary md:text-xl">
             {props.head ? props.head : props.surah?.enName}

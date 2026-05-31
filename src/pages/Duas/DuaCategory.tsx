@@ -1,13 +1,19 @@
 import { useMemo, useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { useParams } from "react-router-dom";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
 import { Header } from "../../components/common/Header/Header";
 import duas from "../../data/duas.json";
 
 export default function DuaCategory() {
   const { categoryId } = useParams();
   const category = decodeURIComponent(categoryId || "");
-  const [expanded, setExpanded] = useState<number | null>(null);
   const [search, setSearch] = useState("");
 
   const items = useMemo(() => {
@@ -43,66 +49,51 @@ export default function DuaCategory() {
           </p>
         )}
 
-        <div className="space-y-3">
-          {items.map((dua) => {
-            const isOpen = expanded === dua.id;
-            return (
-              <div
-                key={dua.id}
-                className="overflow-hidden rounded-2xl border border-border bg-surface dark:border-dark-border dark:bg-dark-surface-card"
-              >
-                <button
-                  type="button"
-                  onClick={() => setExpanded(isOpen ? null : dua.id)}
-                  className="flex w-full cursor-pointer items-center justify-between p-4 text-left transition-colors hover:bg-surface-alt dark:hover:bg-dark-surface-alt"
-                >
-                  <div className="flex-1">
-                    <p className="text-sm font-semibold text-text-primary dark:text-dark-text-primary">
-                      {dua.title}
-                    </p>
-                    <p className="text-xs text-text-muted">{dua.reference}</p>
-                  </div>
-                  <span
-                    className={`ml-3 text-lg text-text-muted transition-transform ${
-                      isOpen ? "rotate-180" : ""
-                    }`}
-                  >
-                    ▾
-                  </span>
-                </button>
-
-                {isOpen && (
-                  <div className="space-y-3 border-t border-border p-4 dark:border-dark-border">
-                    <p className="text-right font-arabic text-xl leading-loose text-text-primary dark:text-dark-text-primary">
-                      {dua.arabic}
-                    </p>
-                    <p className="text-sm italic text-text-secondary dark:text-dark-text-secondary">
-                      {dua.transliteration}
-                    </p>
-                    <p className="text-sm leading-relaxed text-text-primary dark:text-dark-text-primary">
-                      {dua.translation}
-                    </p>
-                    <div className="flex flex-wrap gap-2 pt-1">
-                      <span className="rounded-lg bg-primary/10 px-3 py-1 text-[11px] font-medium text-primary dark:bg-primary/20">
-                        {dua.reference}
-                      </span>
+        <Accordion className="space-y-3">
+          {items.map((dua) => (
+            <AccordionItem
+              key={dua.id}
+              value={String(dua.id)}
+              className="overflow-hidden rounded-2xl border border-border bg-surface dark:border-dark-border dark:bg-dark-surface-card"
+            >
+              <AccordionTrigger className="flex w-full items-center justify-between p-4 text-left text-sm font-semibold text-text-primary transition-colors hover:bg-surface-alt hover:no-underline dark:hover:bg-dark-surface-alt dark:text-dark-text-primary [&>[data-slot=accordion-trigger-icon]]:hidden">
+                <div className="flex-1">
+                  <p className="text-sm font-semibold text-text-primary dark:text-dark-text-primary">
+                    {dua.title}
+                  </p>
+                  <p className="text-xs text-text-secondary dark:text-dark-text-secondary">
+                    {dua.reference}
+                  </p>
+                </div>
+                <span className="text-lg text-text-muted transition-transform group-aria-expanded/accordion-trigger:rotate-180">
+                  ▾
+                </span>
+              </AccordionTrigger>
+              <AccordionContent className="border-t border-border dark:border-dark-border">
+                <div className="space-y-3 p-4">
+                  <p className="text-right font-arabic text-xl leading-loose text-text-primary dark:text-dark-text-primary">
+                    {dua.arabic}
+                  </p>
+                  <p className="text-sm italic text-text-secondary dark:text-dark-text-secondary">
+                    {dua.transliteration}
+                  </p>
+                  <p className="text-sm leading-relaxed text-text-primary dark:text-dark-text-primary">
+                    {dua.translation}
+                  </p>
+                  <Badge variant="default">{dua.reference}</Badge>
+                  {dua.benefit && (
+                    <div className="rounded-xl bg-accent/10 p-3 dark:bg-accent/5">
+                      <p className="text-xs font-medium text-accent">Benefit</p>
+                      <p className="mt-0.5 text-xs leading-relaxed text-text-secondary dark:text-dark-text-secondary">
+                        {dua.benefit}
+                      </p>
                     </div>
-                    {dua.benefit && (
-                      <div className="rounded-xl bg-accent/10 p-3 dark:bg-accent/5">
-                        <p className="text-xs font-medium text-accent">
-                          Benefit
-                        </p>
-                        <p className="mt-0.5 text-xs leading-relaxed text-text-secondary dark:text-dark-text-secondary">
-                          {dua.benefit}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
+                  )}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
     </div>
   );
