@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { useVerseTafsir } from "../../../hooks/useVerseTafsir";
 import { getAudioData, mergeAudioWithSurah } from "../../../lib/db";
 import { colorizeArabic } from "../../../lib/tajweed";
-import { useBookmarkStore } from "../../../store/bookmarks";
+import { useBookmarkStore, useIsBookmarked } from "../../../store/bookmarks";
 import { useSettings } from "../../../store/settings";
 import type { SurahData, Verse } from "../../../types";
 import type { Track } from "../../features/AudioPlayer";
@@ -29,7 +29,6 @@ interface AyahsProps {
 
 const Ayahs = memo(({ ayah, surah, tracklist, surahNo }: AyahsProps) => {
   const { currentTrack, isPlaying, togglePlay, setPlaylist } = useAudioPlayer();
-  const bookmarks = useBookmarkStore((s) => s.bookmarks);
   const addBookmark = useBookmarkStore((s) => s.add);
   const removeBookmark = useBookmarkStore((s) => s.remove);
   const reciterId = useSettings((s) => s.reciterId);
@@ -53,7 +52,7 @@ const Ayahs = memo(({ ayah, surah, tracklist, surahNo }: AyahsProps) => {
   const isThisAyahPlaying = isCurrentAyah && isPlaying;
 
   const ayahId = `${surah?.no || currentSurahNo}-${ayah.numberInSurah}`;
-  const isBookmarked = bookmarks.some((b) => b.id === ayahId);
+  const isBookmarked = useIsBookmarked(ayahId);
 
   useEffect(() => {
     if (isCurrentAyah) {

@@ -63,3 +63,7 @@ export const useBookmarkStore = create<BookmarkState>((set, get) => ({
     set({ bookmarks: [] });
   },
 }));
+
+export function useIsBookmarked(id: string): boolean {
+  return useBookmarkStore((s) => s.bookmarks.some((b) => b.id === id));
+}
