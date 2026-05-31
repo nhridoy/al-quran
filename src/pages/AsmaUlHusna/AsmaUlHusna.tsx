@@ -1,8 +1,8 @@
+import { Dialog as DialogPrimitive } from "@base-ui/react/dialog";
 import { useMemo, useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { IoClose } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
-import { Dialog as DialogPrimitive } from "@base-ui/react/dialog";
 import { Dialog, DialogOverlay, DialogPortal } from "@/components/ui/dialog";
 import { Header } from "../../components/common/Header/Header";
 import namesData from "../../data/asmaUlHusna.json";

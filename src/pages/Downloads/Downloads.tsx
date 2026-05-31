@@ -1,3 +1,4 @@
+import { PauseIcon } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FiTrash2 } from "react-icons/fi";
 import { IoPlayCircleOutline } from "react-icons/io5";
@@ -220,15 +221,7 @@ function SurahDownloadCard({
               className="rounded-lg text-text-muted hover:bg-warning/10 hover:text-warning dark:hover:bg-warning/20"
               title="Pause download"
             >
-              <svg
-                className="h-3.5 w-3.5"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <rect x="6" y="4" width="4" height="16" rx="1" />
-                <rect x="14" y="4" width="4" height="16" rx="1" />
-              </svg>
+              <PauseIcon className="h-3.5 w-3.5" aria-hidden="true" />
             </Button>
             <Button
               onClick={handleCancel}

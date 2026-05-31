@@ -1,25 +1,9 @@
-import { memo, useCallback, useEffect, useState } from "react";
+import { Loader2Icon, PauseIcon, PlayIcon } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
 import { useAudioPlayer, useAudioProgress } from "./AudioPlayerContext";
 
 const RADIUS = 28;
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
-
-const Spinner = memo(function Spinner() {
-  return (
-    <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none">
-      <title>Loading</title>
-      <circle
-        cx="12"
-        cy="12"
-        r="10"
-        stroke="currentColor"
-        strokeWidth="3"
-        strokeDasharray="31.4 31.4"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-});
 
 export default function MiniPlayer() {
   const [entering, setEntering] = useState(true);
@@ -100,22 +84,11 @@ export default function MiniPlayer() {
           title={isPlaying ? "Pause" : "Play"}
         >
           {isLoading ? (
-            <Spinner />
+            <Loader2Icon className="h-5 w-5 animate-spin" aria-hidden="true" />
           ) : isPlaying ? (
-            <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-              <title>Pause</title>
-              <rect x="6" y="4" width="4" height="16" rx="1" />
-              <rect x="14" y="4" width="4" height="16" rx="1" />
-            </svg>
+            <PauseIcon className="h-5 w-5" aria-hidden="true" />
           ) : (
-            <svg
-              className="ml-0.5 h-5 w-5"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <title>Play</title>
-              <polygon points="6,4 20,12 6,20" />
-            </svg>
+            <PlayIcon className="ml-0.5 h-5 w-5" aria-hidden="true" />
           )}
         </button>
       </div>

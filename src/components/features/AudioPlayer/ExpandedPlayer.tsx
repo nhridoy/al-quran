@@ -1,161 +1,21 @@
+import {
+  ChevronDownIcon,
+  ListMusicIcon,
+  Loader2Icon,
+  PauseIcon,
+  PlayIcon,
+  Repeat1Icon,
+  RepeatIcon as RepeatIconLucide,
+  ShuffleIcon,
+  SkipBackIcon,
+  SkipForwardIcon,
+  Volume1Icon,
+  Volume2Icon,
+  VolumeXIcon,
+} from "lucide-react";
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useAudioPlayer, useAudioProgress } from "./AudioPlayerContext";
 import VinylDisc from "./VinylDisc";
-
-const RepeatIcon = memo(function RepeatIcon({
-  mode,
-}: {
-  mode: "none" | "all" | "one";
-}) {
-  return (
-    <svg
-      className="h-5 w-5"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <polyline points="17 1 21 5 17 9" />
-      <path d="M3 11V9a4 4 0 0 1 4-4h14" />
-      <polyline points="7 23 3 19 7 15" />
-      <path d="M21 13v2a4 4 0 0 1-4 4H3" />
-      {mode === "one" && (
-        <text
-          x="12"
-          y="15"
-          textAnchor="middle"
-          fontSize="10"
-          fontWeight="bold"
-          fill="currentColor"
-        >
-          1
-        </text>
-      )}
-    </svg>
-  );
-});
-
-const ShuffleIcon = memo(function ShuffleIcon() {
-  return (
-    <svg
-      className="h-5 w-5"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <polyline points="16 3 21 3 21 8" />
-      <line x1="4" y1="20" x2="21" y2="3" />
-      <polyline points="21 16 21 21 16 21" />
-      <line x1="15" y1="15" x2="21" y2="21" />
-      <line x1="4" y1="4" x2="9" y2="9" />
-    </svg>
-  );
-});
-
-const PlaylistIcon = memo(function PlaylistIcon() {
-  return (
-    <svg
-      className="h-5 w-5"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <line x1="8" y1="6" x2="21" y2="6" />
-      <line x1="8" y1="12" x2="21" y2="12" />
-      <line x1="8" y1="18" x2="21" y2="18" />
-      <line x1="3" y1="6" x2="3.01" y2="6" />
-      <line x1="3" y1="12" x2="3.01" y2="12" />
-      <line x1="3" y1="18" x2="3.01" y2="18" />
-    </svg>
-  );
-});
-
-const Spinner = memo(function Spinner({
-  className,
-}: Readonly<{ className?: string }>) {
-  return (
-    <svg
-      className={`${className ?? "h-5 w-5"} animate-spin`}
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <circle
-        cx="12"
-        cy="12"
-        r="10"
-        stroke="currentColor"
-        strokeWidth="3"
-        strokeDasharray="31.4 31.4"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-});
-
-const ChevronDownIcon = memo(function ChevronDownIcon() {
-  return (
-    <svg
-      className="h-5 w-5"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <polyline points="6 9 12 15 18 9" />
-    </svg>
-  );
-});
-
-const VolumeIcon = memo(function VolumeIcon({
-  volume,
-}: Readonly<{ volume: number }>) {
-  return (
-    <svg
-      className="h-5 w-5"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      {volume === 0 ? (
-        <>
-          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-          <line x1="23" y1="9" x2="17" y2="15" />
-          <line x1="17" y1="9" x2="23" y2="15" />
-        </>
-      ) : volume < 0.5 ? (
-        <>
-          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-          <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
-        </>
-      ) : (
-        <>
-          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-          <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
-          <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
-        </>
-      )}
-    </svg>
-  );
-});
 
 function SeekBar() {
   const { currentTime, duration, seek, formatTime } = useAudioProgress();
@@ -252,26 +112,11 @@ function PlayPauseButton({
       title={isLoading ? "Loading" : isPlaying ? "Pause" : "Play"}
     >
       {isLoading ? (
-        <Spinner className="h-6 w-6" />
+        <Loader2Icon className="h-6 w-6 animate-spin" aria-hidden="true" />
       ) : isPlaying ? (
-        <svg
-          className="h-6 w-6"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          aria-hidden="true"
-        >
-          <rect x="6" y="4" width="4" height="16" rx="1" />
-          <rect x="14" y="4" width="4" height="16" rx="1" />
-        </svg>
+        <PauseIcon className="h-6 w-6" aria-hidden="true" />
       ) : (
-        <svg
-          className="ml-0.5 h-6 w-6"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          aria-hidden="true"
-        >
-          <polygon points="6,4 20,12 6,20" />
-        </svg>
+        <PlayIcon className="ml-0.5 h-6 w-6" aria-hidden="true" />
       )}
     </button>
   );
@@ -290,14 +135,7 @@ const PrevButton = memo(function PrevButton({
       aria-label="Previous"
       title="Previous"
     >
-      <svg
-        className="h-5 w-5"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        aria-hidden="true"
-      >
-        <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
-      </svg>
+      <SkipBackIcon className="h-5 w-5" aria-hidden="true" />
     </button>
   );
 });
@@ -315,14 +153,7 @@ const NextButton = memo(function NextButton({
       aria-label="Next"
       title="Next"
     >
-      <svg
-        className="h-5 w-5"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        aria-hidden="true"
-      >
-        <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
-      </svg>
+      <SkipForwardIcon className="h-5 w-5" aria-hidden="true" />
     </button>
   );
 });
@@ -346,7 +177,7 @@ const ShuffleButton = memo(function ShuffleButton({
       aria-label="Toggle shuffle"
       title="Shuffle"
     >
-      <ShuffleIcon />
+      <ShuffleIcon className="h-5 w-5" aria-hidden="true" />
     </button>
   );
 });
@@ -376,7 +207,11 @@ const RepeatButton = memo(function RepeatButton({
             : "Repeat one"
       }
     >
-      <RepeatIcon mode={mode} />
+      {mode === "one" ? (
+        <Repeat1Icon className="h-5 w-5" aria-hidden="true" />
+      ) : (
+        <RepeatIconLucide className="h-5 w-5" aria-hidden="true" />
+      )}
     </button>
   );
 });
@@ -396,7 +231,13 @@ const MuteButton = memo(function MuteButton({
       aria-label="Toggle mute"
       title={volume === 0 ? "Unmute" : "Mute"}
     >
-      <VolumeIcon volume={volume} />
+      {volume === 0 ? (
+        <VolumeXIcon className="h-5 w-5" aria-hidden="true" />
+      ) : volume < 0.5 ? (
+        <Volume1Icon className="h-5 w-5" aria-hidden="true" />
+      ) : (
+        <Volume2Icon className="h-5 w-5" aria-hidden="true" />
+      )}
     </button>
   );
 });
@@ -414,7 +255,7 @@ const PlaylistButton = memo(function PlaylistButton({
       aria-label="Playlist"
       title="Playlist"
     >
-      <PlaylistIcon />
+      <ListMusicIcon className="h-5 w-5" aria-hidden="true" />
     </button>
   );
 });
@@ -432,7 +273,7 @@ const MinimizeButton = memo(function MinimizeButton({
       aria-label="Minimize"
       title="Minimize"
     >
-      <ChevronDownIcon />
+      <ChevronDownIcon className="h-5 w-5" aria-hidden="true" />
     </button>
   );
 });
@@ -566,7 +407,7 @@ function MobilePlayerContent({
           aria-label="Playlist"
           title="Playlist"
         >
-          <PlaylistIcon />
+          <ListMusicIcon className="h-5 w-5" aria-hidden="true" />
         </button>
         <h2 className="text-sm font-medium uppercase tracking-wider text-white/60">
           Now Playing
@@ -578,7 +419,7 @@ function MobilePlayerContent({
           aria-label="Minimize"
           title="Minimize"
         >
-          <ChevronDownIcon />
+          <ChevronDownIcon className="h-5 w-5" aria-hidden="true" />
         </button>
       </div>
 
@@ -610,7 +451,7 @@ function MobilePlayerContent({
           aria-label="Toggle shuffle"
           title="Shuffle"
         >
-          <ShuffleIcon />
+          <ShuffleIcon className="h-5 w-5" aria-hidden="true" />
         </button>
         <button
           type="button"
@@ -619,14 +460,7 @@ function MobilePlayerContent({
           aria-label="Previous"
           title="Previous"
         >
-          <svg
-            className="h-8 w-8"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            aria-hidden="true"
-          >
-            <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
-          </svg>
+          <SkipBackIcon className="h-8 w-8" aria-hidden="true" />
         </button>
         <button
           type="button"
@@ -636,26 +470,11 @@ function MobilePlayerContent({
           title={isLoading ? "Loading" : isPlaying ? "Pause" : "Play"}
         >
           {isLoading ? (
-            <Spinner className="h-8 w-8" />
+            <Loader2Icon className="h-8 w-8 animate-spin" aria-hidden="true" />
           ) : isPlaying ? (
-            <svg
-              className="h-8 w-8"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <rect x="6" y="4" width="4" height="16" rx="1" />
-              <rect x="14" y="4" width="4" height="16" rx="1" />
-            </svg>
+            <PauseIcon className="h-8 w-8" aria-hidden="true" />
           ) : (
-            <svg
-              className="ml-1 h-8 w-8"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <polygon points="6,4 20,12 6,20" />
-            </svg>
+            <PlayIcon className="ml-1 h-8 w-8" aria-hidden="true" />
           )}
         </button>
         <button
@@ -665,14 +484,7 @@ function MobilePlayerContent({
           aria-label="Next"
           title="Next"
         >
-          <svg
-            className="h-8 w-8"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            aria-hidden="true"
-          >
-            <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
-          </svg>
+          <SkipForwardIcon className="h-8 w-8" aria-hidden="true" />
         </button>
         <button
           type="button"
@@ -691,7 +503,11 @@ function MobilePlayerContent({
                 : "Repeat one"
           }
         >
-          <RepeatIcon mode={repeatMode} />
+          {repeatMode === "one" ? (
+            <Repeat1Icon className="h-5 w-5" aria-hidden="true" />
+          ) : (
+            <RepeatIconLucide className="h-5 w-5" aria-hidden="true" />
+          )}
         </button>
       </div>
     </div>

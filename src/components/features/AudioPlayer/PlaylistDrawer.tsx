@@ -1,3 +1,4 @@
+import { MusicIcon, XIcon } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { useAudioPlayer, useAudioProgress } from "./AudioPlayerContext";
 
@@ -72,37 +73,16 @@ export default function PlaylistDrawer() {
             aria-label="Close playlist"
             title="Close"
           >
-            <svg
-              className="h-5 w-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              aria-hidden="true"
-            >
-              <title>Close</title>
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
+            <XIcon className="h-5 w-5" aria-hidden="true" />
           </button>
         </div>
         <div className="max-h-[calc(75vh-60px)] overflow-y-auto">
           {playlist.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-16 text-text-muted dark:text-dark-text-muted">
-              <svg
+              <MusicIcon
                 className="mb-4 h-16 w-16 opacity-50"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
                 aria-hidden="true"
-              >
-                <title>No tracks</title>
-                <path d="M9 18V5l12-2v13" />
-                <circle cx="6" cy="18" r="3" />
-                <circle cx="18" cy="16" r="3" />
-              </svg>
+              />
               <p className="text-lg">No tracks in playlist</p>
               <p className="mt-1 text-sm">
                 Tap a play button on any ayah to start
