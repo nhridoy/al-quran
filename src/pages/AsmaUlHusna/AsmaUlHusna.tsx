@@ -1,8 +1,9 @@
 import { useMemo, useState } from "react";
-import { createPortal } from "react-dom";
 import { BiSearch } from "react-icons/bi";
 import { IoClose } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
+import { Dialog as DialogPrimitive } from "@base-ui/react/dialog";
+import { Dialog, DialogOverlay, DialogPortal } from "@/components/ui/dialog";
 import { Header } from "../../components/common/Header/Header";
 import namesData from "../../data/asmaUlHusna.json";
 
@@ -82,25 +83,26 @@ export default function AsmaUlHusna() {
         )}
       </div>
 
-      {selected &&
-        createPortal(
-          <div className="fixed inset-0 z-999 bg-black/60 backdrop-blur-sm">
-            <div
-              className="absolute inset-0 cursor-default"
+      <Dialog
+        open={!!selected}
+        onOpenChange={(open) => {
+          if (!open) setSelected(null);
+        }}
+      >
+        <DialogPortal>
+          <DialogOverlay className="bg-black/60 backdrop-blur-sm data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0" />
+          <DialogPrimitive.Popup className="fixed top-1/2 left-1/2 z-50 w-full max-w-sm -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-surface p-6 shadow-2xl outline-none data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 dark:bg-dark-surface-card">
+            <Button
+              variant="ghost"
+              size="icon"
               onClick={() => setSelected(null)}
+              className="absolute right-4 top-4 text-text-muted hover:bg-surface-alt hover:text-text-primary dark:hover:bg-dark-surface-alt"
               aria-label="Close"
-            />
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-sm animate-scale-in rounded-2xl bg-surface p-6 shadow-2xl dark:bg-dark-surface-card">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setSelected(null)}
-                className="absolute right-4 top-4 text-text-muted hover:bg-surface-alt hover:text-text-primary dark:hover:bg-dark-surface-alt"
-                aria-label="Close"
-              >
-                <IoClose className="size-5" />
-              </Button>
+            >
+              <IoClose className="size-5" />
+            </Button>
 
+            {selected && (
               <div className="flex flex-col items-center text-center">
                 <div className="mb-1 flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-primary/10 to-secondary/10 text-xs font-bold text-primary dark:from-primary/20 dark:to-secondary/20 dark:text-secondary-light">
                   {selected.id}
@@ -131,10 +133,10 @@ export default function AsmaUlHusna() {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>,
-          document.body,
-        )}
+            )}
+          </DialogPrimitive.Popup>
+        </DialogPortal>
+      </Dialog>
     </div>
   );
 }

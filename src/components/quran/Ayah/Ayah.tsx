@@ -2,13 +2,13 @@ import type React from "react";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import { BiBook, BiBookmark, BiShareAlt } from "react-icons/bi";
 import { IoPauseOutline, IoPlayOutline } from "react-icons/io5";
-import { Button } from "@/components/ui/button";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 import { useVerseTafsir } from "../../../hooks/useVerseTafsir";
 import { getAudioData, mergeAudioWithSurah } from "../../../lib/db";
 import { colorizeArabic } from "../../../lib/tajweed";
