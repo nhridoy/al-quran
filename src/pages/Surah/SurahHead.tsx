@@ -7,12 +7,8 @@ import {
 } from "react-icons/cg";
 import { FiPauseCircle, FiPlayCircle } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
-import {
-  buildPlaylistFromSurah,
-  useAudioPlayer,
-} from "../../components/features/AudioPlayer";
-import { getAudioData, mergeAudioWithSurah } from "../../lib/db";
-import { useSettings } from "../../store/settings";
+import { useAudioPlayer } from "../../components/features/AudioPlayer";
+import { useSurahAudio } from "../../hooks/useSurahAudio";
 import type { SurahData } from "../../types";
 
 interface SurahHeadProps {
@@ -29,8 +25,8 @@ export const SurahHead: React.FC<SurahHeadProps> = ({ surah }) => {
     prev,
     next,
   } = useAudioPlayer();
-  const reciterId = useSettings((s) => s.reciterId);
   const [loadingAudio, setLoadingAudio] = useState(false);
+  const { fetchAudio } = useSurahAudio(surah);
 
   const isCurrentSurah = currentTrack?.surahNo === surah.no;
 
@@ -38,16 +34,13 @@ export const SurahHead: React.FC<SurahHeadProps> = ({ surah }) => {
     async (startIndex: number) => {
       setLoadingAudio(true);
       try {
-        const audioUrls = await getAudioData(reciterId, surah.no);
-        if (audioUrls.length === 0) return;
-        const merged = await mergeAudioWithSurah(surah, audioUrls);
-        const tracks = buildPlaylistFromSurah(merged);
-        setPlaylist(tracks, startIndex);
+        const tracks = await fetchAudio();
+        if (tracks.length > 0) setPlaylist(tracks, startIndex);
       } finally {
         setLoadingAudio(false);
       }
     },
-    [reciterId, surah, setPlaylist],
+    [fetchAudio, setPlaylist],
   );
 
   const handlePlay = useCallback(() => {
