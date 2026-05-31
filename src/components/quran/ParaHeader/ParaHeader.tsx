@@ -8,7 +8,10 @@ import { getAudioData, mergeAudioWithSurah } from "../../../lib/db";
 import { useSettings } from "../../../store/settings";
 import type { ParaSurah } from "../../../types";
 import type { Track } from "../../features/AudioPlayer";
-import { buildPlaylistFromSurahs, useAudioPlayer } from "../../features/AudioPlayer";
+import {
+  buildPlaylistFromSurahs,
+  useAudioPlayer,
+} from "../../features/AudioPlayer";
 import Ayahs from "../Ayah/Ayah";
 
 interface ParaHeadProps {
