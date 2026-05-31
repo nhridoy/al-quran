@@ -150,46 +150,46 @@ export default function Settings() {
     try {
       await updateSettings(local);
 
-      if (local.reciterId !== storeSettings.reciterId) {
-        const oldReciterId = storeSettings.reciterId;
-        const oldDownloads = useDownloadsStore
-          .getState()
-          .items.filter((d) => d.qariId === oldReciterId);
-        if (oldDownloads.length > 0) {
-          const result = await confirm({
-            title: "Delete old reciter's downloads?",
-            message: `You have ${oldDownloads.length} surah(s) downloaded for the old reciter. Delete cached audio for the old reciter?`,
-            confirmText: "Delete",
-            cancelText: "Keep",
-          });
-          if (result) {
-            const urls = oldDownloads.flatMap((d) => d.cachedUrls);
-            await removeFromCache(urls);
-            for (const d of oldDownloads) {
-              await useDownloadsStore.getState().remove(d.surahNo, d.qariId);
-            }
-          }
-        }
-        await clearAudioCache();
-        await Promise.all([
-          cacheAllAudioForReciter(local.reciterId),
-          cacheAllJuzAudioForReciter(local.reciterId),
-        ]);
-      }
-
-      if (local.tafsirId !== storeSettings.tafsirId) {
-        await clearTafsirCache();
-        await Promise.all([
-          cacheAllTafsirFor(local.tafsirId),
-          cacheAllJuzTafsirFor(local.tafsirId),
-        ]);
-      }
-
       toast.success("Settings saved!");
     } catch {
       toast.error("Failed to save settings");
     }
     setSaving(false);
+
+    if (local.reciterId !== storeSettings.reciterId) {
+      const oldReciterId = storeSettings.reciterId;
+      const oldDownloads = useDownloadsStore
+        .getState()
+        .items.filter((d) => d.qariId === oldReciterId);
+      if (oldDownloads.length > 0) {
+        const result = await confirm({
+          title: "Delete old reciter's downloads?",
+          message: `You have ${oldDownloads.length} surah(s) downloaded for the old reciter. Delete cached audio for the old reciter?`,
+          confirmText: "Delete",
+          cancelText: "Keep",
+        });
+        if (result) {
+          const urls = oldDownloads.flatMap((d) => d.cachedUrls);
+          await removeFromCache(urls);
+          for (const d of oldDownloads) {
+            await useDownloadsStore.getState().remove(d.surahNo, d.qariId);
+          }
+        }
+      }
+      await clearAudioCache();
+      await Promise.all([
+        cacheAllAudioForReciter(local.reciterId),
+        cacheAllJuzAudioForReciter(local.reciterId),
+      ]);
+    }
+
+    if (local.tafsirId !== storeSettings.tafsirId) {
+      await clearTafsirCache();
+      await Promise.all([
+        cacheAllTafsirFor(local.tafsirId),
+        cacheAllJuzTafsirFor(local.tafsirId),
+      ]);
+    }
   }, [local, storeSettings, updateSettings]);
 
   useEffect(() => {
