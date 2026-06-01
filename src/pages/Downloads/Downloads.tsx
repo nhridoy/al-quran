@@ -2,7 +2,8 @@ import { PauseIcon } from "lucide-react";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FiTrash2 } from "react-icons/fi";
 import { IoPlayCircleOutline } from "react-icons/io5";
-import { Header } from "@/components/common/Header/Header";
+import { PageShell } from "@/components/common/PageShell/PageShell";
+import { SkeletonLoader } from "@/components/common/SkeletonLoader/SkeletonLoader";
 import { Button } from "@/components/ui/button";
 import { useSurahs } from "@/hooks/useSurahs";
 import { confirm } from "@/lib/confirm";
@@ -298,68 +299,57 @@ export default function DownloadsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen">
-        <Header head="Downloads" />
-        <div className="mx-4 space-y-3 md:mx-6">
-          {[1, 2, 3, 4, 5, 6].map((n) => (
-            <div
-              key={`skel-${n}`}
-              className="h-16 animate-pulse rounded-xl bg-surface-alt dark:bg-dark-surface-alt"
-            />
-          ))}
-        </div>
-      </div>
+      <PageShell head="Downloads">
+        <SkeletonLoader count={6} height="h-16" />
+      </PageShell>
     );
   }
 
   return (
-    <div className="min-h-screen">
-      <Header head="Downloads" />
-      <div className="mx-4 pb-8 md:mx-6">
-        <div className="mb-4 flex items-center justify-between">
-          <div>
-            <h2 className="text-lg font-bold text-text-primary dark:text-dark-text-primary">
-              Offline Downloads
-            </h2>
-            <p className="text-sm text-text-muted dark:text-dark-text-muted">
-              Cache: {formatBytes(cacheSize)}
-            </p>
-          </div>
-          <div className="flex items-center gap-2">
-            {cacheSize > 0 && (
-              <Button
-                onClick={handleClearAll}
-                variant="danger"
-                className="gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium"
-              >
-                <FiTrash2 />
-                Clear All
-              </Button>
-            )}
-          </div>
+    <PageShell head="Downloads">
+      <div className="mb-4 flex items-center justify-between">
+        <div>
+          <h2 className="text-lg font-bold text-text-primary dark:text-dark-text-primary">
+            Offline Downloads
+          </h2>
+          <p className="text-sm text-text-muted dark:text-dark-text-muted">
+            Cache: {formatBytes(cacheSize)}
+          </p>
         </div>
-
-        <div className="mb-4">
-          <input
-            type="text"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search surahs..."
-            className="w-full rounded-xl border border-border bg-surface-alt px-4 py-2.5 text-sm text-text-primary outline-none transition-colors focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
-          />
-        </div>
-
-        <div className="space-y-2">
-          {filtered.map((surah) => (
-            <SurahDownloadCard
-              key={surah.no}
-              surah={surah}
-              reciterId={reciterId}
-              onDownloaded={refreshCacheSize}
-            />
-          ))}
+        <div className="flex items-center gap-2">
+          {cacheSize > 0 && (
+            <Button
+              onClick={handleClearAll}
+              variant="danger"
+              className="gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium"
+            >
+              <FiTrash2 />
+              Clear All
+            </Button>
+          )}
         </div>
       </div>
-    </div>
+
+      <div className="mb-4">
+        <input
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Search surahs..."
+          className="w-full rounded-xl border border-border bg-surface-alt px-4 py-2.5 text-sm text-text-primary outline-none transition-colors focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
+        />
+      </div>
+
+      <div className="space-y-2">
+        {filtered.map((surah) => (
+          <SurahDownloadCard
+            key={surah.no}
+            surah={surah}
+            reciterId={reciterId}
+            onDownloaded={refreshCacheSize}
+          />
+        ))}
+      </div>
+    </PageShell>
   );
 }

@@ -1,8 +1,8 @@
 import { Dialog as DialogPrimitive } from "@base-ui/react/dialog";
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { IoClose } from "react-icons/io5";
-import { Header } from "@/components/common/Header/Header";
+import { PageShell } from "@/components/common/PageShell/PageShell";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogOverlay, DialogPortal } from "@/components/ui/dialog";
 import namesData from "@/data/asmaUlHusna.json";
@@ -32,18 +32,14 @@ export default function AsmaUlHusna() {
   }, [query]);
 
   return (
-    <div className="min-h-screen">
-      <Header head="Asma ul-Husna" showBack />
-      <div className="mx-4 md:mx-6">
-        <div className="mb-4">
-          <h2 className="text-lg font-bold text-text-primary dark:text-dark-text-primary">
-            99 Names of Allah
-          </h2>
-          <p className="text-sm text-text-muted dark:text-dark-text-muted">
-            Asma ul-Husna — The Most Beautiful Names
-          </p>
-        </div>
-
+    <Fragment>
+      <PageShell
+        head="Asma ul-Husna"
+        showBack
+        title="99 Names of Allah"
+        description="Asma ul-Husna — The Most Beautiful Names"
+        className="space-y-0"
+      >
         <div className="relative mb-4">
           <BiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-base text-text-muted" />
           <input
@@ -81,7 +77,7 @@ export default function AsmaUlHusna() {
             <p className="text-sm font-medium">No names found</p>
           </div>
         )}
-      </div>
+      </PageShell>
 
       <Dialog
         open={!!selected}
@@ -137,6 +133,6 @@ export default function AsmaUlHusna() {
           </DialogPrimitive.Popup>
         </DialogPortal>
       </Dialog>
-    </div>
+    </Fragment>
   );
 }

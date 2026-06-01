@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { BiReset } from "react-icons/bi";
 import { MdLoop } from "react-icons/md";
-import { Header } from "@/components/common/Header/Header";
+import { PageShell } from "@/components/common/PageShell/PageShell";
 import { Button } from "@/components/ui/button";
 
 interface Dhikr {
@@ -96,108 +96,102 @@ export default function Tasbih() {
   );
 
   return (
-    <div className="min-h-screen">
-      <Header head="Tasbih" showBack />
-      <div className="mx-4 md:mx-6">
-        <div className="mb-4">
-          <h2 className="text-lg font-bold text-text-primary dark:text-dark-text-primary">
-            Tasbih Counter
-          </h2>
-          <p className="text-sm text-text-muted dark:text-dark-text-muted">
-            Tap to count. Long-press to reset.
-          </p>
-        </div>
-
-        <div className="flex gap-2 overflow-x-auto pb-2">
-          {PRESETS.map((dhikr) => (
-            <Button
-              key={dhikr.id}
-              onClick={() => setActiveId(dhikr.id)}
-              variant={activeId === dhikr.id ? "gradient" : "secondary-ghost"}
-              className={`whitespace-nowrap rounded-xl px-4 py-2 text-sm font-medium transition-all ${
-                activeId === dhikr.id
-                  ? "shadow-md"
-                  : "border border-border bg-surface hover:bg-surface-alt dark:border-dark-border dark:bg-dark-surface-card dark:hover:bg-dark-surface-alt"
-              }`}
-            >
-              {dhikr.label} ({dhikr.target})
-            </Button>
-          ))}
-        </div>
-
-        <div className="flex flex-col items-center py-8">
-          <button
-            type="button"
-            aria-label={`Count ${active.label}: ${currentCount} of ${active.target}`}
-            onPointerDown={handlePointerDown}
-            onPointerUp={handlePointerUp}
-            onPointerLeave={handlePointerLeave}
-            onKeyDown={handleKeyDown}
-            className="relative mb-6 flex h-64 w-64 cursor-pointer select-none items-center justify-center rounded-full transition-transform active:scale-95"
+    <PageShell
+      head="Tasbih"
+      showBack
+      title="Tasbih Counter"
+      description="Tap to count. Long-press to reset."
+      className="space-y-0"
+    >
+      <div className="flex gap-2 overflow-x-auto pb-2">
+        {PRESETS.map((dhikr) => (
+          <Button
+            key={dhikr.id}
+            onClick={() => setActiveId(dhikr.id)}
+            variant={activeId === dhikr.id ? "gradient" : "secondary-ghost"}
+            className={`whitespace-nowrap rounded-xl px-4 py-2 text-sm font-medium transition-all ${
+              activeId === dhikr.id
+                ? "shadow-md"
+                : "border border-border bg-surface hover:bg-surface-alt dark:border-dark-border dark:bg-dark-surface-card dark:hover:bg-dark-surface-alt"
+            }`}
           >
-            <svg
-              className="absolute inset-0 h-full w-full -rotate-90"
-              viewBox="0 0 256 256"
-              aria-hidden="true"
-            >
-              <circle
-                cx="128"
-                cy="128"
-                r="118"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="6"
-                className="text-border dark:text-dark-border"
-              />
-              <circle
-                cx="128"
-                cy="128"
-                r="118"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="6"
-                strokeLinecap="round"
-                strokeDasharray={2 * Math.PI * 118}
-                strokeDashoffset={2 * Math.PI * 118 * (1 - progress)}
-                className="text-secondary transition-all duration-300"
-              />
-            </svg>
-            <div className="flex flex-col items-center">
-              <p className="font-arabic text-3xl leading-relaxed text-text-primary dark:text-dark-text-primary">
-                {active.arabic}
-              </p>
-              <p className="mt-2 text-5xl font-bold text-primary dark:text-secondary-light">
-                {currentCount}
-              </p>
-              <p className="mt-1 text-sm text-text-muted">/ {active.target}</p>
-              {currentCount >= active.target && currentCount > 0 && (
-                <p className="mt-2 rounded-full bg-success/10 px-3 py-0.5 text-xs font-medium text-success">
-                  Completed
-                </p>
-              )}
-            </div>
-          </button>
+            {dhikr.label} ({dhikr.target})
+          </Button>
+        ))}
+      </div>
 
-          <div className="flex items-center gap-3">
-            <Button
-              onClick={resetCurrent}
-              variant="secondary-ghost"
-              className="gap-2 rounded-xl border border-border px-4 py-2 text-sm text-text-secondary hover:bg-surface-alt dark:border-dark-border dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
-            >
-              <BiReset className="text-base" />
-              Reset
-            </Button>
-            <Button
-              onClick={resetAll}
-              variant="secondary-ghost"
-              className="gap-2 rounded-xl border border-border px-4 py-2 text-sm text-text-secondary hover:bg-surface-alt dark:border-dark-border dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
-            >
-              <MdLoop className="text-base" />
-              Reset All
-            </Button>
+      <div className="flex flex-col items-center py-8">
+        <button
+          type="button"
+          aria-label={`Count ${active.label}: ${currentCount} of ${active.target}`}
+          onPointerDown={handlePointerDown}
+          onPointerUp={handlePointerUp}
+          onPointerLeave={handlePointerLeave}
+          onKeyDown={handleKeyDown}
+          className="relative mb-6 flex h-64 w-64 cursor-pointer select-none items-center justify-center rounded-full transition-transform active:scale-95"
+        >
+          <svg
+            className="absolute inset-0 h-full w-full -rotate-90"
+            viewBox="0 0 256 256"
+            aria-hidden="true"
+          >
+            <circle
+              cx="128"
+              cy="128"
+              r="118"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="6"
+              className="text-border dark:text-dark-border"
+            />
+            <circle
+              cx="128"
+              cy="128"
+              r="118"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="6"
+              strokeLinecap="round"
+              strokeDasharray={2 * Math.PI * 118}
+              strokeDashoffset={2 * Math.PI * 118 * (1 - progress)}
+              className="text-secondary transition-all duration-300"
+            />
+          </svg>
+          <div className="flex flex-col items-center">
+            <p className="font-arabic text-3xl leading-relaxed text-text-primary dark:text-dark-text-primary">
+              {active.arabic}
+            </p>
+            <p className="mt-2 text-5xl font-bold text-primary dark:text-secondary-light">
+              {currentCount}
+            </p>
+            <p className="mt-1 text-sm text-text-muted">/ {active.target}</p>
+            {currentCount >= active.target && currentCount > 0 && (
+              <p className="mt-2 rounded-full bg-success/10 px-3 py-0.5 text-xs font-medium text-success">
+                Completed
+              </p>
+            )}
           </div>
+        </button>
+
+        <div className="flex items-center gap-3">
+          <Button
+            onClick={resetCurrent}
+            variant="secondary-ghost"
+            className="gap-2 rounded-xl border border-border px-4 py-2 text-sm text-text-secondary hover:bg-surface-alt dark:border-dark-border dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
+          >
+            <BiReset className="text-base" />
+            Reset
+          </Button>
+          <Button
+            onClick={resetAll}
+            variant="secondary-ghost"
+            className="gap-2 rounded-xl border border-border px-4 py-2 text-sm text-text-secondary hover:bg-surface-alt dark:border-dark-border dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
+          >
+            <MdLoop className="text-base" />
+            Reset All
+          </Button>
         </div>
       </div>
-    </div>
+    </PageShell>
   );
 }
