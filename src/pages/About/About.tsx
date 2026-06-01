@@ -6,7 +6,7 @@ import {
 import { BsInfoCircle } from "react-icons/bs";
 import { GoDotFill } from "react-icons/go";
 import { IoLogoFacebook, IoLogoWhatsapp } from "react-icons/io5";
-import { Header } from "../../components/common/Header/Header";
+import { Header } from "@/components/common/Header/Header";
 
 const About: React.FC = () => {
   return (

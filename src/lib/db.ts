@@ -1,5 +1,6 @@
 import { type IDBPDatabase, openDB } from "idb";
-import type { SurahData, VerseAudioUrls } from "../types";
+import type { SurahData, VerseAudioUrls } from "@/types";
+import { FETCH_BATCH_SIZE, JUZ_COUNT, SURAH_COUNT } from "./const";
 
 const DB_NAME = "al-quran";
 const DB_VERSION = 8;
@@ -91,7 +92,7 @@ async function fetchSurahVerse(id: number): Promise<SurahData> {
 }
 
 async function fetchAllSurahsFromApi(): Promise<Record<string, SurahData>> {
-  const ids = Array.from({ length: 114 }, (_, i) => i + 1);
+  const ids = Array.from({ length: SURAH_COUNT }, (_, i) => i + 1);
   const results = await Promise.allSettled(
     ids.map((id) => fetchSurahVerse(id)),
   );
@@ -110,14 +111,14 @@ async function fetchAllSurahsFromApi(): Promise<Record<string, SurahData>> {
 
 export async function getSurahs(): Promise<Record<string, SurahData>> {
   const keys = await getKeys("surah-verses");
-  if (keys.length === 114) {
+  if (keys.length === SURAH_COUNT) {
     const map: Record<string, SurahData> = {};
-    for (let i = 1; i <= 114; i++) {
+    for (let i = 1; i <= SURAH_COUNT; i++) {
       const key = String(i);
       const surah = await getFromStore<SurahData>("surah-verses", key);
       if (surah) map[key] = surah;
     }
-    if (Object.keys(map).length === 114) return map;
+    if (Object.keys(map).length === SURAH_COUNT) return map;
   }
 
   const fresh = await fetchAllSurahsFromApi();
@@ -294,9 +295,9 @@ export async function cacheAllAudioForReciter(
   reciterId: string,
   onProgress?: (done: number, total: number) => void,
 ): Promise<void> {
-  const ids = Array.from({ length: 114 }, (_, i) => i + 1);
+  const ids = Array.from({ length: SURAH_COUNT }, (_, i) => i + 1);
   let done = 0;
-  const batchSize = 10;
+  const batchSize = FETCH_BATCH_SIZE;
   for (let i = 0; i < ids.length; i += batchSize) {
     const batch = ids.slice(i, i + batchSize);
     await Promise.allSettled(
@@ -315,7 +316,7 @@ export async function cacheAllAudioForReciter(
           await putInStore("surah-audio", key, data);
         }
         done++;
-        onProgress?.(done, 114);
+        onProgress?.(done, SURAH_COUNT);
       }),
     );
   }
@@ -324,7 +325,7 @@ export async function cacheAllAudioForReciter(
 export async function cacheAllJuz(
   onProgress?: (done: number, total: number) => void,
 ): Promise<void> {
-  const ids = Array.from({ length: 30 }, (_, i) => i + 1);
+  const ids = Array.from({ length: JUZ_COUNT }, (_, i) => i + 1);
   let done = 0;
   await Promise.allSettled(
     ids.map(async (id) => {
@@ -332,7 +333,7 @@ export async function cacheAllJuz(
       const cached = await getFromStore("juz-verses", key);
       if (cached) {
         done++;
-        onProgress?.(done, 30);
+        onProgress?.(done, JUZ_COUNT);
         return;
       }
       const res = await fetch(`${BASE}/juz/verse/${id}.min.json`);
@@ -345,7 +346,7 @@ export async function cacheAllJuz(
         await putInStore("juz-verses", key, map);
       }
       done++;
-      onProgress?.(done, 30);
+      onProgress?.(done, JUZ_COUNT);
     }),
   );
 }
@@ -355,9 +356,9 @@ export async function cacheAllTafsirFor(
   onProgress?: (done: number, total: number) => void,
 ): Promise<void> {
   const lang = tafsirId.split("-")[0];
-  const ids = Array.from({ length: 114 }, (_, i) => i + 1);
+  const ids = Array.from({ length: SURAH_COUNT }, (_, i) => i + 1);
   let done = 0;
-  const batchSize = 10;
+  const batchSize = FETCH_BATCH_SIZE;
   for (let i = 0; i < ids.length; i += batchSize) {
     const batch = ids.slice(i, i + batchSize);
     await Promise.allSettled(
@@ -376,7 +377,7 @@ export async function cacheAllTafsirFor(
           await putInStore("surah-tafsir", key, data);
         }
         done++;
-        onProgress?.(done, 114);
+        onProgress?.(done, SURAH_COUNT);
       }),
     );
   }
@@ -386,7 +387,7 @@ export async function cacheAllJuzAudioForReciter(
   reciterId: string,
   onProgress?: (done: number, total: number) => void,
 ): Promise<void> {
-  const ids = Array.from({ length: 30 }, (_, i) => i + 1);
+  const ids = Array.from({ length: JUZ_COUNT }, (_, i) => i + 1);
   let done = 0;
   await Promise.allSettled(
     ids.map(async (id) => {
@@ -394,7 +395,7 @@ export async function cacheAllJuzAudioForReciter(
       const cached = await getFromStore("juz-audio", key);
       if (cached) {
         done++;
-        onProgress?.(done, 30);
+        onProgress?.(done, JUZ_COUNT);
         return;
       }
       const res = await fetch(`${BASE}/juz/audio/${reciterId}/${id}.min.json`);
@@ -403,7 +404,7 @@ export async function cacheAllJuzAudioForReciter(
         await putInStore("juz-audio", key, data);
       }
       done++;
-      onProgress?.(done, 30);
+      onProgress?.(done, JUZ_COUNT);
     }),
   );
 }
@@ -413,7 +414,7 @@ export async function cacheAllJuzTafsirFor(
   onProgress?: (done: number, total: number) => void,
 ): Promise<void> {
   const lang = tafsirId.split("-")[0];
-  const ids = Array.from({ length: 30 }, (_, i) => i + 1);
+  const ids = Array.from({ length: JUZ_COUNT }, (_, i) => i + 1);
   let done = 0;
   await Promise.allSettled(
     ids.map(async (id) => {
@@ -421,7 +422,7 @@ export async function cacheAllJuzTafsirFor(
       const cached = await getFromStore("juz-tafsir", key);
       if (cached) {
         done++;
-        onProgress?.(done, 30);
+        onProgress?.(done, JUZ_COUNT);
         return;
       }
       const res = await fetch(
@@ -432,7 +433,7 @@ export async function cacheAllJuzTafsirFor(
         await putInStore("juz-tafsir", key, data);
       }
       done++;
-      onProgress?.(done, 30);
+      onProgress?.(done, JUZ_COUNT);
     }),
   );
 }

@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import { Header } from "@/components/common/Header/Header";
 import { Button } from "@/components/ui/button";
-import { Header } from "../../components/common/Header/Header";
-import { useSurahs } from "../../hooks/useSurahs";
-import { LAST_TEN_SURAH_IDS } from "../../lib/const";
+import { useSurahs } from "@/hooks/useSurahs";
+import { LAST_TEN_SURAH_IDS } from "@/lib/const";
 
 export default function LastTenSurahs() {
   const { surahList, loading } = useSurahs();

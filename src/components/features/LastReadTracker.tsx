@@ -1,13 +1,13 @@
-import { useEffect } from "react";
+import { AUDIO_INDEX_KEY } from "@/lib/const";
 import { useAudioProgressStore } from "@/store/audio";
-
+import { useEffect } from "react";
 export default function LastReadTracker() {
   const currentTrack = useAudioProgressStore((s) => s.currentTrack);
 
   useEffect(() => {
     if (!currentTrack) return;
     localStorage.setItem(
-      "currentAudioIndex",
+      AUDIO_INDEX_KEY,
       JSON.stringify({
         surahName: currentTrack.enName,
         verseNumber: currentTrack.ayahNumber,

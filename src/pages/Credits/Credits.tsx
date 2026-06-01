@@ -1,7 +1,7 @@
 import { AiOutlineHeart } from "react-icons/ai";
 import { BiLinkExternal } from "react-icons/bi";
 import { GoDotFill } from "react-icons/go";
-import { Header } from "../../components/common/Header/Header";
+import { Header } from "@/components/common/Header/Header";
 
 const credits = [
   { name: "Al Quran Cloud", url: "https://alquran.cloud/" },

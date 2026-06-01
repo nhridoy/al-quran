@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { BiReset } from "react-icons/bi";
 import { MdLoop } from "react-icons/md";
+import { Header } from "@/components/common/Header/Header";
 import { Button } from "@/components/ui/button";
-import { Header } from "../../components/common/Header/Header";
 
 interface Dhikr {
   id: string;

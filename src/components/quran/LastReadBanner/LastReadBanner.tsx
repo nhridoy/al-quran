@@ -1,18 +1,19 @@
-import type React from "react";
 import { useEffect, useState } from "react";
-import { FaQuran } from "react-icons/fa";
+import { AUDIO_INDEX_KEY } from "@/lib/const";
 import { MdMenuBook } from "react-icons/md";
+import { FaQuran } from "react-icons/fa";
 
 interface ReadStatus {
   surahName: string;
   verseNumber: number;
 }
 
-export const LastReadBanner: React.FC = () => {
+export default function LastReadBanner() {
   const [readStatus, setReadStatus] = useState<ReadStatus | null>(null);
+
   useEffect(() => {
     const currentAudioIndex: ReadStatus | null = JSON.parse(
-      localStorage.getItem("currentAudioIndex") || "null",
+      localStorage.getItem(AUDIO_INDEX_KEY) || "null",
     );
     setReadStatus(currentAudioIndex);
   }, []);
@@ -47,4 +48,4 @@ export const LastReadBanner: React.FC = () => {
       </div>
     </div>
   );
-};
+}

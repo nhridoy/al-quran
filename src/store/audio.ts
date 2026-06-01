@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { VOLUME_STORAGE_KEY } from "../lib/const";
+import { VOLUME_STORAGE_KEY } from "@/lib/const";
 
 interface AudioVolumeState {
   volume: number;

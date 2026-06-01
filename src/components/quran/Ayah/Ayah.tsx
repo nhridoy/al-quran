@@ -9,12 +9,12 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { useSurahAudio } from "../../../hooks/useSurahAudio";
-import { useVerseTafsir } from "../../../hooks/useVerseTafsir";
-import { colorizeArabic } from "../../../lib/tajweed";
-import { useBookmarkStore, useIsBookmarked } from "../../../store/bookmarks";
-import { useSettings } from "../../../store/settings";
-import type { SurahData, Verse } from "../../../types";
+import { useSurahAudio } from "@/hooks/useSurahAudio";
+import { useVerseTafsir } from "@/hooks/useVerseTafsir";
+import { colorizeArabic } from "@/lib/tajweed";
+import { useBookmarkStore, useIsBookmarked } from "@/store/bookmarks";
+import { useSettings } from "@/store/settings";
+import type { SurahData, Verse } from "@/types";
 import type { Track } from "../../features/AudioPlayer";
 import {
   useAudioPlayerActions,

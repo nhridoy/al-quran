@@ -1,9 +1,9 @@
 import { useCallback } from "react";
-import type { Track } from "../components/features/AudioPlayer";
-import { buildPlaylistFromSurah } from "../components/features/AudioPlayer";
-import { getAudioData, mergeAudioWithSurah } from "../lib/db";
-import { useSettings } from "../store/settings";
-import type { SurahData } from "../types";
+import type { Track } from "@/components/features/AudioPlayer";
+import { buildPlaylistFromSurah } from "@/components/features/AudioPlayer";
+import { getAudioData, mergeAudioWithSurah } from "@/lib/db";
+import { useSettings } from "@/store/settings";
+import type { SurahData } from "@/types";
 
 export function useSurahAudio(surah: SurahData | undefined) {
   const reciterId = useSettings((s) => s.reciterId);

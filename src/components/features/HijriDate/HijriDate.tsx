@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
-import { useSettings } from "../../../store/settings";
+import { useSettings } from "@/store/settings";
 
 interface HijriDate {
   day: number;

@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { Header } from "../../components/common/Header/Header";
-import { LastReadBanner } from "../../components/quran/LastReadBanner/LastReadBanner";
+import { Header } from "@/components/common/Header/Header";
+import LastReadBanner from "@/components/quran/LastReadBanner/LastReadBanner";
 
 export const Home = () => {
   return (

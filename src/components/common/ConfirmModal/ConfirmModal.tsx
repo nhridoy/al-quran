@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { closeConfirm, useConfirmStore } from "../../../lib/confirm";
+import { closeConfirm, useConfirmStore } from "@/lib/confirm";
 
 export default function ConfirmModal() {
   const { isOpen, options } = useConfirmStore();

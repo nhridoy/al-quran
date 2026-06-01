@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { BiChevronRight } from "react-icons/bi";
-import type { SurahData } from "../../../types";
+import type { SurahData } from "@/types";
 
 interface SurahListProps {
   data: SurahData;

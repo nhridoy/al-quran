@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
-import { Header } from "../../components/common/Header/Header";
-import Ayah from "../../components/quran/Ayah/Ayah";
-import { useSurah } from "../../hooks/useSurah";
+import { Header } from "@/components/common/Header/Header";
+import Ayah from "@/components/quran/Ayah/Ayah";
+import { useSurah } from "@/hooks/useSurah";
 import { SurahHead } from "./SurahHead";
 
 export default function SurahPage() {

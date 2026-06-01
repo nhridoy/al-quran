@@ -4,9 +4,9 @@ import { CgPlayTrackNextO, CgPlayTrackPrevO } from "react-icons/cg";
 import { FiPauseCircle, FiPlayCircle } from "react-icons/fi";
 import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { getAudioData, mergeAudioWithSurah } from "../../../lib/db";
-import { useSettings } from "../../../store/settings";
-import type { ParaSurah } from "../../../types";
+import { getAudioData, mergeAudioWithSurah } from "@/lib/db";
+import { useSettings } from "@/store/settings";
+import type { ParaSurah } from "@/types";
 import {
   buildPlaylistFromSurahs,
   useAudioPlayerActions,

@@ -11,8 +11,9 @@ import { BiSearch } from "react-icons/bi";
 import { IoClose } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { useSurahs } from "../../../hooks/useSurahs";
-import type { Verse } from "../../../types";
+import { useSurahs } from "@/hooks/useSurahs";
+import { SEARCH_FOCUS_DELAY } from "@/lib/const";
+import type { Verse } from "@/types";
 import SurahList from "../../quran/SurahItem/SurahItem";
 
 interface VerseResult {
@@ -32,7 +33,7 @@ export default function Search() {
 
   useEffect(() => {
     if (open) {
-      setTimeout(() => inputRef.current?.focus(), 100);
+      setTimeout(() => inputRef.current?.focus(), SEARCH_FOCUS_DELAY);
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";

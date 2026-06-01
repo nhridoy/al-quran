@@ -1,9 +1,9 @@
 import { BiBookOpen, BiErrorCircle, BiRefresh } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import { Header } from "@/components/common/Header/Header";
 import { Button } from "@/components/ui/button";
-import { Header } from "../../components/common/Header/Header";
-import { useEditions } from "../../hooks/useHadith";
-import { useSettings } from "../../store/settings";
+import { useEditions } from "@/hooks/useHadith";
+import { useSettings } from "@/store/settings";
 
 function getEditionName(name: Record<string, string>, lang: string): string {
   return name[lang] || name.en || name.ar || "";

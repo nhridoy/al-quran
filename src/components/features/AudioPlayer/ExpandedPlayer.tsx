@@ -14,10 +14,7 @@ import {
   VolumeXIcon,
 } from "lucide-react";
 import { memo, useCallback, useEffect, useRef, useState } from "react";
-import {
-  useAudioProgressStore,
-  useAudioVolumeStore,
-} from "../../../store/audio";
+import { useAudioProgressStore, useAudioVolumeStore } from "@/store/audio";
 import {
   formatTime,
   useAudioPlayerActions,

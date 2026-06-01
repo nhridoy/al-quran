@@ -1,7 +1,7 @@
 import { AiOutlineGift } from "react-icons/ai";
 import { EffectCards } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Header } from "../../components/common/Header/Header";
+import { Header } from "@/components/common/Header/Header";
 import "swiper/css";
 import "swiper/css/effect-cards";
 

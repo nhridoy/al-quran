@@ -1,4 +1,4 @@
-import type { ReciterInfo, TafsirInfo } from "../types";
+import type { ReciterInfo, TafsirInfo } from "@/types";
 
 export const LAST_TEN_SURAH_IDS = [
   105, 106, 107, 108, 109, 110, 111, 112, 113, 114,
@@ -8,7 +8,15 @@ export const KAABA_COORDS = { lat: 21.4225, lng: 39.8262 } as const;
 
 export const QIBLA_SMOOTHING = 0.15;
 
+export const SURAH_COUNT = 114;
+export const JUZ_COUNT = 30;
+export const FETCH_BATCH_SIZE = 10;
+export const PREV_TRACK_THRESHOLD = 3;
 export const VOLUME_STORAGE_KEY = "audioPlayerVolume";
+export const AUDIO_INDEX_KEY = "currentAudioIndex";
+export const PRAYER_REFRESH_INTERVAL = 1000;
+export const SEARCH_FOCUS_DELAY = 100;
+export const GEOLOCATION_TIMEOUT = 10000;
 
 export const LANGUAGES: Record<string, string> = {
   en: "English",

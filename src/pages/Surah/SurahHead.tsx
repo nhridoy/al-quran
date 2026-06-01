@@ -6,13 +6,13 @@ import {
   CgSpinnerTwo,
 } from "react-icons/cg";
 import { FiPauseCircle, FiPlayCircle } from "react-icons/fi";
-import { Button } from "@/components/ui/button";
 import {
   useAudioPlayerActions,
   useAudioPlayerState,
-} from "../../components/features/AudioPlayer";
-import { useSurahAudio } from "../../hooks/useSurahAudio";
-import type { SurahData } from "../../types";
+} from "@/components/features/AudioPlayer";
+import { Button } from "@/components/ui/button";
+import { useSurahAudio } from "@/hooks/useSurahAudio";
+import type { SurahData } from "@/types";
 
 interface SurahHeadProps {
   surah: SurahData;

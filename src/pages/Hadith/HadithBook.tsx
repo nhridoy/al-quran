@@ -6,19 +6,15 @@ import {
   BiRefresh,
 } from "react-icons/bi";
 import { useParams } from "react-router-dom";
+import { Header } from "@/components/common/Header/Header";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Header } from "../../components/common/Header/Header";
-import {
-  getPreferredText,
-  PAGE_SIZE,
-  useHadithPage,
-} from "../../hooks/useHadith";
-import { useSettings } from "../../store/settings";
+import { getPreferredText, PAGE_SIZE, useHadithPage } from "@/hooks/useHadith";
+import { useSettings } from "@/store/settings";
 
 const LANG_LABELS: Record<string, string> = {
   en: "English",

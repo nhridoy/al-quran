@@ -1,6 +1,6 @@
 import { MusicIcon, XIcon } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { useAudioProgressStore } from "../../../store/audio";
+import { useAudioProgressStore } from "@/store/audio";
 import {
   formatTime,
   useAudioPlayerActions,

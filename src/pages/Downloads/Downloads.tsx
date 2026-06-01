@@ -2,20 +2,20 @@ import { PauseIcon } from "lucide-react";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FiTrash2 } from "react-icons/fi";
 import { IoPlayCircleOutline } from "react-icons/io5";
+import { Header } from "@/components/common/Header/Header";
 import { Button } from "@/components/ui/button";
-import { Header } from "../../components/common/Header/Header";
-import { useSurahs } from "../../hooks/useSurahs";
-import { confirm } from "../../lib/confirm";
-import { getAudioData, mergeAudioWithSurah } from "../../lib/db";
+import { useSurahs } from "@/hooks/useSurahs";
+import { confirm } from "@/lib/confirm";
+import { getAudioData, mergeAudioWithSurah } from "@/lib/db";
 import {
   clearAllAudio,
   downloadAudioWithFallback,
   getCacheSize,
   removeFromCache,
-} from "../../lib/downloadManager";
-import { useDownloadsStore } from "../../store/downloads";
-import { useSettings } from "../../store/settings";
-import type { SurahData } from "../../types";
+} from "@/lib/downloadManager";
+import { useDownloadsStore } from "@/store/downloads";
+import { useSettings } from "@/store/settings";
+import type { SurahData } from "@/types";
 
 interface SurahDownloadCardProps {
   surah: SurahData;

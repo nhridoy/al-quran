@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { BiArrowBack } from "react-icons/bi";
 import { Button } from "@/components/ui/button";
-import type { SurahData } from "../../../types";
+import type { SurahData } from "@/types";
 import Search from "../../features/Search/Search";
 
 interface HeaderProps {

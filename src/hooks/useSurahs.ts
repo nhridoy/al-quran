@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
-import { getSurahs, refreshData } from "../lib/db";
-import type { SurahData } from "../types";
+import { getSurahs, refreshData } from "@/lib/db";
+import type { SurahData } from "@/types";
 
 export function useSurahs() {
   const [surahs, setSurahs] = useState<Record<string, SurahData>>({});

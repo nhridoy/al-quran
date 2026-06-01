@@ -7,11 +7,9 @@ import {
   useRef,
   useState,
 } from "react";
-import {
-  useAudioProgressStore,
-  useAudioVolumeStore,
-} from "../../../store/audio";
-import type { SurahData } from "../../../types";
+import { PREV_TRACK_THRESHOLD } from "@/lib/const";
+import { useAudioProgressStore, useAudioVolumeStore } from "@/store/audio";
+import type { SurahData } from "@/types";
 import type {
   AudioPlayerActions,
   AudioPlayerContextType,
@@ -334,7 +332,7 @@ export function AudioPlayerProvider({
     const tracks = playlistRef.current;
     if (tracks.length === 0) return;
     const audio = audioRef.current;
-    if (audio && audio.currentTime > 3) {
+    if (audio && audio.currentTime > PREV_TRACK_THRESHOLD) {
       audio.currentTime = 0;
       return;
     }

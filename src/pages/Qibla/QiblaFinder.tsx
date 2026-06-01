@@ -1,8 +1,24 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { Header } from "@/components/common/Header/Header";
 import { Button } from "@/components/ui/button";
-import { Header } from "../../components/common/Header/Header";
-import { KAABA_COORDS, QIBLA_SMOOTHING } from "../../lib/const";
-import { useLocationStore } from "../../store/location";
+import { KAABA_COORDS, QIBLA_SMOOTHING } from "@/lib/const";
+import { useLocationStore } from "@/store/location";
+
+interface DeviceOrientationConstructor {
+  requestPermission: () => Promise<"granted" | "denied">;
+}
+
+interface OrientationEvent {
+  webkitCompassHeading?: number;
+  absolute?: boolean;
+  alpha?: number | null;
+}
+
+function deviceOrientationWithPermission(): DeviceOrientationConstructor | null {
+  const ctor =
+    DeviceOrientationEvent as unknown as DeviceOrientationConstructor;
+  return typeof ctor.requestPermission === "function" ? ctor : null;
+}
 
 function calculateDistance(
   lat1: number,
@@ -81,10 +97,7 @@ export default function QiblaFinder() {
 
   const handleOrientation = useCallback((event: DeviceOrientationEvent) => {
     let rawHeading: number | null = null;
-    const e = event as DeviceOrientationEvent & {
-      webkitCompassHeading?: number;
-      absolute?: boolean;
-    };
+    const e = event as OrientationEvent;
 
     if (
       e.webkitCompassHeading !== undefined &&
@@ -92,7 +105,7 @@ export default function QiblaFinder() {
     ) {
       rawHeading = e.webkitCompassHeading;
     } else if (e.absolute === true || e.absolute === undefined) {
-      if (e.alpha !== null) {
+      if (e.alpha != null) {
         rawHeading = (360 - e.alpha) % 360;
       }
     }
@@ -117,11 +130,9 @@ export default function QiblaFinder() {
 
   const startCompass = async () => {
     setPermissionRequested(true);
-    const devEvent = DeviceOrientationEvent as unknown as {
-      requestPermission?: () => Promise<"granted" | "denied">;
-    };
+    const devEvent = deviceOrientationWithPermission();
 
-    if (typeof devEvent.requestPermission === "function") {
+    if (devEvent) {
       try {
         const result = await devEvent.requestPermission();
         if (result !== "granted") {
@@ -141,11 +152,9 @@ export default function QiblaFinder() {
   useEffect(() => {
     if (!hasCoords) return;
 
-    const devEvent = DeviceOrientationEvent as unknown as {
-      requestPermission?: () => Promise<unknown>;
-    };
+    const devEvent = deviceOrientationWithPermission();
 
-    if (typeof devEvent.requestPermission !== "function") {
+    if (!devEvent) {
       if ("ondeviceorientationabsolute" in globalThis) {
         globalThis.addEventListener(
           "deviceorientationabsolute",
@@ -218,26 +227,20 @@ export default function QiblaFinder() {
 
         {hasCoords && (
           <>
-            {!permissionRequested &&
-              typeof (
-                DeviceOrientationEvent as unknown as {
-                  requestPermission?: () => Promise<unknown>;
-                }
-              ).requestPermission === "function" && (
-                <div className="flex flex-col items-center gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-center dark:border-amber-900/30 dark:bg-amber-950/20">
-                  <p className="text-sm text-amber-800 dark:text-amber-300">
-                    Compass sensor access is required to point towards the
-                    Qibla.
-                  </p>
-                  <Button
-                    onClick={startCompass}
-                    variant="secondary-ghost"
-                    className="rounded-lg bg-amber-600 px-4 py-1.5 text-xs font-semibold text-white"
-                  >
-                    Enable Compass
-                  </Button>
-                </div>
-              )}
+            {!permissionRequested && deviceOrientationWithPermission() && (
+              <div className="flex flex-col items-center gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-center dark:border-amber-900/30 dark:bg-amber-950/20">
+                <p className="text-sm text-amber-800 dark:text-amber-300">
+                  Compass sensor access is required to point towards the Qibla.
+                </p>
+                <Button
+                  onClick={startCompass}
+                  variant="secondary-ghost"
+                  className="rounded-lg bg-amber-600 px-4 py-1.5 text-xs font-semibold text-white"
+                >
+                  Enable Compass
+                </Button>
+              </div>
+            )}
 
             <div className="flex flex-col items-center gap-4">
               {/* Compass Frame Container */}

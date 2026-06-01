@@ -1,6 +1,6 @@
 import { Loader2Icon, PauseIcon, PlayIcon } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
-import { useAudioProgressStore } from "../../../store/audio";
+import { useAudioProgressStore } from "@/store/audio";
 import {
   useAudioPlayerActions,
   useAudioPlayerState,

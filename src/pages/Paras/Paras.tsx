@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import ParaItem from "../../components/quran/ParaItem/ParaItem";
+import ParaItem from "@/components/quran/ParaItem/ParaItem";
 
 export default function Paras() {
   useEffect(() => {

@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { deleteFromStore, getAllFromStore, putInStore } from "../lib/db";
+import { deleteFromStore, getAllFromStore, putInStore } from "@/lib/db";
 
 export interface Bookmark {
   id: string;

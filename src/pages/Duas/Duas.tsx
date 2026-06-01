@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { Header } from "../../components/common/Header/Header";
-import duas from "../../data/duas.json";
+import { Header } from "@/components/common/Header/Header";
+import duas from "@/data/duas.json";
 
 const categories = [...new Set(duas.map((d) => d.category))] as string[];
 

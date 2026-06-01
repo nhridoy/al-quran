@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { useParams } from "react-router-dom";
+import { Header } from "@/components/common/Header/Header";
 import {
   Accordion,
   AccordionContent,
@@ -8,8 +9,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
-import { Header } from "../../components/common/Header/Header";
-import duas from "../../data/duas.json";
+import duas from "@/data/duas.json";
 
 export default function DuaCategory() {
   const { categoryId } = useParams();

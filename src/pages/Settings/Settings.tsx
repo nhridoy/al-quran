@@ -9,11 +9,11 @@ import {
 } from "react-icons/io5";
 import { MdFormatColorFill, MdOutlineTranslate } from "react-icons/md";
 import { toast } from "react-toastify";
+import { Header } from "@/components/common/Header/Header";
 import { Button } from "@/components/ui/button";
-import { Header } from "../../components/common/Header/Header";
-import { useSurahs } from "../../hooks/useSurahs";
-import { confirm } from "../../lib/confirm";
-import { LANGUAGES, RECITERS, TAFSIR_LIST } from "../../lib/const";
+import { useSurahs } from "@/hooks/useSurahs";
+import { confirm } from "@/lib/confirm";
+import { LANGUAGES, RECITERS, TAFSIR_LIST } from "@/lib/const";
 import {
   cacheAllAudioForReciter,
   cacheAllJuz,
@@ -23,10 +23,10 @@ import {
   clearAudioCache,
   clearCache,
   clearTafsirCache,
-} from "../../lib/db";
-import { removeFromCache } from "../../lib/downloadManager";
-import { useDownloadsStore } from "../../store/downloads";
-import { useSettings } from "../../store/settings";
+} from "@/lib/db";
+import { removeFromCache } from "@/lib/downloadManager";
+import { useDownloadsStore } from "@/store/downloads";
+import { useSettings } from "@/store/settings";
 
 const THEME_OPTIONS = [
   { value: "system", label: "System" },

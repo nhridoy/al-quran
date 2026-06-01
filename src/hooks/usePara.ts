@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
-import { getJuzData, getSurahs } from "../lib/db";
-import type { ParaSurah } from "../types";
+import { getJuzData, getSurahs } from "@/lib/db";
+import type { ParaSurah } from "@/types";
 
 export function usePara(id: string | undefined) {
   const [para, setPara] = useState<ParaSurah[] | null>(null);

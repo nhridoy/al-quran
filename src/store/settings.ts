@@ -1,6 +1,6 @@
 import { create } from "zustand";
-import { getFromStore, putInStore } from "../lib/db";
-import type { AppSettings } from "../types";
+import { getFromStore, putInStore } from "@/lib/db";
+import type { AppSettings } from "@/types";
 
 const SETTINGS_KEY = "appSettings";
 
@@ -55,7 +55,7 @@ export const useSettings = create<SettingsState>((set, get) => ({
       tajweedEnabled: next.tajweedEnabled,
       tafsirEnabled: next.tafsirEnabled,
       onboardingComplete: next.onboardingComplete,
-    } as AppSettings);
+    } satisfies AppSettings);
     set(partial);
   },
 

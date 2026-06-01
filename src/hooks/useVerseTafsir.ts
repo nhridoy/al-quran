@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { getVerseTafsirData } from "../lib/db";
+import { getVerseTafsirData } from "@/lib/db";
 
 export interface VerseTafsirData {
   text: string;

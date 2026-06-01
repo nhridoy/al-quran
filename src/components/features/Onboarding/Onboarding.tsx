@@ -11,17 +11,17 @@ import {
   IoNotificationsOutline,
 } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
-import { useSurahs } from "../../../hooks/useSurahs";
-import { LANGUAGES, RECITERS, TAFSIR_LIST } from "../../../lib/const";
+import { useSurahs } from "@/hooks/useSurahs";
+import { LANGUAGES, RECITERS, TAFSIR_LIST } from "@/lib/const";
 import {
   cacheAllAudioForReciter,
   cacheAllJuz,
   cacheAllJuzAudioForReciter,
   cacheAllJuzTafsirFor,
   cacheAllTafsirFor,
-} from "../../../lib/db";
-import { useLocationStore } from "../../../store/location";
-import { useSettings } from "../../../store/settings";
+} from "@/lib/db";
+import { useLocationStore } from "@/store/location";
+import { useSettings } from "@/store/settings";
 
 type Step = 0 | 1 | 2 | 3 | 4;
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { getSurah } from "../lib/db";
-import type { SurahData } from "../types";
+import { getSurah } from "@/lib/db";
+import type { SurahData } from "@/types";
 
 export function useSurah(id: string | undefined) {
   const [surah, setSurah] = useState<SurahData | null>(null);

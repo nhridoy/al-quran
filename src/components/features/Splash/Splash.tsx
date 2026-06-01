@@ -3,7 +3,7 @@ import { BiChevronRight } from "react-icons/bi";
 import { CgSpinnerTwoAlt } from "react-icons/cg";
 import { FaQuran } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useSurahs } from "../../../hooks/useSurahs";
+import { useSurahs } from "@/hooks/useSurahs";
 import SplashImage from "../../features/SplashImage/SplashImage";
 
 export default function Splash() {

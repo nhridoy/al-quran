@@ -3,6 +3,7 @@ import { BiBookmark, BiSearch, BiTrash } from "react-icons/bi";
 import { FaQuran } from "react-icons/fa";
 import { IoOpenOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import { Header } from "@/components/common/Header/Header";
 import {
   Accordion,
   AccordionContent,
@@ -10,9 +11,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { Header } from "../../components/common/Header/Header";
-import { confirm } from "../../lib/confirm";
-import { useBookmarkStore } from "../../store/bookmarks";
+import { confirm } from "@/lib/confirm";
+import { useBookmarkStore } from "@/store/bookmarks";
 
 export default function Bookmarks() {
   const bookmarks = useBookmarkStore((s) => s.bookmarks);

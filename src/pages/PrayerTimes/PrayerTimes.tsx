@@ -5,10 +5,11 @@ import {
   Madhab,
 } from "adhan";
 import { useEffect, useMemo, useState } from "react";
+import { Header } from "@/components/common/Header/Header";
 import { Button } from "@/components/ui/button";
-import { Header } from "../../components/common/Header/Header";
-import { useLocationStore } from "../../store/location";
-import { useSettings } from "../../store/settings";
+import { PRAYER_REFRESH_INTERVAL } from "@/lib/const";
+import { useLocationStore } from "@/store/location";
+import { useSettings } from "@/store/settings";
 
 interface PrayerEntry {
   key: string;
@@ -55,6 +56,13 @@ function formatTime(date: Date): string {
   });
 }
 
+function getPrayerTime(
+  times: AdhanPrayerTimes,
+  key: (typeof PRAYER_NAMES)[number]["key"],
+): Date {
+  return times[key] as Date;
+}
+
 function getCountdown(now: Date, target: Date): string {
   const diff = target.getTime() - now.getTime();
   if (diff <= 0) return "";
@@ -78,7 +86,10 @@ export default function PrayerTimesPage() {
   const coords = lat !== null && lng !== null ? { lat, lng } : null;
 
   useEffect(() => {
-    const timer = setInterval(() => setNow(new Date()), 1000);
+    const timer = setInterval(
+      () => setNow(new Date()),
+      PRAYER_REFRESH_INTERVAL,
+    );
     return () => clearInterval(timer);
   }, []);
 
@@ -93,7 +104,7 @@ export default function PrayerTimesPage() {
   const prayers: PrayerEntry[] = useMemo(() => {
     if (!times) return [];
     return PRAYER_NAMES.map((p) => {
-      const time = times[p.key as keyof AdhanPrayerTimes] as Date;
+      const time = getPrayerTime(times, p.key);
       return { ...p, time };
     });
   }, [times]);
