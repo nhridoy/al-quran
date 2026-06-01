@@ -74,12 +74,12 @@ export async function getAllFromStore<T>(storeName: StoreName): Promise<T[]> {
   return result as T[];
 }
 
-export async function clearStore(storeName: StoreName): Promise<void> {
+async function clearStore(storeName: StoreName): Promise<void> {
   const db = await getDb();
   await db.clear(storeName);
 }
 
-export async function getKeys(storeName: StoreName): Promise<string[]> {
+async function getKeys(storeName: StoreName): Promise<string[]> {
   const db = await getDb();
   const result = await db.getAllKeys(storeName);
   return result as string[];

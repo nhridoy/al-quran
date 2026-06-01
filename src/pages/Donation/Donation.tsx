@@ -44,12 +44,12 @@ const Donation: React.FC = () => {
             effect="cards"
             grabCursor={true}
             modules={[EffectCards]}
-            className="mySwiper"
+            className="mySwiper w-60 h-80"
           >
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
               <SwiperSlide
                 key={n}
-                className="flex! items-center! justify-center! rounded-2xl! bg-linear-to-br! from-primary! to-secondary!"
+                className="flex! items-center! justify-center! rounded-2xl! text-[22px]! bg-linear-to-br! from-primary! to-secondary!"
               >
                 <span className="text-lg font-bold text-white">
                   Donation {n}

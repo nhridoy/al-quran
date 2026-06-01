@@ -46,30 +46,6 @@ export interface VerseImageUrls {
   "alternative-high": string;
 }
 
-export interface VerseAudioEntry {
-  totalNumber: number;
-  numberInSurah: number;
-  juz: number;
-  audio: VerseAudioUrls;
-}
-
-export interface VerseImageEntry {
-  totalNumber: number;
-  numberInSurah: number;
-  juz: number;
-  image: VerseImageUrls;
-}
-
-export interface VerseTafsirEntry {
-  totalNumber: number;
-  numberInSurah: number;
-  juz: number;
-  lang: string;
-  authorName: string;
-  tafsirName: string;
-  tafsir: string;
-}
-
 // ===== Reciters =====
 
 export type ReciterKey =

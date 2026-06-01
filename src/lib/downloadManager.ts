@@ -18,19 +18,13 @@ export async function getCacheSize(): Promise<number> {
   return total;
 }
 
-export async function getCachedUrls(): Promise<Set<string>> {
-  const cache = await caches.open(CACHE_NAME);
-  const keys = await cache.keys();
-  return new Set(keys.map((r) => r.url));
-}
-
-export async function isAudioCached(url: string): Promise<boolean> {
+async function isAudioCached(url: string): Promise<boolean> {
   const cache = await caches.open(CACHE_NAME);
   const match = await cache.match(url);
   return !!match;
 }
 
-export async function downloadAyahAudio(url: string): Promise<boolean> {
+async function downloadAyahAudio(url: string): Promise<boolean> {
   const cache = await caches.open(CACHE_NAME);
   try {
     const res = await fetch(url, { mode: "no-cors" });
