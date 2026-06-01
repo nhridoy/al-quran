@@ -9,8 +9,12 @@ interface AudioVolumeState {
 interface AudioProgressState {
   currentTime: number;
   duration: number;
+  currentTrack: { enName?: string; ayahNumber?: number } | null;
   setCurrentTime: (time: number) => void;
   setDuration: (duration: number) => void;
+  setCurrentTrack: (
+    track: { enName?: string; ayahNumber?: number } | null,
+  ) => void;
 }
 
 const useAudioVolumeStore = create<AudioVolumeState>((set) => ({
@@ -24,8 +28,10 @@ const useAudioVolumeStore = create<AudioVolumeState>((set) => ({
 const useAudioProgressStore = create<AudioProgressState>((set) => ({
   currentTime: 0,
   duration: 0,
+  currentTrack: null,
   setCurrentTime: (currentTime: number) => set({ currentTime }),
   setDuration: (duration: number) => set({ duration }),
+  setCurrentTrack: (currentTrack) => set({ currentTrack }),
 }));
 
 export type { AudioProgressState, AudioVolumeState };

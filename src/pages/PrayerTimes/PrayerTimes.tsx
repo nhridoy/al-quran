@@ -65,7 +65,8 @@ function getCountdown(now: Date, target: Date): string {
 }
 
 export default function PrayerTimesPage() {
-  const settings = useSettings();
+  const prayerCalcMethod = useSettings((s) => s.prayerCalcMethod);
+  const prayerAsrMethod = useSettings((s) => s.prayerAsrMethod);
   const {
     lat,
     lng,
@@ -84,11 +85,10 @@ export default function PrayerTimesPage() {
   const times = useMemo(() => {
     if (!coords) return null;
     const coordinates = new Coordinates(coords.lat, coords.lng);
-    const params = getAdhanMethod(settings.prayerCalcMethod);
-    params.madhab =
-      settings.prayerAsrMethod === "hanafi" ? Madhab.Hanafi : Madhab.Shafi;
+    const params = getAdhanMethod(prayerCalcMethod);
+    params.madhab = prayerAsrMethod === "hanafi" ? Madhab.Hanafi : Madhab.Shafi;
     return new AdhanPrayerTimes(coordinates, now, params);
-  }, [coords, settings.prayerCalcMethod, settings.prayerAsrMethod, now]);
+  }, [coords, prayerCalcMethod, prayerAsrMethod, now]);
 
   const prayers: PrayerEntry[] = useMemo(() => {
     if (!times) return [];

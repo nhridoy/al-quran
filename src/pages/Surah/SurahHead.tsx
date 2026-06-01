@@ -1,5 +1,5 @@
 import type React from "react";
-import { useCallback, useState } from "react";
+import { memo, useCallback, useState } from "react";
 import {
   CgPlayTrackNextO,
   CgPlayTrackPrevO,
@@ -18,7 +18,7 @@ interface SurahHeadProps {
   surah: SurahData;
 }
 
-export const SurahHead: React.FC<SurahHeadProps> = ({ surah }) => {
+export const SurahHead: React.FC<SurahHeadProps> = memo(({ surah }) => {
   const {
     currentTrack,
     isPlaying,
@@ -144,4 +144,4 @@ export const SurahHead: React.FC<SurahHeadProps> = ({ surah }) => {
       </div>
     </div>
   );
-};
+});

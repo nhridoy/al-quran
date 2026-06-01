@@ -1,8 +1,8 @@
+import { useAudioProgressStore } from "@/store/audio";
 import { useEffect } from "react";
-import { useAudioPlayerState } from "./AudioPlayer/index";
 
 export default function LastReadTracker() {
-  const { currentTrack } = useAudioPlayerState();
+  const currentTrack = useAudioProgressStore((s) => s.currentTrack);
 
   useEffect(() => {
     if (!currentTrack) return;

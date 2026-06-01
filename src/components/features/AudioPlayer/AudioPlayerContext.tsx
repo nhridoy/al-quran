@@ -112,6 +112,7 @@ export function AudioPlayerProvider({
   }, [isPlaying]);
   useEffect(() => {
     currentTrackRef.current = currentTrack;
+    useAudioProgressStore.getState().setCurrentTrack(currentTrack);
   }, [currentTrack]);
   useEffect(() => {
     playlistRef.current = playlist;
