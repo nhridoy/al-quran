@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { AUDIO_INDEX_KEY } from "@/lib/const";
-import { MdMenuBook } from "react-icons/md";
 import { FaQuran } from "react-icons/fa";
+import { MdMenuBook } from "react-icons/md";
+import { AUDIO_INDEX_KEY } from "@/lib/const";
 
 interface ReadStatus {
   surahName: string;

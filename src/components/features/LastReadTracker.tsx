@@ -1,6 +1,6 @@
+import { useEffect } from "react";
 import { AUDIO_INDEX_KEY } from "@/lib/const";
 import { useAudioProgressStore } from "@/store/audio";
-import { useEffect } from "react";
 export default function LastReadTracker() {
   const currentTrack = useAudioProgressStore((s) => s.currentTrack);
 
