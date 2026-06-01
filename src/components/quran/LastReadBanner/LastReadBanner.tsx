@@ -1,22 +1,9 @@
-import { useEffect, useState } from "react";
 import { FaQuran } from "react-icons/fa";
 import { MdMenuBook } from "react-icons/md";
-import { AUDIO_INDEX_KEY } from "@/lib/const";
-
-interface ReadStatus {
-  surahName: string;
-  verseNumber: number;
-}
+import { useAudioProgressStore } from "@/store/audio";
 
 export default function LastReadBanner() {
-  const [readStatus, setReadStatus] = useState<ReadStatus | null>(null);
-
-  useEffect(() => {
-    const currentAudioIndex: ReadStatus | null = JSON.parse(
-      localStorage.getItem(AUDIO_INDEX_KEY) || "null",
-    );
-    setReadStatus(currentAudioIndex);
-  }, []);
+  const lastRead = useAudioProgressStore((s) => s.lastRead);
 
   return (
     <div className="relative mx-4 mb-6 overflow-hidden rounded-2xl bg-linear-to-br from-primary via-primary-light to-secondary p-6 text-white shadow-xl shadow-primary/20 md:mx-6">
@@ -33,11 +20,11 @@ export default function LastReadBanner() {
           </div>
           <div>
             <p className="text-base font-semibold">
-              {readStatus ? readStatus.surahName : "No reading history"}
+              {lastRead ? lastRead.surahName : "No reading history"}
             </p>
             <p className="text-sm text-white/70">
-              {readStatus
-                ? `Ayah ${readStatus.verseNumber}`
+              {lastRead
+                ? `Ayah ${lastRead.verseNumber}`
                 : "Start reading to track progress"}
             </p>
           </div>

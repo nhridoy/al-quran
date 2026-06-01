@@ -14,6 +14,7 @@ export const FETCH_BATCH_SIZE = 10;
 export const PREV_TRACK_THRESHOLD = 3;
 export const VOLUME_STORAGE_KEY = "audioPlayerVolume";
 export const AUDIO_INDEX_KEY = "currentAudioIndex";
+export const LAST_READ_KEY = "quran-last-read";
 export const PRAYER_REFRESH_INTERVAL = 1000;
 export const SEARCH_FOCUS_DELAY = 100;
 export const GEOLOCATION_TIMEOUT = 10000;
