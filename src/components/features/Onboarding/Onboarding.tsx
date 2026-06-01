@@ -22,6 +22,7 @@ import {
 } from "@/lib/db";
 import { useLocationStore } from "@/store/location";
 import { useSettings } from "@/store/settings";
+import ListSelectStep from "./ListSelectStep";
 
 type Step = 0 | 1 | 2 | 3 | 4;
 
@@ -44,6 +45,11 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
   const slideRef = useRef<HTMLDivElement>(null);
   const stepIndices = useMemo(
     () => Array.from({ length: 5 }, (_, i) => ({ id: `step-${i}`, index: i })),
+    [],
+  );
+
+  const filteredTafsirs = useMemo(
+    () => TAFSIR_LIST.filter((t) => t.lang === "en" || t.lang === "bn"),
     [],
   );
 
@@ -171,16 +177,32 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
               />
             )}
             {step === 1 && (
-              <StepReciter
-                selected={reciterId}
+              <ListSelectStep
+                icon={<IoHeadsetOutline className="text-2xl text-white" />}
+                title="Choose a Reciter"
+                description="Select your preferred voice for Quran recitation"
+                items={RECITERS.map((r) => ({
+                  id: r.identifier,
+                  primary: r.englishName,
+                  secondary: r.name,
+                }))}
+                selectedId={reciterId}
                 onSelect={setReciterId}
                 onContinue={handleReciterContinue}
               />
             )}
             {step === 2 && (
-              <StepTafsir
-                language={language}
-                selected={tafsirId}
+              <ListSelectStep
+                icon={<IoMusicalNotesOutline className="text-2xl text-white" />}
+                title="Choose Tafsir"
+                description="Select your preferred Quran exegesis"
+                items={filteredTafsirs.map((t) => ({
+                  id: t.id,
+                  primary: t.name,
+                  secondary: t.authorName,
+                  badge: LANGUAGES[t.lang] ?? t.lang,
+                }))}
+                selectedId={tafsirId}
                 onSelect={setTafsirId}
                 onContinue={handleTafsirContinue}
               />
@@ -283,157 +305,6 @@ function StepWelcome({
           ))}
         </div>
       </div>
-    </div>
-  );
-}
-
-function StepReciter({
-  selected,
-  onSelect,
-  onContinue,
-}: {
-  selected: string;
-  onSelect: (id: string) => void;
-  onContinue: () => void;
-}) {
-  return (
-    <div className="flex h-full flex-col gap-5">
-      <div className="flex flex-col items-center gap-3 pt-4">
-        <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#2e0d8a] to-[#9345f2]/60 shadow-lg">
-          <IoHeadsetOutline className="text-2xl text-white" />
-        </div>
-        <h2 className="text-xl font-bold text-white">Choose a Reciter</h2>
-        <p className="text-center text-sm text-white/50">
-          Select your preferred voice for Quran recitation
-        </p>
-      </div>
-
-      <div className="flex-1 overflow-y-auto rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm scrollbar-thin scrollbar-thumb-white/10">
-        <div className="divide-y divide-white/5">
-          {RECITERS.map((r) => (
-            <Button
-              key={r.identifier}
-              variant="white-ghost"
-              className={`flex w-full items-center gap-4 px-4 py-3.5 h-auto rounded-none justify-start ${
-                selected === r.identifier ? "bg-[#9345f2]/10" : ""
-              }`}
-              onClick={() => onSelect(r.identifier)}
-            >
-              <div
-                className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-sm font-bold transition-all ${
-                  selected === r.identifier
-                    ? "bg-gradient-to-br from-[#2e0d8a] to-[#9345f2] text-white shadow-lg"
-                    : "bg-white/5 text-white/40"
-                }`}
-              >
-                {r.englishName.charAt(0)}
-              </div>
-              <div className="flex-1">
-                <p
-                  className={`text-sm font-medium ${
-                    selected === r.identifier ? "text-white" : "text-white/70"
-                  }`}
-                >
-                  {r.englishName}
-                </p>
-                <p className="text-xs text-white/40">{r.name}</p>
-              </div>
-              {selected === r.identifier && (
-                <IoCheckmarkCircle className="text-lg text-[#b87aff]" />
-              )}
-            </Button>
-          ))}
-        </div>
-      </div>
-
-      <Button
-        variant="gradient"
-        className="flex w-full items-center justify-center gap-2 py-3.5 h-auto text-sm shadow-lg shadow-[#9345f2]/20 hover:shadow-xl hover:shadow-[#9345f2]/30"
-        onClick={onContinue}
-      >
-        Continue
-        <IoChevronForward className="text-base" />
-      </Button>
-    </div>
-  );
-}
-
-function StepTafsir({
-  language: _language,
-  selected,
-  onSelect,
-  onContinue,
-}: {
-  language: "en" | "bn";
-  selected: string;
-  onSelect: (id: string) => void;
-  onContinue: () => void;
-}) {
-  const filtered = TAFSIR_LIST.filter(
-    (t) => t.lang === "en" || t.lang === "bn",
-  );
-
-  return (
-    <div className="flex h-full flex-col gap-5">
-      <div className="flex flex-col items-center gap-3 pt-4">
-        <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#2e0d8a] to-[#9345f2]/60 shadow-lg">
-          <IoMusicalNotesOutline className="text-2xl text-white" />
-        </div>
-        <h2 className="text-xl font-bold text-white">Choose Tafsir</h2>
-        <p className="text-center text-sm text-white/50">
-          Select your preferred Quran exegesis
-        </p>
-      </div>
-
-      <div className="flex-1 overflow-y-auto rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
-        <div className="divide-y divide-white/5">
-          {filtered.map((t) => (
-            <Button
-              key={t.id}
-              variant="white-ghost"
-              className={`flex w-full items-center gap-4 px-4 py-3.5 h-auto rounded-none justify-start ${
-                selected === t.id ? "bg-[#9345f2]/10" : ""
-              }`}
-              onClick={() => onSelect(t.id)}
-            >
-              <div
-                className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-sm font-bold transition-all ${
-                  selected === t.id
-                    ? "bg-gradient-to-br from-[#2e0d8a] to-[#9345f2] text-white shadow-lg"
-                    : "bg-white/5 text-white/40"
-                }`}
-              >
-                {t.name.charAt(0)}
-              </div>
-              <div className="flex-1">
-                <p
-                  className={`text-sm font-medium ${
-                    selected === t.id ? "text-white" : "text-white/70"
-                  }`}
-                >
-                  {t.name}
-                </p>
-                <p className="text-xs text-white/40">{t.authorName}</p>
-              </div>
-              <span className="shrink-0 rounded-md bg-white/5 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-white/40">
-                {LANGUAGES[t.lang] ?? t.lang}
-              </span>
-              {selected === t.id && (
-                <IoCheckmarkCircle className="text-lg text-[#b87aff]" />
-              )}
-            </Button>
-          ))}
-        </div>
-      </div>
-
-      <Button
-        variant="gradient"
-        className="flex w-full items-center justify-center gap-2 py-3.5 h-auto text-sm shadow-lg shadow-[#9345f2]/20 hover:shadow-xl hover:shadow-[#9345f2]/30"
-        onClick={onContinue}
-      >
-        Continue
-        <IoChevronForward className="text-base" />
-      </Button>
     </div>
   );
 }
