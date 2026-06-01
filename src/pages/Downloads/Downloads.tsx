@@ -6,6 +6,7 @@ import { PageShell } from "@/components/common/PageShell/PageShell";
 import { SkeletonLoader } from "@/components/common/SkeletonLoader/SkeletonLoader";
 import { Button } from "@/components/ui/button";
 import { useSurahs } from "@/hooks/useSurahs";
+import { dedupeUrls } from "@/lib/audio";
 import { confirm } from "@/lib/confirm";
 import { getAudioData, mergeAudioWithSurah } from "@/lib/db";
 import {
@@ -86,9 +87,7 @@ const SurahDownloadCard = memo(
         const verse = merged.verses[i];
         if (!verse.audio?.primary) continue;
         const { primary, secondary, tertiary, alternative } = verse.audio;
-        const urls = [primary, secondary, tertiary, alternative].filter(
-          (u, idx, arr) => u && arr.indexOf(u) === idx,
-        );
+        const urls = dedupeUrls(primary, secondary, tertiary, alternative);
         const result = await downloadAudioWithFallback(urls);
         if (result) {
           downloadedCount++;
@@ -134,11 +133,7 @@ const SurahDownloadCard = memo(
         for (const v of merged.verses) {
           if (!v.audio) continue;
           const { primary, secondary, tertiary, alternative } = v.audio;
-          urls.push(
-            ...[primary, secondary, tertiary, alternative].filter(
-              (u, idx, arr) => u && arr.indexOf(u) === idx,
-            ),
-          );
+          urls.push(...dedupeUrls(primary, secondary, tertiary, alternative));
         }
       }
       await removeFromCache(urls);
