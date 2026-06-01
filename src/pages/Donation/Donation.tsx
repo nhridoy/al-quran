@@ -44,7 +44,7 @@ const Donation: React.FC = () => {
             effect="cards"
             grabCursor={true}
             modules={[EffectCards]}
-            className="mySwiper w-60 h-80"
+            className="w-60 h-80"
           >
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
               <SwiperSlide
