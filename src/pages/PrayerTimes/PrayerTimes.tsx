@@ -147,7 +147,7 @@ export default function PrayerTimesPage() {
       )}
 
       {geoError && (
-        <div className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-surface p-6 text-center dark:border-dark-border dark:bg-dark-surface-card">
+        <div className="flex flex-col items-center gap-3 card-surface p-6 text-center">
           <p className="text-sm text-text-muted">
             {geoError}. Please enable location access.
           </p>

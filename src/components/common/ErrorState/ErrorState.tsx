@@ -8,7 +8,7 @@ interface ErrorStateProps {
 
 export function ErrorState({ message, onRetry }: ErrorStateProps) {
   return (
-    <div className="flex flex-col items-center gap-4 rounded-2xl border border-border bg-surface p-8 text-center dark:border-dark-border dark:bg-dark-surface-card">
+    <div className="flex flex-col items-center gap-4 card-surface p-8 text-center">
       <BiErrorCircle className="text-4xl text-red-400" />
       <p className="text-sm text-text-muted">{message}</p>
       {onRetry && (

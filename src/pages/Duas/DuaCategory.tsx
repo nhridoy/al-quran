@@ -52,7 +52,7 @@ export default function DuaCategory() {
           <AccordionItem
             key={dua.id}
             value={String(dua.id)}
-            className="overflow-hidden rounded-2xl border border-border bg-surface dark:border-dark-border dark:bg-dark-surface-card"
+            className="card-surface"
           >
             <AccordionTrigger className="flex w-full items-center justify-between p-4 text-left text-sm font-semibold text-text-primary transition-colors hover:bg-surface-alt hover:no-underline dark:hover:bg-dark-surface-alt dark:text-dark-text-primary [&>[data-slot=accordion-trigger-icon]]:hidden">
               <div className="flex-1">

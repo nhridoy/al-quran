@@ -193,6 +193,10 @@ html {
   background-clip: text;
 }
 
+.card-surface {
+  @apply overflow-hidden rounded-2xl border border-border bg-surface dark:border-dark-border dark:bg-dark-surface-card;
+}
+
 .card-hover {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }

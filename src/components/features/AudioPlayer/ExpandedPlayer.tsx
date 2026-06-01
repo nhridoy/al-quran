@@ -20,6 +20,7 @@ import {
   useAudioPlayerActions,
   useAudioPlayerState,
 } from "./AudioPlayerContext";
+import PlayerButton from "./PlayerButton";
 import VinylDisc from "./VinylDisc";
 
 function SeekBar() {
@@ -129,66 +130,6 @@ function PlayPauseButton({
   );
 }
 
-const PrevButton = memo(function PrevButton({
-  onClick,
-}: {
-  onClick: () => void;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="cursor-pointer rounded-full p-2 text-text-secondary transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
-      aria-label="Previous"
-      title="Previous"
-    >
-      <SkipBackIcon className="h-5 w-5" aria-hidden="true" />
-    </button>
-  );
-});
-
-const NextButton = memo(function NextButton({
-  onClick,
-}: {
-  onClick: () => void;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="cursor-pointer rounded-full p-2 text-text-secondary transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
-      aria-label="Next"
-      title="Next"
-    >
-      <SkipForwardIcon className="h-5 w-5" aria-hidden="true" />
-    </button>
-  );
-});
-
-const ShuffleButton = memo(function ShuffleButton({
-  isShuffled,
-  onClick,
-}: {
-  isShuffled: boolean;
-  onClick: () => void;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={`cursor-pointer rounded-full p-2 transition-all active:scale-90 ${
-        isShuffled
-          ? "bg-secondary/10 text-secondary"
-          : "text-text-muted hover:bg-surface-alt dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
-      }`}
-      aria-label="Toggle shuffle"
-      title="Shuffle"
-    >
-      <ShuffleIcon className="h-5 w-5" aria-hidden="true" />
-    </button>
-  );
-});
-
 const RepeatButton = memo(function RepeatButton({
   mode,
   onClick,
@@ -197,29 +138,24 @@ const RepeatButton = memo(function RepeatButton({
   onClick: () => void;
 }) {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={`cursor-pointer rounded-full p-2 transition-all active:scale-90 ${
-        mode === "none"
-          ? "text-text-muted hover:bg-surface-alt dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
-          : "bg-secondary/10 text-secondary"
-      }`}
-      aria-label="Cycle repeat mode"
-      title={
+    <PlayerButton
+      icon={
+        mode === "one" ? (
+          <Repeat1Icon className="h-5 w-5" aria-hidden="true" />
+        ) : (
+          <RepeatIconLucide className="h-5 w-5" aria-hidden="true" />
+        )
+      }
+      label={
         mode === "none"
           ? "Repeat"
           : mode === "all"
             ? "Repeat all"
             : "Repeat one"
       }
-    >
-      {mode === "one" ? (
-        <Repeat1Icon className="h-5 w-5" aria-hidden="true" />
-      ) : (
-        <RepeatIconLucide className="h-5 w-5" aria-hidden="true" />
-      )}
-    </button>
+      onClick={onClick}
+      active={mode !== "none"}
+    />
   );
 });
 
@@ -231,57 +167,19 @@ const MuteButton = memo(function MuteButton({
   onToggle: () => void;
 }) {
   return (
-    <button
-      type="button"
+    <PlayerButton
+      icon={
+        volume === 0 ? (
+          <VolumeXIcon className="h-5 w-5" aria-hidden="true" />
+        ) : volume < 0.5 ? (
+          <Volume1Icon className="h-5 w-5" aria-hidden="true" />
+        ) : (
+          <Volume2Icon className="h-5 w-5" aria-hidden="true" />
+        )
+      }
+      label={volume === 0 ? "Unmute" : "Mute"}
       onClick={onToggle}
-      className="cursor-pointer rounded-full p-2 text-text-muted transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
-      aria-label="Toggle mute"
-      title={volume === 0 ? "Unmute" : "Mute"}
-    >
-      {volume === 0 ? (
-        <VolumeXIcon className="h-5 w-5" aria-hidden="true" />
-      ) : volume < 0.5 ? (
-        <Volume1Icon className="h-5 w-5" aria-hidden="true" />
-      ) : (
-        <Volume2Icon className="h-5 w-5" aria-hidden="true" />
-      )}
-    </button>
-  );
-});
-
-const PlaylistButton = memo(function PlaylistButton({
-  onClick,
-}: {
-  onClick: () => void;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="cursor-pointer rounded-full p-2 text-text-muted transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
-      aria-label="Playlist"
-      title="Playlist"
-    >
-      <ListMusicIcon className="h-5 w-5" aria-hidden="true" />
-    </button>
-  );
-});
-
-const MinimizeButton = memo(function MinimizeButton({
-  onClick,
-}: {
-  onClick: () => void;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="cursor-pointer rounded-full p-2 text-text-muted transition-all hover:bg-surface-alt active:scale-90 dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
-      aria-label="Minimize"
-      title="Minimize"
-    >
-      <ChevronDownIcon className="h-5 w-5" aria-hidden="true" />
-    </button>
+    />
   );
 });
 
@@ -341,14 +239,29 @@ function DesktopPlayerContent({
       <div className="flex flex-1 items-center justify-center gap-3">
         <SeekBar />
         <div className="flex items-center gap-1">
-          <ShuffleButton isShuffled={isShuffled} onClick={toggleShuffle} />
-          <PrevButton onClick={prev} />
+          <PlayerButton
+            icon={<ShuffleIcon className="h-5 w-5" aria-hidden="true" />}
+            label="Toggle shuffle"
+            onClick={toggleShuffle}
+            active={isShuffled}
+          />
+          <PlayerButton
+            icon={<SkipBackIcon className="h-5 w-5" aria-hidden="true" />}
+            label="Previous"
+            onClick={prev}
+            variant="secondary"
+          />
           <PlayPauseButton
             isPlaying={isPlaying}
             isLoading={isLoading}
             onClick={togglePlay}
           />
-          <NextButton onClick={next} />
+          <PlayerButton
+            icon={<SkipForwardIcon className="h-5 w-5" aria-hidden="true" />}
+            label="Next"
+            onClick={next}
+            variant="secondary"
+          />
           <RepeatButton mode={repeatMode} onClick={cycleRepeat} />
         </div>
         <div className="flex items-center gap-1">
@@ -370,8 +283,16 @@ function DesktopPlayerContent({
       </div>
 
       <div className="flex items-center gap-1">
-        <PlaylistButton onClick={togglePlaylist} />
-        <MinimizeButton onClick={onMinimize} />
+        <PlayerButton
+          icon={<ListMusicIcon className="h-5 w-5" aria-hidden="true" />}
+          label="Playlist"
+          onClick={togglePlaylist}
+        />
+        <PlayerButton
+          icon={<ChevronDownIcon className="h-5 w-5" aria-hidden="true" />}
+          label="Minimize"
+          onClick={onMinimize}
+        />
       </div>
     </div>
   );

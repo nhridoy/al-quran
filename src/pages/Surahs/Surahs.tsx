@@ -67,7 +67,7 @@ export default function Surahs() {
             {skeletonRows}
           </div>
         ) : filtered.length > 0 ? (
-          <div className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-surface dark:divide-dark-border dark:border-dark-border dark:bg-dark-surface-card">
+          <div className="card-surface divide-y divide-border dark:divide-dark-border">
             {filtered.map((surah) => (
               <Link
                 key={surah.no}

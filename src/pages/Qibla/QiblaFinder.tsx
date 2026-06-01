@@ -327,7 +327,7 @@ export default function QiblaFinder() {
             </div>
 
             {/* Bottom Metadata Panel */}
-            <div className="rounded-2xl border border-border bg-surface dark:border-dark-border dark:bg-dark-surface-card">
+            <div className="card-surface">
               <div className="divide-y divide-border dark:divide-dark-border">
                 <div className="flex items-center justify-between p-4">
                   <span className="text-sm text-text-muted">

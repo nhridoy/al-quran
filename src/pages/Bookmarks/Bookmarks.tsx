@@ -124,11 +124,7 @@ export default function Bookmarks() {
       ) : (
         <Accordion className="space-y-4">
           {Object.entries(grouped).map(([key, items]) => (
-            <AccordionItem
-              key={key}
-              value={key}
-              className="overflow-hidden rounded-2xl border border-border bg-surface dark:border-dark-border dark:bg-dark-surface-card"
-            >
+            <AccordionItem key={key} value={key} className="card-surface">
               <AccordionTrigger className="flex w-full items-center gap-3 border-b border-border p-4 text-left text-sm font-medium transition-colors hover:bg-surface-alt hover:no-underline dark:border-dark-border dark:hover:bg-dark-surface-alt [&>[data-slot=accordion-trigger-icon]]:hidden">
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-linear-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20">
                   <FaQuran className="text-xs text-secondary" />
