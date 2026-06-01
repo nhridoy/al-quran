@@ -81,10 +81,8 @@ const AudioPlayerActionsContext = createContext<AudioPlayerActions | null>(
 
 export function AudioPlayerProvider({
   children,
-  expandOnPlay = false,
 }: {
   children: React.ReactNode;
-  expandOnPlay?: boolean;
 }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -109,8 +107,6 @@ export function AudioPlayerProvider({
   const fallbackIndexRef = useRef(0);
   const playGenRef = useRef(0);
   const isShuffleActiveRef = useRef(false);
-  const expandOnPlayRef = useRef(expandOnPlay);
-
   useEffect(() => {
     isPlayingRef.current = isPlaying;
   }, [isPlaying]);
@@ -129,9 +125,6 @@ export function AudioPlayerProvider({
   useEffect(() => {
     isShuffleActiveRef.current = isShuffleActive;
   }, [isShuffleActive]);
-  useEffect(() => {
-    expandOnPlayRef.current = expandOnPlay;
-  }, [expandOnPlay]);
 
   useEffect(() => {
     audioRef.current = new Audio();
@@ -412,7 +405,6 @@ export function AudioPlayerProvider({
         shuffleCursorRef.current = 0;
       }
       playByIndexRef.current(startIndex);
-      if (expandOnPlayRef.current) setIsExpanded(true);
     }
   }, []);
 

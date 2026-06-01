@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import { getFromStore, putInStore } from "../lib/db";
-import { useSettings } from "../store/settings";
 
 const HADITH_API = "https://hadislam.org";
 
@@ -174,16 +173,4 @@ export function useHadithPage(
   }, [fetchPage]);
 
   return { data, loading, error, refetch: fetchPage };
-}
-
-export function useAvailableLangs(items: Hadith[]): string[] {
-  const translationLang = useSettings((s) => s.translationLang);
-  const langs = new Set<string>();
-  langs.add(translationLang);
-  for (const h of items) {
-    for (const key of Object.keys(h.text)) {
-      langs.add(key);
-    }
-  }
-  return Array.from(langs);
 }

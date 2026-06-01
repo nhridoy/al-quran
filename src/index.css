@@ -12,7 +12,6 @@
   --color-accent-soft: #ffd8cb;
   --color-surface: #ffffff;
   --color-surface-alt: #f8f6ff;
-  --color-surface-glass: rgba(255, 255, 255, 0.7);
   --color-border: #e8e4f0;
   --color-text-primary: #1a1025;
   --color-text-secondary: #6b5e80;
@@ -20,7 +19,6 @@
   --color-dark-surface: #0f0a1a;
   --color-dark-surface-alt: #1a1228;
   --color-dark-surface-card: #231a35;
-  --color-dark-surface-glass: rgba(15, 10, 26, 0.7);
   --color-dark-border: #2a1f40;
   --color-dark-text-primary: #f0ecf8;
   --color-dark-text-secondary: #b8a9d0;
@@ -60,15 +58,8 @@
   --font-inter: "Inter", system-ui, sans-serif;
 
   --animate-slide-up: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  --animate-slide-down: slideDown 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  --animate-slide-left: slideLeft 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  --animate-slide-right: slideRight 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   --animate-fade-in: fadeIn 0.3s ease-out;
   --animate-scale-in: scaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  --animate-scale-out: scaleOut 0.2s ease-in forwards;
-  --animate-float: float 3s ease-in-out infinite;
-  --animate-glow: glow 2s ease-in-out infinite alternate;
-  --animate-shimmer: shimmer 2s linear infinite;
   --animate-accordion-down: accordion-down 0.25s ease-out;
   --animate-accordion-up: accordion-up 0.25s ease-out;
 }
@@ -81,39 +72,6 @@
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideRight {
-  from {
-    opacity: 0;
-    transform: translateX(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
   }
 }
 
@@ -134,45 +92,6 @@
   to {
     opacity: 1;
     transform: scale(1);
-  }
-}
-
-@keyframes scaleOut {
-  from {
-    opacity: 1;
-    transform: scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: scale(0.92);
-  }
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes glow {
-  from {
-    box-shadow: 0 0 20px rgba(147, 69, 242, 0.3);
-  }
-  to {
-    box-shadow: 0 0 40px rgba(147, 69, 242, 0.6);
-  }
-}
-
-@keyframes shimmer {
-  from {
-    background-position: -200% 0;
-  }
-  to {
-    background-position: 200% 0;
   }
 }
 
@@ -206,16 +125,6 @@
   to {
     height: 0;
     opacity: 0;
-  }
-}
-
-@keyframes pulse-soft {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.6;
   }
 }
 
@@ -253,11 +162,6 @@ html {
   background: var(--color-dark-text-muted);
 }
 
-.arabic-text {
-  font-family: "Amiri", "Traditional Arabic", serif;
-  line-height: 2;
-}
-
 /* Font size is controlled via CSS variables set by ThemeController.
    Apply by adding style={{ fontSize: 'var(--arabic-font-size)' }} to override text-* utility classes. */
 
@@ -278,47 +182,11 @@ html {
   animation: pageEnter 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.glass {
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.dark .glass {
-  background: rgba(15, 10, 26, 0.6);
-  border-color: rgba(255, 255, 255, 0.06);
-}
-
-.glass-strong {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.dark .glass-strong {
-  background: rgba(15, 10, 26, 0.8);
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
 .text-gradient {
   background: linear-gradient(
     135deg,
     var(--color-primary),
     var(--color-secondary)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.text-gradient-gold {
-  background: linear-gradient(
-    135deg,
-    var(--color-gold-dark),
-    var(--color-gold),
-    var(--color-gold-light)
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -355,22 +223,6 @@ html {
 
 .btn-primary:active {
   transform: translateY(0) scale(0.98);
-}
-
-.btn-ghost {
-  background: transparent;
-  transition: all 0.2s ease;
-  color: var(--color-text-secondary);
-}
-
-.btn-ghost:hover {
-  background: rgba(46, 13, 138, 0.06);
-  color: var(--color-primary);
-}
-
-.dark .btn-ghost:hover {
-  background: rgba(147, 69, 242, 0.1);
-  color: var(--color-secondary-light);
 }
 
 .swiper {

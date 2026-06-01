@@ -179,6 +179,7 @@ const SurahDownloadCard = memo(
               size="icon"
               className="rounded-lg"
               title="Remove download"
+              aria-label="Remove download"
             >
               <FiTrash2 className="text-sm" />
             </Button>
@@ -193,6 +194,7 @@ const SurahDownloadCard = memo(
                 size="icon-sm"
                 className="rounded-lg text-text-muted hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20 dark:hover:text-secondary-light"
                 title="Resume download"
+                aria-label="Resume download"
               >
                 <IoPlayCircleOutline className="text-sm" />
               </Button>
@@ -202,6 +204,7 @@ const SurahDownloadCard = memo(
                 size="icon-sm"
                 className="rounded-lg"
                 title="Cancel download"
+                aria-label="Cancel download"
               >
                 <FiTrash2 className="text-xs" />
               </Button>
@@ -217,6 +220,7 @@ const SurahDownloadCard = memo(
                 size="icon-sm"
                 className="rounded-lg text-text-muted hover:bg-warning/10 hover:text-warning dark:hover:bg-warning/20"
                 title="Pause download"
+                aria-label="Pause download"
               >
                 <PauseIcon className="h-3.5 w-3.5" aria-hidden="true" />
               </Button>
@@ -226,6 +230,7 @@ const SurahDownloadCard = memo(
                 size="icon-sm"
                 className="rounded-lg"
                 title="Cancel download"
+                aria-label="Cancel download"
               >
                 <FiTrash2 className="text-xs" />
               </Button>
@@ -237,6 +242,7 @@ const SurahDownloadCard = memo(
               size="icon"
               className="rounded-lg text-text-muted hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20 dark:hover:text-secondary-light"
               title="Download"
+              aria-label="Download"
             >
               <IoPlayCircleOutline className="text-lg" />
             </Button>

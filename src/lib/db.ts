@@ -189,18 +189,6 @@ export async function getAudioData(
   return urls;
 }
 
-export async function getCachedAudio(
-  surahNo: number,
-): Promise<VerseAudioUrls[] | null> {
-  const key = String(surahNo);
-  const cached = await getFromStore<{ verses: { audio: VerseAudioUrls }[] }>(
-    "surah-audio",
-    key,
-  );
-  if (!cached) return null;
-  return cached.verses.map((v) => v.audio);
-}
-
 export async function getJuzData(
   juzNo: number,
 ): Promise<Record<string, SurahData>> {
@@ -220,60 +208,6 @@ export async function getJuzData(
   }
   await putInStore("juz-verses", key, map);
   return map;
-}
-
-export async function getTafsirData(
-  tafsirId: string,
-  surahNo: number,
-): Promise<{
-  lang: string;
-  authorName: string;
-  tafsirName: string;
-  text: string;
-} | null> {
-  const key = String(surahNo);
-  const cached = await getFromStore<Record<string, unknown>>(
-    "surah-tafsir",
-    key,
-  );
-  if (cached) {
-    const verses =
-      (
-        cached as {
-          verses: {
-            lang?: string;
-            authorName?: string;
-            tafsirName?: string;
-            tafsir?: string;
-          }[];
-        }
-      ).verses ?? [];
-    return {
-      lang: verses[0]?.lang ?? tafsirId.split("-")[0],
-      authorName: verses[0]?.authorName ?? "",
-      tafsirName: verses[0]?.tafsirName ?? "",
-      text: verses.map((v) => v.tafsir ?? "").join("\n"),
-    };
-  }
-
-  const lang = tafsirId.split("-")[0];
-  try {
-    const res = await fetch(
-      `${BASE}/surah/tafsir/${lang}/${tafsirId}/${surahNo}.min.json`,
-    );
-    if (!res.ok) return null;
-    const data = await res.json();
-    await putInStore("surah-tafsir", key, data);
-    const verses = data.verses ?? [];
-    return {
-      lang: verses[0]?.lang ?? lang,
-      authorName: verses[0]?.authorName ?? "",
-      tafsirName: verses[0]?.tafsirName ?? "",
-      text: verses.map((v: { tafsir?: string }) => v.tafsir ?? "").join("\n"),
-    };
-  } catch {
-    return null;
-  }
 }
 
 const tafsirFetchPromises = new Map<string, Promise<unknown>>();

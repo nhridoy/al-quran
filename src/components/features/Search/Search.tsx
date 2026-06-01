@@ -158,6 +158,7 @@ export default function Search() {
                       <button
                         type="button"
                         onClick={() => setQuery("")}
+                        aria-label="Clear search"
                         className="cursor-pointer rounded-lg p-1 text-text-muted hover:bg-surface-alt hover:text-text-primary dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
                       >
                         <IoClose className="text-lg" />

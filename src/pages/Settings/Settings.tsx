@@ -16,10 +16,12 @@ import { confirm } from "../../lib/confirm";
 import { LANGUAGES, RECITERS, TAFSIR_LIST } from "../../lib/const";
 import {
   cacheAllAudioForReciter,
+  cacheAllJuz,
   cacheAllJuzAudioForReciter,
   cacheAllJuzTafsirFor,
   cacheAllTafsirFor,
   clearAudioCache,
+  clearCache,
   clearTafsirCache,
 } from "../../lib/db";
 import { removeFromCache } from "../../lib/downloadManager";
@@ -212,20 +214,29 @@ export default function Settings() {
   const handleUpdate = useCallback(async () => {
     const ok = await confirm({
       title: "Refresh Data?",
-      message: "This will clear the cached data and fetch fresh content.",
+      message:
+        "This will clear and re-fetch all cached data (surahs, audio, tafsir, juz).",
       confirmText: "Yes, refresh!",
       confirmColor: "#9345f2",
     });
     if (!ok) return;
     setLoading(true);
     try {
+      await clearCache();
       await refresh();
+      await cacheAllJuz();
+      await Promise.all([
+        cacheAllAudioForReciter(local.reciterId),
+        cacheAllJuzAudioForReciter(local.reciterId),
+        cacheAllTafsirFor(local.tafsirId),
+        cacheAllJuzTafsirFor(local.tafsirId),
+      ]);
       toast.success("Data refreshed successfully!");
     } catch {
       toast.error("Failed to refresh data");
     }
     setLoading(false);
-  }, [refresh]);
+  }, [refresh, local.reciterId, local.tafsirId]);
 
   const filteredTafsirs = TAFSIR_LIST.filter(
     (t) => t.lang === "en" || t.lang === "bn",
