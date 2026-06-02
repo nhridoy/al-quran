@@ -1,17 +1,13 @@
 import { useCallback, useMemo, useState } from "react";
-import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { useParams } from "react-router-dom";
 import { ErrorState } from "@/components/common/ErrorState/ErrorState";
 import { PageShell } from "@/components/common/PageShell/PageShell";
 import { SkeletonLoader } from "@/components/common/SkeletonLoader/SkeletonLoader";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { getPreferredText, PAGE_SIZE, useHadithPage } from "@/hooks/useHadith";
+import { Accordion } from "@/components/ui/accordion";
+import { PAGE_SIZE, useHadithPage } from "@/hooks/useHadith";
 import { useSettings } from "@/store/settings";
+import HadithItem from "./HadithItem";
+import PaginationBar from "./PaginationBar";
 
 const LANG_LABELS: Record<string, string> = {
   en: "English",
@@ -102,109 +98,19 @@ export default function HadithBook() {
       ) : (
         data && (
           <Accordion className="gap-2">
-            {data.items.map((h) => {
-              const { text: displayText, lang: actualLang } = getPreferredText(
-                h.text,
-                activeLang,
-              );
-              const altText =
-                actualLang !== "ar" && h.text.ar ? h.text.ar : undefined;
-              return (
-                <AccordionItem
-                  key={h._id}
-                  value={String(h.hadithIndex)}
-                  className="overflow-hidden rounded-2xl border border-border bg-surface not-last:border-b-0 dark:border-dark-border dark:bg-dark-surface-card"
-                >
-                  <AccordionTrigger className="[&_[data-slot=accordion-trigger-icon]]:hidden p-4 text-left transition-colors hover:bg-surface-alt dark:hover:bg-dark-surface-alt">
-                    <div className="flex w-full items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10 text-xs font-bold text-primary dark:bg-primary/20">
-                          {h.bookHadithIndex}
-                        </div>
-                        <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
-                          Hadith {h.bookHadithIndex}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        {actualLang !== translationLang && (
-                          <span className="rounded bg-secondary/10 px-1.5 py-0.5 text-[10px] font-medium text-secondary">
-                            {actualLang}
-                          </span>
-                        )}
-                        <span className="text-xs text-text-muted transition-transform group-aria-expanded/accordion-trigger:rotate-180">
-                          ▾
-                        </span>
-                      </div>
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="space-y-3 border-t border-border p-4 pb-4 dark:border-dark-border">
-                    <p
-                      dir={
-                        actualLang === "ar" ||
-                        actualLang === "ar-diacritics" ||
-                        actualLang === "ur"
-                          ? "rtl"
-                          : "ltr"
-                      }
-                      className="text-sm leading-relaxed text-text-secondary dark:text-dark-text-secondary"
-                    >
-                      {displayText}
-                    </p>
-                    {altText && (
-                      <div className="border-t border-border pt-3 dark:border-dark-border">
-                        <p
-                          dir="rtl"
-                          className="font-arabic text-lg leading-loose text-text-primary dark:text-dark-text-primary"
-                        >
-                          {altText}
-                        </p>
-                      </div>
-                    )}
-                    {h.grades.length > 0 && (
-                      <div className="flex flex-wrap gap-2">
-                        {h.grades.map((g) => (
-                          <span
-                            key={`${g.name}-${g.grade}`}
-                            className="rounded-full bg-green-50 px-2.5 py-1 text-xs font-medium text-green-700 dark:bg-green-900/30 dark:text-green-400"
-                          >
-                            {g.grade}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </AccordionContent>
-                </AccordionItem>
-              );
-            })}
+            {data.items.map((h) => (
+              <HadithItem key={h._id} item={h} activeLang={activeLang} />
+            ))}
           </Accordion>
         )
       )}
 
-      {totalPages > 1 && (
-        <div className="flex items-center justify-center gap-4 pt-2">
-          <button
-            type="button"
-            onClick={handlePrev}
-            disabled={page <= 1}
-            className="flex cursor-pointer items-center gap-1 rounded-xl px-4 py-2 text-sm font-medium text-text-primary transition-colors hover:bg-surface-alt disabled:cursor-not-allowed disabled:opacity-40 dark:text-dark-text-primary dark:hover:bg-dark-surface-alt"
-          >
-            <BiChevronLeft className="text-lg" />
-            Previous
-          </button>
-          <span className="text-xs text-text-muted">
-            {page} / {totalPages}
-          </span>
-          <button
-            type="button"
-            onClick={handleNext}
-            disabled={page >= totalPages}
-            className="flex cursor-pointer items-center gap-1 rounded-xl px-4 py-2 text-sm font-medium text-text-primary transition-colors hover:bg-surface-alt disabled:cursor-not-allowed disabled:opacity-40 dark:text-dark-text-primary dark:hover:bg-dark-surface-alt"
-          >
-            Next
-            <BiChevronRight className="text-lg" />
-          </button>
-        </div>
-      )}
+      <PaginationBar
+        page={page}
+        totalPages={totalPages}
+        onPrev={handlePrev}
+        onNext={handleNext}
+      />
     </PageShell>
   );
 }

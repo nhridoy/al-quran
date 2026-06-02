@@ -3,36 +3,8 @@ import { BiReset } from "react-icons/bi";
 import { MdLoop } from "react-icons/md";
 import { PageShell } from "@/components/common/PageShell/PageShell";
 import { Button } from "@/components/ui/button";
-
-interface Dhikr {
-  id: string;
-  label: string;
-  arabic: string;
-  target: number;
-}
-
-const PRESETS: Dhikr[] = [
-  { id: "subhanallah", label: "SubhanAllah", arabic: "سُبْحَانَ اللّٰه", target: 33 },
-  {
-    id: "alhamdulillah",
-    label: "Alhamdulillah",
-    arabic: "الْحَمْدُ لِلّٰه",
-    target: 33,
-  },
-  { id: "allahuAkbar", label: "Allahu Akbar", arabic: "اللّٰهُ أَكْبَر", target: 34 },
-];
-
-function loadCounts(): Record<string, number> {
-  try {
-    return JSON.parse(localStorage.getItem("tasbihCounts") || "{}");
-  } catch {
-    return {};
-  }
-}
-
-function saveCounts(counts: Record<string, number>) {
-  localStorage.setItem("tasbihCounts", JSON.stringify(counts));
-}
+import { loadCounts, PRESETS, saveCounts } from "@/lib/tasbih";
+import CircularCounter, { CounterContent } from "./CircularCounter";
 
 export default function Tasbih() {
   const [activeId, setActiveId] = useState(PRESETS[0].id);
@@ -130,47 +102,12 @@ export default function Tasbih() {
           onKeyDown={handleKeyDown}
           className="relative mb-6 flex h-64 w-64 cursor-pointer select-none items-center justify-center rounded-full transition-transform active:scale-95"
         >
-          <svg
-            className="absolute inset-0 h-full w-full -rotate-90"
-            viewBox="0 0 256 256"
-            aria-hidden="true"
-          >
-            <circle
-              cx="128"
-              cy="128"
-              r="118"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="6"
-              className="text-border dark:text-dark-border"
-            />
-            <circle
-              cx="128"
-              cy="128"
-              r="118"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="6"
-              strokeLinecap="round"
-              strokeDasharray={2 * Math.PI * 118}
-              strokeDashoffset={2 * Math.PI * 118 * (1 - progress)}
-              className="text-secondary transition-all duration-300"
-            />
-          </svg>
-          <div className="flex flex-col items-center">
-            <p className="font-arabic text-3xl leading-relaxed text-text-primary dark:text-dark-text-primary">
-              {active.arabic}
-            </p>
-            <p className="mt-2 text-5xl font-bold text-primary dark:text-secondary-light">
-              {currentCount}
-            </p>
-            <p className="mt-1 text-sm text-text-muted">/ {active.target}</p>
-            {currentCount >= active.target && currentCount > 0 && (
-              <p className="mt-2 rounded-full bg-success/10 px-3 py-0.5 text-xs font-medium text-success">
-                Completed
-              </p>
-            )}
-          </div>
+          <CircularCounter progress={progress} />
+          <CounterContent
+            arabic={active.arabic}
+            count={currentCount}
+            target={active.target}
+          />
         </button>
 
         <div className="flex items-center gap-3">

@@ -18,11 +18,13 @@ export default function AudioPlayer() {
 
 export {
   AudioPlayerProvider,
-  buildPlaylistFromSurah,
-  buildPlaylistFromSurahs,
-  formatTime,
   useAudioPlayer,
   useAudioPlayerActions,
   useAudioPlayerState,
 } from "./AudioPlayerContext";
+export {
+  buildPlaylistFromSurah,
+  buildPlaylistFromSurahs,
+  formatTime,
+} from "./audioUtils";
 export type { RepeatMode, Track } from "./types";

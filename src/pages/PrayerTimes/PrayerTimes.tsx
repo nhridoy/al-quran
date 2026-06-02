@@ -1,76 +1,17 @@
-import {
-  PrayerTimes as AdhanPrayerTimes,
-  CalculationMethod,
-  Coordinates,
-  Madhab,
-} from "adhan";
 import { useEffect, useMemo, useState } from "react";
 import { PageShell } from "@/components/common/PageShell/PageShell";
 import { Button } from "@/components/ui/button";
 import { PRAYER_REFRESH_INTERVAL } from "@/lib/const";
+import {
+  buildPrayerEntries,
+  computePrayerTimes,
+  findCurrentPrayer,
+  findNextPrayer,
+  formatTime,
+  getCountdown,
+} from "@/lib/prayerTimes";
 import { useLocationStore } from "@/store/location";
 import { useSettings } from "@/store/settings";
-
-interface PrayerEntry {
-  key: string;
-  name: string;
-  nameBn: string;
-  time: Date;
-  icon: string;
-}
-
-const PRAYER_NAMES: {
-  key: "fajr" | "sunrise" | "dhuhr" | "asr" | "maghrib" | "isha";
-  name: string;
-  nameBn: string;
-  icon: string;
-}[] = [
-  { key: "fajr", name: "Fajr", nameBn: "ফজর", icon: "🌅" },
-  { key: "sunrise", name: "Sunrise", nameBn: "সূর্যোদয়", icon: "🌄" },
-  { key: "dhuhr", name: "Dhuhr", nameBn: "যোহর", icon: "☀️" },
-  { key: "asr", name: "Asr", nameBn: "আসর", icon: "🌤️" },
-  { key: "maghrib", name: "Maghrib", nameBn: "মাগরিব", icon: "🌇" },
-  { key: "isha", name: "Isha", nameBn: "ইশা", icon: "🌙" },
-];
-
-function getAdhanMethod(method: string) {
-  switch (method) {
-    case "ISNA":
-      return CalculationMethod.NorthAmerica();
-    case "Egypt":
-      return CalculationMethod.Egyptian();
-    case "UmmAlQura":
-      return CalculationMethod.UmmAlQura();
-    case "Karachi":
-      return CalculationMethod.Karachi();
-    default:
-      return CalculationMethod.MuslimWorldLeague();
-  }
-}
-
-function formatTime(date: Date): string {
-  return date.toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-    hour12: true,
-  });
-}
-
-function getPrayerTime(
-  times: AdhanPrayerTimes,
-  key: (typeof PRAYER_NAMES)[number]["key"],
-): Date {
-  return times[key] as Date;
-}
-
-function getCountdown(now: Date, target: Date): string {
-  const diff = target.getTime() - now.getTime();
-  if (diff <= 0) return "";
-  const hours = Math.floor(diff / 3600000);
-  const minutes = Math.floor((diff % 3600000) / 60000);
-  if (hours > 0) return `${hours}h ${minutes}m`;
-  return `${minutes}m`;
-}
 
 export default function PrayerTimesPage() {
   const prayerCalcMethod = useSettings((s) => s.prayerCalcMethod);
@@ -93,37 +34,22 @@ export default function PrayerTimesPage() {
     return () => clearInterval(timer);
   }, []);
 
-  const times = useMemo(() => {
-    if (!coords) return null;
-    const coordinates = new Coordinates(coords.lat, coords.lng);
-    const params = getAdhanMethod(prayerCalcMethod);
-    params.madhab = prayerAsrMethod === "hanafi" ? Madhab.Hanafi : Madhab.Shafi;
-    return new AdhanPrayerTimes(coordinates, now, params);
-  }, [coords, prayerCalcMethod, prayerAsrMethod, now]);
+  const times = useMemo(
+    () => computePrayerTimes(coords, prayerCalcMethod, prayerAsrMethod, now),
+    [coords, prayerCalcMethod, prayerAsrMethod, now],
+  );
 
-  const prayers: PrayerEntry[] = useMemo(() => {
-    if (!times) return [];
-    return PRAYER_NAMES.map((p) => {
-      const time = getPrayerTime(times, p.key);
-      return { ...p, time };
-    });
-  }, [times]);
+  const prayers = useMemo(() => buildPrayerEntries(times), [times]);
 
-  const nextPrayer = useMemo(() => {
-    if (prayers.length === 0) return null;
-    const upcoming = prayers.find((p) => p.time > now);
-    if (upcoming) return upcoming;
-    return prayers[0];
-  }, [prayers, now]);
+  const nextPrayer = useMemo(
+    () => findNextPrayer(prayers, now),
+    [prayers, now],
+  );
 
-  const currentPrayer = useMemo(() => {
-    if (prayers.length === 0) return null;
-    let current = prayers[0];
-    for (const p of prayers) {
-      if (p.time <= now) current = p;
-    }
-    return current;
-  }, [prayers, now]);
+  const currentPrayer = useMemo(
+    () => findCurrentPrayer(prayers, now),
+    [prayers, now],
+  );
 
   return (
     <PageShell

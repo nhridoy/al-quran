@@ -13,15 +13,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useSurahs } from "@/hooks/useSurahs";
 import { SEARCH_FOCUS_DELAY } from "@/lib/const";
-import type { Verse } from "@/types";
 import SurahList from "../../quran/SurahItem/SurahItem";
-
-interface VerseResult {
-  surahNo: number;
-  surahName: string;
-  enName: string;
-  verse: Verse;
-}
+import VerseResultItem, { type VerseResult } from "./VerseResultItem";
 
 export default function Search() {
   const [open, setOpen] = useState(false);
@@ -224,27 +217,11 @@ export default function Search() {
                   {mode === "verse" && verseResults.length > 0 && (
                     <div className="space-y-0.5">
                       {verseResults.map((r) => (
-                        <button
+                        <VerseResultItem
                           key={`${r.surahNo}-${r.verse.numberInSurah}`}
-                          type="button"
-                          onClick={() =>
-                            handleVerseClick(r.surahNo, r.verse.numberInSurah)
-                          }
-                          className="w-full cursor-pointer rounded-xl p-3 text-left transition-colors hover:bg-surface-alt dark:hover:bg-dark-surface-alt"
-                        >
-                          <p className="font-arabic text-right text-lg leading-relaxed text-text-primary dark:text-dark-text-primary">
-                            {r.verse.text.arText}
-                          </p>
-                          <p className="mt-1 text-xs italic text-text-muted dark:text-dark-text-muted line-clamp-1">
-                            {r.verse.text.enText}
-                          </p>
-                          <p className="text-[11px] text-text-muted/60 dark:text-dark-text-muted/60 line-clamp-1">
-                            {r.verse.text.bnText}
-                          </p>
-                          <p className="mt-1 text-[11px] font-medium text-secondary dark:text-secondary-light">
-                            {r.enName} &mdash; Ayah {r.verse.numberInSurah}
-                          </p>
-                        </button>
+                          result={r}
+                          onClick={handleVerseClick}
+                        />
                       ))}
                     </div>
                   )}

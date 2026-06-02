@@ -13,21 +13,21 @@ import { PageShell } from "@/components/common/PageShell/PageShell";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { useSurahs } from "@/hooks/useSurahs";
-import { confirm } from "@/lib/confirm";
-import { LANGUAGES, RECITERS, TAFSIR_LIST } from "@/lib/const";
 import {
   cacheAllAudioForReciter,
   cacheAllJuz,
   cacheAllJuzAudioForReciter,
   cacheAllJuzTafsirFor,
   cacheAllTafsirFor,
-  clearAudioCache,
-  clearCache,
-  clearTafsirCache,
-} from "@/lib/db";
+} from "@/lib/batchCache";
+import { confirm } from "@/lib/confirm";
+import { LANGUAGES, RECITERS, TAFSIR_LIST } from "@/lib/const";
+import { clearAudioCache, clearCache, clearTafsirCache } from "@/lib/db";
 import { removeFromCache } from "@/lib/downloadManager";
 import { useDownloadsStore } from "@/store/downloads";
 import { useSettings } from "@/store/settings";
+import SegmentedControl from "./SegmentedControl";
+import SettingCard from "./SettingCard";
 
 const THEME_OPTIONS = [
   { value: "system", label: "System" },
@@ -47,66 +47,6 @@ const CALC_METHODS = [
   { value: "UmmAlQura", label: "Umm al-Qura (Makkah)" },
   { value: "Karachi", label: "University of Islamic Sciences, Karachi" },
 ] as const;
-
-function SettingCard({
-  icon,
-  title,
-  description,
-  children,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="card-surface">
-      <div className="flex items-center gap-3 border-b border-border p-4 dark:border-dark-border">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20">
-          {icon}
-        </div>
-        <div>
-          <h3 className="text-sm font-semibold text-text-primary dark:text-dark-text-primary">
-            {title}
-          </h3>
-          <p className="text-xs text-text-muted dark:text-dark-text-muted">
-            {description}
-          </p>
-        </div>
-      </div>
-      <div className="p-4">{children}</div>
-    </div>
-  );
-}
-
-function SegmentedControl<T extends string>({
-  options,
-  value,
-  onChange,
-}: {
-  options: readonly { value: T; label: string }[];
-  value: T;
-  onChange: (v: T) => void;
-}) {
-  return (
-    <div className="flex overflow-hidden rounded-xl border border-border bg-surface-alt p-0.5 dark:border-dark-border dark:bg-dark-surface-alt">
-      {options.map((opt) => (
-        <Button
-          key={opt.value}
-          onClick={() => onChange(opt.value)}
-          variant="secondary-ghost"
-          className={`flex-1 rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
-            value === opt.value
-              ? "bg-white text-primary shadow-sm dark:bg-dark-surface-card dark:text-secondary-light"
-              : "text-text-muted hover:text-text-primary dark:hover:text-dark-text-primary"
-          }`}
-        >
-          {opt.label}
-        </Button>
-      ))}
-    </div>
-  );
-}
 
 export default function Settings() {
   const [loading, setLoading] = useState(false);

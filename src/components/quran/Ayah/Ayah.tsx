@@ -1,13 +1,6 @@
-import DOMPurify from "dompurify";
 import { memo, useCallback, useEffect, useMemo, useRef } from "react";
-import { BiBook, BiBookmark, BiShareAlt } from "react-icons/bi";
+import { BiBookmark, BiShareAlt } from "react-icons/bi";
 import { IoPauseOutline, IoPlayOutline } from "react-icons/io5";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { useSurahAudio } from "@/hooks/useSurahAudio";
 import { useVerseTafsir } from "@/hooks/useVerseTafsir";
@@ -20,6 +13,7 @@ import {
   useAudioPlayerActions,
   useAudioPlayerState,
 } from "../../features/AudioPlayer";
+import AyahTafsir from "./AyahTafsir";
 
 interface AyahsProps {
   ayah: Verse;
@@ -226,47 +220,7 @@ const Ayahs = memo(({ ayah, surah, tracklist, surahNo }: AyahsProps) => {
         </div>
 
         {tafsirEnabled && (
-          <Accordion className="mt-2">
-            <AccordionItem value="tafsir" className="border-0">
-              <AccordionTrigger className="flex w-full items-center justify-between rounded-xl border border-border bg-surface-alt/50 px-3 py-2 text-xs font-medium text-text-secondary transition-all hover:bg-surface-alt hover:no-underline dark:border-dark-border dark:bg-dark-surface-alt/50 dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt">
-                <span className="flex items-center gap-1.5">
-                  <BiBook className="text-sm" />
-                  Show Tafsir
-                </span>
-              </AccordionTrigger>
-              <AccordionContent className="mt-1 overflow-hidden rounded-xl border border-border bg-surface-alt/30 dark:border-dark-border dark:bg-dark-surface-alt/30">
-                {tafsirLoading ? (
-                  <div className="space-y-2 p-3">
-                    <div
-                      className="h-3 animate-pulse rounded bg-surface-alt dark:bg-dark-surface-alt"
-                      style={{ width: "80%" }}
-                    />
-                    <div
-                      className="h-3 animate-pulse rounded bg-surface-alt dark:bg-dark-surface-alt"
-                      style={{ width: "60%" }}
-                    />
-                    <div
-                      className="h-3 animate-pulse rounded bg-surface-alt dark:bg-dark-surface-alt"
-                      style={{ width: "70%" }}
-                    />
-                  </div>
-                ) : verseTafsir ? (
-                  <div className="prose-sm prose max-w-none p-3 text-sm leading-relaxed text-text-secondary dark:prose-invert dark:text-dark-text-secondary">
-                    <div
-                      // biome-ignore lint/security/noDangerouslySetInnerHtml: sanitized via DOMPurify
-                      dangerouslySetInnerHTML={{
-                        __html: DOMPurify.sanitize(verseTafsir.text),
-                      }}
-                    />
-                  </div>
-                ) : (
-                  <p className="p-3 text-xs text-text-muted dark:text-dark-text-muted">
-                    Tafsir not available for this verse
-                  </p>
-                )}
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+          <AyahTafsir loading={tafsirLoading} data={verseTafsir} />
         )}
       </div>
     </div>
