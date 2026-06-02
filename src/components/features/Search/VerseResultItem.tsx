@@ -1,3 +1,4 @@
+import { memo } from "react";
 import type { VerseResult } from "@/lib/search";
 
 interface VerseResultItemProps {
@@ -5,13 +6,12 @@ interface VerseResultItemProps {
   onClick: (surahNo: number, ayahNo?: number) => void;
 }
 
-export default function VerseResultItem({
+const VerseResultItem = memo(function VerseResultItem({
   result,
   onClick,
 }: VerseResultItemProps) {
   return (
     <button
-      key={`${result.surahNo}-${result.verse.numberInSurah}`}
       type="button"
       onClick={() => onClick(result.surahNo, result.verse.numberInSurah)}
       className="w-full cursor-pointer rounded-xl p-3 text-left transition-colors hover:bg-surface-alt dark:hover:bg-dark-surface-alt"
@@ -30,4 +30,6 @@ export default function VerseResultItem({
       </p>
     </button>
   );
-}
+});
+
+export default VerseResultItem;

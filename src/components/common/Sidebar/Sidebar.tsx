@@ -1,9 +1,10 @@
+import { memo } from "react";
 import { FaQuran } from "react-icons/fa";
 import { NavLink, useLocation } from "react-router-dom";
 import { isActiveMatch, sidebarSections } from "@/lib/navigation";
 import HijriDate from "../../features/HijriDate/HijriDate";
 
-export default function Sidebar() {
+const Sidebar = memo(function Sidebar() {
   const location = useLocation();
 
   return (
@@ -67,4 +68,6 @@ export default function Sidebar() {
       </div>
     </aside>
   );
-}
+});
+
+export default Sidebar;

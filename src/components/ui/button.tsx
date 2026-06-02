@@ -27,6 +27,8 @@ const buttonVariants = cva(
           "bg-transparent text-white/60 transition-colors hover:bg-white/10 hover:text-white aria-expanded:bg-white/10 aria-expanded:text-white",
         danger:
           "bg-transparent text-error transition-colors hover:bg-error/10 hover:text-error aria-expanded:bg-error/10 aria-expanded:text-error dark:hover:bg-error/20 dark:aria-expanded:bg-error/20",
+        "danger-secondary":
+          "bg-error text-white transition-colors hover:bg-[color-mix(in_oklch,var(--color-error),black_15%)] active:bg-[color-mix(in_oklch,var(--color-error),black_25%)] focus-visible:border-error/40 focus-visible:ring-error/20 dark:focus-visible:ring-error/40",
       },
       size: {
         default:

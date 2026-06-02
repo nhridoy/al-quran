@@ -24,11 +24,13 @@ export default function ConfirmModal() {
             {options.cancelText}
           </Button>
           <Button
+            variant="danger-secondary"
+            style={
+              options.confirmColor
+                ? { backgroundColor: options.confirmColor }
+                : undefined
+            }
             onClick={() => closeConfirm(true)}
-            style={{
-              backgroundColor: options.confirmColor ?? "#ef4444",
-            }}
-            className="text-white"
           >
             {options.confirmText}
           </Button>

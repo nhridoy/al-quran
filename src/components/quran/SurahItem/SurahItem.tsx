@@ -2,11 +2,11 @@ import { memo } from "react";
 import { BiChevronRight } from "react-icons/bi";
 import type { SurahData } from "@/types";
 
-interface SurahListProps {
+interface SurahItemProps {
   data: SurahData;
 }
 
-const SurahList = memo(({ data }: SurahListProps) => {
+const SurahItem = memo(({ data }: SurahItemProps) => {
   return (
     <div className="group flex cursor-pointer items-center gap-4 px-4 py-3.5 transition-all duration-200">
       <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-primary/10 to-secondary/10 font-semibold text-primary dark:from-primary/20 dark:to-secondary/20 dark:text-secondary-light">
@@ -36,4 +36,4 @@ const SurahList = memo(({ data }: SurahListProps) => {
   );
 });
 
-export default SurahList;
+export default SurahItem;

@@ -1,27 +1,20 @@
+import { memo } from "react";
 import { BiTrash } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import type { Bookmark } from "@/store/bookmarks";
 
 interface BookmarkRowProps {
-  id: string;
-  surahNo: number;
-  ayahNo: number;
-  arabicText: string;
-  enText?: string;
-  bnText?: string;
+  bookmark: Bookmark;
   onRemove: (id: string) => void;
 }
 
-export default function BookmarkRow({
-  id,
-  surahNo,
-  ayahNo,
-  arabicText,
-  enText,
-  bnText,
+const BookmarkRow = memo(function BookmarkRow({
+  bookmark,
   onRemove,
 }: BookmarkRowProps) {
   const navigate = useNavigate();
+  const { id, surahNo, ayahNo, arabicText, enText, bnText } = bookmark;
 
   return (
     <div className="flex items-center gap-3 px-4 py-4">
@@ -60,4 +53,6 @@ export default function BookmarkRow({
       </Button>
     </div>
   );
-}
+});
+
+export default BookmarkRow;

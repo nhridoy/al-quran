@@ -31,7 +31,7 @@ export default function StepPermissions({
         <div
           className={`rounded-2xl border p-5 backdrop-blur-sm transition-all ${
             locationGranted
-              ? "border-[#22c55e]/30 bg-[#22c55e]/5"
+              ? "border-green-500/30 bg-green-500/5"
               : "border-white/10 bg-white/5"
           }`}
         >
@@ -39,7 +39,7 @@ export default function StepPermissions({
             <div
               className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${
                 locationGranted
-                  ? "bg-gradient-to-br from-[#22c55e] to-[#16a34a] shadow-lg"
+                  ? "bg-gradient-to-br from-green-500 to-green-700 shadow-lg"
                   : "bg-white/10"
               }`}
             >
@@ -49,7 +49,7 @@ export default function StepPermissions({
             </div>
             <div className="flex-1">
               <h3
-                className={`text-sm font-semibold ${locationGranted ? "text-[#22c55e]" : "text-white"}`}
+                className={`text-sm font-semibold ${locationGranted ? "text-green-500" : "text-white"}`}
               >
                 Location Access
               </h3>
@@ -73,7 +73,7 @@ export default function StepPermissions({
         <div
           className={`rounded-2xl border p-5 backdrop-blur-sm transition-all ${
             notificationGranted
-              ? "border-[#22c55e]/30 bg-[#22c55e]/5"
+              ? "border-green-500/30 bg-green-500/5"
               : "border-white/10 bg-white/5"
           }`}
         >
@@ -81,7 +81,7 @@ export default function StepPermissions({
             <div
               className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${
                 notificationGranted
-                  ? "bg-gradient-to-br from-[#22c55e] to-[#16a34a] shadow-lg"
+                  ? "bg-gradient-to-br from-green-500 to-green-700 shadow-lg"
                   : "bg-white/10"
               }`}
             >
@@ -91,7 +91,7 @@ export default function StepPermissions({
             </div>
             <div className="flex-1">
               <h3
-                className={`text-sm font-semibold ${notificationGranted ? "text-[#22c55e]" : "text-white"}`}
+                className={`text-sm font-semibold ${notificationGranted ? "text-green-500" : "text-white"}`}
               >
                 Notifications
               </h3>

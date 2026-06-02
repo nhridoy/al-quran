@@ -1,3 +1,5 @@
+import { useId, useMemo } from "react";
+
 interface SkeletonLoaderProps {
   count?: number;
   height?: string;
@@ -9,7 +11,11 @@ export function SkeletonLoader({
   height = "h-24",
   className,
 }: SkeletonLoaderProps) {
-  const keys = Array.from({ length: count }, () => crypto.randomUUID());
+  const baseId = useId();
+  const keys = useMemo(
+    () => Array.from({ length: count }, (_, i) => `${baseId}-skel-${i}`),
+    [baseId, count],
+  );
   return (
     <div className={`space-y-3${className ? ` ${className}` : ""}`}>
       {keys.map((key) => (

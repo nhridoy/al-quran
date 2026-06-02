@@ -12,21 +12,19 @@ import type { Bookmark } from "@/store/bookmarks";
 import BookmarkRow from "./BookmarkRow";
 
 interface SurahGroupItemProps {
-  surahNo: number;
-  enName: string;
   items: Bookmark[];
   onClearSurah: (surahNo: number, enName: string) => void;
   onRemove: (id: string) => void;
 }
 
 export default function SurahGroupItem({
-  surahNo,
-  enName,
   items,
   onClearSurah,
   onRemove,
 }: SurahGroupItemProps) {
   const navigate = useNavigate();
+  const surahNo = items[0].surahNo;
+  const enName = items[0].enName;
 
   return (
     <AccordionItem value={`${surahNo} - ${enName}`} className="card-surface">
@@ -72,16 +70,7 @@ export default function SurahGroupItem({
       <AccordionContent className="border-0 pb-0">
         <div className="divide-y divide-border dark:divide-dark-border">
           {items.map((b) => (
-            <BookmarkRow
-              key={b.id}
-              id={b.id}
-              surahNo={b.surahNo}
-              ayahNo={b.ayahNo}
-              arabicText={b.arabicText}
-              enText={b.enText}
-              bnText={b.bnText}
-              onRemove={onRemove}
-            />
+            <BookmarkRow key={b.id} bookmark={b} onRemove={onRemove} />
           ))}
         </div>
       </AccordionContent>

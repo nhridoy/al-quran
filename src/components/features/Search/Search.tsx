@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import { useSurahs } from "@/hooks/useSurahs";
 import { SEARCH_FOCUS_DELAY } from "@/lib/const";
 import { searchSurahs, searchVerses } from "@/lib/search";
-import SurahList from "../../quran/SurahItem/SurahItem";
+import SurahItem from "../../quran/SurahItem/SurahItem";
 import VerseResultItem from "./VerseResultItem";
 
 export default function Search() {
@@ -37,17 +37,20 @@ export default function Search() {
     };
   }, [open]);
 
+  const handlerRef = useRef<(e: KeyboardEvent) => void>(() => {});
+  handlerRef.current = (e: KeyboardEvent) => {
+    if (e.key === "Escape") {
+      setOpen(false);
+      setQuery("");
+    }
+    if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+      e.preventDefault();
+      setOpen(true);
+    }
+  };
+
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setOpen(false);
-        setQuery("");
-      }
-      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
-        e.preventDefault();
-        setOpen(true);
-      }
-    };
+    const handler = (e: KeyboardEvent) => handlerRef.current(e);
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
   }, []);
@@ -179,7 +182,7 @@ export default function Search() {
                           onClick={handleClose}
                           className="block rounded-xl transition-colors hover:bg-surface-alt dark:hover:bg-dark-surface-alt"
                         >
-                          <SurahList data={surah} />
+                          <SurahItem data={surah} />
                         </Link>
                       ))}
                     </div>

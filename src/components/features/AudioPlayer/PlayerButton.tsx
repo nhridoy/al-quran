@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 interface PlayerButtonProps {
   icon: React.ReactNode;
   label: string;
@@ -6,7 +8,7 @@ interface PlayerButtonProps {
   variant?: "muted" | "secondary";
 }
 
-export default function PlayerButton({
+const PlayerButton = memo(function PlayerButton({
   icon,
   label,
   onClick,
@@ -30,4 +32,6 @@ export default function PlayerButton({
       {icon}
     </button>
   );
-}
+});
+
+export default PlayerButton;

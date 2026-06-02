@@ -1,3 +1,4 @@
+import { memo } from "react";
 import {
   AccordionContent,
   AccordionItem,
@@ -11,7 +12,10 @@ interface HadithItemProps {
   activeLang: string;
 }
 
-export default function HadithItem({ item, activeLang }: HadithItemProps) {
+const HadithItem = memo(function HadithItem({
+  item,
+  activeLang,
+}: HadithItemProps) {
   const translationLang = useSettings((s) => s.translationLang);
   const { text: displayText, lang: actualLang } = getPreferredText(
     item.text,
@@ -86,4 +90,6 @@ export default function HadithItem({ item, activeLang }: HadithItemProps) {
       </AccordionContent>
     </AccordionItem>
   );
-}
+});
+
+export default HadithItem;

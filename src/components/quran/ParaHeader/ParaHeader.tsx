@@ -30,6 +30,7 @@ export const ParaHeader: React.FC<ParaHeadProps> = memo(
     >(null);
     const loadingRef = useRef(false);
 
+    // biome-ignore lint/correctness/useExhaustiveDependencies: guard prevents re-fetch when audio already loaded
     useEffect(() => {
       if (segmentsWithAudio || loadingRef.current) return;
       loadingRef.current = true;
@@ -43,7 +44,7 @@ export const ParaHeader: React.FC<ParaHeadProps> = memo(
         );
         setSegmentsWithAudio(merged);
       })();
-    }, [allSegments, reciterId, segmentsWithAudio]);
+    }, [allSegments, reciterId]);
 
     const paraTracks = useMemo(
       () =>
@@ -146,7 +147,7 @@ export const ParaHeader: React.FC<ParaHeadProps> = memo(
           {para.verses.map((verse) => (
             <Ayahs
               ayah={verse}
-              key={`${verse.numberInSurah} + ${verse.juz}`}
+              key={`${para.no}-${verse.numberInSurah}`}
               surah={para}
               tracklist={paraTracks}
               surahNo={para.no}

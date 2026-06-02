@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 import { useSettings } from "@/store/settings";
 
@@ -31,21 +31,17 @@ function gregToHijri(date: Date, adjust = 0): HijriDate {
 
 export default function HijriDate() {
   const hijriAdjust = useSettings((s) => s.hijriAdjust);
-  const [hijri, setHijri] = useState<HijriDate | null>(null);
+  const hijri = useMemo(
+    () => gregToHijri(new Date(), hijriAdjust),
+    [hijriAdjust],
+  );
 
-  useEffect(() => {
-    setHijri(gregToHijri(new Date(), hijriAdjust));
-  }, [hijriAdjust]);
-
-  const greg = new Date();
-  const gregStr = greg.toLocaleDateString("en-US", {
+  const gregStr = new Date().toLocaleDateString("en-US", {
     weekday: "long",
     year: "numeric",
     month: "long",
     day: "numeric",
   });
-
-  if (!hijri) return null;
 
   return (
     <div className="rounded-xl bg-linear-to-br from-primary/5 to-secondary/5 p-4 dark:from-primary/10 dark:to-secondary/10">

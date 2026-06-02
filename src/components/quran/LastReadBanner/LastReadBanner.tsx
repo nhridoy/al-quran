@@ -1,8 +1,9 @@
+import { memo } from "react";
 import { FaQuran } from "react-icons/fa";
 import { MdMenuBook } from "react-icons/md";
 import { useAudioProgressStore } from "@/store/audio";
 
-export default function LastReadBanner() {
+const LastReadBanner = memo(function LastReadBanner() {
   const lastRead = useAudioProgressStore((s) => s.lastRead);
 
   return (
@@ -35,4 +36,6 @@ export default function LastReadBanner() {
       </div>
     </div>
   );
-}
+});
+
+export default LastReadBanner;

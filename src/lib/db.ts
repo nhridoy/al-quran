@@ -112,6 +112,12 @@ export async function getJuzData(
   return map;
 }
 
+function extractLangFromTafsirId(tafsirId: string): string {
+  const lang = tafsirId.split("-")[0];
+  if (/^[a-z]{2}$/.test(lang)) return lang;
+  return "en";
+}
+
 const tafsirFetchPromises = new Map<string, Promise<unknown>>();
 
 async function fetchAndCacheSurahTafsir(
@@ -126,7 +132,7 @@ async function fetchAndCacheSurahTafsir(
   const inflight = tafsirFetchPromises.get(fetchKey);
   if (inflight) return inflight;
 
-  const lang = tafsirId.split("-")[0];
+  const lang = extractLangFromTafsirId(tafsirId);
   const promise = quranApiClient
     .getSurahTafsir(lang, tafsirId, surahNo)
     .then(async (data) => {
@@ -166,7 +172,7 @@ export async function getVerseTafsirData(
     const verse = verses[verseNumber - 1];
     if (!verse) return null;
     return {
-      lang: verse.lang ?? tafsirId.split("-")[0],
+      lang: verse.lang ?? extractLangFromTafsirId(tafsirId),
       authorName: verse.authorName ?? "",
       tafsirName: verse.tafsirName ?? "",
       text: verse.tafsir ?? "",

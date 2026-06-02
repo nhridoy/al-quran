@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { NavLink, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -9,7 +9,7 @@ import {
   isActiveMatch,
 } from "@/lib/navigation";
 
-export default function BottomNav() {
+const BottomNav = memo(function BottomNav() {
   const location = useLocation();
   const [moreOpen, setMoreOpen] = useState(false);
 
@@ -100,4 +100,6 @@ export default function BottomNav() {
       </Sheet>
     </>
   );
-}
+});
+
+export default BottomNav;

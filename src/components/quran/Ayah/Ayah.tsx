@@ -46,10 +46,16 @@ const Ayahs = memo(({ ayah, surah, tracklist, surahNo }: AyahsProps) => {
 
   useScrollToCurrentAyah(isCurrentAyah, ayah.totalNumber);
 
-  const coloredSegments = useMemo(
-    () => (tajweedEnabled ? colorizeArabic(ayah.text.arText) : null),
-    [tajweedEnabled, ayah.text.arText],
-  );
+  const coloredSegments = useMemo(() => {
+    if (!tajweedEnabled) return null;
+    const segments = colorizeArabic(ayah.text.arText);
+    let offset = 0;
+    return segments.map((seg) => {
+      const key = `${ayah.totalNumber}-off-${offset}`;
+      offset += seg.text.length;
+      return { ...seg, _key: key };
+    });
+  }, [tajweedEnabled, ayah.text.arText, ayah.totalNumber]);
 
   return (
     <div
@@ -129,7 +135,7 @@ const Ayahs = memo(({ ayah, surah, tracklist, surahNo }: AyahsProps) => {
           <p className="font-arabic mb-3 text-right text-2xl leading-loose md:text-3xl">
             {coloredSegments.map((seg) => (
               <span
-                key={`${seg.text}-${seg.color ?? "none"}`}
+                key={seg._key}
                 className={
                   seg.color
                     ? `tajweed-${seg.color}`

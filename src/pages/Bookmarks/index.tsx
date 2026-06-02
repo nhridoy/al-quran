@@ -118,8 +118,6 @@ export default function Bookmarks() {
           {Object.entries(grouped).map(([key, items]) => (
             <SurahGroupItem
               key={key}
-              surahNo={items[0].surahNo}
-              enName={items[0].enName}
               items={items}
               onClearSurah={handleClearSurah}
               onRemove={remove}
