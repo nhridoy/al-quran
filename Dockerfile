@@ -13,7 +13,6 @@ RUN npm install -g pnpm
 COPY package.json pnpm-lock.yaml ./
 
 # Install dependencies
-ENV PNPM_IGNORE_BUILD_SCRIPTS=true
 RUN pnpm install --frozen-lockfile
 
 # Copy source code
