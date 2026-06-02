@@ -9,35 +9,33 @@ import AudioPlayer, {
 } from "./components/features/AudioPlayer";
 import LastReadTracker from "./components/features/LastReadTracker";
 import Onboarding from "./components/features/Onboarding/Onboarding";
-import HomeLayout from "./layouts/HomeLayout/HomeLayout";
-import MainLayout from "./layouts/MainLayout/MainLayout";
-import Para from "./pages/Para/Para";
-import SurahPage from "./pages/Surah/Surah";
+import HomeLayout from "./components/layouts/HomeLayout/HomeLayout";
+import MainLayout from "./components/layouts/MainLayout/MainLayout";
+import Para from "./pages/Para/[id]";
+import SurahPage from "./pages/Surah/[id]";
 import { useBookmarkStore } from "./store/bookmarks";
 import { useDownloadsStore } from "./store/downloads";
 import { useLocationStore } from "./store/location";
 import { useSettings } from "./store/settings";
 
-const About = lazy(() => import("./pages/About/About"));
-const AsmaUlHusna = lazy(() => import("./pages/AsmaUlHusna/AsmaUlHusna"));
-const Bookmarks = lazy(() => import("./pages/Bookmarks/Bookmarks"));
-const Credits = lazy(() => import("./pages/Credits/Credits"));
-const Donation = lazy(() => import("./pages/Donation/Donation"));
-const Downloads = lazy(() => import("./pages/Downloads/Downloads"));
-const Paras = lazy(() => import("./pages/Paras/Paras"));
-const Settings = lazy(() => import("./pages/Settings/Settings"));
-const Surahs = lazy(() => import("./pages/Surahs/Surahs"));
-const LastTenSurahs = lazy(() => import("./pages/LastTenSurahs/LastTenSurahs"));
-const Duas = lazy(() => import("./pages/Duas/Duas"));
-const DuaCategory = lazy(() => import("./pages/Duas/DuaCategory"));
-const HadithCollections = lazy(
-  () => import("./pages/Hadith/HadithCollections"),
-);
-const HadithBooks = lazy(() => import("./pages/Hadith/HadithBooks"));
-const HadithBook = lazy(() => import("./pages/Hadith/HadithBook"));
-const PrayerTimes = lazy(() => import("./pages/PrayerTimes/PrayerTimes"));
-const QiblaFinder = lazy(() => import("./pages/Qibla/QiblaFinder"));
-const Tasbih = lazy(() => import("./pages/Tasbih/Tasbih"));
+const About = lazy(() => import("./pages/About"));
+const AsmaUlHusna = lazy(() => import("./pages/AsmaUlHusna"));
+const Bookmarks = lazy(() => import("./pages/Bookmarks"));
+const Credits = lazy(() => import("./pages/Credits"));
+const Donation = lazy(() => import("./pages/Donation"));
+const Downloads = lazy(() => import("./pages/Downloads"));
+const Paras = lazy(() => import("./pages/Para"));
+const Settings = lazy(() => import("./pages/Settings"));
+const Surahs = lazy(() => import("./pages/Surah"));
+const LastTenSurahs = lazy(() => import("./pages/LastTenSurahs"));
+const Duas = lazy(() => import("./pages/Duas"));
+const DuaCategory = lazy(() => import("./pages/Duas/[category]"));
+const HadithCollections = lazy(() => import("./pages/Hadith"));
+const HadithBooks = lazy(() => import("./pages/Hadith/[collection]"));
+const HadithBook = lazy(() => import("./pages/Hadith/[collection]/[bookId]"));
+const PrayerTimes = lazy(() => import("./pages/PrayerTimes"));
+const QiblaFinder = lazy(() => import("./pages/Qibla"));
+const Tasbih = lazy(() => import("./pages/Tasbih"));
 const Splash = lazy(() => import("./components/features/Splash/Splash"));
 
 const routeDefinitions: RouteDefinition[] = [

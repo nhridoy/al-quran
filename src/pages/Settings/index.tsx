@@ -10,6 +10,8 @@ import {
 import { MdFormatColorFill, MdOutlineTranslate } from "react-icons/md";
 import { toast } from "react-toastify";
 import { PageShell } from "@/components/common/PageShell/PageShell";
+import SegmentedControl from "@/components/pages/Settings/SegmentedControl";
+import SettingCard from "@/components/pages/Settings/SettingCard";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { useSurahs } from "@/hooks/useSurahs";
@@ -21,8 +23,6 @@ import {
   handleRefresh as refreshData,
 } from "@/lib/reciterService";
 import { useSettings } from "@/store/settings";
-import SegmentedControl from "./SegmentedControl";
-import SettingCard from "./SettingCard";
 
 const THEME_OPTIONS = [
   { value: "system", label: "System" },

@@ -2,9 +2,11 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { BiReset } from "react-icons/bi";
 import { MdLoop } from "react-icons/md";
 import { PageShell } from "@/components/common/PageShell/PageShell";
+import CircularCounter, {
+  CounterContent,
+} from "@/components/pages/Tasbih/CircularCounter";
 import { Button } from "@/components/ui/button";
 import { loadCounts, PRESETS, saveCounts } from "@/lib/tasbih";
-import CircularCounter, { CounterContent } from "./CircularCounter";
 
 export default function Tasbih() {
   const [activeId, setActiveId] = useState(PRESETS[0].id);

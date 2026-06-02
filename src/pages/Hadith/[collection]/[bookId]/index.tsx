@@ -2,12 +2,12 @@ import { useCallback, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ErrorState } from "@/components/common/ErrorState/ErrorState";
 import { PageShell } from "@/components/common/PageShell/PageShell";
+import PaginationBar from "@/components/common/PaginationBar";
 import { SkeletonLoader } from "@/components/common/SkeletonLoader/SkeletonLoader";
+import HadithItem from "@/components/pages/Hadith/HadithItem";
 import { Accordion } from "@/components/ui/accordion";
 import { PAGE_SIZE, useHadithPage } from "@/hooks/useHadith";
 import { useSettings } from "@/store/settings";
-import HadithItem from "./HadithItem";
-import PaginationBar from "./PaginationBar";
 
 const LANG_LABELS: Record<string, string> = {
   en: "English",

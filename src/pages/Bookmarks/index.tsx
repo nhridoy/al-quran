@@ -1,11 +1,11 @@
 import { useMemo, useState } from "react";
 import { BiBookmark, BiSearch } from "react-icons/bi";
 import { PageShell } from "@/components/common/PageShell/PageShell";
+import SurahGroupItem from "@/components/pages/Bookmarks/SurahGroupItem";
 import { Accordion } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { confirm } from "@/lib/confirm";
 import { useBookmarkStore } from "@/store/bookmarks";
-import SurahGroupItem from "./SurahGroupItem";
 
 export default function Bookmarks() {
   const bookmarks = useBookmarkStore((s) => s.bookmarks);

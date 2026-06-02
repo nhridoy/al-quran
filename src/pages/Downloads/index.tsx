@@ -2,13 +2,15 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { FiTrash2 } from "react-icons/fi";
 import { PageShell } from "@/components/common/PageShell/PageShell";
 import { SkeletonLoader } from "@/components/common/SkeletonLoader/SkeletonLoader";
+import SurahDownloadCard, {
+  formatBytes,
+} from "@/components/pages/Downloads/SurahDownloadCard";
 import { Button } from "@/components/ui/button";
 import { useSurahs } from "@/hooks/useSurahs";
 import { confirm } from "@/lib/confirm";
 import { clearAllAudio, getCacheSize } from "@/lib/downloadManager";
 import { useDownloadsStore } from "@/store/downloads";
 import { useSettings } from "@/store/settings";
-import SurahDownloadCard, { formatBytes } from "./SurahDownloadCard";
 
 export default function DownloadsPage() {
   const { surahList, loading } = useSurahs();
