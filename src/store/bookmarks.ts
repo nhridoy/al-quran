@@ -1,7 +1,8 @@
 import { create } from "zustand";
-import { deleteFromStore, getAllFromStore, putInStore } from "@/lib/db";
+import { deleteFromStore, getAllFromStore, putInStore } from "@/lib/cache";
 
-export interface Bookmark {
+/** Fields the caller must provide when adding a bookmark. */
+export interface NewBookmark {
   id: string;
   surahNo: number;
   ayahNo: number;
@@ -10,6 +11,10 @@ export interface Bookmark {
   arabicText: string;
   enText?: string;
   bnText?: string;
+}
+
+/** Full bookmark record stored in IndexedDB (includes auto-generated timestamp). */
+export interface Bookmark extends NewBookmark {
   timestamp: number;
 }
 
@@ -17,7 +22,7 @@ interface BookmarkState {
   bookmarks: Bookmark[];
   loaded: boolean;
   load: () => Promise<void>;
-  add: (bookmark: Omit<Bookmark, "timestamp">) => Promise<void>;
+  add: (bookmark: NewBookmark) => Promise<void>;
   remove: (id: string) => Promise<void>;
   clearBySurah: (surahNo: number) => Promise<void>;
   clearAll: () => Promise<void>;

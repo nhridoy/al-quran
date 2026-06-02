@@ -1,6 +1,6 @@
 import { create, type StoreApi } from "zustand";
-import type { StoreName } from "./db";
-import { getFromStore } from "./db";
+import type { StoreName } from "./cache";
+import { getFromStore } from "./cache";
 
 export function createPersistedStore<
   T extends object,

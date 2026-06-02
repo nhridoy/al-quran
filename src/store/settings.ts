@@ -1,5 +1,5 @@
+import { putInStore } from "@/lib/cache";
 import { createPersistedStore } from "@/lib/createStore";
-import { putInStore } from "@/lib/db";
 import type { AppSettings } from "@/types";
 
 const DEFAULTS: AppSettings = {

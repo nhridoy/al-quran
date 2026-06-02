@@ -133,17 +133,46 @@ export interface SurahData extends SurahHeader {
 
 export type ParaSurah = SurahData;
 
-export interface AppSettings {
+// ===== Role-based settings interfaces (ISP) =====
+
+export interface ThemeSettings {
   theme: "system" | "light" | "dark";
+}
+
+export interface FontSettings {
   arabicFontSize: number;
   translationFontSize: number;
+}
+
+export interface TranslationSettings {
   translationLang: "en" | "bn";
+}
+
+export interface ReciterSettings {
   reciterId: string;
+}
+
+export interface TafsirSettings {
   tafsirId: string;
+  tafsirEnabled: boolean;
+}
+
+export interface PrayerSettings {
   prayerCalcMethod: string;
   prayerAsrMethod: "shafii" | "hanafi";
+}
+
+export interface MiscSettings {
   hijriAdjust: number;
   tajweedEnabled: boolean;
-  tafsirEnabled: boolean;
   onboardingComplete: boolean;
 }
+
+export interface AppSettings
+  extends ThemeSettings,
+    FontSettings,
+    TranslationSettings,
+    ReciterSettings,
+    TafsirSettings,
+    PrayerSettings,
+    MiscSettings {}

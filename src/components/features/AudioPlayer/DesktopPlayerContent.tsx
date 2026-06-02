@@ -11,6 +11,7 @@ import PlayerButton from "./PlayerButton";
 import PlayPauseButton from "./PlayPauseButton";
 import RepeatButton from "./RepeatButton";
 import SeekBar from "./SeekBar";
+import type { DesktopPlayerContentProps } from "./types";
 import VinylDisc from "./VinylDisc";
 
 export default function DesktopPlayerContent({
@@ -29,23 +30,7 @@ export default function DesktopPlayerContent({
   togglePlaylist,
   onMinimize,
   muteToggle,
-}: Readonly<{
-  isPlaying: boolean;
-  isLoading: boolean;
-  currentTrack: { enName: string; ayahNumber: number };
-  isShuffled: boolean;
-  repeatMode: "none" | "all" | "one";
-  volume: number;
-  togglePlay: () => void;
-  prev: () => void;
-  next: () => void;
-  toggleShuffle: () => void;
-  cycleRepeat: () => void;
-  setVolume: (v: number) => void;
-  togglePlaylist: () => void;
-  onMinimize: () => void;
-  muteToggle: () => void;
-}>) {
+}: Readonly<DesktopPlayerContentProps>) {
   const handleVolumeChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) =>
       setVolume(Number.parseFloat(e.target.value)),

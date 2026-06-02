@@ -1,100 +1,12 @@
-import { type IDBPDatabase, openDB } from "idb";
+import { quranApiClient } from "@/lib/apiClient";
+import { clearStore, getFromStore, getKeys, putInStore } from "@/lib/cache";
 import type { SurahData, VerseAudioUrls } from "@/types";
 import { SURAH_COUNT } from "./const";
-
-const DB_NAME = "al-quran";
-const DB_VERSION = 8;
-
-const STORE_NAMES = [
-  "surah-verses",
-  "surah-audio",
-  "surah-tafsir",
-  "juz-verses",
-  "juz-audio",
-  "juz-tafsir",
-  "bookmarks",
-  "settings",
-  "duas",
-  "prayerSettings",
-  "hadith",
-] as const;
-
-export type StoreName = (typeof STORE_NAMES)[number];
-
-const BASE = "https://cdn.jsdelivr.net/gh/nhridoy/quran-api@main/v4";
-
-let dbPromise: Promise<IDBPDatabase> | null = null;
-
-async function getDb(): Promise<IDBPDatabase> {
-  if (!dbPromise) {
-    dbPromise = openDB(DB_NAME, DB_VERSION, {
-      upgrade(db) {
-        for (const store of STORE_NAMES) {
-          if (!db.objectStoreNames.contains(store)) {
-            db.createObjectStore(store);
-          }
-        }
-      },
-    }).catch((err) => {
-      dbPromise = null;
-      throw err;
-    });
-  }
-  return dbPromise;
-}
-
-export async function getFromStore<T>(
-  storeName: StoreName,
-  key: string,
-): Promise<T | undefined> {
-  const db = await getDb();
-  return db.get(storeName, key) as Promise<T | undefined>;
-}
-
-export async function putInStore<T>(
-  storeName: StoreName,
-  key: string,
-  value: T,
-): Promise<void> {
-  const db = await getDb();
-  await db.put(storeName, value, key);
-}
-
-export async function deleteFromStore(
-  storeName: StoreName,
-  key: string,
-): Promise<void> {
-  const db = await getDb();
-  await db.delete(storeName, key);
-}
-
-export async function getAllFromStore<T>(storeName: StoreName): Promise<T[]> {
-  const db = await getDb();
-  const result = await db.getAll(storeName);
-  return result as T[];
-}
-
-async function clearStore(storeName: StoreName): Promise<void> {
-  const db = await getDb();
-  await db.clear(storeName);
-}
-
-async function getKeys(storeName: StoreName): Promise<string[]> {
-  const db = await getDb();
-  const result = await db.getAllKeys(storeName);
-  return result as string[];
-}
-
-async function fetchSurahVerse(id: number): Promise<SurahData> {
-  const res = await fetch(`${BASE}/surah/verse/${id}.min.json`);
-  if (!res.ok) throw new Error(`Failed to fetch surah ${id}`);
-  return res.json() as Promise<SurahData>;
-}
 
 async function fetchAllSurahsFromApi(): Promise<Record<string, SurahData>> {
   const ids = Array.from({ length: SURAH_COUNT }, (_, i) => i + 1);
   const results = await Promise.allSettled(
-    ids.map((id) => fetchSurahVerse(id)),
+    ids.map((id) => quranApiClient.getSurahVerse(id)),
   );
   const map: Record<string, SurahData> = {};
   for (const result of results) {
@@ -175,17 +87,8 @@ export async function getAudioData(
   );
   if (cached) return cached.verses.map((v) => v.audio);
 
-  const res = await fetch(
-    `${BASE}/surah/audio/${reciterId}/${surahNo}.min.json`,
-  );
-  if (!res.ok) {
-    if (res.status === 404) return [];
-    throw new Error(`Failed to fetch audio for surah ${surahNo}`);
-  }
-  const data = await res.json();
-  const urls = data.verses.map(
-    (v: { audio: VerseAudioUrls }) => v.audio,
-  ) as VerseAudioUrls[];
+  const data = await quranApiClient.getSurahAudio(reciterId, surahNo);
+  const urls = data.verses.map((v) => v.audio);
   await putInStore("surah-audio", key, data);
   return urls;
 }
@@ -200,9 +103,7 @@ export async function getJuzData(
   );
   if (cached) return cached;
 
-  const res = await fetch(`${BASE}/juz/verse/${juzNo}.min.json`);
-  if (!res.ok) throw new Error(`Failed to fetch juz ${juzNo}`);
-  const data = await res.json();
+  const data = await quranApiClient.getJuzVerse(juzNo);
   const map: Record<string, SurahData> = {};
   for (const surah of data.surah) {
     map[String(surah.no)] = surah;
@@ -226,15 +127,13 @@ async function fetchAndCacheSurahTafsir(
   if (inflight) return inflight;
 
   const lang = tafsirId.split("-")[0];
-  const promise = (async () => {
-    const res = await fetch(
-      `${BASE}/surah/tafsir/${lang}/${tafsirId}/${surahNo}.min.json`,
-    );
-    if (!res.ok) throw new Error(`Failed to fetch tafsir for surah ${surahNo}`);
-    const data = await res.json();
-    await putInStore("surah-tafsir", key, data);
-    return data;
-  })().finally(() => tafsirFetchPromises.delete(fetchKey));
+  const promise = quranApiClient
+    .getSurahTafsir(lang, tafsirId, surahNo)
+    .then(async (data) => {
+      await putInStore("surah-tafsir", key, data);
+      return data;
+    })
+    .finally(() => tafsirFetchPromises.delete(fetchKey));
 
   tafsirFetchPromises.set(fetchKey, promise);
   return promise;

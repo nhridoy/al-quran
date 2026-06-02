@@ -1,5 +1,6 @@
 import { type Dispatch, type SetStateAction, useEffect, useRef } from "react";
 import { useAudioProgressStore } from "@/store/audio";
+import { type AudioEngine, createDefaultAudioEngine } from "./audioEngine";
 import { createShuffledIndices } from "./audioUtils";
 import type { Track } from "./types";
 
@@ -19,16 +20,15 @@ interface AudioElementConfig {
 }
 
 export function useAudioElement(
-  audioRef: React.MutableRefObject<HTMLAudioElement | null>,
+  audioRef: React.MutableRefObject<AudioEngine | null>,
   config: AudioElementConfig,
 ) {
   const configRef = useRef(config);
   configRef.current = config;
 
   useEffect(() => {
-    audioRef.current = new Audio();
+    audioRef.current = createDefaultAudioEngine();
     const audio = audioRef.current;
-    audio.preload = "metadata";
 
     const handleTimeUpdate = () => {
       useAudioProgressStore.getState().setCurrentTime(audio.currentTime);
@@ -129,8 +129,7 @@ export function useAudioElement(
       audio.removeEventListener("waiting", handleWaiting);
       audio.removeEventListener("canplay", handleCanPlay);
       audio.removeEventListener("error", handleError);
-      audio.pause();
-      audio.src = "";
+      audio.destroy();
     };
   }, [audioRef]);
 }

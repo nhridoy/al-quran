@@ -11,6 +11,7 @@ import {
   SkipForwardIcon,
 } from "lucide-react";
 import SeekBar from "./SeekBar";
+import type { PlayerContentProps } from "./types";
 import VinylDisc from "./VinylDisc";
 
 export default function MobilePlayerContent({
@@ -26,20 +27,7 @@ export default function MobilePlayerContent({
   cycleRepeat,
   togglePlaylist,
   onMinimize,
-}: Readonly<{
-  isPlaying: boolean;
-  isLoading: boolean;
-  currentTrack: { enName: string; ayahNumber: number };
-  isShuffled: boolean;
-  repeatMode: "none" | "all" | "one";
-  togglePlay: () => void;
-  prev: () => void;
-  next: () => void;
-  toggleShuffle: () => void;
-  cycleRepeat: () => void;
-  togglePlaylist: () => void;
-  onMinimize: () => void;
-}>) {
+}: Readonly<PlayerContentProps>) {
   return (
     <div className="flex flex-1 flex-col bg-linear-to-b from-[#1a0a2e] via-primary to-[#1a0a2e]">
       <div className="flex items-center justify-between px-5 pt-12 pb-4">

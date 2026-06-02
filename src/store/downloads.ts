@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { getFromStore, putInStore } from "@/lib/db";
+import { getFromStore, putInStore } from "@/lib/cache";
 
 interface DownloadItem {
   surahNo: number;

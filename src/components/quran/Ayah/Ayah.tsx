@@ -1,18 +1,16 @@
-import { memo, useCallback, useEffect, useMemo, useRef } from "react";
+import { memo, useMemo } from "react";
 import { BiBookmark, BiShareAlt } from "react-icons/bi";
 import { IoPauseOutline, IoPlayOutline } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
-import { useSurahAudio } from "@/hooks/useSurahAudio";
+import { useAyahAudio } from "@/hooks/useAyahAudio";
+import { useAyahBookmark } from "@/hooks/useAyahBookmark";
+import { useScrollToCurrentAyah } from "@/hooks/useScrollToCurrentAyah";
+import { useShareAyah } from "@/hooks/useShareAyah";
 import { useVerseTafsir } from "@/hooks/useVerseTafsir";
 import { colorizeArabic } from "@/lib/tajweed";
-import { useBookmarkStore, useIsBookmarked } from "@/store/bookmarks";
 import { useSettings } from "@/store/settings";
 import type { SurahData, Verse } from "@/types";
 import type { Track } from "../../features/AudioPlayer";
-import {
-  useAudioPlayerActions,
-  useAudioPlayerState,
-} from "../../features/AudioPlayer";
 import AyahTafsir from "./AyahTafsir";
 
 interface AyahsProps {
@@ -23,78 +21,35 @@ interface AyahsProps {
 }
 
 const Ayahs = memo(({ ayah, surah, tracklist, surahNo }: AyahsProps) => {
-  const { currentTrack, isPlaying } = useAudioPlayerState();
-  const { togglePlay, setPlaylist } = useAudioPlayerActions();
-  const addBookmark = useBookmarkStore((s) => s.add);
-  const removeBookmark = useBookmarkStore((s) => s.remove);
   const tajweedEnabled = useSettings((s) => s.tajweedEnabled);
   const tafsirEnabled = useSettings((s) => s.tafsirEnabled);
   const tafsirId = useSettings((s) => s.tafsirId);
-  const { fetchAudio } = useSurahAudio(surah);
-  const audioPromiseRef = useRef<Promise<Track[]> | null>(null);
   const currentSurahNo = surah?.no ?? surahNo ?? 0;
+
+  const { isCurrentAyah, isThisAyahPlaying, handlePlay } = useAyahAudio(
+    ayah,
+    surah,
+    tracklist,
+    surahNo,
+  );
+  const { isBookmarked, handleToggleBookmark } = useAyahBookmark(
+    ayah,
+    surah,
+    surahNo,
+  );
+  const { handleShare } = useShareAyah(ayah, surah);
   const { data: verseTafsir, loading: tafsirLoading } = useVerseTafsir(
     tafsirEnabled ? tafsirId : undefined,
     currentSurahNo,
     ayah.numberInSurah,
   );
 
+  useScrollToCurrentAyah(isCurrentAyah, ayah.totalNumber);
+
   const coloredSegments = useMemo(
     () => (tajweedEnabled ? colorizeArabic(ayah.text.arText) : null),
     [tajweedEnabled, ayah.text.arText],
   );
-
-  const isCurrentAyah = currentTrack?.totalNumber === ayah.totalNumber;
-  const isThisAyahPlaying = isCurrentAyah && isPlaying;
-
-  const ayahId = `${surah?.no || currentSurahNo}-${ayah.numberInSurah}`;
-  const isBookmarked = useIsBookmarked(ayahId);
-
-  useEffect(() => {
-    if (isCurrentAyah) {
-      document
-        .getElementById(`ayah-${ayah.totalNumber}`)
-        ?.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-  }, [isCurrentAyah, ayah.totalNumber]);
-
-  const handleShare = useCallback(() => {
-    const text = `${ayah.text.arText}\n\n${ayah.text.enText}\n${ayah.text.enTextTransliteration}\n\n— ${surah?.enName || ""} ${ayah.numberInSurah}`;
-    if (navigator.share) {
-      navigator.share({ title: "Al Quran", text }).catch(() => {});
-    } else {
-      navigator.clipboard.writeText(text).catch(() => {});
-    }
-  }, [ayah, surah]);
-
-  const handlePlay = useCallback(() => {
-    if (isCurrentAyah) {
-      togglePlay();
-      return;
-    }
-    if (tracklist && surahNo !== undefined) {
-      const idx = tracklist.findIndex(
-        (t) => t.surahNo === surahNo && t.ayahNumber === ayah.numberInSurah,
-      );
-      setPlaylist(tracklist, Math.max(idx, 0));
-      return;
-    }
-    if (!surah) return;
-    const idx = ayah.numberInSurah - 1;
-    audioPromiseRef.current ??= fetchAudio();
-    audioPromiseRef.current.then((tracks) => {
-      if (tracks.length > 0) setPlaylist(tracks, idx);
-    });
-  }, [
-    isCurrentAyah,
-    togglePlay,
-    tracklist,
-    surahNo,
-    ayah,
-    surah,
-    setPlaylist,
-    fetchAudio,
-  ]);
 
   return (
     <div
@@ -159,22 +114,7 @@ const Ayahs = memo(({ ayah, surah, tracklist, surahNo }: AyahsProps) => {
                   ? "from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20 text-secondary dark:text-secondary-light"
                   : ""
               }`}
-              onClick={() => {
-                if (isBookmarked) {
-                  removeBookmark(ayahId);
-                } else if (surah || surahNo) {
-                  addBookmark({
-                    id: ayahId,
-                    surahNo: surah?.no ?? surahNo ?? 0,
-                    ayahNo: ayah.numberInSurah,
-                    surahName: surah?.name || "",
-                    enName: surah?.enName || "",
-                    arabicText: ayah.text.arText,
-                    enText: ayah.text.enText,
-                    bnText: ayah.text.bnText,
-                  });
-                }
-              }}
+              onClick={handleToggleBookmark}
               aria-label={isBookmarked ? "Remove bookmark" : "Bookmark"}
               title={isBookmarked ? "Remove bookmark" : "Bookmark"}
             >

@@ -1,11 +1,4 @@
-import type { Verse } from "@/types";
-
-interface VerseResult {
-  surahNo: number;
-  surahName: string;
-  enName: string;
-  verse: Verse;
-}
+import type { VerseResult } from "@/lib/search";
 
 interface VerseResultItemProps {
   result: VerseResult;
@@ -38,5 +31,3 @@ export default function VerseResultItem({
     </button>
   );
 }
-
-export type { VerseResult };

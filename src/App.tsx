@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import type { RouteDefinition } from "@/lib/routes";
 import ConfirmModal from "./components/common/ConfirmModal/ConfirmModal";
 import AudioPlayer, {
   AudioPlayerProvider,
@@ -38,6 +39,25 @@ const PrayerTimes = lazy(() => import("./pages/PrayerTimes/PrayerTimes"));
 const QiblaFinder = lazy(() => import("./pages/Qibla/QiblaFinder"));
 const Tasbih = lazy(() => import("./pages/Tasbih/Tasbih"));
 const Splash = lazy(() => import("./components/features/Splash/Splash"));
+
+const routeDefinitions: RouteDefinition[] = [
+  { path: "/bookmarks", component: Bookmarks },
+  { path: "/last-ten-surahs", component: LastTenSurahs },
+  { path: "/duas", component: Duas },
+  { path: "/duas/:categoryId", component: DuaCategory },
+  { path: "/hadith", component: HadithCollections },
+  { path: "/hadith/:slug", component: HadithBooks },
+  { path: "/hadith/:slug/books/:bookIndex", component: HadithBook },
+  { path: "/prayer-times", component: PrayerTimes },
+  { path: "/qibla", component: QiblaFinder },
+  { path: "/asma-ul-husna", component: AsmaUlHusna },
+  { path: "/tasbih", component: Tasbih },
+  { path: "/settings", component: Settings },
+  { path: "/about", component: About },
+  { path: "/credits", component: Credits },
+  { path: "/downloads", component: Downloads },
+  { path: "/donation", component: Donation },
+];
 
 function DataLoader() {
   const loadSettings = useSettings((s) => s.load);
@@ -78,7 +98,7 @@ function ThemeController() {
     const isDark =
       theme === "dark" ||
       (theme === "system" &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches);
+        globalThis.matchMedia("(prefers-color-scheme: dark)").matches);
     document.documentElement.classList.toggle("dark", isDark);
 
     document.documentElement.style.setProperty(
@@ -93,7 +113,7 @@ function ThemeController() {
 
   useEffect(() => {
     if (theme !== "system") return;
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    const mq = globalThis.matchMedia("(prefers-color-scheme: dark)");
     const handler = (e: MediaQueryListEvent) => {
       document.documentElement.classList.toggle("dark", e.matches);
     };
@@ -134,25 +154,9 @@ function App() {
                 </Route>
                 <Route path="/surah/:id" element={<SurahPage />} />
                 <Route path="/para/:id" element={<Para />} />
-                <Route path="/bookmarks" element={<Bookmarks />} />
-                <Route path="/last-ten-surahs" element={<LastTenSurahs />} />
-                <Route path="/duas" element={<Duas />} />
-                <Route path="/duas/:categoryId" element={<DuaCategory />} />
-                <Route path="/hadith" element={<HadithCollections />} />
-                <Route path="/hadith/:slug" element={<HadithBooks />} />
-                <Route
-                  path="/hadith/:slug/books/:bookIndex"
-                  element={<HadithBook />}
-                />
-                <Route path="/prayer-times" element={<PrayerTimes />} />
-                <Route path="/qibla" element={<QiblaFinder />} />
-                <Route path="/asma-ul-husna" element={<AsmaUlHusna />} />
-                <Route path="/tasbih" element={<Tasbih />} />
-                <Route path="/settings" element={<Settings />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/credits" element={<Credits />} />
-                <Route path="/downloads" element={<Downloads />} />
-                <Route path="/donation" element={<Donation />} />
+                {routeDefinitions.map((r) => (
+                  <Route key={r.path} path={r.path} element={<r.component />} />
+                ))}
                 <Route path="*" element={<Navigate to="/surah" replace />} />
               </Routes>
             </Suspense>

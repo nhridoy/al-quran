@@ -14,6 +14,8 @@ export interface Track {
 
 export type RepeatMode = "none" | "all" | "one";
 
+export const REPEAT_CYCLE: RepeatMode[] = ["none", "all", "one"];
+
 export interface AudioPlayerState {
   isExpanded: boolean;
   isPlaying: boolean;
@@ -45,3 +47,24 @@ export interface AudioPlayerActions {
 export interface AudioPlayerContextType
   extends AudioPlayerState,
     AudioPlayerActions {}
+
+export interface PlayerContentProps {
+  isPlaying: boolean;
+  isLoading: boolean;
+  currentTrack: { enName: string; ayahNumber: number };
+  isShuffled: boolean;
+  repeatMode: RepeatMode;
+  togglePlay: () => void;
+  prev: () => void;
+  next: () => void;
+  toggleShuffle: () => void;
+  cycleRepeat: () => void;
+  togglePlaylist: () => void;
+  onMinimize: () => void;
+}
+
+export interface DesktopPlayerContentProps extends PlayerContentProps {
+  volume: number;
+  setVolume: (v: number) => void;
+  muteToggle: () => void;
+}

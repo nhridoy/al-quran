@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { getFromStore, putInStore } from "@/lib/db";
+import { getFromStore, putInStore } from "@/lib/cache";
 
 const HADITH_API = "https://hadislam.org";
 

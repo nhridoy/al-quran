@@ -1,8 +1,7 @@
-import { getFromStore, putInStore } from "@/lib/db";
+import { quranApiClient } from "@/lib/apiClient";
+import { getFromStore, putInStore } from "@/lib/cache";
 import type { SurahData } from "@/types";
 import { FETCH_BATCH_SIZE, JUZ_COUNT, SURAH_COUNT } from "./const";
-
-const BASE = "https://cdn.jsdelivr.net/gh/nhridoy/quran-api@main/v4";
 
 export async function cacheAllAudioForReciter(
   reciterId: string,
@@ -21,12 +20,13 @@ export async function cacheAllAudioForReciter(
           done++;
           return;
         }
-        const res = await fetch(
-          `${BASE}/surah/audio/${reciterId}/${id}.min.json`,
-        );
-        if (res.ok) {
-          const data = await res.json();
-          await putInStore("surah-audio", key, data);
+        try {
+          const data = await quranApiClient.getSurahAudio(reciterId, id);
+          if (data.verses.length > 0) {
+            await putInStore("surah-audio", key, data);
+          }
+        } catch {
+          // skip failed fetches in batch
         }
         done++;
         onProgress?.(done, SURAH_COUNT);
@@ -49,14 +49,15 @@ export async function cacheAllJuz(
         onProgress?.(done, JUZ_COUNT);
         return;
       }
-      const res = await fetch(`${BASE}/juz/verse/${id}.min.json`);
-      if (res.ok) {
-        const data = await res.json();
+      try {
+        const data = await quranApiClient.getJuzVerse(id);
         const map: Record<string, SurahData> = {};
         for (const surah of data.surah) {
           map[String(surah.no)] = surah;
         }
         await putInStore("juz-verses", key, map);
+      } catch {
+        // skip failed fetches in batch
       }
       done++;
       onProgress?.(done, JUZ_COUNT);
@@ -82,12 +83,11 @@ export async function cacheAllTafsirFor(
           done++;
           return;
         }
-        const res = await fetch(
-          `${BASE}/surah/tafsir/${lang}/${tafsirId}/${id}.min.json`,
-        );
-        if (res.ok) {
-          const data = await res.json();
+        try {
+          const data = await quranApiClient.getSurahTafsir(lang, tafsirId, id);
           await putInStore("surah-tafsir", key, data);
+        } catch {
+          // skip failed fetches in batch
         }
         done++;
         onProgress?.(done, SURAH_COUNT);
@@ -111,10 +111,13 @@ export async function cacheAllJuzAudioForReciter(
         onProgress?.(done, JUZ_COUNT);
         return;
       }
-      const res = await fetch(`${BASE}/juz/audio/${reciterId}/${id}.min.json`);
-      if (res.ok) {
-        const data = await res.json();
-        await putInStore("juz-audio", key, data);
+      try {
+        const data = await quranApiClient.getJuzAudio(reciterId, id);
+        if (data.verses.length > 0) {
+          await putInStore("juz-audio", key, data);
+        }
+      } catch {
+        // skip failed fetches in batch
       }
       done++;
       onProgress?.(done, JUZ_COUNT);
@@ -138,12 +141,11 @@ export async function cacheAllJuzTafsirFor(
         onProgress?.(done, JUZ_COUNT);
         return;
       }
-      const res = await fetch(
-        `${BASE}/juz/tafsir/${lang}/${tafsirId}/${id}.min.json`,
-      );
-      if (res.ok) {
-        const data = await res.json();
+      try {
+        const data = await quranApiClient.getJuzTafsir(lang, tafsirId, id);
         await putInStore("juz-tafsir", key, data);
+      } catch {
+        // skip failed fetches in batch
       }
       done++;
       onProgress?.(done, JUZ_COUNT);

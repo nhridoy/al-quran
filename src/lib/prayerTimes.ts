@@ -1,6 +1,7 @@
 import {
   PrayerTimes as AdhanPrayerTimes,
   CalculationMethod,
+  type CalculationParameters,
   Coordinates,
   Madhab,
 } from "adhan";
@@ -27,19 +28,28 @@ export const PRAYER_NAMES: {
   { key: "isha", name: "Isha", nameBn: "ইশা", icon: "🌙" },
 ];
 
-export function getAdhanMethod(method: string) {
-  switch (method) {
-    case "ISNA":
-      return CalculationMethod.NorthAmerica();
-    case "Egypt":
-      return CalculationMethod.Egyptian();
-    case "UmmAlQura":
-      return CalculationMethod.UmmAlQura();
-    case "Karachi":
-      return CalculationMethod.Karachi();
-    default:
-      return CalculationMethod.MuslimWorldLeague();
-  }
+// Registry of calculation method factories.
+// Open for extension — new methods are added via registerCalculationMethod()
+// without modifying this file. Follows OCP + DIP (same pattern as createStore.ts).
+const methodRegistry: Record<string, () => CalculationParameters> = {
+  ISNA: () => CalculationMethod.NorthAmerica(),
+  Egypt: () => CalculationMethod.Egyptian(),
+  UmmAlQura: () => CalculationMethod.UmmAlQura(),
+  Karachi: () => CalculationMethod.Karachi(),
+  MWL: () => CalculationMethod.MuslimWorldLeague(),
+};
+
+/** Register a custom calculation method. Callers can extend the registry without modifying this module. */
+export function registerCalculationMethod(
+  id: string,
+  factory: () => CalculationParameters,
+): void {
+  methodRegistry[id] = factory;
+}
+
+export function getAdhanMethod(method: string): CalculationParameters {
+  const factory = methodRegistry[method];
+  return factory ? factory() : CalculationMethod.MuslimWorldLeague();
 }
 
 export function formatTime(date: Date): string {

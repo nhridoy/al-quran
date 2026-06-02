@@ -13,8 +13,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useSurahs } from "@/hooks/useSurahs";
 import { SEARCH_FOCUS_DELAY } from "@/lib/const";
+import { searchSurahs, searchVerses } from "@/lib/search";
 import SurahList from "../../quran/SurahItem/SurahItem";
-import VerseResultItem, { type VerseResult } from "./VerseResultItem";
+import VerseResultItem from "./VerseResultItem";
 
 export default function Search() {
   const [open, setOpen] = useState(false);
@@ -51,45 +52,15 @@ export default function Search() {
     return () => document.removeEventListener("keydown", handler);
   }, []);
 
-  const surahResults = useMemo(() => {
-    if (!query || mode !== "surah") return [];
-    const q = query.toLowerCase();
-    return surahList
-      .filter(
-        (surah) =>
-          surah.enName.toLowerCase().includes(q) ||
-          surah.name.toLowerCase().includes(q) ||
-          surah.enNameTranslation.toLowerCase().includes(q) ||
-          surah.bnNameTranslation.toLowerCase().includes(q) ||
-          `${surah.no}`.includes(q),
-      )
-      .slice(0, 8);
-  }, [query, mode, surahList]);
+  const surahResults = useMemo(
+    () => (mode === "surah" ? searchSurahs(query, surahList) : []),
+    [query, mode, surahList],
+  );
 
-  const verseResults = useMemo(() => {
-    if (!query || mode !== "verse") return [];
-    const q = query.toLowerCase();
-    const results: VerseResult[] = [];
-    for (const surah of Object.values(surahs)) {
-      for (const verse of surah.verses) {
-        if (
-          verse.text.arText.toLowerCase().includes(q) ||
-          verse.text.enText.toLowerCase().includes(q) ||
-          verse.text.bnText.toLowerCase().includes(q)
-        ) {
-          results.push({
-            surahNo: surah.no,
-            surahName: surah.name,
-            enName: surah.enName,
-            verse,
-          });
-          if (results.length >= 30) break;
-        }
-      }
-      if (results.length >= 30) break;
-    }
-    return results;
-  }, [query, mode, surahs]);
+  const verseResults = useMemo(
+    () => (mode === "verse" ? searchVerses(query, surahs) : []),
+    [query, mode, surahs],
+  );
 
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);

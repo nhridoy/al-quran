@@ -13,18 +13,13 @@ import { PageShell } from "@/components/common/PageShell/PageShell";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { useSurahs } from "@/hooks/useSurahs";
-import {
-  cacheAllAudioForReciter,
-  cacheAllJuz,
-  cacheAllJuzAudioForReciter,
-  cacheAllJuzTafsirFor,
-  cacheAllTafsirFor,
-} from "@/lib/batchCache";
 import { confirm } from "@/lib/confirm";
 import { LANGUAGES, RECITERS, TAFSIR_LIST } from "@/lib/const";
-import { clearAudioCache, clearCache, clearTafsirCache } from "@/lib/db";
-import { removeFromCache } from "@/lib/downloadManager";
-import { useDownloadsStore } from "@/store/downloads";
+import {
+  handleReciterChange,
+  handleTafsirChange,
+  handleRefresh as refreshData,
+} from "@/lib/reciterService";
 import { useSettings } from "@/store/settings";
 import SegmentedControl from "./SegmentedControl";
 import SettingCard from "./SettingCard";
@@ -101,38 +96,11 @@ export default function Settings() {
     setSaving(false);
 
     if (local.reciterId !== storeSettings.reciterId) {
-      const oldReciterId = storeSettings.reciterId;
-      const oldDownloads = useDownloadsStore
-        .getState()
-        .items.filter((d) => d.qariId === oldReciterId);
-      if (oldDownloads.length > 0) {
-        const result = await confirm({
-          title: "Delete old reciter's downloads?",
-          message: `You have ${oldDownloads.length} surah(s) downloaded for the old reciter. Delete cached audio for the old reciter?`,
-          confirmText: "Delete",
-          cancelText: "Keep",
-        });
-        if (result) {
-          const urls = oldDownloads.flatMap((d) => d.cachedUrls);
-          await removeFromCache(urls);
-          for (const d of oldDownloads) {
-            await useDownloadsStore.getState().remove(d.surahNo, d.qariId);
-          }
-        }
-      }
-      await clearAudioCache();
-      await Promise.all([
-        cacheAllAudioForReciter(local.reciterId),
-        cacheAllJuzAudioForReciter(local.reciterId),
-      ]);
+      await handleReciterChange(storeSettings.reciterId, local.reciterId);
     }
 
     if (local.tafsirId !== storeSettings.tafsirId) {
-      await clearTafsirCache();
-      await Promise.all([
-        cacheAllTafsirFor(local.tafsirId),
-        cacheAllJuzTafsirFor(local.tafsirId),
-      ]);
+      await handleTafsirChange(storeSettings.tafsirId, local.tafsirId);
     }
   }, [local, storeSettings, updateSettings]);
 
@@ -163,15 +131,7 @@ export default function Settings() {
     if (!ok) return;
     setLoading(true);
     try {
-      await clearCache();
-      await refresh();
-      await cacheAllJuz();
-      await Promise.all([
-        cacheAllAudioForReciter(local.reciterId),
-        cacheAllJuzAudioForReciter(local.reciterId),
-        cacheAllTafsirFor(local.tafsirId),
-        cacheAllJuzTafsirFor(local.tafsirId),
-      ]);
+      await refreshData(local.reciterId, local.tafsirId, refresh);
       toast.success("Data refreshed successfully!");
     } catch {
       toast.error("Failed to refresh data");

@@ -1,52 +1,13 @@
 import { useState } from "react";
-import {
-  AiOutlineCloudDownload,
-  AiOutlineGift,
-  AiOutlineHeart,
-} from "react-icons/ai";
-import { BiBook, BiBookmark } from "react-icons/bi";
-import { BsInfoCircle } from "react-icons/bs";
-import { FaBookOpen, FaStar } from "react-icons/fa";
 import { HiDotsHorizontal } from "react-icons/hi";
-import { IoSettingsOutline } from "react-icons/io5";
-import { MdAccessTime, MdExplore, MdLoop, MdMenuBook } from "react-icons/md";
 import { NavLink, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
-
-interface Tab {
-  to: string;
-  icon: React.ComponentType<{ className?: string }>;
-  label: string;
-}
-
-const primaryTabs: Tab[] = [
-  { to: "/surah", icon: FaBookOpen, label: "Surah" },
-  { to: "/para", icon: MdMenuBook, label: "Para" },
-  { to: "/prayer-times", icon: MdAccessTime, label: "Prayer" },
-  { to: "/tasbih", icon: MdLoop, label: "Tasbih" },
-];
-
-const overflowTabs: Tab[] = [
-  { to: "/bookmarks", icon: BiBookmark, label: "Bookmarks" },
-  { to: "/last-ten-surahs", icon: FaBookOpen, label: "Last 10" },
-  { to: "/asma-ul-husna", icon: FaStar, label: "Asma ul-Husna" },
-  { to: "/duas", icon: MdMenuBook, label: "Duas" },
-  { to: "/qibla", icon: MdExplore, label: "Qibla Finder" },
-  { to: "/hadith", icon: BiBook, label: "Hadith" },
-  { to: "/downloads", icon: AiOutlineCloudDownload, label: "Downloads" },
-  { to: "/settings", icon: IoSettingsOutline, label: "Settings" },
-  { to: "/about", icon: BsInfoCircle, label: "About" },
-  { to: "/credits", icon: AiOutlineHeart, label: "Credits" },
-  { to: "/donation", icon: AiOutlineGift, label: "Donate" },
-];
-
-function isActiveMatch(pathname: string, to: string): boolean {
-  if (pathname === to) return true;
-  if (to === "/surah" && pathname.startsWith("/surah")) return true;
-  if (to === "/para" && pathname.startsWith("/para")) return true;
-  return false;
-}
+import {
+  bottomNavOverflow,
+  bottomNavPrimary,
+  isActiveMatch,
+} from "@/lib/navigation";
 
 export default function BottomNav() {
   const location = useLocation();
@@ -56,7 +17,7 @@ export default function BottomNav() {
     <>
       <nav className="fixed bottom-0 left-0 right-0 z-40 border-t border-border bg-surface/80 backdrop-blur-xl dark:border-dark-border dark:bg-dark-surface/80 md:hidden">
         <div className="flex items-center justify-around px-2 py-1">
-          {primaryTabs.map((tab) => {
+          {bottomNavPrimary.map((tab) => {
             const Icon = tab.icon;
             const isActive = isActiveMatch(location.pathname, tab.to);
 
@@ -111,7 +72,7 @@ export default function BottomNav() {
               More
             </h3>
             <div className="grid grid-cols-4 gap-3">
-              {overflowTabs.map((tab) => {
+              {bottomNavOverflow.map((tab) => {
                 const Icon = tab.icon;
                 const isActive = isActiveMatch(location.pathname, tab.to);
 
