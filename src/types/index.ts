@@ -120,6 +120,20 @@ export interface TafsirInfo {
   authorName: string;
 }
 
+// ===== Tafsir API response types =====
+
+export interface TafsirVerseEntry {
+  numberInSurah?: number;
+  lang?: string;
+  authorName?: string;
+  tafsirName?: string;
+  tafsir?: string;
+}
+
+export interface TafsirApiResponse {
+  verses?: TafsirVerseEntry[];
+}
+
 // ===== App-level merged types =====
 
 export interface Verse extends VerseTextEntry {

@@ -19,6 +19,9 @@ export const PRAYER_REFRESH_INTERVAL = 1000;
 export const SEARCH_FOCUS_DELAY = 100;
 export const GEOLOCATION_TIMEOUT = 10000;
 
+export const CSS_VAR_ARABIC_FONT = "--arabic-font-size";
+export const CSS_VAR_TRANSLATION_FONT = "--translation-font-size";
+
 export const LANGUAGES: Record<string, string> = {
   en: "English",
   bn: "বাংলা",

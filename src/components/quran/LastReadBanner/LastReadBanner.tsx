@@ -1,10 +1,10 @@
 import { memo } from "react";
 import { FaQuran } from "react-icons/fa";
 import { MdMenuBook } from "react-icons/md";
-import { useAudioProgressStore } from "@/store/audio";
+import { useAudioStore } from "@/store/audio";
 
 const LastReadBanner = memo(function LastReadBanner() {
-  const lastRead = useAudioProgressStore((s) => s.lastRead);
+  const lastRead = useAudioStore((s) => s.lastRead);
 
   return (
     <div className="relative mx-4 mb-6 overflow-hidden rounded-2xl bg-linear-to-br from-primary via-primary-light to-secondary p-6 text-white shadow-xl shadow-primary/20 md:mx-6">

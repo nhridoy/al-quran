@@ -2,11 +2,12 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { CSS_VAR_ARABIC_FONT, CSS_VAR_TRANSLATION_FONT } from "@/lib/const";
 import type { RouteDefinition } from "@/lib/routes";
 import ConfirmModal from "./components/common/ConfirmModal/ConfirmModal";
-import AudioPlayer, {
-  AudioPlayerProvider,
-} from "./components/features/AudioPlayer";
+import ErrorBoundary from "./components/common/ErrorBoundary/ErrorBoundary";
+import AudioPlayer from "./components/features/AudioPlayer";
+import AudioEngineShell from "./components/features/AudioPlayer/AudioEngineShell";
 import LastReadTracker from "./components/features/LastReadTracker";
 import Onboarding from "./components/features/Onboarding/Onboarding";
 import HomeLayout from "./components/layouts/HomeLayout/HomeLayout";
@@ -100,11 +101,11 @@ function ThemeController() {
     document.documentElement.classList.toggle("dark", isDark);
 
     document.documentElement.style.setProperty(
-      "--arabic-font-size",
+      CSS_VAR_ARABIC_FONT,
       `${arabicFontSize}rem`,
     );
     document.documentElement.style.setProperty(
-      "--translation-font-size",
+      CSS_VAR_TRANSLATION_FONT,
       `${translationFontSize}rem`,
     );
   }, [theme, arabicFontSize, translationFontSize]);
@@ -135,14 +136,14 @@ function App() {
 
   return (
     <BrowserRouter>
-      <AudioPlayerProvider>
-        <TooltipProvider>
-          <DataLoader />
-          <ThemeController />
-          {showOnboarding && (
-            <Onboarding onComplete={() => setShowOnboarding(false)} />
-          )}
-          <MainLayout>
+      <TooltipProvider>
+        <DataLoader />
+        <ThemeController />
+        {showOnboarding && (
+          <Onboarding onComplete={() => setShowOnboarding(false)} />
+        )}
+        <MainLayout>
+          <ErrorBoundary>
             <Suspense fallback={<div className="h-screen" />}>
               <Routes>
                 <Route path="/" element={<Splash />} />
@@ -158,24 +159,25 @@ function App() {
                 <Route path="*" element={<Navigate to="/surah" replace />} />
               </Routes>
             </Suspense>
-          </MainLayout>
-          <AudioPlayer />
-          <LastReadTracker />
-          <ConfirmModal />
-          <ToastContainer
-            position="bottom-right"
-            autoClose={2000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover={false}
-            theme="dark"
-          />
-        </TooltipProvider>
-      </AudioPlayerProvider>
+          </ErrorBoundary>
+        </MainLayout>
+        <AudioEngineShell />
+        <AudioPlayer />
+        <LastReadTracker />
+        <ConfirmModal />
+        <ToastContainer
+          position="bottom-right"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover={false}
+          theme="dark"
+        />
+      </TooltipProvider>
     </BrowserRouter>
   );
 }

@@ -1,6 +1,6 @@
 import { quranApiClient } from "@/lib/apiClient";
 import { clearStore, getFromStore, getKeys, putInStore } from "@/lib/cache";
-import type { SurahData, VerseAudioUrls } from "@/types";
+import type { SurahData, TafsirApiResponse, VerseAudioUrls } from "@/types";
 import { SURAH_COUNT } from "./const";
 
 async function fetchAllSurahsFromApi(): Promise<Record<string, SurahData>> {
@@ -157,18 +157,7 @@ export async function getVerseTafsirData(
 } | null> {
   try {
     const data = await fetchAndCacheSurahTafsir(tafsirId, surahNo);
-    const verses =
-      (
-        data as {
-          verses?: {
-            numberInSurah?: number;
-            lang?: string;
-            authorName?: string;
-            tafsirName?: string;
-            tafsir?: string;
-          }[];
-        }
-      ).verses ?? [];
+    const verses = (data as TafsirApiResponse).verses ?? [];
     const verse = verses[verseNumber - 1];
     if (!verse) return null;
     return {

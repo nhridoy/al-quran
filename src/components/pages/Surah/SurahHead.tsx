@@ -6,10 +6,7 @@ import {
   CgSpinnerTwo,
 } from "react-icons/cg";
 import { FiPauseCircle, FiPlayCircle } from "react-icons/fi";
-import {
-  useAudioPlayerActions,
-  useAudioPlayerState,
-} from "@/components/features/AudioPlayer";
+import { useAudioStore } from "@/components/features/AudioPlayer";
 import { Button } from "@/components/ui/button";
 import { useSurahAudio } from "@/hooks/useSurahAudio";
 import type { SurahData } from "@/types";
@@ -19,12 +16,13 @@ interface SurahHeadProps {
 }
 
 export const SurahHead: React.FC<SurahHeadProps> = memo(({ surah }) => {
-  const {
-    currentTrack,
-    isPlaying,
-    isLoading: playerLoading,
-  } = useAudioPlayerState();
-  const { togglePlay, setPlaylist, prev, next } = useAudioPlayerActions();
+  const currentTrack = useAudioStore((s) => s.currentTrack);
+  const isPlaying = useAudioStore((s) => s.isPlaying);
+  const playerLoading = useAudioStore((s) => s.isLoading);
+  const togglePlay = useAudioStore((s) => s.togglePlay);
+  const setPlaylist = useAudioStore((s) => s.setPlaylist);
+  const prev = useAudioStore((s) => s.prev);
+  const next = useAudioStore((s) => s.next);
   const [loadingAudio, setLoadingAudio] = useState(false);
   const { fetchAudio } = useSurahAudio(surah);
 

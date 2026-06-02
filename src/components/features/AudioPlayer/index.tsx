@@ -1,10 +1,10 @@
-import { useAudioPlayerState } from "./AudioPlayerContext";
+import { useAudioStore } from "@/store/audio";
 import ExpandedPlayer from "./ExpandedPlayer";
 import MiniPlayer from "./MiniPlayer";
 import PlaylistDrawer from "./PlaylistDrawer";
 
 export default function AudioPlayer() {
-  const { currentTrack } = useAudioPlayerState();
+  const currentTrack = useAudioStore((s) => s.currentTrack);
   if (!currentTrack) return null;
 
   return (
@@ -16,12 +16,7 @@ export default function AudioPlayer() {
   );
 }
 
-export {
-  AudioPlayerProvider,
-  useAudioPlayer,
-  useAudioPlayerActions,
-  useAudioPlayerState,
-} from "./AudioPlayerContext";
+export { useAudioStore } from "@/store/audio";
 export {
   buildPlaylistFromSurah,
   buildPlaylistFromSurahs,

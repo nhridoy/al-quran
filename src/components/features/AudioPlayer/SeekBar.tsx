@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { useAudioProgressStore } from "@/store/audio";
-import { useAudioPlayerActions } from "./AudioPlayerContext";
+import { useAudioStore } from "@/store/audio";
 import { formatTime } from "./audioUtils";
 
 export default function SeekBar() {
-  const currentTime = useAudioProgressStore((s) => s.currentTime);
-  const duration = useAudioProgressStore((s) => s.duration);
-  const { seek } = useAudioPlayerActions();
+  const currentTime = useAudioStore((s) => s.currentTime);
+  const duration = useAudioStore((s) => s.duration);
+  const seek = useAudioStore((s) => s.seek);
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
   const barRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);

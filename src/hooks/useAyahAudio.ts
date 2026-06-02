@@ -1,9 +1,6 @@
 import { useCallback, useRef } from "react";
 import type { Track } from "@/components/features/AudioPlayer";
-import {
-  useAudioPlayerActions,
-  useAudioPlayerState,
-} from "@/components/features/AudioPlayer";
+import { useAudioStore } from "@/components/features/AudioPlayer";
 import { useSurahAudio } from "@/hooks/useSurahAudio";
 import type { SurahData, Verse } from "@/types";
 
@@ -13,8 +10,10 @@ export function useAyahAudio(
   tracklist?: Track[],
   surahNo?: number,
 ) {
-  const { currentTrack, isPlaying } = useAudioPlayerState();
-  const { togglePlay, setPlaylist } = useAudioPlayerActions();
+  const currentTrack = useAudioStore((s) => s.currentTrack);
+  const isPlaying = useAudioStore((s) => s.isPlaying);
+  const togglePlay = useAudioStore((s) => s.togglePlay);
+  const setPlaylist = useAudioStore((s) => s.setPlaylist);
   const { fetchAudio } = useSurahAudio(surah);
   const audioPromiseRef = useRef<Promise<Track[]> | null>(null);
 

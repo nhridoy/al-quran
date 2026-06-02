@@ -9,8 +9,7 @@ import { useSettings } from "@/store/settings";
 import type { ParaSurah } from "@/types";
 import {
   buildPlaylistFromSurahs,
-  useAudioPlayerActions,
-  useAudioPlayerState,
+  useAudioStore,
 } from "../../features/AudioPlayer";
 import Ayahs from "../Ayah/Ayah";
 
@@ -22,8 +21,12 @@ interface ParaHeadProps {
 export const ParaHeader: React.FC<ParaHeadProps> = memo(
   ({ para, allSegments }) => {
     const { id } = useParams();
-    const { currentTrack, isPlaying } = useAudioPlayerState();
-    const { togglePlay, setPlaylist, prev, next } = useAudioPlayerActions();
+    const currentTrack = useAudioStore((s) => s.currentTrack);
+    const isPlaying = useAudioStore((s) => s.isPlaying);
+    const togglePlay = useAudioStore((s) => s.togglePlay);
+    const setPlaylist = useAudioStore((s) => s.setPlaylist);
+    const prev = useAudioStore((s) => s.prev);
+    const next = useAudioStore((s) => s.next);
     const reciterId = useSettings((s) => s.reciterId);
     const [segmentsWithAudio, setSegmentsWithAudio] = useState<
       ParaSurah[] | null

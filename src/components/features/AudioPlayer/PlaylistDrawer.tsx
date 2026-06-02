@@ -1,18 +1,17 @@
 import { MusicIcon, XIcon } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { useAudioProgressStore } from "@/store/audio";
-import {
-  useAudioPlayerActions,
-  useAudioPlayerState,
-} from "./AudioPlayerContext";
+import { useAudioStore } from "@/store/audio";
 import { formatTime } from "./audioUtils";
 
 export default function PlaylistDrawer() {
   const [leaving, setLeaving] = useState(false);
   const [entered, setEntered] = useState(false);
-  const { showPlaylist, playlist, currentTrack } = useAudioPlayerState();
-  const { setShowPlaylist, playTrack } = useAudioPlayerActions();
-  const duration = useAudioProgressStore((s) => s.duration);
+  const showPlaylist = useAudioStore((s) => s.showPlaylist);
+  const playlist = useAudioStore((s) => s.playlist);
+  const currentTrack = useAudioStore((s) => s.currentTrack);
+  const duration = useAudioStore((s) => s.duration);
+  const setShowPlaylist = useAudioStore((s) => s.setShowPlaylist);
+  const playTrack = useAudioStore((s) => s.playTrack);
 
   useEffect(() => {
     if (showPlaylist) {
@@ -64,7 +63,6 @@ export default function PlaylistDrawer() {
         aria-label="Close playlist overlay"
         title="Close"
       />
-
       <div
         className={`relative w-full max-w-2xl max-h-[75vh] overflow-hidden rounded-t-2xl bg-white shadow-2xl dark:bg-dark-surface-card transition-all duration-300 ease-in-out ${
           leaving || !entered ? "translate-y-full" : "translate-y-0"

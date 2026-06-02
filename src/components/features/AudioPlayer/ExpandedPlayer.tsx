@@ -1,9 +1,5 @@
 import { memo, useCallback, useEffect, useState } from "react";
-import { useAudioVolumeStore } from "@/store/audio";
-import {
-  useAudioPlayerActions,
-  useAudioPlayerState,
-} from "./AudioPlayerContext";
+import { useAudioStore } from "@/store/audio";
 import DesktopPlayerContent from "./DesktopPlayerContent";
 import MobilePlayerContent from "./MobilePlayerContent";
 import TopProgressBar from "./TopProgressBar";
@@ -13,25 +9,21 @@ const MemoizedMobileContent = memo(MobilePlayerContent);
 
 export default function ExpandedPlayer() {
   const [leaving, setLeaving] = useState(false);
-  const {
-    isExpanded,
-    isPlaying,
-    isLoading,
-    currentTrack,
-    isShuffled,
-    repeatMode,
-  } = useAudioPlayerState();
-  const volume = useAudioVolumeStore((s) => s.volume);
-  const {
-    minimize,
-    togglePlay,
-    next,
-    prev,
-    toggleShuffle,
-    cycleRepeat,
-    setVolume,
-    togglePlaylist,
-  } = useAudioPlayerActions();
+  const isExpanded = useAudioStore((s) => s.isExpanded);
+  const isPlaying = useAudioStore((s) => s.isPlaying);
+  const isLoading = useAudioStore((s) => s.isLoading);
+  const currentTrack = useAudioStore((s) => s.currentTrack);
+  const isShuffled = useAudioStore((s) => s.isShuffled);
+  const repeatMode = useAudioStore((s) => s.repeatMode);
+  const volume = useAudioStore((s) => s.volume);
+  const minimize = useAudioStore((s) => s.minimize);
+  const togglePlay = useAudioStore((s) => s.togglePlay);
+  const next = useAudioStore((s) => s.next);
+  const prev = useAudioStore((s) => s.prev);
+  const toggleShuffle = useAudioStore((s) => s.toggleShuffle);
+  const cycleRepeat = useAudioStore((s) => s.cycleRepeat);
+  const setVolume = useAudioStore((s) => s.setVolume);
+  const togglePlaylist = useAudioStore((s) => s.togglePlaylist);
 
   const handleMinimize = useCallback(() => {
     setLeaving(true);

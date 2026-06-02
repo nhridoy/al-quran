@@ -1,4 +1,4 @@
-import type { SurahData, VerseAudioUrls } from "@/types";
+import type { SurahData, TafsirApiResponse, VerseAudioUrls } from "@/types";
 
 type AudioApiResponse = { verses: { audio: VerseAudioUrls }[] };
 type JuzApiResponse = { surah: SurahData[] };
@@ -11,13 +11,13 @@ export interface QuranApiClient {
     lang: string,
     tafsirId: string,
     surahNo: number,
-  ): Promise<{ verses: Record<string, unknown>[] }>;
+  ): Promise<TafsirApiResponse>;
   getJuzAudio(reciterId: string, juzNo: number): Promise<AudioApiResponse>;
   getJuzTafsir(
     lang: string,
     tafsirId: string,
     juzNo: number,
-  ): Promise<{ verses: Record<string, unknown>[] }>;
+  ): Promise<TafsirApiResponse>;
 }
 
 const BASE = "https://cdn.jsdelivr.net/gh/nhridoy/quran-api@main/v4";

@@ -1,6 +1,7 @@
 import { memo, useMemo } from "react";
 import { BiBookmark, BiShareAlt } from "react-icons/bi";
 import { IoPauseOutline, IoPlayOutline } from "react-icons/io5";
+import type { Track } from "@/components/features/AudioPlayer";
 import { Button } from "@/components/ui/button";
 import { useAyahAudio } from "@/hooks/useAyahAudio";
 import { useAyahBookmark } from "@/hooks/useAyahBookmark";
@@ -10,7 +11,6 @@ import { useVerseTafsir } from "@/hooks/useVerseTafsir";
 import { colorizeArabic } from "@/lib/tajweed";
 import { useSettings } from "@/store/settings";
 import type { SurahData, Verse } from "@/types";
-import type { Track } from "../../features/AudioPlayer";
 import AyahTafsir from "./AyahTafsir";
 
 interface AyahsProps {
