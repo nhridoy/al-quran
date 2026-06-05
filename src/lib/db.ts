@@ -4,6 +4,7 @@ import type {
   HadithBook,
   HadithCollection,
   HadithEdition,
+  HadithSearchResult,
   SurahData,
   TafsirApiResponse,
   VerseAudioUrls,
@@ -240,4 +241,62 @@ export async function getHadithsOfBook(
     }
     throw new Error("Failed to fetch hadiths");
   }
+}
+
+export async function searchAllHadiths(
+  query: string,
+  lang: string,
+  maxResults = 50,
+): Promise<HadithSearchResult[]> {
+  const trimmed = query.trim().toLowerCase();
+  if (!trimmed) return [];
+
+  const editions = await getHadithEditions();
+  const slugByEditionId = new Map(editions.map((e) => [e.id, e.slug]));
+  const editionNames = new Map(editions.map((e) => [e.slug, e.name]));
+
+  const keys = await getKeys("hadith");
+  const hadithKeys = keys.filter(
+    (k) => k.startsWith("hadith-") && k.endsWith(`-${lang}`),
+  );
+
+  const booksCache = new Map<string, HadithBook[]>();
+  const results: HadithSearchResult[] = [];
+
+  for (const key of hadithKeys) {
+    if (results.length >= maxResults) break;
+    const collection = await getFromStore<HadithCollection>("hadith", key);
+    if (!collection?.items) continue;
+
+    for (const item of collection.items) {
+      if (results.length >= maxResults) break;
+      if (!item.text.toLowerCase().includes(trimmed)) continue;
+
+      const slug = slugByEditionId.get(item.editionId);
+      if (!slug) continue;
+
+      if (!booksCache.has(slug)) {
+        const books = await getFromStore<HadithBook[]>(
+          "hadith",
+          `books-${slug}`,
+        );
+        booksCache.set(slug, books ?? []);
+      }
+      const book = (booksCache.get(slug) ?? []).find(
+        (b) => b.bookIndex === item.bookIndex,
+      );
+
+      results.push({
+        editionSlug: slug,
+        editionName:
+          editionNames.get(slug)?.[lang] ?? editionNames.get(slug)?.en ?? slug,
+        bookIndex: item.bookIndex,
+        bookName:
+          book?.name?.[lang] ?? book?.name?.en ?? `Book ${item.bookIndex}`,
+        hadith: item,
+      });
+    }
+  }
+
+  return results;
 }

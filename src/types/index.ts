@@ -244,3 +244,11 @@ export interface HadithCollection {
   total: number;
   items: HadithEntry[];
 }
+
+export interface HadithSearchResult {
+  editionSlug: string;
+  editionName: string;
+  bookIndex: number;
+  bookName: string;
+  hadith: HadithEntry;
+}
