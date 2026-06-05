@@ -1,96 +1,54 @@
 import { useCallback, useEffect, useState } from "react";
-import { getFromStore, putInStore } from "@/lib/cache";
+import {
+  getBooksOfEdition,
+  getHadithEditions,
+  getHadithsOfBook,
+} from "@/lib/db";
+import type { HadithBook, HadithCollection, HadithEdition } from "@/types";
 
-const HADITH_API = "https://hadislam.org";
-
-export interface Edition {
-  _id: string;
-  slug: string;
-  name: Record<string, string>;
-  availableLanguages: string[];
-  hadithCount: number;
-  bookCount: number;
-}
-
-export interface Book {
-  _id: string;
-  bookIndex: number;
-  name: Record<string, string>;
-  hadithCount: number;
-  hadithIndexStart: number;
-}
-
-export interface Hadith {
-  _id: string;
-  bookIndex: number;
-  hadithIndex: number;
-  bookHadithIndex: number;
-  text: Record<string, string>;
-  grades: Array<{ name: string; grade: string }>;
-}
-
-export interface HadithPageData {
-  total: number;
-  page: number;
-  pageSize: number;
-  items: Hadith[];
-  bookName: string;
-  slug: string;
-}
-
-export const PAGE_SIZE = 20;
-
-const LANG_FALLBACK = ["en", "ar"];
-
-export function getPreferredText(
-  text: Record<string, string>,
-  preferred?: string,
-): { lang: string; text: string } {
-  if (preferred && text[preferred])
-    return { lang: preferred, text: text[preferred] };
-  for (const lang of LANG_FALLBACK) {
-    if (text[lang]) return { lang, text: text[lang] };
-  }
-  const firstKey = Object.keys(text)[0];
-  return { lang: firstKey, text: text[firstKey] || "" };
-}
+export const PAGE_SIZE = 50;
 
 export function useEditions() {
-  const [editions, setEditions] = useState<Edition[]>([]);
+  const [editions, setEditions] = useState<HadithEdition[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchEditions = useCallback(async () => {
+  useEffect(() => {
+    let cancelled = false;
     setLoading(true);
-    setError(null);
-    try {
-      const cached = await getFromStore<Edition[]>("hadith", "editions");
-      if (cached) {
-        setEditions(cached);
-        setLoading(false);
-        return;
-      }
-      const res = await fetch(`${HADITH_API}/editions/`);
-      if (!res.ok) throw new Error("Failed to fetch editions");
-      const data = (await res.json()) as Edition[];
-      await putInStore("hadith", "editions", data);
-      setEditions(data);
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Unknown error");
-    } finally {
-      setLoading(false);
-    }
+    getHadithEditions()
+      .then((data) => {
+        if (!cancelled) {
+          setEditions(data);
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        if (!cancelled) {
+          setError(
+            err instanceof Error ? err.message : "Failed to fetch editions",
+          );
+          setLoading(false);
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
-  useEffect(() => {
-    fetchEditions();
-  }, [fetchEditions]);
-
-  return { editions, loading, error, refetch: fetchEditions };
+  return { editions, loading, error, refetch: getHadithEditions };
 }
 
-export function useEditionBooks(slug: string | undefined) {
-  const [books, setBooks] = useState<Book[]>([]);
+export function useEditionBooks(
+  slug: string | undefined,
+  lang: string = "en",
+): {
+  books: HadithBook[];
+  loading: boolean;
+  error: string | null;
+  refetch: () => Promise<void>;
+} {
+  const [books, setBooks] = useState<HadithBook[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -98,25 +56,15 @@ export function useEditionBooks(slug: string | undefined) {
     if (!slug) return;
     setLoading(true);
     setError(null);
-    const key = `books-${slug}`;
     try {
-      const cached = await getFromStore<Book[]>("hadith", key);
-      if (cached) {
-        setBooks(cached);
-        setLoading(false);
-        return;
-      }
-      const res = await fetch(`${HADITH_API}/editions/${slug}/books`);
-      if (!res.ok) throw new Error("Failed to fetch books");
-      const data = (await res.json()) as Book[];
-      await putInStore("hadith", key, data);
+      const data = await getBooksOfEdition(slug, lang);
       setBooks(data);
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Unknown error");
+      setError(e instanceof Error ? e.message : "Failed to fetch books");
     } finally {
       setLoading(false);
     }
-  }, [slug]);
+  }, [slug, lang]);
 
   useEffect(() => {
     fetchBooks();
@@ -128,9 +76,9 @@ export function useEditionBooks(slug: string | undefined) {
 export function useHadithPage(
   slug: string | undefined,
   bookIndex: number | undefined,
-  page: number,
+  lang: string = "en",
 ) {
-  const [data, setData] = useState<HadithPageData | null>(null);
+  const [data, setData] = useState<HadithCollection | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -138,35 +86,15 @@ export function useHadithPage(
     if (!slug || bookIndex === undefined) return;
     setLoading(true);
     setError(null);
-    const key = `hadith-${slug}-${bookIndex}-${page}`;
     try {
-      const cached = await getFromStore<HadithPageData>("hadith", key);
-      if (cached) {
-        setData(cached);
-        setLoading(false);
-        return;
-      }
-      const res = await fetch(
-        `${HADITH_API}/editions/${slug}/books/${bookIndex}/hadiths?page=${page}&page_size=${PAGE_SIZE}&lang=*`,
-      );
-      if (!res.ok) throw new Error("Failed to fetch hadiths");
-      const d = await res.json();
-      const pageData: HadithPageData = {
-        total: d.total,
-        page: d.page,
-        pageSize: d.page_size,
-        items: d.items,
-        bookName: "",
-        slug,
-      };
-      await putInStore("hadith", key, pageData);
-      setData(pageData);
+      const collection = await getHadithsOfBook(slug, bookIndex, lang);
+      setData(collection);
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Unknown error");
+      setError(e instanceof Error ? e.message : "Failed to fetch hadiths");
     } finally {
       setLoading(false);
     }
-  }, [slug, bookIndex, page]);
+  }, [slug, bookIndex, lang]);
 
   useEffect(() => {
     fetchPage();

@@ -1,4 +1,11 @@
-import type { SurahData, TafsirApiResponse, VerseAudioUrls } from "@/types";
+import type {
+  HadithBook,
+  HadithCollection,
+  HadithEdition,
+  SurahData,
+  TafsirApiResponse,
+  VerseAudioUrls,
+} from "@/types";
 
 type AudioApiResponse = { verses: { audio: VerseAudioUrls }[] };
 type JuzApiResponse = { surah: SurahData[] };
@@ -18,9 +25,18 @@ export interface QuranApiClient {
     tafsirId: string,
     juzNo: number,
   ): Promise<TafsirApiResponse>;
+  getEditions(): Promise<HadithEdition[]>;
+  getBooksOfEdition(slug: string): Promise<HadithBook[]>;
+  getHadithsOfBook(
+    slug: string,
+    bookIndex: number,
+    lang: string,
+  ): Promise<HadithCollection>;
 }
 
 const BASE = "https://cdn.jsdelivr.net/gh/nhridoy/quran-api@main/v4";
+
+export const HADITH_BASE = `${BASE}/hadith`;
 
 async function fetchJson<T>(url: string, notFoundFallback?: T): Promise<T> {
   const res = await fetch(url);
@@ -60,6 +76,17 @@ export const quranApiClient: QuranApiClient = {
   getJuzTafsir(lang, tafsirId, juzNo) {
     return fetchJson(
       `${BASE}/juz/tafsir/${lang}/${tafsirId}/${juzNo}.min.json`,
+    );
+  },
+  getEditions() {
+    return fetchJson<HadithEdition[]>(`${HADITH_BASE}/editions.min.json`);
+  },
+  getBooksOfEdition(slug) {
+    return fetchJson<HadithBook[]>(`${HADITH_BASE}/${slug}/books.min.json`);
+  },
+  getHadithsOfBook(slug, bookIndex, lang) {
+    return fetchJson<HadithCollection>(
+      `${HADITH_BASE}/${slug}/${slug}-${bookIndex}/${lang}/hadith.min.json`,
     );
   },
 };

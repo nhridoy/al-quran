@@ -6,14 +6,20 @@ import { Button } from "@/components/ui/button";
 import { useEditions } from "@/hooks/useHadith";
 import { useSettings } from "@/store/settings";
 
+const SUPPORTED_LANGUAGES = ["en", "bn"];
+
 function getEditionName(name: Record<string, string>, lang: string): string {
-  return name[lang] || name.en || name.ar || "";
+  return name[lang] || name.en || "";
 }
 
 export default function HadithCollections() {
   const navigate = useNavigate();
   const { editions, loading, error, refetch } = useEditions();
-  const translationLang = useSettings((s) => s.translationLang);
+  const hadithLang = useSettings((s) => s.hadithLang);
+
+  const filteredEditions = editions.filter((e) =>
+    SUPPORTED_LANGUAGES.some((lang) => e.availableLanguages.includes(lang)),
+  );
 
   return (
     <PageShell
@@ -33,9 +39,13 @@ export default function HadithCollections() {
         </div>
       ) : error ? (
         <ErrorState message={error} onRetry={refetch} />
+      ) : filteredEditions.length === 0 ? (
+        <div className="flex flex-col items-center gap-4 rounded-2xl border border-border bg-surface p-8 text-center dark:border-dark-border dark:bg-dark-surface-card">
+          <p className="text-sm text-text-muted">No editions available.</p>
+        </div>
       ) : (
         <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-          {editions.map((edition) => (
+          {filteredEditions.map((edition) => (
             <Button
               key={edition.slug}
               onClick={() => navigate(`/hadith/${edition.slug}`)}
@@ -47,16 +57,18 @@ export default function HadithCollections() {
               </div>
               <div className="flex-1">
                 <p className="text-sm font-semibold text-text-primary dark:text-dark-text-primary">
-                  {getEditionName(edition.name, translationLang)}
+                  {getEditionName(edition.name, hadithLang)}
                 </p>
                 <p className="mt-0.5 text-xs text-text-muted">
                   {edition.hadithCount.toLocaleString()} hadith
                   {" · "}
                   {edition.bookCount} books
-                  {" · "}
-                  {edition.availableLanguages.includes("bn")
-                    ? "বাংলা"
-                    : edition.availableLanguages.slice(0, 4).join(", ")}
+                  {!edition.availableLanguages.includes(hadithLang) && (
+                    <>
+                      {" · "}
+                      <span className="text-amber-500">(English only)</span>
+                    </>
+                  )}
                 </p>
               </div>
               <span className="text-xs text-secondary">&rarr;</span>

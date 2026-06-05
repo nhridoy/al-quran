@@ -1,12 +1,18 @@
 import {
   cacheAllAudioForReciter,
+  cacheAllHadithFor,
   cacheAllJuz,
   cacheAllJuzAudioForReciter,
   cacheAllJuzTafsirFor,
   cacheAllTafsirFor,
 } from "@/lib/batchCache";
 import { confirm } from "@/lib/confirm";
-import { clearAudioCache, clearCache, clearTafsirCache } from "@/lib/db";
+import {
+  clearAudioCache,
+  clearCache,
+  clearHadithCache,
+  clearTafsirCache,
+} from "@/lib/db";
 import { removeFromCache } from "@/lib/downloadManager";
 import { useDownloadsStore } from "@/store/downloads";
 
@@ -50,9 +56,18 @@ export async function handleTafsirChange(
   ]);
 }
 
+export async function handleHadithLangChange(
+  _oldLang: string,
+  newLang: string,
+): Promise<void> {
+  await clearHadithCache();
+  await cacheAllHadithFor(newLang);
+}
+
 export async function handleRefresh(
   reciterId: string,
   tafsirId: string,
+  hadithLang: string,
   refreshSurahs: () => Promise<void>,
 ): Promise<void> {
   await clearCache();
@@ -63,5 +78,6 @@ export async function handleRefresh(
     cacheAllJuzAudioForReciter(reciterId),
     cacheAllTafsirFor(tafsirId),
     cacheAllJuzTafsirFor(tafsirId),
+    cacheAllHadithFor(hadithLang),
   ]);
 }

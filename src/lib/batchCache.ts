@@ -1,7 +1,87 @@
 import { quranApiClient } from "@/lib/apiClient";
 import { getFromStore, putInStore } from "@/lib/cache";
-import type { SurahData } from "@/types";
+import type { HadithEdition, SurahData } from "@/types";
 import { FETCH_BATCH_SIZE, JUZ_COUNT, SURAH_COUNT } from "./const";
+
+export async function cacheAllHadithFor(
+  lang: string,
+  onProgress?: (done: number, total: number) => void,
+): Promise<void> {
+  const editionsKey = "editions";
+  let editions = await getFromStore<HadithEdition[]>("hadith", editionsKey);
+
+  if (!editions) {
+    editions = await quranApiClient.getEditions();
+    await putInStore("hadith", editionsKey, editions);
+  }
+
+  const allEditions = editions;
+  const filteredEditions = allEditions.filter(
+    (e) =>
+      e.availableLanguages.includes(lang) ||
+      e.availableLanguages.includes("en"),
+  );
+
+  let total = 0;
+  let done = 0;
+
+  for (const edition of filteredEditions) {
+    for (let bookIndex = 1; bookIndex <= edition.bookCount; bookIndex++) {
+      total++;
+    }
+  }
+
+  const bookKeys: { slug: string; bookIndex: number }[] = [];
+  for (const edition of filteredEditions) {
+    for (let bookIndex = 1; bookIndex <= edition.bookCount; bookIndex++) {
+      bookKeys.push({ slug: edition.slug, bookIndex });
+    }
+  }
+
+  const batchSize = FETCH_BATCH_SIZE;
+
+  for (let i = 0; i < bookKeys.length; i += batchSize) {
+    const batch = bookKeys.slice(i, i + batchSize);
+    await Promise.allSettled(
+      batch.map(async ({ slug, bookIndex }) => {
+        const key = `hadith-${slug}-${bookIndex}-${lang}`;
+        const cached = await getFromStore("hadith", key);
+        if (cached) {
+          done++;
+          onProgress?.(done, total);
+          return;
+        }
+        try {
+          const data = await quranApiClient.getHadithsOfBook(
+            slug,
+            bookIndex,
+            lang,
+          );
+          await putInStore("hadith", key, data);
+        } catch {
+          if (lang !== "en") {
+            const fallbackKey = `hadith-${slug}-${bookIndex}-en`;
+            const fallbackCached = await getFromStore("hadith", fallbackKey);
+            if (!fallbackCached) {
+              try {
+                const fallbackData = await quranApiClient.getHadithsOfBook(
+                  slug,
+                  bookIndex,
+                  "en",
+                );
+                await putInStore("hadith", fallbackKey, fallbackData);
+              } catch {
+                // Skip failed fetches
+              }
+            }
+          }
+        }
+        done++;
+        onProgress?.(done, total);
+      }),
+    );
+  }
+}
 
 export async function cacheAllAudioForReciter(
   reciterId: string,

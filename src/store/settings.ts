@@ -7,6 +7,7 @@ const DEFAULTS: AppSettings = {
   arabicFontSize: 1.5,
   translationFontSize: 1,
   translationLang: "en",
+  hadithLang: "en",
   reciterId: "ar.alafasy",
   tafsirId: "en-tafsir-maarif-ul-quran",
   prayerCalcMethod: "MWL",

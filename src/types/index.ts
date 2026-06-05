@@ -162,6 +162,10 @@ export interface TranslationSettings {
   translationLang: "en" | "bn";
 }
 
+export interface HadithSettings {
+  hadithLang: "en" | "bn";
+}
+
 export interface ReciterSettings {
   reciterId: string;
 }
@@ -186,7 +190,57 @@ export interface AppSettings
   extends ThemeSettings,
     FontSettings,
     TranslationSettings,
+    HadithSettings,
     ReciterSettings,
     TafsirSettings,
     PrayerSettings,
     MiscSettings {}
+
+// ===== Hadith types =====
+
+export type HadithEditionName = Record<string, string>;
+
+export interface HadithEdition {
+  id: string;
+  slug: string;
+  bookCount: number;
+  hadithCount: number;
+  availableLanguages: string[];
+  name: HadithEditionName;
+}
+
+export type HadithEditions = HadithEdition[];
+
+export type HadithBookName = Record<string, string>;
+
+export interface HadithBook {
+  id: string;
+  editionId: string;
+  bookIndex: number;
+  hadithCount: number;
+  hadithIndexStart: number;
+  name: HadithBookName;
+}
+
+export type HadithBooks = HadithBook[];
+
+export interface HadithGrade {
+  id: string;
+  name: string;
+  grade: string;
+}
+
+export interface HadithEntry {
+  id: string;
+  editionId: string;
+  bookIndex: number;
+  hadithIndex: number;
+  bookHadithIndex: number;
+  text: string;
+  grades: HadithGrade[];
+}
+
+export interface HadithCollection {
+  total: number;
+  items: HadithEntry[];
+}

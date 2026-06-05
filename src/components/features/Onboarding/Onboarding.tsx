@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
+  IoBookOutline,
   IoChevronBack,
   IoHeadsetOutline,
   IoMusicalNotesOutline,
@@ -8,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { useSurahs } from "@/hooks/useSurahs";
 import {
   cacheAllAudioForReciter,
+  cacheAllHadithFor,
   cacheAllJuz,
   cacheAllJuzAudioForReciter,
   cacheAllJuzTafsirFor,
@@ -21,12 +23,18 @@ import StepDone from "./StepDone";
 import StepPermissions from "./StepPermissions";
 import StepWelcome from "./StepWelcome";
 
-type Step = 0 | 1 | 2 | 3 | 4;
+type Step = 0 | 1 | 2 | 3 | 4 | 5;
+
+const HADITH_LANGS: Array<{ id: string; name: string; nativeName: string }> = [
+  { id: "en", name: "English", nativeName: "English" },
+  { id: "bn", name: "Bengali", nativeName: "বাংলা" },
+];
 
 export default function Onboarding({ onComplete }: { onComplete: () => void }) {
   const [step, setStep] = useState<Step>(0);
   const [direction, setDirection] = useState<1 | -1>(1);
   const [language, setLanguage] = useState<"en" | "bn">("en");
+  const [hadithLang, setHadithLang] = useState<"en" | "bn">("en");
   const [reciterId, setReciterId] = useState("ar.alafasy");
   const [tafsirId, setTafsirId] = useState("en-tafsir-maarif-ul-quran");
   const [locationGranted, setLocationGranted] = useState(false);
@@ -41,7 +49,7 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
 
   const slideRef = useRef<HTMLDivElement>(null);
   const stepIndices = useMemo(
-    () => Array.from({ length: 5 }, (_, i) => ({ id: `step-${i}`, index: i })),
+    () => Array.from({ length: 6 }, (_, i) => ({ id: `step-${i}`, index: i })),
     [],
   );
 
@@ -50,7 +58,7 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
     [],
   );
 
-  const totalSteps = 5;
+  const totalSteps = 6;
 
   const goTo = useCallback(
     (next: Step) => {
@@ -71,6 +79,11 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
     if (step > 0) goTo((step - 1) as Step);
   }, [step, goTo]);
 
+  const handleHadithLangContinue = useCallback(() => {
+    cacheAllHadithFor(hadithLang);
+    next();
+  }, [hadithLang, next]);
+
   const handleReciterContinue = useCallback(() => {
     cacheAllAudioForReciter(reciterId);
     cacheAllJuzAudioForReciter(reciterId);
@@ -86,13 +99,22 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
   const handleFinish = useCallback(async () => {
     await updateSettings({
       translationLang: language,
+      hadithLang,
       reciterId,
       tafsirId,
       onboardingComplete: true,
     });
     await refresh();
     onComplete();
-  }, [language, reciterId, tafsirId, updateSettings, refresh, onComplete]);
+  }, [
+    language,
+    hadithLang,
+    reciterId,
+    tafsirId,
+    updateSettings,
+    refresh,
+    onComplete,
+  ]);
 
   const requestLocation = useLocationStore((s) => s.request);
 
@@ -171,6 +193,21 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
             )}
             {step === 1 && (
               <ListSelectStep
+                icon={<IoBookOutline className="text-2xl text-white" />}
+                title="Hadith Language"
+                description="Select your preferred language for hadith"
+                items={HADITH_LANGS.map((l) => ({
+                  id: l.id,
+                  primary: l.name,
+                  secondary: l.nativeName,
+                }))}
+                selectedId={hadithLang}
+                onSelect={(l) => setHadithLang(l as "en" | "bn")}
+                onContinue={handleHadithLangContinue}
+              />
+            )}
+            {step === 2 && (
+              <ListSelectStep
                 icon={<IoHeadsetOutline className="text-2xl text-white" />}
                 title="Choose a Reciter"
                 description="Select your preferred voice for Quran recitation"
@@ -184,7 +221,7 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
                 onContinue={handleReciterContinue}
               />
             )}
-            {step === 2 && (
+            {step === 3 && (
               <ListSelectStep
                 icon={<IoMusicalNotesOutline className="text-2xl text-white" />}
                 title="Choose Tafsir"
@@ -200,7 +237,7 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
                 onContinue={handleTafsirContinue}
               />
             )}
-            {step === 3 && (
+            {step === 4 && (
               <StepPermissions
                 locationGranted={locationGranted}
                 notificationGranted={notificationGranted}
@@ -209,7 +246,7 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
                 onNext={next}
               />
             )}
-            {step === 4 && <StepDone onFinish={handleFinish} />}
+            {step === 5 && <StepDone onFinish={handleFinish} />}
           </div>
         </div>
 

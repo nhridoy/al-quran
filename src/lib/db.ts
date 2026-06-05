@@ -1,6 +1,13 @@
 import { quranApiClient } from "@/lib/apiClient";
 import { clearStore, getFromStore, getKeys, putInStore } from "@/lib/cache";
-import type { SurahData, TafsirApiResponse, VerseAudioUrls } from "@/types";
+import type {
+  HadithBook,
+  HadithCollection,
+  HadithEdition,
+  SurahData,
+  TafsirApiResponse,
+  VerseAudioUrls,
+} from "@/types";
 import { SURAH_COUNT } from "./const";
 
 async function fetchAllSurahsFromApi(): Promise<Record<string, SurahData>> {
@@ -55,6 +62,7 @@ export async function clearCache(): Promise<void> {
   await clearStore("juz-verses");
   await clearStore("juz-audio");
   await clearStore("juz-tafsir");
+  await clearStore("hadith");
 }
 
 export async function clearAudioCache(): Promise<void> {
@@ -65,6 +73,10 @@ export async function clearAudioCache(): Promise<void> {
 export async function clearTafsirCache(): Promise<void> {
   await clearStore("surah-tafsir");
   await clearStore("juz-tafsir");
+}
+
+export async function clearHadithCache(): Promise<void> {
+  await clearStore("hadith");
 }
 
 export async function refreshData(): Promise<Record<string, SurahData>> {
@@ -183,4 +195,74 @@ export async function mergeAudioWithSurah(
       audio: audioUrls[i] ?? undefined,
     })),
   };
+}
+
+export async function getHadithEditions(): Promise<HadithEdition[]> {
+  const cached = await getFromStore<HadithEdition[]>("hadith", "editions");
+  if (cached) return cached;
+
+  const data = await quranApiClient.getEditions();
+  await putInStore("hadith", "editions", data);
+  return data;
+}
+
+export async function getBooksOfEdition(
+  slug: string,
+  lang: string,
+): Promise<HadithBook[]> {
+  const key = `books-${slug}-${lang}`;
+  const cached = await getFromStore<HadithBook[]>("hadith", key);
+  if (cached) return cached;
+
+  try {
+    const data = await quranApiClient.getBooksOfEdition(slug);
+    await putInStore("hadith", key, data);
+    return data;
+  } catch {
+    if (lang !== "en") {
+      const fallbackKey = `books-${slug}-en`;
+      const fallbackCached = await getFromStore<HadithBook[]>(
+        "hadith",
+        fallbackKey,
+      );
+      if (fallbackCached) return fallbackCached;
+      const fallbackData = await quranApiClient.getBooksOfEdition(slug);
+      await putInStore("hadith", fallbackKey, fallbackData);
+      return fallbackData;
+    }
+    throw new Error("Failed to fetch books");
+  }
+}
+
+export async function getHadithsOfBook(
+  slug: string,
+  bookIndex: number,
+  lang: string,
+): Promise<HadithCollection> {
+  const key = `hadith-${slug}-${bookIndex}-${lang}`;
+  const cached = await getFromStore<HadithCollection>("hadith", key);
+  if (cached) return cached;
+
+  try {
+    const data = await quranApiClient.getHadithsOfBook(slug, bookIndex, lang);
+    await putInStore("hadith", key, data);
+    return data;
+  } catch {
+    if (lang !== "en") {
+      const fallbackKey = `hadith-${slug}-${bookIndex}-en`;
+      const fallbackCached = await getFromStore<HadithCollection>(
+        "hadith",
+        fallbackKey,
+      );
+      if (fallbackCached) return fallbackCached;
+      const fallbackData = await quranApiClient.getHadithsOfBook(
+        slug,
+        bookIndex,
+        "en",
+      );
+      await putInStore("hadith", fallbackKey, fallbackData);
+      return fallbackData;
+    }
+    throw new Error("Failed to fetch hadiths");
+  }
 }

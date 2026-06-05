@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { PageShell } from "@/components/common/PageShell/PageShell";
 import AppearanceSettings from "@/components/pages/Settings/AppearanceSettings";
 import DataSettings from "@/components/pages/Settings/DataSettings";
+import HadithSettings from "@/components/pages/Settings/HadithSettings";
 import PrayerSettings from "@/components/pages/Settings/PrayerSettings";
 import ReadingSettings from "@/components/pages/Settings/ReadingSettings";
 import SaveBar from "@/components/pages/Settings/SaveBar";
@@ -11,10 +12,11 @@ import { useSurahs } from "@/hooks/useSurahs";
 import { confirm } from "@/lib/confirm";
 import { LANGUAGES, TAFSIR_LIST } from "@/lib/const";
 import {
+  handleHadithLangChange,
   handleReciterChange,
   handleTafsirChange,
   handleRefresh as refreshData,
-} from "@/lib/reciterService";
+} from "@/lib/settingsCaching";
 import { useSettings } from "@/store/settings";
 
 export default function Settings() {
@@ -33,6 +35,7 @@ export default function Settings() {
     tafsirId: storeSettings.tafsirId,
     tafsirEnabled: storeSettings.tafsirEnabled,
     tajweedEnabled: storeSettings.tajweedEnabled,
+    hadithLang: storeSettings.hadithLang,
     prayerCalcMethod: storeSettings.prayerCalcMethod,
     prayerAsrMethod: storeSettings.prayerAsrMethod,
     hijriAdjust: storeSettings.hijriAdjust,
@@ -47,6 +50,7 @@ export default function Settings() {
     local.tafsirId !== storeSettings.tafsirId ||
     local.tafsirEnabled !== storeSettings.tafsirEnabled ||
     local.tajweedEnabled !== storeSettings.tajweedEnabled ||
+    local.hadithLang !== storeSettings.hadithLang ||
     local.prayerCalcMethod !== storeSettings.prayerCalcMethod ||
     local.prayerAsrMethod !== storeSettings.prayerAsrMethod ||
     local.hijriAdjust !== storeSettings.hijriAdjust;
@@ -73,6 +77,10 @@ export default function Settings() {
     if (local.tafsirId !== storeSettings.tafsirId) {
       await handleTafsirChange(storeSettings.tafsirId, local.tafsirId);
     }
+
+    if (local.hadithLang !== storeSettings.hadithLang) {
+      await handleHadithLangChange(storeSettings.hadithLang, local.hadithLang);
+    }
   }, [local, storeSettings, updateSettings]);
 
   useEffect(() => {
@@ -85,6 +93,7 @@ export default function Settings() {
       tafsirId: storeSettings.tafsirId,
       tafsirEnabled: storeSettings.tafsirEnabled,
       tajweedEnabled: storeSettings.tajweedEnabled,
+      hadithLang: storeSettings.hadithLang,
       prayerCalcMethod: storeSettings.prayerCalcMethod,
       prayerAsrMethod: storeSettings.prayerAsrMethod,
       hijriAdjust: storeSettings.hijriAdjust,
@@ -95,20 +104,25 @@ export default function Settings() {
     const ok = await confirm({
       title: "Refresh Data?",
       message:
-        "This will clear and re-fetch all cached data (surahs, audio, tafsir, juz).",
+        "This will clear and re-fetch all cached data (surahs, audio, tafsir, juz, hadith).",
       confirmText: "Yes, refresh!",
       confirmColor: "#9345f2",
     });
     if (!ok) return;
     setLoading(true);
     try {
-      await refreshData(local.reciterId, local.tafsirId, refresh);
+      await refreshData(
+        local.reciterId,
+        local.tafsirId,
+        local.hadithLang,
+        refresh,
+      );
       toast.success("Data refreshed successfully!");
     } catch {
       toast.error("Failed to refresh data");
     }
     setLoading(false);
-  }, [refresh, local.reciterId, local.tafsirId]);
+  }, [refresh, local.reciterId, local.tafsirId, local.hadithLang]);
 
   const handleDiscard = useCallback(() => {
     setLocal({
@@ -120,6 +134,7 @@ export default function Settings() {
       tafsirId: storeSettings.tafsirId,
       tafsirEnabled: storeSettings.tafsirEnabled,
       tajweedEnabled: storeSettings.tajweedEnabled,
+      hadithLang: storeSettings.hadithLang,
       prayerCalcMethod: storeSettings.prayerCalcMethod,
       prayerAsrMethod: storeSettings.prayerAsrMethod,
       hijriAdjust: storeSettings.hijriAdjust,
@@ -162,6 +177,7 @@ export default function Settings() {
         groupedTafsirs={groupedTafsirs}
         onChange={set}
       />
+      <HadithSettings hadithLang={local.hadithLang} onChange={set} />
       <PrayerSettings
         prayerCalcMethod={local.prayerCalcMethod}
         prayerAsrMethod={local.prayerAsrMethod}
