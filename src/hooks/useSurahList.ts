@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
-import { getSurahs } from "@/lib/db";
-import type { SurahData } from "@/types";
+import { getSurahList } from "@/lib/db";
+import type { SurahHeader } from "@/types";
 
-export function useSurahs() {
-  const [surahs, setSurahs] = useState<Record<string, SurahData>>({});
+export function useSurahList() {
+  const [surahList, setSurahList] = useState<SurahHeader[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let cancelled = false;
     setLoading(true);
-    getSurahs()
+    getSurahList()
       .then((data) => {
         if (!cancelled) {
-          setSurahs(data);
+          setSurahList(data);
           setLoading(false);
         }
       })
@@ -24,7 +24,5 @@ export function useSurahs() {
     };
   }, []);
 
-  const surahList = Object.values(surahs).sort((a, b) => a.no - b.no);
-
-  return { surahs, surahList, loading };
+  return { surahList, loading };
 }

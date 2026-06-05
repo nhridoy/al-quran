@@ -6,7 +6,6 @@ import {
   IoMusicalNotesOutline,
 } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
-import { useSurahs } from "@/hooks/useSurahs";
 import {
   cacheAllAudioForReciter,
   cacheAllHadithFor,
@@ -16,6 +15,8 @@ import {
   cacheAllTafsirFor,
 } from "@/lib/batchCache";
 import { LANGUAGES, RECITERS, TAFSIR_LIST } from "@/lib/const";
+import { getSurahList, getSurahs } from "@/lib/db";
+
 import { useLocationStore } from "@/store/location";
 import { useSettings } from "@/store/settings";
 import ListSelectStep from "./ListSelectStep";
@@ -41,9 +42,8 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
   const [notificationGranted, setNotificationGranted] = useState(false);
   const [animating, setAnimating] = useState(false);
   const updateSettings = useSettings((s) => s.update);
-  const { refresh } = useSurahs();
-
   useEffect(() => {
+    getSurahList();
     cacheAllJuz();
   }, []);
 
@@ -104,17 +104,9 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
       tafsirId,
       onboardingComplete: true,
     });
-    await refresh();
+    await getSurahs(true);
     onComplete();
-  }, [
-    language,
-    hadithLang,
-    reciterId,
-    tafsirId,
-    updateSettings,
-    refresh,
-    onComplete,
-  ]);
+  }, [language, hadithLang, reciterId, tafsirId, updateSettings, onComplete]);
 
   const requestLocation = useLocationStore((s) => s.request);
 

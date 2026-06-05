@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { getJuzData, getSurahs } from "@/lib/db";
+import { getJuzData } from "@/lib/db";
 import type { ParaSurah } from "@/types";
 
 export function usePara(id: string | undefined) {
@@ -22,18 +22,7 @@ export function usePara(id: string | undefined) {
         return;
       }
       const juzData = await getJuzData(juzNo);
-      const allSurahs = await getSurahs();
-      const result: ParaSurah[] = [];
-      for (let i = 1; i <= 114; i++) {
-        const juzSurah = juzData[String(i)];
-        const fullSurah = allSurahs[String(i)];
-        if (!juzSurah || !fullSurah || juzSurah.verses.length === 0) continue;
-        result.push({
-          ...fullSurah,
-          verses: juzSurah.verses,
-        });
-      }
-      setPara(result);
+      setPara(Object.values(juzData));
     } catch (e) {
       setError(e instanceof Error ? e.message : "Failed to load para");
     } finally {

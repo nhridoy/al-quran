@@ -12,6 +12,8 @@ import {
   clearCache,
   clearHadithCache,
   clearTafsirCache,
+  getSurahList,
+  getSurahs,
 } from "@/lib/db";
 import { removeFromCache } from "@/lib/downloadManager";
 import { useDownloadsStore } from "@/store/downloads";
@@ -68,10 +70,10 @@ export async function handleRefresh(
   reciterId: string,
   tafsirId: string,
   hadithLang: string,
-  refreshSurahs: () => Promise<void>,
 ): Promise<void> {
   await clearCache();
-  await refreshSurahs();
+  await getSurahList();
+  await getSurahs(true);
   await cacheAllJuz();
   await Promise.all([
     cacheAllAudioForReciter(reciterId),

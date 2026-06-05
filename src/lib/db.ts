@@ -6,58 +6,15 @@ import type {
   HadithEdition,
   HadithSearchResult,
   SurahData,
+  SurahHeader,
   TafsirApiResponse,
   VerseAudioUrls,
 } from "@/types";
 import { SURAH_COUNT } from "./const";
 
-async function fetchAllSurahsFromApi(): Promise<Record<string, SurahData>> {
-  const ids = Array.from({ length: SURAH_COUNT }, (_, i) => i + 1);
-  const results = await Promise.allSettled(
-    ids.map((id) => quranApiClient.getSurahVerse(id)),
-  );
-  const map: Record<string, SurahData> = {};
-  for (const result of results) {
-    if (result.status === "fulfilled") {
-      const surah = result.value;
-      map[String(surah.no)] = surah;
-    }
-  }
-  if (Object.keys(map).length === 0) {
-    throw new Error("Failed to fetch any surah data");
-  }
-  return map;
-}
-
-export async function getSurahs(): Promise<Record<string, SurahData>> {
-  const keys = await getKeys("surah-verses");
-  if (keys.length === SURAH_COUNT) {
-    const map: Record<string, SurahData> = {};
-    for (let i = 1; i <= SURAH_COUNT; i++) {
-      const key = String(i);
-      const surah = await getFromStore<SurahData>("surah-verses", key);
-      if (surah) map[key] = surah;
-    }
-    if (Object.keys(map).length === SURAH_COUNT) return map;
-  }
-
-  const fresh = await fetchAllSurahsFromApi();
-  for (const [key, surah] of Object.entries(fresh)) {
-    await putInStore("surah-verses", key, surah);
-  }
-  return fresh;
-}
-
-export async function getSurah(id: string): Promise<SurahData | undefined> {
-  const cached = await getFromStore<SurahData>("surah-verses", id);
-  if (cached) return cached;
-
-  const all = await getSurahs();
-  return all[id];
-}
-
 export async function clearCache(): Promise<void> {
   await clearStore("surah-verses");
+  await clearStore("surah-list");
   await clearStore("surah-audio");
   await clearStore("surah-tafsir");
   await clearStore("juz-verses");
@@ -80,13 +37,64 @@ export async function clearHadithCache(): Promise<void> {
   await clearStore("hadith");
 }
 
-export async function refreshData(): Promise<Record<string, SurahData>> {
-  await clearStore("surah-verses");
-  const fresh = await fetchAllSurahsFromApi();
-  for (const [key, surah] of Object.entries(fresh)) {
-    await putInStore("surah-verses", key, surah);
+export async function getSurahs(
+  force = false,
+): Promise<Record<string, SurahData>> {
+  const keys = await getKeys("surah-verses");
+  const map: Record<string, SurahData> = {};
+
+  if (!force) {
+    for (let i = 1; i <= SURAH_COUNT; i++) {
+      const key = String(i);
+      if (keys.includes(key)) {
+        const surah = await getFromStore<SurahData>("surah-verses", key);
+        if (surah) map[key] = surah;
+      }
+    }
+    if (Object.keys(map).length === SURAH_COUNT) return map;
   }
-  return fresh;
+
+  const missingIds = Array.from({ length: SURAH_COUNT }, (_, i) => i + 1)
+    .filter((id) => !map[String(id)])
+    .map((id) => id);
+
+  const results = await Promise.allSettled(
+    missingIds.map((id) => quranApiClient.getSurahVerse(id)),
+  );
+
+  for (const result of results) {
+    if (result.status === "fulfilled") {
+      const surah = result.value;
+      map[String(surah.no)] = surah;
+      await putInStore("surah-verses", String(surah.no), surah);
+    }
+  }
+
+  if (Object.keys(map).length === 0) {
+    throw new Error("Failed to fetch any surah data");
+  }
+
+  return map;
+}
+
+export async function getSurahList(): Promise<SurahHeader[]> {
+  const cached = await getFromStore<SurahHeader[]>("surah-list", "all");
+  if (cached) return cached;
+
+  const data = await quranApiClient.getSurahList();
+  await putInStore("surah-list", "all", data);
+  return data;
+}
+
+export async function getVerseData(id: string): Promise<SurahData | undefined> {
+  const cached = await getFromStore<SurahData>("surah-verses", id);
+  if (cached) return cached;
+
+  const data = await quranApiClient.getSurahVerse(Number(id));
+  if (data) {
+    await putInStore("surah-verses", String(data.no), data);
+  }
+  return data;
 }
 
 export async function getAudioData(

@@ -1,10 +1,11 @@
 import { type IDBPDatabase, openDB } from "idb";
 
 const DB_NAME = "al-quran";
-const DB_VERSION = 8;
+const DB_VERSION = 9;
 
 const STORE_NAMES = [
   "surah-verses",
+  "surah-list",
   "surah-audio",
   "surah-tafsir",
   "juz-verses",

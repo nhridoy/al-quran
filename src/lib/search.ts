@@ -1,4 +1,4 @@
-import type { SurahData, Verse } from "@/types";
+import type { SurahData, SurahHeader, Verse } from "@/types";
 
 export interface VerseResult {
   surahNo: number;
@@ -9,9 +9,9 @@ export interface VerseResult {
 
 export function searchSurahs(
   query: string,
-  surahList: SurahData[],
+  surahList: SurahHeader[],
   maxResults = 8,
-): SurahData[] {
+): SurahHeader[] {
   if (!query) return [];
   const q = query.toLowerCase();
   return surahList

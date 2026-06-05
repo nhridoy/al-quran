@@ -16,7 +16,6 @@ export default function SurahPage() {
   useEffect(() => {
     if (!scrollToAyah) {
       window.scrollTo(0, 0);
-      return;
     }
   }, [scrollToAyah]);
 

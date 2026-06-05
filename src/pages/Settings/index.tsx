@@ -8,7 +8,6 @@ import PrayerSettings from "@/components/pages/Settings/PrayerSettings";
 import ReadingSettings from "@/components/pages/Settings/ReadingSettings";
 import SaveBar from "@/components/pages/Settings/SaveBar";
 import TafsirSettings from "@/components/pages/Settings/TafsirSettings";
-import { useSurahs } from "@/hooks/useSurahs";
 import { confirm } from "@/lib/confirm";
 import { LANGUAGES, TAFSIR_LIST } from "@/lib/const";
 import {
@@ -22,7 +21,6 @@ import { useSettings } from "@/store/settings";
 export default function Settings() {
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
-  const { refresh } = useSurahs();
   const storeSettings = useSettings();
   const updateSettings = useSettings((s) => s.update);
 
@@ -111,18 +109,13 @@ export default function Settings() {
     if (!ok) return;
     setLoading(true);
     try {
-      await refreshData(
-        local.reciterId,
-        local.tafsirId,
-        local.hadithLang,
-        refresh,
-      );
+      await refreshData(local.reciterId, local.tafsirId, local.hadithLang);
       toast.success("Data refreshed successfully!");
     } catch {
       toast.error("Failed to refresh data");
     }
     setLoading(false);
-  }, [refresh, local.reciterId, local.tafsirId, local.hadithLang]);
+  }, [local.reciterId, local.tafsirId, local.hadithLang]);
 
   const handleDiscard = useCallback(() => {
     setLocal({

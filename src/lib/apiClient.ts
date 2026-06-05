@@ -3,6 +3,7 @@ import type {
   HadithCollection,
   HadithEdition,
   SurahData,
+  SurahHeader,
   TafsirApiResponse,
   VerseAudioUrls,
 } from "@/types";
@@ -11,6 +12,7 @@ type AudioApiResponse = { verses: { audio: VerseAudioUrls }[] };
 type JuzApiResponse = { surah: SurahData[] };
 
 export interface QuranApiClient {
+  getSurahList(): Promise<SurahHeader[]>;
   getSurahVerse(id: number): Promise<SurahData>;
   getSurahAudio(reciterId: string, surahNo: number): Promise<AudioApiResponse>;
   getJuzVerse(juzNo: number): Promise<JuzApiResponse>;
@@ -50,6 +52,9 @@ async function fetchJson<T>(url: string, notFoundFallback?: T): Promise<T> {
 }
 
 export const quranApiClient: QuranApiClient = {
+  getSurahList() {
+    return fetchJson<SurahHeader[]>(`${BASE}/surah/list.min.json`);
+  },
   getSurahVerse(id) {
     return fetchJson<SurahData>(`${BASE}/surah/verse/${id}.min.json`);
   },

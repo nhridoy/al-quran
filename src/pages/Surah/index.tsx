@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { BiChevronRight, BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import SurahItem from "@/components/quran/SurahItem/SurahItem";
-import { useSurahs } from "@/hooks/useSurahs";
+import { useSurahList } from "@/hooks/useSurahList";
 
 function SkeletonRow() {
   return (
@@ -28,7 +28,7 @@ const skeletonRows = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => (
 ));
 
 export default function Surahs() {
-  const { surahList, loading } = useSurahs();
+  const { surahList, loading } = useSurahList();
   const [search, setSearch] = useState("");
 
   useEffect(() => {

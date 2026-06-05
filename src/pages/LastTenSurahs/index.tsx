@@ -2,11 +2,11 @@ import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { PageShell } from "@/components/common/PageShell/PageShell";
 import { Button } from "@/components/ui/button";
-import { useSurahs } from "@/hooks/useSurahs";
+import { useSurahList } from "@/hooks/useSurahList";
 import { LAST_TEN_SURAH_IDS } from "@/lib/const";
 
 export default function LastTenSurahs() {
-  const { surahList, loading } = useSurahs();
+  const { surahList, loading } = useSurahList();
   const navigate = useNavigate();
 
   const surahs = useMemo(
