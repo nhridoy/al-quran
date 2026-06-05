@@ -37,6 +37,7 @@
 | **Asma ul-Husna → Tracker** | Add memorization tracking per name |
 | **Bookmarks** | Placeholder buttons, no logic wired |
 | **Last 10 Surahs** | Add tafsir integration |
+| **Tajweed color-coded Quran** | Feature exists but colours/rules may be inaccurate. Audit against established tajweed rules and fix. Make it a toggle in the surah reader. |
 
 ### 🆕 New Features
 
@@ -54,6 +55,9 @@
 | **99 Names Memorization** | P2 | Track which names you've memorized |
 | **Knowledge Section** | P2 | "Did You Know" cards — short Islamic facts |
 | **Islamic Name Finder** | P3 | Search/explore meanings of Islamic names |
+| **Reading Goals & Reminders** | P3 | Set daily/weekly Quran reading targets with push reminders |
+| **Data Export** | P3 | Export all tracked data (bookmarks, prayers, sadaqah, progress) as JSON |
+| **Language Expansion (EN + BN)** | P3 | Full app UI in both English and Bengali, toggle in settings |
 | **Ramadan Mode** | Seasonal | Auto-detected, special theme, taraweeh tracker |
 | **Mosque Finder** | Future | Map-based nearby mosque locator |
 | **Widget Support** | Future | Mobile home screen widgets (iOS/Android) |
@@ -78,6 +82,7 @@ All lazy-loaded:
 /asma-tracker         ← NEW (reuse existing /asma-ul-husna route)
 /knowledge            ← NEW
 /islamic-names        ← NEW
+/reading-goals        ← NEW
 /ramadan              ← NEW (activated during Ramadan)
 ```
 
@@ -113,6 +118,9 @@ LEARN
 
 MORE
 ├── Downloads
+├── Reading Goals         ← NEW
+├── Language              ← NEW (EN/BN toggle)
+├── Data Export           ← NEW
 ├── Settings
 ├── About / Credits / Donation
 ```
@@ -131,6 +139,10 @@ No new external APIs needed:
 - **Salah guide** → Static content bundled with app.
 - **Islamic names** → Static data file bundled with app.
 - **Knowledge facts** → Static data file bundled with app.
+- **Tajweed rules** → Static rule map per character/word in the mushaf. Audit current implementation against established tajweed standards.
+- **Reading goals** → New IndexedDB store for goals + `Notification API` for reminders.
+- **Data export** → Pure client-side: read all IDB stores → serialize to JSON → trigger file download.
+- **Language (EN/BN)** → i18n JSON files for all UI strings. Use React context for current locale. Settings toggle persists choice.
 
 ---
 
@@ -328,6 +340,38 @@ Integrate into existing `/asma-ul-husna` page:
 - Bookmark list page at `/bookmarks`
 - Organize by surah or date
 
+### 15. Tajweed Color-Coded Quran (fix)
+
+- Audit current colour rules against established tajweed standards (Ghunnah, Idgham, Ikhfa, Izhar, Qalqalah, Madd, etc.)
+- Correct any miscoloured characters
+- Ensure toggle is in the surah reader settings
+- Add a small legend/tooltip so users know what each colour means
+
+### 16. Reading Goals & Reminders
+
+- **Set goals:** Daily verses (e.g. "Read 1 juz per day") or daily minutes (e.g. "Read 10 minutes")
+- **Track progress:** Show today's progress on the homepage and in the Quran reading progress page
+- **Reminders:** Schedule push notification at a chosen time (e.g. "8:00 AM — Read your Quran for today!")
+- **Streak:** Consecutive days hitting the goal
+- **Storage:** IndexedDB store `reading-goals` + `Notification API` with permission prompt
+
+### 17. Data Export
+
+- Single button in Settings → "Export My Data"
+- Collects: bookmarks, prayer records, worship logs, sadaqah entries, reading progress, tasbih counts
+- Serializes to a single JSON file with metadata (export date, app version)
+- Triggers browser download as `pure-data-2026-06-05.json`
+- No import/restore for v1 (read-only export)
+
+### 18. Language Expansion (EN + BN)
+
+- Extract all hardcoded UI strings into JSON files: `src/locales/en.json`, `src/locales/bn.json`
+- Create a `LocaleProvider` React context + `useLocale()` hook
+- Settings page gets a "Language" selector (English / বাংলা)
+- Persist choice in settings store
+- Bengali font already supported (the app shows Arabic + Bengali text already)
+- Scope: all UI chrome (nav, buttons, labels, settings) — Quran/dua/hadith content is already bilingual
+
 ---
 
 ## Future (Post v1)
@@ -382,7 +426,16 @@ Integrate into existing `/asma-ul-husna` page:
 | 3 | **Salah Learning Guide** — static content + step UI |
 | 3 | **Knowledge Section** — fact cards + daily widget |
 | 4 | **Islamic Name Finder** — search + browse |
-| 4 | **Ramadan Mode** — auto-detection + theme + taraweeh tracker |
+| 4 | **Tajweed audit** — review + fix colour rules |
+| 5 | **Ramadan Mode** — auto-detection + theme + taraweeh tracker |
+
+### Phase 5: Goals, Language & Export (Week 5)
+
+| Day | Task |
+|-----|------|
+| 1–2 | **Reading Goals & Reminders** — goal setting UI, notification scheduling, streak, homepage widget |
+| 2–3 | **Language Expansion** — extract all strings, create en.json + bn.json, LocaleProvider, settings toggle |
+| 4 | **Data Export** — collect all IDB stores, serialize, download |
 | 5 | Full app lint, typecheck, test, deploy |
 
 ---
