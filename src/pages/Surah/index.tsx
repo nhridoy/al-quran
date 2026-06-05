@@ -3,6 +3,7 @@ import { BiChevronRight, BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import SurahItem from "@/components/quran/SurahItem/SurahItem";
 import { useSurahList } from "@/hooks/useSurahList";
+import { searchSurahs } from "@/lib/search";
 
 function SkeletonRow() {
   return (
@@ -37,14 +38,7 @@ export default function Surahs() {
 
   const filtered = useMemo(() => {
     if (!search) return surahList;
-    const q = search.toLowerCase();
-    return surahList.filter(
-      (s) =>
-        s.enName.toLowerCase().includes(q) ||
-        s.name.includes(q) ||
-        s.enNameTranslation.toLowerCase().includes(q) ||
-        `${s.no}`.includes(q),
-    );
+    return searchSurahs(search, surahList, surahList.length);
   }, [search, surahList]);
 
   return (
