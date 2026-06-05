@@ -11,6 +11,7 @@ import { BiSearch } from "react-icons/bi";
 import { IoClose } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useDebounce } from "@/hooks/useDebounce";
 import { useSurahs } from "@/hooks/useSurahs";
 import { SEARCH_FOCUS_DELAY } from "@/lib/const";
 import { searchSurahs, searchVerses } from "@/lib/search";
@@ -21,6 +22,7 @@ export default function Search() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [mode, setMode] = useState<"surah" | "verse">("surah");
+  const debouncedQuery = useDebounce(query, 300);
   const { surahList, surahs } = useSurahs();
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
@@ -56,13 +58,13 @@ export default function Search() {
   }, []);
 
   const surahResults = useMemo(
-    () => (mode === "surah" ? searchSurahs(query, surahList) : []),
-    [query, mode, surahList],
+    () => (mode === "surah" ? searchSurahs(debouncedQuery, surahList) : []),
+    [debouncedQuery, mode, surahList],
   );
 
   const verseResults = useMemo(
-    () => (mode === "verse" ? searchVerses(query, surahs) : []),
-    [query, mode, surahs],
+    () => (mode === "verse" ? searchVerses(debouncedQuery, surahs) : []),
+    [debouncedQuery, mode, surahs],
   );
 
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
@@ -200,7 +202,7 @@ export default function Search() {
                     </div>
                   )}
 
-                  {query &&
+                  {debouncedQuery &&
                     (mode === "surah"
                       ? surahResults.length === 0
                       : verseResults.length === 0) && (
