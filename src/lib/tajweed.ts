@@ -99,8 +99,8 @@ export function colorizeArabic(text: string): ColoredSegment[] {
 
   const segments: ColoredSegment[] = [];
   for (let i = 0; i < clusters.length; i++) {
-    const prev = segments[segments.length - 1];
-    if (prev && prev.color === colors[i]) {
+    const prev = segments.at(-1);
+    if (prev?.color === colors[i]) {
       prev.text += clusters[i];
     } else {
       segments.push({ text: clusters[i], color: colors[i] });

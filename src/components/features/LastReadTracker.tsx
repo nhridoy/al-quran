@@ -1,19 +1,17 @@
 import { useEffect } from "react";
-import { useAudioPlayer } from "./AudioPlayer/index";
+import { useAudioStore } from "@/store/audio";
 
 export default function LastReadTracker() {
-  const { currentTrack } = useAudioPlayer();
+  const currentTrack = useAudioStore((s) => s.currentTrack);
+  const setLastRead = useAudioStore((s) => s.setLastRead);
 
   useEffect(() => {
     if (!currentTrack) return;
-    localStorage.setItem(
-      "currentAudioIndex",
-      JSON.stringify({
-        surahName: currentTrack.enName,
-        verseNumber: currentTrack.ayahNumber,
-      }),
-    );
-  }, [currentTrack]);
+    setLastRead({
+      surahName: currentTrack.enName ?? "",
+      verseNumber: currentTrack.ayahNumber ?? 0,
+    });
+  }, [currentTrack, setLastRead]);
 
   return null;
 }

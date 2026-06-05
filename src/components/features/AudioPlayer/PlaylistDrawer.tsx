@@ -1,12 +1,17 @@
-import { useCallback, useEffect, useState } from "react";
-import { useAudioPlayer, useAudioProgress } from "./AudioPlayerContext";
+import { MusicIcon, XIcon } from "lucide-react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { useAudioStore } from "@/store/audio";
+import { formatTime } from "./audioUtils";
 
 export default function PlaylistDrawer() {
   const [leaving, setLeaving] = useState(false);
   const [entered, setEntered] = useState(false);
-  const { showPlaylist, setShowPlaylist, playlist, currentTrack, playTrack } =
-    useAudioPlayer();
-  const { duration, formatTime } = useAudioProgress();
+  const showPlaylist = useAudioStore((s) => s.showPlaylist);
+  const playlist = useAudioStore((s) => s.playlist);
+  const currentTrack = useAudioStore((s) => s.currentTrack);
+  const duration = useAudioStore((s) => s.duration);
+  const setShowPlaylist = useAudioStore((s) => s.setShowPlaylist);
+  const playTrack = useAudioStore((s) => s.playTrack);
 
   useEffect(() => {
     if (showPlaylist) {
@@ -25,24 +30,27 @@ export default function PlaylistDrawer() {
     }, 300);
   }, [setShowPlaylist]);
 
-  if (!showPlaylist && !leaving) return null;
-
-  const grouped = new Map<
-    number,
-    { name: string; enName: string; tracks: typeof playlist }
-  >();
-  for (const track of playlist) {
-    const existing = grouped.get(track.surahNo);
-    if (existing) {
-      existing.tracks.push(track);
-    } else {
-      grouped.set(track.surahNo, {
-        name: track.surahName,
-        enName: track.enName,
-        tracks: [track],
-      });
+  const grouped = useMemo(() => {
+    const map = new Map<
+      number,
+      { name: string; enName: string; tracks: typeof playlist }
+    >();
+    for (const track of playlist) {
+      const existing = map.get(track.surahNo);
+      if (existing) {
+        existing.tracks.push(track);
+      } else {
+        map.set(track.surahNo, {
+          name: track.surahName,
+          enName: track.enName,
+          tracks: [track],
+        });
+      }
     }
-  }
+    return map;
+  }, [playlist]);
+
+  if (!showPlaylist && !leaving) return null;
 
   return (
     <div className="fixed inset-0 z-100 flex items-end justify-center">
@@ -55,7 +63,6 @@ export default function PlaylistDrawer() {
         aria-label="Close playlist overlay"
         title="Close"
       />
-
       <div
         className={`relative w-full max-w-2xl max-h-[75vh] overflow-hidden rounded-t-2xl bg-white shadow-2xl dark:bg-dark-surface-card transition-all duration-300 ease-in-out ${
           leaving || !entered ? "translate-y-full" : "translate-y-0"
@@ -72,37 +79,16 @@ export default function PlaylistDrawer() {
             aria-label="Close playlist"
             title="Close"
           >
-            <svg
-              className="h-5 w-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              aria-hidden="true"
-            >
-              <title>Close</title>
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
+            <XIcon className="h-5 w-5" aria-hidden="true" />
           </button>
         </div>
         <div className="max-h-[calc(75vh-60px)] overflow-y-auto">
           {playlist.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-16 text-text-muted dark:text-dark-text-muted">
-              <svg
+              <MusicIcon
                 className="mb-4 h-16 w-16 opacity-50"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
                 aria-hidden="true"
-              >
-                <title>No tracks</title>
-                <path d="M9 18V5l12-2v13" />
-                <circle cx="6" cy="18" r="3" />
-                <circle cx="18" cy="16" r="3" />
-              </svg>
+              />
               <p className="text-lg">No tracks in playlist</p>
               <p className="mt-1 text-sm">
                 Tap a play button on any ayah to start

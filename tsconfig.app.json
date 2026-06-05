@@ -15,7 +15,14 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
+    /* TypeScript 6 migration */
+    "ignoreDeprecations": "6.0",
+
     /* Linting */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,

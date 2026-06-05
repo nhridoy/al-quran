@@ -1,60 +1,39 @@
-import { create } from "zustand";
-import { getFromStore, putInStore } from "../lib/db";
-import type { AppSettings } from "../types";
-
-const SETTINGS_KEY = "appSettings";
+import { putInStore } from "@/lib/cache";
+import { createPersistedStore } from "@/lib/createStore";
+import type { AppSettings } from "@/types";
 
 const DEFAULTS: AppSettings = {
   theme: "system",
   arabicFontSize: 1.5,
   translationFontSize: 1,
   translationLang: "en",
-  qariId: "alafasy",
+  hadithLang: "en",
+  reciterId: "ar.alafasy",
+  tafsirId: "en-tafsir-maarif-ul-quran",
   prayerCalcMethod: "MWL",
   prayerAsrMethod: "shafii",
   hijriAdjust: 0,
   tajweedEnabled: false,
+  tafsirEnabled: false,
+  onboardingComplete: false,
 };
 
-interface SettingsState extends AppSettings {
-  loaded: boolean;
-  load: () => Promise<void>;
-  update: (partial: Partial<AppSettings>) => Promise<void>;
-  reset: () => Promise<void>;
-}
-
-export const useSettings = create<SettingsState>((set, get) => ({
-  ...DEFAULTS,
-  loaded: false,
-
-  load: async () => {
-    const saved = await getFromStore<AppSettings>("settings", SETTINGS_KEY);
-    if (saved) {
-      set({ ...saved, loaded: true });
-    } else {
-      set({ loaded: true });
-    }
-  },
-
+export const useSettings = createPersistedStore<
+  AppSettings,
+  {
+    update: (partial: Partial<AppSettings>) => Promise<void>;
+    reset: () => Promise<void>;
+  }
+>({ storeName: "settings", key: "appSettings" }, DEFAULTS, (set, get) => ({
   update: async (partial) => {
-    const current = get();
-    const next = { ...current, ...partial };
-    await putInStore("settings", SETTINGS_KEY, {
-      theme: next.theme,
-      arabicFontSize: next.arabicFontSize,
-      translationFontSize: next.translationFontSize,
-      translationLang: next.translationLang,
-      qariId: next.qariId,
-      prayerCalcMethod: next.prayerCalcMethod,
-      prayerAsrMethod: next.prayerAsrMethod,
-      hijriAdjust: next.hijriAdjust,
-      tajweedEnabled: next.tajweedEnabled,
-    } as AppSettings);
+    const state = get();
+    const { loaded, load, update, reset, ...rest } = state;
+    const next = { ...rest, ...partial };
+    await putInStore("settings", "appSettings", next satisfies AppSettings);
     set(partial);
   },
-
   reset: async () => {
-    await putInStore("settings", SETTINGS_KEY, DEFAULTS);
+    await putInStore("settings", "appSettings", { ...DEFAULTS });
     set({ ...DEFAULTS });
   },
 }));

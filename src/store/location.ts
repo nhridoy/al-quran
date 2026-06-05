@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { GEOLOCATION_TIMEOUT } from "@/lib/const";
 
 interface LocationState {
   lat: number | null;
@@ -18,7 +19,7 @@ function getCurrentPosition(): Promise<GeolocationPosition> {
     }
     navigator.geolocation.getCurrentPosition(resolve, reject, {
       enableHighAccuracy: true,
-      timeout: 10000,
+      timeout: GEOLOCATION_TIMEOUT,
     });
   });
 }

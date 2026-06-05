@@ -1,91 +1,61 @@
-import type React from "react";
-import { useCallback, useEffect, useMemo } from "react";
+import { memo, useMemo } from "react";
 import { BiBookmark, BiShareAlt } from "react-icons/bi";
 import { IoPauseOutline, IoPlayOutline } from "react-icons/io5";
-import { QARIS } from "../../../data/qaris";
-import { colorizeArabic } from "../../../lib/tajweed";
-import { useBookmarkStore } from "../../../store/bookmarks";
-import { useSettings } from "../../../store/settings";
-import type { Verse } from "../../../types";
-import type { Track } from "../../features/AudioPlayer";
-import {
-  buildPlaylistFromSurah,
-  useAudioPlayer,
-} from "../../features/AudioPlayer";
+import type { Track } from "@/components/features/AudioPlayer";
+import { Button } from "@/components/ui/button";
+import { useAyahAudio } from "@/hooks/useAyahAudio";
+import { useAyahBookmark } from "@/hooks/useAyahBookmark";
+import { useScrollToCurrentAyah } from "@/hooks/useScrollToCurrentAyah";
+import { useShareAyah } from "@/hooks/useShareAyah";
+import { useVerseTafsir } from "@/hooks/useVerseTafsir";
+import { colorizeArabic } from "@/lib/tajweed";
+import { useSettings } from "@/store/settings";
+import type { SurahData, Verse } from "@/types";
+import AyahTafsir from "./AyahTafsir";
 
 interface AyahsProps {
   ayah: Verse;
-  surah?: { no: number; name: string; enName: string; verses?: Verse[] };
+  surah?: SurahData;
   tracklist?: Track[];
   surahNo?: number;
 }
 
-const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
-  const { currentTrack, isPlaying, togglePlay, setPlaylist } = useAudioPlayer();
-  const bookmarks = useBookmarkStore((s) => s.bookmarks);
-  const addBookmark = useBookmarkStore((s) => s.add);
-  const removeBookmark = useBookmarkStore((s) => s.remove);
-  const qariId = useSettings((s) => s.qariId);
-  const qariBase = QARIS.find((q) => q.id === qariId)?.baseUrl;
+const Ayahs = memo(({ ayah, surah, tracklist, surahNo }: AyahsProps) => {
   const tajweedEnabled = useSettings((s) => s.tajweedEnabled);
+  const tafsirEnabled = useSettings((s) => s.tafsirEnabled);
+  const tafsirId = useSettings((s) => s.tafsirId);
+  const currentSurahNo = surah?.no ?? surahNo ?? 0;
 
-  const coloredSegments = useMemo(
-    () => (tajweedEnabled ? colorizeArabic(ayah.text) : null),
-    [tajweedEnabled, ayah.text],
-  );
-
-  const isCurrentAyah = currentTrack?.totalNumber === ayah.totalNumber;
-  const isThisAyahPlaying = isCurrentAyah && isPlaying;
-
-  const ayahId = `${surah?.no || surahNo}-${ayah.numberInSurah}`;
-  const isBookmarked = bookmarks.some((b) => b.id === ayahId);
-
-  useEffect(() => {
-    if (isCurrentAyah) {
-      document
-        .getElementById(`ayah-${ayah.totalNumber}`)
-        ?.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-  }, [isCurrentAyah, ayah.totalNumber]);
-
-  const handleShare = useCallback(() => {
-    const text = `${ayah.text}\n\n${ayah.enText}\n${ayah.enTextTransliteration}\n\n— ${surah?.enName || ""} ${ayah.numberInSurah}`;
-    if (navigator.share) {
-      navigator.share({ title: "Al Quran", text }).catch(() => {});
-    } else {
-      navigator.clipboard.writeText(text).catch(() => {});
-    }
-  }, [ayah, surah]);
-
-  const handlePlay = useCallback(() => {
-    if (isCurrentAyah) {
-      togglePlay();
-      return;
-    }
-    if (tracklist && surahNo !== undefined) {
-      const idx = tracklist.findIndex(
-        (t) => t.surahNo === surahNo && t.ayahNumber === ayah.numberInSurah,
-      );
-      setPlaylist(tracklist, Math.max(idx, 0));
-      return;
-    }
-    if (!surah?.verses) return;
-    const idx = ayah.numberInSurah - 1;
-    const tracks = buildPlaylistFromSurah(
-      surah as Parameters<typeof buildPlaylistFromSurah>[0],
-      qariBase,
-    );
-    setPlaylist(tracks, idx);
-  }, [
-    isCurrentAyah,
-    togglePlay,
-    tracklist,
-    surahNo,
+  const { isCurrentAyah, isThisAyahPlaying, handlePlay } = useAyahAudio(
     ayah,
     surah,
-    setPlaylist,
-    qariBase,
-  ]);
+    tracklist,
+    surahNo,
+  );
+  const { isBookmarked, handleToggleBookmark } = useAyahBookmark(
+    ayah,
+    surah,
+    surahNo,
+  );
+  const { handleShare } = useShareAyah(ayah, surah);
+  const { data: verseTafsir, loading: tafsirLoading } = useVerseTafsir(
+    tafsirEnabled ? tafsirId : undefined,
+    currentSurahNo,
+    ayah.numberInSurah,
+  );
+
+  useScrollToCurrentAyah(isCurrentAyah, ayah.totalNumber);
+
+  const coloredSegments = useMemo(() => {
+    if (!tajweedEnabled) return null;
+    const segments = colorizeArabic(ayah.text.arText);
+    let offset = 0;
+    return segments.map((seg) => {
+      const key = `${ayah.totalNumber}-off-${offset}`;
+      offset += seg.text.length;
+      return { ...seg, _key: key };
+    });
+  }, [tajweedEnabled, ayah.text.arText, ayah.totalNumber]);
 
   return (
     <div
@@ -116,23 +86,21 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
           </div>
 
           <div className="flex items-center gap-2">
-            <button
-              type="button"
+            <Button
+              variant="secondary-ghost"
+              size="icon"
+              className="rounded-lg"
               onClick={handleShare}
-              className="btn-ghost flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg"
               aria-label="Share"
               title="Share"
             >
               <BiShareAlt className="text-base" />
-            </button>
-            <button
-              type="button"
+            </Button>
+            <Button
+              variant={isThisAyahPlaying ? "gradient" : "secondary-ghost"}
+              size="icon"
+              className={`rounded-lg ${isThisAyahPlaying ? "shadow-md" : ""}`}
               onClick={handlePlay}
-              className={`flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg transition-all active:scale-90 ${
-                isThisAyahPlaying
-                  ? "bg-linear-to-br from-primary to-secondary text-white shadow-md"
-                  : "btn-ghost"
-              }`}
               aria-label={isThisAyahPlaying ? "Pause" : "Play"}
               title={
                 isThisAyahPlaying ? "Pause" : `Play ayah ${ayah.numberInSurah}`
@@ -143,37 +111,23 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
               ) : (
                 <IoPlayOutline className="text-base" />
               )}
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                if (isBookmarked) {
-                  removeBookmark(ayahId);
-                } else if (surah || surahNo) {
-                  addBookmark({
-                    id: ayahId,
-                    surahNo: surah?.no ?? surahNo ?? 0,
-                    ayahNo: ayah.numberInSurah,
-                    surahName: surah?.name || "",
-                    enName: surah?.enName || "",
-                    arabicText: ayah.text,
-                    enText: ayah.enText,
-                    bnText: ayah.bnText,
-                  });
-                }
-              }}
-              className={`flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg transition-all active:scale-90 ${
+            </Button>
+            <Button
+              variant={isBookmarked ? "gradient" : "secondary-ghost"}
+              size="icon"
+              className={`rounded-lg ${
                 isBookmarked
-                  ? "bg-linear-to-br from-primary/10 to-secondary/10 text-secondary dark:from-primary/20 dark:to-secondary/20 dark:text-secondary-light"
-                  : "btn-ghost"
+                  ? "from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20 text-secondary dark:text-secondary-light"
+                  : ""
               }`}
+              onClick={handleToggleBookmark}
               aria-label={isBookmarked ? "Remove bookmark" : "Bookmark"}
               title={isBookmarked ? "Remove bookmark" : "Bookmark"}
             >
               <BiBookmark
                 className={`text-base ${isBookmarked ? "fill-current" : ""}`}
               />
-            </button>
+            </Button>
           </div>
         </div>
 
@@ -181,7 +135,7 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
           <p className="font-arabic mb-3 text-right text-2xl leading-loose md:text-3xl">
             {coloredSegments.map((seg) => (
               <span
-                key={`${seg.text}-${seg.color ?? "none"}`}
+                key={seg._key}
                 className={
                   seg.color
                     ? `tajweed-${seg.color}`
@@ -194,25 +148,29 @@ const Ayahs: React.FC<AyahsProps> = ({ ayah, surah, tracklist, surahNo }) => {
           </p>
         ) : (
           <p className="font-arabic mb-3 text-right text-2xl leading-loose text-text-primary dark:text-dark-text-primary md:text-3xl">
-            {ayah.text}
+            {ayah.text.arText}
           </p>
         )}
 
         <p className="mb-2 text-right text-sm italic text-text-muted dark:text-dark-text-muted">
-          {ayah.enTextTransliteration}
+          {ayah.text.enTextTransliteration}
         </p>
 
         <div className="space-y-1.5 border-t border-border pt-3 dark:border-dark-border">
           <p className="text-sm leading-relaxed text-text-primary dark:text-dark-text-primary">
-            {ayah.enText}
+            {ayah.text.enText}
           </p>
           <p className="text-sm leading-relaxed text-text-secondary dark:text-dark-text-secondary">
-            {ayah.bnText}
+            {ayah.text.bnText}
           </p>
         </div>
+
+        {tafsirEnabled && (
+          <AyahTafsir loading={tafsirLoading} data={verseTafsir} />
+        )}
       </div>
     </div>
   );
-};
+});
 
 export default Ayahs;

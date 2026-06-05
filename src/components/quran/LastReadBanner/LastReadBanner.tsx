@@ -1,21 +1,10 @@
-import type React from "react";
-import { useEffect, useState } from "react";
+import { memo } from "react";
 import { FaQuran } from "react-icons/fa";
 import { MdMenuBook } from "react-icons/md";
+import { useAudioStore } from "@/store/audio";
 
-interface ReadStatus {
-  surahName: string;
-  verseNumber: number;
-}
-
-export const LastReadBanner: React.FC = () => {
-  const [readStatus, setReadStatus] = useState<ReadStatus | null>(null);
-  useEffect(() => {
-    const currentAudioIndex: ReadStatus | null = JSON.parse(
-      localStorage.getItem("currentAudioIndex") || "null",
-    );
-    setReadStatus(currentAudioIndex);
-  }, []);
+const LastReadBanner = memo(function LastReadBanner() {
+  const lastRead = useAudioStore((s) => s.lastRead);
 
   return (
     <div className="relative mx-4 mb-6 overflow-hidden rounded-2xl bg-linear-to-br from-primary via-primary-light to-secondary p-6 text-white shadow-xl shadow-primary/20 md:mx-6">
@@ -32,11 +21,11 @@ export const LastReadBanner: React.FC = () => {
           </div>
           <div>
             <p className="text-base font-semibold">
-              {readStatus ? readStatus.surahName : "No reading history"}
+              {lastRead ? lastRead.surahName : "No reading history"}
             </p>
             <p className="text-sm text-white/70">
-              {readStatus
-                ? `Ayah ${readStatus.verseNumber}`
+              {lastRead
+                ? `Ayah ${lastRead.verseNumber}`
                 : "Start reading to track progress"}
             </p>
           </div>
@@ -47,4 +36,6 @@ export const LastReadBanner: React.FC = () => {
       </div>
     </div>
   );
-};
+});
+
+export default LastReadBanner;

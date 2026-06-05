@@ -12,7 +12,6 @@ registerSW({
   onOfflineReady() {
     console.log("Content cached for offline use.");
   },
-  // immediate: true,
 });
 
 const rootElement = document.getElementById("root");

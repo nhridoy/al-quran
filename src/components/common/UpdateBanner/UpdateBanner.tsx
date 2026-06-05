@@ -1,9 +1,9 @@
 import { useRegisterSW } from "virtual:pwa-register/react";
 import { MdClose, MdRefresh } from "react-icons/md";
+import { Button } from "@/components/ui/button";
 
 export default function UpdateBanner() {
   const {
-    // offlineReady: [offlineReady, setOfflineReady],
     needRefresh: [needRefresh, setNeedRefresh],
     updateServiceWorker,
   } = useRegisterSW();
@@ -16,22 +16,23 @@ export default function UpdateBanner() {
         <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary whitespace-nowrap">
           New version available
         </span>
-        <button
-          type="button"
+        <Button
+          variant="default"
+          className="flex items-center gap-1 rounded-full px-3 py-1 text-xs h-auto"
           onClick={() => updateServiceWorker(true)}
-          className="flex items-center gap-1 rounded-full bg-primary px-3 py-1 text-xs font-medium text-white transition-all hover:bg-primary-dark active:scale-95"
         >
           <MdRefresh className="size-3.5" />
           Refresh
-        </button>
-        <button
-          type="button"
+        </Button>
+        <Button
+          variant="secondary-ghost"
+          size="icon-xs"
+          className="rounded-full"
           onClick={() => setNeedRefresh(false)}
-          className="rounded-full p-0.5 text-text-muted transition-colors hover:bg-surface-alt dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
           aria-label="Dismiss"
         >
           <MdClose className="size-3.5" />
-        </button>
+        </Button>
       </div>
     </div>
   );

@@ -3,8 +3,43 @@ import { BiChevronRight } from "react-icons/bi";
 import { CgSpinnerTwoAlt } from "react-icons/cg";
 import { FaQuran } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useSurahs } from "../../../hooks/useSurahs";
+import { useSurahs } from "@/hooks/useSurahs";
 import SplashImage from "../../features/SplashImage/SplashImage";
+
+function CtaButton({ loading }: { loading: boolean }) {
+  return (
+    <Link
+      to="/surah"
+      className={`group flex items-center gap-2 rounded-xl font-semibold text-white shadow-lg shadow-primary/20 transition-all duration-300 px-10 py-3.5 text-base ${
+        loading
+          ? "cursor-not-allowed opacity-60"
+          : "cursor-pointer bg-linear-to-r from-primary to-secondary hover:shadow-xl hover:shadow-primary/30 active:scale-[0.98]"
+      }`}
+    >
+      {loading ? (
+        <span className="flex items-center gap-2">
+          <CgSpinnerTwoAlt className="animate-spin" />
+          Loading Surahs...
+        </span>
+      ) : (
+        <span className="flex items-center gap-2">
+          Start Reading
+          <BiChevronRight className="text-lg transition-transform duration-300 group-hover:translate-x-1" />
+        </span>
+      )}
+    </Link>
+  );
+}
+
+function StatsRow() {
+  return (
+    <div className="flex items-center gap-2 text-xs text-text-muted dark:text-dark-text-muted">
+      <div className="size-1 rounded-full bg-text-muted" />
+      <span>114 Surahs &middot; 30 Paras</span>
+      <div className="size-1 rounded-full bg-text-muted" />
+    </div>
+  );
+}
 
 export default function Splash() {
   const { loading } = useSurahs();
@@ -20,7 +55,7 @@ export default function Splash() {
         <div className="absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-secondary/5 blur-[120px] dark:bg-secondary/10" />
       </div>
 
-      {/* Mobile layout: centered column */}
+      {/* Mobile layout */}
       <div className="relative z-10 flex flex-1 flex-col items-center justify-between px-6 py-8 md:hidden">
         <div className="flex flex-col items-center gap-2">
           <div className="flex items-center justify-center rounded-xl bg-linear-to-br from-primary to-secondary shadow-lg shadow-primary/20 size-12">
@@ -46,36 +81,12 @@ export default function Splash() {
         </div>
 
         <div className="flex flex-col items-center gap-3">
-          <Link
-            to="/surah"
-            className={`group flex items-center gap-2 rounded-xl font-semibold text-white shadow-lg shadow-primary/20 transition-all duration-300 px-10 py-3.5 text-base ${
-              loading
-                ? "cursor-not-allowed opacity-60"
-                : "cursor-pointer bg-linear-to-r from-primary to-secondary hover:shadow-xl hover:shadow-primary/30 active:scale-[0.98]"
-            }`}
-          >
-            {loading ? (
-              <span className="flex items-center gap-2">
-                <CgSpinnerTwoAlt className="animate-spin" />
-                Loading Surahs...
-              </span>
-            ) : (
-              <span className="flex items-center gap-2">
-                Start Reading
-                <BiChevronRight className="text-lg transition-transform duration-300 group-hover:translate-x-1" />
-              </span>
-            )}
-          </Link>
-
-          <div className="flex items-center gap-2 text-xs text-text-muted dark:text-dark-text-muted">
-            <div className="size-1 rounded-full bg-text-muted" />
-            <span>114 Surahs &middot; 30 Paras</span>
-            <div className="size-1 rounded-full bg-text-muted" />
-          </div>
+          <CtaButton loading={loading} />
+          <StatsRow />
         </div>
       </div>
 
-      {/* Desktop layout: split left/right with fixed container */}
+      {/* Desktop layout */}
       <div className="relative z-10 mx-auto hidden w-full max-w-6xl px-12 md:flex md:h-screen md:items-center md:justify-around">
         <div className="flex flex-col items-center gap-3">
           <div className="flex items-center justify-center rounded-xl bg-linear-to-br from-primary to-secondary shadow-lg shadow-primary/20 size-14">
@@ -89,7 +100,7 @@ export default function Splash() {
               Full Quran with Audio Player
             </p>
           </div>
-          <div className="mt-3 rounded-2xl bg-linear-to-br from-primary/4 via-secondary/4 to-primary/4 px-6 py-5 dark:from-primary/6 dark:via-secondary/4 dark:to-primary/6">
+          <div className="rounded-2xl bg-linear-to-br from-primary/4 via-secondary/4 to-primary/4 px-6 py-5 dark:from-primary/6 dark:via-secondary/4 dark:to-primary/6">
             <SplashImage />
           </div>
           <p className="font-arabic leading-relaxed text-primary dark:text-secondary-light text-2xl">
@@ -99,32 +110,8 @@ export default function Splash() {
 
         <div className="flex w-2/5 justify-center py-12 pl-12">
           <div className="flex flex-col items-center gap-3">
-            <Link
-              to="/surah"
-              className={`group flex items-center gap-2 rounded-xl font-semibold text-white shadow-lg shadow-primary/20 transition-all duration-300 px-10 py-3.5 text-base ${
-                loading
-                  ? "cursor-not-allowed opacity-60"
-                  : "cursor-pointer bg-linear-to-r from-primary to-secondary hover:shadow-xl hover:shadow-primary/30 active:scale-[0.98]"
-              }`}
-            >
-              {loading ? (
-                <span className="flex items-center gap-2">
-                  <CgSpinnerTwoAlt className="animate-spin" />
-                  Loading Surahs...
-                </span>
-              ) : (
-                <span className="flex items-center gap-2">
-                  Start Reading
-                  <BiChevronRight className="text-lg transition-transform duration-300 group-hover:translate-x-1" />
-                </span>
-              )}
-            </Link>
-
-            <div className="flex items-center gap-2 text-xs text-text-muted dark:text-dark-text-muted">
-              <div className="size-1 rounded-full bg-text-muted" />
-              <span>114 Surahs &middot; 30 Paras</span>
-              <div className="size-1 rounded-full bg-text-muted" />
-            </div>
+            <CtaButton loading={loading} />
+            <StatsRow />
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import { MdOutlineFileDownload } from "react-icons/md";
+import { Button } from "@/components/ui/button";
 
 interface BeforeInstallPromptEvent extends Event {
   readonly platforms?: string[];
@@ -167,24 +168,25 @@ export default function InstallPrompt() {
         </div>
       )}
       <div className="group flex items-center gap-2 rounded-full bg-surface/90 px-4 py-2.5 shadow-lg backdrop-blur-xl ring-1 ring-border dark:bg-dark-surface/90 dark:ring-dark-border transition-all duration-300 hover:shadow-xl hover:scale-105 active:scale-95">
-        <button
-          type="button"
+        <Button
+          variant="secondary-ghost"
+          className="h-auto gap-2 px-0"
           onClick={handleInstall}
-          className="flex items-center gap-2"
         >
           <MdOutlineFileDownload className="size-5 text-primary dark:text-secondary-light" />
           <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary whitespace-nowrap">
             Install App
           </span>
-        </button>
-        <button
-          type="button"
+        </Button>
+        <Button
+          variant="secondary-ghost"
+          size="icon-xs"
+          className="rounded-full"
           onClick={handleDismiss}
-          className="ml-1 rounded-full p-0.5 text-text-muted transition-colors hover:bg-surface-alt dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
           aria-label="Dismiss install prompt"
         >
           <IoMdClose className="size-3.5" />
-        </button>
+        </Button>
       </div>
     </div>
   );

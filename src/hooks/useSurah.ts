@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { getSurah } from "../lib/db";
-import type { SurahData } from "../types";
+import { getVerseData } from "@/lib/db";
+import type { SurahData } from "@/types";
 
 export function useSurah(id: string | undefined) {
   const [surah, setSurah] = useState<SurahData | null>(null);
@@ -13,7 +13,7 @@ export function useSurah(id: string | undefined) {
     }
     let cancelled = false;
     setLoading(true);
-    getSurah(id)
+    getVerseData(id)
       .then((data) => {
         if (!cancelled) {
           setSurah(data ?? null);

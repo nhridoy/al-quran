@@ -10,28 +10,26 @@ import { createPortal } from "react-dom";
 import { BiSearch } from "react-icons/bi";
 import { IoClose } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
-import { useSurahs } from "../../../hooks/useSurahs";
-import type { Verse } from "../../../types";
-import SurahList from "../../quran/SurahItem/SurahItem";
-
-interface VerseResult {
-  surahNo: number;
-  surahName: string;
-  enName: string;
-  verse: Verse;
-}
+import { Button } from "@/components/ui/button";
+import { useDebounce } from "@/hooks/useDebounce";
+import { useSurahs } from "@/hooks/useSurahs";
+import { SEARCH_FOCUS_DELAY } from "@/lib/const";
+import { searchSurahs, searchVerses } from "@/lib/search";
+import SurahItem from "../../quran/SurahItem/SurahItem";
+import VerseResultItem from "./VerseResultItem";
 
 export default function Search() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [mode, setMode] = useState<"surah" | "verse">("surah");
+  const debouncedQuery = useDebounce(query, 300);
   const { surahList, surahs } = useSurahs();
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (open) {
-      setTimeout(() => inputRef.current?.focus(), 100);
+      setTimeout(() => inputRef.current?.focus(), SEARCH_FOCUS_DELAY);
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
@@ -41,60 +39,33 @@ export default function Search() {
     };
   }, [open]);
 
+  const handlerRef = useRef<(e: KeyboardEvent) => void>(() => {});
+  handlerRef.current = (e: KeyboardEvent) => {
+    if (e.key === "Escape") {
+      setOpen(false);
+      setQuery("");
+    }
+    if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+      e.preventDefault();
+      setOpen(true);
+    }
+  };
+
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setOpen(false);
-        setQuery("");
-      }
-      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
-        e.preventDefault();
-        setOpen(true);
-      }
-    };
+    const handler = (e: KeyboardEvent) => handlerRef.current(e);
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
   }, []);
 
-  const surahResults = useMemo(() => {
-    if (!query || mode !== "surah") return [];
-    const q = query.toLowerCase();
-    return surahList
-      .filter(
-        (surah) =>
-          surah.enName.toLowerCase().includes(q) ||
-          surah.name.toLowerCase().includes(q) ||
-          surah.enNameTranslation.toLowerCase().includes(q) ||
-          surah.bnNameTranslation.toLowerCase().includes(q) ||
-          `${surah.no}`.includes(q),
-      )
-      .slice(0, 8);
-  }, [query, mode, surahList]);
+  const surahResults = useMemo(
+    () => (mode === "surah" ? searchSurahs(debouncedQuery, surahList) : []),
+    [debouncedQuery, mode, surahList],
+  );
 
-  const verseResults = useMemo(() => {
-    if (!query || mode !== "verse") return [];
-    const q = query.toLowerCase();
-    const results: VerseResult[] = [];
-    for (const surah of Object.values(surahs)) {
-      for (const verse of surah.verses) {
-        if (
-          verse.text.toLowerCase().includes(q) ||
-          verse.enText.toLowerCase().includes(q) ||
-          verse.bnText.toLowerCase().includes(q)
-        ) {
-          results.push({
-            surahNo: surah.no,
-            surahName: surah.name,
-            enName: surah.enName,
-            verse,
-          });
-          if (results.length >= 30) break;
-        }
-      }
-      if (results.length >= 30) break;
-    }
-    return results;
-  }, [query, mode, surahs]);
+  const verseResults = useMemo(
+    () => (mode === "verse" ? searchVerses(debouncedQuery, surahs) : []),
+    [debouncedQuery, mode, surahs],
+  );
 
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
@@ -113,10 +84,10 @@ export default function Search() {
 
   return (
     <>
-      <button
-        type="button"
+      <Button
+        variant="secondary-ghost"
+        className="gap-2 rounded-xl px-3 py-2 h-auto"
         onClick={() => setOpen(true)}
-        className="btn-ghost flex cursor-pointer items-center gap-2 rounded-xl px-3 py-2 text-sm"
       >
         <BiSearch className="text-lg" />
         <span className="hidden text-text-muted dark:text-dark-text-muted md:inline">
@@ -125,7 +96,7 @@ export default function Search() {
         <kbd className="hidden rounded-md border border-border bg-surface-alt px-1.5 py-0.5 text-[10px] font-medium text-text-muted dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-muted md:inline">
           ⌘K
         </kbd>
-      </button>
+      </Button>
 
       {open &&
         createPortal(
@@ -140,7 +111,7 @@ export default function Search() {
               <div className="overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/5 dark:bg-dark-surface-card dark:ring-white/10">
                 <div className="border-b border-border dark:border-dark-border">
                   <div className="flex items-center gap-3 px-4">
-                    <BiSearch className="text-lg text-text-muted" />
+                    <BiSearch className="text-lg shrink-0 text-text-muted" />
                     <input
                       ref={inputRef}
                       onChange={handleChange}
@@ -157,6 +128,7 @@ export default function Search() {
                       <button
                         type="button"
                         onClick={() => setQuery("")}
+                        aria-label="Clear search"
                         className="cursor-pointer rounded-lg p-1 text-text-muted hover:bg-surface-alt hover:text-text-primary dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
                       >
                         <IoClose className="text-lg" />
@@ -212,7 +184,7 @@ export default function Search() {
                           onClick={handleClose}
                           className="block rounded-xl transition-colors hover:bg-surface-alt dark:hover:bg-dark-surface-alt"
                         >
-                          <SurahList data={surah} />
+                          <SurahItem data={surah} />
                         </Link>
                       ))}
                     </div>
@@ -221,32 +193,16 @@ export default function Search() {
                   {mode === "verse" && verseResults.length > 0 && (
                     <div className="space-y-0.5">
                       {verseResults.map((r) => (
-                        <button
+                        <VerseResultItem
                           key={`${r.surahNo}-${r.verse.numberInSurah}`}
-                          type="button"
-                          onClick={() =>
-                            handleVerseClick(r.surahNo, r.verse.numberInSurah)
-                          }
-                          className="w-full cursor-pointer rounded-xl p-3 text-left transition-colors hover:bg-surface-alt dark:hover:bg-dark-surface-alt"
-                        >
-                          <p className="font-arabic text-right text-lg leading-relaxed text-text-primary dark:text-dark-text-primary">
-                            {r.verse.text}
-                          </p>
-                          <p className="mt-1 text-xs italic text-text-muted dark:text-dark-text-muted line-clamp-1">
-                            {r.verse.enText}
-                          </p>
-                          <p className="text-[11px] text-text-muted/60 dark:text-dark-text-muted/60 line-clamp-1">
-                            {r.verse.bnText}
-                          </p>
-                          <p className="mt-1 text-[11px] font-medium text-secondary dark:text-secondary-light">
-                            {r.enName} — Ayah {r.verse.numberInSurah}
-                          </p>
-                        </button>
+                          result={r}
+                          onClick={handleVerseClick}
+                        />
                       ))}
                     </div>
                   )}
 
-                  {query &&
+                  {debouncedQuery &&
                     (mode === "surah"
                       ? surahResults.length === 0
                       : verseResults.length === 0) && (

@@ -1,68 +1,10 @@
-import {
-  AiOutlineCloudDownload,
-  AiOutlineGift,
-  AiOutlineHeart,
-} from "react-icons/ai";
-import { BiBook, BiBookmark } from "react-icons/bi";
-import { BsInfoCircle } from "react-icons/bs";
-import { FaBookOpen, FaQuran, FaStar } from "react-icons/fa";
-import { IoSettingsOutline } from "react-icons/io5";
-import { MdAccessTime, MdExplore, MdLoop, MdMenuBook } from "react-icons/md";
+import { memo } from "react";
+import { FaQuran } from "react-icons/fa";
 import { NavLink, useLocation } from "react-router-dom";
+import { isActiveMatch, sidebarSections } from "@/lib/navigation";
 import HijriDate from "../../features/HijriDate/HijriDate";
 
-interface NavItem {
-  to: string;
-  icon: React.ComponentType<{ className?: string }>;
-  label: string;
-}
-
-interface NavSection {
-  label: string;
-  items: NavItem[];
-}
-
-const navSections: NavSection[] = [
-  {
-    label: "QURAN",
-    items: [
-      { to: "/surah", icon: FaBookOpen, label: "Surah" },
-      { to: "/para", icon: MdMenuBook, label: "Para" },
-      { to: "/last-ten-surahs", icon: FaBookOpen, label: "Last 10 Surahs" },
-      { to: "/bookmarks", icon: BiBookmark, label: "Bookmarks" },
-    ],
-  },
-  {
-    label: "TOOLS",
-    items: [
-      { to: "/prayer-times", icon: MdAccessTime, label: "Prayer Times" },
-      { to: "/qibla", icon: MdExplore, label: "Qibla Finder" },
-      { to: "/asma-ul-husna", icon: FaStar, label: "Asma ul-Husna" },
-      { to: "/duas", icon: MdMenuBook, label: "Duas" },
-      { to: "/hadith", icon: BiBook, label: "Hadith" },
-      { to: "/tasbih", icon: MdLoop, label: "Tasbih" },
-      { to: "/downloads", icon: AiOutlineCloudDownload, label: "Downloads" },
-    ],
-  },
-  {
-    label: "MORE",
-    items: [
-      { to: "/settings", icon: IoSettingsOutline, label: "Settings" },
-      { to: "/about", icon: BsInfoCircle, label: "About" },
-      { to: "/credits", icon: AiOutlineHeart, label: "Credits" },
-      { to: "/donation", icon: AiOutlineGift, label: "Donation" },
-    ],
-  },
-];
-
-function isActiveMatch(pathname: string, to: string): boolean {
-  if (pathname === to) return true;
-  if (to === "/surah" && pathname.startsWith("/surah")) return true;
-  if (to === "/para" && pathname.startsWith("/para")) return true;
-  return false;
-}
-
-export default function Sidebar() {
+const Sidebar = memo(function Sidebar() {
   const location = useLocation();
 
   return (
@@ -82,7 +24,7 @@ export default function Sidebar() {
       </div>
 
       <nav className="flex-1 space-y-5 overflow-y-auto px-3 pb-4">
-        {navSections.map((section) => (
+        {sidebarSections.map((section) => (
           <div key={section.label}>
             <p className="mb-1.5 px-4 text-[10px] font-semibold uppercase tracking-widest text-text-muted dark:text-dark-text-muted">
               {section.label}
@@ -126,4 +68,6 @@ export default function Sidebar() {
       </div>
     </aside>
   );
-}
+});
+
+export default Sidebar;
