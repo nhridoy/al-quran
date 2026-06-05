@@ -22,6 +22,19 @@ export async function cacheAllHadithFor(
       e.availableLanguages.includes("en"),
   );
 
+  // Cache books metadata for every edition upfront (language-neutral)
+  await Promise.allSettled(
+    filteredEditions.map(async (edition) => {
+      const booksKey = `books-${edition.slug}`;
+      const cached = await getFromStore("hadith", booksKey);
+      if (cached) return;
+      try {
+        const books = await quranApiClient.getBooksOfEdition(edition.slug);
+        await putInStore("hadith", booksKey, books);
+      } catch {}
+    }),
+  );
+
   let total = 0;
   let done = 0;
 
@@ -60,20 +73,14 @@ export async function cacheAllHadithFor(
           await putInStore("hadith", key, data);
         } catch {
           if (lang !== "en") {
-            const fallbackKey = `hadith-${slug}-${bookIndex}-en`;
-            const fallbackCached = await getFromStore("hadith", fallbackKey);
-            if (!fallbackCached) {
-              try {
-                const fallbackData = await quranApiClient.getHadithsOfBook(
-                  slug,
-                  bookIndex,
-                  "en",
-                );
-                await putInStore("hadith", fallbackKey, fallbackData);
-              } catch {
-                // Skip failed fetches
-              }
-            }
+            try {
+              const fallbackData = await quranApiClient.getHadithsOfBook(
+                slug,
+                bookIndex,
+                "en",
+              );
+              await putInStore("hadith", key, fallbackData);
+            } catch {}
           }
         }
         done++;
