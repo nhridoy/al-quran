@@ -4,49 +4,94 @@
   "graph": {},
   "nodes": [
     {
+      "label": "StepWelcome.tsx",
+      "file_type": "code",
+      "source_file": "src/components/features/Onboarding/StepWelcome.tsx",
+      "source_location": "L1",
+      "id": "onboarding_stepwelcome",
+      "community": 58,
+      "norm_label": "stepwelcome.tsx"
+    },
+    {
+      "label": "StepProps",
+      "file_type": "code",
+      "source_file": "src/components/features/Onboarding/StepWelcome.tsx",
+      "source_location": "L5",
+      "id": "onboarding_stepwelcome_stepprops",
+      "community": 58,
+      "norm_label": "stepprops"
+    },
+    {
+      "label": "FloatingOrbs()",
+      "file_type": "code",
+      "source_file": "src/components/features/Onboarding/StepWelcome.tsx",
+      "source_location": "L10",
+      "id": "onboarding_stepwelcome_floatingorbs",
+      "community": 58,
+      "norm_label": "floatingorbs()"
+    },
+    {
+      "label": "GlowingQuran()",
+      "file_type": "code",
+      "source_file": "src/components/features/Onboarding/StepWelcome.tsx",
+      "source_location": "L32",
+      "id": "onboarding_stepwelcome_glowingquran",
+      "community": 58,
+      "norm_label": "glowingquran()"
+    },
+    {
+      "label": "StepWelcome()",
+      "file_type": "code",
+      "source_file": "src/components/features/Onboarding/StepWelcome.tsx",
+      "source_location": "L63",
+      "id": "onboarding_stepwelcome_stepwelcome",
+      "community": 58,
+      "norm_label": "stepwelcome()"
+    },
+    {
       "label": "ListSelectStep.tsx",
       "file_type": "code",
       "source_file": "src/components/features/Onboarding/ListSelectStep.tsx",
       "source_location": "L1",
-      "id": "onboarding_listselectstep",
       "community": 58,
-      "norm_label": "listselectstep.tsx"
+      "norm_label": "listselectstep.tsx",
+      "id": "onboarding_listselectstep"
     },
     {
       "label": "ListItem",
       "file_type": "code",
       "source_file": "src/components/features/Onboarding/ListSelectStep.tsx",
       "source_location": "L5",
-      "id": "onboarding_listselectstep_listitem",
       "community": 58,
-      "norm_label": "listitem"
+      "norm_label": "listitem",
+      "id": "onboarding_listselectstep_listitem"
     },
     {
       "label": "ListSelectStepProps",
       "file_type": "code",
       "source_file": "src/components/features/Onboarding/ListSelectStep.tsx",
       "source_location": "L12",
-      "id": "onboarding_listselectstep_listselectstepprops",
       "community": 58,
-      "norm_label": "listselectstepprops"
+      "norm_label": "listselectstepprops",
+      "id": "onboarding_listselectstep_listselectstepprops"
     },
     {
       "label": "SelectedCheck()",
       "file_type": "code",
       "source_file": "src/components/features/Onboarding/ListSelectStep.tsx",
       "source_location": "L22",
-      "id": "onboarding_listselectstep_selectedcheck",
       "community": 58,
-      "norm_label": "selectedcheck()"
+      "norm_label": "selectedcheck()",
+      "id": "onboarding_listselectstep_selectedcheck"
     },
     {
       "label": "ListSelectStep()",
       "file_type": "code",
       "source_file": "src/components/features/Onboarding/ListSelectStep.tsx",
       "source_location": "L39",
-      "id": "onboarding_listselectstep_listselectstep",
       "community": 58,
-      "norm_label": "listselectstep()"
+      "norm_label": "listselectstep()",
+      "id": "onboarding_listselectstep_listselectstep"
     },
     {
       "label": "StepLocation.tsx",
@@ -1628,7 +1673,7 @@
       "file_type": "code",
       "source_file": "src/components/common/PaginationBar.tsx",
       "source_location": "L1",
-      "community": 18,
+      "community": 155,
       "norm_label": "paginationbar.tsx",
       "id": "common_paginationbar"
     },
@@ -1637,7 +1682,7 @@
       "file_type": "code",
       "source_file": "src/components/common/PaginationBar.tsx",
       "source_location": "L4",
-      "community": 18,
+      "community": 155,
       "norm_label": "paginationbarprops",
       "id": "common_paginationbar_paginationbarprops"
     },
@@ -1646,7 +1691,7 @@
       "file_type": "code",
       "source_file": "src/components/common/PaginationBar.tsx",
       "source_location": "L11",
-      "community": 18,
+      "community": 155,
       "norm_label": "paginationbar()",
       "id": "common_paginationbar_paginationbar"
     },
@@ -1894,24 +1939,6 @@
       "id": "onboarding_stepdone_stepdone"
     },
     {
-      "label": "StepWelcome.tsx",
-      "file_type": "code",
-      "source_file": "src/components/features/Onboarding/StepWelcome.tsx",
-      "source_location": "L1",
-      "community": 58,
-      "norm_label": "stepwelcome.tsx",
-      "id": "onboarding_stepwelcome"
-    },
-    {
-      "label": "StepWelcome()",
-      "file_type": "code",
-      "source_file": "src/components/features/Onboarding/StepWelcome.tsx",
-      "source_location": "L5",
-      "community": 58,
-      "norm_label": "stepwelcome()",
-      "id": "onboarding_stepwelcome_stepwelcome"
-    },
-    {
       "label": "PrayerGrid.tsx",
       "file_type": "code",
       "source_file": "src/components/features/PrayerGrid/PrayerGrid.tsx",
@@ -1979,7 +2006,7 @@
       "file_type": "code",
       "source_file": "src/components/features/Splash/Splash.tsx",
       "source_location": "L1",
-      "community": 67,
+      "community": 120,
       "norm_label": "splash.tsx",
       "id": "splash_splash"
     },
@@ -1988,7 +2015,7 @@
       "file_type": "code",
       "source_file": "src/components/features/Splash/Splash.tsx",
       "source_location": "L44",
-      "community": 67,
+      "community": 120,
       "norm_label": "griditem",
       "id": "splash_splash_griditem"
     },
@@ -1997,7 +2024,7 @@
       "file_type": "code",
       "source_file": "src/components/features/Splash/Splash.tsx",
       "source_location": "L50",
-      "community": 67,
+      "community": 120,
       "norm_label": "grid_items",
       "id": "splash_splash_grid_items"
     },
@@ -2015,7 +2042,7 @@
       "file_type": "code",
       "source_file": "src/components/features/Splash/Splash.tsx",
       "source_location": "L119",
-      "community": 67,
+      "community": 120,
       "norm_label": "facalculator()",
       "id": "splash_splash_facalculator"
     },
@@ -2024,7 +2051,7 @@
       "file_type": "code",
       "source_file": "src/components/features/Splash/Splash.tsx",
       "source_location": "L135",
-      "community": 67,
+      "community": 120,
       "norm_label": "knowledge_facts",
       "id": "splash_splash_knowledge_facts"
     },
@@ -2033,7 +2060,7 @@
       "file_type": "code",
       "source_file": "src/components/features/Splash/Splash.tsx",
       "source_location": "L168",
-      "community": 67,
+      "community": 120,
       "norm_label": "gethijridate()",
       "id": "splash_splash_gethijridate"
     },
@@ -2042,7 +2069,7 @@
       "file_type": "code",
       "source_file": "src/components/features/Splash/Splash.tsx",
       "source_location": "L181",
-      "community": 67,
+      "community": 120,
       "norm_label": "getgregoriandate()",
       "id": "splash_splash_getgregoriandate"
     },
@@ -2231,7 +2258,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/AppearanceSettings.tsx",
       "source_location": "L1",
-      "community": 18,
+      "community": 138,
       "norm_label": "appearancesettings.tsx",
       "id": "settings_appearancesettings"
     },
@@ -2240,7 +2267,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/AppearanceSettings.tsx",
       "source_location": "L6",
-      "community": 18,
+      "community": 138,
       "norm_label": "theme_options",
       "id": "settings_appearancesettings_theme_options"
     },
@@ -2249,7 +2276,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/AppearanceSettings.tsx",
       "source_location": "L12",
-      "community": 18,
+      "community": 138,
       "norm_label": "appearancesettingsprops",
       "id": "settings_appearancesettings_appearancesettingsprops"
     },
@@ -2258,7 +2285,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/AppearanceSettings.tsx",
       "source_location": "L19",
-      "community": 18,
+      "community": 138,
       "norm_label": "appearancesettings()",
       "id": "settings_appearancesettings_appearancesettings"
     },
@@ -2267,7 +2294,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/DataSettings.tsx",
       "source_location": "L1",
-      "community": 144,
+      "community": 18,
       "norm_label": "datasettings.tsx",
       "id": "settings_datasettings"
     },
@@ -2276,7 +2303,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/DataSettings.tsx",
       "source_location": "L7",
-      "community": 144,
+      "community": 18,
       "norm_label": "datasettingsprops",
       "id": "settings_datasettings_datasettingsprops"
     },
@@ -2285,7 +2312,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/DataSettings.tsx",
       "source_location": "L12",
-      "community": 144,
+      "community": 18,
       "norm_label": "datasettings()",
       "id": "settings_datasettings_datasettings"
     },
@@ -2393,7 +2420,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/SaveBar.tsx",
       "source_location": "L1",
-      "community": 155,
+      "community": 18,
       "norm_label": "savebar.tsx",
       "id": "settings_savebar"
     },
@@ -2402,7 +2429,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/SaveBar.tsx",
       "source_location": "L5",
-      "community": 155,
+      "community": 18,
       "norm_label": "savebarprops",
       "id": "settings_savebar_savebarprops"
     },
@@ -2411,7 +2438,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/SaveBar.tsx",
       "source_location": "L12",
-      "community": 155,
+      "community": 18,
       "norm_label": "savebar()",
       "id": "settings_savebar_savebar"
     },
@@ -2474,7 +2501,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Tasbih/CircularCounter.tsx",
       "source_location": "L1",
-      "community": 18,
+      "community": 144,
       "norm_label": "circularcounter.tsx",
       "id": "tasbih_circularcounter"
     },
@@ -2483,7 +2510,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Tasbih/CircularCounter.tsx",
       "source_location": "L3",
-      "community": 18,
+      "community": 144,
       "norm_label": "circularcounterprops",
       "id": "tasbih_circularcounter_circularcounterprops"
     },
@@ -2492,7 +2519,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Tasbih/CircularCounter.tsx",
       "source_location": "L7",
-      "community": 18,
+      "community": 144,
       "norm_label": "circularcounter()",
       "id": "tasbih_circularcounter_circularcounter"
     },
@@ -2501,7 +2528,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Tasbih/CircularCounter.tsx",
       "source_location": "L39",
-      "community": 18,
+      "community": 144,
       "norm_label": "countercontent()",
       "id": "tasbih_circularcounter_countercontent"
     },
@@ -11438,7 +11465,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L479",
-      "community": 138,
+      "community": 45,
       "norm_label": "lastten",
       "id": "i18n_en_lastten"
     },
@@ -11447,7 +11474,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L480",
-      "community": 138,
+      "community": 45,
       "norm_label": "pagetitle",
       "id": "i18n_en_lastten_pagetitle"
     },
@@ -11456,7 +11483,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L481",
-      "community": 138,
+      "community": 45,
       "norm_label": "subtitle",
       "id": "i18n_en_lastten_subtitle"
     },
@@ -11465,7 +11492,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L482",
-      "community": 138,
+      "community": 45,
       "norm_label": "verses",
       "id": "i18n_en_lastten_verses"
     },
@@ -12527,7 +12554,7 @@
       "file_type": "code",
       "source_file": "src/pages/Hadith/index.tsx",
       "source_location": "L1",
-      "community": 120,
+      "community": 41,
       "norm_label": "index.tsx",
       "id": "hadith_index"
     },
@@ -12536,7 +12563,7 @@
       "file_type": "code",
       "source_file": "src/pages/Hadith/index.tsx",
       "source_location": "L14",
-      "community": 120,
+      "community": 41,
       "norm_label": "supported_languages",
       "id": "hadith_index_supported_languages"
     },
@@ -12545,7 +12572,7 @@
       "file_type": "code",
       "source_file": "src/pages/Hadith/index.tsx",
       "source_location": "L16",
-      "community": 120,
+      "community": 41,
       "norm_label": "geteditionname()",
       "id": "hadith_index_geteditionname"
     },
@@ -12554,7 +12581,7 @@
       "file_type": "code",
       "source_file": "src/pages/Hadith/index.tsx",
       "source_location": "L20",
-      "community": 120,
+      "community": 41,
       "norm_label": "hadithcollections()",
       "id": "hadith_index_hadithcollections"
     },
@@ -14974,7 +15001,7 @@
       "file_type": "code",
       "source_file": "src/components/features/Search/Search.tsx",
       "source_location": "L21",
-      "community": 120,
+      "community": 90,
       "norm_label": "search()",
       "id": "search_search_search"
     },
@@ -16774,7 +16801,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useDebounce.ts",
       "source_location": "L1",
-      "community": 120,
+      "community": 90,
       "norm_label": "usedebounce.ts",
       "id": "hooks_usedebounce"
     },
@@ -16783,7 +16810,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useDebounce.ts",
       "source_location": "L3",
-      "community": 120,
+      "community": 90,
       "norm_label": "usedebounce()",
       "id": "hooks_usedebounce_usedebounce"
     },
@@ -16918,7 +16945,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useSurahs.ts",
       "source_location": "L1",
-      "community": 120,
+      "community": 90,
       "norm_label": "usesurahs.ts",
       "id": "hooks_usesurahs"
     },
@@ -16927,7 +16954,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useSurahs.ts",
       "source_location": "L5",
-      "community": 120,
+      "community": 90,
       "norm_label": "usesurahs()",
       "id": "hooks_usesurahs_usesurahs"
     },
@@ -21506,6 +21533,57 @@
   ],
   "links": [
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/Onboarding/Onboarding.tsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "onboarding_onboarding",
+      "target": "onboarding_stepwelcome"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/Onboarding/StepWelcome.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "onboarding_stepwelcome",
+      "target": "onboarding_stepwelcome_floatingorbs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/Onboarding/StepWelcome.tsx",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "onboarding_stepwelcome",
+      "target": "onboarding_stepwelcome_glowingquran",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/Onboarding/StepWelcome.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "onboarding_stepwelcome",
+      "target": "onboarding_stepwelcome_stepprops",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/Onboarding/StepWelcome.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "onboarding_stepwelcome",
+      "target": "onboarding_stepwelcome_stepwelcome"
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/features/Onboarding/ListSelectStep.tsx",
@@ -21541,9 +21619,9 @@
       "source_file": "src/components/features/Onboarding/ListSelectStep.tsx",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "onboarding_listselectstep",
-      "target": "onboarding_listselectstep_selectedcheck",
-      "confidence_score": 1.0
+      "target": "onboarding_listselectstep_selectedcheck"
     },
     {
       "relation": "imports_from",
@@ -24236,17 +24314,6 @@
       "target": "onboarding_stepdone"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/Onboarding/Onboarding.tsx",
-      "source_location": "L25",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "onboarding_onboarding",
-      "target": "onboarding_stepwelcome"
-    },
-    {
       "relation": "calls",
       "context": "call",
       "confidence": "INFERRED",
@@ -24277,16 +24344,6 @@
       "confidence_score": 1.0,
       "source": "onboarding_stepdone",
       "target": "onboarding_stepdone_stepdone"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/Onboarding/StepWelcome.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "onboarding_stepwelcome",
-      "target": "onboarding_stepwelcome_stepwelcome"
     },
     {
       "relation": "contains",
@@ -48161,5 +48218,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "70dfc2b7381596505bc1f4993bd52c05aff53767"
+  "built_at_commit": "e13444600d4bfbe2f4b05b8f614a10e7541dad79"
 }

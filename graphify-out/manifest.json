@@ -235,8 +235,8 @@
     "semantic_hash": ""
   },
   "src/components/features/Onboarding/StepWelcome.tsx": {
-    "mtime": 1780809108.365129,
-    "ast_hash": "00b45e919848217afbd884af07e4d3e0",
+    "mtime": 1780937254.8774064,
+    "ast_hash": "320159e1bda747dbcc74e9b018163637",
     "semantic_hash": ""
   },
   "src/components/features/PrayerGrid/PrayerGrid.tsx": {

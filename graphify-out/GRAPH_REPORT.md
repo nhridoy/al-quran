@@ -1,16 +1,16 @@
 # Graph Report - al-quran  (2026-06-08)
 
 ## Corpus Check
-- 214 files · ~215,567 words
+- 214 files · ~215,877 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2388 nodes · 2621 edges · 184 communities (146 shown, 38 thin omitted)
+- 2391 nodes · 2624 edges · 184 communities (146 shown, 38 thin omitted)
 - Extraction: 90% EXTRACTED · 10% INFERRED · 0% AMBIGUOUS · INFERRED: 263 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `70dfc2b7`
+- Built from commit: `e1344460`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -203,14 +203,14 @@
 ## Surprising Connections (you probably didn't know these)
 - `ErrorState()` --calls--> `useLocale()`  [INFERRED]
   src/components/common/ErrorState/ErrorState.tsx → src/i18n/LocaleContext.tsx
+- `PaginationBar()` --calls--> `useLocale()`  [INFERRED]
+  src/components/common/PaginationBar.tsx → src/i18n/LocaleContext.tsx
 - `SurahGroupItem()` --calls--> `useLocale()`  [INFERRED]
   src/components/pages/Bookmarks/SurahGroupItem.tsx → src/i18n/LocaleContext.tsx
 - `AppLanguageSettings()` --calls--> `useLocale()`  [INFERRED]
   src/components/pages/Settings/AppLanguageSettings.tsx → src/i18n/LocaleContext.tsx
-- `DataSettings()` --calls--> `useLocale()`  [INFERRED]
-  src/components/pages/Settings/DataSettings.tsx → src/i18n/LocaleContext.tsx
-- `HadithSettings()` --calls--> `useLocale()`  [INFERRED]
-  src/components/pages/Settings/HadithSettings.tsx → src/i18n/LocaleContext.tsx
+- `AppearanceSettings()` --calls--> `useLocale()`  [INFERRED]
+  src/components/pages/Settings/AppearanceSettings.tsx → src/i18n/LocaleContext.tsx
 
 ## Import Cycles
 - None detected.
@@ -290,8 +290,8 @@ Cohesion: 0.07
 Nodes (27): D — Dependency Inversion Principle, I — Interface Segregation Principle, Implementation Order (Recommended), L — Liskov Substitution Principle, Note:, O — Open/Closed Principle, S — Single Responsibility Principle, SOLID Principles — Refactor Plan (+19 more)
 
 ### Community 18 - "Community 18"
-Cohesion: 0.06
-Nodes (19): About(), DuaCategory(), PaginationBar(), PaginationBarProps, credits, DataExport(), Donation(), useLocale() (+11 more)
+Cohesion: 0.07
+Nodes (16): About(), DuaCategory(), credits, DataExport(), Donation(), useLocale(), OfflineBanner(), Paras() (+8 more)
 
 ### Community 19 - "Community 19"
 Cohesion: 0.08
@@ -382,8 +382,8 @@ Cohesion: 0.12
 Nodes (16): Duplication Patterns, Implementation Order (Recommended), Large Components (>200 lines), Overview, Pattern A: Page Layout Boilerplate, Pattern B: Card Container Classes, Pattern C: Loading Skeletons, Pattern D: Error / Empty States (+8 more)
 
 ### Community 41 - "Community 41"
-Cohesion: 0.28
-Nodes (5): HadithBook(), HadithBooks(), useEditionBooks(), useEditions(), useHadithPage()
+Cohesion: 0.18
+Nodes (7): HadithBook(), HadithBooks(), HadithCollections(), SUPPORTED_LANGUAGES, useEditionBooks(), useEditions(), useHadithPage()
 
 ### Community 42 - "Community 42"
 Cohesion: 0.17
@@ -398,8 +398,8 @@ Cohesion: 0.12
 Nodes (16): taraweeh, dailyTarget, day, days, goal, headerTitle, lastRecorded, notRamadan (+8 more)
 
 ### Community 45 - "Community 45"
-Cohesion: 0.13
-Nodes (14): error, title, tryAgain, unexpected, offline, dismiss, message, pagination (+6 more)
+Cohesion: 0.11
+Nodes (18): error, title, tryAgain, unexpected, lastTen, pageTitle, subtitle, verses (+10 more)
 
 ### Community 46 - "Community 46"
 Cohesion: 0.12
@@ -450,8 +450,8 @@ Cohesion: 0.14
 Nodes (14): names, addFavorite, filterAll, filterBoys, filterFavorites, filterGirls, headerSubtitle, headerTitle (+6 more)
 
 ### Community 58 - "Community 58"
-Cohesion: 0.10
-Nodes (5): ListItem, ListSelectStepProps, APP_LANGS, HADITH_LANGS, Step
+Cohesion: 0.08
+Nodes (6): ListItem, ListSelectStepProps, APP_LANGS, HADITH_LANGS, Step, StepProps
 
 ### Community 59 - "Community 59"
 Cohesion: 0.14
@@ -486,8 +486,8 @@ Cohesion: 0.18
 Nodes (5): computePrayerTimes(), getAdhanMethod(), methodRegistry, PRAYER_NAMES, PrayerEntry
 
 ### Community 67 - "Community 67"
-Cohesion: 0.11
-Nodes (11): QuranProgress(), SURAH_TO_JUZ, ReadingGoals(), GRID_ITEMS, GridItem, KNOWLEDGE_FACTS, ReadingStreakWidget(), ReadingRecord (+3 more)
+Cohesion: 0.18
+Nodes (8): QuranProgress(), SURAH_TO_JUZ, ReadingGoals(), ReadingStreakWidget(), ReadingRecord, ReadingState, useReadingStore, useReadingGoalsStore
 
 ### Community 68 - "Community 68"
 Cohesion: 0.17
@@ -578,8 +578,8 @@ Cohesion: 0.31
 Nodes (5): AppLocale, LOCALE_MAP, LocaleContext, LocaleContextValue, LocaleProvider()
 
 ### Community 90 - "Community 90"
-Cohesion: 0.20
-Nodes (6): Header, HeaderProps, VerseResultItem, VerseResultItemProps, SurahItem, SurahItemProps
+Cohesion: 0.13
+Nodes (9): Header, HeaderProps, useDebounce(), useSurahs(), Search(), VerseResultItem, VerseResultItemProps, SurahItem (+1 more)
 
 ### Community 91 - "Community 91"
 Cohesion: 0.22
@@ -694,8 +694,8 @@ Cohesion: 0.40
 Nodes (5): Tabs(), TabsContent(), TabsList(), tabsListVariants, TabsTrigger()
 
 ### Community 120 - "Community 120"
-Cohesion: 0.22
-Nodes (5): HadithCollections(), SUPPORTED_LANGUAGES, useDebounce(), useSurahs(), Search()
+Cohesion: 0.29
+Nodes (3): GRID_ITEMS, GridItem, KNOWLEDGE_FACTS
 
 ### Community 121 - "Community 121"
 Cohesion: 0.31
@@ -735,7 +735,7 @@ Nodes (4): update, dismiss, newVersion, refresh
 
 ### Community 138 - "Community 138"
 Cohesion: 0.50
-Nodes (4): lastTen, pageTitle, subtitle, verses
+Nodes (3): AppearanceSettings(), AppearanceSettingsProps, THEME_OPTIONS
 
 ### Community 139 - "Community 139"
 Cohesion: 0.50
@@ -754,23 +754,23 @@ Cohesion: 0.67
 Nodes (3): TaraweehTracker(), TARGET_OPTIONS, useTaraweehData()
 
 ## Knowledge Gaps
-- **1565 isolated node(s):** `ListItem`, `ListSelectStepProps`, `$schema`, `enabled`, `clientKind` (+1560 more)
+- **1566 isolated node(s):** `StepProps`, `ListItem`, `ListSelectStepProps`, `$schema`, `enabled` (+1561 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **38 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `useLocale()` connect `Community 18` to `Community 129`, `Community 135`, `Community 9`, `Community 139`, `Community 140`, `Community 141`, `Community 13`, `Community 143`, `Community 144`, `Community 147`, `Community 155`, `Community 37`, `Community 41`, `Community 49`, `Community 60`, `Community 67`, `Community 74`, `Community 76`, `Community 89`, `Community 94`, `Community 100`, `Community 106`, `Community 111`, `Community 112`, `Community 120`, `Community 121`, `Community 123`?**
-  _High betweenness centrality (0.182) - this node is a cross-community bridge._
+- **Why does `useLocale()` connect `Community 18` to `Community 129`, `Community 135`, `Community 9`, `Community 138`, `Community 139`, `Community 140`, `Community 141`, `Community 13`, `Community 143`, `Community 144`, `Community 147`, `Community 155`, `Community 37`, `Community 41`, `Community 49`, `Community 60`, `Community 67`, `Community 74`, `Community 76`, `Community 89`, `Community 94`, `Community 100`, `Community 106`, `Community 111`, `Community 112`, `Community 121`, `Community 123`?**
+  _High betweenness centrality (0.200) - this node is a cross-community bridge._
 - **Why does `zakat` connect `Community 4` to `Community 45`?**
   _High betweenness centrality (0.054) - this node is a cross-community bridge._
-- **Why does `salah` connect `Community 0` to `Community 43`?**
+- **Why does `nav` connect `Community 6` to `Community 45`?**
   _High betweenness centrality (0.047) - this node is a cross-community bridge._
 - **Are the 108 inferred relationships involving `cn()` (e.g. with `Accordion()` and `AccordionContent()`) actually correct?**
   _`cn()` has 108 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `ListItem`, `ListSelectStepProps`, `$schema` to the rest of the system?**
-  _1565 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `StepProps`, `ListItem`, `ListSelectStepProps` to the rest of the system?**
+  _1566 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.027777777777777776 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**

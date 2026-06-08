@@ -78,7 +78,7 @@ export default function ListSelectStep({
               key={item.id}
               type="button"
               onClick={() => onSelect(item.id)}
-              className={`group flex w-full items-center gap-3 rounded-xl border p-3 text-left transition-all duration-300 ${
+              className={`group flex w-full cursor-pointer items-center gap-3 rounded-xl border p-3 text-left transition-all duration-300 ${
                 selected
                   ? "border-[#9345f2]/40 bg-[#9345f2]/8 shadow-lg shadow-[#9345f2]/8"
                   : "border-white/8 bg-white/[0.02] hover:border-white/15 hover:bg-white/[0.04]"
