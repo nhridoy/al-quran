@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import {
   GREGORIAN_MONTHS,

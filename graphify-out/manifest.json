@@ -5,8 +5,8 @@
     "semantic_hash": ""
   },
   ".opencode/opencode.json": {
-    "mtime": 1780799952.754804,
-    "ast_hash": "1efe24ecf938911d4f23e4b1c6ec91f7",
+    "mtime": 1780801333.276428,
+    "ast_hash": "2c54ef777837d22801f0d64fdfc0f2d4",
     "semantic_hash": ""
   },
   ".opencode/package.json": {
@@ -15,13 +15,13 @@
     "semantic_hash": ""
   },
   ".opencode/plugins/graphify.js": {
-    "mtime": 1780800075.0543938,
-    "ast_hash": "32b67963417a30cb80544e0b2a56a98d",
+    "mtime": 1780801333.3019645,
+    "ast_hash": "31fe84bad40699cb5131d9c3abacc966",
     "semantic_hash": ""
   },
   "biome.json": {
-    "mtime": 1779627638.010677,
-    "ast_hash": "8f2ee0966ae6728c4479881b7a1e8c21",
+    "mtime": 1780927842.7075713,
+    "ast_hash": "679a2ad4b2912b9ca0057c10acdb0b69",
     "semantic_hash": ""
   },
   "components.json": {
@@ -30,8 +30,8 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1780416155.3976264,
-    "ast_hash": "c5049d130a38cb68344c9d172baec316",
+    "mtime": 1780801219.054274,
+    "ast_hash": "efd4f8415dd2663085a727da18c8bc38",
     "semantic_hash": ""
   },
   "scripts/hooks/pre-commit": {
@@ -55,8 +55,8 @@
     "semantic_hash": ""
   },
   "src/App.tsx": {
-    "mtime": 1780762630.7639396,
-    "ast_hash": "a69d21ae15c0a66b9e09aa6a71178f3b",
+    "mtime": 1780852202.7042427,
+    "ast_hash": "80d75382c535532ac40d636918cd6757",
     "semantic_hash": ""
   },
   "src/components/common/BottomNav/BottomNav.tsx": {
@@ -155,8 +155,8 @@
     "semantic_hash": ""
   },
   "src/components/features/AudioPlayer/PlaylistDrawer.tsx": {
-    "mtime": 1780412961.3302095,
-    "ast_hash": "c2853a144a3d395767bdcf95ea1b28d1",
+    "mtime": 1780809163.1495316,
+    "ast_hash": "3bb94b98ab43622c27e99762c85be2c4",
     "semantic_hash": ""
   },
   "src/components/features/AudioPlayer/RepeatButton.tsx": {
@@ -185,8 +185,8 @@
     "semantic_hash": ""
   },
   "src/components/features/AudioPlayer/audioUtils.ts": {
-    "mtime": 1780333138.8507817,
-    "ast_hash": "6cebe1781d10292ff4c19636a2536b47",
+    "mtime": 1780807016.5409088,
+    "ast_hash": "56389d7a1861327f10b95a8502e9c536",
     "semantic_hash": ""
   },
   "src/components/features/AudioPlayer/index.tsx": {
@@ -195,8 +195,8 @@
     "semantic_hash": ""
   },
   "src/components/features/AudioPlayer/types.ts": {
-    "mtime": 1780383122.489774,
-    "ast_hash": "d7014944d9bbaea941fd95823ad41de8",
+    "mtime": 1780807007.4666047,
+    "ast_hash": "fa124d08b3060f7484d041ee76720f15",
     "semantic_hash": ""
   },
   "src/components/features/HijriDate/HijriDate.tsx": {
@@ -220,8 +220,8 @@
     "semantic_hash": ""
   },
   "src/components/features/Onboarding/Onboarding.tsx": {
-    "mtime": 1780660089.7963183,
-    "ast_hash": "f6ebe5fb5f0493fea49139a3fe1fd915",
+    "mtime": 1780853766.7861202,
+    "ast_hash": "46d85c7249cd22280c30cec9e7cc31fd",
     "semantic_hash": ""
   },
   "src/components/features/Onboarding/StepDone.tsx": {
@@ -230,13 +230,13 @@
     "semantic_hash": ""
   },
   "src/components/features/Onboarding/StepPermissions.tsx": {
-    "mtime": 1780675581.4276354,
-    "ast_hash": "b1a3659121819517d9ee88e8e3568e99",
+    "mtime": 1780851588.9203942,
+    "ast_hash": "bfd0c33b2057caf30fcb591308adede0",
     "semantic_hash": ""
   },
   "src/components/features/Onboarding/StepWelcome.tsx": {
-    "mtime": 1780675580.1496968,
-    "ast_hash": "654ec4c7950cb10eba976a0716485970",
+    "mtime": 1780809108.365129,
+    "ast_hash": "00b45e919848217afbd884af07e4d3e0",
     "semantic_hash": ""
   },
   "src/components/features/PrayerGrid/PrayerGrid.tsx": {
@@ -250,13 +250,13 @@
     "semantic_hash": ""
   },
   "src/components/features/Search/VerseResultItem.tsx": {
-    "mtime": 1780398869.8479066,
-    "ast_hash": "3309ea172f36413e2613d015b930813b",
+    "mtime": 1780807131.7539551,
+    "ast_hash": "b2dfbf9e4d51ef48c481fdafd16e9b06",
     "semantic_hash": ""
   },
   "src/components/features/Splash/Splash.tsx": {
-    "mtime": 1780756497.5639696,
-    "ast_hash": "9fc6b653845d21bd5e0f0f551df7ab74",
+    "mtime": 1780853824.9591033,
+    "ast_hash": "d93353e762c3de99c25b2568196025fc",
     "semantic_hash": ""
   },
   "src/components/layouts/HomeLayout/HomeLayout.tsx": {
@@ -270,8 +270,8 @@
     "semantic_hash": ""
   },
   "src/components/pages/Bookmarks/BookmarkRow.tsx": {
-    "mtime": 1780758264.3286974,
-    "ast_hash": "a107e9f4c9ff737273d2e848eeb57cb5",
+    "mtime": 1780807131.8104818,
+    "ast_hash": "95e6141a58a6925aa3593f9e9cff1797",
     "semantic_hash": ""
   },
   "src/components/pages/Bookmarks/SurahGroupItem.tsx": {
@@ -350,8 +350,8 @@
     "semantic_hash": ""
   },
   "src/components/quran/Ayah/Ayah.tsx": {
-    "mtime": 1780412364.6903481,
-    "ast_hash": "f99e3dc4e30e832c5467d9223ab1c6a7",
+    "mtime": 1780807076.0920503,
+    "ast_hash": "bef9f6b33fb09f7c3f141b9c0d75ec40",
     "semantic_hash": ""
   },
   "src/components/quran/Ayah/AyahTafsir.tsx": {
@@ -575,8 +575,8 @@
     "semantic_hash": ""
   },
   "src/hooks/useRandomContent.ts": {
-    "mtime": 1780675905.2810488,
-    "ast_hash": "043f0acddf27d524e44aca7d3fd7cdd5",
+    "mtime": 1780849251.1753001,
+    "ast_hash": "b73339e7a48eed58e0603490951adab3",
     "semantic_hash": ""
   },
   "src/hooks/useScrollToCurrentAyah.ts": {
@@ -620,13 +620,13 @@
     "semantic_hash": ""
   },
   "src/i18n/bn.json": {
-    "mtime": 1780763079.0550978,
-    "ast_hash": "46e28e1361456dbd0e0eb9c07b6ef879",
+    "mtime": 1780802554.6136131,
+    "ast_hash": "255eed9aff0b1d384a646251554d7b89",
     "semantic_hash": ""
   },
   "src/i18n/en.json": {
-    "mtime": 1780763065.8289318,
-    "ast_hash": "78b7d7b2c590840a82f10895aa48e314",
+    "mtime": 1780802543.759506,
+    "ast_hash": "b46c672099246edcd38fab8fbdb187e5",
     "semantic_hash": ""
   },
   "src/i18n/index.ts": {
@@ -650,8 +650,8 @@
     "semantic_hash": ""
   },
   "src/lib/cache.ts": {
-    "mtime": 1780740087.7133503,
-    "ast_hash": "a33cc5343d4e8eedbc3b12b550493e26",
+    "mtime": 1780851545.1102319,
+    "ast_hash": "597ade3f8809d801b2c56c2f0e3c31e0",
     "semantic_hash": ""
   },
   "src/lib/confirm.ts": {
@@ -785,8 +785,8 @@
     "semantic_hash": ""
   },
   "src/pages/FastingCalendar/index.tsx": {
-    "mtime": 1780760451.111101,
-    "ast_hash": "080efb46f6611ce7f2b2c81b15adf08c",
+    "mtime": 1780853013.8021786,
+    "ast_hash": "97f9cfdd644aa778642275b1ebb839f4",
     "semantic_hash": ""
   },
   "src/pages/Hadith/[collection]/[bookId]/index.tsx": {
@@ -805,8 +805,8 @@
     "semantic_hash": ""
   },
   "src/pages/HijriCalendar/index.tsx": {
-    "mtime": 1780760451.195435,
-    "ast_hash": "3ba456215c7984169d20714955fae3ac",
+    "mtime": 1780853012.6188042,
+    "ast_hash": "0eab8c9eddd435db78618b80a96bf91f",
     "semantic_hash": ""
   },
   "src/pages/Home/index.tsx": {
@@ -875,8 +875,8 @@
     "semantic_hash": ""
   },
   "src/pages/Settings/index.tsx": {
-    "mtime": 1780756636.8429458,
-    "ast_hash": "9ebd5a3c5d13b296e9ee2ef5c69bf229",
+    "mtime": 1780852203.0485682,
+    "ast_hash": "0970bf27f70643b56f4d7ef97dcfe70b",
     "semantic_hash": ""
   },
   "src/pages/Surah/[id]/index.tsx": {
@@ -920,8 +920,8 @@
     "semantic_hash": ""
   },
   "src/store/location.ts": {
-    "mtime": 1780314110.2949378,
-    "ast_hash": "06086e785d947c1bfebb3e0772c2f7bc",
+    "mtime": 1780852491.7041225,
+    "ast_hash": "d8bdb365570d32c6a593a33d6c170e77",
     "semantic_hash": ""
   },
   "src/store/prayer.ts": {
@@ -935,8 +935,8 @@
     "semantic_hash": ""
   },
   "src/store/readingGoals.ts": {
-    "mtime": 1780763199.8079338,
-    "ast_hash": "d778a05b60014ec2dc7f473b1c89e63f",
+    "mtime": 1780801333.5398633,
+    "ast_hash": "50d51e40864ed0ff7a9ea0d0820ef681",
     "semantic_hash": ""
   },
   "src/store/sadaqah.ts": {
@@ -1712,6 +1712,16 @@
   "src/logo.svg": {
     "mtime": 1779626650.1092694,
     "ast_hash": "828294088b604d1c8a027ac6b74ffc1b",
+    "semantic_hash": ""
+  },
+  "src/components/features/Onboarding/StepLocation.tsx": {
+    "mtime": 1780852202.9605026,
+    "ast_hash": "aae8002a4f09427ba100f08284d3ece3",
+    "semantic_hash": ""
+  },
+  "src/components/ui/carousel.tsx": {
+    "mtime": 1780801334.9616897,
+    "ast_hash": "a56f188f2e3d615418573e907411700e",
     "semantic_hash": ""
   }
 }
