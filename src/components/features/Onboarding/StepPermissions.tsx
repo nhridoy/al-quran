@@ -1,5 +1,194 @@
-import { IoChevronForward, IoNotificationsOutline } from "react-icons/io5";
+import { useEffect, useState } from "react";
+import {
+  IoChevronForward,
+  IoNotificationsOutline,
+  IoShieldCheckmarkOutline,
+} from "react-icons/io5";
+import { MdAccessTime, MdAutoGraph, MdFlag } from "react-icons/md";
 import { Button } from "@/components/ui/button";
+
+function BellVisual({
+  requesting,
+  granted,
+}: {
+  requesting: boolean;
+  granted: boolean;
+}) {
+  return (
+    <svg viewBox="0 0 80 80" className="h-32 w-32" aria-hidden="true">
+      <defs>
+        <radialGradient id="bell-bg" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#9345f2" stopOpacity="0.15" />
+          <stop offset="70%" stopColor="#2e0d8a" stopOpacity="0.08" />
+          <stop offset="100%" stopColor="#2e0d8a" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+
+      {/* Glow */}
+      <circle cx="40" cy="40" r="38" fill="url(#bell-bg)" />
+
+      {/* Sound wave arcs */}
+      {requesting && (
+        <g>
+          <path
+            d="M52 30 Q60 40 52 50"
+            fill="none"
+            stroke="#b87aff"
+            strokeWidth="1"
+            strokeLinecap="round"
+            opacity="0.5"
+          >
+            <animate
+              attributeName="opacity"
+              values="0.5;0.1;0.5"
+              dur="1.5s"
+              repeatCount="indefinite"
+            />
+          </path>
+          <path
+            d="M58 26 Q68 40 58 54"
+            fill="none"
+            stroke="#b87aff"
+            strokeWidth="0.8"
+            strokeLinecap="round"
+            opacity="0.3"
+          >
+            <animate
+              attributeName="opacity"
+              values="0.3;0;0.3"
+              dur="1.5s"
+              begin="0.3s"
+              repeatCount="indefinite"
+            />
+          </path>
+        </g>
+      )}
+
+      {granted && (
+        <g>
+          <path
+            d="M52 30 Q60 40 52 50"
+            fill="none"
+            stroke="#22c55e"
+            strokeWidth="1"
+            strokeLinecap="round"
+            opacity="0.5"
+          />
+          <path
+            d="M58 26 Q68 40 58 54"
+            fill="none"
+            stroke="#22c55e"
+            strokeWidth="0.8"
+            strokeLinecap="round"
+            opacity="0.3"
+          />
+        </g>
+      )}
+
+      {/* Bell body */}
+      <g
+        className={requesting ? "animate-bounce" : ""}
+        style={
+          requesting
+            ? { animationDuration: "0.6s", animationIterationCount: "1" }
+            : undefined
+        }
+      >
+        {/* Bell dome */}
+        <path
+          d="M30 48 L30 30 A10 10 0 0 1 50 30 L50 48 Z"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          className={
+            granted
+              ? "text-green-400"
+              : requesting
+                ? "text-[#b87aff]"
+                : "text-white/30"
+          }
+        />
+        {/* Bell bottom rim */}
+        <line
+          x1="28"
+          y1="48"
+          x2="52"
+          y2="48"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          className={
+            granted
+              ? "text-green-400"
+              : requesting
+                ? "text-[#b87aff]"
+                : "text-white/30"
+          }
+        />
+        {/* Bell clapper */}
+        <circle
+          cx="40"
+          cy="52"
+          r="2.5"
+          fill="currentColor"
+          className={
+            granted
+              ? "text-green-400"
+              : requesting
+                ? "text-[#b87aff]"
+                : "text-white/30"
+          }
+        />
+        {/* Bell top knob */}
+        <circle
+          cx="40"
+          cy="28"
+          r="1.5"
+          fill="currentColor"
+          className={
+            granted
+              ? "text-green-400"
+              : requesting
+                ? "text-[#b87aff]"
+                : "text-white/30"
+          }
+        />
+      </g>
+
+      {/* Checkmark overlay on granted */}
+      {granted && (
+        <g>
+          <circle
+            cx="55"
+            cy="28"
+            r="8"
+            fill="#22c55e"
+            className="drop-shadow-lg"
+          />
+          <polyline
+            points="51,28 54,31 59,25"
+            fill="none"
+            stroke="white"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </g>
+      )}
+    </svg>
+  );
+}
+
+function PrivacyBadge() {
+  return (
+    <div className="flex items-center justify-center gap-1.5">
+      <IoShieldCheckmarkOutline className="text-[10px] text-white/20" />
+      <span className="text-[10px] text-white/20">
+        No spam. Only prayer reminders & goal alerts you opt into.
+      </span>
+    </div>
+  );
+}
 
 export default function StepPermissions({
   notificationGranted,
@@ -10,67 +199,110 @@ export default function StepPermissions({
   onRequestNotification: () => void;
   onNext: () => void;
 }) {
-  return (
-    <div className="flex h-full flex-col gap-6 pt-4">
-      <div className="text-center">
-        <h2 className="text-xl font-bold text-white">Notifications</h2>
-        <p className="mt-1 text-sm text-white/50">
-          Stay updated with prayer times and reminders
-        </p>
-      </div>
+  const [mounted, setMounted] = useState(false);
 
-      <div className="flex flex-1 flex-col gap-4">
-        <div
-          className={`rounded-2xl border p-5 backdrop-blur-sm transition-all ${
-            notificationGranted
-              ? "border-green-500/30 bg-green-500/5"
-              : "border-white/10 bg-white/5"
-          }`}
-        >
-          <div className="flex items-start gap-4">
-            <div
-              className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${
-                notificationGranted
-                  ? "bg-gradient-to-br from-green-500 to-green-700 shadow-lg"
-                  : "bg-white/10"
-              }`}
-            >
-              <IoNotificationsOutline
-                className={`text-xl ${notificationGranted ? "text-white" : "text-white/60"}`}
-              />
-            </div>
-            <div className="flex-1">
-              <h3
-                className={`text-sm font-semibold ${notificationGranted ? "text-green-500" : "text-white"}`}
-              >
-                {notificationGranted
-                  ? "Notifications Enabled"
-                  : "Enable Notifications"}
-              </h3>
-              <p className="mt-1 text-xs leading-relaxed text-white/50">
-                Sends prayer time reminders and other important alerts. No spam,
-                ever.
-              </p>
-            </div>
-          </div>
+  useEffect(() => {
+    const t = setTimeout(() => setMounted(true), 80);
+    return () => clearTimeout(t);
+  }, []);
+
+  return (
+    <div
+      className={`flex h-full flex-col transition-all duration-700 ${
+        mounted ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+      }`}
+    >
+      {/* Bell visual */}
+      <div className="flex shrink-0 items-center justify-center py-2">
+        <div className="relative flex items-center justify-center">
           {!notificationGranted && (
-            <Button
-              variant="white-ghost"
-              className="mt-4 w-full rounded-xl bg-white/10 py-2.5 h-auto text-sm font-semibold text-white hover:bg-white/20"
-              onClick={onRequestNotification}
-            >
-              Enable Notifications
-            </Button>
+            <div
+              className="absolute h-40 w-40 animate-ping rounded-full bg-[#9345f2]/8"
+              style={{ animationDuration: "3s" }}
+            />
           )}
+          <BellVisual requesting={false} granted={notificationGranted} />
         </div>
       </div>
 
+      {/* Title */}
+      <div className="shrink-0 text-center">
+        <h2 className="bg-gradient-to-r from-white to-[#b87aff] bg-clip-text text-xl font-bold text-transparent">
+          {notificationGranted ? "Notifications On" : "Notifications"}
+        </h2>
+        <p className="mt-0.5 text-xs text-white/35">
+          {notificationGranted
+            ? "You'll receive prayer reminders and updates"
+            : "Stay on track with timely reminders"}
+        </p>
+      </div>
+
+      {/* Action area */}
+      <div className="mt-5 shrink-0">
+        {!notificationGranted && (
+          <div className="animate-fade-in space-y-4">
+            <div className="grid grid-cols-3 gap-2">
+              {[
+                { icon: MdAccessTime, label: "Prayer alerts" },
+                { icon: MdFlag, label: "Ramadan key times" },
+                { icon: MdAutoGraph, label: "Reading goals" },
+              ].map(({ icon: Icon, label }) => (
+                <div
+                  key={label}
+                  className="flex flex-col items-center gap-1.5 rounded-lg border border-white/5 bg-white/[0.02] py-2.5"
+                >
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/5 text-white/35">
+                    <Icon className="text-sm" />
+                  </div>
+                  <span className="text-[10px] font-medium text-white/30">
+                    {label}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <Button
+              variant="gradient"
+              className="flex w-full items-center justify-center gap-2 py-3 h-auto text-sm font-semibold shadow-lg shadow-[#9345f2]/20"
+              onClick={onRequestNotification}
+            >
+              <IoNotificationsOutline className="text-base" />
+              Enable Notifications
+            </Button>
+          </div>
+        )}
+
+        {notificationGranted && (
+          <div className="animate-fade-in text-center">
+            <div className="mx-auto flex h-7 w-7 items-center justify-center rounded-full bg-green-500/15">
+              <svg
+                className="h-3.5 w-3.5 text-green-400"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Privacy */}
+      <div className="mt-auto pt-6 pb-1">
+        <PrivacyBadge />
+      </div>
+
+      {/* Continue */}
       <Button
         variant="gradient"
-        className="flex w-full items-center justify-center gap-2 py-3.5 h-auto text-sm shadow-lg shadow-[#9345f2]/20 hover:shadow-xl hover:shadow-[#9345f2]/30"
+        className="mt-3 flex w-full shrink-0 items-center justify-center gap-2 py-3 h-auto text-sm shadow-lg shadow-[#9345f2]/20 hover:shadow-xl hover:shadow-[#9345f2]/30"
         onClick={onNext}
       >
-        Continue
+        {notificationGranted ? "Continue" : "Skip for now"}
         <IoChevronForward className="text-base" />
       </Button>
     </div>

@@ -1,5 +1,113 @@
-import { IoChevronForward, IoLocationOutline } from "react-icons/io5";
+import { useEffect, useState } from "react";
+import {
+  IoChevronForward,
+  IoLocationOutline,
+  IoShieldCheckmarkOutline,
+} from "react-icons/io5";
+import { MdAccessTime, MdExplore, MdOutlineRestaurant } from "react-icons/md";
 import { Button } from "@/components/ui/button";
+
+function CompassNeedle({ angle }: { angle: number }) {
+  return (
+    <svg viewBox="0 0 80 80" className="h-32 w-32" aria-hidden="true">
+      <defs>
+        <radialGradient id="compass-bg" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#9345f2" stopOpacity="0.15" />
+          <stop offset="70%" stopColor="#2e0d8a" stopOpacity="0.08" />
+          <stop offset="100%" stopColor="#2e0d8a" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+
+      {/* Glow */}
+      <circle cx="40" cy="40" r="38" fill="url(#compass-bg)" />
+
+      {/* Outer ring — dashed */}
+      <circle
+        cx="40"
+        cy="40"
+        r="34"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="0.5"
+        strokeDasharray="4 4"
+        className="text-white/12"
+      />
+
+      {/* Inner ring */}
+      <circle
+        cx="40"
+        cy="40"
+        r="28"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="0.3"
+        className="text-white/8"
+      />
+
+      {/* Cardinal ticks */}
+      {[
+        { angle: 0, label: "N" },
+        { angle: 90, label: "E" },
+        { angle: 180, label: "S" },
+        { angle: 270, label: "W" },
+      ].map(({ angle: a, label }) => {
+        const rad = (a * Math.PI) / 180;
+        return (
+          <g key={label}>
+            <line
+              x1={40 + 24 * Math.cos(rad)}
+              y1={40 + 24 * Math.sin(rad)}
+              x2={40 + 32 * Math.cos(rad)}
+              y2={40 + 32 * Math.sin(rad)}
+              stroke="currentColor"
+              strokeWidth="0.8"
+              className="text-white/25"
+            />
+            <text
+              x={40 + 37 * Math.cos(rad)}
+              y={40 + 37 * Math.sin(rad)}
+              textAnchor="middle"
+              dominantBaseline="central"
+              fill="currentColor"
+              fontSize="5"
+              fontWeight="600"
+              className="text-white/35"
+            >
+              {label}
+            </text>
+          </g>
+        );
+      })}
+
+      {/* Needle — rotates */}
+      <g
+        style={{
+          transform: `rotate(${angle}deg)`,
+          transformOrigin: "40px 40px",
+        }}
+        className="transition-transform duration-1000 ease-out"
+      >
+        {/* North half (red) */}
+        <polygon points="40,8 36,40 40,44 44,40" className="fill-red-400/80" />
+        {/* South half (white) */}
+        <polygon points="40,72 36,40 40,36 44,40" className="fill-white/40" />
+        {/* Center dot */}
+        <circle cx="40" cy="40" r="3" className="fill-white/80" />
+      </g>
+    </svg>
+  );
+}
+
+function PrivacyBadge() {
+  return (
+    <div className="flex items-center justify-center gap-1.5">
+      <IoShieldCheckmarkOutline className="text-[10px] text-white/20" />
+      <span className="text-[10px] text-white/20">
+        Your location stays on-device. Used only for prayer & fasting times.
+      </span>
+    </div>
+  );
+}
 
 export default function StepLocation({
   locationGranted,
@@ -16,72 +124,173 @@ export default function StepLocation({
   onRequestLocation: () => void;
   onNext: () => void;
 }) {
-  return (
-    <div className="flex h-full flex-col gap-6 pt-4">
-      <div className="text-center">
-        <h2 className="text-xl font-bold text-white">Location Access</h2>
-        <p className="mt-1 text-sm text-white/50">
-          Used for accurate prayer times and Qibla direction
-        </p>
-      </div>
+  const [mounted, setMounted] = useState(false);
+  const [needleAngle, setNeedleAngle] = useState(0);
 
-      <div className="flex flex-1 flex-col gap-4">
-        <div
-          className={`rounded-2xl border p-5 backdrop-blur-sm transition-all ${
-            locationGranted
-              ? "border-green-500/30 bg-green-500/5"
-              : "border-white/10 bg-white/5"
-          }`}
-        >
-          <div className="flex items-start gap-4">
+  useEffect(() => {
+    const t = setTimeout(() => setMounted(true), 80);
+    return () => clearTimeout(t);
+  }, []);
+
+  useEffect(() => {
+    if (isDetecting) {
+      setNeedleAngle((prev) => prev + 720);
+    } else {
+      setNeedleAngle((prev) => prev + 15);
+    }
+  }, [isDetecting]);
+
+  useEffect(() => {
+    if (locationGranted) {
+      setNeedleAngle(45);
+    }
+  }, [locationGranted]);
+
+  return (
+    <div
+      className={`flex h-full flex-col transition-all duration-700 ${
+        mounted ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+      }`}
+    >
+      {/* Compass */}
+      <div className="flex shrink-0 items-center justify-center py-2">
+        <div className="relative flex items-center justify-center">
+          {/* Pulse ring when detecting */}
+          {isDetecting && (
             <div
-              className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${
-                locationGranted
-                  ? "bg-gradient-to-br from-green-500 to-green-700 shadow-lg"
-                  : "bg-white/10"
-              }`}
-            >
-              <IoLocationOutline
-                className={`text-xl ${locationGranted ? "text-white" : "text-white/60"}`}
-              />
-            </div>
-            <div className="flex-1">
-              <h3
-                className={`text-sm font-semibold ${locationGranted ? "text-green-500" : "text-white"}`}
-              >
-                {locationGranted
-                  ? "Location Detected"
-                  : "Grant Location Access"}
-              </h3>
-              <p className="mt-1 text-xs leading-relaxed text-white/50">
-                {locationLabel
-                  ? `Detected: ${locationLabel}`
-                  : "Allows Pure to calculate prayer times and show Qibla direction based on your location."}
-              </p>
-              {error && <p className="mt-1 text-xs text-red-400">{error}</p>}
-            </div>
-            {isDetecting && (
-              <div className="h-5 w-5 animate-spin rounded-full border-2 border-white/20 border-t-white" />
-            )}
-          </div>
-          {!locationGranted && !isDetecting && (
-            <Button
-              variant="white-ghost"
-              className="mt-4 w-full rounded-xl bg-white/10 py-2.5 h-auto text-sm font-semibold text-white hover:bg-white/20"
-              onClick={onRequestLocation}
-            >
-              Detect My Location
-            </Button>
+              className="absolute h-40 w-40 animate-ping rounded-full bg-[#9345f2]/8"
+              style={{ animationDuration: "2s" }}
+            />
           )}
+          {locationGranted && (
+            <div
+              className="absolute h-36 w-36 animate-ping rounded-full bg-green-500/8"
+              style={{ animationDuration: "2.5s" }}
+            />
+          )}
+          <CompassNeedle angle={needleAngle} />
         </div>
       </div>
 
+      {/* Title */}
+      <div className="shrink-0 text-center">
+        <h2 className="bg-gradient-to-r from-white to-[#b87aff] bg-clip-text text-xl font-bold text-transparent">
+          {locationGranted
+            ? "Location Set"
+            : isDetecting
+              ? "Detecting..."
+              : "Location Access"}
+        </h2>
+        <p className="mt-0.5 text-xs text-white/35">
+          {locationGranted
+            ? locationLabel || "Your location is ready"
+            : isDetecting
+              ? "Fetching your coordinates..."
+              : "For prayer times, Qibla & fasting calendar"}
+        </p>
+      </div>
+
+      {/* Card */}
+      <div className="mt-5 shrink-0">
+        {!locationGranted && !isDetecting && !error && (
+          <div className="animate-fade-in space-y-4">
+            <div className="grid grid-cols-3 gap-2">
+              {[
+                { icon: MdAccessTime, label: "Prayer times" },
+                { icon: MdExplore, label: "Qibla" },
+                { icon: MdOutlineRestaurant, label: "Fasting" },
+              ].map(({ icon: Icon, label }) => (
+                <div
+                  key={label}
+                  className="flex flex-col items-center gap-1.5 rounded-lg border border-white/5 bg-white/[0.02] py-2.5"
+                >
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/5 text-white/35">
+                    <Icon className="text-sm" />
+                  </div>
+                  <span className="text-[10px] font-medium text-white/30">
+                    {label}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <Button
+              variant="gradient"
+              className="flex w-full items-center justify-center gap-2 py-3 h-auto text-sm font-semibold shadow-lg shadow-[#9345f2]/20"
+              onClick={onRequestLocation}
+            >
+              <IoLocationOutline className="text-base" />
+              Share Location
+            </Button>
+          </div>
+        )}
+
+        {isDetecting && (
+          <div className="animate-fade-in flex items-center justify-center gap-2 py-4">
+            <div className="flex gap-1">
+              {[0, 200, 400].map((d) => (
+                <div
+                  key={d}
+                  className="h-2 w-2 animate-bounce rounded-full bg-[#b87aff]"
+                  style={{
+                    animationDelay: `${d}ms`,
+                    animationDuration: "1.2s",
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {error && !isDetecting && !locationGranted && (
+          <div className="animate-fade-in space-y-3">
+            <div className="text-center">
+              <p className="text-sm font-medium text-red-400">
+                Unable to locate
+              </p>
+              <p className="mt-0.5 text-xs text-white/30">{error}</p>
+            </div>
+            <Button
+              variant="white-ghost"
+              className="w-full rounded-xl bg-white/8 py-2.5 h-auto text-xs font-medium text-white/70 hover:bg-white/15"
+              onClick={onRequestLocation}
+            >
+              Try Again
+            </Button>
+          </div>
+        )}
+
+        {locationGranted && (
+          <div className="animate-fade-in text-center">
+            <div className="mx-auto flex h-7 w-7 items-center justify-center rounded-full bg-green-500/15">
+              <svg
+                className="h-3.5 w-3.5 text-green-400"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Privacy */}
+      <div className="mt-auto pt-6 pb-1">
+        <PrivacyBadge />
+      </div>
+
+      {/* Continue */}
       <Button
         variant="gradient"
-        className="flex w-full items-center justify-center gap-2 py-3.5 h-auto text-sm shadow-lg shadow-[#9345f2]/20 hover:shadow-xl hover:shadow-[#9345f2]/30"
+        className="mt-3 flex w-full shrink-0 items-center justify-center gap-2 py-3 h-auto text-sm shadow-lg shadow-[#9345f2]/20 hover:shadow-xl hover:shadow-[#9345f2]/30"
         onClick={onNext}
       >
-        Continue
+        {locationGranted ? "Continue" : "Skip for now"}
         <IoChevronForward className="text-base" />
       </Button>
     </div>
