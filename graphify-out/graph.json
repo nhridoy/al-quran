@@ -4,463 +4,535 @@
   "graph": {},
   "nodes": [
     {
+      "label": "StepLocation.tsx",
+      "file_type": "code",
+      "source_file": "src/components/features/Onboarding/StepLocation.tsx",
+      "source_location": "L1",
+      "id": "onboarding_steplocation",
+      "community": 58,
+      "norm_label": "steplocation.tsx"
+    },
+    {
+      "label": "CompassNeedle()",
+      "file_type": "code",
+      "source_file": "src/components/features/Onboarding/StepLocation.tsx",
+      "source_location": "L10",
+      "id": "onboarding_steplocation_compassneedle",
+      "community": 58,
+      "norm_label": "compassneedle()"
+    },
+    {
+      "label": "PrivacyBadge()",
+      "file_type": "code",
+      "source_file": "src/components/features/Onboarding/StepLocation.tsx",
+      "source_location": "L101",
+      "id": "onboarding_steplocation_privacybadge",
+      "community": 58,
+      "norm_label": "privacybadge()"
+    },
+    {
+      "label": "StepLocation()",
+      "file_type": "code",
+      "source_file": "src/components/features/Onboarding/StepLocation.tsx",
+      "source_location": "L112",
+      "id": "onboarding_steplocation_steplocation",
+      "community": 58,
+      "norm_label": "steplocation()"
+    },
+    {
+      "label": "StepPermissions.tsx",
+      "file_type": "code",
+      "source_file": "src/components/features/Onboarding/StepPermissions.tsx",
+      "source_location": "L1",
+      "id": "onboarding_steppermissions",
+      "community": 58,
+      "norm_label": "steppermissions.tsx"
+    },
+    {
+      "label": "BellVisual()",
+      "file_type": "code",
+      "source_file": "src/components/features/Onboarding/StepPermissions.tsx",
+      "source_location": "L10",
+      "id": "onboarding_steppermissions_bellvisual",
+      "community": 58,
+      "norm_label": "bellvisual()"
+    },
+    {
+      "label": "PrivacyBadge()",
+      "file_type": "code",
+      "source_file": "src/components/features/Onboarding/StepPermissions.tsx",
+      "source_location": "L182",
+      "id": "onboarding_steppermissions_privacybadge",
+      "community": 58,
+      "norm_label": "privacybadge()"
+    },
+    {
+      "label": "StepPermissions()",
+      "file_type": "code",
+      "source_file": "src/components/features/Onboarding/StepPermissions.tsx",
+      "source_location": "L193",
+      "id": "onboarding_steppermissions_steppermissions",
+      "community": 58,
+      "norm_label": "steppermissions()"
+    },
+    {
       "label": "biome.json",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L1",
-      "id": "biome",
       "community": 15,
-      "norm_label": "biome.json"
+      "norm_label": "biome.json",
+      "id": "biome"
     },
     {
       "label": "$schema",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L2",
-      "id": "biome_schema",
       "community": 15,
-      "norm_label": "$schema"
+      "norm_label": "$schema",
+      "id": "biome_schema"
     },
     {
       "label": "vcs",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L3",
-      "id": "biome_vcs",
       "community": 15,
-      "norm_label": "vcs"
+      "norm_label": "vcs",
+      "id": "biome_vcs"
     },
     {
       "label": "enabled",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L4",
-      "id": "biome_vcs_enabled",
       "community": 15,
-      "norm_label": "enabled"
+      "norm_label": "enabled",
+      "id": "biome_vcs_enabled"
     },
     {
       "label": "clientKind",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L5",
-      "id": "biome_vcs_clientkind",
       "community": 15,
-      "norm_label": "clientkind"
+      "norm_label": "clientkind",
+      "id": "biome_vcs_clientkind"
     },
     {
       "label": "useIgnoreFile",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L6",
-      "id": "biome_vcs_useignorefile",
       "community": 15,
-      "norm_label": "useignorefile"
+      "norm_label": "useignorefile",
+      "id": "biome_vcs_useignorefile"
     },
     {
       "label": "files",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L8",
-      "id": "biome_files",
       "community": 15,
-      "norm_label": "files"
+      "norm_label": "files",
+      "id": "biome_files"
     },
     {
       "label": "ignoreUnknown",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L9",
-      "id": "biome_files_ignoreunknown",
       "community": 15,
-      "norm_label": "ignoreunknown"
+      "norm_label": "ignoreunknown",
+      "id": "biome_files_ignoreunknown"
     },
     {
       "label": "includes",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L10",
-      "id": "biome_files_includes",
       "community": 15,
-      "norm_label": "includes"
+      "norm_label": "includes",
+      "id": "biome_files_includes"
     },
     {
       "label": "formatter",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L20",
-      "id": "biome_formatter",
       "community": 15,
-      "norm_label": "formatter"
+      "norm_label": "formatter",
+      "id": "biome_formatter"
     },
     {
       "label": "enabled",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L21",
-      "id": "biome_formatter_enabled",
       "community": 15,
-      "norm_label": "enabled"
+      "norm_label": "enabled",
+      "id": "biome_formatter_enabled"
     },
     {
       "label": "indentStyle",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L22",
-      "id": "biome_formatter_indentstyle",
       "community": 15,
-      "norm_label": "indentstyle"
+      "norm_label": "indentstyle",
+      "id": "biome_formatter_indentstyle"
     },
     {
       "label": "indentWidth",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L23",
-      "id": "biome_formatter_indentwidth",
       "community": 15,
-      "norm_label": "indentwidth"
+      "norm_label": "indentwidth",
+      "id": "biome_formatter_indentwidth"
     },
     {
       "label": "linter",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L25",
-      "id": "biome_linter",
       "community": 15,
-      "norm_label": "linter"
+      "norm_label": "linter",
+      "id": "biome_linter"
     },
     {
       "label": "enabled",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L26",
-      "id": "biome_linter_enabled",
       "community": 15,
-      "norm_label": "enabled"
+      "norm_label": "enabled",
+      "id": "biome_linter_enabled"
     },
     {
       "label": "rules",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L27",
-      "id": "biome_linter_rules",
       "community": 15,
-      "norm_label": "rules"
+      "norm_label": "rules",
+      "id": "biome_linter_rules"
     },
     {
       "label": "recommended",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L28",
-      "id": "biome_rules_recommended",
       "community": 15,
-      "norm_label": "recommended"
+      "norm_label": "recommended",
+      "id": "biome_rules_recommended"
     },
     {
       "label": "suspicious",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L29",
-      "id": "biome_rules_suspicious",
       "community": 15,
-      "norm_label": "suspicious"
+      "norm_label": "suspicious",
+      "id": "biome_rules_suspicious"
     },
     {
       "label": "noUnknownAtRules",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L30",
-      "id": "biome_suspicious_nounknownatrules",
       "community": 15,
-      "norm_label": "nounknownatrules"
+      "norm_label": "nounknownatrules",
+      "id": "biome_suspicious_nounknownatrules"
     },
     {
       "label": "domains",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L33",
-      "id": "biome_linter_domains",
       "community": 15,
-      "norm_label": "domains"
+      "norm_label": "domains",
+      "id": "biome_linter_domains"
     },
     {
       "label": "react",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L34",
-      "id": "biome_domains_react",
       "community": 15,
-      "norm_label": "react"
+      "norm_label": "react",
+      "id": "biome_domains_react"
     },
     {
       "label": "css",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L37",
-      "id": "biome_css",
       "community": 15,
-      "norm_label": "css"
+      "norm_label": "css",
+      "id": "biome_css"
     },
     {
       "label": "formatter",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L38",
-      "id": "biome_css_formatter",
       "community": 15,
-      "norm_label": "formatter"
+      "norm_label": "formatter",
+      "id": "biome_css_formatter"
     },
     {
       "label": "parser",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L41",
-      "id": "biome_css_parser",
       "community": 15,
-      "norm_label": "parser"
+      "norm_label": "parser",
+      "id": "biome_css_parser"
     },
     {
       "label": "tailwindDirectives",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L42",
-      "id": "biome_parser_tailwinddirectives",
       "community": 15,
-      "norm_label": "tailwinddirectives"
+      "norm_label": "tailwinddirectives",
+      "id": "biome_parser_tailwinddirectives"
     },
     {
       "label": "assist",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L45",
-      "id": "biome_assist",
       "community": 15,
-      "norm_label": "assist"
+      "norm_label": "assist",
+      "id": "biome_assist"
     },
     {
       "label": "actions",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L46",
-      "id": "biome_assist_actions",
       "community": 15,
-      "norm_label": "actions"
+      "norm_label": "actions",
+      "id": "biome_assist_actions"
     },
     {
       "label": "source",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L47",
-      "id": "biome_actions_source",
       "community": 15,
-      "norm_label": "source"
+      "norm_label": "source",
+      "id": "biome_actions_source"
     },
     {
       "label": "organizeImports",
       "file_type": "code",
       "source_file": "biome.json",
       "source_location": "L48",
-      "id": "biome_source_organizeimports",
       "community": 15,
-      "norm_label": "organizeimports"
+      "norm_label": "organizeimports",
+      "id": "biome_source_organizeimports"
     },
     {
       "label": "carousel.tsx",
       "file_type": "code",
       "source_file": "src/components/ui/carousel.tsx",
       "source_location": "L1",
-      "id": "ui_carousel",
       "community": 77,
-      "norm_label": "carousel.tsx"
+      "norm_label": "carousel.tsx",
+      "id": "ui_carousel"
     },
     {
       "label": "CarouselApi",
       "file_type": "code",
       "source_file": "src/components/ui/carousel.tsx",
       "source_location": "L9",
-      "id": "ui_carousel_carouselapi",
       "community": 77,
-      "norm_label": "carouselapi"
+      "norm_label": "carouselapi",
+      "id": "ui_carousel_carouselapi"
     },
     {
       "label": "UseCarouselParameters",
       "file_type": "code",
       "source_file": "src/components/ui/carousel.tsx",
       "source_location": "L10",
-      "id": "ui_carousel_usecarouselparameters",
       "community": 77,
-      "norm_label": "usecarouselparameters"
+      "norm_label": "usecarouselparameters",
+      "id": "ui_carousel_usecarouselparameters"
     },
     {
       "label": "CarouselOptions",
       "file_type": "code",
       "source_file": "src/components/ui/carousel.tsx",
       "source_location": "L11",
-      "id": "ui_carousel_carouseloptions",
       "community": 77,
-      "norm_label": "carouseloptions"
+      "norm_label": "carouseloptions",
+      "id": "ui_carousel_carouseloptions"
     },
     {
       "label": "CarouselPlugin",
       "file_type": "code",
       "source_file": "src/components/ui/carousel.tsx",
       "source_location": "L12",
-      "id": "ui_carousel_carouselplugin",
       "community": 77,
-      "norm_label": "carouselplugin"
+      "norm_label": "carouselplugin",
+      "id": "ui_carousel_carouselplugin"
     },
     {
       "label": "CarouselProps",
       "file_type": "code",
       "source_file": "src/components/ui/carousel.tsx",
       "source_location": "L14",
-      "id": "ui_carousel_carouselprops",
       "community": 77,
-      "norm_label": "carouselprops"
+      "norm_label": "carouselprops",
+      "id": "ui_carousel_carouselprops"
     },
     {
       "label": "CarouselContextProps",
       "file_type": "code",
       "source_file": "src/components/ui/carousel.tsx",
       "source_location": "L21",
-      "id": "ui_carousel_carouselcontextprops",
       "community": 77,
-      "norm_label": "carouselcontextprops"
+      "norm_label": "carouselcontextprops",
+      "id": "ui_carousel_carouselcontextprops"
     },
     {
       "label": "CarouselContext",
       "file_type": "code",
       "source_file": "src/components/ui/carousel.tsx",
       "source_location": "L30",
-      "id": "ui_carousel_carouselcontext",
       "community": 77,
-      "norm_label": "carouselcontext"
+      "norm_label": "carouselcontext",
+      "id": "ui_carousel_carouselcontext"
     },
     {
       "label": "useCarousel()",
       "file_type": "code",
       "source_file": "src/components/ui/carousel.tsx",
       "source_location": "L32",
-      "id": "ui_carousel_usecarousel",
       "community": 77,
-      "norm_label": "usecarousel()"
+      "norm_label": "usecarousel()",
+      "id": "ui_carousel_usecarousel"
     },
     {
       "label": "Carousel()",
       "file_type": "code",
       "source_file": "src/components/ui/carousel.tsx",
       "source_location": "L42",
-      "id": "ui_carousel_carousel",
       "community": 77,
-      "norm_label": "carousel()"
+      "norm_label": "carousel()",
+      "id": "ui_carousel_carousel"
     },
     {
       "label": "CarouselContent()",
       "file_type": "code",
       "source_file": "src/components/ui/carousel.tsx",
       "source_location": "L133",
-      "id": "ui_carousel_carouselcontent",
       "community": 77,
-      "norm_label": "carouselcontent()"
+      "norm_label": "carouselcontent()",
+      "id": "ui_carousel_carouselcontent"
     },
     {
       "label": "CarouselItem()",
       "file_type": "code",
       "source_file": "src/components/ui/carousel.tsx",
       "source_location": "L154",
-      "id": "ui_carousel_carouselitem",
       "community": 77,
-      "norm_label": "carouselitem()"
+      "norm_label": "carouselitem()",
+      "id": "ui_carousel_carouselitem"
     },
     {
       "label": "CarouselPrevious()",
       "file_type": "code",
       "source_file": "src/components/ui/carousel.tsx",
       "source_location": "L175",
-      "id": "ui_carousel_carouselprevious",
       "community": 77,
-      "norm_label": "carouselprevious()"
+      "norm_label": "carouselprevious()",
+      "id": "ui_carousel_carouselprevious"
     },
     {
       "label": "CarouselNext()",
       "file_type": "code",
       "source_file": "src/components/ui/carousel.tsx",
       "source_location": "L205",
-      "id": "ui_carousel_carouselnext",
       "community": 77,
-      "norm_label": "carouselnext()"
+      "norm_label": "carouselnext()",
+      "id": "ui_carousel_carouselnext"
     },
     {
       "label": "index.tsx",
       "file_type": "code",
       "source_file": "src/pages/FastingCalendar/index.tsx",
       "source_location": "L1",
-      "id": "fastingcalendar_index",
       "community": 49,
-      "norm_label": "index.tsx"
+      "norm_label": "index.tsx",
+      "id": "fastingcalendar_index"
     },
     {
       "label": "formatDuration()",
       "file_type": "code",
       "source_file": "src/pages/FastingCalendar/index.tsx",
       "source_location": "L14",
-      "id": "fastingcalendar_index_formatduration",
       "community": 49,
-      "norm_label": "formatduration()"
+      "norm_label": "formatduration()",
+      "id": "fastingcalendar_index_formatduration"
     },
     {
       "label": "FastingCalendar()",
       "file_type": "code",
       "source_file": "src/pages/FastingCalendar/index.tsx",
       "source_location": "L21",
-      "id": "fastingcalendar_index_fastingcalendar",
       "community": 49,
-      "norm_label": "fastingcalendar()"
+      "norm_label": "fastingcalendar()",
+      "id": "fastingcalendar_index_fastingcalendar"
     },
     {
       "label": "index.tsx",
       "file_type": "code",
       "source_file": "src/pages/HijriCalendar/index.tsx",
       "source_location": "L1",
-      "id": "hijricalendar_index",
-      "community": 49,
-      "norm_label": "index.tsx"
+      "community": 37,
+      "norm_label": "index.tsx",
+      "id": "hijricalendar_index"
     },
     {
       "label": "buildEmptyCells()",
       "file_type": "code",
       "source_file": "src/pages/HijriCalendar/index.tsx",
       "source_location": "L20",
-      "id": "hijricalendar_index_buildemptycells",
-      "community": 49,
-      "norm_label": "buildemptycells()"
+      "community": 37,
+      "norm_label": "buildemptycells()",
+      "id": "hijricalendar_index_buildemptycells"
     },
     {
       "label": "isToday()",
       "file_type": "code",
       "source_file": "src/pages/HijriCalendar/index.tsx",
       "source_location": "L28",
-      "id": "hijricalendar_index_istoday",
-      "community": 49,
-      "norm_label": "istoday()"
+      "community": 37,
+      "norm_label": "istoday()",
+      "id": "hijricalendar_index_istoday"
     },
     {
       "label": "formatGregorian()",
       "file_type": "code",
       "source_file": "src/pages/HijriCalendar/index.tsx",
       "source_location": "L37",
-      "id": "hijricalendar_index_formatgregorian",
-      "community": 49,
-      "norm_label": "formatgregorian()"
+      "community": 37,
+      "norm_label": "formatgregorian()",
+      "id": "hijricalendar_index_formatgregorian"
     },
     {
       "label": "HijriCalendar()",
       "file_type": "code",
       "source_file": "src/pages/HijriCalendar/index.tsx",
       "source_location": "L46",
-      "id": "hijricalendar_index_hijricalendar",
-      "community": 49,
-      "norm_label": "hijricalendar()"
+      "community": 37,
+      "norm_label": "hijricalendar()",
+      "id": "hijricalendar_index_hijricalendar"
     },
     {
       "label": "opencode.json",
@@ -1295,7 +1367,7 @@
       "file_type": "code",
       "source_file": "src/App.tsx",
       "source_location": "L94",
-      "community": 60,
+      "community": 136,
       "norm_label": "dataloader()",
       "id": "src_app_dataloader"
     },
@@ -1466,7 +1538,7 @@
       "file_type": "code",
       "source_file": "src/components/common/Header/Header.tsx",
       "source_location": "L1",
-      "community": 41,
+      "community": 90,
       "norm_label": "header.tsx",
       "id": "header_header"
     },
@@ -1475,7 +1547,7 @@
       "file_type": "code",
       "source_file": "src/components/common/Header/Header.tsx",
       "source_location": "L8",
-      "community": 41,
+      "community": 90,
       "norm_label": "headerprops",
       "id": "header_header_headerprops"
     },
@@ -1484,7 +1556,7 @@
       "file_type": "code",
       "source_file": "src/components/common/Header/Header.tsx",
       "source_location": "L14",
-      "community": 41,
+      "community": 90,
       "norm_label": "header",
       "id": "header_header_header"
     },
@@ -1777,42 +1849,6 @@
       "id": "onboarding_stepdone_stepdone"
     },
     {
-      "label": "StepLocation.tsx",
-      "file_type": "code",
-      "source_file": "src/components/features/Onboarding/StepLocation.tsx",
-      "source_location": "L1",
-      "community": 58,
-      "norm_label": "steplocation.tsx",
-      "id": "onboarding_steplocation"
-    },
-    {
-      "label": "StepLocation()",
-      "file_type": "code",
-      "source_file": "src/components/features/Onboarding/StepLocation.tsx",
-      "source_location": "L4",
-      "community": 58,
-      "norm_label": "steplocation()",
-      "id": "onboarding_steplocation_steplocation"
-    },
-    {
-      "label": "StepPermissions.tsx",
-      "file_type": "code",
-      "source_file": "src/components/features/Onboarding/StepPermissions.tsx",
-      "source_location": "L1",
-      "community": 58,
-      "norm_label": "steppermissions.tsx",
-      "id": "onboarding_steppermissions"
-    },
-    {
-      "label": "StepPermissions()",
-      "file_type": "code",
-      "source_file": "src/components/features/Onboarding/StepPermissions.tsx",
-      "source_location": "L4",
-      "community": 58,
-      "norm_label": "steppermissions()",
-      "id": "onboarding_steppermissions_steppermissions"
-    },
-    {
       "label": "StepWelcome.tsx",
       "file_type": "code",
       "source_file": "src/components/features/Onboarding/StepWelcome.tsx",
@@ -1871,7 +1907,7 @@
       "file_type": "code",
       "source_file": "src/components/features/Search/VerseResultItem.tsx",
       "source_location": "L1",
-      "community": 41,
+      "community": 90,
       "norm_label": "verseresultitem.tsx",
       "id": "search_verseresultitem"
     },
@@ -1880,7 +1916,7 @@
       "file_type": "code",
       "source_file": "src/components/features/Search/VerseResultItem.tsx",
       "source_location": "L5",
-      "community": 41,
+      "community": 90,
       "norm_label": "verseresultitemprops",
       "id": "search_verseresultitem_verseresultitemprops"
     },
@@ -1889,7 +1925,7 @@
       "file_type": "code",
       "source_file": "src/components/features/Search/VerseResultItem.tsx",
       "source_location": "L10",
-      "community": 41,
+      "community": 90,
       "norm_label": "verseresultitem",
       "id": "search_verseresultitem_verseresultitem"
     },
@@ -2492,7 +2528,7 @@
       "file_type": "code",
       "source_file": "src/data/islamicEvents.ts",
       "source_location": "L97",
-      "community": 49,
+      "community": 37,
       "norm_label": "getislamicmonthname()",
       "id": "data_islamicevents_getislamicmonthname"
     },
@@ -12707,7 +12743,7 @@
       "file_type": "code",
       "source_file": "src/pages/Qibla/index.tsx",
       "source_location": "L1",
-      "community": 90,
+      "community": 58,
       "norm_label": "index.tsx",
       "id": "qibla_index"
     },
@@ -12716,7 +12752,7 @@
       "file_type": "code",
       "source_file": "src/pages/Qibla/index.tsx",
       "source_location": "L14",
-      "community": 90,
+      "community": 58,
       "norm_label": "orientationevent",
       "id": "qibla_index_orientationevent"
     },
@@ -12725,7 +12761,7 @@
       "file_type": "code",
       "source_file": "src/pages/Qibla/index.tsx",
       "source_location": "L20",
-      "community": 90,
+      "community": 58,
       "norm_label": "qiblafinder()",
       "id": "qibla_index_qiblafinder"
     },
@@ -14920,7 +14956,7 @@
       "file_type": "code",
       "source_file": "src/components/features/Search/Search.tsx",
       "source_location": "L1",
-      "community": 41,
+      "community": 90,
       "norm_label": "search.tsx",
       "id": "search_search"
     },
@@ -14929,7 +14965,7 @@
       "file_type": "code",
       "source_file": "src/components/features/Search/Search.tsx",
       "source_location": "L21",
-      "community": 41,
+      "community": 60,
       "norm_label": "search()",
       "id": "search_search_search"
     },
@@ -15091,7 +15127,7 @@
       "file_type": "code",
       "source_file": "src/components/quran/SurahItem/SurahItem.tsx",
       "source_location": "L1",
-      "community": 41,
+      "community": 90,
       "norm_label": "surahitem.tsx",
       "id": "surahitem_surahitem"
     },
@@ -15100,7 +15136,7 @@
       "file_type": "code",
       "source_file": "src/components/quran/SurahItem/SurahItem.tsx",
       "source_location": "L5",
-      "community": 41,
+      "community": 90,
       "norm_label": "surahitemprops",
       "id": "surahitem_surahitem_surahitemprops"
     },
@@ -15109,7 +15145,7 @@
       "file_type": "code",
       "source_file": "src/components/quran/SurahItem/SurahItem.tsx",
       "source_location": "L9",
-      "community": 41,
+      "community": 90,
       "norm_label": "surahitem",
       "id": "surahitem_surahitem_surahitem"
     },
@@ -16729,7 +16765,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useDebounce.ts",
       "source_location": "L1",
-      "community": 41,
+      "community": 60,
       "norm_label": "usedebounce.ts",
       "id": "hooks_usedebounce"
     },
@@ -16738,7 +16774,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useDebounce.ts",
       "source_location": "L3",
-      "community": 41,
+      "community": 60,
       "norm_label": "usedebounce()",
       "id": "hooks_usedebounce_usedebounce"
     },
@@ -16873,7 +16909,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useSurahs.ts",
       "source_location": "L1",
-      "community": 41,
+      "community": 60,
       "norm_label": "usesurahs.ts",
       "id": "hooks_usesurahs"
     },
@@ -16882,7 +16918,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useSurahs.ts",
       "source_location": "L5",
-      "community": 41,
+      "community": 60,
       "norm_label": "usesurahs()",
       "id": "hooks_usesurahs_usesurahs"
     },
@@ -17521,7 +17557,7 @@
       "file_type": "code",
       "source_file": "src/lib/qibla.ts",
       "source_location": "L1",
-      "community": 90,
+      "community": 58,
       "norm_label": "qibla.ts",
       "id": "lib_qibla"
     },
@@ -17530,7 +17566,7 @@
       "file_type": "code",
       "source_file": "src/lib/qibla.ts",
       "source_location": "L1",
-      "community": 90,
+      "community": 58,
       "norm_label": "calculatedistance()",
       "id": "lib_qibla_calculatedistance"
     },
@@ -17539,7 +17575,7 @@
       "file_type": "code",
       "source_file": "src/lib/qibla.ts",
       "source_location": "L20",
-      "community": 90,
+      "community": 58,
       "norm_label": "bearing()",
       "id": "lib_qibla_bearing"
     },
@@ -17548,7 +17584,7 @@
       "file_type": "code",
       "source_file": "src/lib/qibla.ts",
       "source_location": "L36",
-      "community": 90,
+      "community": 58,
       "norm_label": "tocompassdirection()",
       "id": "lib_qibla_tocompassdirection"
     },
@@ -17557,7 +17593,7 @@
       "file_type": "code",
       "source_file": "src/lib/qibla.ts",
       "source_location": "L42",
-      "community": 90,
+      "community": 58,
       "norm_label": "deviceorientationconstructor",
       "id": "lib_qibla_deviceorientationconstructor"
     },
@@ -17566,7 +17602,7 @@
       "file_type": "code",
       "source_file": "src/lib/qibla.ts",
       "source_location": "L46",
-      "community": 90,
+      "community": 58,
       "norm_label": "deviceorientationwithpermission()",
       "id": "lib_qibla_deviceorientationwithpermission"
     },
@@ -17953,7 +17989,7 @@
       "file_type": "code",
       "source_file": "src/store/downloads.ts",
       "source_location": "L1",
-      "community": 60,
+      "community": 136,
       "norm_label": "downloads.ts",
       "id": "store_downloads"
     },
@@ -17962,7 +17998,7 @@
       "file_type": "code",
       "source_file": "src/store/downloads.ts",
       "source_location": "L4",
-      "community": 60,
+      "community": 136,
       "norm_label": "downloaditem",
       "id": "store_downloads_downloaditem"
     },
@@ -17971,7 +18007,7 @@
       "file_type": "code",
       "source_file": "src/store/downloads.ts",
       "source_location": "L14",
-      "community": 60,
+      "community": 136,
       "norm_label": "downloadsstate",
       "id": "store_downloads_downloadsstate"
     },
@@ -17980,7 +18016,7 @@
       "file_type": "code",
       "source_file": "src/store/downloads.ts",
       "source_location": "L30",
-      "community": 60,
+      "community": 136,
       "norm_label": "usedownloadsstore",
       "id": "store_downloads_usedownloadsstore"
     },
@@ -19618,7 +19654,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L375",
-      "community": 82,
+      "community": 120,
       "norm_label": "1.1 hijri date display",
       "id": "expansion_roadmap_1_1_hijri_date_display"
     },
@@ -19627,7 +19663,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L383",
-      "community": 82,
+      "community": 120,
       "norm_label": "files",
       "id": "expansion_roadmap_files_383"
     },
@@ -19636,7 +19672,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L390",
-      "community": 82,
+      "community": 120,
       "norm_label": "dependencies",
       "id": "expansion_roadmap_dependencies_390"
     },
@@ -19645,7 +19681,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L394",
-      "community": 82,
+      "community": 120,
       "norm_label": "implementation",
       "id": "expansion_roadmap_implementation_394"
     },
@@ -19654,7 +19690,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L463",
-      "community": 82,
+      "community": 120,
       "norm_label": "ai instructions",
       "id": "expansion_roadmap_ai_instructions_463"
     },
@@ -19663,7 +19699,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L472",
-      "community": 82,
+      "community": 121,
       "norm_label": "1.2 bookmarks (wire ui + data)",
       "id": "expansion_roadmap_1_2_bookmarks_wire_ui_data"
     },
@@ -19672,7 +19708,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L480",
-      "community": 82,
+      "community": 121,
       "norm_label": "files",
       "id": "expansion_roadmap_files_480"
     },
@@ -19681,7 +19717,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L489",
-      "community": 82,
+      "community": 121,
       "norm_label": "implementation",
       "id": "expansion_roadmap_implementation_489"
     },
@@ -19690,7 +19726,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L569",
-      "community": 82,
+      "community": 121,
       "norm_label": "bookmarks page",
       "id": "expansion_roadmap_bookmarks_page"
     },
@@ -19699,7 +19735,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L577",
-      "community": 82,
+      "community": 121,
       "norm_label": "ai instructions",
       "id": "expansion_roadmap_ai_instructions_577"
     },
@@ -19780,7 +19816,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L693",
-      "community": 82,
+      "community": 155,
       "norm_label": "1.5 verse text search",
       "id": "expansion_roadmap_1_5_verse_text_search"
     },
@@ -19789,7 +19825,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L701",
-      "community": 82,
+      "community": 155,
       "norm_label": "files",
       "id": "expansion_roadmap_files_701"
     },
@@ -19798,7 +19834,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L707",
-      "community": 82,
+      "community": 155,
       "norm_label": "implementation",
       "id": "expansion_roadmap_implementation_707"
     },
@@ -19807,7 +19843,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L744",
-      "community": 82,
+      "community": 155,
       "norm_label": "ai instructions",
       "id": "expansion_roadmap_ai_instructions_744"
     },
@@ -19816,7 +19852,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L754",
-      "community": 82,
+      "community": 122,
       "norm_label": "1.6 asma ul-husna (99 names)",
       "id": "expansion_roadmap_1_6_asma_ul_husna_99_names"
     },
@@ -19825,7 +19861,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L760",
-      "community": 82,
+      "community": 122,
       "norm_label": "files",
       "id": "expansion_roadmap_files_760"
     },
@@ -19834,7 +19870,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L768",
-      "community": 82,
+      "community": 122,
       "norm_label": "data (sample structure)",
       "id": "expansion_roadmap_data_sample_structure"
     },
@@ -19843,7 +19879,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L784",
-      "community": 82,
+      "community": 122,
       "norm_label": "implementation",
       "id": "expansion_roadmap_implementation_784"
     },
@@ -19852,7 +19888,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L792",
-      "community": 82,
+      "community": 122,
       "norm_label": "ai instructions",
       "id": "expansion_roadmap_ai_instructions_792"
     },
@@ -20005,7 +20041,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L982",
-      "community": 120,
+      "community": 21,
       "norm_label": "2.3 dua collection",
       "id": "expansion_roadmap_2_3_dua_collection"
     },
@@ -20014,7 +20050,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L988",
-      "community": 120,
+      "community": 21,
       "norm_label": "files",
       "id": "expansion_roadmap_files_988"
     },
@@ -20023,7 +20059,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L998",
-      "community": 120,
+      "community": 21,
       "norm_label": "implementation",
       "id": "expansion_roadmap_implementation_998"
     },
@@ -20032,7 +20068,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1007",
-      "community": 120,
+      "community": 21,
       "norm_label": "ai instructions",
       "id": "expansion_roadmap_ai_instructions_1007"
     },
@@ -20077,7 +20113,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1077",
-      "community": 121,
+      "community": 21,
       "norm_label": "2.5 last 10 surahs",
       "id": "expansion_roadmap_2_5_last_10_surahs"
     },
@@ -20086,7 +20122,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1083",
-      "community": 121,
+      "community": 21,
       "norm_label": "files",
       "id": "expansion_roadmap_files_1083"
     },
@@ -20095,7 +20131,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1090",
-      "community": 121,
+      "community": 21,
       "norm_label": "implementation",
       "id": "expansion_roadmap_implementation_1090"
     },
@@ -20104,7 +20140,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1097",
-      "community": 121,
+      "community": 21,
       "norm_label": "ai instructions",
       "id": "expansion_roadmap_ai_instructions_1097"
     },
@@ -20122,7 +20158,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1112",
-      "community": 122,
+      "community": 42,
       "norm_label": "3.1 bookmark management page",
       "id": "expansion_roadmap_3_1_bookmark_management_page"
     },
@@ -20131,7 +20167,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1120",
-      "community": 122,
+      "community": 42,
       "norm_label": "files",
       "id": "expansion_roadmap_files_1120"
     },
@@ -20140,7 +20176,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1126",
-      "community": 122,
+      "community": 42,
       "norm_label": "implementation",
       "id": "expansion_roadmap_implementation_1126"
     },
@@ -20149,7 +20185,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1134",
-      "community": 122,
+      "community": 42,
       "norm_label": "ai instructions",
       "id": "expansion_roadmap_ai_instructions_1134"
     },
@@ -21460,6 +21496,88 @@
     }
   ],
   "links": [
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/Onboarding/Onboarding.tsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "onboarding_onboarding",
+      "target": "onboarding_steplocation"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/Onboarding/StepLocation.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "onboarding_steplocation",
+      "target": "onboarding_steplocation_compassneedle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/Onboarding/StepLocation.tsx",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "onboarding_steplocation",
+      "target": "onboarding_steplocation_privacybadge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/Onboarding/StepLocation.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "onboarding_steplocation",
+      "target": "onboarding_steplocation_steplocation"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/Onboarding/Onboarding.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "onboarding_onboarding",
+      "target": "onboarding_steppermissions"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/Onboarding/StepPermissions.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "onboarding_steppermissions",
+      "target": "onboarding_steppermissions_bellvisual",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/Onboarding/StepPermissions.tsx",
+      "source_location": "L182",
+      "weight": 1.0,
+      "source": "onboarding_steppermissions",
+      "target": "onboarding_steppermissions_privacybadge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/Onboarding/StepPermissions.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "onboarding_steppermissions",
+      "target": "onboarding_steppermissions_steppermissions"
+    },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
@@ -24077,28 +24195,6 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "onboarding_onboarding",
-      "target": "onboarding_steplocation"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/Onboarding/Onboarding.tsx",
-      "source_location": "L24",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "onboarding_onboarding",
-      "target": "onboarding_steppermissions"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/Onboarding/Onboarding.tsx",
-      "source_location": "L25",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "onboarding_onboarding",
       "target": "onboarding_stepwelcome"
     },
     {
@@ -24132,26 +24228,6 @@
       "confidence_score": 1.0,
       "source": "onboarding_stepdone",
       "target": "onboarding_stepdone_stepdone"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/Onboarding/StepLocation.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "onboarding_steplocation",
-      "target": "onboarding_steplocation_steplocation"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/Onboarding/StepPermissions.tsx",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "onboarding_steppermissions",
-      "target": "onboarding_steppermissions_steppermissions"
     },
     {
       "relation": "contains",
@@ -48066,5 +48142,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "f15ebf53910f215429cd06c8b320f2260db72bcd"
+  "built_at_commit": "0f5e096d4accda52af4f81f58b8d34a65b7f0941"
 }

@@ -60,6 +60,7 @@
   --animate-slide-up: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   --animate-fade-in: fadeIn 0.3s ease-out;
   --animate-scale-in: scaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-fade-in-up: fadeInUp 0.4s ease-out;
   --animate-accordion-down: accordion-down 0.25s ease-out;
   --animate-accordion-up: accordion-up 0.25s ease-out;
 }
@@ -92,6 +93,17 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

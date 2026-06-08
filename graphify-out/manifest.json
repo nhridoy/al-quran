@@ -230,8 +230,8 @@
     "semantic_hash": ""
   },
   "src/components/features/Onboarding/StepPermissions.tsx": {
-    "mtime": 1780851588.9203942,
-    "ast_hash": "bfd0c33b2057caf30fcb591308adede0",
+    "mtime": 1780936205.6487472,
+    "ast_hash": "1090cbf059bd084a113fc24668e0544f",
     "semantic_hash": ""
   },
   "src/components/features/Onboarding/StepWelcome.tsx": {
@@ -1715,8 +1715,8 @@
     "semantic_hash": ""
   },
   "src/components/features/Onboarding/StepLocation.tsx": {
-    "mtime": 1780852202.9605026,
-    "ast_hash": "aae8002a4f09427ba100f08284d3ece3",
+    "mtime": 1780936003.525454,
+    "ast_hash": "c337cb9b4c99a542014177d5610ea7ef",
     "semantic_hash": ""
   },
   "src/components/ui/carousel.tsx": {
