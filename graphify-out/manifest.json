@@ -215,8 +215,8 @@
     "semantic_hash": ""
   },
   "src/components/features/Onboarding/ListSelectStep.tsx": {
-    "mtime": 1780329960.7669961,
-    "ast_hash": "e14c50926346ea91b1da5bbc6e9e2739",
+    "mtime": 1780936935.3203394,
+    "ast_hash": "9957343235a852b2c29592f5b23617a9",
     "semantic_hash": ""
   },
   "src/components/features/Onboarding/Onboarding.tsx": {
@@ -230,7 +230,7 @@
     "semantic_hash": ""
   },
   "src/components/features/Onboarding/StepPermissions.tsx": {
-    "mtime": 1780936205.6487472,
+    "mtime": 1780936792.1875868,
     "ast_hash": "1090cbf059bd084a113fc24668e0544f",
     "semantic_hash": ""
   },

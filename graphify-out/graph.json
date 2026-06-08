@@ -4,76 +4,121 @@
   "graph": {},
   "nodes": [
     {
+      "label": "ListSelectStep.tsx",
+      "file_type": "code",
+      "source_file": "src/components/features/Onboarding/ListSelectStep.tsx",
+      "source_location": "L1",
+      "id": "onboarding_listselectstep",
+      "community": 58,
+      "norm_label": "listselectstep.tsx"
+    },
+    {
+      "label": "ListItem",
+      "file_type": "code",
+      "source_file": "src/components/features/Onboarding/ListSelectStep.tsx",
+      "source_location": "L5",
+      "id": "onboarding_listselectstep_listitem",
+      "community": 58,
+      "norm_label": "listitem"
+    },
+    {
+      "label": "ListSelectStepProps",
+      "file_type": "code",
+      "source_file": "src/components/features/Onboarding/ListSelectStep.tsx",
+      "source_location": "L12",
+      "id": "onboarding_listselectstep_listselectstepprops",
+      "community": 58,
+      "norm_label": "listselectstepprops"
+    },
+    {
+      "label": "SelectedCheck()",
+      "file_type": "code",
+      "source_file": "src/components/features/Onboarding/ListSelectStep.tsx",
+      "source_location": "L22",
+      "id": "onboarding_listselectstep_selectedcheck",
+      "community": 58,
+      "norm_label": "selectedcheck()"
+    },
+    {
+      "label": "ListSelectStep()",
+      "file_type": "code",
+      "source_file": "src/components/features/Onboarding/ListSelectStep.tsx",
+      "source_location": "L39",
+      "id": "onboarding_listselectstep_listselectstep",
+      "community": 58,
+      "norm_label": "listselectstep()"
+    },
+    {
       "label": "StepLocation.tsx",
       "file_type": "code",
       "source_file": "src/components/features/Onboarding/StepLocation.tsx",
       "source_location": "L1",
-      "id": "onboarding_steplocation",
       "community": 58,
-      "norm_label": "steplocation.tsx"
+      "norm_label": "steplocation.tsx",
+      "id": "onboarding_steplocation"
     },
     {
       "label": "CompassNeedle()",
       "file_type": "code",
       "source_file": "src/components/features/Onboarding/StepLocation.tsx",
       "source_location": "L10",
-      "id": "onboarding_steplocation_compassneedle",
       "community": 58,
-      "norm_label": "compassneedle()"
+      "norm_label": "compassneedle()",
+      "id": "onboarding_steplocation_compassneedle"
     },
     {
       "label": "PrivacyBadge()",
       "file_type": "code",
       "source_file": "src/components/features/Onboarding/StepLocation.tsx",
       "source_location": "L101",
-      "id": "onboarding_steplocation_privacybadge",
       "community": 58,
-      "norm_label": "privacybadge()"
+      "norm_label": "privacybadge()",
+      "id": "onboarding_steplocation_privacybadge"
     },
     {
       "label": "StepLocation()",
       "file_type": "code",
       "source_file": "src/components/features/Onboarding/StepLocation.tsx",
       "source_location": "L112",
-      "id": "onboarding_steplocation_steplocation",
       "community": 58,
-      "norm_label": "steplocation()"
+      "norm_label": "steplocation()",
+      "id": "onboarding_steplocation_steplocation"
     },
     {
       "label": "StepPermissions.tsx",
       "file_type": "code",
       "source_file": "src/components/features/Onboarding/StepPermissions.tsx",
       "source_location": "L1",
-      "id": "onboarding_steppermissions",
       "community": 58,
-      "norm_label": "steppermissions.tsx"
+      "norm_label": "steppermissions.tsx",
+      "id": "onboarding_steppermissions"
     },
     {
       "label": "BellVisual()",
       "file_type": "code",
       "source_file": "src/components/features/Onboarding/StepPermissions.tsx",
       "source_location": "L10",
-      "id": "onboarding_steppermissions_bellvisual",
       "community": 58,
-      "norm_label": "bellvisual()"
+      "norm_label": "bellvisual()",
+      "id": "onboarding_steppermissions_bellvisual"
     },
     {
       "label": "PrivacyBadge()",
       "file_type": "code",
       "source_file": "src/components/features/Onboarding/StepPermissions.tsx",
       "source_location": "L182",
-      "id": "onboarding_steppermissions_privacybadge",
       "community": 58,
-      "norm_label": "privacybadge()"
+      "norm_label": "privacybadge()",
+      "id": "onboarding_steppermissions_privacybadge"
     },
     {
       "label": "StepPermissions()",
       "file_type": "code",
       "source_file": "src/components/features/Onboarding/StepPermissions.tsx",
       "source_location": "L193",
-      "id": "onboarding_steppermissions_steppermissions",
       "community": 58,
-      "norm_label": "steppermissions()"
+      "norm_label": "steppermissions()",
+      "id": "onboarding_steppermissions_steppermissions"
     },
     {
       "label": "biome.json",
@@ -1367,7 +1412,7 @@
       "file_type": "code",
       "source_file": "src/App.tsx",
       "source_location": "L94",
-      "community": 136,
+      "community": 60,
       "norm_label": "dataloader()",
       "id": "src_app_dataloader"
     },
@@ -1583,7 +1628,7 @@
       "file_type": "code",
       "source_file": "src/components/common/PaginationBar.tsx",
       "source_location": "L1",
-      "community": 131,
+      "community": 18,
       "norm_label": "paginationbar.tsx",
       "id": "common_paginationbar"
     },
@@ -1592,7 +1637,7 @@
       "file_type": "code",
       "source_file": "src/components/common/PaginationBar.tsx",
       "source_location": "L4",
-      "community": 131,
+      "community": 18,
       "norm_label": "paginationbarprops",
       "id": "common_paginationbar_paginationbarprops"
     },
@@ -1601,7 +1646,7 @@
       "file_type": "code",
       "source_file": "src/components/common/PaginationBar.tsx",
       "source_location": "L11",
-      "community": 131,
+      "community": 18,
       "norm_label": "paginationbar()",
       "id": "common_paginationbar_paginationbar"
     },
@@ -1934,7 +1979,7 @@
       "file_type": "code",
       "source_file": "src/components/features/Splash/Splash.tsx",
       "source_location": "L1",
-      "community": 66,
+      "community": 67,
       "norm_label": "splash.tsx",
       "id": "splash_splash"
     },
@@ -1943,7 +1988,7 @@
       "file_type": "code",
       "source_file": "src/components/features/Splash/Splash.tsx",
       "source_location": "L44",
-      "community": 66,
+      "community": 67,
       "norm_label": "griditem",
       "id": "splash_splash_griditem"
     },
@@ -1952,7 +1997,7 @@
       "file_type": "code",
       "source_file": "src/components/features/Splash/Splash.tsx",
       "source_location": "L50",
-      "community": 66,
+      "community": 67,
       "norm_label": "grid_items",
       "id": "splash_splash_grid_items"
     },
@@ -1970,7 +2015,7 @@
       "file_type": "code",
       "source_file": "src/components/features/Splash/Splash.tsx",
       "source_location": "L119",
-      "community": 66,
+      "community": 67,
       "norm_label": "facalculator()",
       "id": "splash_splash_facalculator"
     },
@@ -1979,7 +2024,7 @@
       "file_type": "code",
       "source_file": "src/components/features/Splash/Splash.tsx",
       "source_location": "L135",
-      "community": 66,
+      "community": 67,
       "norm_label": "knowledge_facts",
       "id": "splash_splash_knowledge_facts"
     },
@@ -1988,7 +2033,7 @@
       "file_type": "code",
       "source_file": "src/components/features/Splash/Splash.tsx",
       "source_location": "L168",
-      "community": 66,
+      "community": 67,
       "norm_label": "gethijridate()",
       "id": "splash_splash_gethijridate"
     },
@@ -1997,7 +2042,7 @@
       "file_type": "code",
       "source_file": "src/components/features/Splash/Splash.tsx",
       "source_location": "L181",
-      "community": 66,
+      "community": 67,
       "norm_label": "getgregoriandate()",
       "id": "splash_splash_getgregoriandate"
     },
@@ -2006,7 +2051,7 @@
       "file_type": "code",
       "source_file": "src/components/features/Splash/Splash.tsx",
       "source_location": "L190",
-      "community": 66,
+      "community": 49,
       "norm_label": "home()",
       "id": "splash_splash_home"
     },
@@ -2186,7 +2231,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/AppearanceSettings.tsx",
       "source_location": "L1",
-      "community": 138,
+      "community": 18,
       "norm_label": "appearancesettings.tsx",
       "id": "settings_appearancesettings"
     },
@@ -2195,7 +2240,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/AppearanceSettings.tsx",
       "source_location": "L6",
-      "community": 138,
+      "community": 18,
       "norm_label": "theme_options",
       "id": "settings_appearancesettings_theme_options"
     },
@@ -2204,7 +2249,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/AppearanceSettings.tsx",
       "source_location": "L12",
-      "community": 138,
+      "community": 18,
       "norm_label": "appearancesettingsprops",
       "id": "settings_appearancesettings_appearancesettingsprops"
     },
@@ -2213,7 +2258,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/AppearanceSettings.tsx",
       "source_location": "L19",
-      "community": 138,
+      "community": 18,
       "norm_label": "appearancesettings()",
       "id": "settings_appearancesettings_appearancesettings"
     },
@@ -2222,7 +2267,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/DataSettings.tsx",
       "source_location": "L1",
-      "community": 18,
+      "community": 144,
       "norm_label": "datasettings.tsx",
       "id": "settings_datasettings"
     },
@@ -2231,7 +2276,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/DataSettings.tsx",
       "source_location": "L7",
-      "community": 18,
+      "community": 144,
       "norm_label": "datasettingsprops",
       "id": "settings_datasettings_datasettingsprops"
     },
@@ -2240,7 +2285,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/DataSettings.tsx",
       "source_location": "L12",
-      "community": 18,
+      "community": 144,
       "norm_label": "datasettings()",
       "id": "settings_datasettings_datasettings"
     },
@@ -2348,7 +2393,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/SaveBar.tsx",
       "source_location": "L1",
-      "community": 18,
+      "community": 155,
       "norm_label": "savebar.tsx",
       "id": "settings_savebar"
     },
@@ -2357,7 +2402,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/SaveBar.tsx",
       "source_location": "L5",
-      "community": 18,
+      "community": 155,
       "norm_label": "savebarprops",
       "id": "settings_savebar_savebarprops"
     },
@@ -2366,7 +2411,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/SaveBar.tsx",
       "source_location": "L12",
-      "community": 18,
+      "community": 155,
       "norm_label": "savebar()",
       "id": "settings_savebar_savebar"
     },
@@ -2375,7 +2420,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/TafsirSettings.tsx",
       "source_location": "L1",
-      "community": 157,
+      "community": 18,
       "norm_label": "tafsirsettings.tsx",
       "id": "settings_tafsirsettings"
     },
@@ -2384,7 +2429,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/TafsirSettings.tsx",
       "source_location": "L6",
-      "community": 157,
+      "community": 18,
       "norm_label": "tafsirsettingsprops",
       "id": "settings_tafsirsettings_tafsirsettingsprops"
     },
@@ -2393,7 +2438,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/TafsirSettings.tsx",
       "source_location": "L16",
-      "community": 157,
+      "community": 18,
       "norm_label": "tafsirsettings()",
       "id": "settings_tafsirsettings_tafsirsettings"
     },
@@ -2429,7 +2474,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Tasbih/CircularCounter.tsx",
       "source_location": "L1",
-      "community": 144,
+      "community": 18,
       "norm_label": "circularcounter.tsx",
       "id": "tasbih_circularcounter"
     },
@@ -2438,7 +2483,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Tasbih/CircularCounter.tsx",
       "source_location": "L3",
-      "community": 144,
+      "community": 18,
       "norm_label": "circularcounterprops",
       "id": "tasbih_circularcounter_circularcounterprops"
     },
@@ -2447,7 +2492,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Tasbih/CircularCounter.tsx",
       "source_location": "L7",
-      "community": 144,
+      "community": 18,
       "norm_label": "circularcounter()",
       "id": "tasbih_circularcounter_circularcounter"
     },
@@ -2456,7 +2501,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Tasbih/CircularCounter.tsx",
       "source_location": "L39",
-      "community": 144,
+      "community": 18,
       "norm_label": "countercontent()",
       "id": "tasbih_circularcounter_countercontent"
     },
@@ -2663,7 +2708,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useRandomContent.ts",
       "source_location": "L1",
-      "community": 66,
+      "community": 49,
       "norm_label": "userandomcontent.ts",
       "id": "hooks_userandomcontent"
     },
@@ -2672,7 +2717,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useRandomContent.ts",
       "source_location": "L4",
-      "community": 66,
+      "community": 49,
       "norm_label": "randomcontentitem",
       "id": "hooks_userandomcontent_randomcontentitem"
     },
@@ -2681,7 +2726,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useRandomContent.ts",
       "source_location": "L22",
-      "community": 66,
+      "community": 49,
       "norm_label": "userandomcontent()",
       "id": "hooks_userandomcontent_userandomcontent"
     },
@@ -3833,7 +3878,7 @@
       "file_type": "code",
       "source_file": "src/i18n/bn.json",
       "source_location": "L123",
-      "community": 43,
+      "community": 136,
       "norm_label": "update",
       "id": "i18n_bn_update"
     },
@@ -3842,7 +3887,7 @@
       "file_type": "code",
       "source_file": "src/i18n/bn.json",
       "source_location": "L124",
-      "community": 43,
+      "community": 136,
       "norm_label": "newversion",
       "id": "i18n_bn_update_newversion"
     },
@@ -3851,7 +3896,7 @@
       "file_type": "code",
       "source_file": "src/i18n/bn.json",
       "source_location": "L125",
-      "community": 43,
+      "community": 136,
       "norm_label": "refresh",
       "id": "i18n_bn_update_refresh"
     },
@@ -3860,7 +3905,7 @@
       "file_type": "code",
       "source_file": "src/i18n/bn.json",
       "source_location": "L126",
-      "community": 43,
+      "community": 136,
       "norm_label": "dismiss",
       "id": "i18n_bn_update_dismiss"
     },
@@ -8342,7 +8387,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L123",
-      "community": 130,
+      "community": 45,
       "norm_label": "update",
       "id": "i18n_en_update"
     },
@@ -8351,7 +8396,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L124",
-      "community": 130,
+      "community": 45,
       "norm_label": "newversion",
       "id": "i18n_en_update_newversion"
     },
@@ -8360,7 +8405,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L125",
-      "community": 130,
+      "community": 45,
       "norm_label": "refresh",
       "id": "i18n_en_update_refresh"
     },
@@ -8369,7 +8414,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L126",
-      "community": 130,
+      "community": 45,
       "norm_label": "dismiss",
       "id": "i18n_en_update_dismiss"
     },
@@ -11393,7 +11438,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L479",
-      "community": 45,
+      "community": 138,
       "norm_label": "lastten",
       "id": "i18n_en_lastten"
     },
@@ -11402,7 +11447,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L480",
-      "community": 45,
+      "community": 138,
       "norm_label": "pagetitle",
       "id": "i18n_en_lastten_pagetitle"
     },
@@ -11411,7 +11456,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L481",
-      "community": 45,
+      "community": 138,
       "norm_label": "subtitle",
       "id": "i18n_en_lastten_subtitle"
     },
@@ -11420,7 +11465,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L482",
-      "community": 45,
+      "community": 138,
       "norm_label": "verses",
       "id": "i18n_en_lastten_verses"
     },
@@ -12482,7 +12527,7 @@
       "file_type": "code",
       "source_file": "src/pages/Hadith/index.tsx",
       "source_location": "L1",
-      "community": 41,
+      "community": 120,
       "norm_label": "index.tsx",
       "id": "hadith_index"
     },
@@ -12491,7 +12536,7 @@
       "file_type": "code",
       "source_file": "src/pages/Hadith/index.tsx",
       "source_location": "L14",
-      "community": 41,
+      "community": 120,
       "norm_label": "supported_languages",
       "id": "hadith_index_supported_languages"
     },
@@ -12500,7 +12545,7 @@
       "file_type": "code",
       "source_file": "src/pages/Hadith/index.tsx",
       "source_location": "L16",
-      "community": 41,
+      "community": 120,
       "norm_label": "geteditionname()",
       "id": "hadith_index_geteditionname"
     },
@@ -12509,7 +12554,7 @@
       "file_type": "code",
       "source_file": "src/pages/Hadith/index.tsx",
       "source_location": "L20",
-      "community": 41,
+      "community": 120,
       "norm_label": "hadithcollections()",
       "id": "hadith_index_hadithcollections"
     },
@@ -12680,7 +12725,7 @@
       "file_type": "code",
       "source_file": "src/pages/PrayerTimes/index.tsx",
       "source_location": "L1",
-      "community": 66,
+      "community": 49,
       "norm_label": "index.tsx",
       "id": "prayertimes_index"
     },
@@ -12689,7 +12734,7 @@
       "file_type": "code",
       "source_file": "src/pages/PrayerTimes/index.tsx",
       "source_location": "L17",
-      "community": 66,
+      "community": 49,
       "norm_label": "prayertimespage()",
       "id": "prayertimes_index_prayertimespage"
     },
@@ -12743,7 +12788,7 @@
       "file_type": "code",
       "source_file": "src/pages/Qibla/index.tsx",
       "source_location": "L1",
-      "community": 58,
+      "community": 121,
       "norm_label": "index.tsx",
       "id": "qibla_index"
     },
@@ -12752,7 +12797,7 @@
       "file_type": "code",
       "source_file": "src/pages/Qibla/index.tsx",
       "source_location": "L14",
-      "community": 58,
+      "community": 121,
       "norm_label": "orientationevent",
       "id": "qibla_index_orientationevent"
     },
@@ -12761,7 +12806,7 @@
       "file_type": "code",
       "source_file": "src/pages/Qibla/index.tsx",
       "source_location": "L20",
-      "community": 58,
+      "community": 121,
       "norm_label": "qiblafinder()",
       "id": "qibla_index_qiblafinder"
     },
@@ -14916,42 +14961,6 @@
       "id": "features_lastreadtracker_lastreadtracker"
     },
     {
-      "label": "ListSelectStep.tsx",
-      "file_type": "code",
-      "source_file": "src/components/features/Onboarding/ListSelectStep.tsx",
-      "source_location": "L1",
-      "community": 58,
-      "norm_label": "listselectstep.tsx",
-      "id": "onboarding_listselectstep"
-    },
-    {
-      "label": "ListItem",
-      "file_type": "code",
-      "source_file": "src/components/features/Onboarding/ListSelectStep.tsx",
-      "source_location": "L4",
-      "community": 58,
-      "norm_label": "listitem",
-      "id": "onboarding_listselectstep_listitem"
-    },
-    {
-      "label": "ListSelectStepProps",
-      "file_type": "code",
-      "source_file": "src/components/features/Onboarding/ListSelectStep.tsx",
-      "source_location": "L11",
-      "community": 58,
-      "norm_label": "listselectstepprops",
-      "id": "onboarding_listselectstep_listselectstepprops"
-    },
-    {
-      "label": "ListSelectStep()",
-      "file_type": "code",
-      "source_file": "src/components/features/Onboarding/ListSelectStep.tsx",
-      "source_location": "L21",
-      "community": 58,
-      "norm_label": "listselectstep()",
-      "id": "onboarding_listselectstep_listselectstep"
-    },
-    {
       "label": "Search.tsx",
       "file_type": "code",
       "source_file": "src/components/features/Search/Search.tsx",
@@ -14965,7 +14974,7 @@
       "file_type": "code",
       "source_file": "src/components/features/Search/Search.tsx",
       "source_location": "L21",
-      "community": 60,
+      "community": 120,
       "norm_label": "search()",
       "id": "search_search_search"
     },
@@ -16765,7 +16774,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useDebounce.ts",
       "source_location": "L1",
-      "community": 60,
+      "community": 120,
       "norm_label": "usedebounce.ts",
       "id": "hooks_usedebounce"
     },
@@ -16774,7 +16783,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useDebounce.ts",
       "source_location": "L3",
-      "community": 60,
+      "community": 120,
       "norm_label": "usedebounce()",
       "id": "hooks_usedebounce_usedebounce"
     },
@@ -16909,7 +16918,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useSurahs.ts",
       "source_location": "L1",
-      "community": 60,
+      "community": 120,
       "norm_label": "usesurahs.ts",
       "id": "hooks_usesurahs"
     },
@@ -16918,7 +16927,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useSurahs.ts",
       "source_location": "L5",
-      "community": 60,
+      "community": 120,
       "norm_label": "usesurahs()",
       "id": "hooks_usesurahs_usesurahs"
     },
@@ -17512,7 +17521,7 @@
       "file_type": "code",
       "source_file": "src/lib/prayerTimes.ts",
       "source_location": "L70",
-      "community": 66,
+      "community": 49,
       "norm_label": "getcountdown()",
       "id": "lib_prayertimes_getcountdown"
     },
@@ -17557,7 +17566,7 @@
       "file_type": "code",
       "source_file": "src/lib/qibla.ts",
       "source_location": "L1",
-      "community": 58,
+      "community": 121,
       "norm_label": "qibla.ts",
       "id": "lib_qibla"
     },
@@ -17566,7 +17575,7 @@
       "file_type": "code",
       "source_file": "src/lib/qibla.ts",
       "source_location": "L1",
-      "community": 58,
+      "community": 121,
       "norm_label": "calculatedistance()",
       "id": "lib_qibla_calculatedistance"
     },
@@ -17575,7 +17584,7 @@
       "file_type": "code",
       "source_file": "src/lib/qibla.ts",
       "source_location": "L20",
-      "community": 58,
+      "community": 121,
       "norm_label": "bearing()",
       "id": "lib_qibla_bearing"
     },
@@ -17584,7 +17593,7 @@
       "file_type": "code",
       "source_file": "src/lib/qibla.ts",
       "source_location": "L36",
-      "community": 58,
+      "community": 121,
       "norm_label": "tocompassdirection()",
       "id": "lib_qibla_tocompassdirection"
     },
@@ -17593,7 +17602,7 @@
       "file_type": "code",
       "source_file": "src/lib/qibla.ts",
       "source_location": "L42",
-      "community": 58,
+      "community": 121,
       "norm_label": "deviceorientationconstructor",
       "id": "lib_qibla_deviceorientationconstructor"
     },
@@ -17602,7 +17611,7 @@
       "file_type": "code",
       "source_file": "src/lib/qibla.ts",
       "source_location": "L46",
-      "community": 58,
+      "community": 121,
       "norm_label": "deviceorientationwithpermission()",
       "id": "lib_qibla_deviceorientationwithpermission"
     },
@@ -17989,7 +17998,7 @@
       "file_type": "code",
       "source_file": "src/store/downloads.ts",
       "source_location": "L1",
-      "community": 136,
+      "community": 60,
       "norm_label": "downloads.ts",
       "id": "store_downloads"
     },
@@ -17998,7 +18007,7 @@
       "file_type": "code",
       "source_file": "src/store/downloads.ts",
       "source_location": "L4",
-      "community": 136,
+      "community": 60,
       "norm_label": "downloaditem",
       "id": "store_downloads_downloaditem"
     },
@@ -18007,7 +18016,7 @@
       "file_type": "code",
       "source_file": "src/store/downloads.ts",
       "source_location": "L14",
-      "community": 136,
+      "community": 60,
       "norm_label": "downloadsstate",
       "id": "store_downloads_downloadsstate"
     },
@@ -18016,7 +18025,7 @@
       "file_type": "code",
       "source_file": "src/store/downloads.ts",
       "source_location": "L30",
-      "community": 136,
+      "community": 60,
       "norm_label": "usedownloadsstore",
       "id": "store_downloads_usedownloadsstore"
     },
@@ -19654,7 +19663,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L375",
-      "community": 120,
+      "community": 82,
       "norm_label": "1.1 hijri date display",
       "id": "expansion_roadmap_1_1_hijri_date_display"
     },
@@ -19663,7 +19672,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L383",
-      "community": 120,
+      "community": 82,
       "norm_label": "files",
       "id": "expansion_roadmap_files_383"
     },
@@ -19672,7 +19681,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L390",
-      "community": 120,
+      "community": 82,
       "norm_label": "dependencies",
       "id": "expansion_roadmap_dependencies_390"
     },
@@ -19681,7 +19690,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L394",
-      "community": 120,
+      "community": 82,
       "norm_label": "implementation",
       "id": "expansion_roadmap_implementation_394"
     },
@@ -19690,7 +19699,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L463",
-      "community": 120,
+      "community": 82,
       "norm_label": "ai instructions",
       "id": "expansion_roadmap_ai_instructions_463"
     },
@@ -19699,7 +19708,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L472",
-      "community": 121,
+      "community": 82,
       "norm_label": "1.2 bookmarks (wire ui + data)",
       "id": "expansion_roadmap_1_2_bookmarks_wire_ui_data"
     },
@@ -19708,7 +19717,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L480",
-      "community": 121,
+      "community": 82,
       "norm_label": "files",
       "id": "expansion_roadmap_files_480"
     },
@@ -19717,7 +19726,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L489",
-      "community": 121,
+      "community": 82,
       "norm_label": "implementation",
       "id": "expansion_roadmap_implementation_489"
     },
@@ -19726,7 +19735,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L569",
-      "community": 121,
+      "community": 82,
       "norm_label": "bookmarks page",
       "id": "expansion_roadmap_bookmarks_page"
     },
@@ -19735,7 +19744,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L577",
-      "community": 121,
+      "community": 82,
       "norm_label": "ai instructions",
       "id": "expansion_roadmap_ai_instructions_577"
     },
@@ -19816,7 +19825,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L693",
-      "community": 155,
+      "community": 82,
       "norm_label": "1.5 verse text search",
       "id": "expansion_roadmap_1_5_verse_text_search"
     },
@@ -19825,7 +19834,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L701",
-      "community": 155,
+      "community": 82,
       "norm_label": "files",
       "id": "expansion_roadmap_files_701"
     },
@@ -19834,7 +19843,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L707",
-      "community": 155,
+      "community": 82,
       "norm_label": "implementation",
       "id": "expansion_roadmap_implementation_707"
     },
@@ -19843,7 +19852,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L744",
-      "community": 155,
+      "community": 82,
       "norm_label": "ai instructions",
       "id": "expansion_roadmap_ai_instructions_744"
     },
@@ -19852,7 +19861,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L754",
-      "community": 122,
+      "community": 82,
       "norm_label": "1.6 asma ul-husna (99 names)",
       "id": "expansion_roadmap_1_6_asma_ul_husna_99_names"
     },
@@ -19861,7 +19870,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L760",
-      "community": 122,
+      "community": 82,
       "norm_label": "files",
       "id": "expansion_roadmap_files_760"
     },
@@ -19870,7 +19879,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L768",
-      "community": 122,
+      "community": 82,
       "norm_label": "data (sample structure)",
       "id": "expansion_roadmap_data_sample_structure"
     },
@@ -19879,7 +19888,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L784",
-      "community": 122,
+      "community": 82,
       "norm_label": "implementation",
       "id": "expansion_roadmap_implementation_784"
     },
@@ -19888,7 +19897,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L792",
-      "community": 122,
+      "community": 82,
       "norm_label": "ai instructions",
       "id": "expansion_roadmap_ai_instructions_792"
     },
@@ -20041,7 +20050,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L982",
-      "community": 21,
+      "community": 122,
       "norm_label": "2.3 dua collection",
       "id": "expansion_roadmap_2_3_dua_collection"
     },
@@ -20050,7 +20059,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L988",
-      "community": 21,
+      "community": 122,
       "norm_label": "files",
       "id": "expansion_roadmap_files_988"
     },
@@ -20059,7 +20068,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L998",
-      "community": 21,
+      "community": 122,
       "norm_label": "implementation",
       "id": "expansion_roadmap_implementation_998"
     },
@@ -20068,7 +20077,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1007",
-      "community": 21,
+      "community": 122,
       "norm_label": "ai instructions",
       "id": "expansion_roadmap_ai_instructions_1007"
     },
@@ -20113,7 +20122,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1077",
-      "community": 21,
+      "community": 130,
       "norm_label": "2.5 last 10 surahs",
       "id": "expansion_roadmap_2_5_last_10_surahs"
     },
@@ -20122,7 +20131,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1083",
-      "community": 21,
+      "community": 130,
       "norm_label": "files",
       "id": "expansion_roadmap_files_1083"
     },
@@ -20131,7 +20140,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1090",
-      "community": 21,
+      "community": 130,
       "norm_label": "implementation",
       "id": "expansion_roadmap_implementation_1090"
     },
@@ -20140,7 +20149,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1097",
-      "community": 21,
+      "community": 130,
       "norm_label": "ai instructions",
       "id": "expansion_roadmap_ai_instructions_1097"
     },
@@ -20158,7 +20167,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1112",
-      "community": 42,
+      "community": 131,
       "norm_label": "3.1 bookmark management page",
       "id": "expansion_roadmap_3_1_bookmark_management_page"
     },
@@ -20167,7 +20176,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1120",
-      "community": 42,
+      "community": 131,
       "norm_label": "files",
       "id": "expansion_roadmap_files_1120"
     },
@@ -20176,7 +20185,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1126",
-      "community": 42,
+      "community": 131,
       "norm_label": "implementation",
       "id": "expansion_roadmap_implementation_1126"
     },
@@ -20185,7 +20194,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1134",
-      "community": 42,
+      "community": 131,
       "norm_label": "ai instructions",
       "id": "expansion_roadmap_ai_instructions_1134"
     },
@@ -21497,6 +21506,57 @@
   ],
   "links": [
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/Onboarding/ListSelectStep.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "onboarding_listselectstep",
+      "target": "onboarding_listselectstep_listitem"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/Onboarding/ListSelectStep.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "onboarding_listselectstep",
+      "target": "onboarding_listselectstep_listselectstep"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/Onboarding/ListSelectStep.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "onboarding_listselectstep",
+      "target": "onboarding_listselectstep_listselectstepprops"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/Onboarding/ListSelectStep.tsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "onboarding_listselectstep",
+      "target": "onboarding_listselectstep_selectedcheck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/Onboarding/Onboarding.tsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "onboarding_onboarding",
+      "target": "onboarding_listselectstep"
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -21513,9 +21573,9 @@
       "source_file": "src/components/features/Onboarding/StepLocation.tsx",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "onboarding_steplocation",
-      "target": "onboarding_steplocation_compassneedle",
-      "confidence_score": 1.0
+      "target": "onboarding_steplocation_compassneedle"
     },
     {
       "relation": "contains",
@@ -21523,9 +21583,9 @@
       "source_file": "src/components/features/Onboarding/StepLocation.tsx",
       "source_location": "L101",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "onboarding_steplocation",
-      "target": "onboarding_steplocation_privacybadge",
-      "confidence_score": 1.0
+      "target": "onboarding_steplocation_privacybadge"
     },
     {
       "relation": "contains",
@@ -21554,9 +21614,9 @@
       "source_file": "src/components/features/Onboarding/StepPermissions.tsx",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "onboarding_steppermissions",
-      "target": "onboarding_steppermissions_bellvisual",
-      "confidence_score": 1.0
+      "target": "onboarding_steppermissions_bellvisual"
     },
     {
       "relation": "contains",
@@ -21564,9 +21624,9 @@
       "source_file": "src/components/features/Onboarding/StepPermissions.tsx",
       "source_location": "L182",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "onboarding_steppermissions",
-      "target": "onboarding_steppermissions_privacybadge",
-      "confidence_score": 1.0
+      "target": "onboarding_steppermissions_privacybadge"
     },
     {
       "relation": "contains",
@@ -24123,17 +24183,6 @@
       "confidence_score": 1.0,
       "source": "audioplayer_desktopplayercontent",
       "target": "audioplayer_types_desktopplayercontentprops"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/Onboarding/Onboarding.tsx",
-      "source_location": "L22",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "onboarding_onboarding",
-      "target": "onboarding_listselectstep"
     },
     {
       "relation": "contains",
@@ -40081,36 +40130,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src/components/features/Onboarding/ListSelectStep.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "onboarding_listselectstep",
-      "target": "onboarding_listselectstep_listitem"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/Onboarding/ListSelectStep.tsx",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "onboarding_listselectstep",
-      "target": "onboarding_listselectstep_listselectstep"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/Onboarding/ListSelectStep.tsx",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "onboarding_listselectstep",
-      "target": "onboarding_listselectstep_listselectstepprops"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "src/components/features/Search/Search.tsx",
       "source_location": "L21",
       "weight": 1.0,
@@ -48142,5 +48161,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "0f5e096d4accda52af4f81f58b8d34a65b7f0941"
+  "built_at_commit": "70dfc2b7381596505bc1f4993bd52c05aff53767"
 }
