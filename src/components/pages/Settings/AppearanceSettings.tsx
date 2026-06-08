@@ -1,11 +1,12 @@
 import { IoColorPaletteOutline } from "react-icons/io5";
 import SegmentedControl from "@/components/pages/Settings/SegmentedControl";
 import SettingCard from "@/components/pages/Settings/SettingCard";
+import { useLocale } from "@/i18n";
 
 const THEME_OPTIONS = [
-  { value: "system", label: "System" },
-  { value: "light", label: "Light" },
-  { value: "dark", label: "Dark" },
+  { value: "system", label: "settings.themeSystem" },
+  { value: "light", label: "settings.themeLight" },
+  { value: "dark", label: "settings.themeDark" },
 ] as const;
 
 interface AppearanceSettingsProps {
@@ -21,28 +22,30 @@ export default function AppearanceSettings({
   translationFontSize,
   onChange,
 }: AppearanceSettingsProps) {
+  const { t } = useLocale();
+
   return (
     <SettingCard
       icon={
         <IoColorPaletteOutline className="text-lg text-primary dark:text-secondary-light" />
       }
-      title="Appearance"
-      description="Theme and font size preferences"
+      title={t("settings.appearance")}
+      description={t("settings.appearanceDesc")}
     >
       <div className="space-y-4">
         <div>
           <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
-            Theme
+            {t("settings.theme")}
           </p>
           <SegmentedControl
-            options={THEME_OPTIONS}
+            options={THEME_OPTIONS.map((o) => ({ ...o, label: t(o.label) }))}
             value={theme}
             onChange={(v) => onChange("theme", v)}
           />
         </div>
         <div>
           <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
-            Arabic Font Size: {arabicFontSize.toFixed(2)}x
+            {t("settings.arabicFontSize", { size: arabicFontSize.toFixed(2) })}
           </p>
           <input
             type="range"
@@ -58,7 +61,9 @@ export default function AppearanceSettings({
         </div>
         <div>
           <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
-            Translation Font Size: {translationFontSize.toFixed(2)}x
+            {t("settings.translationFontSize", {
+              size: translationFontSize.toFixed(2),
+            })}
           </p>
           <input
             type="range"

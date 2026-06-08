@@ -1,0 +1,271 @@
+{
+  "nodes": [
+    {
+      "id": "c_users_hrido_desktop_al_quran_refactoring_md",
+      "label": "REFACTORING.md",
+      "file_type": "document",
+      "source_file": "REFACTORING.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "al_quran_refactoring_refactoring_plan",
+      "label": "Refactoring Plan",
+      "file_type": "document",
+      "source_file": "REFACTORING.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "al_quran_refactoring_overview",
+      "label": "Overview",
+      "file_type": "document",
+      "source_file": "REFACTORING.md",
+      "source_location": "L3"
+    },
+    {
+      "id": "al_quran_refactoring_large_components_200_lines",
+      "label": "Large Components (>200 lines)",
+      "file_type": "document",
+      "source_file": "REFACTORING.md",
+      "source_location": "L12"
+    },
+    {
+      "id": "al_quran_refactoring_duplication_patterns",
+      "label": "Duplication Patterns",
+      "file_type": "document",
+      "source_file": "REFACTORING.md",
+      "source_location": "L32"
+    },
+    {
+      "id": "al_quran_refactoring_pattern_a_page_layout_boilerplate",
+      "label": "Pattern A: Page Layout Boilerplate",
+      "file_type": "document",
+      "source_file": "REFACTORING.md",
+      "source_location": "L34"
+    },
+    {
+      "id": "al_quran_refactoring_pattern_b_card_container_classes",
+      "label": "Pattern B: Card Container Classes",
+      "file_type": "document",
+      "source_file": "REFACTORING.md",
+      "source_location": "L57"
+    },
+    {
+      "id": "al_quran_refactoring_pattern_c_loading_skeletons",
+      "label": "Pattern C: Loading Skeletons",
+      "file_type": "document",
+      "source_file": "REFACTORING.md",
+      "source_location": "L76"
+    },
+    {
+      "id": "al_quran_refactoring_pattern_d_error_empty_states",
+      "label": "Pattern D: Error / Empty States",
+      "file_type": "document",
+      "source_file": "REFACTORING.md",
+      "source_location": "L94"
+    },
+    {
+      "id": "al_quran_refactoring_pattern_e_inline_toggle_switch",
+      "label": "Pattern E: Inline Toggle Switch",
+      "file_type": "document",
+      "source_file": "REFACTORING.md",
+      "source_location": "L112"
+    },
+    {
+      "id": "al_quran_refactoring_pattern_f_shared_filter_logic",
+      "label": "Pattern F: Shared Filter Logic",
+      "file_type": "document",
+      "source_file": "REFACTORING.md",
+      "source_location": "L128"
+    },
+    {
+      "id": "al_quran_refactoring_pattern_g_audio_url_deduplication",
+      "label": "Pattern G: Audio URL Deduplication",
+      "file_type": "document",
+      "source_file": "REFACTORING.md",
+      "source_location": "L144"
+    },
+    {
+      "id": "al_quran_refactoring_pattern_h_stepreciter_steptafsir_duplicate_layout",
+      "label": "Pattern H: StepReciter / StepTafsir Duplicate Layout",
+      "file_type": "document",
+      "source_file": "REFACTORING.md",
+      "source_location": "L158"
+    },
+    {
+      "id": "al_quran_refactoring_pattern_i_store_boilerplate",
+      "label": "Pattern I: Store Boilerplate",
+      "file_type": "document",
+      "source_file": "REFACTORING.md",
+      "source_location": "L168"
+    },
+    {
+      "id": "al_quran_refactoring_pattern_j_audio_player_button_components",
+      "label": "Pattern J: Audio Player Button Components",
+      "file_type": "document",
+      "source_file": "REFACTORING.md",
+      "source_location": "L186"
+    },
+    {
+      "id": "al_quran_refactoring_implementation_order_recommended",
+      "label": "Implementation Order (Recommended)",
+      "file_type": "document",
+      "source_file": "REFACTORING.md",
+      "source_location": "L196"
+    },
+    {
+      "id": "al_quran_refactoring_verification",
+      "label": "Verification",
+      "file_type": "document",
+      "source_file": "REFACTORING.md",
+      "source_location": "L209"
+    }
+  ],
+  "edges": [
+    {
+      "source": "c_users_hrido_desktop_al_quran_refactoring_md",
+      "target": "al_quran_refactoring_refactoring_plan",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTORING.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactoring_refactoring_plan",
+      "target": "al_quran_refactoring_overview",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTORING.md",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactoring_refactoring_plan",
+      "target": "al_quran_refactoring_large_components_200_lines",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTORING.md",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactoring_refactoring_plan",
+      "target": "al_quran_refactoring_duplication_patterns",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTORING.md",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactoring_duplication_patterns",
+      "target": "al_quran_refactoring_pattern_a_page_layout_boilerplate",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTORING.md",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactoring_duplication_patterns",
+      "target": "al_quran_refactoring_pattern_b_card_container_classes",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTORING.md",
+      "source_location": "L57",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactoring_duplication_patterns",
+      "target": "al_quran_refactoring_pattern_c_loading_skeletons",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTORING.md",
+      "source_location": "L76",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactoring_duplication_patterns",
+      "target": "al_quran_refactoring_pattern_d_error_empty_states",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTORING.md",
+      "source_location": "L94",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactoring_duplication_patterns",
+      "target": "al_quran_refactoring_pattern_e_inline_toggle_switch",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTORING.md",
+      "source_location": "L112",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactoring_duplication_patterns",
+      "target": "al_quran_refactoring_pattern_f_shared_filter_logic",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTORING.md",
+      "source_location": "L128",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactoring_duplication_patterns",
+      "target": "al_quran_refactoring_pattern_g_audio_url_deduplication",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTORING.md",
+      "source_location": "L144",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactoring_duplication_patterns",
+      "target": "al_quran_refactoring_pattern_h_stepreciter_steptafsir_duplicate_layout",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTORING.md",
+      "source_location": "L158",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactoring_duplication_patterns",
+      "target": "al_quran_refactoring_pattern_i_store_boilerplate",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTORING.md",
+      "source_location": "L168",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactoring_duplication_patterns",
+      "target": "al_quran_refactoring_pattern_j_audio_player_button_components",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTORING.md",
+      "source_location": "L186",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactoring_refactoring_plan",
+      "target": "al_quran_refactoring_implementation_order_recommended",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTORING.md",
+      "source_location": "L196",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactoring_refactoring_plan",
+      "target": "al_quran_refactoring_verification",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTORING.md",
+      "source_location": "L209",
+      "weight": 1.0
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

@@ -6,6 +6,7 @@ import { PageShell } from "@/components/common/PageShell/PageShell";
 import { Button } from "@/components/ui/button";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useEditions } from "@/hooks/useHadith";
+import { useLocale } from "@/i18n";
 import { searchAllHadiths } from "@/lib/db";
 import { useSettings } from "@/store/settings";
 import type { HadithSearchResult } from "@/types";
@@ -19,6 +20,7 @@ function getEditionName(name: Record<string, string>, lang: string): string {
 export default function HadithCollections() {
   const navigate = useNavigate();
   const { editions, loading, error, refetch } = useEditions();
+  const { t } = useLocale();
   const hadithLang = useSettings((s) => s.hadithLang);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<HadithSearchResult[]>([]);
@@ -56,10 +58,10 @@ export default function HadithCollections() {
 
   return (
     <PageShell
-      head="Hadith Collections"
+      head={t("hadith.pageTitle")}
       showBack
-      title="Hadith Collections"
-      description="Browse major hadith collections"
+      title={t("hadith.pageTitle")}
+      description={t("hadith.subtitle")}
     >
       <div className="relative mb-6">
         <BiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-lg text-text-muted" />
@@ -67,7 +69,7 @@ export default function HadithCollections() {
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Search across all hadith..."
+          placeholder={t("hadith.searchPlaceholder")}
           className="w-full rounded-2xl border border-border bg-surface pl-10 pr-4 py-2.5 text-sm text-text-primary outline-none focus:ring-1 focus:ring-secondary dark:border-dark-border dark:bg-dark-surface-card dark:text-dark-text-primary"
         />
       </div>
@@ -80,14 +82,16 @@ export default function HadithCollections() {
         ) : searchResults.length === 0 ? (
           <div className="flex flex-col items-center gap-4 rounded-2xl border border-border bg-surface p-8 text-center dark:border-dark-border dark:bg-dark-surface-card">
             <p className="text-sm text-text-muted">
-              No results found for "{searchQuery}"
+              {t("hadith.noResults", { query: searchQuery })}
             </p>
           </div>
         ) : (
           <div className="space-y-2">
             <p className="text-xs text-text-muted mb-3">
-              {searchResults.length} result
-              {searchResults.length !== 1 ? "s" : ""} for "{debouncedQuery}"
+              {t("hadith.results", {
+                n: searchResults.length,
+                query: debouncedQuery,
+              })}
             </p>
             {searchResults.map((result) => (
               <button
@@ -104,7 +108,10 @@ export default function HadithCollections() {
                   {result.bookName}
                   {" · "}
                   {result.editionName}
-                  {" · "}Hadith #{result.hadith.bookHadithIndex}
+                  {" · "}
+                  {t("hadith.hadithNumber", {
+                    n: result.hadith.bookHadithIndex,
+                  })}
                 </p>
                 <p className="text-sm leading-relaxed text-text-primary dark:text-dark-text-primary line-clamp-3">
                   {result.hadith.text}
@@ -126,7 +133,7 @@ export default function HadithCollections() {
         <ErrorState message={error} onRetry={refetch} />
       ) : filteredEditions.length === 0 ? (
         <div className="flex flex-col items-center gap-4 rounded-2xl border border-border bg-surface p-8 text-center dark:border-dark-border dark:bg-dark-surface-card">
-          <p className="text-sm text-text-muted">No editions available.</p>
+          <p className="text-sm text-text-muted">{t("hadith.noEditions")}</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
@@ -145,13 +152,15 @@ export default function HadithCollections() {
                   {getEditionName(edition.name, hadithLang)}
                 </p>
                 <p className="mt-0.5 text-xs text-text-muted">
-                  {edition.hadithCount.toLocaleString()} hadith
+                  {edition.hadithCount.toLocaleString()} {t("hadith.hadith")}
                   {" · "}
-                  {edition.bookCount} books
+                  {edition.bookCount} {t("hadith.books")}
                   {!edition.availableLanguages.includes(hadithLang) && (
                     <>
                       {" · "}
-                      <span className="text-amber-500">(English only)</span>
+                      <span className="text-amber-500">
+                        {t("hadith.englishOnly")}
+                      </span>
                     </>
                   )}
                 </p>

@@ -7,6 +7,7 @@ export interface Track {
   enName: string;
   arabicText: string;
   translationText: string;
+  translationAltText: string;
   transliterationText: string;
   audioUrl: string;
   fallbackUrls: string[];

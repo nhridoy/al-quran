@@ -2,6 +2,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { BiLinkExternal } from "react-icons/bi";
 import { GoDotFill } from "react-icons/go";
 import { PageShell } from "@/components/common/PageShell/PageShell";
+import { useLocale } from "@/i18n";
 
 const credits = [
   { name: "Al Quran Cloud", url: "https://alquran.cloud/" },
@@ -12,11 +13,12 @@ const credits = [
 ];
 
 const Credits: React.FC = () => {
+  const { t } = useLocale();
   return (
     <PageShell
-      head="Credits"
-      title="Credits"
-      description="Data sources and contributors"
+      head={t("credits.pageTitle")}
+      title={t("credits.title")}
+      description={t("credits.description")}
     >
       <div className="card-surface">
         <div className="flex items-center gap-3 border-b border-border p-4 dark:border-dark-border">
@@ -25,10 +27,10 @@ const Credits: React.FC = () => {
           </div>
           <div>
             <h3 className="text-sm font-semibold text-text-primary dark:text-dark-text-primary">
-              Data Sources
+              {t("credits.dataSources")}
             </h3>
             <p className="text-xs text-text-muted dark:text-dark-text-muted">
-              Special thanks to these projects
+              {t("credits.specialThanks")}
             </p>
           </div>
         </div>

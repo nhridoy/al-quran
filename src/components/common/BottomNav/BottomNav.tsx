@@ -3,6 +3,7 @@ import { HiDotsHorizontal } from "react-icons/hi";
 import { NavLink, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
+import { useLocale } from "@/i18n";
 import {
   bottomNavOverflow,
   bottomNavPrimary,
@@ -10,6 +11,7 @@ import {
 } from "@/lib/navigation";
 
 const BottomNav = memo(function BottomNav() {
+  const { t } = useLocale();
   const location = useLocation();
   const [moreOpen, setMoreOpen] = useState(false);
 
@@ -41,7 +43,7 @@ const BottomNav = memo(function BottomNav() {
                   <Icon className="text-lg" />
                 </div>
                 <span className="text-[10px] font-medium leading-tight">
-                  {tab.label}
+                  {t(tab.label)}
                 </span>
               </NavLink>
             );
@@ -59,7 +61,9 @@ const BottomNav = memo(function BottomNav() {
             <div className="flex items-center justify-center rounded-lg p-1.5">
               <HiDotsHorizontal className="text-lg" />
             </div>
-            <span className="text-[10px] font-medium leading-tight">More</span>
+            <span className="text-[10px] font-medium leading-tight">
+              {t("nav.more")}
+            </span>
           </Button>
         </div>
       </nav>
@@ -69,7 +73,7 @@ const BottomNav = memo(function BottomNav() {
           <div className="p-4">
             <div className="mx-auto mb-4 h-1 w-10 rounded-full bg-border dark:bg-dark-border" />
             <h3 className="mb-3 text-sm font-semibold text-text-primary dark:text-dark-text-primary">
-              More
+              {t("nav.more")}
             </h3>
             <div className="grid grid-cols-4 gap-3">
               {bottomNavOverflow.map((tab) => {
@@ -89,7 +93,7 @@ const BottomNav = memo(function BottomNav() {
                   >
                     <Icon className="text-xl" />
                     <span className="text-[10px] font-medium leading-tight text-center">
-                      {tab.label}
+                      {t(tab.label)}
                     </span>
                   </NavLink>
                 );

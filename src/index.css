@@ -168,14 +168,38 @@ html {
 .tajweed-madd {
   color: #e53935;
 }
+.dark .tajweed-madd {
+  color: #f0625c;
+}
 .tajweed-ghunnah {
-  color: #43a047;
+  color: #2e7d32;
+}
+.dark .tajweed-ghunnah {
+  color: #66bb6a;
 }
 .tajweed-qalqalah {
-  color: #1e88e5;
+  color: #1565c0;
 }
-.tajweed-shaddah {
-  color: #fb8c00;
+.dark .tajweed-qalqalah {
+  color: #42a5f5;
+}
+.tajweed-ikhfa {
+  color: #00838f;
+}
+.dark .tajweed-ikhfa {
+  color: #4dd0e1;
+}
+.tajweed-idgham {
+  color: #e65100;
+}
+.dark .tajweed-idgham {
+  color: #ffa726;
+}
+.tajweed-iqlab {
+  color: #7b1fa2;
+}
+.dark .tajweed-iqlab {
+  color: #ab47bc;
 }
 
 .page-enter {
@@ -242,4 +266,26 @@ html {
   --color-border: #2a1f40;
   --color-input: #2a1f40;
   --color-ring: #b87aff;
+}
+
+.ramadan-mode .btn-primary {
+  background: linear-gradient(135deg, #b8860b, #ff8c00);
+}
+.ramadan-mode .btn-primary:hover {
+  box-shadow: 0 8px 24px rgba(184, 134, 11, 0.25);
+}
+.ramadan-mode .ramadan-banner {
+  background: linear-gradient(135deg, #b8860b, #ff8c00);
+}
+.ramadan-crescent {
+  display: inline-block;
+  animation: crescentGlow 2s ease-in-out infinite alternate;
+}
+@keyframes crescentGlow {
+  from {
+    filter: drop-shadow(0 0 4px rgba(255, 140, 0, 0.4));
+  }
+  to {
+    filter: drop-shadow(0 0 12px rgba(255, 140, 0, 0.8));
+  }
 }

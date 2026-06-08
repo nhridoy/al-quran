@@ -3,6 +3,7 @@ import { memo, useCallback, useRef, useState } from "react";
 import { FiTrash2 } from "react-icons/fi";
 import { IoPlayCircleOutline } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/i18n";
 import { dedupeUrls } from "@/lib/audio";
 import { getAudioData, mergeAudioWithSurah } from "@/lib/db";
 import {
@@ -26,6 +27,7 @@ export function formatBytes(bytes: number): string {
 
 const SurahDownloadCard = memo(
   ({ surah, reciterId, onDownloaded }: SurahDownloadCardProps) => {
+    const { t } = useLocale();
     const addItem = useDownloadsStore((s) => s.add);
     const updateItem = useDownloadsStore((s) => s.update);
     const removeItem = useDownloadsStore((s) => s.remove);
@@ -149,7 +151,7 @@ const SurahDownloadCard = memo(
             </span>
           </p>
           <p className="mt-0.5 truncate text-xs text-text-muted dark:text-dark-text-muted">
-            {surah.numberOfAyahs} verses
+            {t("surah.verses", { count: surah.numberOfAyahs })}
           </p>
           {displayProgress > 0 && displayProgress < 100 && (
             <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-surface-alt dark:bg-dark-surface-alt">
@@ -167,8 +169,8 @@ const SurahDownloadCard = memo(
               variant="danger"
               size="icon"
               className="rounded-lg"
-              title="Remove download"
-              aria-label="Remove download"
+              title={t("downloads.remove")}
+              aria-label={t("downloads.remove")}
             >
               <FiTrash2 className="text-sm" />
             </Button>
@@ -182,8 +184,8 @@ const SurahDownloadCard = memo(
                 variant="secondary-ghost"
                 size="icon-sm"
                 className="rounded-lg text-text-muted hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20 dark:hover:text-secondary-light"
-                title="Resume download"
-                aria-label="Resume download"
+                title={t("downloads.resume")}
+                aria-label={t("downloads.resume")}
               >
                 <IoPlayCircleOutline className="text-sm" />
               </Button>
@@ -208,8 +210,8 @@ const SurahDownloadCard = memo(
                 variant="secondary-ghost"
                 size="icon-sm"
                 className="rounded-lg text-text-muted hover:bg-warning/10 hover:text-warning dark:hover:bg-warning/20"
-                title="Pause download"
-                aria-label="Pause download"
+                title={t("downloads.pause")}
+                aria-label={t("downloads.pause")}
               >
                 <PauseIcon className="h-3.5 w-3.5" aria-hidden="true" />
               </Button>
@@ -218,8 +220,8 @@ const SurahDownloadCard = memo(
                 variant="danger"
                 size="icon-sm"
                 className="rounded-lg"
-                title="Cancel download"
-                aria-label="Cancel download"
+                title={t("downloads.cancel")}
+                aria-label={t("downloads.cancel")}
               >
                 <FiTrash2 className="text-xs" />
               </Button>
@@ -230,8 +232,8 @@ const SurahDownloadCard = memo(
               variant="secondary-ghost"
               size="icon"
               className="rounded-lg text-text-muted hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20 dark:hover:text-secondary-light"
-              title="Download"
-              aria-label="Download"
+              title={t("downloads.download")}
+              aria-label={t("downloads.download")}
             >
               <IoPlayCircleOutline className="text-lg" />
             </Button>

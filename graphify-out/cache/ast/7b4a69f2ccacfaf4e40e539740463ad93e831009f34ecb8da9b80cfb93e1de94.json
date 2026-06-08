@@ -1,0 +1,45 @@
+{
+  "nodes": [
+    {
+      "id": "c_users_hrido_desktop_al_quran_agents_skills_shadcn_evals_evals_json",
+      "label": "evals.json",
+      "file_type": "code",
+      "source_file": ".agents/skills/shadcn/evals/evals.json",
+      "source_location": "L1"
+    },
+    {
+      "id": "evals_evals_skill_name",
+      "label": "skill_name",
+      "file_type": "code",
+      "source_file": ".agents/skills/shadcn/evals/evals.json",
+      "source_location": "L2"
+    },
+    {
+      "id": "evals_evals_evals",
+      "label": "evals",
+      "file_type": "code",
+      "source_file": ".agents/skills/shadcn/evals/evals.json",
+      "source_location": "L3"
+    }
+  ],
+  "edges": [
+    {
+      "source": "c_users_hrido_desktop_al_quran_agents_skills_shadcn_evals_evals_json",
+      "target": "evals_evals_skill_name",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/evals/evals.json",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "c_users_hrido_desktop_al_quran_agents_skills_shadcn_evals_evals_json",
+      "target": "evals_evals_evals",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/evals/evals.json",
+      "source_location": "L3",
+      "weight": 1.0
+    }
+  ]
+}

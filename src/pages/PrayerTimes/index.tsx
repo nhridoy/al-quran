@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { PageShell } from "@/components/common/PageShell/PageShell";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/i18n";
 import { PRAYER_REFRESH_INTERVAL } from "@/lib/const";
 import {
   buildPrayerEntries,
@@ -23,6 +24,7 @@ export default function PrayerTimesPage() {
     error: geoError,
     request,
   } = useLocationStore();
+  const { t, locale } = useLocale();
   const [now, setNow] = useState(new Date());
   const coords = lat !== null && lng !== null ? { lat, lng } : null;
 
@@ -53,10 +55,10 @@ export default function PrayerTimesPage() {
 
   return (
     <PageShell
-      head="Prayer Times"
+      head={t("prayerTimes.pageTitle")}
       showBack
-      title="Prayer Times"
-      description={now.toLocaleDateString("en-US", {
+      title={t("prayerTimes.pageTitle")}
+      description={now.toLocaleDateString(locale === "bn" ? "bn-BD" : "en-US", {
         weekday: "long",
         year: "numeric",
         month: "long",
@@ -67,7 +69,7 @@ export default function PrayerTimesPage() {
         <div className="flex flex-col items-center gap-3 py-10">
           <div className="h-8 w-8 animate-spin rounded-full border-4 border-border border-t-secondary" />
           <p className="text-sm text-text-muted">
-            Requesting location for accurate prayer times...
+            {t("prayerTimes.requestingLocation")}
           </p>
         </div>
       )}
@@ -75,14 +77,14 @@ export default function PrayerTimesPage() {
       {geoError && (
         <div className="flex flex-col items-center gap-3 card-surface p-6 text-center">
           <p className="text-sm text-text-muted">
-            {geoError}. Please enable location access.
+            {t("prayerTimes.locationError", { error: geoError })}
           </p>
           <Button
             onClick={request}
             variant="gradient"
             className="rounded-xl px-5 py-2 text-sm font-semibold hover:shadow-lg hover:shadow-primary/20 active:scale-95"
           >
-            Try Again
+            {t("error.tryAgain")}
           </Button>
         </div>
       )}
@@ -90,7 +92,7 @@ export default function PrayerTimesPage() {
       {coords && nextPrayer && (
         <div className="overflow-hidden rounded-2xl bg-linear-to-br from-primary via-primary-light to-secondary p-6 text-white shadow-xl shadow-primary/20">
           <p className="text-xs font-medium uppercase tracking-wider text-white/70">
-            Next Prayer
+            {t("prayerTimes.nextPrayer")}
           </p>
           <div className="mt-1 flex items-baseline gap-2">
             <span className="text-3xl font-bold">{nextPrayer.name}</span>
@@ -100,7 +102,7 @@ export default function PrayerTimesPage() {
           </div>
           {nextPrayer.time > now && (
             <p className="mt-2 text-lg font-semibold text-white/90">
-              {getCountdown(now, nextPrayer.time)} remaining
+              {getCountdown(now, nextPrayer.time)} {t("prayerTimes.remaining")}
             </p>
           )}
           <p className="mt-1 text-xs text-white/60">
@@ -135,12 +137,12 @@ export default function PrayerTimesPage() {
                     {p.name}
                     {isCurrent && (
                       <span className="ml-2 text-[10px] font-medium text-accent">
-                        Current
+                        {t("prayerTimes.current")}
                       </span>
                     )}
                     {isNext && !isCurrent && (
                       <span className="ml-2 text-[10px] font-medium text-secondary">
-                        Next
+                        {t("prayerTimes.next")}
                       </span>
                     )}
                   </p>

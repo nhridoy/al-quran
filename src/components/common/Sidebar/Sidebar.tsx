@@ -1,10 +1,12 @@
 import { memo } from "react";
 import { FaQuran } from "react-icons/fa";
 import { NavLink, useLocation } from "react-router-dom";
+import { useLocale } from "@/i18n";
 import { isActiveMatch, sidebarSections } from "@/lib/navigation";
 import HijriDate from "../../features/HijriDate/HijriDate";
 
 const Sidebar = memo(function Sidebar() {
+  const { t } = useLocale();
   const location = useLocation();
 
   return (
@@ -15,10 +17,10 @@ const Sidebar = memo(function Sidebar() {
         </div>
         <div>
           <h1 className="text-lg font-bold text-text-primary dark:text-dark-text-primary">
-            Al Quran
+            {t("nav.brandTitle")}
           </h1>
           <p className="text-xs text-text-muted dark:text-dark-text-muted">
-            Read & Listen
+            {t("nav.brandSubtitle")}
           </p>
         </div>
       </div>
@@ -27,7 +29,7 @@ const Sidebar = memo(function Sidebar() {
         {sidebarSections.map((section) => (
           <div key={section.label}>
             <p className="mb-1.5 px-4 text-[10px] font-semibold uppercase tracking-widest text-text-muted dark:text-dark-text-muted">
-              {section.label}
+              {t(section.label)}
             </p>
             <div className="space-y-0.5">
               {section.items.map((item) => {
@@ -51,7 +53,7 @@ const Sidebar = memo(function Sidebar() {
                           : ""
                       }`}
                     />
-                    <span>{item.label}</span>
+                    <span>{t(item.label)}</span>
                     {isActive && (
                       <div className="ml-auto h-1.5 w-1.5 rounded-full bg-linear-to-r from-primary to-secondary" />
                     )}

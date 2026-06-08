@@ -184,6 +184,8 @@ export interface MiscSettings {
   hijriAdjust: number;
   tajweedEnabled: boolean;
   onboardingComplete: boolean;
+  ramadanMode: "auto" | "on" | "off";
+  locale: "en" | "bn";
 }
 
 export interface AppSettings

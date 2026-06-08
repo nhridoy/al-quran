@@ -2,14 +2,7 @@ import { IoVolumeHighOutline } from "react-icons/io5";
 import SegmentedControl from "@/components/pages/Settings/SegmentedControl";
 import SettingCard from "@/components/pages/Settings/SettingCard";
 import { Button } from "@/components/ui/button";
-
-const CALC_METHODS = [
-  { value: "MWL", label: "Muslim World League" },
-  { value: "ISNA", label: "Islamic Society of North America" },
-  { value: "Egypt", label: "Egyptian General Authority" },
-  { value: "UmmAlQura", label: "Umm al-Qura (Makkah)" },
-  { value: "Karachi", label: "University of Islamic Sciences, Karachi" },
-] as const;
+import { useLocale } from "@/i18n";
 
 interface PrayerSettingsProps {
   prayerCalcMethod: string;
@@ -24,25 +17,33 @@ export default function PrayerSettings({
   hijriAdjust,
   onChange,
 }: PrayerSettingsProps) {
+  const { t } = useLocale();
+
   return (
     <SettingCard
       icon={
         <IoVolumeHighOutline className="text-lg text-primary dark:text-secondary-light" />
       }
-      title="Prayer Times"
-      description="Calculation method preferences"
+      title={t("settings.prayerTimes")}
+      description={t("settings.prayerTimesDesc")}
     >
       <div className="space-y-4">
         <div>
           <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
-            Calculation Method
+            {t("settings.calcMethod")}
           </p>
           <select
             value={prayerCalcMethod}
             onChange={(e) => onChange("prayerCalcMethod", e.target.value)}
             className="w-full rounded-xl border border-border bg-surface-alt px-3 py-2 text-sm text-text-primary outline-none transition-colors focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
           >
-            {CALC_METHODS.map((m) => (
+            {[
+              { value: "MWL", label: t("settings.calcMwl") },
+              { value: "ISNA", label: t("settings.calcIsna") },
+              { value: "Egypt", label: t("settings.calcEgypt") },
+              { value: "UmmAlQura", label: t("settings.calcUmmAlQura") },
+              { value: "Karachi", label: t("settings.calcKarachi") },
+            ].map((m) => (
               <option key={m.value} value={m.value}>
                 {m.label}
               </option>
@@ -51,12 +52,12 @@ export default function PrayerSettings({
         </div>
         <div>
           <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
-            Asr Calculation
+            {t("settings.asrCalc")}
           </p>
           <SegmentedControl
             options={[
-              { value: "shafii", label: "Shafii" },
-              { value: "hanafi", label: "Hanafi" },
+              { value: "shafii", label: t("settings.asrShafii") },
+              { value: "hanafi", label: t("settings.asrHanafi") },
             ]}
             value={prayerAsrMethod}
             onChange={(v) => onChange("prayerAsrMethod", v)}
@@ -64,9 +65,7 @@ export default function PrayerSettings({
         </div>
         <div>
           <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
-            Hijri Date Adjustment: {hijriAdjust > 0 ? "+" : ""}
-            {hijriAdjust} day
-            {hijriAdjust !== 1 ? "s" : ""}
+            {t("settings.hijriAdjust", { n: hijriAdjust })}
           </p>
           <div className="flex items-center gap-3">
             <Button
@@ -102,7 +101,7 @@ export default function PrayerSettings({
             </Button>
           </div>
           <p className="mt-1 text-[11px] text-text-muted">
-            Adjust if the displayed date differs from your local observation
+            {t("settings.hijriAdjustDesc")}
           </p>
         </div>
       </div>

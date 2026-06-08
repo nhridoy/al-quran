@@ -2,11 +2,12 @@ import { MdFormatColorFill, MdOutlineTranslate } from "react-icons/md";
 import SegmentedControl from "@/components/pages/Settings/SegmentedControl";
 import SettingCard from "@/components/pages/Settings/SettingCard";
 import { Switch } from "@/components/ui/switch";
+import { useLocale } from "@/i18n";
 import { RECITERS } from "@/lib/const";
 
 const LANG_OPTIONS = [
-  { value: "en", label: "English" },
-  { value: "bn", label: "বাংলা" },
+  { value: "en", labelKey: "language.en" },
+  { value: "bn", labelKey: "language.bn" },
 ] as const;
 
 interface ReadingSettingsProps {
@@ -22,28 +23,33 @@ export default function ReadingSettings({
   tajweedEnabled,
   onChange,
 }: ReadingSettingsProps) {
+  const { t } = useLocale();
+
   return (
     <SettingCard
       icon={
         <MdOutlineTranslate className="text-lg text-primary dark:text-secondary-light" />
       }
-      title="Reading"
-      description="Language and reciter preferences"
+      title={t("settings.reading")}
+      description={t("settings.readingDesc")}
     >
       <div className="space-y-4">
         <div>
           <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
-            Translation Language
+            {t("settings.translationLang")}
           </p>
           <SegmentedControl
-            options={LANG_OPTIONS}
+            options={LANG_OPTIONS.map((o) => ({
+              value: o.value,
+              label: t(o.labelKey),
+            }))}
             value={translationLang}
             onChange={(v) => onChange("translationLang", v)}
           />
         </div>
         <div>
           <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
-            Reciter
+            {t("settings.reciter")}
           </p>
           <select
             value={reciterId}
@@ -61,7 +67,7 @@ export default function ReadingSettings({
           <div className="flex items-center gap-2">
             <MdFormatColorFill className="text-base text-text-muted dark:text-dark-text-muted" />
             <p className="text-xs font-medium text-text-primary dark:text-dark-text-primary">
-              Tajweed Color
+              {t("settings.tajweedColor")}
             </p>
           </div>
           <Switch

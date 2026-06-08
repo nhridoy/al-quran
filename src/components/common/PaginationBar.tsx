@@ -1,4 +1,5 @@
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
+import { useLocale } from "@/i18n";
 
 interface PaginationBarProps {
   page: number;
@@ -13,6 +14,8 @@ export default function PaginationBar({
   onPrev,
   onNext,
 }: PaginationBarProps) {
+  const { t } = useLocale();
+
   if (totalPages <= 1) return null;
 
   return (
@@ -24,7 +27,7 @@ export default function PaginationBar({
         className="flex cursor-pointer items-center gap-1 rounded-xl px-4 py-2 text-sm font-medium text-text-primary transition-colors hover:bg-surface-alt disabled:cursor-not-allowed disabled:opacity-40 dark:text-dark-text-primary dark:hover:bg-dark-surface-alt"
       >
         <BiChevronLeft className="text-lg" />
-        Previous
+        {t("pagination.previous")}
       </button>
       <span className="text-xs text-text-muted">
         {page} / {totalPages}
@@ -35,7 +38,7 @@ export default function PaginationBar({
         disabled={page >= totalPages}
         className="flex cursor-pointer items-center gap-1 rounded-xl px-4 py-2 text-sm font-medium text-text-primary transition-colors hover:bg-surface-alt disabled:cursor-not-allowed disabled:opacity-40 dark:text-dark-text-primary dark:hover:bg-dark-surface-alt"
       >
-        Next
+        {t("pagination.next")}
         <BiChevronRight className="text-lg" />
       </button>
     </div>

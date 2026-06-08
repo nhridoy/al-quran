@@ -16,6 +16,8 @@ const DEFAULTS: AppSettings = {
   tajweedEnabled: false,
   tafsirEnabled: false,
   onboardingComplete: false,
+  ramadanMode: "auto",
+  locale: "en",
 };
 
 export const useSettings = createPersistedStore<

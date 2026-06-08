@@ -54,6 +54,21 @@ Always run `pnpm lint-format && pnpm typecheck` before committing.
 - **SPA routing**: `public/_redirects` has `/* /index.html 200`
 - **`robots.txt`**: allows all crawlers
 
+## i18n / Locale
+
+- **System**: `src/i18n/LocaleContext.tsx` — React context with `useLocale()` hook returning `{ t, locale, setLocale }`.
+- **Translation files**: `src/i18n/en.json` (English), `src/i18n/bn.json` (Bengali). Keys use dot notation like `"zakat.pageTitle"`.
+- **`t(key, params?)`**: Resolves key from current locale bundle, interpolates `{param}` placeholders.
+- **Locale setting**: Stored in `settings.locale` (type `"en" | "bn"`). `LocaleProvider` in `App.tsx` wraps root. `LocaleSync` syncs setting → context.
+- **Pattern**: Import `useLocale` at top of page, destructure `{ t }`, replace strings with `t("namespace.key")`.
+- **Available locales**: English (`en`), Bengali (`bn`).
+
+## Data Export
+
+- **Page**: `/data-export` — collects all IndexedDB stores via `getAllFromStore` / `getKeys`, serializes to JSON, triggers file download.
+- **All 17 stores exported**: surah-verses, surah-list, surah-audio, surah-tafsir, juz-verses, juz-audio, juz-tafsir, bookmarks, settings, duas, prayerSettings, hadith, worship-records, prayer-records, quran-progress, sadaqah-records, reading-goals.
+- Uses `STORE_NAMES` from `src/lib/cache.ts` (now exported). Single-key stores ("all") dump all values; multi-key stores dump key-value pairs.
+
 ## Expansion areas
 
 - Bookmark/share buttons in `src/components/pages/Ayahs/Ayahs.tsx` are placeholders (no logic wired)

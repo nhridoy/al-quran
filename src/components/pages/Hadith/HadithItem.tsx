@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useLocale } from "@/i18n";
 import type { HadithEntry } from "@/types";
 
 interface HadithItemProps {
@@ -11,6 +12,7 @@ interface HadithItemProps {
 }
 
 export default memo(function HadithItem({ item }: HadithItemProps) {
+  const { t } = useLocale();
   return (
     <AccordionItem
       value={String(item.hadithIndex)}
@@ -23,7 +25,7 @@ export default memo(function HadithItem({ item }: HadithItemProps) {
               {item.bookHadithIndex}
             </div>
             <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
-              Hadith {item.bookHadithIndex}
+              {t("hadith.hadithIndex", { index: item.bookHadithIndex })}
             </span>
           </div>
           <span className="text-xs text-text-muted transition-transform group-aria-expanded/accordion-trigger:rotate-180">

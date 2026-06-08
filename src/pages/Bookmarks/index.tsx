@@ -4,10 +4,12 @@ import { PageShell } from "@/components/common/PageShell/PageShell";
 import SurahGroupItem from "@/components/pages/Bookmarks/SurahGroupItem";
 import { Accordion } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/i18n";
 import { confirm } from "@/lib/confirm";
 import { useBookmarkStore } from "@/store/bookmarks";
 
 export default function Bookmarks() {
+  const { t } = useLocale();
   const bookmarks = useBookmarkStore((s) => s.bookmarks);
   const remove = useBookmarkStore((s) => s.remove);
   const clearBySurah = useBookmarkStore((s) => s.clearBySurah);
@@ -42,32 +44,31 @@ export default function Bookmarks() {
 
   const handleClearSurah = async (surahNo: number, enName: string) => {
     const ok = await confirm({
-      title: `Clear ${enName}?`,
-      message: "Remove all bookmarks in this surah",
-      confirmText: "Clear",
+      title: t("bookmarks.clearSurahTitle", { enName }),
+      message: t("bookmarks.clearSurahMessage"),
+      confirmText: t("bookmarks.clearSurahConfirm"),
     });
     if (ok) clearBySurah(surahNo);
   };
 
   const handleClearAll = async () => {
     const ok = await confirm({
-      title: "Clear All Bookmarks?",
-      message: `Remove all ${bookmarks.length} bookmarks`,
-      confirmText: "Clear All",
+      title: t("bookmarks.clearAllTitle"),
+      message: t("bookmarks.clearAllMessage", { n: bookmarks.length }),
+      confirmText: t("bookmarks.clearAllConfirm"),
     });
     if (ok) clearAll();
   };
 
   return (
-    <PageShell head="Bookmarks" showBack>
+    <PageShell head={t("bookmarks.pageTitle")} showBack>
       <div className="mb-2 flex items-center justify-between">
         <div>
           <h2 className="text-lg font-bold text-text-primary dark:text-dark-text-primary">
-            Bookmarks
+            {t("bookmarks.headerTitle")}
           </h2>
           <p className="text-sm text-text-muted dark:text-dark-text-muted">
-            {bookmarks.length} ayah{bookmarks.length === 1 ? "" : "s"}{" "}
-            bookmarked
+            {t("bookmarks.ayahsBookmarked", { n: bookmarks.length })}
           </p>
         </div>
         {bookmarks.length > 0 && (
@@ -76,7 +77,7 @@ export default function Bookmarks() {
             className="rounded-xl px-3 py-1.5 text-xs font-medium"
             onClick={handleClearAll}
           >
-            Clear All
+            {t("bookmarks.clearAllButton")}
           </Button>
         )}
       </div>
@@ -86,7 +87,7 @@ export default function Bookmarks() {
           <BiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-base text-text-muted" />
           <input
             type="text"
-            placeholder="Search bookmarks..."
+            placeholder={t("bookmarks.searchPlaceholder")}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="w-full rounded-xl border border-border bg-surface-alt py-2.5 pl-9 pr-4 text-sm text-text-primary outline-none transition-colors placeholder:text-text-muted focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
@@ -100,17 +101,17 @@ export default function Bookmarks() {
             <BiBookmark className="text-2xl text-text-muted" />
           </div>
           <p className="text-sm font-medium text-text-muted dark:text-dark-text-muted">
-            No bookmarks yet
+            {t("bookmarks.noBookmarksYet")}
           </p>
           <p className="mt-1 text-xs text-text-muted dark:text-dark-text-muted">
-            Tap the bookmark icon on any ayah to save it here
+            {t("bookmarks.noBookmarksHint")}
           </p>
         </div>
       ) : Object.keys(grouped).length === 0 ? (
         <div className="flex flex-col items-center justify-center py-20">
           <BiSearch className="mb-2 text-2xl text-text-muted" />
           <p className="text-sm font-medium text-text-muted">
-            No matching bookmarks
+            {t("bookmarks.noMatchingBookmarks")}
           </p>
         </div>
       ) : (

@@ -24,6 +24,7 @@ const Ayahs = memo(({ ayah, surah, tracklist, surahNo }: AyahsProps) => {
   const tajweedEnabled = useSettings((s) => s.tajweedEnabled);
   const tafsirEnabled = useSettings((s) => s.tafsirEnabled);
   const tafsirId = useSettings((s) => s.tafsirId);
+  const translationLang = useSettings((s) => s.translationLang);
   const currentSurahNo = surah?.no ?? surahNo ?? 0;
 
   const { isCurrentAyah, isThisAyahPlaying, handlePlay } = useAyahAudio(
@@ -158,10 +159,7 @@ const Ayahs = memo(({ ayah, surah, tracklist, surahNo }: AyahsProps) => {
 
         <div className="space-y-1.5 border-t border-border pt-3 dark:border-dark-border">
           <p className="text-sm leading-relaxed text-text-primary dark:text-dark-text-primary">
-            {ayah.text.enText}
-          </p>
-          <p className="text-sm leading-relaxed text-text-secondary dark:text-dark-text-secondary">
-            {ayah.text.bnText}
+            {translationLang === "bn" ? ayah.text.bnText : ayah.text.enText}
           </p>
         </div>
 

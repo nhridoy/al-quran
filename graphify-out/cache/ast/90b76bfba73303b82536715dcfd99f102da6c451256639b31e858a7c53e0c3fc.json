@@ -1,0 +1,159 @@
+{
+  "nodes": [
+    {
+      "id": "c_users_hrido_desktop_al_quran_agents_skills_shadcn_rules_base_vs_radix_md",
+      "label": "base-vs-radix.md",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/rules/base-vs-radix.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "rules_base_vs_radix_base_vs_radix",
+      "label": "Base vs Radix",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/rules/base-vs-radix.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "rules_base_vs_radix_contents",
+      "label": "Contents",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/rules/base-vs-radix.md",
+      "source_location": "L5"
+    },
+    {
+      "id": "rules_base_vs_radix_composition_aschild_radix_vs_render_base",
+      "label": "Composition: asChild (radix) vs render (base)",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/rules/base-vs-radix.md",
+      "source_location": "L16"
+    },
+    {
+      "id": "rules_base_vs_radix_button_trigger_as_non_button_element_base_only",
+      "label": "Button / trigger as non-button element (base only)",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/rules/base-vs-radix.md",
+      "source_location": "L48"
+    },
+    {
+      "id": "rules_base_vs_radix_select",
+      "label": "Select",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/rules/base-vs-radix.md",
+      "source_location": "L85"
+    },
+    {
+      "id": "rules_base_vs_radix_select_multiple_selection_and_object_values_base_only",
+      "label": "Select \u2014 multiple selection and object values (base only)",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/rules/base-vs-radix.md",
+      "source_location": "L150"
+    },
+    {
+      "id": "rules_base_vs_radix_togglegroup",
+      "label": "ToggleGroup",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/rules/base-vs-radix.md",
+      "source_location": "L180"
+    },
+    {
+      "id": "rules_base_vs_radix_slider",
+      "label": "Slider",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/rules/base-vs-radix.md",
+      "source_location": "L238"
+    },
+    {
+      "id": "rules_base_vs_radix_accordion",
+      "label": "Accordion",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/rules/base-vs-radix.md",
+      "source_location": "L274"
+    }
+  ],
+  "edges": [
+    {
+      "source": "c_users_hrido_desktop_al_quran_agents_skills_shadcn_rules_base_vs_radix_md",
+      "target": "rules_base_vs_radix_base_vs_radix",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/rules/base-vs-radix.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "rules_base_vs_radix_base_vs_radix",
+      "target": "rules_base_vs_radix_contents",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/rules/base-vs-radix.md",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "rules_base_vs_radix_base_vs_radix",
+      "target": "rules_base_vs_radix_composition_aschild_radix_vs_render_base",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/rules/base-vs-radix.md",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "rules_base_vs_radix_base_vs_radix",
+      "target": "rules_base_vs_radix_button_trigger_as_non_button_element_base_only",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/rules/base-vs-radix.md",
+      "source_location": "L48",
+      "weight": 1.0
+    },
+    {
+      "source": "rules_base_vs_radix_base_vs_radix",
+      "target": "rules_base_vs_radix_select",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/rules/base-vs-radix.md",
+      "source_location": "L85",
+      "weight": 1.0
+    },
+    {
+      "source": "rules_base_vs_radix_base_vs_radix",
+      "target": "rules_base_vs_radix_select_multiple_selection_and_object_values_base_only",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/rules/base-vs-radix.md",
+      "source_location": "L150",
+      "weight": 1.0
+    },
+    {
+      "source": "rules_base_vs_radix_base_vs_radix",
+      "target": "rules_base_vs_radix_togglegroup",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/rules/base-vs-radix.md",
+      "source_location": "L180",
+      "weight": 1.0
+    },
+    {
+      "source": "rules_base_vs_radix_base_vs_radix",
+      "target": "rules_base_vs_radix_slider",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/rules/base-vs-radix.md",
+      "source_location": "L238",
+      "weight": 1.0
+    },
+    {
+      "source": "rules_base_vs_radix_base_vs_radix",
+      "target": "rules_base_vs_radix_accordion",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/rules/base-vs-radix.md",
+      "source_location": "L274",
+      "weight": 1.0
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

@@ -1,0 +1,175 @@
+{
+  "nodes": [
+    {
+      "id": "c_users_hrido_desktop_al_quran_agents_md",
+      "label": "AGENTS.md",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "al_quran_agents_al_quran_agents_md",
+      "label": "Al Quran \u2014 AGENTS.md",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "al_quran_agents_stack",
+      "label": "Stack",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L3"
+    },
+    {
+      "id": "al_quran_agents_commands",
+      "label": "Commands",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L10"
+    },
+    {
+      "id": "al_quran_agents_architecture",
+      "label": "Architecture",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L22"
+    },
+    {
+      "id": "al_quran_agents_key_conventions",
+      "label": "Key conventions",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L31"
+    },
+    {
+      "id": "al_quran_agents_data_flow",
+      "label": "Data flow",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L42"
+    },
+    {
+      "id": "al_quran_agents_build_deploy",
+      "label": "Build & Deploy",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L50"
+    },
+    {
+      "id": "al_quran_agents_i18n_locale",
+      "label": "i18n / Locale",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L57"
+    },
+    {
+      "id": "al_quran_agents_data_export",
+      "label": "Data Export",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L66"
+    },
+    {
+      "id": "al_quran_agents_expansion_areas",
+      "label": "Expansion areas",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L72"
+    }
+  ],
+  "edges": [
+    {
+      "source": "c_users_hrido_desktop_al_quran_agents_md",
+      "target": "al_quran_agents_al_quran_agents_md",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_agents_al_quran_agents_md",
+      "target": "al_quran_agents_stack",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_agents_al_quran_agents_md",
+      "target": "al_quran_agents_commands",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_agents_al_quran_agents_md",
+      "target": "al_quran_agents_architecture",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_agents_al_quran_agents_md",
+      "target": "al_quran_agents_key_conventions",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_agents_al_quran_agents_md",
+      "target": "al_quran_agents_data_flow",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L42",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_agents_al_quran_agents_md",
+      "target": "al_quran_agents_build_deploy",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_agents_al_quran_agents_md",
+      "target": "al_quran_agents_i18n_locale",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L57",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_agents_al_quran_agents_md",
+      "target": "al_quran_agents_data_export",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_agents_al_quran_agents_md",
+      "target": "al_quran_agents_expansion_areas",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L72",
+      "weight": 1.0
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

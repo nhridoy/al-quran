@@ -26,7 +26,7 @@ export default function StepDone({ onFinish }: { onFinish: () => void }) {
       >
         <h1 className="text-2xl font-bold text-white">You're All Set!</h1>
         <p className="mt-2 text-sm leading-relaxed text-white/50">
-          Al Quran is ready. Your preferences are saved,
+          Pure is ready. Your preferences are saved,
           <br />
           and cached data will make everything snappy.
         </p>

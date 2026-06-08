@@ -1,9 +1,9 @@
 import { type IDBPDatabase, openDB } from "idb";
 
 const DB_NAME = "al-quran";
-const DB_VERSION = 9;
+const DB_VERSION = 11;
 
-const STORE_NAMES = [
+export const STORE_NAMES = [
   "surah-verses",
   "surah-list",
   "surah-audio",
@@ -16,6 +16,12 @@ const STORE_NAMES = [
   "duas",
   "prayerSettings",
   "hadith",
+  "worship-records",
+  "prayer-records",
+  "quran-progress",
+  "sadaqah-records",
+  "reading-goals",
+  "location",
 ] as const;
 
 export type StoreName = (typeof STORE_NAMES)[number];

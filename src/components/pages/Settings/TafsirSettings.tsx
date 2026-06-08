@@ -1,6 +1,7 @@
 import { IoBookOutline } from "react-icons/io5";
 import SettingCard from "@/components/pages/Settings/SettingCard";
 import { Switch } from "@/components/ui/switch";
+import { useLocale } from "@/i18n";
 
 interface TafsirSettingsProps {
   tafsirEnabled: boolean;
@@ -18,18 +19,20 @@ export default function TafsirSettings({
   groupedTafsirs,
   onChange,
 }: TafsirSettingsProps) {
+  const { t } = useLocale();
+
   return (
     <SettingCard
       icon={
         <IoBookOutline className="text-lg text-primary dark:text-secondary-light" />
       }
-      title="Tafsir"
-      description="Preferred tafsir/exegesis resource"
+      title={t("settings.tafsir")}
+      description={t("settings.tafsirDesc")}
     >
       <div className="mb-4">
         <div className="flex items-center justify-between">
           <p className="text-xs font-medium text-text-primary dark:text-dark-text-primary">
-            Show Tafsir Under Verses
+            {t("settings.tafsirShow")}
           </p>
           <Switch
             checked={tafsirEnabled}
@@ -39,7 +42,7 @@ export default function TafsirSettings({
       </div>
       <div>
         <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
-          Tafsir Resource
+          {t("settings.tafsirResource")}
         </p>
         <select
           value={tafsirId}

@@ -2,7 +2,9 @@ import { memo } from "react";
 import { BiTrash } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/i18n";
 import type { Bookmark } from "@/store/bookmarks";
+import { useSettings } from "@/store/settings";
 
 interface BookmarkRowProps {
   bookmark: Bookmark;
@@ -13,6 +15,8 @@ const BookmarkRow = memo(function BookmarkRow({
   bookmark,
   onRemove,
 }: BookmarkRowProps) {
+  const { t } = useLocale();
+  const translationLang = useSettings((s) => s.translationLang);
   const navigate = useNavigate();
   const { id, surahNo, ayahNo, arabicText, enText, bnText } = bookmark;
 
@@ -30,24 +34,27 @@ const BookmarkRow = memo(function BookmarkRow({
         <p className="font-arabic text-right text-lg leading-relaxed text-text-primary dark:text-dark-text-primary">
           {arabicText}
         </p>
-        {enText && (
-          <p className="mt-0.5 text-xs leading-relaxed text-text-secondary dark:text-dark-text-secondary">
-            {enText}
-          </p>
-        )}
-        {bnText && (
-          <p className="text-[11px] leading-relaxed text-text-muted dark:text-dark-text-muted">
-            {bnText}
-          </p>
-        )}
-        <p className="mt-1 text-xs text-text-muted">Ayah {ayahNo}</p>
+        {translationLang === "bn"
+          ? bnText && (
+              <p className="mt-0.5 text-xs leading-relaxed text-text-secondary dark:text-dark-text-secondary">
+                {bnText}
+              </p>
+            )
+          : enText && (
+              <p className="mt-0.5 text-xs leading-relaxed text-text-secondary dark:text-dark-text-secondary">
+                {enText}
+              </p>
+            )}
+        <p className="mt-1 text-xs text-text-muted">
+          {t("bookmarks.ayahLabel", { n: ayahNo })}
+        </p>
       </button>
       <Button
         variant="danger"
         size="icon"
         className="rounded-lg"
         onClick={() => onRemove(id)}
-        aria-label="Remove bookmark"
+        aria-label={t("bookmarks.removeBookmark")}
       >
         <BiTrash className="text-sm" />
       </Button>

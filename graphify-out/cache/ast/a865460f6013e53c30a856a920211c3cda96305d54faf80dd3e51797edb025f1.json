@@ -1,0 +1,287 @@
+{
+  "nodes": [
+    {
+      "id": "c_users_hrido_desktop_al_quran_src_components_features_audioplayer_readme_md",
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "audioplayer_readme_audioplayer",
+      "label": "AudioPlayer",
+      "file_type": "document",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "audioplayer_readme_features",
+      "label": "Features",
+      "file_type": "document",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L5"
+    },
+    {
+      "id": "audioplayer_readme_requirements",
+      "label": "Requirements",
+      "file_type": "document",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L14"
+    },
+    {
+      "id": "audioplayer_readme_setup",
+      "label": "Setup",
+      "file_type": "document",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L19"
+    },
+    {
+      "id": "audioplayer_readme_1_copy_the_folder",
+      "label": "1. Copy the folder",
+      "file_type": "document",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L21"
+    },
+    {
+      "id": "audioplayer_readme_2_add_tailwind_theme_values",
+      "label": "2. Add Tailwind theme values",
+      "file_type": "document",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L25"
+    },
+    {
+      "id": "audioplayer_readme_usage",
+      "label": "Usage",
+      "file_type": "document",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L90"
+    },
+    {
+      "id": "audioplayer_readme_basic_setup",
+      "label": "Basic setup",
+      "file_type": "document",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L92"
+    },
+    {
+      "id": "audioplayer_readme_building_a_playlist_and_playing",
+      "label": "Building a playlist and playing",
+      "file_type": "document",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L118"
+    },
+    {
+      "id": "audioplayer_readme_playing_a_single_track",
+      "label": "Playing a single track",
+      "file_type": "document",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L137"
+    },
+    {
+      "id": "audioplayer_readme_api",
+      "label": "API",
+      "file_type": "document",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L156"
+    },
+    {
+      "id": "audioplayer_readme_track",
+      "label": "`Track`",
+      "file_type": "document",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L158"
+    },
+    {
+      "id": "audioplayer_readme_useaudioplayer",
+      "label": "`useAudioPlayer()`",
+      "file_type": "document",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L175"
+    },
+    {
+      "id": "audioplayer_readme_buildplaylistfromsurah_surahdata",
+      "label": "`buildPlaylistFromSurah(surahData)`",
+      "file_type": "document",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L202"
+    },
+    {
+      "id": "audioplayer_readme_audioplayerprovider",
+      "label": "`AudioPlayerProvider`",
+      "file_type": "document",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L222"
+    },
+    {
+      "id": "audioplayer_readme_getaudiourl_totalnumber_number",
+      "label": "`getAudioUrl(totalNumber: number)`",
+      "file_type": "document",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L229"
+    },
+    {
+      "id": "audioplayer_readme_file_structure",
+      "label": "File structure",
+      "file_type": "document",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L233"
+    }
+  ],
+  "edges": [
+    {
+      "source": "c_users_hrido_desktop_al_quran_src_components_features_audioplayer_readme_md",
+      "target": "audioplayer_readme_audioplayer",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "audioplayer_readme_audioplayer",
+      "target": "audioplayer_readme_features",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "audioplayer_readme_audioplayer",
+      "target": "audioplayer_readme_requirements",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "audioplayer_readme_audioplayer",
+      "target": "audioplayer_readme_setup",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "audioplayer_readme_setup",
+      "target": "audioplayer_readme_1_copy_the_folder",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "audioplayer_readme_setup",
+      "target": "audioplayer_readme_2_add_tailwind_theme_values",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "audioplayer_readme_audioplayer",
+      "target": "audioplayer_readme_usage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L90",
+      "weight": 1.0
+    },
+    {
+      "source": "audioplayer_readme_usage",
+      "target": "audioplayer_readme_basic_setup",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L92",
+      "weight": 1.0
+    },
+    {
+      "source": "audioplayer_readme_usage",
+      "target": "audioplayer_readme_building_a_playlist_and_playing",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L118",
+      "weight": 1.0
+    },
+    {
+      "source": "audioplayer_readme_usage",
+      "target": "audioplayer_readme_playing_a_single_track",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L137",
+      "weight": 1.0
+    },
+    {
+      "source": "audioplayer_readme_audioplayer",
+      "target": "audioplayer_readme_api",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L156",
+      "weight": 1.0
+    },
+    {
+      "source": "audioplayer_readme_api",
+      "target": "audioplayer_readme_track",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L158",
+      "weight": 1.0
+    },
+    {
+      "source": "audioplayer_readme_api",
+      "target": "audioplayer_readme_useaudioplayer",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L175",
+      "weight": 1.0
+    },
+    {
+      "source": "audioplayer_readme_api",
+      "target": "audioplayer_readme_buildplaylistfromsurah_surahdata",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L202",
+      "weight": 1.0
+    },
+    {
+      "source": "audioplayer_readme_api",
+      "target": "audioplayer_readme_audioplayerprovider",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L222",
+      "weight": 1.0
+    },
+    {
+      "source": "audioplayer_readme_api",
+      "target": "audioplayer_readme_getaudiourl_totalnumber_number",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L229",
+      "weight": 1.0
+    },
+    {
+      "source": "audioplayer_readme_audioplayer",
+      "target": "audioplayer_readme_file_structure",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/README.md",
+      "source_location": "L233",
+      "weight": 1.0
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

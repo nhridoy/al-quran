@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Header } from "@/components/common/Header/Header";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/i18n";
 import { KAABA_COORDS, QIBLA_SMOOTHING } from "@/lib/const";
 import {
   bearing,
@@ -24,6 +25,7 @@ export default function QiblaFinder() {
     error: geoError,
     request,
   } = useLocationStore();
+  const { t } = useLocale();
   const [heading, setHeading] = useState<number | null>(null);
   const [compassSupported, setCompassSupported] = useState<boolean | null>(
     null,
@@ -145,37 +147,35 @@ export default function QiblaFinder() {
 
   return (
     <div className="min-h-screen">
-      <Header head="Qibla Finder" showBack />
+      <Header head={t("qibla.pageTitle")} showBack />
       <div className="mx-4 space-y-6 pb-8 md:mx-6">
         <div className="mb-2">
           <h2 className="text-lg font-bold text-text-primary dark:text-dark-text-primary">
-            Qibla Finder
+            {t("qibla.pageTitle")}
           </h2>
           <p className="text-sm text-text-muted dark:text-dark-text-muted">
-            Find the direction of the Kaaba in Makkah
+            {t("qibla.subtitle")}
           </p>
         </div>
 
         {!hasCoords && geoLoading && (
           <div className="flex flex-col items-center gap-3 py-10">
             <div className="h-8 w-8 animate-spin rounded-full border-4 border-border border-t-secondary" />
-            <p className="text-sm text-text-muted">
-              Detecting your location...
-            </p>
+            <p className="text-sm text-text-muted">{t("qibla.detecting")}</p>
           </div>
         )}
 
         {geoError && (
           <div className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-surface p-6 text-center dark:border-dark-border dark:bg-dark-surface-card">
             <p className="text-sm text-text-muted">
-              {geoError}. Location is required.
+              {t("qibla.locationError", { error: geoError })}
             </p>
             <Button
               onClick={request}
               variant="gradient"
               className="rounded-xl px-5 py-2 text-sm font-semibold"
             >
-              Try Again
+              {t("error.tryAgain")}
             </Button>
           </div>
         )}
@@ -185,14 +185,14 @@ export default function QiblaFinder() {
             {!permissionRequested && deviceOrientationWithPermission() && (
               <div className="flex flex-col items-center gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-center dark:border-amber-900/30 dark:bg-amber-950/20">
                 <p className="text-sm text-amber-800 dark:text-amber-300">
-                  Compass sensor access is required to point towards the Qibla.
+                  {t("qibla.compassRequired")}
                 </p>
                 <Button
                   onClick={startCompass}
                   variant="secondary-ghost"
                   className="rounded-lg bg-amber-600 px-4 py-1.5 text-xs font-semibold text-white"
                 >
-                  Enable Compass
+                  {t("qibla.enableCompass")}
                 </Button>
               </div>
             )}
@@ -207,16 +207,16 @@ export default function QiblaFinder() {
                 >
                   <div className="absolute inset-4 rounded-full border border-dashed border-border/60 dark:border-dark-border/40" />
                   <span className="absolute top-3 text-xs font-black tracking-wider text-red-500">
-                    N
+                    {t("qibla.north")}
                   </span>
                   <span className="absolute right-3 text-xs font-bold text-text-primary dark:text-dark-text-primary">
-                    E
+                    {t("qibla.east")}
                   </span>
                   <span className="absolute bottom-3 text-xs font-bold text-text-primary dark:text-dark-text-primary">
-                    S
+                    {t("qibla.south")}
                   </span>
                   <span className="absolute left-3 text-xs font-bold text-text-primary dark:text-dark-text-primary">
-                    W
+                    {t("qibla.west")}
                   </span>
                 </div>
 
@@ -272,12 +272,18 @@ export default function QiblaFinder() {
                 }`}
               >
                 {isFacingQibla
-                  ? "✓ Facing Qibla!"
+                  ? t("qibla.facing")
                   : heading !== null
-                    ? `Turn ${Math.abs(angularDiff).toFixed(0)}° ${angularDiff > 0 ? "Right" : "Left"}`
+                    ? angularDiff > 0
+                      ? t("qibla.turnRight", {
+                          n: Math.abs(angularDiff).toFixed(0),
+                        })
+                      : t("qibla.turnLeft", {
+                          n: Math.abs(angularDiff).toFixed(0),
+                        })
                     : sensorTimeout
-                      ? "⚠ Compass sensor not detected"
-                      : "Calibrating Compass Sensor..."}
+                      ? t("qibla.noSensor")
+                      : t("qibla.calibrating")}
               </div>
             </div>
 
@@ -286,7 +292,7 @@ export default function QiblaFinder() {
               <div className="divide-y divide-border dark:divide-dark-border">
                 <div className="flex items-center justify-between p-4">
                   <span className="text-sm text-text-muted">
-                    Your Coordinates
+                    {t("qibla.coordinates")}
                   </span>
                   <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
                     {lat.toFixed(4)}&deg;N, {lng.toFixed(4)}&deg;E
@@ -294,7 +300,7 @@ export default function QiblaFinder() {
                 </div>
                 <div className="flex items-center justify-between p-4">
                   <span className="text-sm text-text-muted">
-                    Qibla Direction
+                    {t("qibla.direction")}
                   </span>
                   <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
                     {qiblaDirection.toFixed(1)}&deg;{" "}
@@ -303,21 +309,21 @@ export default function QiblaFinder() {
                 </div>
                 <div className="flex items-center justify-between p-4">
                   <span className="text-sm text-text-muted">
-                    Distance to Kaaba
+                    {t("qibla.distance")}
                   </span>
                   <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
-                    ~{distanceToKaaba.toFixed(0)} km
+                    {t("qibla.km", { n: distanceToKaaba.toFixed(0) })}
                   </span>
                 </div>
                 <div className="flex items-center justify-between p-4">
                   <span className="text-sm text-text-muted">
-                    Current Device Heading
+                    {t("qibla.heading")}
                   </span>
                   <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
                     {compassSupported === false || sensorTimeout
-                      ? "Sensor not found / unavailable"
+                      ? t("qibla.sensorUnavailable")
                       : heading === null
-                        ? "Calibrating..."
+                        ? t("qibla.calibratingShort")
                         : `${heading.toFixed(1)}°`}
                   </span>
                 </div>

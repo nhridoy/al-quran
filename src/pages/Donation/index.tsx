@@ -2,15 +2,17 @@ import { AiOutlineGift } from "react-icons/ai";
 import { EffectCards } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { PageShell } from "@/components/common/PageShell/PageShell";
+import { useLocale } from "@/i18n";
 import "swiper/css";
 import "swiper/css/effect-cards";
 
 const Donation: React.FC = () => {
+  const { t } = useLocale();
   return (
     <PageShell
-      head="Donation"
-      title="Support Us"
-      description="Your contributions help us maintain and improve"
+      head={t("donation.pageTitle")}
+      title={t("donation.title")}
+      description={t("donation.description")}
       className="space-y-6"
     >
       <div className="card-surface">
@@ -20,16 +22,13 @@ const Donation: React.FC = () => {
           </div>
           <div>
             <h3 className="text-sm font-semibold text-text-primary dark:text-dark-text-primary">
-              Donate
+              {t("donation.donate")}
             </h3>
           </div>
         </div>
         <div className="space-y-3 p-4 text-sm text-text-secondary dark:text-dark-text-secondary">
-          <p>
-            50% of your donation will go directly to different mosque and
-            islamic education center.
-          </p>
-          <p>Other 50% will be used for server maintenance fee.</p>
+          <p>{t("donation.paragraph1")}</p>
+          <p>{t("donation.paragraph2")}</p>
         </div>
       </div>
 
@@ -45,7 +44,9 @@ const Donation: React.FC = () => {
               key={n}
               className="flex! items-center! justify-center! rounded-2xl! text-[22px]! bg-linear-to-br! from-primary! to-secondary!"
             >
-              <span className="text-lg font-bold text-white">Donation {n}</span>
+              <span className="text-lg font-bold text-white">
+                {t("donation.slide", { n })}
+              </span>
             </SwiperSlide>
           ))}
         </Swiper>

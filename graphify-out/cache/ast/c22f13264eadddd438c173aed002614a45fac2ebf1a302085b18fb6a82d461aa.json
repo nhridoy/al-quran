@@ -1,0 +1,239 @@
+{
+  "nodes": [
+    {
+      "id": "c_users_hrido_desktop_al_quran_agents_skills_shadcn_customization_md",
+      "label": "customization.md",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "shadcn_customization_customization_theming",
+      "label": "Customization & Theming",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "shadcn_customization_contents",
+      "label": "Contents",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L5"
+    },
+    {
+      "id": "shadcn_customization_how_it_works",
+      "label": "How It Works",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L18"
+    },
+    {
+      "id": "shadcn_customization_color_variables",
+      "label": "Color Variables",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L26"
+    },
+    {
+      "id": "shadcn_customization_dark_mode",
+      "label": "Dark Mode",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L50"
+    },
+    {
+      "id": "shadcn_customization_changing_the_theme",
+      "label": "Changing the Theme",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L64"
+    },
+    {
+      "id": "shadcn_customization_adding_custom_colors",
+      "label": "Adding Custom Colors",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L87"
+    },
+    {
+      "id": "shadcn_customization_border_radius",
+      "label": "Border Radius",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L135"
+    },
+    {
+      "id": "shadcn_customization_customizing_components",
+      "label": "Customizing Components",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L141"
+    },
+    {
+      "id": "shadcn_customization_1_built_in_variants",
+      "label": "1. Built-in variants",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L147"
+    },
+    {
+      "id": "shadcn_customization_2_tailwind_classes_via_classname",
+      "label": "2. Tailwind classes via `className`",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L155"
+    },
+    {
+      "id": "shadcn_customization_3_add_a_new_variant",
+      "label": "3. Add a new variant",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L161"
+    },
+    {
+      "id": "shadcn_customization_4_wrapper_components",
+      "label": "4. Wrapper components",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L170"
+    },
+    {
+      "id": "shadcn_customization_checking_for_updates",
+      "label": "Checking for Updates",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L196"
+    }
+  ],
+  "edges": [
+    {
+      "source": "c_users_hrido_desktop_al_quran_agents_skills_shadcn_customization_md",
+      "target": "shadcn_customization_customization_theming",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "shadcn_customization_customization_theming",
+      "target": "shadcn_customization_contents",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "shadcn_customization_customization_theming",
+      "target": "shadcn_customization_how_it_works",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "shadcn_customization_customization_theming",
+      "target": "shadcn_customization_color_variables",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "shadcn_customization_customization_theming",
+      "target": "shadcn_customization_dark_mode",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "shadcn_customization_customization_theming",
+      "target": "shadcn_customization_changing_the_theme",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L64",
+      "weight": 1.0
+    },
+    {
+      "source": "shadcn_customization_customization_theming",
+      "target": "shadcn_customization_adding_custom_colors",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L87",
+      "weight": 1.0
+    },
+    {
+      "source": "shadcn_customization_customization_theming",
+      "target": "shadcn_customization_border_radius",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L135",
+      "weight": 1.0
+    },
+    {
+      "source": "shadcn_customization_customization_theming",
+      "target": "shadcn_customization_customizing_components",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L141",
+      "weight": 1.0
+    },
+    {
+      "source": "shadcn_customization_customizing_components",
+      "target": "shadcn_customization_1_built_in_variants",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L147",
+      "weight": 1.0
+    },
+    {
+      "source": "shadcn_customization_customizing_components",
+      "target": "shadcn_customization_2_tailwind_classes_via_classname",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L155",
+      "weight": 1.0
+    },
+    {
+      "source": "shadcn_customization_customizing_components",
+      "target": "shadcn_customization_3_add_a_new_variant",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L161",
+      "weight": 1.0
+    },
+    {
+      "source": "shadcn_customization_customizing_components",
+      "target": "shadcn_customization_4_wrapper_components",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L170",
+      "weight": 1.0
+    },
+    {
+      "source": "shadcn_customization_customization_theming",
+      "target": "shadcn_customization_checking_for_updates",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/customization.md",
+      "source_location": "L196",
+      "weight": 1.0
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

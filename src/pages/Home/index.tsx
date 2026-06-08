@@ -5,7 +5,7 @@ import LastReadBanner from "@/components/quran/LastReadBanner/LastReadBanner";
 export const Home = () => {
   return (
     <div>
-      <Header head="Al Quran" />
+      <Header head="Pure" />
       <LastReadBanner />
       <div className="mx-4 mb-6 flex rounded-xl bg-surface-alt p-1 dark:bg-dark-surface-alt md:mx-6">
         <NavLink

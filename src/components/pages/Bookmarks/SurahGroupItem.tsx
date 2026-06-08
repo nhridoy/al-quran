@@ -8,6 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/i18n";
 import type { Bookmark } from "@/store/bookmarks";
 import BookmarkRow from "./BookmarkRow";
 
@@ -22,6 +23,7 @@ export default function SurahGroupItem({
   onClearSurah,
   onRemove,
 }: SurahGroupItemProps) {
+  const { t } = useLocale();
   const navigate = useNavigate();
   const surahNo = items[0].surahNo;
   const enName = items[0].enName;
@@ -37,7 +39,7 @@ export default function SurahGroupItem({
             {enName}
           </p>
           <p className="text-xs text-text-muted dark:text-dark-text-muted">
-            {items.length} ayah{items.length !== 1 ? "s" : ""}
+            {t("bookmarks.surahAyahCount", { n: items.length })}
           </p>
         </div>
         <div className="flex items-center gap-2">
@@ -49,7 +51,7 @@ export default function SurahGroupItem({
               e.stopPropagation();
               navigate(`/surah/${surahNo}`);
             }}
-            aria-label="Go to surah"
+            aria-label={t("bookmarks.goToSurah")}
           >
             <IoOpenOutline className="text-xs" />
           </Button>
@@ -61,7 +63,7 @@ export default function SurahGroupItem({
               e.stopPropagation();
               onClearSurah(surahNo, enName);
             }}
-            aria-label="Clear surah bookmarks"
+            aria-label={t("bookmarks.clearSurahAria")}
           >
             <BiTrash className="text-xs" />
           </Button>

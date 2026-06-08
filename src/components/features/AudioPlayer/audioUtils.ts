@@ -23,6 +23,7 @@ export function buildPlaylistFromSurahs(surahsData: SurahData[]): Track[] {
         enName: surahData.enName,
         arabicText: verse.text.arText,
         translationText: verse.text.enText,
+        translationAltText: verse.text.bnText,
         transliterationText: verse.text.enTextTransliteration,
         audioUrl: primary,
         fallbackUrls: [secondary, tertiary, alternative].filter(

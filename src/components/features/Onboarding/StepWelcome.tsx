@@ -3,10 +3,10 @@ import { IoGlobeOutline } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
 
 export default function StepWelcome({
-  language,
+  appLanguage,
   onSelect,
 }: {
-  language: "en" | "bn";
+  appLanguage: "en" | "bn";
   onSelect: (l: "en" | "bn") => void;
 }) {
   return (
@@ -16,18 +16,18 @@ export default function StepWelcome({
           <FaQuran className="text-3xl text-white" />
         </div>
         <h1 className="bg-gradient-to-r from-white to-[#b87aff] bg-clip-text text-3xl font-bold text-transparent">
-          Al Quran
+          Pure
         </h1>
         <p className="text-center text-sm leading-relaxed text-white/50">
-          Full Quran with audio, tafsir,
+          Your daily companion for faith
           <br />
-          and verse-by-verse recitation
+          and reflection
         </p>
       </div>
 
       <div className="w-full max-w-xs space-y-3">
         <p className="text-center text-xs font-medium uppercase tracking-widest text-white/40">
-          Choose Language
+          App Language
         </p>
         <div className="flex gap-3">
           {(
@@ -40,7 +40,7 @@ export default function StepWelcome({
               key={val}
               variant="white-ghost"
               className={`flex flex-1 flex-col items-center gap-3 rounded-2xl border p-5 h-auto ${
-                language === val
+                appLanguage === val
                   ? "border-[#9345f2]/50 bg-[#9345f2]/10 shadow-lg shadow-[#9345f2]/10"
                   : "border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/10"
               }`}
@@ -48,7 +48,7 @@ export default function StepWelcome({
             >
               <div
                 className={`flex h-12 w-12 items-center justify-center rounded-xl text-lg transition-colors ${
-                  language === val
+                  appLanguage === val
                     ? "bg-gradient-to-br from-[#2e0d8a] to-[#9345f2] text-white shadow-lg"
                     : "bg-white/10 text-white/60"
                 }`}
@@ -57,7 +57,7 @@ export default function StepWelcome({
               </div>
               <span
                 className={`text-sm font-semibold ${
-                  language === val ? "text-white" : "text-white/60"
+                  appLanguage === val ? "text-white" : "text-white/60"
                 }`}
               >
                 {label}

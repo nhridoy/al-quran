@@ -1,5 +1,11 @@
 import { lazy, Suspense, useEffect, useState } from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { CSS_VAR_ARABIC_FONT, CSS_VAR_TRANSLATION_FONT } from "@/lib/const";
@@ -12,6 +18,7 @@ import LastReadTracker from "./components/features/LastReadTracker";
 import Onboarding from "./components/features/Onboarding/Onboarding";
 import HomeLayout from "./components/layouts/HomeLayout/HomeLayout";
 import MainLayout from "./components/layouts/MainLayout/MainLayout";
+import { LocaleProvider, useLocale } from "./i18n";
 import Para from "./pages/Para/[id]";
 import SurahPage from "./pages/Surah/[id]";
 import { useBookmarkStore } from "./store/bookmarks";
@@ -37,6 +44,19 @@ const HadithBook = lazy(() => import("./pages/Hadith/[collection]/[bookId]"));
 const PrayerTimes = lazy(() => import("./pages/PrayerTimes"));
 const QiblaFinder = lazy(() => import("./pages/Qibla"));
 const Tasbih = lazy(() => import("./pages/Tasbih"));
+const HijriCalendar = lazy(() => import("./pages/HijriCalendar"));
+const FastingCalendar = lazy(() => import("./pages/FastingCalendar"));
+const DailyLog = lazy(() => import("./pages/DailyLog"));
+const PrayerTracker = lazy(() => import("./pages/PrayerTracker"));
+const ZakatCalculator = lazy(() => import("./pages/ZakatCalculator"));
+const QuranProgress = lazy(() => import("./pages/QuranProgress"));
+const SadaqahTracker = lazy(() => import("./pages/SadaqahTracker"));
+const SalahGuide = lazy(() => import("./pages/SalahGuide"));
+const Knowledge = lazy(() => import("./pages/Knowledge"));
+const IslamicNames = lazy(() => import("./pages/IslamicNames"));
+const ReadingGoals = lazy(() => import("./pages/ReadingGoals"));
+const DataExport = lazy(() => import("./pages/DataExport"));
+const TaraweehTracker = lazy(() => import("./pages/TaraweehTracker"));
 const Splash = lazy(() => import("./components/features/Splash/Splash"));
 
 const routeDefinitions: RouteDefinition[] = [
@@ -56,6 +76,19 @@ const routeDefinitions: RouteDefinition[] = [
   { path: "/credits", component: Credits },
   { path: "/downloads", component: Downloads },
   { path: "/donation", component: Donation },
+  { path: "/daily-log", component: DailyLog },
+  { path: "/prayer-tracker", component: PrayerTracker },
+  { path: "/fasting-calendar", component: FastingCalendar },
+  { path: "/sadaqah-tracker", component: SadaqahTracker },
+  { path: "/zakat-calculator", component: ZakatCalculator },
+  { path: "/hijri-calendar", component: HijriCalendar },
+  { path: "/quran-progress", component: QuranProgress },
+  { path: "/salah-guide", component: SalahGuide },
+  { path: "/knowledge", component: Knowledge },
+  { path: "/islamic-names", component: IslamicNames },
+  { path: "/reading-goals", component: ReadingGoals },
+  { path: "/data-export", component: DataExport },
+  { path: "/taraweeh-tracker", component: TaraweehTracker },
 ];
 
 function DataLoader() {
@@ -64,6 +97,8 @@ function DataLoader() {
   const onboardingComplete = useSettings((s) => s.onboardingComplete);
   const requestLocation = useLocationStore((s) => s.request);
   const locationRequested = useLocationStore((s) => s.requested);
+  const loadLocation = useLocationStore((s) => s.load);
+  const locationLoaded = useLocationStore((s) => s.loaded);
   const loadBookmarks = useBookmarkStore((s) => s.load);
   const bookmarksLoaded = useBookmarkStore((s) => s.loaded);
   const loadDownloads = useDownloadsStore((s) => s.load);
@@ -72,6 +107,7 @@ function DataLoader() {
     if (!settingsLoaded) loadSettings();
     if (!bookmarksLoaded) loadBookmarks();
     if (!downloadsLoaded) loadDownloads();
+    if (settingsLoaded && !locationLoaded) loadLocation();
   }, [
     loadSettings,
     settingsLoaded,
@@ -79,12 +115,25 @@ function DataLoader() {
     bookmarksLoaded,
     loadDownloads,
     downloadsLoaded,
+    loadLocation,
+    locationLoaded,
   ]);
   useEffect(() => {
-    if (settingsLoaded && onboardingComplete && !locationRequested) {
+    if (
+      settingsLoaded &&
+      onboardingComplete &&
+      !locationRequested &&
+      locationLoaded
+    ) {
       requestLocation();
     }
-  }, [settingsLoaded, onboardingComplete, locationRequested, requestLocation]);
+  }, [
+    settingsLoaded,
+    onboardingComplete,
+    locationRequested,
+    locationLoaded,
+    requestLocation,
+  ]);
   return null;
 }
 
@@ -123,7 +172,45 @@ function ThemeController() {
   return null;
 }
 
-function App() {
+function LocaleSync() {
+  const localeSetting = useSettings((s) => s.locale);
+  const { setLocale } = useLocale();
+  useEffect(() => {
+    setLocale(localeSetting);
+  }, [localeSetting, setLocale]);
+  return null;
+}
+
+function RamadanModeController() {
+  const ramadanMode = useSettings((s) => s.ramadanMode);
+  const [isRamadan, setIsRamadan] = useState(false);
+
+  useEffect(() => {
+    if (ramadanMode === "off") {
+      setIsRamadan(false);
+      return;
+    }
+    if (ramadanMode === "on") {
+      setIsRamadan(true);
+      return;
+    }
+    const now = new Date();
+    const fmt = new Intl.DateTimeFormat("en-u-ca-islamic", {
+      month: "numeric",
+    });
+    const month = Number.parseInt(fmt.format(now), 10);
+    setIsRamadan(month === 9);
+  }, [ramadanMode]);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("ramadan-mode", isRamadan);
+  }, [isRamadan]);
+
+  return null;
+}
+
+function AppContent() {
+  const location = useLocation();
   const [showOnboarding, setShowOnboarding] = useState(false);
   const settingsLoaded = useSettings((s) => s.loaded);
   const onboardingComplete = useSettings((s) => s.onboardingComplete);
@@ -135,48 +222,62 @@ function App() {
   }, [settingsLoaded, onboardingComplete]);
 
   return (
+    <>
+      <DataLoader />
+      <ThemeController />
+      <LocaleSync />
+      <RamadanModeController />
+      {showOnboarding && (
+        <Onboarding onComplete={() => setShowOnboarding(false)} />
+      )}
+      <MainLayout>
+        <ErrorBoundary key={location.pathname + location.search}>
+          <Suspense fallback={<div className="h-screen" />}>
+            <Routes>
+              <Route path="/" element={<Splash />} />
+              <Route element={<HomeLayout />}>
+                <Route path="/surah" element={<Surahs />} />
+                <Route path="/para" element={<Paras />} />
+              </Route>
+              <Route path="/surah/:id" element={<SurahPage />} />
+              <Route path="/para/:id" element={<Para />} />
+              {routeDefinitions.map((r) => (
+                <Route key={r.path} path={r.path} element={<r.component />} />
+              ))}
+              <Route path="*" element={<Navigate to="/surah" replace />} />
+            </Routes>
+          </Suspense>
+        </ErrorBoundary>
+      </MainLayout>
+      <AudioEngineShell />
+      <AudioPlayer />
+      <LastReadTracker />
+      <ConfirmModal />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        theme="dark"
+      />
+    </>
+  );
+}
+
+function App() {
+  const locale = useSettings((s) => s.locale);
+
+  return (
     <BrowserRouter>
       <TooltipProvider>
-        <DataLoader />
-        <ThemeController />
-        {showOnboarding && (
-          <Onboarding onComplete={() => setShowOnboarding(false)} />
-        )}
-        <MainLayout>
-          <ErrorBoundary>
-            <Suspense fallback={<div className="h-screen" />}>
-              <Routes>
-                <Route path="/" element={<Splash />} />
-                <Route element={<HomeLayout />}>
-                  <Route path="/surah" element={<Surahs />} />
-                  <Route path="/para" element={<Paras />} />
-                </Route>
-                <Route path="/surah/:id" element={<SurahPage />} />
-                <Route path="/para/:id" element={<Para />} />
-                {routeDefinitions.map((r) => (
-                  <Route key={r.path} path={r.path} element={<r.component />} />
-                ))}
-                <Route path="*" element={<Navigate to="/surah" replace />} />
-              </Routes>
-            </Suspense>
-          </ErrorBoundary>
-        </MainLayout>
-        <AudioEngineShell />
-        <AudioPlayer />
-        <LastReadTracker />
-        <ConfirmModal />
-        <ToastContainer
-          position="bottom-right"
-          autoClose={2000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover={false}
-          theme="dark"
-        />
+        <LocaleProvider initialLocale={locale}>
+          <AppContent />
+        </LocaleProvider>
       </TooltipProvider>
     </BrowserRouter>
   );

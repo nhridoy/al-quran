@@ -1,0 +1,9 @@
+{"time": "2026-06-08 19:30:07.276867+06:00", "level": "INFO", "message": "Starting Claude Code Proxy...", "module": "api.runtime", "function": "startup", "line": 104}
+{"time": "2026-06-08 19:30:07.357034+06:00", "level": "INFO", "message": "GlobalRateLimiter (Provider) initialized (1 req / 3.0s, max_concurrency=5)", "module": "providers.rate_limit", "function": "__init__", "line": 63}
+{"time": "2026-06-08 19:30:07.735271+06:00", "level": "INFO", "message": "Configured provider models validated: models=1 providers=1", "module": "providers.registry", "function": "validate_configured_models", "line": 426}
+{"time": "2026-06-08 19:30:07.735701+06:00", "level": "INFO", "message": "Provider model discovery cache already warm: providers=1", "module": "providers.registry", "function": "start_model_list_refresh", "line": 328}
+{"time": "2026-06-08 19:30:07.953604+06:00", "level": "INFO", "message": "No Discord bot token configured, skipping platform setup", "module": "messaging.platforms.factory", "function": "create_messaging_platform", "line": 80}
+{"time": "2026-06-08 19:30:07.953970+06:00", "level": "INFO", "message": "Server URL: http://127.0.0.1:8082", "module": "api.runtime", "function": "startup", "line": 115}
+{"time": "2026-06-08 19:30:07.954235+06:00", "level": "INFO", "message": "Admin UI: http://127.0.0.1:8082/admin (local-only)", "module": "api.runtime", "function": "startup", "line": 116}
+{"time": "2026-06-08 19:30:43.862796+06:00", "level": "INFO", "message": "Shutdown requested, cleaning up...", "module": "api.runtime", "function": "shutdown", "line": 160}
+{"time": "2026-06-08 19:30:43.865486+06:00", "level": "INFO", "message": "Server shut down cleanly", "module": "api.runtime", "function": "shutdown", "line": 180}
