@@ -201,8 +201,6 @@ function ReadingStreakWidget() {
     [records],
   );
 
-  if (goals.length === 0) return null;
-
   return (
     <Link
       to="/reading-goals"
