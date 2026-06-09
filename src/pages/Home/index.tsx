@@ -537,22 +537,10 @@ export default function Home() {
             {t("home.didYouKnow")}
           </span>
         </div>
-        <div className="relative">
-          <span
-            className="absolute -left-1 -top-3 text-6xl leading-none text-secondary/8 select-none"
-            aria-hidden="true"
-          >
-            "
-          </span>
           <p className="relative pl-4 text-sm leading-relaxed text-white/65">
             {fact.fact}
           </p>
-        </div>
-        <div className="mt-2 flex items-center gap-2">
-          <span className="inline-block rounded-full bg-secondary/10 px-2.5 py-0.5 text-[10px] font-medium tracking-wide text-secondary/70 uppercase">
-            {fact.category}
-          </span>
-        </div>
+        
       </div>
 
       {/* Daily Reflection */}

@@ -202,8 +202,6 @@ export default function DailyLog() {
     );
   }
 
-  
-
   return (
     <PageShell head={t("dailyLog.pageTitle")} showBack>
       {/* Streak */}
