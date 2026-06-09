@@ -120,19 +120,6 @@ export default function DailyLog() {
   const todayKey = formatKey(new Date());
   const isToday = selectedKey === todayKey;
 
-  const selectedPrayerDay = useMemo(
-    () =>
-      prayerRecords[selectedKey] ?? {
-        date: selectedKey,
-        fajr: false,
-        dhuhr: false,
-        asr: false,
-        maghrib: false,
-        isha: false,
-      },
-    [prayerRecords, selectedKey],
-  );
-
   const selectedWorshipDay = useMemo(
     () =>
       worshipRecords[selectedKey] ?? {

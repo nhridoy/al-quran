@@ -537,10 +537,9 @@ export default function Home() {
             {t("home.didYouKnow")}
           </span>
         </div>
-          <p className="relative pl-4 text-sm leading-relaxed text-white/65">
-            {fact.fact}
-          </p>
-        
+        <p className="relative pl-4 text-sm leading-relaxed text-white/65">
+          {fact.fact}
+        </p>
       </div>
 
       {/* Daily Reflection */}
