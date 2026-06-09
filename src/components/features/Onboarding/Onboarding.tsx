@@ -40,7 +40,6 @@ const HADITH_LANGS: Array<{ id: string; name: string; nativeName: string }> = [
 
 export default function Onboarding({ onComplete }: { onComplete: () => void }) {
   const [step, setStep] = useState<Step>(0);
-  const [direction, setDirection] = useState<1 | -1>(1);
   const [appLanguage, setAppLanguage] = useState<"en" | "bn">("en");
   const [readingLang, setReadingLang] = useState<"en" | "bn">("en");
   const [hadithLang, setHadithLang] = useState<"en" | "bn">("en");
@@ -88,7 +87,6 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
     (next: Step) => {
       if (animating) return;
       setAnimating(true);
-      setDirection(next > step ? 1 : -1);
       setStep(next);
       setTimeout(() => setAnimating(false), 400);
     },
@@ -187,31 +185,11 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
           </Button>
         )}
 
-        <div className="mb-8 flex items-center justify-center gap-2">
-          {stepIndices.map(({ id, index: i }) => (
-            <div
-              key={id}
-              className={`h-1.5 rounded-full transition-all duration-500 ${
-                i === step
-                  ? "w-8 bg-gradient-to-r from-[#9345f2] to-[#b87aff]"
-                  : i < step
-                    ? "w-1.5 bg-[#b87aff]/60"
-                    : "w-1.5 bg-white/15"
-              }`}
-            />
-          ))}
-        </div>
-
         <div className="relative flex-1 overflow-hidden">
           <div
             ref={slideRef}
             className="absolute inset-0 transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
             style={{
-              transform: animating
-                ? direction === 1
-                  ? "translateX(-30px)"
-                  : "translateX(30px)"
-                : "translateX(0)",
               opacity: animating ? 0 : 1,
             }}
           >
