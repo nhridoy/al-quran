@@ -202,7 +202,7 @@ export default function DailyLog() {
     );
   }
 
-  const prayerCount = PRAYER_KEYS.filter((k) => selectedPrayerDay[k]).length;
+  
 
   return (
     <PageShell head={t("dailyLog.pageTitle")} showBack>

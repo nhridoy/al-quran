@@ -304,8 +304,7 @@ export default function Home() {
       : countdownTarget.time;
   }, [countdownTarget, now]);
   const countdownValue = useMemo(
-    () =>
-      countdownTargetTime ? getCountdown(now, countdownTargetTime) : "",
+    () => (countdownTargetTime ? getCountdown(now, countdownTargetTime) : ""),
     [countdownTargetTime, now],
   );
 
