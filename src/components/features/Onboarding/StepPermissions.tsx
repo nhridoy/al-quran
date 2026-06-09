@@ -237,18 +237,25 @@ export default function StepPermissions({
                   { icon: MdFlag, label: "Ramadan key times" },
                   { icon: MdAutoGraph, label: "Reading goals" },
                 ].map(({ icon: Icon, label }) => (
-                  <div key={label} className="flex flex-col items-center gap-1.5 rounded-lg border border-white/5 bg-white/[0.02] py-2.5">
+                  <div
+                    key={label}
+                    className="flex flex-col items-center gap-1.5 rounded-lg border border-white/5 bg-white/[0.02] py-2.5"
+                  >
                     <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/5 text-white/35">
                       <Icon className="text-sm" />
                     </div>
-                    <span className="text-[10px] font-medium text-white/30">{label}</span>
+                    <span className="text-[10px] font-medium text-white/30">
+                      {label}
+                    </span>
                   </div>
                 ))}
               </div>
             </div>
             <div className="mt-auto flex items-center justify-center gap-1.5 pb-1">
               <IoShieldCheckmarkOutline className="text-[10px] text-white/20" />
-              <span className="text-[10px] text-white/20">No spam. Only prayer reminders & goal alerts you opt into.</span>
+              <span className="text-[10px] text-white/20">
+                No spam. Only prayer reminders & goal alerts you opt into.
+              </span>
             </div>
           </div>
         )}
@@ -258,16 +265,29 @@ export default function StepPermissions({
             <div className="flex flex-1 flex-col justify-center">
               <div className="flex items-center justify-center gap-2">
                 <div className="flex h-7 w-7 items-center justify-center rounded-full bg-green-500/15">
-                  <svg className="h-3.5 w-3.5 text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <svg
+                    className="h-3.5 w-3.5 text-green-400"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </div>
-                <span className="text-sm font-medium text-green-400">Notifications enabled</span>
+                <span className="text-sm font-medium text-green-400">
+                  Notifications enabled
+                </span>
               </div>
             </div>
             <div className="mt-auto flex items-center justify-center gap-1.5 pb-1">
               <IoShieldCheckmarkOutline className="text-[10px] text-white/20" />
-              <span className="text-[10px] text-white/20">No spam. Only prayer reminders & goal alerts you opt into.</span>
+              <span className="text-[10px] text-white/20">
+                No spam. Only prayer reminders & goal alerts you opt into.
+              </span>
             </div>
           </div>
         )}
@@ -277,11 +297,19 @@ export default function StepPermissions({
       <div className="mt-5 shrink-0">
         {!notificationGranted && (
           <div className="animate-fade-in grid grid-cols-3 gap-2.5">
-            <Button variant="gradient" className="col-span-2 flex items-center justify-center gap-2 py-3 h-auto text-sm font-semibold shadow-lg shadow-[#9345f2]/20" onClick={onRequestNotification}>
+            <Button
+              variant="gradient"
+              className="col-span-2 flex items-center justify-center gap-2 py-3 h-auto text-sm font-semibold shadow-lg shadow-[#9345f2]/20"
+              onClick={onRequestNotification}
+            >
               <IoNotificationsOutline className="text-base" />
               Enable Notifications
             </Button>
-            <Button variant="white-ghost" className="flex items-center justify-center gap-1 rounded-xl bg-white/5 py-3 h-auto text-xs font-medium text-white/40 hover:bg-white/10 hover:text-white/60" onClick={onNext}>
+            <Button
+              variant="white-ghost"
+              className="flex items-center justify-center gap-1 rounded-xl bg-white/5 py-3 h-auto text-xs font-medium text-white/40 hover:bg-white/10 hover:text-white/60"
+              onClick={onNext}
+            >
               Skip
               <IoChevronForward className="text-xs" />
             </Button>
@@ -290,7 +318,11 @@ export default function StepPermissions({
 
         {notificationGranted && (
           <div className="animate-fade-in">
-            <Button variant="gradient" className="flex w-full items-center justify-center gap-2 py-3 h-auto text-sm shadow-lg shadow-[#9345f2]/20 hover:shadow-xl hover:shadow-[#9345f2]/30" onClick={onNext}>
+            <Button
+              variant="gradient"
+              className="flex w-full items-center justify-center gap-2 py-3 h-auto text-sm shadow-lg shadow-[#9345f2]/20 hover:shadow-xl hover:shadow-[#9345f2]/30"
+              onClick={onNext}
+            >
               Continue
               <IoChevronForward className="text-base" />
             </Button>

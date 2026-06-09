@@ -180,18 +180,26 @@ export default function StepLocation({
                   { icon: MdExplore, label: "Qibla" },
                   { icon: MdOutlineRestaurant, label: "Fasting" },
                 ].map(({ icon: Icon, label }) => (
-                  <div key={label} className="flex flex-col items-center gap-1.5 rounded-lg border border-white/5 bg-white/[0.02] py-2.5">
+                  <div
+                    key={label}
+                    className="flex flex-col items-center gap-1.5 rounded-lg border border-white/5 bg-white/[0.02] py-2.5"
+                  >
                     <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/5 text-white/35">
                       <Icon className="text-sm" />
                     </div>
-                    <span className="text-[10px] font-medium text-white/30">{label}</span>
+                    <span className="text-[10px] font-medium text-white/30">
+                      {label}
+                    </span>
                   </div>
                 ))}
               </div>
             </div>
             <div className="mt-auto flex items-center justify-center gap-1.5 pb-1">
               <IoShieldCheckmarkOutline className="text-[10px] text-white/20" />
-              <span className="text-[10px] text-white/20">Your location stays on-device. Used only for prayer & fasting times.</span>
+              <span className="text-[10px] text-white/20">
+                Your location stays on-device. Used only for prayer & fasting
+                times.
+              </span>
             </div>
           </div>
         )}
@@ -200,7 +208,14 @@ export default function StepLocation({
           <div className="flex flex-1 items-center justify-center animate-fade-in">
             <div className="flex gap-1">
               {[0, 200, 400].map((d) => (
-                <div key={d} className="h-2 w-2 animate-bounce rounded-full bg-[#b87aff]" style={{ animationDelay: `${d}ms`, animationDuration: "1.2s" }} />
+                <div
+                  key={d}
+                  className="h-2 w-2 animate-bounce rounded-full bg-[#b87aff]"
+                  style={{
+                    animationDelay: `${d}ms`,
+                    animationDuration: "1.2s",
+                  }}
+                />
               ))}
             </div>
           </div>
@@ -210,13 +225,18 @@ export default function StepLocation({
           <div className="flex flex-1 flex-col animate-fade-in">
             <div className="flex flex-1 flex-col justify-center">
               <div className="text-center">
-                <p className="text-sm font-medium text-red-400">Unable to locate</p>
+                <p className="text-sm font-medium text-red-400">
+                  Unable to locate
+                </p>
                 <p className="mt-0.5 text-xs text-white/30">{error}</p>
               </div>
             </div>
             <div className="mt-auto flex items-center justify-center gap-1.5 pb-1">
               <IoShieldCheckmarkOutline className="text-[10px] text-white/20" />
-              <span className="text-[10px] text-white/20">Your location stays on-device. Used only for prayer & fasting times.</span>
+              <span className="text-[10px] text-white/20">
+                Your location stays on-device. Used only for prayer & fasting
+                times.
+              </span>
             </div>
           </div>
         )}
@@ -226,16 +246,30 @@ export default function StepLocation({
             <div className="flex flex-1 flex-col justify-center">
               <div className="flex items-center justify-center gap-2">
                 <div className="flex h-7 w-7 items-center justify-center rounded-full bg-green-500/15">
-                  <svg className="h-3.5 w-3.5 text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <svg
+                    className="h-3.5 w-3.5 text-green-400"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </div>
-                <span className="text-sm font-medium text-green-400">Location saved</span>
+                <span className="text-sm font-medium text-green-400">
+                  Location saved
+                </span>
               </div>
             </div>
             <div className="mt-auto flex items-center justify-center gap-1.5 pb-1">
               <IoShieldCheckmarkOutline className="text-[10px] text-white/20" />
-              <span className="text-[10px] text-white/20">Your location stays on-device. Used only for prayer & fasting times.</span>
+              <span className="text-[10px] text-white/20">
+                Your location stays on-device. Used only for prayer & fasting
+                times.
+              </span>
             </div>
           </div>
         )}
@@ -245,11 +279,19 @@ export default function StepLocation({
       <div className="mt-5 shrink-0">
         {!locationGranted && !isDetecting && !error && (
           <div className="animate-fade-in grid grid-cols-3 gap-2.5">
-            <Button variant="gradient" className="col-span-2 flex items-center justify-center gap-2 py-3 h-auto text-sm font-semibold shadow-lg shadow-[#9345f2]/20" onClick={onRequestLocation}>
+            <Button
+              variant="gradient"
+              className="col-span-2 flex items-center justify-center gap-2 py-3 h-auto text-sm font-semibold shadow-lg shadow-[#9345f2]/20"
+              onClick={onRequestLocation}
+            >
               <IoLocationOutline className="text-base" />
               Share Location
             </Button>
-            <Button variant="white-ghost" className="flex items-center justify-center gap-1 rounded-xl bg-white/5 py-3 h-auto text-xs font-medium text-white/40 hover:bg-white/10 hover:text-white/60" onClick={onNext}>
+            <Button
+              variant="white-ghost"
+              className="flex items-center justify-center gap-1 rounded-xl bg-white/5 py-3 h-auto text-xs font-medium text-white/40 hover:bg-white/10 hover:text-white/60"
+              onClick={onNext}
+            >
               Skip
               <IoChevronForward className="text-xs" />
             </Button>
@@ -260,10 +302,18 @@ export default function StepLocation({
 
         {error && !isDetecting && !locationGranted && (
           <div className="animate-fade-in grid grid-cols-2 gap-2.5">
-            <Button variant="white-ghost" className="rounded-xl bg-white/8 py-2.5 h-auto text-xs font-medium text-white/70 hover:bg-white/15" onClick={onRequestLocation}>
+            <Button
+              variant="white-ghost"
+              className="rounded-xl bg-white/8 py-2.5 h-auto text-xs font-medium text-white/70 hover:bg-white/15"
+              onClick={onRequestLocation}
+            >
               Try Again
             </Button>
-            <Button variant="white-ghost" className="rounded-xl bg-white/5 py-2.5 h-auto text-xs font-medium text-white/40 hover:bg-white/10" onClick={onNext}>
+            <Button
+              variant="white-ghost"
+              className="rounded-xl bg-white/5 py-2.5 h-auto text-xs font-medium text-white/40 hover:bg-white/10"
+              onClick={onNext}
+            >
               Skip
             </Button>
           </div>
@@ -271,7 +321,11 @@ export default function StepLocation({
 
         {locationGranted && (
           <div className="animate-fade-in">
-            <Button variant="gradient" className="flex w-full items-center justify-center gap-2 py-3 h-auto text-sm shadow-lg shadow-[#9345f2]/20 hover:shadow-xl hover:shadow-[#9345f2]/30" onClick={onNext}>
+            <Button
+              variant="gradient"
+              className="flex w-full items-center justify-center gap-2 py-3 h-auto text-sm shadow-lg shadow-[#9345f2]/20 hover:shadow-xl hover:shadow-[#9345f2]/30"
+              onClick={onNext}
+            >
               Continue
               <IoChevronForward className="text-base" />
             </Button>

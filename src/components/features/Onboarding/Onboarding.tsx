@@ -65,8 +65,10 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
 
   useEffect(() => {
     mountedRef.current = true;
+    document.body.style.overflow = "hidden";
     return () => {
       mountedRef.current = false;
+      document.body.style.overflow = "";
     };
   }, []);
 
@@ -90,7 +92,7 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
       setStep(next);
       setTimeout(() => setAnimating(false), 400);
     },
-    [animating, step],
+    [animating],
   );
 
   const next = useCallback(() => {
