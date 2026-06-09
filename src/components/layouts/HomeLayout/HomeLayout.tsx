@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
-import { Home } from "@/pages/Home";
+import SurahParaNav from "./SurahParaNav";
 
 export default function HomeLayout() {
   return (
     <div>
-      <Home />
+      <SurahParaNav />
       <Outlet />
     </div>
   );

@@ -57,7 +57,7 @@ const IslamicNames = lazy(() => import("./pages/IslamicNames"));
 const ReadingGoals = lazy(() => import("./pages/ReadingGoals"));
 const DataExport = lazy(() => import("./pages/DataExport"));
 const TaraweehTracker = lazy(() => import("./pages/TaraweehTracker"));
-const Splash = lazy(() => import("./components/features/Splash/Splash"));
+const Home = lazy(() => import("./pages/Home"));
 
 const routeDefinitions: RouteDefinition[] = [
   { path: "/bookmarks", component: Bookmarks },
@@ -234,7 +234,7 @@ function AppContent() {
         <ErrorBoundary key={location.pathname + location.search}>
           <Suspense fallback={<div className="h-screen" />}>
             <Routes>
-              <Route path="/" element={<Splash />} />
+              <Route path="/" element={<Home />} />
               <Route element={<HomeLayout />}>
                 <Route path="/surah" element={<Surahs />} />
                 <Route path="/para" element={<Paras />} />
