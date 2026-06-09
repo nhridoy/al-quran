@@ -255,10 +255,11 @@ export default function DailyLog() {
 
       {/* Prayer Summary (read-only) */}
       <div className="rounded-2xl bg-surface px-5 py-4 shadow-sm ring-1 ring-border dark:bg-dark-surface dark:ring-dark-border">
-        <h2 className="mb-3 text-xs font-semibold text-text-muted dark:text-dark-text-muted">
-          {t("dailyLog.prayers", { n: prayerCount, m: PRAYER_KEYS.length })}
-        </h2>
-        <PrayerGrid readOnly date={selectedKey} />
+        <PrayerGrid
+          readOnly
+          date={selectedKey}
+          title={t("home.prayerTracker")}
+        />
       </div>
 
       {/* Charity Summary (read-only) */}

@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { getAllFromStore, putInStore } from "@/lib/cache";
 
-const PRAYER_KEYS = ["fajr", "dhuhr", "asr", "maghrib", "isha"] as const;
+export const PRAYER_KEYS = ["fajr", "dhuhr", "asr", "maghrib", "isha"] as const;
 export type PrayerKey = (typeof PRAYER_KEYS)[number];
 export const PRAYER_NAMES: Record<PrayerKey, string> = {
   fajr: "Fajr",

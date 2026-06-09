@@ -55,8 +55,8 @@
     "semantic_hash": ""
   },
   "src/App.tsx": {
-    "mtime": 1780852202.7042427,
-    "ast_hash": "80d75382c535532ac40d636918cd6757",
+    "mtime": 1780984052.978724,
+    "ast_hash": "8b9b73cffa2f921863754e21ac06b06d",
     "semantic_hash": ""
   },
   "src/components/common/BottomNav/BottomNav.tsx": {
@@ -220,8 +220,8 @@
     "semantic_hash": ""
   },
   "src/components/features/Onboarding/Onboarding.tsx": {
-    "mtime": 1780853766.7861202,
-    "ast_hash": "46d85c7249cd22280c30cec9e7cc31fd",
+    "mtime": 1780982917.7680025,
+    "ast_hash": "7ee984d0756af3348403510a4bd61a91",
     "semantic_hash": ""
   },
   "src/components/features/Onboarding/StepDone.tsx": {
@@ -230,8 +230,8 @@
     "semantic_hash": ""
   },
   "src/components/features/Onboarding/StepPermissions.tsx": {
-    "mtime": 1780936792.1875868,
-    "ast_hash": "1090cbf059bd084a113fc24668e0544f",
+    "mtime": 1780982342.1329863,
+    "ast_hash": "16fc8f97954cd549c31184d39fd4b2f2",
     "semantic_hash": ""
   },
   "src/components/features/Onboarding/StepWelcome.tsx": {
@@ -254,14 +254,9 @@
     "ast_hash": "b2dfbf9e4d51ef48c481fdafd16e9b06",
     "semantic_hash": ""
   },
-  "src/components/features/Splash/Splash.tsx": {
-    "mtime": 1780853824.9591033,
-    "ast_hash": "d93353e762c3de99c25b2568196025fc",
-    "semantic_hash": ""
-  },
   "src/components/layouts/HomeLayout/HomeLayout.tsx": {
-    "mtime": 1780387020.1880422,
-    "ast_hash": "70c112a1dc8cc49ba0ddf0377ef99add",
+    "mtime": 1780986362.6779325,
+    "ast_hash": "f1d164d754ddf541013d6ce47025229e",
     "semantic_hash": ""
   },
   "src/components/layouts/MainLayout/MainLayout.tsx": {
@@ -810,8 +805,8 @@
     "semantic_hash": ""
   },
   "src/pages/Home/index.tsx": {
-    "mtime": 1780675578.623004,
-    "ast_hash": "073438b50f8d2955b8da84ff742ff052",
+    "mtime": 1780986816.0170274,
+    "ast_hash": "1e98fc89002a0b3c32bb6358b7af0910",
     "semantic_hash": ""
   },
   "src/pages/IslamicNames/index.tsx": {
@@ -1715,13 +1710,23 @@
     "semantic_hash": ""
   },
   "src/components/features/Onboarding/StepLocation.tsx": {
-    "mtime": 1780936003.525454,
-    "ast_hash": "c337cb9b4c99a542014177d5610ea7ef",
+    "mtime": 1780982342.1329863,
+    "ast_hash": "c0146b243d7a4701f2feead04eca40f8",
     "semantic_hash": ""
   },
   "src/components/ui/carousel.tsx": {
     "mtime": 1780934744.891229,
     "ast_hash": "da7a657ad145ef2f34499e2ce8967237",
+    "semantic_hash": ""
+  },
+  "src/components/layouts/HomeLayout/SurahParaNav.tsx": {
+    "mtime": 1780986341.3267615,
+    "ast_hash": "87376b78dd64feef7d268148a5d4f923",
+    "semantic_hash": ""
+  },
+  "src/data/knowledgeFacts.ts": {
+    "mtime": 1780984502.3420515,
+    "ast_hash": "0faf9cead5c2ccff013222fdc8a0cf22",
     "semantic_hash": ""
   }
 }

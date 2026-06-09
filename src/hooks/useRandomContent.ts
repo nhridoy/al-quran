@@ -6,6 +6,8 @@ export type RandomContentItem =
       type: "verse";
       verse: { text: { arText: string; enText: string; bnText: string } };
       surahName: string;
+      verseNumber: number;
+      surahNumber: number;
     }
   | {
       type: "hadith";
@@ -36,6 +38,8 @@ export function useRandomContent() {
         type: "verse",
         verse: verse.verse,
         surahName: verse.surah.enName,
+        verseNumber: verse.verse.numberInSurah,
+        surahNumber: verse.surah.no,
       });
     }
     if (hadith) {

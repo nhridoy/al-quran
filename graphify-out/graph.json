@@ -4,49 +4,544 @@
   "graph": {},
   "nodes": [
     {
+      "label": "App.tsx",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L1",
+      "id": "src_app",
+      "community": 13,
+      "norm_label": "app.tsx"
+    },
+    {
+      "label": "About",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L29",
+      "id": "src_app_about",
+      "community": 13,
+      "norm_label": "about"
+    },
+    {
+      "label": "AsmaUlHusna",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L30",
+      "id": "src_app_asmaulhusna",
+      "community": 13,
+      "norm_label": "asmaulhusna"
+    },
+    {
+      "label": "Bookmarks",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L31",
+      "id": "src_app_bookmarks",
+      "community": 13,
+      "norm_label": "bookmarks"
+    },
+    {
+      "label": "Credits",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L32",
+      "id": "src_app_credits",
+      "community": 13,
+      "norm_label": "credits"
+    },
+    {
+      "label": "Donation",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L33",
+      "id": "src_app_donation",
+      "community": 13,
+      "norm_label": "donation"
+    },
+    {
+      "label": "Downloads",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L34",
+      "id": "src_app_downloads",
+      "community": 13,
+      "norm_label": "downloads"
+    },
+    {
+      "label": "Paras",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L35",
+      "id": "src_app_paras",
+      "community": 13,
+      "norm_label": "paras"
+    },
+    {
+      "label": "Settings",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L36",
+      "id": "src_app_settings",
+      "community": 13,
+      "norm_label": "settings"
+    },
+    {
+      "label": "Surahs",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L37",
+      "id": "src_app_surahs",
+      "community": 13,
+      "norm_label": "surahs"
+    },
+    {
+      "label": "LastTenSurahs",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L38",
+      "id": "src_app_lasttensurahs",
+      "community": 13,
+      "norm_label": "lasttensurahs"
+    },
+    {
+      "label": "Duas",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L39",
+      "id": "src_app_duas",
+      "community": 13,
+      "norm_label": "duas"
+    },
+    {
+      "label": "DuaCategory",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L40",
+      "id": "src_app_duacategory",
+      "community": 13,
+      "norm_label": "duacategory"
+    },
+    {
+      "label": "HadithCollections",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L41",
+      "id": "src_app_hadithcollections",
+      "community": 13,
+      "norm_label": "hadithcollections"
+    },
+    {
+      "label": "HadithBooks",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L42",
+      "id": "src_app_hadithbooks",
+      "community": 13,
+      "norm_label": "hadithbooks"
+    },
+    {
+      "label": "HadithBook",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L43",
+      "id": "src_app_hadithbook",
+      "community": 13,
+      "norm_label": "hadithbook"
+    },
+    {
+      "label": "PrayerTimes",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L44",
+      "id": "src_app_prayertimes",
+      "community": 13,
+      "norm_label": "prayertimes"
+    },
+    {
+      "label": "QiblaFinder",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L45",
+      "id": "src_app_qiblafinder",
+      "community": 13,
+      "norm_label": "qiblafinder"
+    },
+    {
+      "label": "Tasbih",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L46",
+      "id": "src_app_tasbih",
+      "community": 13,
+      "norm_label": "tasbih"
+    },
+    {
+      "label": "HijriCalendar",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L47",
+      "id": "src_app_hijricalendar",
+      "community": 13,
+      "norm_label": "hijricalendar"
+    },
+    {
+      "label": "FastingCalendar",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L48",
+      "id": "src_app_fastingcalendar",
+      "community": 13,
+      "norm_label": "fastingcalendar"
+    },
+    {
+      "label": "DailyLog",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L49",
+      "id": "src_app_dailylog",
+      "community": 13,
+      "norm_label": "dailylog"
+    },
+    {
+      "label": "PrayerTracker",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L50",
+      "id": "src_app_prayertracker",
+      "community": 13,
+      "norm_label": "prayertracker"
+    },
+    {
+      "label": "ZakatCalculator",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L51",
+      "id": "src_app_zakatcalculator",
+      "community": 13,
+      "norm_label": "zakatcalculator"
+    },
+    {
+      "label": "QuranProgress",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L52",
+      "id": "src_app_quranprogress",
+      "community": 13,
+      "norm_label": "quranprogress"
+    },
+    {
+      "label": "SadaqahTracker",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L53",
+      "id": "src_app_sadaqahtracker",
+      "community": 13,
+      "norm_label": "sadaqahtracker"
+    },
+    {
+      "label": "SalahGuide",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L54",
+      "id": "src_app_salahguide",
+      "community": 13,
+      "norm_label": "salahguide"
+    },
+    {
+      "label": "Knowledge",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L55",
+      "id": "src_app_knowledge",
+      "community": 13,
+      "norm_label": "knowledge"
+    },
+    {
+      "label": "IslamicNames",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L56",
+      "id": "src_app_islamicnames",
+      "community": 13,
+      "norm_label": "islamicnames"
+    },
+    {
+      "label": "ReadingGoals",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L57",
+      "id": "src_app_readinggoals",
+      "community": 13,
+      "norm_label": "readinggoals"
+    },
+    {
+      "label": "DataExport",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L58",
+      "id": "src_app_dataexport",
+      "community": 13,
+      "norm_label": "dataexport"
+    },
+    {
+      "label": "TaraweehTracker",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L59",
+      "id": "src_app_taraweehtracker",
+      "community": 13,
+      "norm_label": "taraweehtracker"
+    },
+    {
+      "label": "Home",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L60",
+      "id": "src_app_home",
+      "community": 13,
+      "norm_label": "home"
+    },
+    {
+      "label": "routeDefinitions",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L62",
+      "id": "src_app_routedefinitions",
+      "community": 13,
+      "norm_label": "routedefinitions"
+    },
+    {
+      "label": "DataLoader()",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L94",
+      "id": "src_app_dataloader",
+      "community": 60,
+      "norm_label": "dataloader()"
+    },
+    {
+      "label": "ThemeController()",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L140",
+      "id": "src_app_themecontroller",
+      "community": 49,
+      "norm_label": "themecontroller()"
+    },
+    {
+      "label": "LocaleSync()",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L175",
+      "id": "src_app_localesync",
+      "community": 49,
+      "norm_label": "localesync()"
+    },
+    {
+      "label": "RamadanModeController()",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L184",
+      "id": "src_app_ramadanmodecontroller",
+      "community": 49,
+      "norm_label": "ramadanmodecontroller()"
+    },
+    {
+      "label": "AppContent()",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L212",
+      "id": "src_app_appcontent",
+      "community": 49,
+      "norm_label": "appcontent()"
+    },
+    {
+      "label": "App()",
+      "file_type": "code",
+      "source_file": "src/App.tsx",
+      "source_location": "L272",
+      "id": "src_app_app",
+      "community": 49,
+      "norm_label": "app()"
+    },
+    {
+      "label": "HomeLayout.tsx",
+      "file_type": "code",
+      "source_file": "src/components/layouts/HomeLayout/HomeLayout.tsx",
+      "source_location": "L1",
+      "id": "homelayout_homelayout",
+      "community": 102,
+      "norm_label": "homelayout.tsx"
+    },
+    {
+      "label": "HomeLayout()",
+      "file_type": "code",
+      "source_file": "src/components/layouts/HomeLayout/HomeLayout.tsx",
+      "source_location": "L4",
+      "id": "homelayout_homelayout_homelayout",
+      "community": 102,
+      "norm_label": "homelayout()"
+    },
+    {
+      "label": "SurahParaNav.tsx",
+      "file_type": "code",
+      "source_file": "src/components/layouts/HomeLayout/SurahParaNav.tsx",
+      "source_location": "L1",
+      "id": "homelayout_surahparanav",
+      "community": 102,
+      "norm_label": "surahparanav.tsx"
+    },
+    {
+      "label": "SurahParaNav()",
+      "file_type": "code",
+      "source_file": "src/components/layouts/HomeLayout/SurahParaNav.tsx",
+      "source_location": "L5",
+      "id": "homelayout_surahparanav_surahparanav",
+      "community": 102,
+      "norm_label": "surahparanav()"
+    },
+    {
+      "label": "knowledgeFacts.ts",
+      "file_type": "code",
+      "source_file": "src/data/knowledgeFacts.ts",
+      "source_location": "L1",
+      "id": "data_knowledgefacts",
+      "community": 136,
+      "norm_label": "knowledgefacts.ts"
+    },
+    {
+      "label": "KnowledgeFact",
+      "file_type": "code",
+      "source_file": "src/data/knowledgeFacts.ts",
+      "source_location": "L1",
+      "id": "data_knowledgefacts_knowledgefact",
+      "community": 136,
+      "norm_label": "knowledgefact"
+    },
+    {
+      "label": "KNOWLEDGE_FACTS",
+      "file_type": "code",
+      "source_file": "src/data/knowledgeFacts.ts",
+      "source_location": "L6",
+      "id": "data_knowledgefacts_knowledge_facts",
+      "community": 136,
+      "norm_label": "knowledge_facts"
+    },
+    {
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "src/pages/Home/index.tsx",
+      "source_location": "L1",
+      "id": "home_index",
+      "community": 168,
+      "norm_label": "index.tsx"
+    },
+    {
+      "label": "GridItem",
+      "file_type": "code",
+      "source_file": "src/pages/Home/index.tsx",
+      "source_location": "L45",
+      "id": "home_index_griditem",
+      "community": 168,
+      "norm_label": "griditem"
+    },
+    {
+      "label": "GRID_ITEMS",
+      "file_type": "code",
+      "source_file": "src/pages/Home/index.tsx",
+      "source_location": "L51",
+      "id": "home_index_grid_items",
+      "community": 168,
+      "norm_label": "grid_items"
+    },
+    {
+      "label": "ReadingStreakWidget()",
+      "file_type": "code",
+      "source_file": "src/pages/Home/index.tsx",
+      "source_location": "L69",
+      "id": "home_index_readingstreakwidget",
+      "community": 168,
+      "norm_label": "readingstreakwidget()"
+    },
+    {
+      "label": "FaCalculator()",
+      "file_type": "code",
+      "source_file": "src/pages/Home/index.tsx",
+      "source_location": "L120",
+      "id": "home_index_facalculator",
+      "community": 168,
+      "norm_label": "facalculator()"
+    },
+    {
+      "label": "getHijriDate()",
+      "file_type": "code",
+      "source_file": "src/pages/Home/index.tsx",
+      "source_location": "L136",
+      "id": "home_index_gethijridate",
+      "community": 168,
+      "norm_label": "gethijridate()"
+    },
+    {
+      "label": "getGregorianDate()",
+      "file_type": "code",
+      "source_file": "src/pages/Home/index.tsx",
+      "source_location": "L149",
+      "id": "home_index_getgregoriandate",
+      "community": 168,
+      "norm_label": "getgregoriandate()"
+    },
+    {
+      "label": "Home()",
+      "file_type": "code",
+      "source_file": "src/pages/Home/index.tsx",
+      "source_location": "L158",
+      "id": "home_index_home",
+      "community": 168,
+      "norm_label": "home()"
+    },
+    {
       "label": "StepWelcome.tsx",
       "file_type": "code",
       "source_file": "src/components/features/Onboarding/StepWelcome.tsx",
       "source_location": "L1",
-      "id": "onboarding_stepwelcome",
       "community": 58,
-      "norm_label": "stepwelcome.tsx"
+      "norm_label": "stepwelcome.tsx",
+      "id": "onboarding_stepwelcome"
     },
     {
       "label": "StepProps",
       "file_type": "code",
       "source_file": "src/components/features/Onboarding/StepWelcome.tsx",
       "source_location": "L5",
-      "id": "onboarding_stepwelcome_stepprops",
       "community": 58,
-      "norm_label": "stepprops"
+      "norm_label": "stepprops",
+      "id": "onboarding_stepwelcome_stepprops"
     },
     {
       "label": "FloatingOrbs()",
       "file_type": "code",
       "source_file": "src/components/features/Onboarding/StepWelcome.tsx",
       "source_location": "L10",
-      "id": "onboarding_stepwelcome_floatingorbs",
       "community": 58,
-      "norm_label": "floatingorbs()"
+      "norm_label": "floatingorbs()",
+      "id": "onboarding_stepwelcome_floatingorbs"
     },
     {
       "label": "GlowingQuran()",
       "file_type": "code",
       "source_file": "src/components/features/Onboarding/StepWelcome.tsx",
       "source_location": "L32",
-      "id": "onboarding_stepwelcome_glowingquran",
       "community": 58,
-      "norm_label": "glowingquran()"
+      "norm_label": "glowingquran()",
+      "id": "onboarding_stepwelcome_glowingquran"
     },
     {
       "label": "StepWelcome()",
       "file_type": "code",
       "source_file": "src/components/features/Onboarding/StepWelcome.tsx",
       "source_location": "L63",
-      "id": "onboarding_stepwelcome_stepwelcome",
       "community": 58,
-      "norm_label": "stepwelcome()"
+      "norm_label": "stepwelcome()",
+      "id": "onboarding_stepwelcome_stepwelcome"
     },
     {
       "label": "ListSelectStep.tsx",
@@ -584,7 +1079,7 @@
       "file_type": "code",
       "source_file": "src/pages/HijriCalendar/index.tsx",
       "source_location": "L1",
-      "community": 37,
+      "community": 49,
       "norm_label": "index.tsx",
       "id": "hijricalendar_index"
     },
@@ -593,7 +1088,7 @@
       "file_type": "code",
       "source_file": "src/pages/HijriCalendar/index.tsx",
       "source_location": "L20",
-      "community": 37,
+      "community": 49,
       "norm_label": "buildemptycells()",
       "id": "hijricalendar_index_buildemptycells"
     },
@@ -602,7 +1097,7 @@
       "file_type": "code",
       "source_file": "src/pages/HijriCalendar/index.tsx",
       "source_location": "L28",
-      "community": 37,
+      "community": 49,
       "norm_label": "istoday()",
       "id": "hijricalendar_index_istoday"
     },
@@ -611,7 +1106,7 @@
       "file_type": "code",
       "source_file": "src/pages/HijriCalendar/index.tsx",
       "source_location": "L37",
-      "community": 37,
+      "community": 49,
       "norm_label": "formatgregorian()",
       "id": "hijricalendar_index_formatgregorian"
     },
@@ -620,7 +1115,7 @@
       "file_type": "code",
       "source_file": "src/pages/HijriCalendar/index.tsx",
       "source_location": "L46",
-      "community": 37,
+      "community": 49,
       "norm_label": "hijricalendar()",
       "id": "hijricalendar_index_hijricalendar"
     },
@@ -1147,366 +1642,6 @@
       "id": "package_devdependencies_workbox_window"
     },
     {
-      "label": "App.tsx",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L1",
-      "community": 13,
-      "norm_label": "app.tsx",
-      "id": "src_app"
-    },
-    {
-      "label": "About",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L29",
-      "community": 13,
-      "norm_label": "about",
-      "id": "src_app_about"
-    },
-    {
-      "label": "AsmaUlHusna",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L30",
-      "community": 13,
-      "norm_label": "asmaulhusna",
-      "id": "src_app_asmaulhusna"
-    },
-    {
-      "label": "Bookmarks",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L31",
-      "community": 13,
-      "norm_label": "bookmarks",
-      "id": "src_app_bookmarks"
-    },
-    {
-      "label": "Credits",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L32",
-      "community": 13,
-      "norm_label": "credits",
-      "id": "src_app_credits"
-    },
-    {
-      "label": "Donation",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L33",
-      "community": 13,
-      "norm_label": "donation",
-      "id": "src_app_donation"
-    },
-    {
-      "label": "Downloads",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L34",
-      "community": 13,
-      "norm_label": "downloads",
-      "id": "src_app_downloads"
-    },
-    {
-      "label": "Paras",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L35",
-      "community": 13,
-      "norm_label": "paras",
-      "id": "src_app_paras"
-    },
-    {
-      "label": "Settings",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L36",
-      "community": 13,
-      "norm_label": "settings",
-      "id": "src_app_settings"
-    },
-    {
-      "label": "Surahs",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L37",
-      "community": 13,
-      "norm_label": "surahs",
-      "id": "src_app_surahs"
-    },
-    {
-      "label": "LastTenSurahs",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L38",
-      "community": 13,
-      "norm_label": "lasttensurahs",
-      "id": "src_app_lasttensurahs"
-    },
-    {
-      "label": "Duas",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L39",
-      "community": 13,
-      "norm_label": "duas",
-      "id": "src_app_duas"
-    },
-    {
-      "label": "DuaCategory",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L40",
-      "community": 13,
-      "norm_label": "duacategory",
-      "id": "src_app_duacategory"
-    },
-    {
-      "label": "HadithCollections",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L41",
-      "community": 13,
-      "norm_label": "hadithcollections",
-      "id": "src_app_hadithcollections"
-    },
-    {
-      "label": "HadithBooks",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L42",
-      "community": 13,
-      "norm_label": "hadithbooks",
-      "id": "src_app_hadithbooks"
-    },
-    {
-      "label": "HadithBook",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L43",
-      "community": 13,
-      "norm_label": "hadithbook",
-      "id": "src_app_hadithbook"
-    },
-    {
-      "label": "PrayerTimes",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L44",
-      "community": 13,
-      "norm_label": "prayertimes",
-      "id": "src_app_prayertimes"
-    },
-    {
-      "label": "QiblaFinder",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L45",
-      "community": 13,
-      "norm_label": "qiblafinder",
-      "id": "src_app_qiblafinder"
-    },
-    {
-      "label": "Tasbih",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L46",
-      "community": 13,
-      "norm_label": "tasbih",
-      "id": "src_app_tasbih"
-    },
-    {
-      "label": "HijriCalendar",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L47",
-      "community": 13,
-      "norm_label": "hijricalendar",
-      "id": "src_app_hijricalendar"
-    },
-    {
-      "label": "FastingCalendar",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L48",
-      "community": 13,
-      "norm_label": "fastingcalendar",
-      "id": "src_app_fastingcalendar"
-    },
-    {
-      "label": "DailyLog",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L49",
-      "community": 13,
-      "norm_label": "dailylog",
-      "id": "src_app_dailylog"
-    },
-    {
-      "label": "PrayerTracker",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L50",
-      "community": 13,
-      "norm_label": "prayertracker",
-      "id": "src_app_prayertracker"
-    },
-    {
-      "label": "ZakatCalculator",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L51",
-      "community": 13,
-      "norm_label": "zakatcalculator",
-      "id": "src_app_zakatcalculator"
-    },
-    {
-      "label": "QuranProgress",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L52",
-      "community": 13,
-      "norm_label": "quranprogress",
-      "id": "src_app_quranprogress"
-    },
-    {
-      "label": "SadaqahTracker",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L53",
-      "community": 13,
-      "norm_label": "sadaqahtracker",
-      "id": "src_app_sadaqahtracker"
-    },
-    {
-      "label": "SalahGuide",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L54",
-      "community": 13,
-      "norm_label": "salahguide",
-      "id": "src_app_salahguide"
-    },
-    {
-      "label": "Knowledge",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L55",
-      "community": 13,
-      "norm_label": "knowledge",
-      "id": "src_app_knowledge"
-    },
-    {
-      "label": "IslamicNames",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L56",
-      "community": 13,
-      "norm_label": "islamicnames",
-      "id": "src_app_islamicnames"
-    },
-    {
-      "label": "ReadingGoals",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L57",
-      "community": 13,
-      "norm_label": "readinggoals",
-      "id": "src_app_readinggoals"
-    },
-    {
-      "label": "DataExport",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L58",
-      "community": 13,
-      "norm_label": "dataexport",
-      "id": "src_app_dataexport"
-    },
-    {
-      "label": "TaraweehTracker",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L59",
-      "community": 13,
-      "norm_label": "taraweehtracker",
-      "id": "src_app_taraweehtracker"
-    },
-    {
-      "label": "Splash",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L60",
-      "community": 13,
-      "norm_label": "splash",
-      "id": "src_app_splash"
-    },
-    {
-      "label": "routeDefinitions",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L62",
-      "community": 13,
-      "norm_label": "routedefinitions",
-      "id": "src_app_routedefinitions"
-    },
-    {
-      "label": "DataLoader()",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L94",
-      "community": 60,
-      "norm_label": "dataloader()",
-      "id": "src_app_dataloader"
-    },
-    {
-      "label": "ThemeController()",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L140",
-      "community": 49,
-      "norm_label": "themecontroller()",
-      "id": "src_app_themecontroller"
-    },
-    {
-      "label": "LocaleSync()",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L175",
-      "community": 49,
-      "norm_label": "localesync()",
-      "id": "src_app_localesync"
-    },
-    {
-      "label": "RamadanModeController()",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L184",
-      "community": 49,
-      "norm_label": "ramadanmodecontroller()",
-      "id": "src_app_ramadanmodecontroller"
-    },
-    {
-      "label": "AppContent()",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L212",
-      "community": 49,
-      "norm_label": "appcontent()",
-      "id": "src_app_appcontent"
-    },
-    {
-      "label": "App()",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L272",
-      "community": 49,
-      "norm_label": "app()",
-      "id": "src_app_app"
-    },
-    {
       "label": "BottomNav.tsx",
       "file_type": "code",
       "source_file": "src/components/common/BottomNav/BottomNav.tsx",
@@ -2002,87 +2137,6 @@
       "id": "search_verseresultitem_verseresultitem"
     },
     {
-      "label": "Splash.tsx",
-      "file_type": "code",
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L1",
-      "community": 120,
-      "norm_label": "splash.tsx",
-      "id": "splash_splash"
-    },
-    {
-      "label": "GridItem",
-      "file_type": "code",
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L44",
-      "community": 120,
-      "norm_label": "griditem",
-      "id": "splash_splash_griditem"
-    },
-    {
-      "label": "GRID_ITEMS",
-      "file_type": "code",
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L50",
-      "community": 120,
-      "norm_label": "grid_items",
-      "id": "splash_splash_grid_items"
-    },
-    {
-      "label": "ReadingStreakWidget()",
-      "file_type": "code",
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L68",
-      "community": 67,
-      "norm_label": "readingstreakwidget()",
-      "id": "splash_splash_readingstreakwidget"
-    },
-    {
-      "label": "FaCalculator()",
-      "file_type": "code",
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L119",
-      "community": 120,
-      "norm_label": "facalculator()",
-      "id": "splash_splash_facalculator"
-    },
-    {
-      "label": "KNOWLEDGE_FACTS",
-      "file_type": "code",
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L135",
-      "community": 120,
-      "norm_label": "knowledge_facts",
-      "id": "splash_splash_knowledge_facts"
-    },
-    {
-      "label": "getHijriDate()",
-      "file_type": "code",
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L168",
-      "community": 120,
-      "norm_label": "gethijridate()",
-      "id": "splash_splash_gethijridate"
-    },
-    {
-      "label": "getGregorianDate()",
-      "file_type": "code",
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L181",
-      "community": 120,
-      "norm_label": "getgregoriandate()",
-      "id": "splash_splash_getgregoriandate"
-    },
-    {
-      "label": "Home()",
-      "file_type": "code",
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L190",
-      "community": 49,
-      "norm_label": "home()",
-      "id": "splash_splash_home"
-    },
-    {
       "label": "MainLayout.tsx",
       "file_type": "code",
       "source_file": "src/components/layouts/MainLayout/MainLayout.tsx",
@@ -2168,7 +2222,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Downloads/SurahDownloadCard.tsx",
       "source_location": "L1",
-      "community": 60,
+      "community": 90,
       "norm_label": "surahdownloadcard.tsx",
       "id": "downloads_surahdownloadcard"
     },
@@ -2177,7 +2231,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Downloads/SurahDownloadCard.tsx",
       "source_location": "L16",
-      "community": 60,
+      "community": 90,
       "norm_label": "surahdownloadcardprops",
       "id": "downloads_surahdownloadcard_surahdownloadcardprops"
     },
@@ -2186,7 +2240,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Downloads/SurahDownloadCard.tsx",
       "source_location": "L22",
-      "community": 60,
+      "community": 90,
       "norm_label": "formatbytes()",
       "id": "downloads_surahdownloadcard_formatbytes"
     },
@@ -2195,7 +2249,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Downloads/SurahDownloadCard.tsx",
       "source_location": "L28",
-      "community": 60,
+      "community": 90,
       "norm_label": "surahdownloadcard",
       "id": "downloads_surahdownloadcard_surahdownloadcard"
     },
@@ -2294,7 +2348,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/DataSettings.tsx",
       "source_location": "L1",
-      "community": 18,
+      "community": 157,
       "norm_label": "datasettings.tsx",
       "id": "settings_datasettings"
     },
@@ -2303,7 +2357,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/DataSettings.tsx",
       "source_location": "L7",
-      "community": 18,
+      "community": 157,
       "norm_label": "datasettingsprops",
       "id": "settings_datasettings_datasettingsprops"
     },
@@ -2312,7 +2366,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/DataSettings.tsx",
       "source_location": "L12",
-      "community": 18,
+      "community": 157,
       "norm_label": "datasettings()",
       "id": "settings_datasettings_datasettings"
     },
@@ -2600,7 +2654,7 @@
       "file_type": "code",
       "source_file": "src/data/islamicEvents.ts",
       "source_location": "L97",
-      "community": 37,
+      "community": 49,
       "norm_label": "getislamicmonthname()",
       "id": "data_islamicevents_getislamicmonthname"
     },
@@ -2735,7 +2789,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useRandomContent.ts",
       "source_location": "L1",
-      "community": 49,
+      "community": 156,
       "norm_label": "userandomcontent.ts",
       "id": "hooks_userandomcontent"
     },
@@ -2744,7 +2798,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useRandomContent.ts",
       "source_location": "L4",
-      "community": 49,
+      "community": 156,
       "norm_label": "randomcontentitem",
       "id": "hooks_userandomcontent_randomcontentitem"
     },
@@ -2753,7 +2807,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useRandomContent.ts",
       "source_location": "L22",
-      "community": 49,
+      "community": 156,
       "norm_label": "userandomcontent()",
       "id": "hooks_userandomcontent_userandomcontent"
     },
@@ -3842,7 +3896,7 @@
       "file_type": "code",
       "source_file": "src/i18n/bn.json",
       "source_location": "L114",
-      "community": 43,
+      "community": 115,
       "norm_label": "error",
       "id": "i18n_bn_error"
     },
@@ -3851,7 +3905,7 @@
       "file_type": "code",
       "source_file": "src/i18n/bn.json",
       "source_location": "L115",
-      "community": 43,
+      "community": 115,
       "norm_label": "title",
       "id": "i18n_bn_error_title"
     },
@@ -3860,7 +3914,7 @@
       "file_type": "code",
       "source_file": "src/i18n/bn.json",
       "source_location": "L116",
-      "community": 43,
+      "community": 115,
       "norm_label": "unexpected",
       "id": "i18n_bn_error_unexpected"
     },
@@ -3869,7 +3923,7 @@
       "file_type": "code",
       "source_file": "src/i18n/bn.json",
       "source_location": "L117",
-      "community": 43,
+      "community": 115,
       "norm_label": "tryagain",
       "id": "i18n_bn_error_tryagain"
     },
@@ -3905,7 +3959,7 @@
       "file_type": "code",
       "source_file": "src/i18n/bn.json",
       "source_location": "L123",
-      "community": 136,
+      "community": 43,
       "norm_label": "update",
       "id": "i18n_bn_update"
     },
@@ -3914,7 +3968,7 @@
       "file_type": "code",
       "source_file": "src/i18n/bn.json",
       "source_location": "L124",
-      "community": 136,
+      "community": 43,
       "norm_label": "newversion",
       "id": "i18n_bn_update_newversion"
     },
@@ -3923,7 +3977,7 @@
       "file_type": "code",
       "source_file": "src/i18n/bn.json",
       "source_location": "L125",
-      "community": 136,
+      "community": 43,
       "norm_label": "refresh",
       "id": "i18n_bn_update_refresh"
     },
@@ -3932,7 +3986,7 @@
       "file_type": "code",
       "source_file": "src/i18n/bn.json",
       "source_location": "L126",
-      "community": 136,
+      "community": 43,
       "norm_label": "dismiss",
       "id": "i18n_bn_update_dismiss"
     },
@@ -4931,7 +4985,7 @@
       "file_type": "code",
       "source_file": "src/i18n/bn.json",
       "source_location": "L245",
-      "community": 115,
+      "community": 43,
       "norm_label": "language",
       "id": "i18n_bn_language"
     },
@@ -4940,7 +4994,7 @@
       "file_type": "code",
       "source_file": "src/i18n/bn.json",
       "source_location": "L246",
-      "community": 115,
+      "community": 43,
       "norm_label": "pagetitle",
       "id": "i18n_bn_language_pagetitle"
     },
@@ -4949,7 +5003,7 @@
       "file_type": "code",
       "source_file": "src/i18n/bn.json",
       "source_location": "L247",
-      "community": 115,
+      "community": 43,
       "norm_label": "headertitle",
       "id": "i18n_bn_language_headertitle"
     },
@@ -4958,7 +5012,7 @@
       "file_type": "code",
       "source_file": "src/i18n/bn.json",
       "source_location": "L248",
-      "community": 115,
+      "community": 43,
       "norm_label": "headersubtitle",
       "id": "i18n_bn_language_headersubtitle"
     },
@@ -4967,7 +5021,7 @@
       "file_type": "code",
       "source_file": "src/i18n/bn.json",
       "source_location": "L249",
-      "community": 115,
+      "community": 43,
       "norm_label": "en",
       "id": "i18n_bn_language_en"
     },
@@ -4976,7 +5030,7 @@
       "file_type": "code",
       "source_file": "src/i18n/bn.json",
       "source_location": "L250",
-      "community": 115,
+      "community": 43,
       "norm_label": "bn",
       "id": "i18n_bn_language_bn"
     },
@@ -8414,7 +8468,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L123",
-      "community": 45,
+      "community": 120,
       "norm_label": "update",
       "id": "i18n_en_update"
     },
@@ -8423,7 +8477,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L124",
-      "community": 45,
+      "community": 120,
       "norm_label": "newversion",
       "id": "i18n_en_update_newversion"
     },
@@ -8432,7 +8486,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L125",
-      "community": 45,
+      "community": 120,
       "norm_label": "refresh",
       "id": "i18n_en_update_refresh"
     },
@@ -8441,7 +8495,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L126",
-      "community": 45,
+      "community": 120,
       "norm_label": "dismiss",
       "id": "i18n_en_update_dismiss"
     },
@@ -9440,7 +9494,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L245",
-      "community": 116,
+      "community": 45,
       "norm_label": "language",
       "id": "i18n_en_language"
     },
@@ -9449,7 +9503,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L246",
-      "community": 116,
+      "community": 45,
       "norm_label": "pagetitle",
       "id": "i18n_en_language_pagetitle"
     },
@@ -9458,7 +9512,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L247",
-      "community": 116,
+      "community": 45,
       "norm_label": "headertitle",
       "id": "i18n_en_language_headertitle"
     },
@@ -9467,7 +9521,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L248",
-      "community": 116,
+      "community": 45,
       "norm_label": "headersubtitle",
       "id": "i18n_en_language_headersubtitle"
     },
@@ -9476,7 +9530,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L249",
-      "community": 116,
+      "community": 45,
       "norm_label": "en",
       "id": "i18n_en_language_en"
     },
@@ -9485,7 +9539,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L250",
-      "community": 116,
+      "community": 45,
       "norm_label": "bn",
       "id": "i18n_en_language_bn"
     },
@@ -11465,7 +11519,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L479",
-      "community": 45,
+      "community": 116,
       "norm_label": "lastten",
       "id": "i18n_en_lastten"
     },
@@ -11474,7 +11528,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L480",
-      "community": 45,
+      "community": 116,
       "norm_label": "pagetitle",
       "id": "i18n_en_lastten_pagetitle"
     },
@@ -11483,7 +11537,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L481",
-      "community": 45,
+      "community": 116,
       "norm_label": "subtitle",
       "id": "i18n_en_lastten_subtitle"
     },
@@ -11492,7 +11546,7 @@
       "file_type": "code",
       "source_file": "src/i18n/en.json",
       "source_location": "L482",
-      "community": 45,
+      "community": 116,
       "norm_label": "verses",
       "id": "i18n_en_lastten_verses"
     },
@@ -12437,7 +12491,7 @@
       "file_type": "code",
       "source_file": "src/pages/Downloads/index.tsx",
       "source_location": "L1",
-      "community": 60,
+      "community": 90,
       "norm_label": "index.tsx",
       "id": "downloads_index"
     },
@@ -12446,7 +12500,7 @@
       "file_type": "code",
       "source_file": "src/pages/Downloads/index.tsx",
       "source_location": "L16",
-      "community": 60,
+      "community": 90,
       "norm_label": "downloadspage()",
       "id": "downloads_index_downloadspage"
     },
@@ -12584,24 +12638,6 @@
       "community": 41,
       "norm_label": "hadithcollections()",
       "id": "hadith_index_hadithcollections"
-    },
-    {
-      "label": "index.tsx",
-      "file_type": "code",
-      "source_file": "src/pages/Home/index.tsx",
-      "source_location": "L1",
-      "community": 168,
-      "norm_label": "index.tsx",
-      "id": "home_index"
-    },
-    {
-      "label": "Home()",
-      "file_type": "code",
-      "source_file": "src/pages/Home/index.tsx",
-      "source_location": "L5",
-      "community": 168,
-      "norm_label": "home()",
-      "id": "home_index_home"
     },
     {
       "label": "index.tsx",
@@ -12752,7 +12788,7 @@
       "file_type": "code",
       "source_file": "src/pages/PrayerTimes/index.tsx",
       "source_location": "L1",
-      "community": 49,
+      "community": 66,
       "norm_label": "index.tsx",
       "id": "prayertimes_index"
     },
@@ -12761,7 +12797,7 @@
       "file_type": "code",
       "source_file": "src/pages/PrayerTimes/index.tsx",
       "source_location": "L17",
-      "community": 49,
+      "community": 66,
       "norm_label": "prayertimespage()",
       "id": "prayertimes_index_prayertimespage"
     },
@@ -13472,7 +13508,7 @@
       "file_type": "code",
       "source_file": "src/store/readingGoals.ts",
       "source_location": "L1",
-      "community": 102,
+      "community": 67,
       "norm_label": "readinggoals.ts",
       "id": "store_readinggoals"
     },
@@ -13481,7 +13517,7 @@
       "file_type": "code",
       "source_file": "src/store/readingGoals.ts",
       "source_location": "L4",
-      "community": 102,
+      "community": 67,
       "norm_label": "goalperiod",
       "id": "store_readinggoals_goalperiod"
     },
@@ -13490,7 +13526,7 @@
       "file_type": "code",
       "source_file": "src/store/readingGoals.ts",
       "source_location": "L5",
-      "community": 102,
+      "community": 67,
       "norm_label": "goalmetric",
       "id": "store_readinggoals_goalmetric"
     },
@@ -13499,7 +13535,7 @@
       "file_type": "code",
       "source_file": "src/store/readingGoals.ts",
       "source_location": "L7",
-      "community": 102,
+      "community": 67,
       "norm_label": "readinggoal",
       "id": "store_readinggoals_readinggoal"
     },
@@ -13508,7 +13544,7 @@
       "file_type": "code",
       "source_file": "src/store/readingGoals.ts",
       "source_location": "L18",
-      "community": 102,
+      "community": 67,
       "norm_label": "readinggoalsstate",
       "id": "store_readinggoals_readinggoalsstate"
     },
@@ -13517,7 +13553,7 @@
       "file_type": "code",
       "source_file": "src/store/readingGoals.ts",
       "source_location": "L27",
-      "community": 102,
+      "community": 67,
       "norm_label": "todaysdate()",
       "id": "store_readinggoals_todaysdate"
     },
@@ -13526,7 +13562,7 @@
       "file_type": "code",
       "source_file": "src/store/readingGoals.ts",
       "source_location": "L32",
-      "community": 102,
+      "community": 67,
       "norm_label": "computestreak()",
       "id": "store_readinggoals_computestreak"
     },
@@ -13535,7 +13571,7 @@
       "file_type": "code",
       "source_file": "src/store/readingGoals.ts",
       "source_location": "L51",
-      "community": 102,
+      "community": 67,
       "norm_label": "generateid()",
       "id": "store_readinggoals_generateid"
     },
@@ -15004,24 +15040,6 @@
       "community": 90,
       "norm_label": "search()",
       "id": "search_search_search"
-    },
-    {
-      "label": "HomeLayout.tsx",
-      "file_type": "code",
-      "source_file": "src/components/layouts/HomeLayout/HomeLayout.tsx",
-      "source_location": "L1",
-      "community": 13,
-      "norm_label": "homelayout.tsx",
-      "id": "homelayout_homelayout"
-    },
-    {
-      "label": "HomeLayout()",
-      "file_type": "code",
-      "source_file": "src/components/layouts/HomeLayout/HomeLayout.tsx",
-      "source_location": "L4",
-      "community": 13,
-      "norm_label": "homelayout()",
-      "id": "homelayout_homelayout_homelayout"
     },
     {
       "label": "SegmentedControl.tsx",
@@ -17548,7 +17566,7 @@
       "file_type": "code",
       "source_file": "src/lib/prayerTimes.ts",
       "source_location": "L70",
-      "community": 49,
+      "community": 66,
       "norm_label": "getcountdown()",
       "id": "lib_prayertimes_getcountdown"
     },
@@ -21536,6 +21554,847 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "audioplayer_audioengineshell"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "audioplayer_index"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "confirmmodal_confirmmodal"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "errorboundary_errorboundary"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "features_lastreadtracker"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "homelayout_homelayout"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "i18n_index"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "i18n_localecontext_localeprovider"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "i18n_localecontext_uselocale"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "mainlayout_mainlayout"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "onboarding_onboarding"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_about"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L256",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_app"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L196",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_appcontent"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L30",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_asmaulhusna"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_bookmarks"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_credits"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_dailylog"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L58",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_dataexport"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L94",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_dataloader"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L33",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_donation"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L34",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_downloads"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L40",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_duacategory"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L39",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_duas"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L48",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_fastingcalendar"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L43",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_hadithbook"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L42",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_hadithbooks"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L41",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_hadithcollections"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L47",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_hijricalendar"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "src_app",
+      "target": "src_app_home",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L56",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_islamicnames"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L55",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_knowledge"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L38",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_lasttensurahs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L159",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_localesync"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L35",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_paras"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L44",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_prayertimes"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L50",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_prayertracker"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L45",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_qiblafinder"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L52",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_quranprogress"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L168",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_ramadanmodecontroller"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L57",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_readinggoals"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L62",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_routedefinitions"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L53",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_sadaqahtracker"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L54",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_salahguide"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L36",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_settings"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L37",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_surahs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L59",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_taraweehtracker"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L46",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_tasbih"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L124",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_themecontroller"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L51",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "src_app_zakatcalculator"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "store_bookmarks"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "store_bookmarks_usebookmarkstore"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "store_downloads"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "store_downloads_usedownloadsstore"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L26",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "store_location"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L26",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "store_location_uselocationstore"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "store_settings"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app",
+      "target": "store_settings_usesettings"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_main",
+      "target": "src_app"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L100",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app_dataloader",
+      "target": "store_bookmarks_usebookmarkstore"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L102",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app_dataloader",
+      "target": "store_downloads_usedownloadsstore"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L98",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app_dataloader",
+      "target": "store_location_uselocationstore"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L95",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app_dataloader",
+      "target": "store_settings_usesettings"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L125",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app_themecontroller",
+      "target": "store_settings_usesettings"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L161",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app_localesync",
+      "target": "i18n_localecontext_uselocale"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L160",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app_localesync",
+      "target": "store_settings_usesettings"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.tsx",
+      "source_location": "L169",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_app_ramadanmodecontroller",
+      "target": "store_settings_usesettings"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/App.tsx",
+      "source_location": "L199",
+      "weight": 1.0,
+      "source": "src_app_appcontent",
+      "target": "store_settings_usesettings"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/App.tsx",
+      "source_location": "L257",
+      "weight": 1.0,
+      "source": "src_app_app",
+      "target": "store_settings_usesettings"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/layouts/HomeLayout/HomeLayout.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "homelayout_homelayout",
+      "target": "homelayout_homelayout_homelayout"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/layouts/HomeLayout/HomeLayout.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "homelayout_homelayout",
+      "target": "homelayout_surahparanav",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/layouts/HomeLayout/SurahParaNav.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "homelayout_surahparanav",
+      "target": "homelayout_surahparanav_surahparanav",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/data/knowledgeFacts.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "data_knowledgefacts",
+      "target": "data_knowledgefacts_knowledge_facts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/data/knowledgeFacts.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "data_knowledgefacts",
+      "target": "data_knowledgefacts_knowledgefact",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/Home/index.tsx",
+      "source_location": "L120",
+      "weight": 1.0,
+      "source": "home_index",
+      "target": "home_index_facalculator",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/Home/index.tsx",
+      "source_location": "L149",
+      "weight": 1.0,
+      "source": "home_index",
+      "target": "home_index_getgregoriandate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/Home/index.tsx",
+      "source_location": "L136",
+      "weight": 1.0,
+      "source": "home_index",
+      "target": "home_index_gethijridate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/Home/index.tsx",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "home_index",
+      "target": "home_index_grid_items",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/Home/index.tsx",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "home_index",
+      "target": "home_index_griditem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/Home/index.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "home_index",
+      "target": "home_index_home"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/Home/index.tsx",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "home_index",
+      "target": "home_index_readingstreakwidget",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/components/features/Onboarding/Onboarding.tsx",
       "source_location": "L25",
       "weight": 1.0,
@@ -21549,9 +22408,9 @@
       "source_file": "src/components/features/Onboarding/StepWelcome.tsx",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "onboarding_stepwelcome",
-      "target": "onboarding_stepwelcome_floatingorbs",
-      "confidence_score": 1.0
+      "target": "onboarding_stepwelcome_floatingorbs"
     },
     {
       "relation": "contains",
@@ -21559,9 +22418,9 @@
       "source_file": "src/components/features/Onboarding/StepWelcome.tsx",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "onboarding_stepwelcome",
-      "target": "onboarding_stepwelcome_glowingquran",
-      "confidence_score": 1.0
+      "target": "onboarding_stepwelcome_glowingquran"
     },
     {
       "relation": "contains",
@@ -21569,9 +22428,9 @@
       "source_file": "src/components/features/Onboarding/StepWelcome.tsx",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "onboarding_stepwelcome",
-      "target": "onboarding_stepwelcome_stepprops",
-      "confidence_score": 1.0
+      "target": "onboarding_stepwelcome_stepprops"
     },
     {
       "relation": "contains",
@@ -22880,726 +23739,6 @@
       "target": "package_devdependencies_workbox_window"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L16",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "audioplayer_audioengineshell"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L15",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "audioplayer_index"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "confirmmodal_confirmmodal"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "errorboundary_errorboundary"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L17",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "features_lastreadtracker"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L19",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "homelayout_homelayout"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "i18n_index"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "i18n_localecontext_localeprovider"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "i18n_localecontext_uselocale"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L20",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "mainlayout_mainlayout"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L18",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "onboarding_onboarding"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L29",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_about"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L256",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_app"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L196",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_appcontent"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L30",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_asmaulhusna"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L31",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_bookmarks"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L32",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_credits"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L49",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_dailylog"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L58",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_dataexport"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L94",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_dataloader"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L33",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_donation"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L34",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_downloads"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L40",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_duacategory"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L39",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_duas"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L48",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_fastingcalendar"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L43",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_hadithbook"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L42",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_hadithbooks"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L41",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_hadithcollections"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L47",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_hijricalendar"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L56",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_islamicnames"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L55",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_knowledge"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L38",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_lasttensurahs"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L159",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_localesync"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L35",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_paras"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L44",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_prayertimes"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L50",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_prayertracker"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L45",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_qiblafinder"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L52",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_quranprogress"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L168",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_ramadanmodecontroller"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L57",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_readinggoals"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L62",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_routedefinitions"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L53",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_sadaqahtracker"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L54",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_salahguide"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L36",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_settings"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L60",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_splash"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L37",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_surahs"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L59",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_taraweehtracker"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L46",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_tasbih"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L124",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_themecontroller"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L51",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_zakatcalculator"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L24",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "store_bookmarks"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L24",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "store_bookmarks_usebookmarkstore"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L25",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "store_downloads"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L25",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "store_downloads_usedownloadsstore"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L26",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "store_location"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L26",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "store_location_uselocationstore"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L27",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "store_settings"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L27",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "store_settings_usesettings"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/main.tsx",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_main",
-      "target": "src_app"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L100",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app_dataloader",
-      "target": "store_bookmarks_usebookmarkstore"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L102",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app_dataloader",
-      "target": "store_downloads_usedownloadsstore"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L98",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app_dataloader",
-      "target": "store_location_uselocationstore"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L95",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app_dataloader",
-      "target": "store_settings_usesettings"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L125",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app_themecontroller",
-      "target": "store_settings_usesettings"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L161",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app_localesync",
-      "target": "i18n_localecontext_uselocale"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L160",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app_localesync",
-      "target": "store_settings_usesettings"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
-      "source_location": "L169",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app_ramadanmodecontroller",
-      "target": "store_settings_usesettings"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/App.tsx",
-      "source_location": "L199",
-      "weight": 1.0,
-      "source": "src_app_appcontent",
-      "target": "store_settings_usesettings"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/App.tsx",
-      "source_location": "L257",
-      "weight": 1.0,
-      "source": "src_app_app",
-      "target": "store_settings_usesettings"
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/BottomNav/BottomNav.tsx",
@@ -24020,17 +24159,6 @@
     {
       "relation": "calls",
       "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L328",
-      "weight": 1.0,
-      "source": "splash_splash_home",
-      "target": "audioplayer_audioutils_formattime"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/components/features/AudioPlayer/audioUtils.ts",
       "source_location": "L38",
@@ -24416,174 +24544,6 @@
       "confidence_score": 1.0,
       "source": "search_verseresultitem",
       "target": "search_verseresultitem_verseresultitemprops"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L111",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "splash_splash",
-      "target": "splash_splash_facalculator"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L173",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "splash_splash",
-      "target": "splash_splash_getgregoriandate"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L160",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "splash_splash",
-      "target": "splash_splash_gethijridate"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L42",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "splash_splash",
-      "target": "splash_splash_grid_items"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L36",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "splash_splash",
-      "target": "splash_splash_griditem"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L182",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "splash_splash",
-      "target": "splash_splash_home"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L127",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "splash_splash",
-      "target": "splash_splash_knowledge_facts"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L60",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "splash_splash",
-      "target": "splash_splash_readingstreakwidget"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L61",
-      "weight": 1.0,
-      "source": "splash_splash_readingstreakwidget",
-      "target": "i18n_localecontext_uselocale"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L65",
-      "weight": 1.0,
-      "source": "splash_splash_readingstreakwidget",
-      "target": "store_reading_usereadingstore"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L62",
-      "weight": 1.0,
-      "source": "splash_splash_readingstreakwidget",
-      "target": "store_readinggoals_usereadinggoalsstore"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L186",
-      "weight": 1.0,
-      "source": "splash_splash_home",
-      "target": "hooks_userandomcontent_userandomcontent"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L183",
-      "weight": 1.0,
-      "source": "splash_splash_home",
-      "target": "i18n_localecontext_uselocale"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L333",
-      "weight": 1.0,
-      "source": "splash_splash_home",
-      "target": "lib_prayertimes_getcountdown"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L184",
-      "weight": 1.0,
-      "source": "splash_splash_home",
-      "target": "store_location_uselocationstore"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src/components/features/Splash/Splash.tsx",
-      "source_location": "L185",
-      "weight": 1.0,
-      "source": "splash_splash_home",
-      "target": "store_settings_usesettings"
     },
     {
       "relation": "contains",
@@ -37278,16 +37238,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src/pages/Home/index.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "home_index",
-      "target": "home_index_home"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "src/pages/IslamicNames/index.tsx",
       "source_location": "L28",
       "weight": 1.0,
@@ -40226,16 +40176,6 @@
       "weight": 1.0,
       "source": "search_search_search",
       "target": "hooks_usesurahs_usesurahs"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/layouts/HomeLayout/HomeLayout.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "homelayout_homelayout",
-      "target": "homelayout_homelayout_homelayout"
     },
     {
       "relation": "contains",
@@ -48218,5 +48158,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "e13444600d4bfbe2f4b05b8f614a10e7541dad79"
+  "built_at_commit": "c0a2e7054833ff52713210e34157746e70c09563"
 }

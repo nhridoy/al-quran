@@ -22,7 +22,16 @@
     "dua": "দোয়া",
     "refresh": "রিফ্রেশ",
     "noContent": "কোনো কন্টেন্ট পাওয়া যায়নি",
-    "startReading": "কুরআন পড়া শুরু করুন"
+    "startReading": "কুরআন পড়া শুরু করুন",
+    "now": "এখন",
+    "prayerTracker": "নামাজ ট্র্যাকার",
+    "timeLeft": "বাকি সময়",
+    "timeUntilNext": "পরবর্তী পর্যন্ত",
+    "startsAt": "শুরু হবে",
+    "greetingMorning": "শুভ সকাল",
+    "greetingAfternoon": "শুভ বিকাল",
+    "greetingEvening": "শুভ সন্ধ্যা",
+    "greetingNight": "শুভ রাত্রি"
   },
   "nav": {
     "brandTitle": "পিওর",

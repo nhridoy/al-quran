@@ -22,7 +22,16 @@
     "dua": "Dua",
     "refresh": "Refresh",
     "noContent": "No content available.",
-    "startReading": "Start Reading Quran"
+    "startReading": "Start Reading Quran",
+    "now": "Now",
+    "prayerTracker": "Prayer Tracker",
+    "timeLeft": "Time left",
+    "timeUntilNext": "Until next",
+    "startsAt": "Starts at",
+    "greetingMorning": "Good morning",
+    "greetingAfternoon": "Good afternoon",
+    "greetingEvening": "Good evening",
+    "greetingNight": "Good night"
   },
   "nav": {
     "brandTitle": "Pure",
