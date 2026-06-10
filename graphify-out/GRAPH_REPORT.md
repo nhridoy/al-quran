@@ -1,7 +1,7 @@
-# Graph Report - al-quran  (2026-06-10)
+# Graph Report - al-quran  (2026-06-11)
 
 ## Corpus Check
-- 221 files · ~217,992 words
+- 221 files · ~218,113 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `349fbe7a`
+- Built from commit: `115e51d8`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -757,7 +757,7 @@ Cohesion: 0.50
 Nodes (3): AppLanguageSettings(), AppLanguageSettingsProps, LANGUAGE_OPTIONS
 
 ## Knowledge Gaps
-- **1573 isolated node(s):** `GridItem`, `GRID_ITEMS`, `streakDays`, `readingGoals`, `surahsReadToday` (+1568 more)
+- **1573 isolated node(s):** `PrayerEntry`, `PRAYER_NAMES`, `methodRegistry`, `GridItem`, `GRID_ITEMS` (+1568 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **41 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -766,13 +766,13 @@ _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `useLocale()` connect `Community 18` to `Community 129`, `Community 9`, `Community 138`, `Community 140`, `Community 13`, `Community 143`, `Community 155`, `Community 156`, `Community 157`, `Community 168`, `Community 49`, `Community 58`, `Community 186`, `Community 60`, `Community 67`, `Community 74`, `Community 76`, `Community 89`, `Community 94`, `Community 100`, `Community 106`, `Community 108`, `Community 111`, `Community 112`, `Community 115`, `Community 120`, `Community 121`, `Community 122`, `Community 123`?**
   _High betweenness centrality (0.191) - this node is a cross-community bridge._
-- **Why does `salah` connect `Community 0` to `Community 43`?**
-  _High betweenness centrality (0.052) - this node is a cross-community bridge._
 - **Why does `salah` connect `Community 1` to `Community 45`?**
+  _High betweenness centrality (0.064) - this node is a cross-community bridge._
+- **Why does `salah` connect `Community 0` to `Community 43`?**
   _High betweenness centrality (0.045) - this node is a cross-community bridge._
 - **Are the 108 inferred relationships involving `cn()` (e.g. with `Accordion()` and `AccordionContent()`) actually correct?**
   _`cn()` has 108 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `GridItem`, `GRID_ITEMS`, `streakDays` to the rest of the system?**
+- **What connects `PrayerEntry`, `PRAYER_NAMES`, `methodRegistry` to the rest of the system?**
   _1573 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.027777777777777776 - nodes in this community are weakly interconnected._
