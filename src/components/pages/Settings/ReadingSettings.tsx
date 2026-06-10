@@ -1,6 +1,13 @@
 import { MdFormatColorFill, MdOutlineTranslate } from "react-icons/md";
 import SegmentedControl from "@/components/pages/Settings/SegmentedControl";
 import SettingCard from "@/components/pages/Settings/SettingCard";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { useLocale } from "@/i18n";
 import { RECITERS } from "@/lib/const";
@@ -51,17 +58,21 @@ export default function ReadingSettings({
           <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
             {t("settings.reciter")}
           </p>
-          <select
+          <Select
             value={reciterId}
-            onChange={(e) => onChange("reciterId", e.target.value)}
-            className="w-full rounded-xl border border-border bg-surface-alt px-3 py-2 text-sm text-text-primary outline-none transition-colors focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
+            onValueChange={(v) => onChange("reciterId", v)}
           >
-            {RECITERS.map((reciter) => (
-              <option key={reciter.identifier} value={reciter.identifier}>
-                {reciter.englishName}
-              </option>
-            ))}
-          </select>
+            <SelectTrigger className="w-full rounded-xl border-border bg-surface-alt text-text-primary focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent alignItemWithTrigger={false}>
+              {RECITERS.map((reciter) => (
+                <SelectItem key={reciter.identifier} value={reciter.identifier}>
+                  {reciter.englishName}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">

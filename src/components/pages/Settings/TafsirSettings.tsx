@@ -1,5 +1,14 @@
 import { IoBookOutline } from "react-icons/io5";
 import SettingCard from "@/components/pages/Settings/SettingCard";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { useLocale } from "@/i18n";
 
@@ -44,21 +53,23 @@ export default function TafsirSettings({
         <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
           {t("settings.tafsirResource")}
         </p>
-        <select
-          value={tafsirId}
-          onChange={(e) => onChange("tafsirId", e.target.value)}
-          className="w-full rounded-xl border border-border bg-surface-alt px-3 py-2 text-sm text-text-primary outline-none transition-colors focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
-        >
-          {Object.entries(groupedTafsirs).map(([langName, tafsirs]) => (
-            <optgroup key={langName} label={langName}>
-              {tafsirs.map((t) => (
-                <option key={t.id} value={t.id}>
-                  {t.name} — {t.authorName}
-                </option>
-              ))}
-            </optgroup>
-          ))}
-        </select>
+        <Select value={tafsirId} onValueChange={(v) => onChange("tafsirId", v)}>
+          <SelectTrigger className="w-full rounded-xl border-border bg-surface-alt text-text-primary focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent alignItemWithTrigger={false}>
+            {Object.entries(groupedTafsirs).map(([langName, tafsirs]) => (
+              <SelectGroup key={langName}>
+                <SelectLabel>{langName}</SelectLabel>
+                {tafsirs.map((tsr) => (
+                  <SelectItem key={tsr.id} value={tsr.id}>
+                    {tsr.name} — {tsr.authorName}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
     </SettingCard>
   );

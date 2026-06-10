@@ -2,6 +2,13 @@ import { IoVolumeHighOutline } from "react-icons/io5";
 import SegmentedControl from "@/components/pages/Settings/SegmentedControl";
 import SettingCard from "@/components/pages/Settings/SettingCard";
 import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useLocale } from "@/i18n";
 
 interface PrayerSettingsProps {
@@ -19,6 +26,14 @@ export default function PrayerSettings({
 }: PrayerSettingsProps) {
   const { t } = useLocale();
 
+  const calcMethods = [
+    { value: "MWL", label: t("settings.calcMwl") },
+    { value: "ISNA", label: t("settings.calcIsna") },
+    { value: "Egypt", label: t("settings.calcEgypt") },
+    { value: "UmmAlQura", label: t("settings.calcUmmAlQura") },
+    { value: "Karachi", label: t("settings.calcKarachi") },
+  ];
+
   return (
     <SettingCard
       icon={
@@ -32,23 +47,21 @@ export default function PrayerSettings({
           <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
             {t("settings.calcMethod")}
           </p>
-          <select
+          <Select
             value={prayerCalcMethod}
-            onChange={(e) => onChange("prayerCalcMethod", e.target.value)}
-            className="w-full rounded-xl border border-border bg-surface-alt px-3 py-2 text-sm text-text-primary outline-none transition-colors focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
+            onValueChange={(v) => onChange("prayerCalcMethod", v)}
           >
-            {[
-              { value: "MWL", label: t("settings.calcMwl") },
-              { value: "ISNA", label: t("settings.calcIsna") },
-              { value: "Egypt", label: t("settings.calcEgypt") },
-              { value: "UmmAlQura", label: t("settings.calcUmmAlQura") },
-              { value: "Karachi", label: t("settings.calcKarachi") },
-            ].map((m) => (
-              <option key={m.value} value={m.value}>
-                {m.label}
-              </option>
-            ))}
-          </select>
+            <SelectTrigger className="w-full rounded-xl border-border bg-surface-alt text-text-primary focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent alignItemWithTrigger={false}>
+              {calcMethods.map((m) => (
+                <SelectItem key={m.value} value={m.value}>
+                  {m.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
         <div>
           <p className="mb-2 text-xs font-medium text-text-primary dark:text-dark-text-primary">
