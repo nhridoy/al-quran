@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { IoChevronForward } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/i18n";
 
 export interface ListItem {
   id: string;
@@ -45,11 +46,12 @@ export default function ListSelectStep({
   onSelect,
   onContinue,
 }: ListSelectStepProps) {
+  const { t } = useLocale();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setMounted(true), 80);
-    return () => clearTimeout(t);
+    const timer = setTimeout(() => setMounted(true), 80);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -130,7 +132,7 @@ export default function ListSelectStep({
         className="mt-5 flex w-full shrink-0 items-center justify-center gap-2 py-3 h-auto text-sm shadow-lg shadow-[#9345f2]/20 hover:shadow-xl hover:shadow-[#9345f2]/30"
         onClick={onContinue}
       >
-        Continue
+        {t("onboarding.continue")}
         <IoChevronForward className="text-base" />
       </Button>
     </div>

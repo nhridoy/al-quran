@@ -1,6 +1,7 @@
 import {
   createContext,
   type ReactNode,
+  useCallback,
   useContext,
   useEffect,
   useState,
@@ -55,15 +56,18 @@ export function LocaleProvider({
     document.documentElement.lang = locale === "en" ? "en" : "bn";
   }, [locale]);
 
-  const setLocale = (l: AppLocale) => {
+  const setLocale = useCallback((l: AppLocale) => {
     setLocaleState(l);
-  };
+  }, []);
 
-  const t: LocaleContextValue["t"] = (key, params) => {
-    const bundle = LOCALE_MAP[locale] || en;
-    const raw = resolveValue(bundle as Record<string, unknown>, key);
-    return interpolate(raw, params);
-  };
+  const t: LocaleContextValue["t"] = useCallback(
+    (key, params) => {
+      const bundle = LOCALE_MAP[locale] || en;
+      const raw = resolveValue(bundle as Record<string, unknown>, key);
+      return interpolate(raw, params);
+    },
+    [locale],
+  );
 
   return (
     <LocaleContext.Provider value={{ locale, setLocale, t }}>

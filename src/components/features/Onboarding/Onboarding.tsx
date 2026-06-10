@@ -7,6 +7,7 @@ import {
   IoMusicalNotesOutline,
 } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/i18n";
 import {
   cacheAllAudioForReciter,
   cacheAllHadithFor,
@@ -16,7 +17,6 @@ import {
   cacheAllTafsirFor,
 } from "@/lib/batchCache";
 import { LANGUAGES, RECITERS, TAFSIR_LIST } from "@/lib/const";
-
 import { getSurahList, getSurahs } from "@/lib/db";
 import { useLocationStore } from "@/store/location";
 import { useSettings } from "@/store/settings";
@@ -50,6 +50,7 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
   const [animating, setAnimating] = useState(false);
   const mountedRef = useRef(true);
 
+  const { setLocale, t } = useLocale();
   const updateSettings = useSettings((s) => s.update);
 
   const locationLoading = useLocationStore((s) => s.loading);
@@ -201,6 +202,7 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
                 onSelect={(l) => {
                   setAppLanguage(l);
                   setReadingLang(l);
+                  setLocale(l);
                   setTimeout(next, 200);
                 }}
               />
@@ -208,8 +210,8 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
             {step === 1 && (
               <ListSelectStep
                 icon={<IoGlobeOutline className="text-2xl text-white" />}
-                title="Reading Language"
-                description="Choose translation language for Quran verses"
+                title={t("onboarding.readingLangTitle")}
+                description={t("onboarding.readingLangDesc")}
                 items={APP_LANGS.map((l) => ({
                   id: l.id,
                   primary: l.name,
@@ -223,8 +225,8 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
             {step === 2 && (
               <ListSelectStep
                 icon={<IoBookOutline className="text-2xl text-white" />}
-                title="Hadith Language"
-                description="Select your preferred language for hadith"
+                title={t("onboarding.hadithLangTitle")}
+                description={t("onboarding.hadithLangDesc")}
                 items={HADITH_LANGS.map((l) => ({
                   id: l.id,
                   primary: l.name,
@@ -238,8 +240,8 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
             {step === 3 && (
               <ListSelectStep
                 icon={<IoHeadsetOutline className="text-2xl text-white" />}
-                title="Choose a Reciter"
-                description="Select your preferred voice for Quran recitation"
+                title={t("onboarding.reciterTitle")}
+                description={t("onboarding.reciterDesc")}
                 items={RECITERS.map((r) => ({
                   id: r.identifier,
                   primary: r.englishName,
@@ -253,8 +255,8 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
             {step === 4 && (
               <ListSelectStep
                 icon={<IoMusicalNotesOutline className="text-2xl text-white" />}
-                title="Choose Tafsir"
-                description="Select your preferred Quran exegesis"
+                title={t("onboarding.tafsirTitle")}
+                description={t("onboarding.tafsirDesc")}
                 items={filteredTafsirs.map((t) => ({
                   id: t.id,
                   primary: t.name,

@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import { FaQuran } from "react-icons/fa";
 import { IoCheckmarkCircle } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/i18n";
 
 export default function StepDone({ onFinish }: { onFinish: () => void }) {
+  const { t } = useLocale();
   const [pulse, setPulse] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setPulse(true), 200);
-    return () => clearTimeout(t);
+    const timer = setTimeout(() => setPulse(true), 200);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -24,11 +26,11 @@ export default function StepDone({ onFinish }: { onFinish: () => void }) {
       <div
         className={`text-center transition-all duration-700 delay-200 ${pulse ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
       >
-        <h1 className="text-2xl font-bold text-white">You're All Set!</h1>
+        <h1 className="text-2xl font-bold text-white">
+          {t("onboarding.doneTitle")}
+        </h1>
         <p className="mt-2 text-sm leading-relaxed text-white/50">
-          Pure is ready. Your preferences are saved,
-          <br />
-          and cached data will make everything snappy.
+          {t("onboarding.doneSubtitle")}
         </p>
       </div>
 
@@ -36,7 +38,7 @@ export default function StepDone({ onFinish }: { onFinish: () => void }) {
         className={`w-full max-w-xs space-y-3 transition-all duration-700 delay-500 ${pulse ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
       >
         <p className="text-center text-xs text-white/40">
-          Everything is cached in IndexedDB for offline-first performance.
+          {t("onboarding.doneCacheNote")}
         </p>
         <Button
           variant="gradient"
@@ -44,7 +46,7 @@ export default function StepDone({ onFinish }: { onFinish: () => void }) {
           onClick={onFinish}
         >
           <FaQuran className="text-sm" />
-          Start Reading
+          {t("onboarding.startReading")}
         </Button>
       </div>
     </div>

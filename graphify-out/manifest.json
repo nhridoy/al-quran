@@ -615,12 +615,12 @@
     "semantic_hash": ""
   },
   "src/i18n/bn.json": {
-    "mtime": 1781015956.4792242,
+    "mtime": 1781018237.7448018,
     "ast_hash": "6f141f6d812e5314449536aad1807bcf",
     "semantic_hash": ""
   },
   "src/i18n/en.json": {
-    "mtime": 1781015956.4812255,
+    "mtime": 1781018237.301928,
     "ast_hash": "a9316a7ec13d263c4cadaa48992aa133",
     "semantic_hash": ""
   },
@@ -805,8 +805,8 @@
     "semantic_hash": ""
   },
   "src/pages/Home/index.tsx": {
-    "mtime": 1781017346.255098,
-    "ast_hash": "74274485c115c330a3494d15271aabfd",
+    "mtime": 1781019003.0674143,
+    "ast_hash": "df96794623ff6e5c2f8ae0f3d54ba113",
     "semantic_hash": ""
   },
   "src/pages/IslamicNames/index.tsx": {

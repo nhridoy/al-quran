@@ -6,6 +6,7 @@ import {
 } from "react-icons/io5";
 import { MdAccessTime, MdAutoGraph, MdFlag } from "react-icons/md";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/i18n";
 
 function BellVisual({
   requesting,
@@ -188,11 +189,12 @@ export default function StepPermissions({
   onRequestNotification: () => void;
   onNext: () => void;
 }) {
+  const { t } = useLocale();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setMounted(true), 80);
-    return () => clearTimeout(t);
+    const timer = setTimeout(() => setMounted(true), 80);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -217,12 +219,14 @@ export default function StepPermissions({
       {/* Title */}
       <div className="shrink-0 text-center">
         <h2 className="bg-gradient-to-r from-white to-[#b87aff] bg-clip-text text-xl font-bold text-transparent">
-          {notificationGranted ? "Notifications On" : "Notifications"}
+          {notificationGranted
+            ? t("onboarding.notifTitleOn")
+            : t("onboarding.notifTitle")}
         </h2>
         <p className="mt-0.5 text-xs text-white/35">
           {notificationGranted
-            ? "You'll receive prayer reminders and updates"
-            : "Stay on track with timely reminders"}
+            ? t("onboarding.notifDescOn")
+            : t("onboarding.notifDesc")}
         </p>
       </div>
 
@@ -233,9 +237,9 @@ export default function StepPermissions({
             <div className="flex flex-1 flex-col justify-center">
               <div className="grid grid-cols-3 gap-2">
                 {[
-                  { icon: MdAccessTime, label: "Prayer alerts" },
-                  { icon: MdFlag, label: "Ramadan key times" },
-                  { icon: MdAutoGraph, label: "Reading goals" },
+                  { icon: MdAccessTime, label: t("onboarding.notifBenefit1") },
+                  { icon: MdFlag, label: t("onboarding.notifBenefit2") },
+                  { icon: MdAutoGraph, label: t("onboarding.notifBenefit3") },
                 ].map(({ icon: Icon, label }) => (
                   <div
                     key={label}
@@ -254,7 +258,7 @@ export default function StepPermissions({
             <div className="mt-auto flex items-center justify-center gap-1.5 pb-1">
               <IoShieldCheckmarkOutline className="text-[10px] text-white/20" />
               <span className="text-[10px] text-white/20">
-                No spam. Only prayer reminders & goal alerts you opt into.
+                {t("onboarding.notifPrivacy")}
               </span>
             </div>
           </div>
@@ -279,14 +283,14 @@ export default function StepPermissions({
                   </svg>
                 </div>
                 <span className="text-sm font-medium text-green-400">
-                  Notifications enabled
+                  {t("onboarding.notifEnabled")}
                 </span>
               </div>
             </div>
             <div className="mt-auto flex items-center justify-center gap-1.5 pb-1">
               <IoShieldCheckmarkOutline className="text-[10px] text-white/20" />
               <span className="text-[10px] text-white/20">
-                No spam. Only prayer reminders & goal alerts you opt into.
+                {t("onboarding.notifPrivacy")}
               </span>
             </div>
           </div>
@@ -303,14 +307,14 @@ export default function StepPermissions({
               onClick={onRequestNotification}
             >
               <IoNotificationsOutline className="text-base" />
-              Enable Notifications
+              {t("onboarding.enableNotif")}
             </Button>
             <Button
               variant="white-ghost"
               className="flex items-center justify-center gap-1 rounded-xl bg-white/5 py-3 h-auto text-xs font-medium text-white/40 hover:bg-white/10 hover:text-white/60"
               onClick={onNext}
             >
-              Skip
+              {t("onboarding.skip")}
               <IoChevronForward className="text-xs" />
             </Button>
           </div>
@@ -323,7 +327,7 @@ export default function StepPermissions({
               className="flex w-full items-center justify-center gap-2 py-3 h-auto text-sm shadow-lg shadow-[#9345f2]/20 hover:shadow-xl hover:shadow-[#9345f2]/30"
               onClick={onNext}
             >
-              Continue
+              {t("onboarding.continue")}
               <IoChevronForward className="text-base" />
             </Button>
           </div>

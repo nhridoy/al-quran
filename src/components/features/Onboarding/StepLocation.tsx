@@ -6,6 +6,7 @@ import {
 } from "react-icons/io5";
 import { MdAccessTime, MdExplore, MdOutlineRestaurant } from "react-icons/md";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/i18n";
 
 function CompassNeedle({ angle }: { angle: number }) {
   return (
@@ -104,12 +105,13 @@ export default function StepLocation({
   onRequestLocation: () => void;
   onNext: () => void;
 }) {
+  const { t } = useLocale();
   const [mounted, setMounted] = useState(false);
   const [needleAngle, setNeedleAngle] = useState(0);
 
   useEffect(() => {
-    const t = setTimeout(() => setMounted(true), 80);
-    return () => clearTimeout(t);
+    const timer = setTimeout(() => setMounted(true), 80);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -155,17 +157,17 @@ export default function StepLocation({
       <div className="mt-2 shrink-0 text-center">
         <h2 className="bg-gradient-to-r from-white to-[#b87aff] bg-clip-text text-xl font-bold text-transparent">
           {locationGranted
-            ? "Location Set"
+            ? t("onboarding.locationTitleSet")
             : isDetecting
-              ? "Detecting..."
-              : "Location Access"}
+              ? t("onboarding.locationTitleDetecting")
+              : t("onboarding.locationTitle")}
         </h2>
         <p className="mt-0.5 text-xs text-white/35">
           {locationGranted
-            ? locationLabel || "Your location is ready"
+            ? locationLabel || t("onboarding.locationDescSet")
             : isDetecting
-              ? "Fetching your coordinates..."
-              : "For prayer times, Qibla & fasting calendar"}
+              ? t("onboarding.locationDescDetecting")
+              : t("onboarding.locationDesc")}
         </p>
       </div>
 
@@ -176,9 +178,15 @@ export default function StepLocation({
             <div className="flex flex-1 flex-col justify-center">
               <div className="grid grid-cols-3 gap-2">
                 {[
-                  { icon: MdAccessTime, label: "Prayer times" },
-                  { icon: MdExplore, label: "Qibla" },
-                  { icon: MdOutlineRestaurant, label: "Fasting" },
+                  {
+                    icon: MdAccessTime,
+                    label: t("onboarding.locationBenefit1"),
+                  },
+                  { icon: MdExplore, label: t("onboarding.locationBenefit2") },
+                  {
+                    icon: MdOutlineRestaurant,
+                    label: t("onboarding.locationBenefit3"),
+                  },
                 ].map(({ icon: Icon, label }) => (
                   <div
                     key={label}
@@ -197,8 +205,7 @@ export default function StepLocation({
             <div className="mt-auto flex items-center justify-center gap-1.5 pb-1">
               <IoShieldCheckmarkOutline className="text-[10px] text-white/20" />
               <span className="text-[10px] text-white/20">
-                Your location stays on-device. Used only for prayer & fasting
-                times.
+                {t("onboarding.locationPrivacy")}
               </span>
             </div>
           </div>
@@ -226,7 +233,7 @@ export default function StepLocation({
             <div className="flex flex-1 flex-col justify-center">
               <div className="text-center">
                 <p className="text-sm font-medium text-red-400">
-                  Unable to locate
+                  {t("onboarding.locationError")}
                 </p>
                 <p className="mt-0.5 text-xs text-white/30">{error}</p>
               </div>
@@ -234,8 +241,7 @@ export default function StepLocation({
             <div className="mt-auto flex items-center justify-center gap-1.5 pb-1">
               <IoShieldCheckmarkOutline className="text-[10px] text-white/20" />
               <span className="text-[10px] text-white/20">
-                Your location stays on-device. Used only for prayer & fasting
-                times.
+                {t("onboarding.locationPrivacy")}
               </span>
             </div>
           </div>
@@ -260,15 +266,14 @@ export default function StepLocation({
                   </svg>
                 </div>
                 <span className="text-sm font-medium text-green-400">
-                  Location saved
+                  {t("onboarding.locationSaved")}
                 </span>
               </div>
             </div>
             <div className="mt-auto flex items-center justify-center gap-1.5 pb-1">
               <IoShieldCheckmarkOutline className="text-[10px] text-white/20" />
               <span className="text-[10px] text-white/20">
-                Your location stays on-device. Used only for prayer & fasting
-                times.
+                {t("onboarding.locationPrivacy")}
               </span>
             </div>
           </div>
@@ -285,14 +290,14 @@ export default function StepLocation({
               onClick={onRequestLocation}
             >
               <IoLocationOutline className="text-base" />
-              Share Location
+              {t("onboarding.shareLocation")}
             </Button>
             <Button
               variant="white-ghost"
               className="flex items-center justify-center gap-1 rounded-xl bg-white/5 py-3 h-auto text-xs font-medium text-white/40 hover:bg-white/10 hover:text-white/60"
               onClick={onNext}
             >
-              Skip
+              {t("onboarding.skip")}
               <IoChevronForward className="text-xs" />
             </Button>
           </div>
@@ -307,14 +312,14 @@ export default function StepLocation({
               className="rounded-xl bg-white/8 py-2.5 h-auto text-xs font-medium text-white/70 hover:bg-white/15"
               onClick={onRequestLocation}
             >
-              Try Again
+              {t("onboarding.tryAgain")}
             </Button>
             <Button
               variant="white-ghost"
               className="rounded-xl bg-white/5 py-2.5 h-auto text-xs font-medium text-white/40 hover:bg-white/10"
               onClick={onNext}
             >
-              Skip
+              {t("onboarding.skip")}
             </Button>
           </div>
         )}
@@ -326,7 +331,7 @@ export default function StepLocation({
               className="flex w-full items-center justify-center gap-2 py-3 h-auto text-sm shadow-lg shadow-[#9345f2]/20 hover:shadow-xl hover:shadow-[#9345f2]/30"
               onClick={onNext}
             >
-              Continue
+              {t("onboarding.continue")}
               <IoChevronForward className="text-base" />
             </Button>
           </div>
