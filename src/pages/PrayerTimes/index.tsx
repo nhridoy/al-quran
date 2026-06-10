@@ -1,3 +1,4 @@
+import { SunnahTimes } from "adhan";
 import { useEffect, useMemo, useState } from "react";
 import { PageShell } from "@/components/common/PageShell/PageShell";
 import { Button } from "@/components/ui/button";
@@ -11,7 +12,6 @@ import {
   formatTime,
   getCountdown,
 } from "@/lib/prayerTimes";
-import { SunnahTimes } from "adhan";
 import { useLocationStore } from "@/store/location";
 import { useSettings } from "@/store/settings";
 

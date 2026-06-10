@@ -1,3 +1,4 @@
+import { SunnahTimes } from "adhan";
 import type { ComponentType } from "react";
 import { useEffect, useMemo, useState } from "react";
 import { BiChevronRight } from "react-icons/bi";
@@ -40,7 +41,6 @@ import {
   formatTime,
   getCountdown,
 } from "@/lib/prayerTimes";
-import { SunnahTimes } from "adhan";
 import { useLocationStore } from "@/store/location";
 import { useReadingStore } from "@/store/reading";
 import { computeStreak, useReadingGoalsStore } from "@/store/readingGoals";
@@ -300,7 +300,8 @@ export default function Home() {
   const windowEndTime = useMemo<Date | null>(() => {
     if (!currentPrayer || !adhanTimes) return null;
     if (currentPrayer.key === "fajr") return adhanTimes.sunrise as Date;
-    if (currentPrayer.key === "isha") return sunnahTimes?.middleOfTheNight ?? null;
+    if (currentPrayer.key === "isha")
+      return sunnahTimes?.middleOfTheNight ?? null;
     if (!nextPrayer || isBetweenPrayers) return null;
     return nextPrayer.time;
   }, [currentPrayer, nextPrayer, isBetweenPrayers, adhanTimes, sunnahTimes]);
