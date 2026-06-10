@@ -215,27 +215,27 @@
     "semantic_hash": ""
   },
   "src/components/features/Onboarding/ListSelectStep.tsx": {
-    "mtime": 1781015956.1707432,
-    "ast_hash": "3b63aff5e59474fa0514c0623cd413ae",
+    "mtime": 1781023859.5477366,
+    "ast_hash": "c453d91d9b43bca6192a93d1480b7094",
     "semantic_hash": ""
   },
   "src/components/features/Onboarding/Onboarding.tsx": {
-    "mtime": 1781015956.1737401,
-    "ast_hash": "7ee984d0756af3348403510a4bd61a91",
+    "mtime": 1781059607.3514452,
+    "ast_hash": "6ac4e3a54e353dfcfd8e7603a3002864",
     "semantic_hash": ""
   },
   "src/components/features/Onboarding/StepDone.tsx": {
-    "mtime": 1781015956.1757464,
-    "ast_hash": "7bd5c82f507eed4832152f0b4b508f9d",
+    "mtime": 1781024228.475721,
+    "ast_hash": "74c5814d0eff7e9dd898b2493a05609d",
     "semantic_hash": ""
   },
   "src/components/features/Onboarding/StepPermissions.tsx": {
-    "mtime": 1781015956.1807413,
-    "ast_hash": "16fc8f97954cd549c31184d39fd4b2f2",
+    "mtime": 1781024228.5563674,
+    "ast_hash": "84377279b6ce6e76864fbe5afa4b6af1",
     "semantic_hash": ""
   },
   "src/components/features/Onboarding/StepWelcome.tsx": {
-    "mtime": 1781015956.1827402,
+    "mtime": 1781059691.5258133,
     "ast_hash": "320159e1bda747dbcc74e9b018163637",
     "semantic_hash": ""
   },
@@ -610,18 +610,18 @@
     "semantic_hash": ""
   },
   "src/i18n/LocaleContext.tsx": {
-    "mtime": 1781015956.477229,
-    "ast_hash": "d76d919b93e679bfc7041e77521295e8",
+    "mtime": 1781059786.6288798,
+    "ast_hash": "a40672c92f1d3d7653644549f9706d63",
     "semantic_hash": ""
   },
   "src/i18n/bn.json": {
-    "mtime": 1781018237.7448018,
-    "ast_hash": "6f141f6d812e5314449536aad1807bcf",
+    "mtime": 1781023677.0589209,
+    "ast_hash": "2f2beffdf47d80d20e9cae48d765a6b7",
     "semantic_hash": ""
   },
   "src/i18n/en.json": {
-    "mtime": 1781018237.301928,
-    "ast_hash": "a9316a7ec13d263c4cadaa48992aa133",
+    "mtime": 1781023658.5448287,
+    "ast_hash": "ce6e8421bfb5dfd14bf1adbb0383d5e2",
     "semantic_hash": ""
   },
   "src/i18n/index.ts": {
@@ -1710,8 +1710,8 @@
     "semantic_hash": ""
   },
   "src/components/features/Onboarding/StepLocation.tsx": {
-    "mtime": 1781015956.1787407,
-    "ast_hash": "c0146b243d7a4701f2feead04eca40f8",
+    "mtime": 1781024228.539364,
+    "ast_hash": "c67dde02d2cd593b2585337ca0a111c0",
     "semantic_hash": ""
   },
   "src/components/ui/carousel.tsx": {
