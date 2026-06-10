@@ -40,6 +40,7 @@ import {
   formatTime,
   getCountdown,
 } from "@/lib/prayerTimes";
+import { SunnahTimes } from "adhan";
 import { useLocationStore } from "@/store/location";
 import { useReadingStore } from "@/store/reading";
 import { computeStreak, useReadingGoalsStore } from "@/store/readingGoals";
@@ -263,15 +264,17 @@ export default function Home() {
     };
   }, [carouselApi]);
 
-  const prayers = useMemo(() => {
-    const times = computePrayerTimes(
-      lat != null && lng != null ? { lat, lng } : null,
+  const adhanTimes = useMemo(() => {
+    if (lat == null || lng == null) return null;
+    return computePrayerTimes(
+      { lat, lng },
       prayerCalcMethod,
       prayerAsrMethod,
       now,
     );
-    return buildPrayerEntries(times);
   }, [lat, lng, prayerCalcMethod, prayerAsrMethod, now]);
+
+  const prayers = useMemo(() => buildPrayerEntries(adhanTimes), [adhanTimes]);
 
   const filteredPrayers = useMemo(
     () => prayers.filter((p) => p.key !== "sunrise"),
@@ -289,34 +292,42 @@ export default function Home() {
 
   const isBetweenPrayers = currentPrayer?.key === nextPrayer?.key;
 
-  const windowEnd = useMemo(() => {
-    if (!currentPrayer || !nextPrayer || isBetweenPrayers) return null;
-    return nextPrayer;
-  }, [currentPrayer, nextPrayer, isBetweenPrayers]);
+  const sunnahTimes = useMemo(
+    () => (adhanTimes ? new SunnahTimes(adhanTimes) : null),
+    [adhanTimes],
+  );
 
-  const countdownTarget = isBetweenPrayers ? nextPrayer : windowEnd;
+  const windowEndTime = useMemo<Date | null>(() => {
+    if (!currentPrayer || !adhanTimes) return null;
+    if (currentPrayer.key === "fajr") return adhanTimes.sunrise as Date;
+    if (currentPrayer.key === "isha") return sunnahTimes?.middleOfTheNight ?? null;
+    if (!nextPrayer || isBetweenPrayers) return null;
+    return nextPrayer.time;
+  }, [currentPrayer, nextPrayer, isBetweenPrayers, adhanTimes, sunnahTimes]);
+
   const countdownTargetTime = useMemo(() => {
-    if (!countdownTarget) return null;
-    return countdownTarget.time <= now
-      ? new Date(countdownTarget.time.getTime() + 86400000)
-      : countdownTarget.time;
-  }, [countdownTarget, now]);
+    const target = isBetweenPrayers
+      ? (nextPrayer?.time ?? null)
+      : windowEndTime;
+    if (!target) return null;
+    return target <= now ? new Date(target.getTime() + 86400000) : target;
+  }, [nextPrayer, windowEndTime, isBetweenPrayers, now]);
   const countdownValue = useMemo(
     () => (countdownTargetTime ? getCountdown(now, countdownTargetTime) : ""),
     [countdownTargetTime, now],
   );
 
   const countdownPercentage = useMemo(() => {
-    if (!currentPrayer || !nextPrayer || isBetweenPrayers) return 0;
-    const nextTime =
-      nextPrayer.time <= currentPrayer.time
-        ? new Date(nextPrayer.time.getTime() + 86400000)
-        : nextPrayer.time;
-    const total = nextTime.getTime() - currentPrayer.time.getTime();
+    if (!currentPrayer || !windowEndTime) return 0;
+    const endTime =
+      windowEndTime <= currentPrayer.time
+        ? new Date(windowEndTime.getTime() + 86400000)
+        : windowEndTime;
+    const total = endTime.getTime() - currentPrayer.time.getTime();
     if (total <= 0) return 0;
     const elapsed = now.getTime() - currentPrayer.time.getTime();
     return Math.min(100, Math.max(0, (elapsed / total) * 100));
-  }, [currentPrayer, nextPrayer, isBetweenPrayers, now]);
+  }, [currentPrayer, windowEndTime, now]);
 
   const fajrTime = prayers.find((p) => p.key === "fajr");
   const maghribTime = prayers.find((p) => p.key === "maghrib");
@@ -371,10 +382,10 @@ export default function Home() {
                     <p className="mt-1 text-sm text-white/60">
                       {t("home.startsAt")} {formatTime(nextPrayer.time)}
                     </p>
-                  ) : windowEnd ? (
+                  ) : windowEndTime ? (
                     <p className="mt-1 text-sm text-white/60">
                       {formatTime(currentPrayer.time)} —{" "}
-                      {formatTime(windowEnd.time)}
+                      {formatTime(windowEndTime)}
                     </p>
                   ) : null}
                 </div>

@@ -11,6 +11,7 @@ import {
   formatTime,
   getCountdown,
 } from "@/lib/prayerTimes";
+import { SunnahTimes } from "adhan";
 import { useLocationStore } from "@/store/location";
 import { useSettings } from "@/store/settings";
 
@@ -42,6 +43,28 @@ export default function PrayerTimesPage() {
   );
 
   const prayers = useMemo(() => buildPrayerEntries(times), [times]);
+
+  const sunnahTimes = useMemo(
+    () => (times ? new SunnahTimes(times) : null),
+    [times],
+  );
+
+  const prayerEndTimes = useMemo(() => {
+    const map = new Map<string, Date | null>();
+    if (!times) return map;
+    for (let i = 0; i < prayers.length; i++) {
+      const p = prayers[i];
+      if (p.key === "fajr") {
+        map.set(p.key, times.sunrise as Date);
+      } else if (p.key === "isha") {
+        map.set(p.key, sunnahTimes?.middleOfTheNight ?? null);
+      } else {
+        const next = prayers[i + 1];
+        map.set(p.key, next?.time ?? null);
+      }
+    }
+    return map;
+  }, [prayers, times, sunnahTimes]);
 
   const nextPrayer = useMemo(
     () => findNextPrayer(prayers, now),
@@ -116,6 +139,8 @@ export default function PrayerTimesPage() {
           {prayers.map((p) => {
             const isCurrent = currentPrayer?.name === p.name;
             const isNext = nextPrayer?.name === p.name;
+            const endTime =
+              p.key !== "sunrise" ? prayerEndTimes.get(p.key) : null;
             return (
               <div
                 key={p.key}
@@ -150,9 +175,16 @@ export default function PrayerTimesPage() {
                     {p.nameBn}
                   </p>
                 </div>
-                <span className="text-sm font-semibold tabular-nums text-text-primary dark:text-dark-text-primary">
-                  {formatTime(p.time)}
-                </span>
+                <div className="text-right">
+                  <span className="text-sm font-semibold tabular-nums text-text-primary dark:text-dark-text-primary">
+                    {formatTime(p.time)}
+                  </span>
+                  {endTime && (
+                    <span className="block text-xs tabular-nums text-text-muted dark:text-dark-text-muted">
+                      — {formatTime(endTime)}
+                    </span>
+                  )}
+                </div>
               </div>
             );
           })}
