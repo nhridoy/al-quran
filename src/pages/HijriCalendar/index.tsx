@@ -335,7 +335,7 @@ export default function HijriCalendar() {
                       className="flex shrink-0 flex-col items-center gap-0.5 rounded-xl bg-surface-alt px-3 py-2 text-xs dark:bg-dark-surface-alt"
                     >
                       <span className="font-medium text-text-secondary dark:text-dark-text-secondary">
-                        {p.name}
+                        {t(p.name)}
                       </span>
                       <span className="tabular-nums text-text dark:text-dark-text">
                         {formatTime(p.time)}

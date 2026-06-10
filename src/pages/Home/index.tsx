@@ -344,8 +344,12 @@ export default function Home() {
 
   const countdownCircleName = useMemo(() => {
     if (!currentPrayer) return "";
-    return isBetweenPrayers ? (nextPrayer?.name ?? "") : currentPrayer.name;
-  }, [currentPrayer, nextPrayer, isBetweenPrayers]);
+    return isBetweenPrayers
+      ? nextPrayer?.name
+        ? t(nextPrayer.name)
+        : ""
+      : t(currentPrayer.name);
+  }, [currentPrayer, nextPrayer, isBetweenPrayers, t]);
 
   return (
     <div
@@ -373,7 +377,9 @@ export default function Home() {
                         : `${t("home.now")}:`}
                     </span>
                     <span className="text-xl font-bold text-white">
-                      {isBetweenPrayers ? nextPrayer.name : currentPrayer.name}
+                      {isBetweenPrayers
+                        ? t(nextPrayer.name)
+                        : t(currentPrayer.name)}
                     </span>
                   </div>
                   {isBetweenPrayers ? (
@@ -472,7 +478,7 @@ export default function Home() {
                         isCurrent ? "text-white" : "text-white/70"
                       }`}
                     >
-                      {p.name}
+                      {t(p.name)}
                     </span>
                     <span
                       className={`text-center text-[10px] tabular-nums leading-tight ${

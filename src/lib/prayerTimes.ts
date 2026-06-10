@@ -10,7 +10,6 @@ import {
 export interface PrayerEntry {
   key: string;
   name: string;
-  nameBn: string;
   time: Date;
   icon: string;
 }
@@ -18,15 +17,14 @@ export interface PrayerEntry {
 export const PRAYER_NAMES: {
   key: "fajr" | "sunrise" | "dhuhr" | "asr" | "maghrib" | "isha";
   name: string;
-  nameBn: string;
   icon: string;
 }[] = [
-  { key: "fajr", name: "Fajr", nameBn: "ফজর", icon: "🌅" },
-  { key: "sunrise", name: "Sunrise", nameBn: "সূর্যোদয়", icon: "🌄" },
-  { key: "dhuhr", name: "Dhuhr", nameBn: "যোহর", icon: "☀️" },
-  { key: "asr", name: "Asr", nameBn: "আসর", icon: "🌤️" },
-  { key: "maghrib", name: "Maghrib", nameBn: "মাগরিব", icon: "🌇" },
-  { key: "isha", name: "Isha", nameBn: "ইশা", icon: "🌙" },
+  { key: "fajr", name: "prayerNames.fajr", icon: "🌅" },
+  { key: "sunrise", name: "prayerNames.sunrise", icon: "🌄" },
+  { key: "dhuhr", name: "prayerNames.dhuhr", icon: "☀️" },
+  { key: "asr", name: "prayerNames.asr", icon: "🌤️" },
+  { key: "maghrib", name: "prayerNames.maghrib", icon: "🌇" },
+  { key: "isha", name: "prayerNames.isha", icon: "🌙" },
 ];
 
 // Registry of calculation method factories.
@@ -141,4 +139,8 @@ export function buildPrayerWindowMap(
     }
   }
   return map;
+}
+
+export function getTahajjudTime(times: AdhanPrayerTimes): Date {
+  return new SunnahTimes(times).lastThirdOfTheNight;
 }

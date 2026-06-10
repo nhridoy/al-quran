@@ -11,6 +11,7 @@ import {
   findNextPrayer,
   formatTime,
   getCountdown,
+  getTahajjudTime,
 } from "@/lib/prayerTimes";
 import { useLocationStore } from "@/store/location";
 import { useSettings } from "@/store/settings";
@@ -48,6 +49,73 @@ export default function PrayerTimesPage() {
     () => (times ? buildPrayerWindowMap(prayers, times) : null),
     [prayers, times],
   );
+
+  const extendedPrayers = useMemo(() => {
+    if (!times) return [];
+    const byKey = (key: string) => prayers.find((p) => p.key === key);
+    const fajr = byKey("fajr");
+    const sunrise = byKey("sunrise");
+    const dhuhr = byKey("dhuhr");
+    const asr = byKey("asr");
+    const maghrib = byKey("maghrib");
+    const isha = byKey("isha");
+    if (!fajr || !sunrise || !dhuhr || !asr || !maghrib || !isha) return [];
+
+    const duhaTime = new Date(sunrise.time.getTime() + 15 * 60000);
+    const zawalStart = new Date(dhuhr.time.getTime() - 7 * 60000);
+    const tahajjudTime = getTahajjudTime(times);
+
+    return [
+      { ...fajr, endTime: prayerWindowMap?.get("fajr") ?? null },
+      { ...sunrise, endTime: null },
+      {
+        key: "forbidden-sunrise",
+        name: "prayerTimes.forbiddenTime",
+        time: sunrise.time,
+        icon: "\u26a0\ufe0f",
+        endTime: duhaTime,
+      },
+      {
+        key: "duha",
+        name: "prayerTimes.duha",
+        time: duhaTime,
+        icon: "\u2600\ufe0f",
+        endTime: null,
+      },
+      {
+        key: "forbidden-zawal",
+        name: "prayerTimes.forbiddenTime",
+        time: zawalStart,
+        icon: "\u26a0\ufe0f",
+        endTime: dhuhr.time,
+      },
+      { ...dhuhr, endTime: prayerWindowMap?.get("dhuhr") ?? null },
+      { ...asr, endTime: prayerWindowMap?.get("asr") ?? null },
+      {
+        key: "forbidden-asr",
+        name: "prayerTimes.forbiddenTime",
+        time: asr.time,
+        icon: "\u26a0\ufe0f",
+        endTime: maghrib.time,
+      },
+      {
+        key: "sunset",
+        name: "prayerTimes.sunset",
+        time: times.sunset,
+        icon: "\ud83c\udf07",
+        endTime: null,
+      },
+      { ...maghrib, endTime: prayerWindowMap?.get("maghrib") ?? null },
+      { ...isha, endTime: prayerWindowMap?.get("isha") ?? null },
+      {
+        key: "tahajjud",
+        name: "prayerTimes.tahajjud",
+        time: tahajjudTime,
+        icon: "\ud83c\udf19",
+        endTime: null,
+      },
+    ];
+  }, [times, prayers, prayerWindowMap]);
 
   const nextPrayer = useMemo(
     () => findNextPrayer(prayers, now),
@@ -101,7 +169,7 @@ export default function PrayerTimesPage() {
             {t("prayerTimes.nextPrayer")}
           </p>
           <div className="mt-1 flex items-baseline gap-2">
-            <span className="text-3xl font-bold">{nextPrayer.name}</span>
+            <span className="text-3xl font-bold">{t(nextPrayer.name)}</span>
             <span className="text-2xl font-semibold text-white/80">
               {formatTime(nextPrayer.time)}
             </span>
@@ -117,15 +185,11 @@ export default function PrayerTimesPage() {
         </div>
       )}
 
-      {prayers.length > 0 && (
+      {extendedPrayers.length > 0 && (
         <div className="space-y-2">
-          {prayers.map((p) => {
-            const isCurrent = currentPrayer?.name === p.name;
-            const isNext = nextPrayer?.name === p.name;
-            const endTime =
-              p.key !== "sunrise"
-                ? (prayerWindowMap?.get(p.key) ?? null)
-                : null;
+          {extendedPrayers.map((p) => {
+            const isCurrent = currentPrayer?.key === p.key;
+            const isNext = nextPrayer?.key === p.key;
             return (
               <div
                 key={p.key}
@@ -144,7 +208,7 @@ export default function PrayerTimesPage() {
                         : "text-text-primary dark:text-dark-text-primary"
                     }`}
                   >
-                    {p.name}
+                    {t(p.name)}
                     {isCurrent && (
                       <span className="ml-2 text-[10px] font-medium text-accent">
                         {t("prayerTimes.current")}
@@ -156,17 +220,14 @@ export default function PrayerTimesPage() {
                       </span>
                     )}
                   </p>
-                  <p className="text-xs text-text-muted dark:text-dark-text-muted">
-                    {p.nameBn}
-                  </p>
                 </div>
                 <div className="text-right">
                   <span className="text-sm font-semibold tabular-nums text-text-primary dark:text-dark-text-primary">
                     {formatTime(p.time)}
                   </span>
-                  {endTime && (
+                  {p.endTime && (
                     <span className="block text-xs tabular-nums text-text-muted dark:text-dark-text-muted">
-                      — {formatTime(endTime)}
+                      — {formatTime(p.endTime)}
                     </span>
                   )}
                 </div>

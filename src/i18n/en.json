@@ -87,6 +87,14 @@
     "donate": "Donate",
     "more": "More"
   },
+  "prayerNames": {
+    "fajr": "Fajr",
+    "sunrise": "Sunrise",
+    "dhuhr": "Dhuhr",
+    "asr": "Asr",
+    "maghrib": "Maghrib",
+    "isha": "Isha"
+  },
   "prayerTimes": {
     "pageTitle": "Prayer Times",
     "requestingLocation": "Requesting location for accurate prayer times...",
@@ -94,7 +102,11 @@
     "nextPrayer": "Next Prayer",
     "remaining": "remaining",
     "current": "Current",
-    "next": "Next"
+    "next": "Next",
+    "duha": "Salatul Duha",
+    "forbiddenTime": "Forbidden Time",
+    "sunset": "Sunset",
+    "tahajjud": "Tahajjud"
   },
   "qibla": {
     "pageTitle": "Qibla Finder",
