@@ -176,7 +176,7 @@ export default function StepLocation({
         {!locationGranted && !isDetecting && !error && (
           <div className="flex flex-1 flex-col animate-fade-in">
             <div className="flex flex-1 flex-col justify-center">
-              <div className="grid grid-cols-3 gap-2">
+              <div className="divide-x divide-white/10 grid grid-cols-3">
                 {[
                   {
                     icon: MdAccessTime,
@@ -190,12 +190,12 @@ export default function StepLocation({
                 ].map(({ icon: Icon, label }) => (
                   <div
                     key={label}
-                    className="flex flex-col items-center gap-1.5 rounded-lg border border-white/5 bg-white/[0.02] py-2.5"
+                    className="flex flex-col items-center gap-1.5 px-1 py-2 cursor-default select-none"
                   >
-                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/5 text-white/35">
+                    <div className="flex h-7 w-7 items-center justify-center rounded-md bg-white/[0.06] text-white/70">
                       <Icon className="text-sm" />
                     </div>
-                    <span className="text-[10px] font-medium text-white/30">
+                    <span className="text-[10px] font-medium text-white/70">
                       {label}
                     </span>
                   </div>
