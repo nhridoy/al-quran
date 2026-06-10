@@ -133,7 +133,8 @@ function PrayerCircle({
     <div className="relative flex flex-col items-center">
       <svg
         viewBox="0 0 120 120"
-        className="h-32 w-32 -rotate-90"
+        className="h-32 w-32"
+        style={{ transform: "scaleX(-1) rotate(-90deg)" }}
         role="img"
         aria-label={`${name} prayer countdown: ${countdown}`}
       >
