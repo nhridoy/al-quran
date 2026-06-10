@@ -305,13 +305,13 @@
     "semantic_hash": ""
   },
   "src/components/pages/Settings/PrayerSettings.tsx": {
-    "mtime": 1781015956.2783287,
-    "ast_hash": "5ec7c884def3964d46b4e3cf529227b6",
+    "mtime": 1781064509.8266752,
+    "ast_hash": "43d18ea5268f8ab048a5c7cc2c6fc63b",
     "semantic_hash": ""
   },
   "src/components/pages/Settings/ReadingSettings.tsx": {
-    "mtime": 1781015956.2803304,
-    "ast_hash": "e1a62aad52af13164a9b81000b9dfb37",
+    "mtime": 1781064509.4857628,
+    "ast_hash": "7d914180abd2ab269c2f90ed4c09d295",
     "semantic_hash": ""
   },
   "src/components/pages/Settings/SaveBar.tsx": {
@@ -330,8 +330,8 @@
     "semantic_hash": ""
   },
   "src/components/pages/Settings/TafsirSettings.tsx": {
-    "mtime": 1781015956.2868586,
-    "ast_hash": "772fbf5fe45e7597deb93ae3a522c1fa",
+    "mtime": 1781065019.097756,
+    "ast_hash": "953b437b534d9658d4b505bdb4b41c7d",
     "semantic_hash": ""
   },
   "src/components/pages/Surah/SurahHead.tsx": {
@@ -470,8 +470,8 @@
     "semantic_hash": ""
   },
   "src/components/ui/select.tsx": {
-    "mtime": 1781015956.364228,
-    "ast_hash": "b2d6ee52a7b44e01b775390a4b7eb78d",
+    "mtime": 1781064781.1348119,
+    "ast_hash": "4fc48124f2373096ffcad934ec3590e0",
     "semantic_hash": ""
   },
   "src/components/ui/separator.tsx": {

@@ -1,7 +1,7 @@
 # Graph Report - al-quran  (2026-06-10)
 
 ## Corpus Check
-- 221 files · ~217,565 words
+- 221 files · ~217,603 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `ab717ea5`
+- Built from commit: `7c806d6a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -199,16 +199,16 @@
 10. `settings` - 51 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `PrayerSettings()` --calls--> `useLocale()`  [INFERRED]
+  src/components/pages/Settings/PrayerSettings.tsx → src/i18n/LocaleContext.tsx
+- `ReadingSettings()` --calls--> `useLocale()`  [INFERRED]
+  src/components/pages/Settings/ReadingSettings.tsx → src/i18n/LocaleContext.tsx
+- `TafsirSettings()` --calls--> `useLocale()`  [INFERRED]
+  src/components/pages/Settings/TafsirSettings.tsx → src/i18n/LocaleContext.tsx
 - `ListSelectStep()` --calls--> `useLocale()`  [INFERRED]
   src/components/features/Onboarding/ListSelectStep.tsx → src/i18n/LocaleContext.tsx
 - `StepDone()` --calls--> `useLocale()`  [INFERRED]
   src/components/features/Onboarding/StepDone.tsx → src/i18n/LocaleContext.tsx
-- `StepLocation()` --calls--> `useLocale()`  [INFERRED]
-  src/components/features/Onboarding/StepLocation.tsx → src/i18n/LocaleContext.tsx
-- `StepPermissions()` --calls--> `useLocale()`  [INFERRED]
-  src/components/features/Onboarding/StepPermissions.tsx → src/i18n/LocaleContext.tsx
-- `AsmaUlHusna()` --calls--> `useLocale()`  [INFERRED]
-  src/pages/AsmaUlHusna/index.tsx → src/i18n/LocaleContext.tsx
 
 ## Import Cycles
 - None detected.
@@ -732,7 +732,7 @@ Cohesion: 0.15
 Nodes (5): GRID_ITEMS, GridItem, Home(), RandomContentItem, useRandomContent()
 
 ## Knowledge Gaps
-- **1575 isolated node(s):** `ListItem`, `ListSelectStepProps`, `Step`, `APP_LANGS`, `HADITH_LANGS` (+1570 more)
+- **1575 isolated node(s):** `PrayerSettingsProps`, `LANG_OPTIONS`, `ReadingSettingsProps`, `TafsirSettingsProps`, `ListItem` (+1570 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **41 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -740,14 +740,14 @@ Nodes (5): GRID_ITEMS, GridItem, Home(), RandomContentItem, useRandomContent()
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `useLocale()` connect `Community 18` to `Community 129`, `Community 135`, `Community 9`, `Community 138`, `Community 140`, `Community 141`, `Community 13`, `Community 143`, `Community 144`, `Community 155`, `Community 49`, `Community 58`, `Community 60`, `Community 66`, `Community 67`, `Community 74`, `Community 76`, `Community 89`, `Community 90`, `Community 94`, `Community 100`, `Community 106`, `Community 111`, `Community 112`, `Community 115`, `Community 116`, `Community 120`, `Community 121`, `Community 123`?**
-  _High betweenness centrality (0.161) - this node is a cross-community bridge._
+  _High betweenness centrality (0.173) - this node is a cross-community bridge._
 - **Why does `salah` connect `Community 1` to `Community 45`?**
-  _High betweenness centrality (0.056) - this node is a cross-community bridge._
+  _High betweenness centrality (0.069) - this node is a cross-community bridge._
 - **Why does `salah` connect `Community 0` to `Community 43`?**
-  _High betweenness centrality (0.044) - this node is a cross-community bridge._
+  _High betweenness centrality (0.057) - this node is a cross-community bridge._
 - **Are the 108 inferred relationships involving `cn()` (e.g. with `Accordion()` and `AccordionContent()`) actually correct?**
   _`cn()` has 108 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `ListItem`, `ListSelectStepProps`, `Step` to the rest of the system?**
+- **What connects `PrayerSettingsProps`, `LANG_OPTIONS`, `ReadingSettingsProps` to the rest of the system?**
   _1575 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.027777777777777776 - nodes in this community are weakly interconnected._
