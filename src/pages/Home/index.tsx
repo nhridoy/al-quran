@@ -1,4 +1,3 @@
-import { SunnahTimes } from "adhan";
 import type { ComponentType } from "react";
 import { useEffect, useMemo, useState } from "react";
 import { BiChevronRight } from "react-icons/bi";
@@ -35,6 +34,7 @@ import { useRandomContent } from "@/hooks/useRandomContent";
 import { useLocale } from "@/i18n";
 import {
   buildPrayerEntries,
+  buildPrayerWindowMap,
   computePrayerTimes,
   findCurrentPrayer,
   findNextPrayer,
@@ -292,19 +292,16 @@ export default function Home() {
 
   const isBetweenPrayers = currentPrayer?.key === nextPrayer?.key;
 
-  const sunnahTimes = useMemo(
-    () => (adhanTimes ? new SunnahTimes(adhanTimes) : null),
-    [adhanTimes],
+  const prayerWindowMap = useMemo(
+    () => (adhanTimes ? buildPrayerWindowMap(prayers, adhanTimes) : null),
+    [prayers, adhanTimes],
   );
 
   const windowEndTime = useMemo<Date | null>(() => {
-    if (!currentPrayer || !adhanTimes) return null;
-    if (currentPrayer.key === "fajr") return adhanTimes.sunrise as Date;
-    if (currentPrayer.key === "isha")
-      return sunnahTimes?.middleOfTheNight ?? null;
-    if (!nextPrayer || isBetweenPrayers) return null;
-    return nextPrayer.time;
-  }, [currentPrayer, nextPrayer, isBetweenPrayers, adhanTimes, sunnahTimes]);
+    if (!currentPrayer || !prayerWindowMap) return null;
+    if (isBetweenPrayers) return null;
+    return prayerWindowMap.get(currentPrayer.key) ?? null;
+  }, [currentPrayer, isBetweenPrayers, prayerWindowMap]);
 
   const countdownTargetTime = useMemo(() => {
     const target = isBetweenPrayers

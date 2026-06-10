@@ -4,6 +4,7 @@ import {
   type CalculationParameters,
   Coordinates,
   Madhab,
+  SunnahTimes,
 } from "adhan";
 
 export interface PrayerEntry {
@@ -119,4 +120,25 @@ export function findCurrentPrayer(
     if (p.time <= now) current = p;
   }
   return current;
+}
+
+export function buildPrayerWindowMap(
+  prayers: PrayerEntry[],
+  times: AdhanPrayerTimes,
+): Map<string, Date | null> {
+  const map = new Map<string, Date | null>();
+  if (prayers.length === 0 || !times) return map;
+  const sunnah = new SunnahTimes(times);
+  for (let i = 0; i < prayers.length; i++) {
+    const p = prayers[i];
+    if (p.key === "fajr") {
+      map.set(p.key, times.sunrise);
+    } else if (p.key === "isha") {
+      map.set(p.key, sunnah.middleOfTheNight);
+    } else {
+      const next = prayers[i + 1];
+      map.set(p.key, next?.time ?? null);
+    }
+  }
+  return map;
 }

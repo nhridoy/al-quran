@@ -1,4 +1,3 @@
-import { SunnahTimes } from "adhan";
 import { useEffect, useMemo, useState } from "react";
 import { PageShell } from "@/components/common/PageShell/PageShell";
 import { Button } from "@/components/ui/button";
@@ -6,6 +5,7 @@ import { useLocale } from "@/i18n";
 import { PRAYER_REFRESH_INTERVAL } from "@/lib/const";
 import {
   buildPrayerEntries,
+  buildPrayerWindowMap,
   computePrayerTimes,
   findCurrentPrayer,
   findNextPrayer,
@@ -44,27 +44,10 @@ export default function PrayerTimesPage() {
 
   const prayers = useMemo(() => buildPrayerEntries(times), [times]);
 
-  const sunnahTimes = useMemo(
-    () => (times ? new SunnahTimes(times) : null),
-    [times],
+  const prayerWindowMap = useMemo(
+    () => (times ? buildPrayerWindowMap(prayers, times) : null),
+    [prayers, times],
   );
-
-  const prayerEndTimes = useMemo(() => {
-    const map = new Map<string, Date | null>();
-    if (!times) return map;
-    for (let i = 0; i < prayers.length; i++) {
-      const p = prayers[i];
-      if (p.key === "fajr") {
-        map.set(p.key, times.sunrise as Date);
-      } else if (p.key === "isha") {
-        map.set(p.key, sunnahTimes?.middleOfTheNight ?? null);
-      } else {
-        const next = prayers[i + 1];
-        map.set(p.key, next?.time ?? null);
-      }
-    }
-    return map;
-  }, [prayers, times, sunnahTimes]);
 
   const nextPrayer = useMemo(
     () => findNextPrayer(prayers, now),
@@ -140,7 +123,7 @@ export default function PrayerTimesPage() {
             const isCurrent = currentPrayer?.name === p.name;
             const isNext = nextPrayer?.name === p.name;
             const endTime =
-              p.key !== "sunrise" ? prayerEndTimes.get(p.key) : null;
+               p.key !== "sunrise" ? prayerWindowMap?.get(p.key) ?? null : null;
             return (
               <div
                 key={p.key}
