@@ -324,7 +324,7 @@ export default function Home() {
     const total = endTime.getTime() - currentPrayer.time.getTime();
     if (total <= 0) return 0;
     const elapsed = now.getTime() - currentPrayer.time.getTime();
-    return Math.min(100, Math.max(0, (elapsed / total) * 100));
+    return Math.min(100, Math.max(0, 100 - (elapsed / total) * 100));
   }, [currentPrayer, windowEndTime, now]);
 
   const fajrTime = prayers.find((p) => p.key === "fajr");
