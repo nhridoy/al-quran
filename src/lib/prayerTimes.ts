@@ -111,11 +111,16 @@ export function findNextPrayer(
 export function findCurrentPrayer(
   prayers: PrayerEntry[],
   now: Date,
+  windowEndMap?: Map<string, Date | null>,
 ): PrayerEntry | null {
   if (prayers.length === 0) return null;
   let current = prayers[0];
   for (const p of prayers) {
-    if (p.time <= now) current = p;
+    if (p.time <= now) {
+      const end = windowEndMap?.get(p.key) ?? null;
+      if (end && now > end) continue;
+      current = p;
+    }
   }
   return current;
 }

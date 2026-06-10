@@ -282,9 +282,14 @@ export default function Home() {
     [prayers],
   );
 
+  const prayerWindowMap = useMemo(
+    () => (adhanTimes ? buildPrayerWindowMap(prayers, adhanTimes) : null),
+    [prayers, adhanTimes],
+  );
+
   const currentPrayer = useMemo(
-    () => findCurrentPrayer(filteredPrayers, now),
-    [filteredPrayers, now],
+    () => findCurrentPrayer(filteredPrayers, now, prayerWindowMap ?? undefined),
+    [filteredPrayers, now, prayerWindowMap],
   );
   const nextPrayer = useMemo(
     () => findNextPrayer(filteredPrayers, now),
@@ -292,11 +297,6 @@ export default function Home() {
   );
 
   const isBetweenPrayers = currentPrayer?.key === nextPrayer?.key;
-
-  const prayerWindowMap = useMemo(
-    () => (adhanTimes ? buildPrayerWindowMap(prayers, adhanTimes) : null),
-    [prayers, adhanTimes],
-  );
 
   const windowEndTime = useMemo<Date | null>(() => {
     if (!currentPrayer || !prayerWindowMap) return null;
@@ -317,7 +317,34 @@ export default function Home() {
   );
 
   const countdownPercentage = useMemo(() => {
-    if (!currentPrayer || !windowEndTime) return 0;
+    if (!currentPrayer) return 0;
+
+    if (
+      isBetweenPrayers &&
+      nextPrayer &&
+      prayerWindowMap &&
+      countdownTargetTime
+    ) {
+      const idx = filteredPrayers.findIndex((p) => p.key === nextPrayer.key);
+      const prevKey =
+        idx > 0
+          ? filteredPrayers[idx - 1].key
+          : filteredPrayers[filteredPrayers.length - 1].key;
+      let gapStart = prayerWindowMap.get(prevKey) ?? null;
+      if (gapStart && gapStart > now) {
+        gapStart = new Date(gapStart.getTime() - 86400000);
+      }
+      if (gapStart) {
+        const total = countdownTargetTime.getTime() - gapStart.getTime();
+        if (total > 0) {
+          const elapsed = now.getTime() - gapStart.getTime();
+          return Math.min(100, Math.max(0, 100 - (elapsed / total) * 100));
+        }
+      }
+      return 0;
+    }
+
+    if (!windowEndTime) return 0;
     const endTime =
       windowEndTime <= currentPrayer.time
         ? new Date(windowEndTime.getTime() + 86400000)
@@ -326,7 +353,16 @@ export default function Home() {
     if (total <= 0) return 0;
     const elapsed = now.getTime() - currentPrayer.time.getTime();
     return Math.min(100, Math.max(0, 100 - (elapsed / total) * 100));
-  }, [currentPrayer, windowEndTime, now]);
+  }, [
+    currentPrayer,
+    nextPrayer,
+    windowEndTime,
+    now,
+    isBetweenPrayers,
+    prayerWindowMap,
+    filteredPrayers,
+    countdownTargetTime,
+  ]);
 
   const fajrTime = prayers.find((p) => p.key === "fajr");
   const maghribTime = prayers.find((p) => p.key === "maghrib");
