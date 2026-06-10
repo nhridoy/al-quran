@@ -615,13 +615,13 @@
     "semantic_hash": ""
   },
   "src/i18n/bn.json": {
-    "mtime": 1781023677.0589209,
-    "ast_hash": "2f2beffdf47d80d20e9cae48d765a6b7",
+    "mtime": 1781078506.7755134,
+    "ast_hash": "00b4d5b4c2784851cb4a54e3d355332b",
     "semantic_hash": ""
   },
   "src/i18n/en.json": {
-    "mtime": 1781023658.5448287,
-    "ast_hash": "ce6e8421bfb5dfd14bf1adbb0383d5e2",
+    "mtime": 1781078429.908657,
+    "ast_hash": "3cca73af8bf904954ef3e729f6947c15",
     "semantic_hash": ""
   },
   "src/i18n/index.ts": {
@@ -685,8 +685,8 @@
     "semantic_hash": ""
   },
   "src/lib/prayerTimes.ts": {
-    "mtime": 1781074116.551156,
-    "ast_hash": "6acbb4f59223e21abfc6d4569d30a48d",
+    "mtime": 1781078419.5809786,
+    "ast_hash": "e082930877b42bea911c0ae758d795d7",
     "semantic_hash": ""
   },
   "src/lib/qibla.ts": {
@@ -800,13 +800,13 @@
     "semantic_hash": ""
   },
   "src/pages/HijriCalendar/index.tsx": {
-    "mtime": 1781015956.6093578,
-    "ast_hash": "9420f5b132e6a098bd8e1e0744d3d973",
+    "mtime": 1781078744.9243574,
+    "ast_hash": "e58a1a83418fd2b185bd3c966e82a402",
     "semantic_hash": ""
   },
   "src/pages/Home/index.tsx": {
-    "mtime": 1781074221.2274551,
-    "ast_hash": "3a58a3ab68fc1d6c5944466a5368edf9",
+    "mtime": 1781078804.837968,
+    "ast_hash": "3bdcc8559e044b6cba224ffe20ad54f1",
     "semantic_hash": ""
   },
   "src/pages/IslamicNames/index.tsx": {
@@ -835,8 +835,8 @@
     "semantic_hash": ""
   },
   "src/pages/PrayerTimes/index.tsx": {
-    "mtime": 1781074713.0914195,
-    "ast_hash": "04de09cc096bb11d129aac560ba5c4af",
+    "mtime": 1781080615.0926144,
+    "ast_hash": "6788c9da4182fc04ed4926ffe95b2dbc",
     "semantic_hash": ""
   },
   "src/pages/PrayerTracker/index.tsx": {

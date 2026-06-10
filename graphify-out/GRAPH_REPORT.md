@@ -1,16 +1,16 @@
 # Graph Report - al-quran  (2026-06-10)
 
 ## Corpus Check
-- 221 files · ~217,756 words
+- 221 files · ~217,986 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2412 nodes · 2648 edges · 184 communities (145 shown, 39 thin omitted)
+- 2413 nodes · 2649 edges · 187 communities (146 shown, 41 thin omitted)
 - Extraction: 90% EXTRACTED · 10% INFERRED · 0% AMBIGUOUS · INFERRED: 262 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `bf65eaa2`
+- Built from commit: `0e0ca1b7`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -170,6 +170,7 @@
 - [[_COMMUNITY_Community 154|Community 154]]
 - [[_COMMUNITY_Community 155|Community 155]]
 - [[_COMMUNITY_Community 156|Community 156]]
+- [[_COMMUNITY_Community 157|Community 157]]
 - [[_COMMUNITY_Community 158|Community 158]]
 - [[_COMMUNITY_Community 159|Community 159]]
 - [[_COMMUNITY_Community 160|Community 160]]
@@ -180,6 +181,7 @@
 - [[_COMMUNITY_Community 165|Community 165]]
 - [[_COMMUNITY_Community 166|Community 166]]
 - [[_COMMUNITY_Community 167|Community 167]]
+- [[_COMMUNITY_Community 168|Community 168]]
 - [[_COMMUNITY_Community 171|Community 171]]
 - [[_COMMUNITY_Community 173|Community 173]]
 - [[_COMMUNITY_Community 177|Community 177]]
@@ -187,6 +189,7 @@
 - [[_COMMUNITY_Community 179|Community 179]]
 - [[_COMMUNITY_Community 180|Community 180]]
 - [[_COMMUNITY_Community 181|Community 181]]
+- [[_COMMUNITY_Community 186|Community 186]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `cn()` - 109 edges
@@ -201,21 +204,21 @@
 10. `settings` - 51 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `PrayerSettings()` --calls--> `useLocale()`  [INFERRED]
-  src/components/pages/Settings/PrayerSettings.tsx → src/i18n/LocaleContext.tsx
-- `ReadingSettings()` --calls--> `useLocale()`  [INFERRED]
-  src/components/pages/Settings/ReadingSettings.tsx → src/i18n/LocaleContext.tsx
-- `TafsirSettings()` --calls--> `useLocale()`  [INFERRED]
-  src/components/pages/Settings/TafsirSettings.tsx → src/i18n/LocaleContext.tsx
 - `ListSelectStep()` --calls--> `useLocale()`  [INFERRED]
   src/components/features/Onboarding/ListSelectStep.tsx → src/i18n/LocaleContext.tsx
 - `StepDone()` --calls--> `useLocale()`  [INFERRED]
   src/components/features/Onboarding/StepDone.tsx → src/i18n/LocaleContext.tsx
+- `StepLocation()` --calls--> `useLocale()`  [INFERRED]
+  src/components/features/Onboarding/StepLocation.tsx → src/i18n/LocaleContext.tsx
+- `StepPermissions()` --calls--> `useLocale()`  [INFERRED]
+  src/components/features/Onboarding/StepPermissions.tsx → src/i18n/LocaleContext.tsx
+- `AsmaUlHusna()` --calls--> `useLocale()`  [INFERRED]
+  src/pages/AsmaUlHusna/index.tsx → src/i18n/LocaleContext.tsx
 
 ## Import Cycles
 - None detected.
 
-## Communities (184 total, 39 thin omitted)
+## Communities (187 total, 41 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.03
@@ -291,7 +294,7 @@ Nodes (27): D — Dependency Inversion Principle, I — Interface Segregation Pr
 
 ### Community 18 - "Community 18"
 Cohesion: 0.07
-Nodes (16): About(), DuaCategory(), credits, DataExport(), Donation(), useLocale(), OfflineBanner(), Paras() (+8 more)
+Nodes (17): About(), DuaCategory(), credits, DataExport(), Donation(), useLocale(), OfflineBanner(), Paras() (+9 more)
 
 ### Community 19 - "Community 19"
 Cohesion: 0.08
@@ -302,8 +305,8 @@ Cohesion: 0.08
 Nodes (25): goals, defaultLabel, headerTitle, label, labelPlaceholder, metric, metricJuz, metricMinutes (+17 more)
 
 ### Community 21 - "Community 21"
-Cohesion: 0.08
-Nodes (24): 2.1 Prayer Times, 2.2 Qibla Finder, 2.3 Dua Collection, 2.4 Multiple Qaris, 2.5 Last 10 Surahs, AI Instructions, AI Instructions, AI Instructions (+16 more)
+Cohesion: 0.12
+Nodes (17): 2.2 Qibla Finder, 2.3 Dua Collection, 2.4 Multiple Qaris, 2.5 Last 10 Surahs, AI Instructions, AI Instructions, AI Instructions, AI Instructions (+9 more)
 
 ### Community 22 - "Community 22"
 Cohesion: 0.09
@@ -330,12 +333,12 @@ Cohesion: 0.06
 Nodes (33): home, dailyReflection, didYouKnow, dua, fastingCompleted, goalCount, greetingAfternoon, greetingEvening (+25 more)
 
 ### Community 28 - "Community 28"
-Cohesion: 0.11
-Nodes (18): bookmarks, ayahLabel, ayahsBookmarked, clearAllButton, clearAllConfirm, clearAllMessage, clearAllTitle, clearSurahConfirm (+10 more)
+Cohesion: 0.29
+Nodes (7): bookmarks, ayahsBookmarked, clearAllButton, clearSurahMessage, clearSurahTitle, headerTitle, pageTitle
 
 ### Community 29 - "Community 29"
-Cohesion: 0.11
-Nodes (18): bookmarks, ayahLabel, ayahsBookmarked, clearAllButton, clearAllConfirm, clearAllMessage, clearAllTitle, clearSurahConfirm (+10 more)
+Cohesion: 0.29
+Nodes (7): bookmarks, ayahsBookmarked, clearAllButton, clearSurahMessage, clearSurahTitle, headerTitle, pageTitle
 
 ### Community 30 - "Community 30"
 Cohesion: 0.11
@@ -398,8 +401,8 @@ Cohesion: 0.12
 Nodes (16): taraweeh, dailyTarget, day, days, goal, headerTitle, lastRecorded, notRamadan (+8 more)
 
 ### Community 45 - "Community 45"
-Cohesion: 0.11
-Nodes (18): error, title, tryAgain, unexpected, lastTen, pageTitle, subtitle, verses (+10 more)
+Cohesion: 0.10
+Nodes (20): error, title, tryAgain, unexpected, language, bn, en, headerSubtitle (+12 more)
 
 ### Community 46 - "Community 46"
 Cohesion: 0.12
@@ -414,8 +417,8 @@ Cohesion: 0.12
 Nodes (9): DropdownMenuCheckboxItem(), DropdownMenuContent(), DropdownMenuItem(), DropdownMenuLabel(), DropdownMenuRadioItem(), DropdownMenuSeparator(), DropdownMenuShortcut(), DropdownMenuSubContent() (+1 more)
 
 ### Community 49 - "Community 49"
-Cohesion: 0.15
-Nodes (11): FastingCalendar(), Onboarding(), Settings(), App(), AppContent(), LocaleSync(), RamadanModeController(), ThemeController() (+3 more)
+Cohesion: 0.13
+Nodes (13): FastingCalendar(), getCountdown(), Onboarding(), PrayerTimesPage(), Settings(), App(), AppContent(), LocaleSync() (+5 more)
 
 ### Community 50 - "Community 50"
 Cohesion: 0.13
@@ -450,16 +453,16 @@ Cohesion: 0.14
 Nodes (14): names, addFavorite, filterAll, filterBoys, filterFavorites, filterGirls, headerSubtitle, headerTitle (+6 more)
 
 ### Community 58 - "Community 58"
-Cohesion: 0.09
-Nodes (10): ListItem, ListSelectStep(), ListSelectStepProps, APP_LANGS, HADITH_LANGS, Step, StepDone(), StepLocation() (+2 more)
+Cohesion: 0.12
+Nodes (9): ListItem, ListSelectStep(), ListSelectStepProps, APP_LANGS, HADITH_LANGS, Step, StepDone(), StepLocation() (+1 more)
 
 ### Community 59 - "Community 59"
 Cohesion: 0.14
 Nodes (13): Avatar always needs AvatarFallback, Button has no isPending or isLoading prop, Callouts use Alert, Card structure, Choosing between overlay components, Component Composition, Contents, Dialog, Sheet, and Drawer always need a Title (+5 more)
 
 ### Community 60 - "Community 60"
-Cohesion: 0.18
-Nodes (8): DownloadsPage(), formatBytes(), SurahDownloadCard, SurahDownloadCardProps, DataLoader(), DownloadItem, DownloadsState, useDownloadsStore
+Cohesion: 0.15
+Nodes (9): DownloadsPage(), formatBytes(), SurahDownloadCard, SurahDownloadCardProps, useSurahs(), DataLoader(), DownloadItem, DownloadsState (+1 more)
 
 ### Community 61 - "Community 61"
 Cohesion: 0.15
@@ -482,8 +485,8 @@ Cohesion: 0.17
 Nodes (12): surah, filterPlaceholder, loading, madinah, makkah, nextAria, notFound, pageTitle (+4 more)
 
 ### Community 66 - "Community 66"
-Cohesion: 0.07
-Nodes (13): GRID_ITEMS, GridItem, Home(), RandomContentItem, useRandomContent(), computePrayerTimes(), formatTime(), getAdhanMethod() (+5 more)
+Cohesion: 0.08
+Nodes (11): GRID_ITEMS, GridItem, Home(), RandomContentItem, useRandomContent(), computePrayerTimes(), formatTime(), getAdhanMethod() (+3 more)
 
 ### Community 67 - "Community 67"
 Cohesion: 0.11
@@ -546,8 +549,8 @@ Cohesion: 0.22
 Nodes (5): Ayahs, AyahsProps, AyahTafsirProps, ParaHeader, ParaHeadProps
 
 ### Community 82 - "Community 82"
-Cohesion: 0.22
-Nodes (9): 1.3 Share (Wire existing UI), 1.4 Enhanced Settings, AI Instructions, AI Instructions, Files, Files, Implementation, Implementation (+1 more)
+Cohesion: 0.15
+Nodes (13): 1.3 Share (Wire existing UI), 1.4 Enhanced Settings, 1.7 Tasbih Counter, AI Instructions, AI Instructions, AI Instructions, Files, Files (+5 more)
 
 ### Community 83 - "Community 83"
 Cohesion: 0.22
@@ -602,16 +605,16 @@ Cohesion: 0.33
 Nodes (6): language, bn, en, headerSubtitle, headerTitle, pageTitle
 
 ### Community 96 - "Community 96"
-Cohesion: 0.25
-Nodes (8): prayerTimes, current, locationError, next, nextPrayer, pageTitle, remaining, requestingLocation
+Cohesion: 0.17
+Nodes (12): prayerTimes, current, duha, forbiddenTime, locationError, next, nextPrayer, pageTitle (+4 more)
 
 ### Community 97 - "Community 97"
 Cohesion: 0.25
 Nodes (8): export, exportButton, exportDescription, exportSuccess, headerSubtitle, headerTitle, pageTitle, storesCount
 
 ### Community 98 - "Community 98"
-Cohesion: 0.25
-Nodes (8): prayerTimes, current, locationError, next, nextPrayer, pageTitle, remaining, requestingLocation
+Cohesion: 0.17
+Nodes (12): prayerTimes, current, duha, forbiddenTime, locationError, next, nextPrayer, pageTitle (+4 more)
 
 ### Community 99 - "Community 99"
 Cohesion: 0.32
@@ -634,8 +637,8 @@ Cohesion: 0.29
 Nodes (7): quranProgress, juzLabel, pageTitle, perJuz, surahCount, surahs, title
 
 ### Community 105 - "Community 105"
-Cohesion: 0.33
-Nodes (6): language, bn, en, headerSubtitle, headerTitle, pageTitle
+Cohesion: 0.29
+Nodes (7): 2.1 Prayer Times, AI Instructions, Data Flow, Dependencies, Files, GPS Implementation, UI
 
 ### Community 106 - "Community 106"
 Cohesion: 0.29
@@ -669,6 +672,10 @@ Nodes (4): BookmarkRow, BookmarkRowProps, SurahGroupItem(), SurahGroupItemProps
 Cohesion: 0.33
 Nodes (6): 0.2 Centralized App Settings, AI Instructions, Dependencies, Files, Implementation, Verify
 
+### Community 116 - "Community 116"
+Cohesion: 0.29
+Nodes (7): prayerNames, asr, dhuhr, fajr, isha, maghrib, sunrise
+
 ### Community 117 - "Community 117"
 Cohesion: 0.40
 Nodes (5): Alert(), AlertAction(), AlertDescription(), AlertTitle(), alertVariants
@@ -682,8 +689,8 @@ Cohesion: 0.40
 Nodes (5): Tabs(), TabsContent(), TabsList(), tabsListVariants, TabsTrigger()
 
 ### Community 120 - "Community 120"
-Cohesion: 0.22
-Nodes (5): HadithCollections(), SUPPORTED_LANGUAGES, useDebounce(), useSurahs(), Search()
+Cohesion: 0.29
+Nodes (4): HadithCollections(), SUPPORTED_LANGUAGES, useDebounce(), Search()
 
 ### Community 121 - "Community 121"
 Cohesion: 0.31
@@ -717,6 +724,10 @@ Nodes (5): 1.1 Hijri Date Display, AI Instructions, Dependencies, Files, Impleme
 Cohesion: 0.40
 Nodes (5): 1.2 Bookmarks (Wire UI + Data), AI Instructions, Bookmarks Page, Files, Implementation
 
+### Community 135 - "Community 135"
+Cohesion: 0.29
+Nodes (7): prayerNames, asr, dhuhr, fajr, isha, maghrib, sunrise
+
 ### Community 138 - "Community 138"
 Cohesion: 0.50
 Nodes (3): AppearanceSettings(), AppearanceSettingsProps, THEME_OPTIONS
@@ -729,10 +740,6 @@ Nodes (5): 1.6 Asma ul-Husna (99 Names), AI Instructions, Data (sample structure
 Cohesion: 0.50
 Nodes (3): HADITH_LANG_OPTIONS, HadithSettings(), HadithSettingsProps
 
-### Community 141 - "Community 141"
-Cohesion: 0.50
-Nodes (3): LANG_OPTIONS, ReadingSettings(), ReadingSettingsProps
-
 ### Community 143 - "Community 143"
 Cohesion: 0.67
 Nodes (3): TaraweehTracker(), TARGET_OPTIONS, useTaraweehData()
@@ -743,30 +750,30 @@ Nodes (4): 1.5 Verse Text Search, AI Instructions, Files, Implementation
 
 ### Community 147 - "Community 147"
 Cohesion: 0.50
-Nodes (4): 1.7 Tasbih Counter, AI Instructions, Files, Implementation
+Nodes (4): update, dismiss, newVersion, refresh
 
 ### Community 156 - "Community 156"
 Cohesion: 0.50
 Nodes (3): AppLanguageSettings(), AppLanguageSettingsProps, LANGUAGE_OPTIONS
 
 ## Knowledge Gaps
-- **1575 isolated node(s):** `PrayerEntry`, `PRAYER_NAMES`, `methodRegistry`, `GridItem`, `GRID_ITEMS` (+1570 more)
+- **1573 isolated node(s):** `streakDays`, `readingGoals`, `surahsReadToday`, `noReadingToday`, `goalCount` (+1568 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **39 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **41 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `useLocale()` connect `Community 18` to `Community 129`, `Community 135`, `Community 9`, `Community 138`, `Community 140`, `Community 141`, `Community 13`, `Community 143`, `Community 155`, `Community 156`, `Community 49`, `Community 58`, `Community 60`, `Community 66`, `Community 67`, `Community 74`, `Community 76`, `Community 89`, `Community 94`, `Community 100`, `Community 106`, `Community 108`, `Community 111`, `Community 112`, `Community 115`, `Community 116`, `Community 120`, `Community 121`, `Community 122`, `Community 123`?**
-  _High betweenness centrality (0.183) - this node is a cross-community bridge._
+- **Why does `useLocale()` connect `Community 18` to `Community 129`, `Community 9`, `Community 138`, `Community 140`, `Community 13`, `Community 143`, `Community 155`, `Community 156`, `Community 157`, `Community 168`, `Community 49`, `Community 58`, `Community 186`, `Community 60`, `Community 67`, `Community 74`, `Community 76`, `Community 89`, `Community 94`, `Community 100`, `Community 106`, `Community 108`, `Community 111`, `Community 112`, `Community 115`, `Community 120`, `Community 121`, `Community 122`, `Community 123`?**
+  _High betweenness centrality (0.202) - this node is a cross-community bridge._
 - **Why does `salah` connect `Community 1` to `Community 45`?**
-  _High betweenness centrality (0.063) - this node is a cross-community bridge._
+  _High betweenness centrality (0.052) - this node is a cross-community bridge._
 - **Why does `salah` connect `Community 0` to `Community 43`?**
-  _High betweenness centrality (0.057) - this node is a cross-community bridge._
+  _High betweenness centrality (0.045) - this node is a cross-community bridge._
 - **Are the 108 inferred relationships involving `cn()` (e.g. with `Accordion()` and `AccordionContent()`) actually correct?**
   _`cn()` has 108 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `PrayerEntry`, `PRAYER_NAMES`, `methodRegistry` to the rest of the system?**
-  _1575 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `streakDays`, `readingGoals`, `surahsReadToday` to the rest of the system?**
+  _1573 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.027777777777777776 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
