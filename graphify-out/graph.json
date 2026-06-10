@@ -4,12 +4,138 @@
   "graph": {},
   "nodes": [
     {
+      "label": "prayerTimes.ts",
+      "file_type": "code",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L1",
+      "id": "lib_prayertimes",
+      "community": 66,
+      "norm_label": "prayertimes.ts"
+    },
+    {
+      "label": "PrayerEntry",
+      "file_type": "code",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L10",
+      "id": "lib_prayertimes_prayerentry",
+      "community": 66,
+      "norm_label": "prayerentry"
+    },
+    {
+      "label": "PRAYER_NAMES",
+      "file_type": "code",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L18",
+      "id": "lib_prayertimes_prayer_names",
+      "community": 66,
+      "norm_label": "prayer_names"
+    },
+    {
+      "label": "methodRegistry",
+      "file_type": "code",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L35",
+      "id": "lib_prayertimes_methodregistry",
+      "community": 66,
+      "norm_label": "methodregistry"
+    },
+    {
+      "label": "registerCalculationMethod()",
+      "file_type": "code",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L44",
+      "id": "lib_prayertimes_registercalculationmethod",
+      "community": 66,
+      "norm_label": "registercalculationmethod()"
+    },
+    {
+      "label": "getAdhanMethod()",
+      "file_type": "code",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L51",
+      "id": "lib_prayertimes_getadhanmethod",
+      "community": 66,
+      "norm_label": "getadhanmethod()"
+    },
+    {
+      "label": "formatTime()",
+      "file_type": "code",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L56",
+      "id": "lib_prayertimes_formattime",
+      "community": 66,
+      "norm_label": "formattime()"
+    },
+    {
+      "label": "getPrayerTime()",
+      "file_type": "code",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L64",
+      "id": "lib_prayertimes_getprayertime",
+      "community": 66,
+      "norm_label": "getprayertime()"
+    },
+    {
+      "label": "getCountdown()",
+      "file_type": "code",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L71",
+      "id": "lib_prayertimes_getcountdown",
+      "community": 66,
+      "norm_label": "getcountdown()"
+    },
+    {
+      "label": "computePrayerTimes()",
+      "file_type": "code",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L80",
+      "id": "lib_prayertimes_computeprayertimes",
+      "community": 66,
+      "norm_label": "computeprayertimes()"
+    },
+    {
+      "label": "buildPrayerEntries()",
+      "file_type": "code",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L93",
+      "id": "lib_prayertimes_buildprayerentries",
+      "community": 66,
+      "norm_label": "buildprayerentries()"
+    },
+    {
+      "label": "findNextPrayer()",
+      "file_type": "code",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L103",
+      "id": "lib_prayertimes_findnextprayer",
+      "community": 66,
+      "norm_label": "findnextprayer()"
+    },
+    {
+      "label": "findCurrentPrayer()",
+      "file_type": "code",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L113",
+      "id": "lib_prayertimes_findcurrentprayer",
+      "community": 66,
+      "norm_label": "findcurrentprayer()"
+    },
+    {
+      "label": "buildPrayerWindowMap()",
+      "file_type": "code",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L125",
+      "id": "lib_prayertimes_buildprayerwindowmap",
+      "community": 66,
+      "norm_label": "buildprayerwindowmap()"
+    },
+    {
       "label": "index.tsx",
       "file_type": "code",
       "source_file": "src/pages/Home/index.tsx",
       "source_location": "L1",
       "id": "home_index",
-      "community": 168,
+      "community": 66,
       "norm_label": "index.tsx"
     },
     {
@@ -18,7 +144,7 @@
       "source_file": "src/pages/Home/index.tsx",
       "source_location": "L49",
       "id": "home_index_griditem",
-      "community": 168,
+      "community": 66,
       "norm_label": "griditem"
     },
     {
@@ -27,7 +153,7 @@
       "source_file": "src/pages/Home/index.tsx",
       "source_location": "L55",
       "id": "home_index_grid_items",
-      "community": 168,
+      "community": 66,
       "norm_label": "grid_items"
     },
     {
@@ -36,7 +162,7 @@
       "source_file": "src/pages/Home/index.tsx",
       "source_location": "L73",
       "id": "home_index_facalculator",
-      "community": 168,
+      "community": 66,
       "norm_label": "facalculator()"
     },
     {
@@ -45,7 +171,7 @@
       "source_file": "src/pages/Home/index.tsx",
       "source_location": "L89",
       "id": "home_index_gethijridate",
-      "community": 168,
+      "community": 66,
       "norm_label": "gethijridate()"
     },
     {
@@ -54,7 +180,7 @@
       "source_file": "src/pages/Home/index.tsx",
       "source_location": "L102",
       "id": "home_index_getgregoriandate",
-      "community": 168,
+      "community": 66,
       "norm_label": "getgregoriandate()"
     },
     {
@@ -63,7 +189,7 @@
       "source_file": "src/pages/Home/index.tsx",
       "source_location": "L111",
       "id": "home_index_gettimebasedgreeting",
-      "community": 168,
+      "community": 66,
       "norm_label": "gettimebasedgreeting()"
     },
     {
@@ -72,7 +198,7 @@
       "source_file": "src/pages/Home/index.tsx",
       "source_location": "L119",
       "id": "home_index_prayercircle",
-      "community": 168,
+      "community": 66,
       "norm_label": "prayercircle()"
     },
     {
@@ -81,7 +207,7 @@
       "source_file": "src/pages/Home/index.tsx",
       "source_location": "L183",
       "id": "home_index_readingstreakwidget",
-      "community": 168,
+      "community": 66,
       "norm_label": "readingstreakwidget()"
     },
     {
@@ -90,7 +216,7 @@
       "source_file": "src/pages/Home/index.tsx",
       "source_location": "L232",
       "id": "home_index_home",
-      "community": 168,
+      "community": 66,
       "norm_label": "home()"
     },
     {
@@ -9755,7 +9881,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useRandomContent.ts",
       "source_location": "L1",
-      "community": 168,
+      "community": 66,
       "norm_label": "userandomcontent.ts",
       "id": "hooks_userandomcontent"
     },
@@ -9764,7 +9890,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useRandomContent.ts",
       "source_location": "L4",
-      "community": 168,
+      "community": 66,
       "norm_label": "randomcontentitem",
       "id": "hooks_userandomcontent_randomcontentitem"
     },
@@ -9773,7 +9899,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useRandomContent.ts",
       "source_location": "L24",
-      "community": 168,
+      "community": 66,
       "norm_label": "userandomcontent()",
       "id": "hooks_userandomcontent_userandomcontent"
     },
@@ -10826,7 +10952,7 @@
       "file_type": "code",
       "source_file": "src/pages/HijriCalendar/index.tsx",
       "source_location": "L1",
-      "community": 49,
+      "community": 122,
       "norm_label": "index.tsx",
       "id": "hijricalendar_index"
     },
@@ -10835,7 +10961,7 @@
       "file_type": "code",
       "source_file": "src/pages/HijriCalendar/index.tsx",
       "source_location": "L20",
-      "community": 49,
+      "community": 122,
       "norm_label": "buildemptycells()",
       "id": "hijricalendar_index_buildemptycells"
     },
@@ -10844,7 +10970,7 @@
       "file_type": "code",
       "source_file": "src/pages/HijriCalendar/index.tsx",
       "source_location": "L28",
-      "community": 49,
+      "community": 122,
       "norm_label": "istoday()",
       "id": "hijricalendar_index_istoday"
     },
@@ -10853,7 +10979,7 @@
       "file_type": "code",
       "source_file": "src/pages/HijriCalendar/index.tsx",
       "source_location": "L37",
-      "community": 49,
+      "community": 122,
       "norm_label": "formatgregorian()",
       "id": "hijricalendar_index_formatgregorian"
     },
@@ -10862,7 +10988,7 @@
       "file_type": "code",
       "source_file": "src/pages/HijriCalendar/index.tsx",
       "source_location": "L46",
-      "community": 49,
+      "community": 122,
       "norm_label": "hijricalendar()",
       "id": "hijricalendar_index_hijricalendar"
     },
@@ -11924,7 +12050,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/AppLanguageSettings.tsx",
       "source_location": "L1",
-      "community": 18,
+      "community": 156,
       "norm_label": "applanguagesettings.tsx",
       "id": "settings_applanguagesettings"
     },
@@ -11933,7 +12059,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/AppLanguageSettings.tsx",
       "source_location": "L7",
-      "community": 18,
+      "community": 156,
       "norm_label": "language_options",
       "id": "settings_applanguagesettings_language_options"
     },
@@ -11942,7 +12068,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/AppLanguageSettings.tsx",
       "source_location": "L12",
-      "community": 18,
+      "community": 156,
       "norm_label": "applanguagesettingsprops",
       "id": "settings_applanguagesettings_applanguagesettingsprops"
     },
@@ -11951,7 +12077,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/AppLanguageSettings.tsx",
       "source_location": "L17",
-      "community": 18,
+      "community": 156,
       "norm_label": "applanguagesettings()",
       "id": "settings_applanguagesettings_applanguagesettings"
     },
@@ -12059,7 +12185,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/SaveBar.tsx",
       "source_location": "L1",
-      "community": 120,
+      "community": 18,
       "norm_label": "savebar.tsx",
       "id": "settings_savebar"
     },
@@ -12068,7 +12194,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/SaveBar.tsx",
       "source_location": "L5",
-      "community": 120,
+      "community": 18,
       "norm_label": "savebarprops",
       "id": "settings_savebar_savebarprops"
     },
@@ -12077,7 +12203,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Settings/SaveBar.tsx",
       "source_location": "L12",
-      "community": 120,
+      "community": 18,
       "norm_label": "savebar()",
       "id": "settings_savebar_savebar"
     },
@@ -12113,7 +12239,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Tasbih/CircularCounter.tsx",
       "source_location": "L1",
-      "community": 144,
+      "community": 18,
       "norm_label": "circularcounter.tsx",
       "id": "tasbih_circularcounter"
     },
@@ -12122,7 +12248,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Tasbih/CircularCounter.tsx",
       "source_location": "L3",
-      "community": 144,
+      "community": 18,
       "norm_label": "circularcounterprops",
       "id": "tasbih_circularcounter_circularcounterprops"
     },
@@ -12131,7 +12257,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Tasbih/CircularCounter.tsx",
       "source_location": "L7",
-      "community": 144,
+      "community": 18,
       "norm_label": "circularcounter()",
       "id": "tasbih_circularcounter_circularcounter"
     },
@@ -12140,7 +12266,7 @@
       "file_type": "code",
       "source_file": "src/components/pages/Tasbih/CircularCounter.tsx",
       "source_location": "L39",
-      "community": 144,
+      "community": 18,
       "norm_label": "countercontent()",
       "id": "tasbih_circularcounter_countercontent"
     },
@@ -12212,7 +12338,7 @@
       "file_type": "code",
       "source_file": "src/data/islamicEvents.ts",
       "source_location": "L97",
-      "community": 49,
+      "community": 122,
       "norm_label": "getislamicmonthname()",
       "id": "data_islamicevents_getislamicmonthname"
     },
@@ -12932,7 +13058,7 @@
       "file_type": "code",
       "source_file": "src/pages/Hadith/[collection]/[bookId]/index.tsx",
       "source_location": "L1",
-      "community": 90,
+      "community": 108,
       "norm_label": "index.tsx",
       "id": "bookid_index"
     },
@@ -12941,7 +13067,7 @@
       "file_type": "code",
       "source_file": "src/pages/Hadith/[collection]/[bookId]/index.tsx",
       "source_location": "L12",
-      "community": 90,
+      "community": 108,
       "norm_label": "hadithbook()",
       "id": "bookid_index_hadithbook"
     },
@@ -12950,7 +13076,7 @@
       "file_type": "code",
       "source_file": "src/pages/Hadith/[collection]/index.tsx",
       "source_location": "L1",
-      "community": 90,
+      "community": 108,
       "norm_label": "index.tsx",
       "id": "collection_index"
     },
@@ -12959,7 +13085,7 @@
       "file_type": "code",
       "source_file": "src/pages/Hadith/[collection]/index.tsx",
       "source_location": "L10",
-      "community": 90,
+      "community": 108,
       "norm_label": "getbookname()",
       "id": "collection_index_getbookname"
     },
@@ -12968,7 +13094,7 @@
       "file_type": "code",
       "source_file": "src/pages/Hadith/[collection]/index.tsx",
       "source_location": "L14",
-      "community": 90,
+      "community": 108,
       "norm_label": "hadithbooks()",
       "id": "collection_index_hadithbooks"
     },
@@ -12977,7 +13103,7 @@
       "file_type": "code",
       "source_file": "src/pages/Hadith/index.tsx",
       "source_location": "L1",
-      "community": 90,
+      "community": 120,
       "norm_label": "index.tsx",
       "id": "hadith_index"
     },
@@ -12986,7 +13112,7 @@
       "file_type": "code",
       "source_file": "src/pages/Hadith/index.tsx",
       "source_location": "L14",
-      "community": 90,
+      "community": 120,
       "norm_label": "supported_languages",
       "id": "hadith_index_supported_languages"
     },
@@ -12995,7 +13121,7 @@
       "file_type": "code",
       "source_file": "src/pages/Hadith/index.tsx",
       "source_location": "L16",
-      "community": 90,
+      "community": 120,
       "norm_label": "geteditionname()",
       "id": "hadith_index_geteditionname"
     },
@@ -13004,7 +13130,7 @@
       "file_type": "code",
       "source_file": "src/pages/Hadith/index.tsx",
       "source_location": "L20",
-      "community": 90,
+      "community": 120,
       "norm_label": "hadithcollections()",
       "id": "hadith_index_hadithcollections"
     },
@@ -15289,7 +15415,7 @@
       "file_type": "code",
       "source_file": "src/components/features/Search/Search.tsx",
       "source_location": "L21",
-      "community": 90,
+      "community": 120,
       "norm_label": "search()",
       "id": "search_search_search"
     },
@@ -16981,7 +17107,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useDebounce.ts",
       "source_location": "L1",
-      "community": 90,
+      "community": 120,
       "norm_label": "usedebounce.ts",
       "id": "hooks_usedebounce"
     },
@@ -16990,7 +17116,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useDebounce.ts",
       "source_location": "L3",
-      "community": 90,
+      "community": 120,
       "norm_label": "usedebounce()",
       "id": "hooks_usedebounce_usedebounce"
     },
@@ -16999,7 +17125,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useHadith.ts",
       "source_location": "L1",
-      "community": 90,
+      "community": 108,
       "norm_label": "usehadith.ts",
       "id": "hooks_usehadith"
     },
@@ -17008,7 +17134,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useHadith.ts",
       "source_location": "L11",
-      "community": 90,
+      "community": 108,
       "norm_label": "useeditions()",
       "id": "hooks_usehadith_useeditions"
     },
@@ -17017,7 +17143,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useHadith.ts",
       "source_location": "L42",
-      "community": 90,
+      "community": 108,
       "norm_label": "useeditionbooks()",
       "id": "hooks_usehadith_useeditionbooks"
     },
@@ -17026,7 +17152,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useHadith.ts",
       "source_location": "L76",
-      "community": 90,
+      "community": 108,
       "norm_label": "usehadithpage()",
       "id": "hooks_usehadith_usehadithpage"
     },
@@ -17125,7 +17251,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useSurahs.ts",
       "source_location": "L1",
-      "community": 60,
+      "community": 120,
       "norm_label": "usesurahs.ts",
       "id": "hooks_usesurahs"
     },
@@ -17134,7 +17260,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useSurahs.ts",
       "source_location": "L5",
-      "community": 60,
+      "community": 120,
       "norm_label": "usesurahs()",
       "id": "hooks_usesurahs_usesurahs"
     },
@@ -17650,123 +17776,6 @@
       "community": 2,
       "norm_label": "clearallaudio()",
       "id": "lib_downloadmanager_clearallaudio"
-    },
-    {
-      "label": "prayerTimes.ts",
-      "file_type": "code",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L1",
-      "community": 66,
-      "norm_label": "prayertimes.ts",
-      "id": "lib_prayertimes"
-    },
-    {
-      "label": "PrayerEntry",
-      "file_type": "code",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L9",
-      "community": 66,
-      "norm_label": "prayerentry",
-      "id": "lib_prayertimes_prayerentry"
-    },
-    {
-      "label": "PRAYER_NAMES",
-      "file_type": "code",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L17",
-      "community": 66,
-      "norm_label": "prayer_names",
-      "id": "lib_prayertimes_prayer_names"
-    },
-    {
-      "label": "methodRegistry",
-      "file_type": "code",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L34",
-      "community": 66,
-      "norm_label": "methodregistry",
-      "id": "lib_prayertimes_methodregistry"
-    },
-    {
-      "label": "registerCalculationMethod()",
-      "file_type": "code",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L43",
-      "community": 66,
-      "norm_label": "registercalculationmethod()",
-      "id": "lib_prayertimes_registercalculationmethod"
-    },
-    {
-      "label": "getAdhanMethod()",
-      "file_type": "code",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L50",
-      "community": 66,
-      "norm_label": "getadhanmethod()",
-      "id": "lib_prayertimes_getadhanmethod"
-    },
-    {
-      "label": "formatTime()",
-      "file_type": "code",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L55",
-      "community": 66,
-      "norm_label": "formattime()",
-      "id": "lib_prayertimes_formattime"
-    },
-    {
-      "label": "getPrayerTime()",
-      "file_type": "code",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L63",
-      "community": 66,
-      "norm_label": "getprayertime()",
-      "id": "lib_prayertimes_getprayertime"
-    },
-    {
-      "label": "getCountdown()",
-      "file_type": "code",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L70",
-      "community": 66,
-      "norm_label": "getcountdown()",
-      "id": "lib_prayertimes_getcountdown"
-    },
-    {
-      "label": "computePrayerTimes()",
-      "file_type": "code",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L79",
-      "community": 66,
-      "norm_label": "computeprayertimes()",
-      "id": "lib_prayertimes_computeprayertimes"
-    },
-    {
-      "label": "buildPrayerEntries()",
-      "file_type": "code",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L92",
-      "community": 66,
-      "norm_label": "buildprayerentries()",
-      "id": "lib_prayertimes_buildprayerentries"
-    },
-    {
-      "label": "findNextPrayer()",
-      "file_type": "code",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L102",
-      "community": 66,
-      "norm_label": "findnextprayer()",
-      "id": "lib_prayertimes_findnextprayer"
-    },
-    {
-      "label": "findCurrentPrayer()",
-      "file_type": "code",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L112",
-      "community": 66,
-      "norm_label": "findcurrentprayer()",
-      "id": "lib_prayertimes_findcurrentprayer"
     },
     {
       "label": "qibla.ts",
@@ -19870,7 +19879,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L375",
-      "community": 82,
+      "community": 130,
       "norm_label": "1.1 hijri date display",
       "id": "expansion_roadmap_1_1_hijri_date_display"
     },
@@ -19879,7 +19888,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L383",
-      "community": 82,
+      "community": 130,
       "norm_label": "files",
       "id": "expansion_roadmap_files_383"
     },
@@ -19888,7 +19897,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L390",
-      "community": 82,
+      "community": 130,
       "norm_label": "dependencies",
       "id": "expansion_roadmap_dependencies_390"
     },
@@ -19897,7 +19906,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L394",
-      "community": 82,
+      "community": 130,
       "norm_label": "implementation",
       "id": "expansion_roadmap_implementation_394"
     },
@@ -19906,7 +19915,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L463",
-      "community": 82,
+      "community": 130,
       "norm_label": "ai instructions",
       "id": "expansion_roadmap_ai_instructions_463"
     },
@@ -19915,7 +19924,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L472",
-      "community": 82,
+      "community": 131,
       "norm_label": "1.2 bookmarks (wire ui + data)",
       "id": "expansion_roadmap_1_2_bookmarks_wire_ui_data"
     },
@@ -19924,7 +19933,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L480",
-      "community": 82,
+      "community": 131,
       "norm_label": "files",
       "id": "expansion_roadmap_files_480"
     },
@@ -19933,7 +19942,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L489",
-      "community": 82,
+      "community": 131,
       "norm_label": "implementation",
       "id": "expansion_roadmap_implementation_489"
     },
@@ -19942,7 +19951,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L569",
-      "community": 82,
+      "community": 131,
       "norm_label": "bookmarks page",
       "id": "expansion_roadmap_bookmarks_page"
     },
@@ -19951,7 +19960,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L577",
-      "community": 82,
+      "community": 131,
       "norm_label": "ai instructions",
       "id": "expansion_roadmap_ai_instructions_577"
     },
@@ -20032,7 +20041,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L693",
-      "community": 82,
+      "community": 144,
       "norm_label": "1.5 verse text search",
       "id": "expansion_roadmap_1_5_verse_text_search"
     },
@@ -20041,7 +20050,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L701",
-      "community": 82,
+      "community": 144,
       "norm_label": "files",
       "id": "expansion_roadmap_files_701"
     },
@@ -20050,7 +20059,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L707",
-      "community": 82,
+      "community": 144,
       "norm_label": "implementation",
       "id": "expansion_roadmap_implementation_707"
     },
@@ -20059,7 +20068,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L744",
-      "community": 82,
+      "community": 144,
       "norm_label": "ai instructions",
       "id": "expansion_roadmap_ai_instructions_744"
     },
@@ -20068,7 +20077,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L754",
-      "community": 82,
+      "community": 139,
       "norm_label": "1.6 asma ul-husna (99 names)",
       "id": "expansion_roadmap_1_6_asma_ul_husna_99_names"
     },
@@ -20077,7 +20086,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L760",
-      "community": 82,
+      "community": 139,
       "norm_label": "files",
       "id": "expansion_roadmap_files_760"
     },
@@ -20086,7 +20095,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L768",
-      "community": 82,
+      "community": 139,
       "norm_label": "data (sample structure)",
       "id": "expansion_roadmap_data_sample_structure"
     },
@@ -20095,7 +20104,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L784",
-      "community": 82,
+      "community": 139,
       "norm_label": "implementation",
       "id": "expansion_roadmap_implementation_784"
     },
@@ -20104,7 +20113,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L792",
-      "community": 82,
+      "community": 139,
       "norm_label": "ai instructions",
       "id": "expansion_roadmap_ai_instructions_792"
     },
@@ -20113,7 +20122,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L802",
-      "community": 82,
+      "community": 147,
       "norm_label": "1.7 tasbih counter",
       "id": "expansion_roadmap_1_7_tasbih_counter"
     },
@@ -20122,7 +20131,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L808",
-      "community": 82,
+      "community": 147,
       "norm_label": "files",
       "id": "expansion_roadmap_files_808"
     },
@@ -20131,7 +20140,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L815",
-      "community": 82,
+      "community": 147,
       "norm_label": "implementation",
       "id": "expansion_roadmap_implementation_815"
     },
@@ -20140,7 +20149,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L834",
-      "community": 82,
+      "community": 147,
       "norm_label": "ai instructions",
       "id": "expansion_roadmap_ai_instructions_834"
     },
@@ -20158,7 +20167,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L849",
-      "community": 108,
+      "community": 21,
       "norm_label": "2.1 prayer times",
       "id": "expansion_roadmap_2_1_prayer_times"
     },
@@ -20167,7 +20176,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L857",
-      "community": 108,
+      "community": 21,
       "norm_label": "files",
       "id": "expansion_roadmap_files_857"
     },
@@ -20176,7 +20185,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L867",
-      "community": 108,
+      "community": 21,
       "norm_label": "dependencies",
       "id": "expansion_roadmap_dependencies_867"
     },
@@ -20185,7 +20194,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L871",
-      "community": 108,
+      "community": 21,
       "norm_label": "data flow",
       "id": "expansion_roadmap_data_flow"
     },
@@ -20194,7 +20203,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L886",
-      "community": 108,
+      "community": 21,
       "norm_label": "gps implementation",
       "id": "expansion_roadmap_gps_implementation"
     },
@@ -20203,7 +20212,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L904",
-      "community": 108,
+      "community": 21,
       "norm_label": "ui",
       "id": "expansion_roadmap_ui"
     },
@@ -20212,7 +20221,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L911",
-      "community": 108,
+      "community": 21,
       "norm_label": "ai instructions",
       "id": "expansion_roadmap_ai_instructions_911"
     },
@@ -20257,7 +20266,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L982",
-      "community": 122,
+      "community": 21,
       "norm_label": "2.3 dua collection",
       "id": "expansion_roadmap_2_3_dua_collection"
     },
@@ -20266,7 +20275,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L988",
-      "community": 122,
+      "community": 21,
       "norm_label": "files",
       "id": "expansion_roadmap_files_988"
     },
@@ -20275,7 +20284,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L998",
-      "community": 122,
+      "community": 21,
       "norm_label": "implementation",
       "id": "expansion_roadmap_implementation_998"
     },
@@ -20284,7 +20293,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1007",
-      "community": 122,
+      "community": 21,
       "norm_label": "ai instructions",
       "id": "expansion_roadmap_ai_instructions_1007"
     },
@@ -20329,7 +20338,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1077",
-      "community": 130,
+      "community": 21,
       "norm_label": "2.5 last 10 surahs",
       "id": "expansion_roadmap_2_5_last_10_surahs"
     },
@@ -20338,7 +20347,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1083",
-      "community": 130,
+      "community": 21,
       "norm_label": "files",
       "id": "expansion_roadmap_files_1083"
     },
@@ -20347,7 +20356,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1090",
-      "community": 130,
+      "community": 21,
       "norm_label": "implementation",
       "id": "expansion_roadmap_implementation_1090"
     },
@@ -20356,7 +20365,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1097",
-      "community": 130,
+      "community": 21,
       "norm_label": "ai instructions",
       "id": "expansion_roadmap_ai_instructions_1097"
     },
@@ -20374,7 +20383,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1112",
-      "community": 131,
+      "community": 42,
       "norm_label": "3.1 bookmark management page",
       "id": "expansion_roadmap_3_1_bookmark_management_page"
     },
@@ -20383,7 +20392,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1120",
-      "community": 131,
+      "community": 42,
       "norm_label": "files",
       "id": "expansion_roadmap_files_1120"
     },
@@ -20392,7 +20401,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1126",
-      "community": 131,
+      "community": 42,
       "norm_label": "implementation",
       "id": "expansion_roadmap_implementation_1126"
     },
@@ -20401,7 +20410,7 @@
       "file_type": "document",
       "source_file": "EXPANSION_ROADMAP.md",
       "source_location": "L1134",
-      "community": 131,
+      "community": 42,
       "norm_label": "ai instructions",
       "id": "expansion_roadmap_ai_instructions_1134"
     },
@@ -21715,6 +21724,180 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L92",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_prayertimes",
+      "target": "lib_prayertimes_buildprayerentries"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L125",
+      "weight": 1.0,
+      "source": "lib_prayertimes",
+      "target": "lib_prayertimes_buildprayerwindowmap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L79",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_prayertimes",
+      "target": "lib_prayertimes_computeprayertimes"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L112",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_prayertimes",
+      "target": "lib_prayertimes_findcurrentprayer"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L102",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_prayertimes",
+      "target": "lib_prayertimes_findnextprayer"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L55",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_prayertimes",
+      "target": "lib_prayertimes_formattime"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L50",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_prayertimes",
+      "target": "lib_prayertimes_getadhanmethod"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L70",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_prayertimes",
+      "target": "lib_prayertimes_getcountdown"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L63",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_prayertimes",
+      "target": "lib_prayertimes_getprayertime"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L34",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_prayertimes",
+      "target": "lib_prayertimes_methodregistry"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_prayertimes",
+      "target": "lib_prayertimes_prayer_names"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_prayertimes",
+      "target": "lib_prayertimes_prayerentry"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L43",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_prayertimes",
+      "target": "lib_prayertimes_registercalculationmethod"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/prayerTimes.ts",
+      "source_location": "L87",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_prayertimes_computeprayertimes",
+      "target": "lib_prayertimes_getadhanmethod"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/pages/Home/index.tsx",
+      "source_location": "L381",
+      "weight": 1.0,
+      "source": "home_index_home",
+      "target": "lib_prayertimes_formattime"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/pages/PrayerTimes/index.tsx",
+      "source_location": "L106",
+      "weight": 1.0,
+      "source": "prayertimes_index_prayertimespage",
+      "target": "lib_prayertimes_formattime"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/pages/PrayerTimes/index.tsx",
+      "source_location": "L105",
+      "weight": 1.0,
+      "source": "prayertimes_index_prayertimespage",
+      "target": "lib_prayertimes_getcountdown"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "src/pages/Home/index.tsx",
       "source_location": "L120",
       "weight": 1.0,
@@ -21844,17 +22027,6 @@
       "weight": 1.0,
       "source": "prayertimes_index_prayertimespage",
       "target": "i18n_localecontext_uselocale"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src/pages/PrayerTimes/index.tsx",
-      "source_location": "L105",
-      "weight": 1.0,
-      "source": "prayertimes_index_prayertimespage",
-      "target": "lib_prayertimes_getcountdown"
     },
     {
       "relation": "calls",
@@ -44384,137 +44556,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L92",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_prayertimes",
-      "target": "lib_prayertimes_buildprayerentries"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L79",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_prayertimes",
-      "target": "lib_prayertimes_computeprayertimes"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L112",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_prayertimes",
-      "target": "lib_prayertimes_findcurrentprayer"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L102",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_prayertimes",
-      "target": "lib_prayertimes_findnextprayer"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L55",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_prayertimes",
-      "target": "lib_prayertimes_formattime"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L50",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_prayertimes",
-      "target": "lib_prayertimes_getadhanmethod"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L70",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_prayertimes",
-      "target": "lib_prayertimes_getcountdown"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L63",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_prayertimes",
-      "target": "lib_prayertimes_getprayertime"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L34",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_prayertimes",
-      "target": "lib_prayertimes_methodregistry"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L17",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_prayertimes",
-      "target": "lib_prayertimes_prayer_names"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_prayertimes",
-      "target": "lib_prayertimes_prayerentry"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L43",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_prayertimes",
-      "target": "lib_prayertimes_registercalculationmethod"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/prayerTimes.ts",
-      "source_location": "L87",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_prayertimes_computeprayertimes",
-      "target": "lib_prayertimes_getadhanmethod"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "src/lib/qibla.ts",
       "source_location": "L20",
       "weight": 1.0,
@@ -48616,5 +48657,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "93492f4aaea209403ae5f6b132dae2e7a4db9cb4"
+  "built_at_commit": "bf65eaa24781c42c8244c7e5c0f27161be5dfb5f"
 }

@@ -123,7 +123,9 @@ export default function PrayerTimesPage() {
             const isCurrent = currentPrayer?.name === p.name;
             const isNext = nextPrayer?.name === p.name;
             const endTime =
-               p.key !== "sunrise" ? prayerWindowMap?.get(p.key) ?? null : null;
+              p.key !== "sunrise"
+                ? (prayerWindowMap?.get(p.key) ?? null)
+                : null;
             return (
               <div
                 key={p.key}
