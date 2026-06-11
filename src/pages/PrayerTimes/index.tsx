@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import LocationGate from "@/components/common/LocationGate/LocationGate";
 import { PageShell } from "@/components/common/PageShell/PageShell";
 import { useLocale } from "@/i18n";
 import { PRAYER_REFRESH_INTERVAL } from "@/lib/const";
@@ -13,7 +14,6 @@ import {
   getCountdown,
   getTahajjudTime,
 } from "@/lib/prayerTimes";
-import LocationGate from "@/components/common/LocationGate/LocationGate";
 import { useLocationStore } from "@/store/location";
 import { useSettings } from "@/store/settings";
 
@@ -131,78 +131,80 @@ export default function PrayerTimesPage() {
     >
       <LocationGate>
         {nextPrayer && (
-        <div className="overflow-hidden rounded-2xl bg-linear-to-br from-primary via-primary-light to-secondary p-6 text-white shadow-xl shadow-primary/20">
-          <p className="text-xs font-medium uppercase tracking-wider text-white/70">
-            {t("prayerTimes.nextPrayer")}
-          </p>
-          <div className="mt-1 flex items-baseline gap-2">
-            <span className="text-3xl font-bold">{t(nextPrayer.name)}</span>
-            <span className="text-2xl font-semibold text-white/80">
-              {formatTime(nextPrayer.time)}
-            </span>
-          </div>
-          {nextPrayer.time > now && (
-            <p className="mt-2 text-lg font-semibold text-white/90">
-              {getCountdown(now, nextPrayer.time)} {t("prayerTimes.remaining")}
+          <div className="overflow-hidden rounded-2xl bg-linear-to-br from-primary via-primary-light to-secondary p-6 text-white shadow-xl shadow-primary/20">
+            <p className="text-xs font-medium uppercase tracking-wider text-white/70">
+              {t("prayerTimes.nextPrayer")}
             </p>
-          )}
-          <p className="mt-1 text-xs text-white/60">
-            {coords != null ? `${coords.lat.toFixed(4)}°N` : "—"}, {coords != null ? `${coords.lng.toFixed(4)}°E` : "—"}
-          </p>
-        </div>
-      )}
+            <div className="mt-1 flex items-baseline gap-2">
+              <span className="text-3xl font-bold">{t(nextPrayer.name)}</span>
+              <span className="text-2xl font-semibold text-white/80">
+                {formatTime(nextPrayer.time)}
+              </span>
+            </div>
+            {nextPrayer.time > now && (
+              <p className="mt-2 text-lg font-semibold text-white/90">
+                {getCountdown(now, nextPrayer.time)}{" "}
+                {t("prayerTimes.remaining")}
+              </p>
+            )}
+            <p className="mt-1 text-xs text-white/60">
+              {coords != null ? `${coords.lat.toFixed(4)}°N` : "—"},{" "}
+              {coords != null ? `${coords.lng.toFixed(4)}°E` : "—"}
+            </p>
+          </div>
+        )}
 
-      {extendedPrayers.length > 0 && (
-        <div className="space-y-2">
-          {extendedPrayers.map((p) => {
-            const isCurrent = currentPrayer?.key === p.key;
-            const isNext = nextPrayer?.key === p.key;
-            return (
-              <div
-                key={p.key}
-                className={`flex items-center gap-4 rounded-2xl border p-4 transition-all ${
-                  isCurrent
-                    ? "border-accent/30 bg-accent-soft/50 shadow-sm dark:border-accent/20 dark:bg-accent/5"
-                    : "border-border bg-surface dark:border-dark-border dark:bg-dark-surface-card"
-                }`}
-              >
-                <span className="text-xl">{p.icon}</span>
-                <div className="flex-1">
-                  <p
-                    className={`text-sm font-semibold ${
-                      isNext
-                        ? "text-secondary"
-                        : "text-text-primary dark:text-dark-text-primary"
-                    }`}
-                  >
-                    {t(p.name)}
-                    {isCurrent && (
-                      <span className="ml-2 text-[10px] font-medium text-accent">
-                        {t("prayerTimes.current")}
-                      </span>
-                    )}
-                    {isNext && !isCurrent && (
-                      <span className="ml-2 text-[10px] font-medium text-secondary">
-                        {t("prayerTimes.next")}
-                      </span>
-                    )}
-                  </p>
-                </div>
-                <div className="text-right">
-                  <span className="text-sm font-semibold tabular-nums text-text-primary dark:text-dark-text-primary">
-                    {formatTime(p.time)}
-                  </span>
-                  {p.endTime && (
-                    <span className="block text-xs tabular-nums text-text-muted dark:text-dark-text-muted">
-                      — {formatTime(p.endTime)}
+        {extendedPrayers.length > 0 && (
+          <div className="space-y-2">
+            {extendedPrayers.map((p) => {
+              const isCurrent = currentPrayer?.key === p.key;
+              const isNext = nextPrayer?.key === p.key;
+              return (
+                <div
+                  key={p.key}
+                  className={`flex items-center gap-4 rounded-2xl border p-4 transition-all ${
+                    isCurrent
+                      ? "border-accent/30 bg-accent-soft/50 shadow-sm dark:border-accent/20 dark:bg-accent/5"
+                      : "border-border bg-surface dark:border-dark-border dark:bg-dark-surface-card"
+                  }`}
+                >
+                  <span className="text-xl">{p.icon}</span>
+                  <div className="flex-1">
+                    <p
+                      className={`text-sm font-semibold ${
+                        isNext
+                          ? "text-secondary"
+                          : "text-text-primary dark:text-dark-text-primary"
+                      }`}
+                    >
+                      {t(p.name)}
+                      {isCurrent && (
+                        <span className="ml-2 text-[10px] font-medium text-accent">
+                          {t("prayerTimes.current")}
+                        </span>
+                      )}
+                      {isNext && !isCurrent && (
+                        <span className="ml-2 text-[10px] font-medium text-secondary">
+                          {t("prayerTimes.next")}
+                        </span>
+                      )}
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-sm font-semibold tabular-nums text-text-primary dark:text-dark-text-primary">
+                      {formatTime(p.time)}
                     </span>
-                  )}
+                    {p.endTime && (
+                      <span className="block text-xs tabular-nums text-text-muted dark:text-dark-text-muted">
+                        — {formatTime(p.endTime)}
+                      </span>
+                    )}
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
-      )}
+              );
+            })}
+          </div>
+        )}
       </LocationGate>
     </PageShell>
   );

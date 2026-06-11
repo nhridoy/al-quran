@@ -4,11 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useLocale } from "@/i18n";
 import { useLocationStore } from "@/store/location";
 
-export default function LocationGate({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function LocationGate({ children }: { children: ReactNode }) {
   const { t } = useLocale();
   const lat = useLocationStore((s) => s.lat);
   const lng = useLocationStore((s) => s.lng);
@@ -41,7 +37,11 @@ export default function LocationGate({
             {error}
           </p>
         </div>
-        <Button onClick={request} variant="gradient" className="rounded-xl px-5 py-2 text-sm font-semibold">
+        <Button
+          onClick={request}
+          variant="gradient"
+          className="rounded-xl px-5 py-2 text-sm font-semibold"
+        >
           {t("common.tryAgain")}
         </Button>
       </div>

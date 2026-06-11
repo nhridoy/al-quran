@@ -384,150 +384,149 @@ export default function Home() {
     >
       {/* Top: Greeting + Prayer Info + Countdown */}
       <LocationGate>
-      {nextPrayer && currentPrayer && (
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#1a1035] via-[#1e1540] to-[#161030] shadow-xl shadow-black/20 ring-1 ring-white/[0.06]">
-          <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-secondary/5 blur-[60px]" />
-          <div className="pointer-events-none absolute -bottom-8 -left-8 h-32 w-32 rounded-full bg-secondary/5 blur-[50px]" />
-          <div className="grid grid-cols-2 gap-4 p-6">
-            {/* Left: Greeting, Prayer Info, Sahri/Iftar, Date */}
-            <div className="flex flex-col justify-between gap-3">
-              <div>
-                <p className="text-xs font-medium text-secondary/85 tracking-wider">
-                  {t(greetingKey)}
-                </p>
-                <div className="mt-3">
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-[10px] font-semibold uppercase tracking-wider text-secondary/80">
-                      {isBetweenPrayers
-                        ? `${t("home.nextPrayer")}:`
-                        : `${t("home.now")}:`}
-                    </span>
-                    <span className="text-xl font-bold text-white">
-                      {isBetweenPrayers
-                        ? t(nextPrayer.name)
-                        : t(currentPrayer.name)}
-                    </span>
-                  </div>
-                  {isBetweenPrayers ? (
-                    <p className="mt-1 text-sm text-white/60">
-                      {t("home.startsAt")} {formatTime(nextPrayer.time)}
-                    </p>
-                  ) : windowEndTime ? (
-                    <p className="mt-1 text-sm text-white/60">
-                      {formatTime(currentPrayer.time)} —{" "}
-                      {formatTime(windowEndTime)}
-                    </p>
-                  ) : null}
-                </div>
-              </div>
-              <div className="flex gap-6">
+        {nextPrayer && currentPrayer && (
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#1a1035] via-[#1e1540] to-[#161030] shadow-xl shadow-black/20 ring-1 ring-white/[0.06]">
+            <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-secondary/5 blur-[60px]" />
+            <div className="pointer-events-none absolute -bottom-8 -left-8 h-32 w-32 rounded-full bg-secondary/5 blur-[50px]" />
+            <div className="grid grid-cols-2 gap-4 p-6">
+              {/* Left: Greeting, Prayer Info, Sahri/Iftar, Date */}
+              <div className="flex flex-col justify-between gap-3">
                 <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-wider text-secondary/80">
-                    {t("home.sehriEnds")}
+                  <p className="text-xs font-medium text-secondary/85 tracking-wider">
+                    {t(greetingKey)}
                   </p>
-                  <p className="mt-0.5 text-base font-semibold text-white">
-                    {fajrTime ? formatTime(fajrTime.time) : "—"}
-                  </p>
-                </div>
-                <div className="h-8 w-px bg-white/5" />
-                <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-wider text-secondary/80">
-                    {t("home.iftar")}
-                  </p>
-                  <p className="mt-0.5 text-base font-semibold text-white">
-                    {maghribTime ? formatTime(maghribTime.time) : "—"}
-                  </p>
-                </div>
-              </div>
-              <div className="space-y-0.5">
-                <p className="text-xs text-white/50">{gregDate}</p>
-                <p className="text-xs text-secondary/80">{hijriDate}</p>
-                {isRamadanNow && (
-                  <span className="mt-1.5 inline-block rounded-full bg-gradient-to-r from-secondary/20 to-secondary/20 px-2.5 py-0.5 text-[10px] font-semibold text-secondary ring-1 ring-secondary/20">
-                    {t("home.ramadan")}
-                  </span>
-                )}
-              </div>
-            </div>
-
-            {/* Right: Countdown */}
-            <div className="flex flex-col items-center justify-center">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-secondary/85 mb-2">
-                {isBetweenPrayers
-                  ? t("home.timeUntilNext")
-                  : t("home.timeLeft")}
-              </p>
-              <div className="animate-fade-in">
-                <PrayerCircle
-                  name={countdownCircleName}
-                  countdown={countdownValue}
-                  percentage={countdownPercentage}
-                />
-              </div>
-              <p className="mt-1.5 text-[10px] font-semibold tracking-[0.15em] uppercase text-white/40">
-                {t("home.remaining")}
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Today's Prayer Times */}
-      {filteredPrayers.length > 0 && (
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#1a1035] via-[#1c1238] to-[#181035] shadow-xl shadow-black/20 ring-1 ring-white/[0.06]">
-          <div className="pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full bg-secondary/8 blur-[50px]" />
-          <div className="px-4 py-4">
-            <div className="grid grid-cols-5 gap-1">
-              {filteredPrayers.map((p) => {
-                const isCurrent = p.key === currentPrayer?.key;
-                const isPast = p.time < now && !isCurrent;
-                return (
-                  <div
-                    key={p.key}
-                    className={`relative flex flex-col items-center justify-center gap-0.5 rounded-2xl px-1 py-3 transition-all ${
-                      isCurrent
-                        ? ""
-                        : isPast
-                          ? "opacity-40"
-                          : "opacity-80 hover:opacity-100"
-                    }`}
-                  >
-                    {isCurrent && (
-                      <span className="absolute -top-[1px] left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-white" />
-                    )}
-                    <PrayerIcon
-                      prayerKey={p.key}
-                      className={`transition-all ${isCurrent ? "h-5 w-5 text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.35)]" : "h-5 w-5"}`}
-                    />
-                    <span
-                      className={`text-center text-[10px] font-semibold leading-tight ${
-                        isCurrent ? "text-white" : "text-white/70"
-                      }`}
-                    >
-                      {t(p.name)}
-                    </span>
-                    <span
-                      className={`text-center text-[10px] tabular-nums leading-tight ${
-                        isCurrent
-                          ? "text-white/80 font-semibold"
-                          : "text-white/40"
-                      }`}
-                    >
-                      {formatTime(p.time)}
-                    </span>
-                    {isCurrent && (
-                      <span className="mt-0.5 text-[8px] font-semibold uppercase tracking-wider text-white/60">
-                        Now
+                  <div className="mt-3">
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-secondary/80">
+                        {isBetweenPrayers
+                          ? `${t("home.nextPrayer")}:`
+                          : `${t("home.now")}:`}
                       </span>
-                    )}
+                      <span className="text-xl font-bold text-white">
+                        {isBetweenPrayers
+                          ? t(nextPrayer.name)
+                          : t(currentPrayer.name)}
+                      </span>
+                    </div>
+                    {isBetweenPrayers ? (
+                      <p className="mt-1 text-sm text-white/60">
+                        {t("home.startsAt")} {formatTime(nextPrayer.time)}
+                      </p>
+                    ) : windowEndTime ? (
+                      <p className="mt-1 text-sm text-white/60">
+                        {formatTime(currentPrayer.time)} —{" "}
+                        {formatTime(windowEndTime)}
+                      </p>
+                    ) : null}
                   </div>
-                );
-              })}
+                </div>
+                <div className="flex gap-6">
+                  <div>
+                    <p className="text-[10px] font-semibold uppercase tracking-wider text-secondary/80">
+                      {t("home.sehriEnds")}
+                    </p>
+                    <p className="mt-0.5 text-base font-semibold text-white">
+                      {fajrTime ? formatTime(fajrTime.time) : "—"}
+                    </p>
+                  </div>
+                  <div className="h-8 w-px bg-white/5" />
+                  <div>
+                    <p className="text-[10px] font-semibold uppercase tracking-wider text-secondary/80">
+                      {t("home.iftar")}
+                    </p>
+                    <p className="mt-0.5 text-base font-semibold text-white">
+                      {maghribTime ? formatTime(maghribTime.time) : "—"}
+                    </p>
+                  </div>
+                </div>
+                <div className="space-y-0.5">
+                  <p className="text-xs text-white/50">{gregDate}</p>
+                  <p className="text-xs text-secondary/80">{hijriDate}</p>
+                  {isRamadanNow && (
+                    <span className="mt-1.5 inline-block rounded-full bg-gradient-to-r from-secondary/20 to-secondary/20 px-2.5 py-0.5 text-[10px] font-semibold text-secondary ring-1 ring-secondary/20">
+                      {t("home.ramadan")}
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              {/* Right: Countdown */}
+              <div className="flex flex-col items-center justify-center">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-secondary/85 mb-2">
+                  {isBetweenPrayers
+                    ? t("home.timeUntilNext")
+                    : t("home.timeLeft")}
+                </p>
+                <div className="animate-fade-in">
+                  <PrayerCircle
+                    name={countdownCircleName}
+                    countdown={countdownValue}
+                    percentage={countdownPercentage}
+                  />
+                </div>
+                <p className="mt-1.5 text-[10px] font-semibold tracking-[0.15em] uppercase text-white/40">
+                  {t("home.remaining")}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
 
+        {/* Today's Prayer Times */}
+        {filteredPrayers.length > 0 && (
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#1a1035] via-[#1c1238] to-[#181035] shadow-xl shadow-black/20 ring-1 ring-white/[0.06]">
+            <div className="pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full bg-secondary/8 blur-[50px]" />
+            <div className="px-4 py-4">
+              <div className="grid grid-cols-5 gap-1">
+                {filteredPrayers.map((p) => {
+                  const isCurrent = p.key === currentPrayer?.key;
+                  const isPast = p.time < now && !isCurrent;
+                  return (
+                    <div
+                      key={p.key}
+                      className={`relative flex flex-col items-center justify-center gap-0.5 rounded-2xl px-1 py-3 transition-all ${
+                        isCurrent
+                          ? ""
+                          : isPast
+                            ? "opacity-40"
+                            : "opacity-80 hover:opacity-100"
+                      }`}
+                    >
+                      {isCurrent && (
+                        <span className="absolute -top-[1px] left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-white" />
+                      )}
+                      <PrayerIcon
+                        prayerKey={p.key}
+                        className={`transition-all ${isCurrent ? "h-5 w-5 text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.35)]" : "h-5 w-5"}`}
+                      />
+                      <span
+                        className={`text-center text-[10px] font-semibold leading-tight ${
+                          isCurrent ? "text-white" : "text-white/70"
+                        }`}
+                      >
+                        {t(p.name)}
+                      </span>
+                      <span
+                        className={`text-center text-[10px] tabular-nums leading-tight ${
+                          isCurrent
+                            ? "text-white/80 font-semibold"
+                            : "text-white/40"
+                        }`}
+                      >
+                        {formatTime(p.time)}
+                      </span>
+                      {isCurrent && (
+                        <span className="mt-0.5 text-[8px] font-semibold uppercase tracking-wider text-white/60">
+                          Now
+                        </span>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        )}
       </LocationGate>
 
       {/* Prayer Tracker */}

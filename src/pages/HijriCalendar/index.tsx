@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
+import LocationGate from "@/components/common/LocationGate/LocationGate";
 import {
   GREGORIAN_MONTHS,
   getIslamicEvent,
@@ -15,7 +16,6 @@ import {
   getPrayerTime,
   PRAYER_NAMES,
 } from "@/lib/prayerTimes";
-import LocationGate from "@/components/common/LocationGate/LocationGate";
 import { useLocationStore } from "@/store/location";
 import { useSettings } from "@/store/settings";
 
@@ -311,28 +311,28 @@ export default function HijriCalendar() {
 
           {selectedPrayers && (
             <LocationGate>
-            <div className="mt-3">
-              <p className="mb-2 text-xs font-semibold text-text-muted dark:text-dark-text-muted">
-                {t("hijriCalendar.prayerTimes")}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {selectedPrayers
-                  .filter((p) => p.key !== "sunrise")
-                  .map((p) => (
-                    <div
-                      key={p.key}
-                      className="flex shrink-0 flex-col items-center gap-0.5 rounded-xl bg-surface-alt px-3 py-2 text-xs dark:bg-dark-surface-alt"
-                    >
-                      <span className="font-medium text-text-secondary dark:text-dark-text-secondary">
-                        {t(p.name)}
-                      </span>
-                      <span className="tabular-nums text-text dark:text-dark-text">
-                        {formatTime(p.time)}
-                      </span>
-                    </div>
-                  ))}
+              <div className="mt-3">
+                <p className="mb-2 text-xs font-semibold text-text-muted dark:text-dark-text-muted">
+                  {t("hijriCalendar.prayerTimes")}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {selectedPrayers
+                    .filter((p) => p.key !== "sunrise")
+                    .map((p) => (
+                      <div
+                        key={p.key}
+                        className="flex shrink-0 flex-col items-center gap-0.5 rounded-xl bg-surface-alt px-3 py-2 text-xs dark:bg-dark-surface-alt"
+                      >
+                        <span className="font-medium text-text-secondary dark:text-dark-text-secondary">
+                          {t(p.name)}
+                        </span>
+                        <span className="tabular-nums text-text dark:text-dark-text">
+                          {formatTime(p.time)}
+                        </span>
+                      </div>
+                    ))}
+                </div>
               </div>
-            </div>
             </LocationGate>
           )}
 
