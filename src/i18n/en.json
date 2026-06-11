@@ -209,7 +209,13 @@
     "search": "Search",
     "save": "Save",
     "delete": "Delete",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "enableLocation": "Location Required",
+    "enableLocationDesc": "Enable location access to view prayer times",
+    "shareLocation": "Share Location",
+    "detectingLocation": "Detecting your location…",
+    "locationError": "Could not detect your location",
+    "tryAgain": "Try Again"
   },
   "settings": {
     "locale": "App Language",

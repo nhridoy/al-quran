@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
 import { PageShell } from "@/components/common/PageShell/PageShell";
-import { Button } from "@/components/ui/button";
 import { useLocale } from "@/i18n";
 import { PRAYER_REFRESH_INTERVAL } from "@/lib/const";
 import { formatDateLong } from "@/lib/date";
@@ -14,19 +13,14 @@ import {
   getCountdown,
   getTahajjudTime,
 } from "@/lib/prayerTimes";
+import LocationGate from "@/components/common/LocationGate/LocationGate";
 import { useLocationStore } from "@/store/location";
 import { useSettings } from "@/store/settings";
 
 export default function PrayerTimesPage() {
   const prayerCalcMethod = useSettings((s) => s.prayerCalcMethod);
   const prayerAsrMethod = useSettings((s) => s.prayerAsrMethod);
-  const {
-    lat,
-    lng,
-    loading: geoLoading,
-    error: geoError,
-    request,
-  } = useLocationStore();
+  const { lat, lng } = useLocationStore();
   const { t, locale } = useLocale();
   const [now, setNow] = useState(new Date());
   const coords = lat !== null && lng !== null ? { lat, lng } : null;
@@ -135,31 +129,8 @@ export default function PrayerTimesPage() {
       title={t("prayerTimes.pageTitle")}
       description={formatDateLong(now, locale as "en" | "bn")}
     >
-      {!coords && geoLoading && (
-        <div className="flex flex-col items-center gap-3 py-10">
-          <div className="h-8 w-8 animate-spin rounded-full border-4 border-border border-t-secondary" />
-          <p className="text-sm text-text-muted">
-            {t("prayerTimes.requestingLocation")}
-          </p>
-        </div>
-      )}
-
-      {geoError && (
-        <div className="flex flex-col items-center gap-3 card-surface p-6 text-center">
-          <p className="text-sm text-text-muted">
-            {t("prayerTimes.locationError", { error: geoError })}
-          </p>
-          <Button
-            onClick={request}
-            variant="gradient"
-            className="rounded-xl px-5 py-2 text-sm font-semibold hover:shadow-lg hover:shadow-primary/20 active:scale-95"
-          >
-            {t("error.tryAgain")}
-          </Button>
-        </div>
-      )}
-
-      {coords && nextPrayer && (
+      <LocationGate>
+        {nextPrayer && (
         <div className="overflow-hidden rounded-2xl bg-linear-to-br from-primary via-primary-light to-secondary p-6 text-white shadow-xl shadow-primary/20">
           <p className="text-xs font-medium uppercase tracking-wider text-white/70">
             {t("prayerTimes.nextPrayer")}
@@ -176,7 +147,7 @@ export default function PrayerTimesPage() {
             </p>
           )}
           <p className="mt-1 text-xs text-white/60">
-            {coords.lat.toFixed(4)}&deg;N, {coords.lng.toFixed(4)}&deg;E
+            {coords != null ? `${coords.lat.toFixed(4)}°N` : "—"}, {coords != null ? `${coords.lng.toFixed(4)}°E` : "—"}
           </p>
         </div>
       )}
@@ -232,6 +203,7 @@ export default function PrayerTimesPage() {
           })}
         </div>
       )}
+      </LocationGate>
     </PageShell>
   );
 }

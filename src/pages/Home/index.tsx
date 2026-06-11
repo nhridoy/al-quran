@@ -18,6 +18,7 @@ import {
   MdTrackChanges,
 } from "react-icons/md";
 import { Link } from "react-router-dom";
+import LocationGate from "@/components/common/LocationGate/LocationGate";
 import PrayerGrid from "@/components/features/PrayerGrid/PrayerGrid";
 import {
   Carousel,
@@ -382,6 +383,7 @@ export default function Home() {
       }`}
     >
       {/* Top: Greeting + Prayer Info + Countdown */}
+      <LocationGate>
       {nextPrayer && currentPrayer && (
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#1a1035] via-[#1e1540] to-[#161030] shadow-xl shadow-black/20 ring-1 ring-white/[0.06]">
           <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-secondary/5 blur-[60px]" />
@@ -525,6 +527,8 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      </LocationGate>
 
       {/* Prayer Tracker */}
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#1a1035] via-[#1c1238] to-[#181035] shadow-xl shadow-black/20 ring-1 ring-white/[0.06]">

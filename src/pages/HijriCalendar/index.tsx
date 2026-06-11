@@ -15,6 +15,7 @@ import {
   getPrayerTime,
   PRAYER_NAMES,
 } from "@/lib/prayerTimes";
+import LocationGate from "@/components/common/LocationGate/LocationGate";
 import { useLocationStore } from "@/store/location";
 import { useSettings } from "@/store/settings";
 
@@ -309,6 +310,7 @@ export default function HijriCalendar() {
           )}
 
           {selectedPrayers && (
+            <LocationGate>
             <div className="mt-3">
               <p className="mb-2 text-xs font-semibold text-text-muted dark:text-dark-text-muted">
                 {t("hijriCalendar.prayerTimes")}
@@ -331,6 +333,7 @@ export default function HijriCalendar() {
                   ))}
               </div>
             </div>
+            </LocationGate>
           )}
 
           {selectedHijri && selectedHijri.month === 9 && (

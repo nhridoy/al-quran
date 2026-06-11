@@ -9,6 +9,7 @@ import {
   deviceOrientationWithPermission,
   toCompassDirection,
 } from "@/lib/qibla";
+import LocationGate from "@/components/common/LocationGate/LocationGate";
 import { useLocationStore } from "@/store/location";
 
 interface OrientationEvent {
@@ -18,13 +19,7 @@ interface OrientationEvent {
 }
 
 export default function QiblaFinder() {
-  const {
-    lat,
-    lng,
-    loading: geoLoading,
-    error: geoError,
-    request,
-  } = useLocationStore();
+  const { lat, lng } = useLocationStore();
   const { t } = useLocale();
   const [heading, setHeading] = useState<number | null>(null);
   const [compassSupported, setCompassSupported] = useState<boolean | null>(
@@ -158,29 +153,7 @@ export default function QiblaFinder() {
           </p>
         </div>
 
-        {!hasCoords && geoLoading && (
-          <div className="flex flex-col items-center gap-3 py-10">
-            <div className="h-8 w-8 animate-spin rounded-full border-4 border-border border-t-secondary" />
-            <p className="text-sm text-text-muted">{t("qibla.detecting")}</p>
-          </div>
-        )}
-
-        {geoError && (
-          <div className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-surface p-6 text-center dark:border-dark-border dark:bg-dark-surface-card">
-            <p className="text-sm text-text-muted">
-              {t("qibla.locationError", { error: geoError })}
-            </p>
-            <Button
-              onClick={request}
-              variant="gradient"
-              className="rounded-xl px-5 py-2 text-sm font-semibold"
-            >
-              {t("error.tryAgain")}
-            </Button>
-          </div>
-        )}
-
-        {hasCoords && (
+        <LocationGate>
           <>
             {!permissionRequested && deviceOrientationWithPermission() && (
               <div className="flex flex-col items-center gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-center dark:border-amber-900/30 dark:bg-amber-950/20">
@@ -295,7 +268,7 @@ export default function QiblaFinder() {
                     {t("qibla.coordinates")}
                   </span>
                   <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
-                    {lat.toFixed(4)}&deg;N, {lng.toFixed(4)}&deg;E
+                    {lat != null ? `${lat.toFixed(4)}°N` : "—"}, {lng != null ? `${lng.toFixed(4)}°E` : "—"}
                   </span>
                 </div>
                 <div className="flex items-center justify-between p-4">
@@ -330,7 +303,7 @@ export default function QiblaFinder() {
               </div>
             </div>
           </>
-        )}
+      </LocationGate>
       </div>
     </div>
   );

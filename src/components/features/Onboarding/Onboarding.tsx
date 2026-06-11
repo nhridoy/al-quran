@@ -134,6 +134,11 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
     }
   }, [refreshLocation]);
 
+  const handleLocationNext = useCallback(() => {
+    useLocationStore.setState({ requested: true });
+    next();
+  }, [next]);
+
   const handleRequestNotification = useCallback(() => {
     if ("Notification" in window && Notification.permission === "default") {
       Notification.requestPermission().then((r) => {
@@ -275,7 +280,7 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
                 error={locationError}
                 locationLabel={locationLabel}
                 onRequestLocation={handleRequestLocation}
-                onNext={next}
+                onNext={handleLocationNext}
               />
             )}
             {step === 6 && (

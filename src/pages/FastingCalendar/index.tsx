@@ -9,6 +9,7 @@ import {
 import { useLocale } from "@/i18n";
 import { formatDate, isToday } from "@/lib/date";
 import { computePrayerTimes, formatTime } from "@/lib/prayerTimes";
+import LocationGate from "@/components/common/LocationGate/LocationGate";
 import { useLocationStore } from "@/store/location";
 import { useSettings } from "@/store/settings";
 
@@ -130,6 +131,7 @@ export default function FastingCalendar() {
       </div>
 
       {/* Fasting list */}
+      <LocationGate>
       <div className="space-y-2">
         {dayTimes.map((entry, idx) => {
           if (!entry) return null;
@@ -253,6 +255,7 @@ export default function FastingCalendar() {
           );
         })}
       </div>
+      </LocationGate>
     </div>
   );
 }
