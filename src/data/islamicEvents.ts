@@ -1,3 +1,5 @@
+import { toHijriDate } from "date-fns-hijri";
+
 export interface IslamicEvent {
   month: number;
   day: number;
@@ -133,20 +135,14 @@ export function getUpcomingEvents(
   return results;
 }
 
-export function parseHijriParts(date: Date): {
+export function parseHijriParts(date: Date, adjust = 0): {
   year: number;
   month: number;
   day: number;
 } {
-  const formatter = new Intl.DateTimeFormat("en-u-ca-islamic", {
-    year: "numeric",
-    month: "numeric",
-    day: "numeric",
-  });
-  const parts = formatter.formatToParts(date);
-  const get = (type: string) =>
-    parseInt(parts.find((p) => p.type === type)?.value ?? "0", 10);
-  return { year: get("year"), month: get("month"), day: get("day") };
+  const d = adjust ? new Date(+date + adjust * 86400000) : date;
+  const h = toHijriDate(d);
+  return h ? { year: h.hy, month: h.hm, day: h.hd } : { year: 0, month: 0, day: 0 };
 }
 
 export function hijriPartsEqual(

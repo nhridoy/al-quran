@@ -9,6 +9,7 @@ import {
 import { ToastContainer } from "react-toastify";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { CSS_VAR_ARABIC_FONT, CSS_VAR_TRANSLATION_FONT } from "@/lib/const";
+import { isRamadan as isRamadanMonth } from "@/lib/date";
 import type { RouteDefinition } from "@/lib/routes";
 import ConfirmModal from "./components/common/ConfirmModal/ConfirmModal";
 import ErrorBoundary from "./components/common/ErrorBoundary/ErrorBoundary";
@@ -183,6 +184,7 @@ function LocaleSync() {
 
 function RamadanModeController() {
   const ramadanMode = useSettings((s) => s.ramadanMode);
+  const hijriAdjust = useSettings((s) => s.hijriAdjust);
   const [isRamadan, setIsRamadan] = useState(false);
 
   useEffect(() => {
@@ -194,13 +196,8 @@ function RamadanModeController() {
       setIsRamadan(true);
       return;
     }
-    const now = new Date();
-    const fmt = new Intl.DateTimeFormat("en-u-ca-islamic", {
-      month: "numeric",
-    });
-    const month = Number.parseInt(fmt.format(now), 10);
-    setIsRamadan(month === 9);
-  }, [ramadanMode]);
+    setIsRamadan(isRamadanMonth(new Date(), hijriAdjust));
+  }, [ramadanMode, hijriAdjust]);
 
   useEffect(() => {
     document.documentElement.classList.toggle("ramadan-mode", isRamadan);

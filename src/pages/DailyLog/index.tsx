@@ -3,6 +3,7 @@ import { MdChecklist } from "react-icons/md";
 import { PageShell } from "@/components/common/PageShell/PageShell";
 import PrayerGrid from "@/components/features/PrayerGrid/PrayerGrid";
 import { useLocale } from "@/i18n";
+import { formatDate, formatDateKey, formatMonthYear } from "@/lib/date";
 import { type PrayerDay, usePrayerStore } from "@/store/prayer";
 import { useSadaqahStore } from "@/store/sadaqah";
 import { useWorshipStore, type WorshipDay } from "@/store/worship";
@@ -18,10 +19,6 @@ const EXTRA_ITEMS: { key: keyof WorshipDay; icon: string }[] = [
   { key: "fasting", icon: "🌙" },
 ];
 
-function formatKey(date: Date): string {
-  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
-}
-
 function computeHolisticStreak(
   prayerRecords: Record<string, PrayerDay>,
   worshipRecords: Record<string, WorshipDay>,
@@ -30,7 +27,7 @@ function computeHolisticStreak(
   let streak = 0;
   const d = new Date();
   while (true) {
-    const key = formatKey(d);
+    const key = formatDateKey(d);
     const pDay = prayerRecords[key];
     const hasPrayer = pDay && PRAYER_KEYS.some((k) => pDay[k]);
     const wDay = worshipRecords[key];
@@ -116,8 +113,8 @@ export default function DailyLog() {
     loadWorship,
   ]);
 
-  const selectedKey = formatKey(selectedDate);
-  const todayKey = formatKey(new Date());
+  const selectedKey = formatDateKey(selectedDate);
+  const todayKey = formatDateKey(new Date());
   const isToday = selectedKey === todayKey;
 
   const selectedWorshipDay = useMemo(
@@ -216,12 +213,7 @@ export default function DailyLog() {
           onClick={goToday}
           className="text-center text-sm font-semibold text-text dark:text-dark-text"
         >
-          {selectedDate.toLocaleDateString("en-US", {
-            weekday: "short",
-            month: "short",
-            day: "numeric",
-            year: "numeric",
-          })}
+          {formatDate(selectedDate, "EEE, MMM d, yyyy")}
           {!isToday && (
             <span className="ml-2 text-xs text-primary">
               {t("dailyLog.today")}
@@ -318,10 +310,7 @@ export default function DailyLog() {
               ←
             </button>
             <span className="font-medium text-text dark:text-dark-text">
-              {new Date(viewYear, viewMonth).toLocaleDateString("en-US", {
-                month: "short",
-                year: "numeric",
-              })}
+              {formatMonthYear(new Date(viewYear, viewMonth))}
             </span>
             <button
               type="button"

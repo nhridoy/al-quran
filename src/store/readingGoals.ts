@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { getFromStore, putInStore } from "@/lib/cache";
+import { formatDateKey, getTodayKey } from "@/lib/date";
 
 export type GoalPeriod = "daily" | "weekly" | "monthly";
 export type GoalMetric = "surahs" | "juz" | "pages" | "minutes";
@@ -25,8 +26,7 @@ interface ReadingGoalsState {
 }
 
 function todaysDate(): string {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  return getTodayKey();
 }
 
 export function computeStreak(records: { date: string }[]): number {
@@ -40,7 +40,7 @@ export function computeStreak(records: { date: string }[]): number {
       streak++;
       const d = new Date(check);
       d.setDate(d.getDate() - 1);
-      check = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+      check = formatDateKey(d);
     } else if (date < check) {
       break;
     }

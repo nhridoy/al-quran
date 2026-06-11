@@ -2,18 +2,16 @@ import { useState } from "react";
 import { BiMinus, BiPlus } from "react-icons/bi";
 import { PageShell } from "@/components/common/PageShell/PageShell";
 import { useLocale } from "@/i18n";
+import { getHijriParts } from "@/lib/date";
+import { useSettings } from "@/store/settings";
 
 function useTaraweehData() {
+  const hijriAdjust = useSettings((s) => s.hijriAdjust);
   const now = new Date();
-  const fmt = new Intl.DateTimeFormat("en-u-ca-islamic", {
-    year: "numeric",
-    month: "numeric",
-    day: "numeric",
-  });
-  const [y, m, d] = fmt.format(now).split("/").map(Number);
-  const isRamadan = m === 9;
-  const ramadanDay = isRamadan ? d : 1;
-  const hijriYear = y;
+  const { year, month, day } = getHijriParts(now, hijriAdjust);
+  const isRamadan = month === 9;
+  const ramadanDay = isRamadan ? day : 1;
+  const hijriYear = year;
 
   const storageKey = `taraweeh-${hijriYear}`;
   const [data, setDataRaw] = useState<Record<string, number>>(() => {

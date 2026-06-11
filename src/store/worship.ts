@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { getAllFromStore, putInStore } from "@/lib/cache";
+import { formatDateKey, getTodayKey } from "@/lib/date";
 
 export interface WorshipDay {
   date: string;
@@ -24,8 +25,7 @@ function emptyDay(date: string): WorshipDay {
 }
 
 function todayKey(): string {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  return getTodayKey();
 }
 
 interface WorshipState {
@@ -71,7 +71,7 @@ export const useWorshipStore = create<WorshipState>((set, get) => ({
     let streak = 0;
     const d = new Date();
     while (true) {
-      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+      const key = formatDateKey(d);
       const day = records[key];
       if (day) {
         const completed = worshipCompletion(day);

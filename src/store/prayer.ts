@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { getAllFromStore, putInStore } from "@/lib/cache";
+import { formatDateKey, getTodayKey } from "@/lib/date";
 
 export const PRAYER_KEYS = ["fajr", "dhuhr", "asr", "maghrib", "isha"] as const;
 export type PrayerKey = (typeof PRAYER_KEYS)[number];
@@ -28,8 +29,7 @@ export interface PrayerDay {
 }
 
 export function todayKey(): string {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  return getTodayKey();
 }
 
 function emptyDay(date: string): PrayerDay {
@@ -82,7 +82,7 @@ export const usePrayerStore = create<PrayerState>((set, get) => ({
     let streak = 0;
     const d = new Date();
     while (true) {
-      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+      const key = formatDateKey(d);
       const day = records[key];
       if (day) {
         const count = PRAYER_KEYS.filter((k) => day[k]).length;

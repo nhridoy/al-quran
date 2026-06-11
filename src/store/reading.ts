@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { getFromStore, putInStore } from "@/lib/cache";
+import { formatDateKey } from "@/lib/date";
 import { SURAH_COUNT } from "@/lib/const";
 
 export interface ReadingRecord {
@@ -54,8 +55,7 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
     if (existing) {
       next = current.filter((r) => r.surahNo !== surahNo);
     } else {
-      const d = new Date();
-      const date = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+      const date = formatDateKey(new Date());
       const record: ReadingRecord = {
         id: String(surahNo),
         surahNo,

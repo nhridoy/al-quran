@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { PrayerIcon } from "@/components/ui/icons/prayer-icon";
+import { formatDateKey } from "@/lib/date";
 import { PRAYER_NAMES, usePrayerStore } from "@/store/prayer";
 
 export const PRAYER_KEYS = ["fajr", "dhuhr", "asr", "maghrib", "isha"] as const;
@@ -22,8 +23,7 @@ export default function PrayerGrid({
 
   const dateKey = useMemo(() => {
     if (date) return date;
-    const d = new Date();
-    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    return formatDateKey(new Date());
   }, [date]);
 
   const day = useMemo(

@@ -3,6 +3,7 @@ import { PageShell } from "@/components/common/PageShell/PageShell";
 import { Button } from "@/components/ui/button";
 import { useLocale } from "@/i18n";
 import { PRAYER_REFRESH_INTERVAL } from "@/lib/const";
+import { formatDateLong } from "@/lib/date";
 import {
   buildPrayerEntries,
   buildPrayerWindowMap,
@@ -132,12 +133,7 @@ export default function PrayerTimesPage() {
       head={t("prayerTimes.pageTitle")}
       showBack
       title={t("prayerTimes.pageTitle")}
-      description={now.toLocaleDateString(locale === "bn" ? "bn-BD" : "en-US", {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      })}
+      description={formatDateLong(now, locale as "en" | "bn")}
     >
       {!coords && geoLoading && (
         <div className="flex flex-col items-center gap-3 py-10">

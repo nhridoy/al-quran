@@ -17,6 +17,8 @@ import {
 import { useLocationStore } from "@/store/location";
 import { useSettings } from "@/store/settings";
 
+import { formatDate, isToday } from "@/lib/date";
+
 function buildEmptyCells(count: number) {
   const cells: React.ReactNode[] = [];
   for (let i = 0; i < count; i++) {
@@ -25,30 +27,16 @@ function buildEmptyCells(count: number) {
   return cells;
 }
 
-function isToday(date: Date): boolean {
-  const now = new Date();
-  return (
-    date.getDate() === now.getDate() &&
-    date.getMonth() === now.getMonth() &&
-    date.getFullYear() === now.getFullYear()
-  );
-}
-
-function formatGregorian(date: Date): string {
-  return date.toLocaleDateString("en-US", {
-    weekday: "short",
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
-}
-
 export default function HijriCalendar() {
   const { t } = useLocale();
   const { lat, lng } = useLocationStore();
   const { prayerCalcMethod, prayerAsrMethod } = useSettings();
+  const hijriAdjust = useSettings((s) => s.hijriAdjust);
   const now = useMemo(() => new Date(), []);
-  const todayHijri = useMemo(() => parseHijriParts(now), [now]);
+  const todayHijri = useMemo(
+    () => parseHijriParts(now, hijriAdjust),
+    [now, hijriAdjust],
+  );
   const [year, setYear] = useState(now.getFullYear());
   const [month, setMonth] = useState(now.getMonth());
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -79,7 +67,7 @@ export default function HijriCalendar() {
       daysUntil: number;
     }[] = [];
     for (const date of days) {
-      const h = parseHijriParts(date);
+      const h = parseHijriParts(date, hijriAdjust);
       const ev = getIslamicEvent(h.month, h.day);
       if (ev) {
         const d = new Date(date);
@@ -90,7 +78,7 @@ export default function HijriCalendar() {
     }
     events.sort((a, b) => a.daysUntil - b.daysUntil);
     return events;
-  }, [days]);
+  }, [days, hijriAdjust]);
 
   const upcomingEvents = useMemo(
     () => getUpcomingDatedEvents(todayHijri, 6),
@@ -134,8 +122,8 @@ export default function HijriCalendar() {
   }, [selectedDate, lat, lng, prayerCalcMethod, prayerAsrMethod]);
 
   const selectedHijri = useMemo(
-    () => (selectedDate ? parseHijriParts(selectedDate) : null),
-    [selectedDate],
+    () => (selectedDate ? parseHijriParts(selectedDate, hijriAdjust) : null),
+    [selectedDate, hijriAdjust],
   );
 
   const selectedEvent = useMemo(
@@ -218,7 +206,7 @@ export default function HijriCalendar() {
           {buildEmptyCells(firstDayOffset)}
 
           {days.map((date) => {
-            const h = parseHijriParts(date);
+            const h = parseHijriParts(date, hijriAdjust);
             const event = getIslamicEvent(h.month, h.day);
             const today = isToday(date);
             const selected =
@@ -290,7 +278,7 @@ export default function HijriCalendar() {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-text dark:text-dark-text">
-                {formatGregorian(selectedDate)}
+                {formatDate(selectedDate, "EEE, MMM d, yyyy")}
               </p>
               {selectedHijri && (
                 <p className="text-xs text-primary dark:text-secondary-light">
@@ -383,7 +371,7 @@ export default function HijriCalendar() {
                       {ev.name}
                     </p>
                     <p className="text-xs text-text-muted dark:text-dark-text-muted truncate">
-                      {formatGregorian(ev.date)}
+                      {formatDate(ev.date, "EEE, MMM d, yyyy")}
                     </p>
                     <p className="text-xs text-text-muted/60 dark:text-dark-text-muted/60">
                       {ev.hijri.day} {getIslamicMonthName(ev.hijri.month)}{" "}
@@ -437,7 +425,7 @@ export default function HijriCalendar() {
                       {ev.name}
                     </p>
                     <p className="text-xs text-text-muted dark:text-dark-text-muted truncate">
-                      {formatGregorian(ev.gregorianDate)}
+                      {formatDate(ev.gregorianDate, "EEE, MMM d, yyyy")}
                     </p>
                     <p className="text-xs text-text-muted/60 dark:text-dark-text-muted/60">
                       {ev.day} {getIslamicMonthName(ev.month)} {ev.hijriYear}{" "}

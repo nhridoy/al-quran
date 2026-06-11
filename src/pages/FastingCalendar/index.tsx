@@ -7,6 +7,7 @@ import {
   parseHijriParts,
 } from "@/data/islamicEvents";
 import { useLocale } from "@/i18n";
+import { formatDate, isToday } from "@/lib/date";
 import { computePrayerTimes, formatTime } from "@/lib/prayerTimes";
 import { useLocationStore } from "@/store/location";
 import { useSettings } from "@/store/settings";
@@ -22,6 +23,7 @@ export default function FastingCalendar() {
   const { t } = useLocale();
   const { lat, lng } = useLocationStore();
   const { prayerCalcMethod, prayerAsrMethod } = useSettings();
+  const hijriAdjust = useSettings((s) => s.hijriAdjust);
   const now = useMemo(() => new Date(), []);
   const [year, setYear] = useState(now.getFullYear());
   const [month, setMonth] = useState(now.getMonth());
@@ -132,12 +134,9 @@ export default function FastingCalendar() {
         {dayTimes.map((entry, idx) => {
           if (!entry) return null;
           const date = days[idx];
-          const h = parseHijriParts(date);
+          const h = parseHijriParts(date, hijriAdjust);
           const event = getIslamicEvent(h.month, h.day);
-          const today =
-            date.getDate() === now.getDate() &&
-            date.getMonth() === now.getMonth() &&
-            date.getFullYear() === now.getFullYear();
+          const today = isToday(date);
 
           return (
             <div
@@ -167,11 +166,7 @@ export default function FastingCalendar() {
                         today ? "text-white" : "text-text dark:text-dark-text"
                       }`}
                     >
-                      {date.toLocaleDateString("en-US", {
-                        weekday: "short",
-                        month: "short",
-                        day: "numeric",
-                      })}
+                      {formatDate(date, "EEE, MMM d")}
                     </p>
                     <p
                       className={`text-xs ${

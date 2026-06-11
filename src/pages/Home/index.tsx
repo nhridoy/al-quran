@@ -28,8 +28,12 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { PrayerIcon } from "@/components/ui/icons/prayer-icon";
-import { parseHijriParts } from "@/data/islamicEvents";
 import { KNOWLEDGE_FACTS } from "@/data/knowledgeFacts";
+import {
+  formatDateLong,
+  formatHijri,
+  isRamadan,
+} from "@/lib/date";
 import { useRandomContent } from "@/hooks/useRandomContent";
 import { useLocale } from "@/i18n";
 import {
@@ -84,28 +88,6 @@ function FaCalculator({ className }: { className?: string }) {
       <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3h2v2h-2V6zm0 4h2v2h-2v-2zm0 4h2v2h-2v-2zm-4-8h2v2H8V6zm0 4h2v2H8v-2zm0 4h2v2H8v-2zm8 6h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2z" />
     </svg>
   );
-}
-
-function getHijriDate(date: Date): string {
-  try {
-    const formatter = new Intl.DateTimeFormat("en-u-ca-islamic", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    });
-    return formatter.format(date);
-  } catch {
-    return "";
-  }
-}
-
-function getGregorianDate(date: Date, locale: string): string {
-  return date.toLocaleDateString(locale, {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
 }
 
 function getTimeBasedGreeting(): string {
@@ -236,6 +218,7 @@ export default function Home() {
   const { prayerCalcMethod, prayerAsrMethod } = useSettings();
   const { items, loading: contentLoading } = useRandomContent();
   const translationLang = useSettings((s) => s.translationLang);
+  const hijriAdjust = useSettings((s) => s.hijriAdjust);
   const [carouselApi, setCarouselApi] = useState<CarouselApi>(undefined);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [now, setNow] = useState(() => new Date());
@@ -367,10 +350,12 @@ export default function Home() {
   const fajrTime = prayers.find((p) => p.key === "fajr");
   const maghribTime = prayers.find((p) => p.key === "maghrib");
 
-  const hijriParts = useMemo(() => parseHijriParts(now), [now]);
-  const isRamadan = hijriParts.month === 9;
-  const hijriDate = useMemo(() => getHijriDate(now), [now]);
-  const gregDate = useMemo(() => getGregorianDate(now, locale), [now, locale]);
+  const isRamadanNow = useMemo(() => isRamadan(now, hijriAdjust), [now, hijriAdjust]);
+  const hijriDate = useMemo(
+    () => formatHijri(now, locale as "en" | "bn", hijriAdjust),
+    [now, locale, hijriAdjust],
+  );
+  const gregDate = useMemo(() => formatDateLong(now, locale as "en" | "bn"), [now, locale]);
 
   const [factIndex] = useState(() =>
     Math.floor(Math.random() * KNOWLEDGE_FACTS.length),
@@ -453,7 +438,7 @@ export default function Home() {
               <div className="space-y-0.5">
                 <p className="text-xs text-white/50">{gregDate}</p>
                 <p className="text-xs text-secondary/80">{hijriDate}</p>
-                {isRamadan && (
+                {isRamadanNow && (
                   <span className="mt-1.5 inline-block rounded-full bg-gradient-to-r from-secondary/20 to-secondary/20 px-2.5 py-0.5 text-[10px] font-semibold text-secondary ring-1 ring-secondary/20">
                     {t("home.ramadan")}
                   </span>

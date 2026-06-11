@@ -5,17 +5,14 @@ import PrayerGrid, {
   PRAYER_KEYS,
 } from "@/components/features/PrayerGrid/PrayerGrid";
 import { useLocale } from "@/i18n";
+import { formatDate, formatDateKey, formatMonthYear, getDaysInMonth, getTodayKey } from "@/lib/date";
 import { type PrayerDay, usePrayerStore } from "@/store/prayer";
-
-function formatKey(date: Date): string {
-  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
-}
 
 function computeStreak(records: Record<string, PrayerDay>): number {
   let streak = 0;
   const d = new Date();
   while (true) {
-    const key = formatKey(d);
+    const key = formatDateKey(d);
     const day = records[key];
     if (day) {
       const done = PRAYER_KEYS.filter((k) => day[k]).length;
@@ -35,10 +32,10 @@ function computeMonthStats(
   year: number,
   month: number,
 ): { date: string; count: number }[] {
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const daysInMonth = getDaysInMonth(new Date(year, month));
   const stats: { date: string; count: number }[] = [];
   for (let d = 1; d <= daysInMonth; d++) {
-    const key = `${year}-${String(month + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+    const key = formatDateKey(new Date(year, month, d));
     const day = records[key];
     stats.push({
       date: key,
@@ -66,8 +63,8 @@ export default function PrayerTracker() {
     () => computeMonthStats(records, viewYear, viewMonth),
     [records, viewYear, viewMonth],
   );
-  const selectedKey = useMemo(() => formatKey(selectedDate), [selectedDate]);
-  const todayKey = useMemo(() => formatKey(new Date()), []);
+  const selectedKey = useMemo(() => formatDateKey(selectedDate), [selectedDate]);
+  const todayKey = useMemo(() => getTodayKey(), []);
 
   const goPrevDay = useCallback(() => {
     setSelectedDate((d) => {
@@ -128,12 +125,7 @@ export default function PrayerTracker() {
           onClick={goToday}
           className="text-center text-sm font-semibold text-text dark:text-dark-text"
         >
-          {selectedDate.toLocaleDateString("en-US", {
-            weekday: "short",
-            month: "short",
-            day: "numeric",
-            year: "numeric",
-          })}
+          {formatDate(selectedDate, "EEE, MMM d, yyyy")}
           {!isToday && (
             <span className="ml-2 text-xs text-primary">
               {t("prayerTracker.today")}
@@ -177,10 +169,7 @@ export default function PrayerTracker() {
               ←
             </button>
             <span className="font-medium text-text dark:text-dark-text">
-              {new Date(viewYear, viewMonth).toLocaleDateString("en-US", {
-                month: "short",
-                year: "numeric",
-              })}
+              {formatMonthYear(new Date(viewYear, viewMonth))}
             </span>
             <button
               type="button"

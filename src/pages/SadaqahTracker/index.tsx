@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { FaHandHoldingHeart } from "react-icons/fa";
 import { PageShell } from "@/components/common/PageShell/PageShell";
 import { useLocale } from "@/i18n";
+import { formatDateKey, formatMonthYear } from "@/lib/date";
 import { CATEGORIES, useSadaqahStore } from "@/store/sadaqah";
 
 export default function SadaqahTracker() {
@@ -60,8 +61,7 @@ export default function SadaqahTracker() {
   const handleAdd = () => {
     const amt = Number.parseFloat(amount);
     if (Number.isNaN(amt) || amt <= 0) return;
-    const d = new Date();
-    const date = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    const date = formatDateKey(new Date());
     add({ amount: amt, category, note, date });
     setAmount("");
     setNote("");
@@ -184,10 +184,7 @@ export default function SadaqahTracker() {
               ←
             </button>
             <span className="font-medium text-text dark:text-dark-text">
-              {new Date(viewYear, viewMonth).toLocaleDateString("en-US", {
-                month: "short",
-                year: "numeric",
-              })}
+              {formatMonthYear(new Date(viewYear, viewMonth))}
             </span>
             <button
               type="button"
