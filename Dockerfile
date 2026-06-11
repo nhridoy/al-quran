@@ -9,6 +9,9 @@ RUN apk update && apk upgrade --no-cache
 # Install pnpm
 RUN npm install -g pnpm
 
+# Relax supply-chain minimum release age (date-fns-hijri & hijri-core published recently)
+RUN pnpm config set minimum-release-age 0 --location project
+
 # Copy package files
 COPY package.json pnpm-lock.yaml ./
 
