@@ -29,13 +29,9 @@ import {
 } from "@/components/ui/carousel";
 import { PrayerIcon } from "@/components/ui/icons/prayer-icon";
 import { KNOWLEDGE_FACTS } from "@/data/knowledgeFacts";
-import {
-  formatDateLong,
-  formatHijri,
-  isRamadan,
-} from "@/lib/date";
 import { useRandomContent } from "@/hooks/useRandomContent";
 import { useLocale } from "@/i18n";
+import { formatDateLong, formatHijri, isRamadan } from "@/lib/date";
 import {
   buildPrayerEntries,
   buildPrayerWindowMap,
@@ -350,12 +346,18 @@ export default function Home() {
   const fajrTime = prayers.find((p) => p.key === "fajr");
   const maghribTime = prayers.find((p) => p.key === "maghrib");
 
-  const isRamadanNow = useMemo(() => isRamadan(now, hijriAdjust), [now, hijriAdjust]);
+  const isRamadanNow = useMemo(
+    () => isRamadan(now, hijriAdjust),
+    [now, hijriAdjust],
+  );
   const hijriDate = useMemo(
     () => formatHijri(now, locale as "en" | "bn", hijriAdjust),
     [now, locale, hijriAdjust],
   );
-  const gregDate = useMemo(() => formatDateLong(now, locale as "en" | "bn"), [now, locale]);
+  const gregDate = useMemo(
+    () => formatDateLong(now, locale as "en" | "bn"),
+    [now, locale],
+  );
 
   const [factIndex] = useState(() =>
     Math.floor(Math.random() * KNOWLEDGE_FACTS.length),

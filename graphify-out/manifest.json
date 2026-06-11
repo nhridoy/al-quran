@@ -30,8 +30,8 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1781015955.7189791,
-    "ast_hash": "efd4f8415dd2663085a727da18c8bc38",
+    "mtime": 1781158802.1231813,
+    "ast_hash": "7ef027932cbd59e4233b57e9fa73f47b",
     "semantic_hash": ""
   },
   "scripts/hooks/pre-commit": {
@@ -55,8 +55,8 @@
     "semantic_hash": ""
   },
   "src/App.tsx": {
-    "mtime": 1781105312.4933474,
-    "ast_hash": "8b9b73cffa2f921863754e21ac06b06d",
+    "mtime": 1781164328.2483497,
+    "ast_hash": "3bef8688c2a2d49e30acd6d2f8e85477",
     "semantic_hash": ""
   },
   "src/components/common/BottomNav/BottomNav.tsx": {
@@ -200,8 +200,8 @@
     "semantic_hash": ""
   },
   "src/components/features/HijriDate/HijriDate.tsx": {
-    "mtime": 1781105311.6329634,
-    "ast_hash": "3d1a86a9ccedb7e027796cc6b11a867d",
+    "mtime": 1781165069.126248,
+    "ast_hash": "4df1b2d7295f46c9c961b8b894437ee7",
     "semantic_hash": ""
   },
   "src/components/features/InstallPrompt/InstallPrompt.tsx": {
@@ -240,8 +240,8 @@
     "semantic_hash": ""
   },
   "src/components/features/PrayerGrid/PrayerGrid.tsx": {
-    "mtime": 1781015956.1867378,
-    "ast_hash": "f0224b0b53c8068b0e4505410d5d9a29",
+    "mtime": 1781160289.215351,
+    "ast_hash": "ddde0cecb30b3902f418dbc7f050e18f",
     "semantic_hash": ""
   },
   "src/components/features/Search/Search.tsx": {
@@ -535,8 +535,8 @@
     "semantic_hash": ""
   },
   "src/data/islamicEvents.ts": {
-    "mtime": 1781105311.1693268,
-    "ast_hash": "3b892c0ff461af32bd7d3d23291587f1",
+    "mtime": 1781165069.7120893,
+    "ast_hash": "76973edcc815527e7f8bdb9eafdebf69",
     "semantic_hash": ""
   },
   "src/data/islamicNames.json": {
@@ -750,8 +750,8 @@
     "semantic_hash": ""
   },
   "src/pages/DailyLog/index.tsx": {
-    "mtime": 1781017457.4559174,
-    "ast_hash": "b45bbe4e3f61a38fb0cf21c3cacf9f7d",
+    "mtime": 1781160618.128928,
+    "ast_hash": "5c60cc731f199de45f5567509af2a5c9",
     "semantic_hash": ""
   },
   "src/pages/DataExport/index.tsx": {
@@ -780,8 +780,8 @@
     "semantic_hash": ""
   },
   "src/pages/FastingCalendar/index.tsx": {
-    "mtime": 1781015956.6003535,
-    "ast_hash": "6b9d5e1dd9def091da14213b06a1e3f6",
+    "mtime": 1781164484.9656782,
+    "ast_hash": "85acbd7e1a9b785069d6e50d82407595",
     "semantic_hash": ""
   },
   "src/pages/Hadith/[collection]/[bookId]/index.tsx": {
@@ -800,13 +800,13 @@
     "semantic_hash": ""
   },
   "src/pages/HijriCalendar/index.tsx": {
-    "mtime": 1781078744.9243574,
-    "ast_hash": "e58a1a83418fd2b185bd3c966e82a402",
+    "mtime": 1781165070.5844502,
+    "ast_hash": "c6d932778b76057ebde86a445cd46848",
     "semantic_hash": ""
   },
   "src/pages/Home/index.tsx": {
-    "mtime": 1781117093.3743143,
-    "ast_hash": "2a42fbef7b4a1253a77fcefbcfd5e091",
+    "mtime": 1781165070.5939815,
+    "ast_hash": "141e51dcad36432b9515b27a12f04c70",
     "semantic_hash": ""
   },
   "src/pages/IslamicNames/index.tsx": {
@@ -835,13 +835,13 @@
     "semantic_hash": ""
   },
   "src/pages/PrayerTimes/index.tsx": {
-    "mtime": 1781114531.5213807,
-    "ast_hash": "6788c9da4182fc04ed4926ffe95b2dbc",
+    "mtime": 1781159918.3436003,
+    "ast_hash": "bb140b47b656ad6721b04b130304f0ca",
     "semantic_hash": ""
   },
   "src/pages/PrayerTracker/index.tsx": {
-    "mtime": 1781015956.6253521,
-    "ast_hash": "c99f051b2dcb1a38d5e547a397eb038d",
+    "mtime": 1781165069.9783492,
+    "ast_hash": "f8857511532572bee64c09064f712f7d",
     "semantic_hash": ""
   },
   "src/pages/Qibla/index.tsx": {
@@ -860,8 +860,8 @@
     "semantic_hash": ""
   },
   "src/pages/SadaqahTracker/index.tsx": {
-    "mtime": 1781015956.6628773,
-    "ast_hash": "4891c13928d21153a9edff44a75eb70b",
+    "mtime": 1781160249.8176813,
+    "ast_hash": "b1509e58f16a2bd8c6e83143c04c0b56",
     "semantic_hash": ""
   },
   "src/pages/SalahGuide/index.tsx": {
@@ -885,8 +885,8 @@
     "semantic_hash": ""
   },
   "src/pages/TaraweehTracker/index.tsx": {
-    "mtime": 1781105313.2125432,
-    "ast_hash": "3e62f2716a5dd285b902ea94fb3f7758",
+    "mtime": 1781164357.2116709,
+    "ast_hash": "b633f265c247509cdc9850cc9aee8d65",
     "semantic_hash": ""
   },
   "src/pages/Tasbih/index.tsx": {
@@ -920,18 +920,18 @@
     "semantic_hash": ""
   },
   "src/store/prayer.ts": {
-    "mtime": 1781015956.687624,
-    "ast_hash": "b41d9b08e38712bf58fb290617399432",
+    "mtime": 1781160353.0774388,
+    "ast_hash": "650b556c7c9d5f0264d948d371e691a6",
     "semantic_hash": ""
   },
   "src/store/reading.ts": {
-    "mtime": 1781015956.700157,
-    "ast_hash": "788dd31d6542adf4a3c98c16568a7056",
+    "mtime": 1781165069.0634322,
+    "ast_hash": "67646a84ea57b5b1016c80c18b938cb0",
     "semantic_hash": ""
   },
   "src/store/readingGoals.ts": {
-    "mtime": 1781015956.7031574,
-    "ast_hash": "50d51e40864ed0ff7a9ea0d0820ef681",
+    "mtime": 1781160375.6842415,
+    "ast_hash": "f5bfedeb513031c0cf9d5f9005648469",
     "semantic_hash": ""
   },
   "src/store/sadaqah.ts": {
@@ -945,8 +945,8 @@
     "semantic_hash": ""
   },
   "src/store/worship.ts": {
-    "mtime": 1781015956.736683,
-    "ast_hash": "cc5dc11001d6f5caa5dd3cdede31012b",
+    "mtime": 1781160364.0831017,
+    "ast_hash": "3e46512f37b50105efef94860c141fc2",
     "semantic_hash": ""
   },
   "src/types/index.ts": {
@@ -1757,6 +1757,11 @@
   "src/components/ui/icons/prayer-icon.tsx": {
     "mtime": 1781015956.3507104,
     "ast_hash": "bca534ef37f4d169f532859d81ea9f56",
+    "semantic_hash": ""
+  },
+  "src/lib/date.ts": {
+    "mtime": 1781165069.98235,
+    "ast_hash": "8eb6ec4471efd0b95cc8756d5381ec35",
     "semantic_hash": ""
   }
 }

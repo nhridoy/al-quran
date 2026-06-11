@@ -8,6 +8,7 @@ import {
   parseHijriParts,
 } from "@/data/islamicEvents";
 import { useLocale } from "@/i18n";
+import { formatDate, isToday } from "@/lib/date";
 import {
   computePrayerTimes,
   formatTime,
@@ -16,8 +17,6 @@ import {
 } from "@/lib/prayerTimes";
 import { useLocationStore } from "@/store/location";
 import { useSettings } from "@/store/settings";
-
-import { formatDate, isToday } from "@/lib/date";
 
 function buildEmptyCells(count: number) {
   const cells: React.ReactNode[] = [];

@@ -5,7 +5,13 @@ import PrayerGrid, {
   PRAYER_KEYS,
 } from "@/components/features/PrayerGrid/PrayerGrid";
 import { useLocale } from "@/i18n";
-import { formatDate, formatDateKey, formatMonthYear, getDaysInMonth, getTodayKey } from "@/lib/date";
+import {
+  formatDate,
+  formatDateKey,
+  formatMonthYear,
+  getDaysInMonth,
+  getTodayKey,
+} from "@/lib/date";
 import { type PrayerDay, usePrayerStore } from "@/store/prayer";
 
 function computeStreak(records: Record<string, PrayerDay>): number {
@@ -63,7 +69,10 @@ export default function PrayerTracker() {
     () => computeMonthStats(records, viewYear, viewMonth),
     [records, viewYear, viewMonth],
   );
-  const selectedKey = useMemo(() => formatDateKey(selectedDate), [selectedDate]);
+  const selectedKey = useMemo(
+    () => formatDateKey(selectedDate),
+    [selectedDate],
+  );
   const todayKey = useMemo(() => getTodayKey(), []);
 
   const goPrevDay = useCallback(() => {

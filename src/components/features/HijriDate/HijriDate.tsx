@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
+import { formatDateLong, formatHijri } from "@/lib/date";
 import { useSettings } from "@/store/settings";
-import { formatHijri, formatDateLong } from "@/lib/date";
 
 export default function HijriDate() {
   const hijriAdjust = useSettings((s) => s.hijriAdjust);

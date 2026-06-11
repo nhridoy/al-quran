@@ -1,16 +1,13 @@
-import { toHijriDate } from "date-fns-hijri";
-import {
-  format as dfFormat,
-} from "date-fns";
-import { enUS } from "date-fns/locale/en-US";
+import { format as dfFormat } from "date-fns";
 import { bn } from "date-fns/locale/bn";
+import { enUS } from "date-fns/locale/en-US";
+import { toHijriDate } from "date-fns-hijri";
 import { ISLAMIC_MONTHS } from "@/data/islamicEvents";
 
 const LOCALE_MAP = { en: enUS, bn } as const;
 type AppLocale = keyof typeof LOCALE_MAP;
 
-const MONTH_NAMES =
-  ISLAMIC_MONTHS as unknown as { en: string; bn: string }[];
+const MONTH_NAMES = ISLAMIC_MONTHS as unknown as { en: string; bn: string }[];
 
 function hijriMonthName(month: number, locale: AppLocale): string {
   return MONTH_NAMES[month - 1]?.[locale === "bn" ? "bn" : "en"] ?? "";
@@ -32,7 +29,9 @@ export function getHijriParts(
   day: number;
 } {
   const h = toHijriDate(adjustDate(date, adjust));
-  return h ? { year: h.hy, month: h.hm, day: h.hd } : { year: 0, month: 0, day: 0 };
+  return h
+    ? { year: h.hy, month: h.hm, day: h.hd }
+    : { year: 0, month: 0, day: 0 };
 }
 
 export function getHijriMonth(date: Date, adjust = 0): number {
@@ -60,19 +59,13 @@ export function formatDate(
   return dfFormat(date, formatStr, { locale: LOCALE_MAP[locale] });
 }
 
-export function formatDateLong(
-  date: Date,
-  locale: AppLocale = "en",
-): string {
+export function formatDateLong(date: Date, locale: AppLocale = "en"): string {
   return dfFormat(date, "EEEE, MMMM d, yyyy", {
     locale: LOCALE_MAP[locale],
   });
 }
 
-export function formatDateShort(
-  date: Date,
-  locale: AppLocale = "en",
-): string {
+export function formatDateShort(date: Date, locale: AppLocale = "en"): string {
   return dfFormat(date, "MMM d, yyyy", { locale: LOCALE_MAP[locale] });
 }
 
@@ -84,13 +77,8 @@ export function getTodayKey(): string {
   return formatDateKey(new Date());
 }
 
-export function formatMonthYear(
-  date: Date,
-  locale: AppLocale = "en",
-): string {
+export function formatMonthYear(date: Date, locale: AppLocale = "en"): string {
   return dfFormat(date, "MMMM yyyy", { locale: LOCALE_MAP[locale] });
 }
 
-
-
-export {getDaysInMonth, isToday} from "date-fns";
+export { getDaysInMonth, isToday } from "date-fns";
