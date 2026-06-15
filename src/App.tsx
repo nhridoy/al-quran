@@ -206,6 +206,14 @@ function RamadanModeController() {
   return null;
 }
 
+function ScrollToTop() {
+  const { pathname, search } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname, search]);
+  return null;
+}
+
 function AppContent() {
   const location = useLocation();
   const [showOnboarding, setShowOnboarding] = useState(false);
@@ -224,6 +232,7 @@ function AppContent() {
       <ThemeController />
       <LocaleSync />
       <RamadanModeController />
+      <ScrollToTop />
       {showOnboarding && (
         <Onboarding onComplete={() => setShowOnboarding(false)} />
       )}
