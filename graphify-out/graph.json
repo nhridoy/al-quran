@@ -358,7 +358,7 @@
       "label": "AppContent()",
       "file_type": "code",
       "source_file": "src/App.tsx",
-      "source_location": "L217",
+      "source_location": "L218",
       "id": "src_app_appcontent",
       "community": 49,
       "norm_label": "appcontent()"
@@ -367,7 +367,7 @@
       "label": "App()",
       "file_type": "code",
       "source_file": "src/App.tsx",
-      "source_location": "L278",
+      "source_location": "L279",
       "id": "src_app_app",
       "community": 49,
       "norm_label": "app()"
@@ -22322,9 +22322,9 @@
       "source_file": "src/App.tsx",
       "source_location": "L209",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_app",
-      "target": "src_app_scrolltotop",
-      "confidence_score": 1.0
+      "target": "src_app_scrolltotop"
     },
     {
       "relation": "contains",
@@ -49172,5 +49172,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "ae267f835cec9856e9d89eb0a9b42fc64fe71959"
+  "built_at_commit": "c2bd1b522c02f142cd234e2b624a6f2dac7e2c3e"
 }
