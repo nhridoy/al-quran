@@ -197,6 +197,16 @@
     "noEntries": "No entries this month",
     "delete": "Delete"
   },
+  "tasbih": {
+    "pageTitle": "Tasbih",
+    "headerTitle": "Tasbih",
+    "headerDescription": "Digital counter for evening and morning adhkar",
+    "countAria": "{label}: {current} of {target}",
+    "resetCurrent": "Reset Current",
+    "resetAll": "Reset All",
+    "ofTarget": "of {n}",
+    "completed": "Completed"
+  },
   "pagination": {
     "previous": "Previous",
     "next": "Next"

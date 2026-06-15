@@ -197,6 +197,16 @@
     "noEntries": "এই মাসে কোনো এন্ট্রি নেই",
     "delete": "মুছুন"
   },
+  "tasbih": {
+    "pageTitle": "তাসবিহ",
+    "headerTitle": "তাসবিহ",
+    "headerDescription": "সন্ধ্যা ও সকালের আজকারের জন্য ডিজিটাল কাউন্টার",
+    "countAria": "{label}: {current} / {target}",
+    "resetCurrent": "বর্তমান রিসেট",
+    "resetAll": "সব রিসেট",
+    "ofTarget": "{n} এর মধ্যে",
+    "completed": "সম্পন্ন"
+  },
   "pagination": {
     "previous": "পূর্ববর্তী",
     "next": "পরবর্তী"
