@@ -1,6 +1,14 @@
 import { useMemo, useState } from "react";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import LocationGate from "@/components/common/LocationGate/LocationGate";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   GREGORIAN_MONTHS,
   getIslamicEvent,
@@ -91,22 +99,26 @@ export default function FastingCalendar() {
         </button>
 
         <div className="text-center">
-          <select
-            value={month}
-            onChange={(e) => setMonth(Number(e.target.value))}
-            className="bg-transparent text-base font-semibold text-text dark:text-dark-text focus:outline-none"
+          <Select
+            value={String(month)}
+            onValueChange={(v) => setMonth(Number(v))}
           >
-            {GREGORIAN_MONTHS.map((name, i) => (
-              <option key={name} value={i}>
-                {name}
-              </option>
-            ))}
-          </select>
-          <input
+            <SelectTrigger className="inline-flex border-none bg-transparent px-0 py-0 text-base font-semibold text-text shadow-none h-auto focus:border-none dark:text-dark-text">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent alignItemWithTrigger={false}>
+              {GREGORIAN_MONTHS.map((name, i) => (
+                <SelectItem key={name} value={String(i)}>
+                  {name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Input
             type="number"
             value={year}
             onChange={(e) => setYear(Number(e.target.value))}
-            className="ml-1 w-16 bg-transparent text-base font-semibold text-text dark:text-dark-text focus:outline-none"
+            className="ml-1 inline-flex w-16 border-none bg-transparent px-0 py-0 text-base font-semibold text-text shadow-none h-auto dark:text-dark-text"
           />
         </div>
 

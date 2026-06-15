@@ -9,6 +9,14 @@ import {
 } from "react-icons/bi";
 import { IoTrendingUp } from "react-icons/io5";
 import { PageShell } from "@/components/common/PageShell/PageShell";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useLocale } from "@/i18n";
 import { SURAH_COUNT } from "@/lib/const";
 import { getSurahList } from "@/lib/db";
@@ -218,33 +226,41 @@ export default function ReadingGoals() {
               <p className="mb-1 text-xs font-medium text-text-muted">
                 {t("goals.metric")}
               </p>
-              <select
+              <Select
                 value={metric}
-                onChange={(e) => setMetric(e.target.value as GoalMetric)}
-                className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-text-primary outline-none dark:border-dark-border dark:bg-dark-surface dark:text-dark-text-primary"
+                onValueChange={(v) => setMetric(v as GoalMetric)}
               >
-                {Object.entries(METRIC_LABELS).map(([k, v]) => (
-                  <option key={k} value={k}>
-                    {v}
-                  </option>
-                ))}
-              </select>
+                <SelectTrigger className="w-full">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent alignItemWithTrigger={false}>
+                  {Object.entries(METRIC_LABELS).map(([k, v]) => (
+                    <SelectItem key={k} value={k}>
+                      {v}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
             <div>
               <p className="mb-1 text-xs font-medium text-text-muted">
                 {t("goals.period")}
               </p>
-              <select
+              <Select
                 value={period}
-                onChange={(e) => setPeriod(e.target.value as GoalPeriod)}
-                className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-text-primary outline-none dark:border-dark-border dark:bg-dark-surface dark:text-dark-text-primary"
+                onValueChange={(v) => setPeriod(v as GoalPeriod)}
               >
-                {Object.entries(PERIOD_LABELS).map(([k, v]) => (
-                  <option key={k} value={k}>
-                    {v}
-                  </option>
-                ))}
-              </select>
+                <SelectTrigger className="w-full">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent alignItemWithTrigger={false}>
+                  {Object.entries(PERIOD_LABELS).map(([k, v]) => (
+                    <SelectItem key={k} value={k}>
+                      {v}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
           </div>
 
@@ -253,25 +269,22 @@ export default function ReadingGoals() {
               <p className="mb-1 text-xs font-medium text-text-muted">
                 {t("goals.target")}
               </p>
-              <input
+              <Input
                 type="number"
                 min={1}
                 max={114}
                 value={target}
                 onChange={(e) => setTarget(Number(e.target.value))}
-                className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-text-primary outline-none dark:border-dark-border dark:bg-dark-surface dark:text-dark-text-primary"
               />
             </div>
             <div>
               <p className="mb-1 text-xs font-medium text-text-muted">
                 {t("goals.label")}
               </p>
-              <input
-                type="text"
+              <Input
                 value={label}
                 onChange={(e) => setLabel(e.target.value)}
                 placeholder={t("goals.labelPlaceholder")}
-                className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-text-primary outline-none placeholder:text-text-muted dark:border-dark-border dark:bg-dark-surface dark:text-dark-text-primary"
               />
             </div>
           </div>
@@ -286,11 +299,11 @@ export default function ReadingGoals() {
                 {reminderEnabled ? <BiSolidBell /> : <BiBell />}
               </button>
               {reminderEnabled && (
-                <input
+                <Input
                   type="time"
                   value={reminderTime}
                   onChange={(e) => setReminderTime(e.target.value)}
-                  className="rounded-lg border border-border bg-surface px-2 py-1 text-xs text-text-primary outline-none dark:border-dark-border dark:bg-dark-surface dark:text-dark-text-primary"
+                  className="h-8 w-fit rounded-lg px-2 py-1 text-xs"
                 />
               )}
             </div>

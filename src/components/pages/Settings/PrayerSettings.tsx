@@ -51,7 +51,7 @@ export default function PrayerSettings({
             value={prayerCalcMethod}
             onValueChange={(v) => onChange("prayerCalcMethod", v)}
           >
-            <SelectTrigger className="w-full rounded-xl border-border bg-surface-alt text-text-primary focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary">
+            <SelectTrigger className="w-full">
               <SelectValue />
             </SelectTrigger>
             <SelectContent alignItemWithTrigger={false}>

@@ -6,6 +6,7 @@ import SurahDownloadCard, {
   formatBytes,
 } from "@/components/pages/Downloads/SurahDownloadCard";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { useSurahs } from "@/hooks/useSurahs";
 import { useLocale } from "@/i18n";
 import { confirm } from "@/lib/confirm";
@@ -91,12 +92,10 @@ export default function DownloadsPage() {
       </div>
 
       <div className="mb-4">
-        <input
-          type="text"
+        <Input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder={t("downloads.searchPlaceholder")}
-          className="w-full rounded-xl border border-border bg-surface-alt px-4 py-2.5 text-sm text-text-primary outline-none transition-colors focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
         />
       </div>
 

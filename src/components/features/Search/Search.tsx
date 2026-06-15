@@ -11,6 +11,11 @@ import { BiSearch } from "react-icons/bi";
 import { IoClose } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useSurahs } from "@/hooks/useSurahs";
 import { SEARCH_FOCUS_DELAY } from "@/lib/const";
@@ -100,7 +105,7 @@ export default function Search() {
 
       {open &&
         createPortal(
-          <div className="fixed inset-0 z-[999] flex items-start justify-center bg-black/60 backdrop-blur-xl pt-[15vh]">
+          <div className="fixed inset-0 z-999 flex items-start justify-center bg-black/60 backdrop-blur-xl pt-[15vh]">
             <button
               type="button"
               className="absolute inset-0 cursor-default"
@@ -108,22 +113,24 @@ export default function Search() {
               aria-label="Close"
             />
             <div className="relative w-full max-w-lg mx-4 animate-scale-in">
-              <div className="overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/5 dark:bg-dark-surface-card dark:ring-white/10">
+              <div className="overflow-hidden rounded-2xl p-4 bg-white shadow-2xl ring-1 ring-black/5 dark:bg-dark-surface-card dark:ring-white/10">
                 <div className="border-b border-border dark:border-dark-border">
-                  <div className="flex items-center gap-3 px-4">
-                    <BiSearch className="text-lg shrink-0 text-text-muted" />
-                    <input
-                      ref={inputRef}
-                      onChange={handleChange}
-                      value={query}
-                      type="text"
-                      className="flex-1 bg-transparent py-4 text-sm text-text-primary outline-none placeholder:text-text-muted dark:text-dark-text-primary dark:placeholder:text-dark-text-muted"
-                      placeholder={
-                        mode === "surah"
-                          ? "Search by surah name or number..."
-                          : "Search by verse text..."
-                      }
-                    />
+                  <div className="flex items-center gap-3">
+                    <InputGroup className="flex-1 border-transparent bg-transparent dark:border-transparent dark:bg-transparent">
+                      <InputGroupAddon>
+                        <BiSearch className="text-lg shrink-0 text-text-muted" />
+                      </InputGroupAddon>
+                      <InputGroupInput
+                        ref={inputRef}
+                        onChange={handleChange}
+                        value={query}
+                        placeholder={
+                          mode === "surah"
+                            ? "Search by surah name or number..."
+                            : "Search by verse text..."
+                        }
+                      />
+                    </InputGroup>
                     {query && (
                       <button
                         type="button"
@@ -142,7 +149,7 @@ export default function Search() {
                       Esc
                     </button>
                   </div>
-                  <div className="flex gap-1 px-4 pb-3">
+                  <div className="flex gap-1 mb-3">
                     <button
                       type="button"
                       onClick={() => {
@@ -174,7 +181,7 @@ export default function Search() {
                   </div>
                 </div>
 
-                <div className="max-h-80 overflow-y-auto p-2">
+                <div className="max-h-80 overflow-y-auto">
                   {mode === "surah" && surahResults.length > 0 && (
                     <div className="space-y-1">
                       {surahResults.map((surah) => (

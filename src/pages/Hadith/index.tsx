@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ErrorState } from "@/components/common/ErrorState/ErrorState";
 import { PageShell } from "@/components/common/PageShell/PageShell";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useEditions } from "@/hooks/useHadith";
 import { useLocale } from "@/i18n";
@@ -65,12 +66,11 @@ export default function HadithCollections() {
     >
       <div className="relative mb-6">
         <BiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-lg text-text-muted" />
-        <input
-          type="text"
+        <Input
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder={t("hadith.searchPlaceholder")}
-          className="w-full rounded-2xl border border-border bg-surface pl-10 pr-4 py-2.5 text-sm text-text-primary outline-none focus:ring-1 focus:ring-secondary dark:border-dark-border dark:bg-dark-surface-card dark:text-dark-text-primary"
+          className="rounded-2xl bg-surface pl-10 focus:ring-1 focus:ring-secondary dark:bg-dark-surface-card"
         />
       </div>
 

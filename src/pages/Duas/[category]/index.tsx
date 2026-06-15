@@ -9,6 +9,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
 import duas from "@/data/duas.json";
 import { useLocale } from "@/i18n";
 
@@ -34,12 +35,11 @@ export default function DuaCategory() {
     <PageShell head={category} showBack>
       <div className="relative">
         <BiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-base text-text-muted" />
-        <input
-          type="text"
+        <Input
           placeholder={t("duas.categorySearchPlaceholder")}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full rounded-xl border border-border bg-surface-alt py-2.5 pl-9 pr-4 text-sm text-text-primary outline-none transition-colors placeholder:text-text-muted focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
+          className="pl-9"
         />
       </div>
 

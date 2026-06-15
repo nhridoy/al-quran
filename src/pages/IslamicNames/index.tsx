@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { BiHeart, BiSearch } from "react-icons/bi";
 import { PageShell } from "@/components/common/PageShell/PageShell";
+import { Input } from "@/components/ui/input";
 import namesData from "@/data/islamicNames.json";
 import { useLocale } from "@/i18n";
 
@@ -73,12 +74,11 @@ export default function IslamicNames() {
       {/* Search */}
       <div className="relative">
         <BiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-base text-text-muted" />
-        <input
-          type="text"
+        <Input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder={t("names.searchPlaceholder")}
-          className="w-full rounded-xl border border-border bg-surface-alt py-2.5 pl-9 pr-3 text-sm text-text-primary outline-none transition-colors focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
+          className="pl-9"
         />
       </div>
 

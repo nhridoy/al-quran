@@ -2,6 +2,11 @@ import { useEffect, useMemo, useState } from "react";
 import { BiChevronRight, BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import SurahItem from "@/components/quran/SurahItem/SurahItem";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group";
 import { useSurahList } from "@/hooks/useSurahList";
 import { useLocale } from "@/i18n";
 import { searchSurahs } from "@/lib/search";
@@ -46,16 +51,16 @@ export default function Surahs() {
   return (
     <div>
       <div className="mx-4 mb-3 md:mx-6">
-        <div className="flex items-center gap-2 rounded-xl border border-border bg-surface px-3 dark:border-dark-border dark:bg-dark-surface-card">
-          <BiSearch className="text-text-muted dark:text-dark-text-muted" />
-          <input
+        <InputGroup>
+          <InputGroupAddon>
+            <BiSearch className="text-text-muted dark:text-dark-text-muted" />
+          </InputGroupAddon>
+          <InputGroupInput
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            type="text"
             placeholder={t("surah.filterPlaceholder")}
-            className="flex-1 bg-transparent py-2.5 text-sm text-text-primary outline-none placeholder:text-text-muted dark:text-dark-text-primary dark:placeholder:text-dark-text-muted"
           />
-        </div>
+        </InputGroup>
       </div>
       <div className="mx-4 md:mx-6">
         {loading ? (

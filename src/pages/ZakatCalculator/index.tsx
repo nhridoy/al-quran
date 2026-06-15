@@ -6,6 +6,7 @@ import {
   BiInfoCircle,
 } from "react-icons/bi";
 import { PageShell } from "@/components/common/PageShell/PageShell";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -259,14 +260,14 @@ export default function ZakatCalculator() {
                   <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-text-muted">
                     $
                   </span>
-                  <input
+                  <Input
                     type="number"
                     min="0"
                     step="0.01"
                     placeholder="0.00"
                     value={values[asset.key] ?? ""}
                     onChange={(e) => updateValue(asset.key, e.target.value)}
-                    className="w-full rounded-xl border border-border bg-surface-alt py-2.5 pl-8 pr-3 text-sm text-text outline-none transition-colors focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text"
+                    className="pl-8"
                   />
                 </div>
                 {asset.key === "goldGrams" && (
@@ -278,7 +279,7 @@ export default function ZakatCalculator() {
                       value={String(goldKarat)}
                       onValueChange={(v) => setGoldKarat(Number(v))}
                     >
-                      <SelectTrigger className="rounded-lg border-border bg-surface-alt text-xs text-text dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text">
+                      <SelectTrigger className="text-xs">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent alignItemWithTrigger={false}>
@@ -314,7 +315,7 @@ export default function ZakatCalculator() {
               >
                 {t("zakat.rateGold")}
               </label>
-              <input
+              <Input
                 id="gold-rate"
                 type="number"
                 min="0"
@@ -327,7 +328,6 @@ export default function ZakatCalculator() {
                     gold: Number.parseFloat(e.target.value) || 0,
                   }))
                 }
-                className="w-full rounded-xl border border-border bg-surface-alt py-2.5 px-3 text-sm text-text outline-none transition-colors focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text"
               />
             </div>
             <div>
@@ -337,7 +337,7 @@ export default function ZakatCalculator() {
               >
                 {t("zakat.rateSilver")}
               </label>
-              <input
+              <Input
                 id="silver-rate"
                 type="number"
                 min="0"
@@ -350,30 +350,6 @@ export default function ZakatCalculator() {
                     silver: Number.parseFloat(e.target.value) || 0,
                   }))
                 }
-                className="w-full rounded-xl border border-border bg-surface-alt py-2.5 px-3 text-sm text-text outline-none transition-colors focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text"
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="silver-rate"
-                className="mb-1 block text-xs text-text-muted dark:text-dark-text-muted"
-              >
-                {t("zakat.rateSilver")}
-              </label>
-              <input
-                id="silver-rate"
-                type="number"
-                min="0"
-                step="0.01"
-                placeholder={t("zakat.silverPlaceholder")}
-                value={rates.silver || ""}
-                onChange={(e) =>
-                  setRates((r) => ({
-                    ...r,
-                    silver: Number.parseFloat(e.target.value) || 0,
-                  }))
-                }
-                className="w-full rounded-xl border border-border bg-surface-alt py-2.5 px-3 text-sm text-text outline-none transition-colors focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text"
               />
             </div>
           </div>

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { FaHandHoldingHeart } from "react-icons/fa";
 import { PageShell } from "@/components/common/PageShell/PageShell";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -107,17 +108,17 @@ export default function SadaqahTracker() {
         </h2>
         <div className="space-y-3">
           <div className="flex gap-2">
-            <input
+            <Input
               type="number"
               step="0.01"
               min="0"
               placeholder={t("sadaqah.amount")}
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
-              className="flex-1 rounded-xl border border-border bg-surface-alt px-4 py-2.5 text-sm text-text outline-none transition-colors placeholder:text-text-muted focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text"
+              className="flex-1"
             />
-            <Select value={category} onValueChange={setCategory}>
-              <SelectTrigger className="w-[140px] rounded-xl border-border bg-surface-alt text-sm text-text focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text">
+            <Select value={category} onValueChange={(v) => v && setCategory(v)}>
+              <SelectTrigger className="w-[140px]">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent alignItemWithTrigger={false}>
@@ -129,12 +130,10 @@ export default function SadaqahTracker() {
               </SelectContent>
             </Select>
           </div>
-          <input
-            type="text"
+          <Input
             placeholder={t("sadaqah.note")}
             value={note}
             onChange={(e) => setNote(e.target.value)}
-            className="w-full rounded-xl border border-border bg-surface-alt px-4 py-2.5 text-sm text-text outline-none transition-colors placeholder:text-text-muted focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text"
           />
           <button
             type="button"

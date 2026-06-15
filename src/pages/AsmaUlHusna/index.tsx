@@ -5,6 +5,7 @@ import { IoClose } from "react-icons/io5";
 import { PageShell } from "@/components/common/PageShell/PageShell";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogOverlay, DialogPortal } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -105,19 +106,18 @@ export default function AsmaUlHusna() {
         <div className="mb-4 flex items-center gap-2">
           <div className="relative flex-1">
             <BiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-base text-text-muted" />
-            <input
-              type="text"
+            <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={t("asmaUlHusna.searchPlaceholder")}
-              className="w-full rounded-xl border border-border bg-surface-alt py-2.5 pl-9 pr-3 text-sm text-text-primary outline-none transition-colors focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
+              className="pl-9"
             />
           </div>
           <Select
             value={filter}
             onValueChange={(v) => setFilter(v as FilterMode)}
           >
-            <SelectTrigger className="w-[130px] rounded-xl border-border bg-surface-alt text-xs text-text focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text">
+            <SelectTrigger className="w-[130px] text-xs">
               <SelectValue />
             </SelectTrigger>
             <SelectContent alignItemWithTrigger={false}>
