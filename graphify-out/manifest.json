@@ -615,13 +615,13 @@
     "semantic_hash": ""
   },
   "src/i18n/bn.json": {
-    "mtime": 1781168883.2422664,
-    "ast_hash": "676bdc8b8f139df8cf64d656ca335be2",
+    "mtime": 1781526552.011927,
+    "ast_hash": "c8ecc36201ea8d2a144ee934f627faf3",
     "semantic_hash": ""
   },
   "src/i18n/en.json": {
-    "mtime": 1781168881.765662,
-    "ast_hash": "ee555939bf0aed100e31b4a715d00af9",
+    "mtime": 1781526549.9621427,
+    "ast_hash": "d2939c2f137d430d5740ec5a2b76bd79",
     "semantic_hash": ""
   },
   "src/i18n/index.ts": {
