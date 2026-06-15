@@ -368,7 +368,7 @@ export default function DailyLog() {
                     setViewMonth(parts[1] - 1);
                   }}
                   title={`${stat.date}: ${Math.round(stat.completion * 100)}%`}
-                  className={`aspect-square rounded-md text-center text-[10px] leading-[2.2] ${isCellToday ? "ring-2 ring-secondary" : ""} ${isSelected ? "ring-2 ring-primary" : ""} ${intensity} ${stat.completion > 0 ? "text-white" : "text-text-muted dark:text-dark-text-muted"} cursor-pointer transition-all hover:scale-110`}
+                  className={`aspect-square rounded-md text-center text-[10px] leading-[2.2] ${isCellToday ? "ring-2 ring-secondary" : ""} ${isSelected ? "ring-2 ring-primary" : ""} ${intensity} ${stat.completion > 0 ? "text-white" : "text-text-muted dark:text-dark-text-muted"} cursor-pointer transition-colors hover:bg-white/10 dark:hover:bg-white/10`}
                 >
                   {dayNum}
                 </button>,
