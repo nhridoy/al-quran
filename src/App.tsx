@@ -207,10 +207,11 @@ function RamadanModeController() {
 }
 
 function ScrollToTop() {
-  const { pathname, search } = useLocation();
+  const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [pathname, search]);
+    void pathname;
+  }, [pathname]);
   return null;
 }
 

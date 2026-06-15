@@ -1,16 +1,16 @@
-# Graph Report - al-quran  (2026-06-11)
+# Graph Report - al-quran  (2026-06-15)
 
 ## Corpus Check
-- 223 files · ~218,457 words
+- 223 files · ~218,480 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2427 nodes · 2682 edges · 191 communities (152 shown, 39 thin omitted)
+- 2428 nodes · 2683 edges · 190 communities (151 shown, 39 thin omitted)
 - Extraction: 90% EXTRACTED · 10% INFERRED · 0% AMBIGUOUS · INFERRED: 281 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `dac03abd`
+- Built from commit: `ae267f83`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -130,7 +130,6 @@
 - [[_COMMUNITY_Community 113|Community 113]]
 - [[_COMMUNITY_Community 114|Community 114]]
 - [[_COMMUNITY_Community 115|Community 115]]
-- [[_COMMUNITY_Community 116|Community 116]]
 - [[_COMMUNITY_Community 117|Community 117]]
 - [[_COMMUNITY_Community 118|Community 118]]
 - [[_COMMUNITY_Community 119|Community 119]]
@@ -221,7 +220,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (191 total, 39 thin omitted)
+## Communities (190 total, 39 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.03
@@ -276,7 +275,7 @@ Cohesion: 0.05
 Nodes (38): 10. 99 Names Memorization Tracker (`/asma-tracker`), 11. Knowledge Section (`/knowledge`), 12. Islamic Name Finder (`/islamic-names`), 13. Ramadan Mode (Seasonal), 14. Bookmarks (wire up), 15. Tajweed Color-Coded Quran (fix), 16. Reading Goals & Reminders, 17. Data Export (+30 more)
 
 ### Community 13 - "Community 13"
-Cohesion: 0.06
+Cohesion: 0.05
 Nodes (33): About, AsmaUlHusna, Bookmarks, Credits, DailyLog, DataExport, Donation, Downloads (+25 more)
 
 ### Community 14 - "Community 14"
@@ -308,8 +307,8 @@ Cohesion: 0.08
 Nodes (25): goals, defaultLabel, headerTitle, label, labelPlaceholder, metric, metricJuz, metricMinutes (+17 more)
 
 ### Community 21 - "Community 21"
-Cohesion: 0.12
-Nodes (17): 2.2 Qibla Finder, 2.3 Dua Collection, 2.4 Multiple Qaris, 2.5 Last 10 Surahs, AI Instructions, AI Instructions, AI Instructions, AI Instructions (+9 more)
+Cohesion: 0.08
+Nodes (24): 2.1 Prayer Times, 2.2 Qibla Finder, 2.3 Dua Collection, 2.4 Multiple Qaris, 2.5 Last 10 Surahs, AI Instructions, AI Instructions, AI Instructions (+16 more)
 
 ### Community 22 - "Community 22"
 Cohesion: 0.09
@@ -340,8 +339,8 @@ Cohesion: 0.29
 Nodes (7): quranProgress, juzLabel, pageTitle, perJuz, surahCount, surahs, title
 
 ### Community 29 - "Community 29"
-Cohesion: 0.50
-Nodes (4): update, dismiss, newVersion, refresh
+Cohesion: 0.29
+Nodes (7): prayerNames, asr, dhuhr, fajr, isha, maghrib, sunrise
 
 ### Community 30 - "Community 30"
 Cohesion: 0.11
@@ -396,16 +395,16 @@ Cohesion: 0.12
 Nodes (16): 3.1 Bookmark Management Page, 3.2 Hadith Library, 3.3 Tafsir Integration, 3.4 Tajweed Coloring, 3.5 Offline Download Manager, AI Instructions, AI Instructions, AI Instructions (+8 more)
 
 ### Community 43 - "Community 43"
-Cohesion: 0.09
-Nodes (22): bookmarks, error, title, tryAgain, unexpected, lastTen, pageTitle, subtitle (+14 more)
+Cohesion: 0.12
+Nodes (15): bookmarks, lastTen, pageTitle, subtitle, verses, offline, dismiss, message (+7 more)
 
 ### Community 44 - "Community 44"
 Cohesion: 0.12
 Nodes (16): taraweeh, dailyTarget, day, days, goal, headerTitle, lastRecorded, notRamadan (+8 more)
 
 ### Community 45 - "Community 45"
-Cohesion: 0.11
-Nodes (17): bookmarks, language, bn, en, headerSubtitle, headerTitle, pageTitle, lastTen (+9 more)
+Cohesion: 0.09
+Nodes (21): bookmarks, language, bn, en, headerSubtitle, headerTitle, pageTitle, lastTen (+13 more)
 
 ### Community 46 - "Community 46"
 Cohesion: 0.12
@@ -420,8 +419,8 @@ Cohesion: 0.12
 Nodes (9): DropdownMenuCheckboxItem(), DropdownMenuContent(), DropdownMenuItem(), DropdownMenuLabel(), DropdownMenuRadioItem(), DropdownMenuSeparator(), DropdownMenuShortcut(), DropdownMenuSubContent() (+1 more)
 
 ### Community 49 - "Community 49"
-Cohesion: 0.13
-Nodes (13): getIslamicMonthName(), FastingCalendar(), buildEmptyCells(), HijriCalendar(), Settings(), App(), AppContent(), LocaleSync() (+5 more)
+Cohesion: 0.09
+Nodes (18): getIslamicMonthName(), FastingCalendar(), buildEmptyCells(), HijriCalendar(), HijriDate(), formatDateLong(), getCountdown(), PrayerTimesPage() (+10 more)
 
 ### Community 50 - "Community 50"
 Cohesion: 0.13
@@ -552,8 +551,8 @@ Cohesion: 0.22
 Nodes (5): Ayahs, AyahsProps, AyahTafsirProps, ParaHeader, ParaHeadProps
 
 ### Community 82 - "Community 82"
-Cohesion: 0.15
-Nodes (13): 1.3 Share (Wire existing UI), 1.4 Enhanced Settings, 1.7 Tasbih Counter, AI Instructions, AI Instructions, AI Instructions, Files, Files (+5 more)
+Cohesion: 0.22
+Nodes (9): 1.3 Share (Wire existing UI), 1.4 Enhanced Settings, AI Instructions, AI Instructions, Files, Files, Implementation, Implementation (+1 more)
 
 ### Community 83 - "Community 83"
 Cohesion: 0.13
@@ -640,8 +639,8 @@ Cohesion: 0.27
 Nodes (9): adjustDate(), AppLocale, formatHijri(), getHijriMonth(), getHijriParts(), hijriMonthName(), isRamadan(), LOCALE_MAP (+1 more)
 
 ### Community 105 - "Community 105"
-Cohesion: 0.29
-Nodes (7): 2.1 Prayer Times, AI Instructions, Data Flow, Dependencies, Files, GPS Implementation, UI
+Cohesion: 0.50
+Nodes (4): 1.7 Tasbih Counter, AI Instructions, Files, Implementation
 
 ### Community 106 - "Community 106"
 Cohesion: 0.29
@@ -672,16 +671,12 @@ Cohesion: 0.33
 Nodes (4): BookmarkRow, BookmarkRowProps, SurahGroupItem(), SurahGroupItemProps
 
 ### Community 113 - "Community 113"
-Cohesion: 0.25
-Nodes (5): HijriDate(), formatDateLong(), getCountdown(), PrayerTimesPage(), Sidebar
+Cohesion: 0.50
+Nodes (4): error, title, tryAgain, unexpected
 
 ### Community 114 - "Community 114"
 Cohesion: 0.33
 Nodes (6): 0.2 Centralized App Settings, AI Instructions, Dependencies, Files, Implementation, Verify
-
-### Community 116 - "Community 116"
-Cohesion: 0.50
-Nodes (4): update, dismiss, newVersion, refresh
 
 ### Community 117 - "Community 117"
 Cohesion: 0.40
@@ -780,22 +775,22 @@ Cohesion: 0.50
 Nodes (3): CATEGORIES, SadaqahEntry, SadaqahState
 
 ## Knowledge Gaps
-- **1581 isolated node(s):** `Step`, `APP_LANGS`, `HADITH_LANGS`, `streakDays`, `readingGoals` (+1576 more)
+- **1581 isolated node(s):** `About`, `AsmaUlHusna`, `Bookmarks`, `Credits`, `Donation` (+1576 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **39 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `useLocale()` connect `Community 18` to `Community 129`, `Community 138`, `Community 140`, `Community 141`, `Community 13`, `Community 143`, `Community 155`, `Community 156`, `Community 157`, `Community 49`, `Community 58`, `Community 186`, `Community 60`, `Community 188`, `Community 190`, `Community 66`, `Community 74`, `Community 76`, `Community 89`, `Community 90`, `Community 94`, `Community 100`, `Community 106`, `Community 108`, `Community 111`, `Community 112`, `Community 113`, `Community 115`, `Community 121`, `Community 123`?**
-  _High betweenness centrality (0.180) - this node is a cross-community bridge._
+- **Why does `useLocale()` connect `Community 18` to `Community 129`, `Community 138`, `Community 140`, `Community 141`, `Community 13`, `Community 143`, `Community 155`, `Community 156`, `Community 157`, `Community 49`, `Community 58`, `Community 186`, `Community 60`, `Community 188`, `Community 190`, `Community 66`, `Community 74`, `Community 76`, `Community 89`, `Community 90`, `Community 94`, `Community 100`, `Community 106`, `Community 108`, `Community 111`, `Community 112`, `Community 115`, `Community 121`, `Community 123`?**
+  _High betweenness centrality (0.171) - this node is a cross-community bridge._
 - **Why does `salah` connect `Community 1` to `Community 45`?**
-  _High betweenness centrality (0.051) - this node is a cross-community bridge._
+  _High betweenness centrality (0.062) - this node is a cross-community bridge._
 - **Why does `salah` connect `Community 0` to `Community 43`?**
-  _High betweenness centrality (0.045) - this node is a cross-community bridge._
+  _High betweenness centrality (0.056) - this node is a cross-community bridge._
 - **Are the 108 inferred relationships involving `cn()` (e.g. with `Accordion()` and `AccordionContent()`) actually correct?**
   _`cn()` has 108 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `Step`, `APP_LANGS`, `HADITH_LANGS` to the rest of the system?**
+- **What connects `About`, `AsmaUlHusna`, `Bookmarks` to the rest of the system?**
   _1581 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.027777777777777776 - nodes in this community are weakly interconnected._
