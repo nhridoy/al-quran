@@ -5,6 +5,13 @@ import { IoClose } from "react-icons/io5";
 import { PageShell } from "@/components/common/PageShell/PageShell";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogOverlay, DialogPortal } from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import namesData from "@/data/asmaUlHusna.json";
 import { useLocale } from "@/i18n";
 
@@ -106,15 +113,23 @@ export default function AsmaUlHusna() {
               className="w-full rounded-xl border border-border bg-surface-alt py-2.5 pl-9 pr-3 text-sm text-text-primary outline-none transition-colors focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
             />
           </div>
-          <select
+          <Select
             value={filter}
-            onChange={(e) => setFilter(e.target.value as FilterMode)}
-            className="rounded-xl border border-border bg-surface-alt px-2.5 py-2.5 text-xs text-text outline-none dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text"
+            onValueChange={(v) => setFilter(v as FilterMode)}
           >
-            <option value="all">{t("asmaUlHusna.filterAll")}</option>
-            <option value="memorized">{t("asmaUlHusna.filterDone")}</option>
-            <option value="not-memorized">{t("asmaUlHusna.filterLeft")}</option>
-          </select>
+            <SelectTrigger className="w-[130px] rounded-xl border-border bg-surface-alt text-xs text-text focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent alignItemWithTrigger={false}>
+              <SelectItem value="all">{t("asmaUlHusna.filterAll")}</SelectItem>
+              <SelectItem value="memorized">
+                {t("asmaUlHusna.filterDone")}
+              </SelectItem>
+              <SelectItem value="not-memorized">
+                {t("asmaUlHusna.filterLeft")}
+              </SelectItem>
+            </SelectContent>
+          </Select>
         </div>
 
         {/* Grid */}

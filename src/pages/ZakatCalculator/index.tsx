@@ -6,6 +6,13 @@ import {
   BiInfoCircle,
 } from "react-icons/bi";
 import { PageShell } from "@/components/common/PageShell/PageShell";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useLocale } from "@/i18n";
 
 type NisabMethod = "gold" | "silver";
@@ -267,17 +274,21 @@ export default function ZakatCalculator() {
                     <span className="text-[10px] text-text-muted">
                       {t("zakat.karatLabel")}
                     </span>
-                    <select
-                      value={goldKarat}
-                      onChange={(e) => setGoldKarat(Number(e.target.value))}
-                      className="rounded-lg border border-border bg-surface-alt px-2 py-1 text-xs text-text outline-none dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text"
+                    <Select
+                      value={String(goldKarat)}
+                      onValueChange={(v) => setGoldKarat(Number(v))}
                     >
-                      {KARAT_OPTIONS.map((k) => (
-                        <option key={k.value} value={k.value}>
-                          {t(k.tKey)}
-                        </option>
-                      ))}
-                    </select>
+                      <SelectTrigger className="rounded-lg border-border bg-surface-alt text-xs text-text dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent alignItemWithTrigger={false}>
+                        {KARAT_OPTIONS.map((k) => (
+                          <SelectItem key={k.value} value={String(k.value)}>
+                            {t(k.tKey)}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                   </div>
                 )}
               </div>

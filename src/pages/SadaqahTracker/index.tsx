@@ -1,6 +1,13 @@
 import { useEffect, useMemo, useState } from "react";
 import { FaHandHoldingHeart } from "react-icons/fa";
 import { PageShell } from "@/components/common/PageShell/PageShell";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useLocale } from "@/i18n";
 import { formatDateKey, formatMonthYear } from "@/lib/date";
 import { CATEGORIES, useSadaqahStore } from "@/store/sadaqah";
@@ -109,17 +116,18 @@ export default function SadaqahTracker() {
               onChange={(e) => setAmount(e.target.value)}
               className="flex-1 rounded-xl border border-border bg-surface-alt px-4 py-2.5 text-sm text-text outline-none transition-colors placeholder:text-text-muted focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text"
             />
-            <select
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              className="rounded-xl border border-border bg-surface-alt px-3 py-2.5 text-sm text-text outline-none focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text"
-            >
-              {CATEGORIES.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
-              ))}
-            </select>
+            <Select value={category} onValueChange={setCategory}>
+              <SelectTrigger className="w-[140px] rounded-xl border-border bg-surface-alt text-sm text-text focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent alignItemWithTrigger={false}>
+                {CATEGORIES.map((c) => (
+                  <SelectItem key={c} value={c}>
+                    {c}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
           <input
             type="text"
