@@ -30,7 +30,6 @@ import {
   MdExplore,
   MdLoop,
   MdMenuBook,
-  MdTrackChanges,
 } from "react-icons/md";
 
 export interface NavItem {
@@ -54,7 +53,7 @@ export const sidebarSections: NavSection[] = [
       { to: "/last-ten-surahs", icon: FaBookOpen, label: "nav.lastTenSurahs" },
       { to: "/bookmarks", icon: BiBookmark, label: "nav.bookmarks" },
       {
-        to: "/quran-progress",
+        to: "/reading-goals",
         icon: IoTrendingUp,
         label: "nav.readingProgress",
       },
@@ -119,7 +118,6 @@ export const sidebarSections: NavSection[] = [
         icon: AiOutlineCloudDownload,
         label: "nav.downloads",
       },
-      { to: "/reading-goals", icon: MdTrackChanges, label: "nav.readingGoals" },
       { to: "/data-export", icon: IoDownloadOutline, label: "nav.dataExport" },
       { to: "/settings", icon: IoSettingsOutline, label: "nav.settings" },
       { to: "/about", icon: BsInfoCircle, label: "nav.about" },
@@ -140,7 +138,7 @@ export const bottomNavPrimary: NavItem[] = [
 export const bottomNavOverflow: NavItem[] = [
   { to: "/bookmarks", icon: BiBookmark, label: "nav.bookmarks" },
   { to: "/last-ten-surahs", icon: FaBookOpen, label: "nav.lastTen" },
-  { to: "/quran-progress", icon: IoTrendingUp, label: "nav.progress" },
+  { to: "/reading-goals", icon: IoTrendingUp, label: "nav.progress" },
   { to: "/prayer-tracker", icon: FaCheckCircle, label: "nav.prayerTracker" },
   { to: "/fasting-calendar", icon: FaMoon, label: "nav.fasting" },
   { to: "/taraweeh-tracker", icon: FaMoon, label: "nav.taraweeh" },
@@ -156,7 +154,6 @@ export const bottomNavOverflow: NavItem[] = [
   { to: "/knowledge", icon: IoBulbOutline, label: "nav.knowledge" },
   { to: "/islamic-names", icon: IoPersonOutline, label: "nav.names" },
   { to: "/downloads", icon: AiOutlineCloudDownload, label: "nav.downloads" },
-  { to: "/reading-goals", icon: MdTrackChanges, label: "nav.goals" },
   { to: "/settings", icon: IoSettingsOutline, label: "nav.settings" },
   { to: "/about", icon: BsInfoCircle, label: "nav.about" },
   { to: "/credits", icon: AiOutlineHeart, label: "nav.credits" },

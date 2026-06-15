@@ -50,7 +50,6 @@ const FastingCalendar = lazy(() => import("./pages/FastingCalendar"));
 const DailyLog = lazy(() => import("./pages/DailyLog"));
 const PrayerTracker = lazy(() => import("./pages/PrayerTracker"));
 const ZakatCalculator = lazy(() => import("./pages/ZakatCalculator"));
-const QuranProgress = lazy(() => import("./pages/QuranProgress"));
 const SadaqahTracker = lazy(() => import("./pages/SadaqahTracker"));
 const SalahGuide = lazy(() => import("./pages/SalahGuide"));
 const Knowledge = lazy(() => import("./pages/Knowledge"));
@@ -83,7 +82,6 @@ const routeDefinitions: RouteDefinition[] = [
   { path: "/sadaqah-tracker", component: SadaqahTracker },
   { path: "/zakat-calculator", component: ZakatCalculator },
   { path: "/hijri-calendar", component: HijriCalendar },
-  { path: "/quran-progress", component: QuranProgress },
   { path: "/salah-guide", component: SalahGuide },
   { path: "/knowledge", component: Knowledge },
   { path: "/islamic-names", component: IslamicNames },
