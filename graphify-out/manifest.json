@@ -245,8 +245,8 @@
     "semantic_hash": ""
   },
   "src/components/features/Search/Search.tsx": {
-    "mtime": 1781015956.1892674,
-    "ast_hash": "7258f018c82a6365eb3e4c4d08004e67",
+    "mtime": 1781544644.3658957,
+    "ast_hash": "f8e84c42a02d9b271de7b4c956a8158b",
     "semantic_hash": ""
   },
   "src/components/features/Search/VerseResultItem.tsx": {
@@ -305,13 +305,13 @@
     "semantic_hash": ""
   },
   "src/components/pages/Settings/PrayerSettings.tsx": {
-    "mtime": 1781064509.8266752,
-    "ast_hash": "43d18ea5268f8ab048a5c7cc2c6fc63b",
+    "mtime": 1781532504.1679447,
+    "ast_hash": "ef5442c7e82a73d668bf0b1dfc5998de",
     "semantic_hash": ""
   },
   "src/components/pages/Settings/ReadingSettings.tsx": {
-    "mtime": 1781064509.4857628,
-    "ast_hash": "7d914180abd2ab269c2f90ed4c09d295",
+    "mtime": 1781532502.751012,
+    "ast_hash": "e04c5877520e3b80ad5e85c137e0a32e",
     "semantic_hash": ""
   },
   "src/components/pages/Settings/SaveBar.tsx": {
@@ -330,8 +330,8 @@
     "semantic_hash": ""
   },
   "src/components/pages/Settings/TafsirSettings.tsx": {
-    "mtime": 1781065019.097756,
-    "ast_hash": "953b437b534d9658d4b505bdb4b41c7d",
+    "mtime": 1781532534.4358995,
+    "ast_hash": "06bf07aeea4e8a497f7e6a5341575ce6",
     "semantic_hash": ""
   },
   "src/components/pages/Surah/SurahHead.tsx": {
@@ -435,8 +435,8 @@
     "semantic_hash": ""
   },
   "src/components/ui/input.tsx": {
-    "mtime": 1781015956.3517098,
-    "ast_hash": "ab52a4bbc65b6ac7fde6f07510f513c8",
+    "mtime": 1781530829.9737163,
+    "ast_hash": "b0f6692085fa1595cbd96dd093d289a8",
     "semantic_hash": ""
   },
   "src/components/ui/navigation-menu.tsx": {
@@ -470,8 +470,8 @@
     "semantic_hash": ""
   },
   "src/components/ui/select.tsx": {
-    "mtime": 1781529880.1403072,
-    "ast_hash": "4fc48124f2373096ffcad934ec3590e0",
+    "mtime": 1781532473.9181046,
+    "ast_hash": "20686b0721aebd66e1e2cd6534619e57",
     "semantic_hash": ""
   },
   "src/components/ui/separator.tsx": {
@@ -735,13 +735,13 @@
     "semantic_hash": ""
   },
   "src/pages/AsmaUlHusna/index.tsx": {
-    "mtime": 1781530115.1547408,
-    "ast_hash": "3a92398b3a55bfbad37b1dba8ebc530f",
+    "mtime": 1781532505.9336817,
+    "ast_hash": "072eb2459156976715edc9132d5b90d0",
     "semantic_hash": ""
   },
   "src/pages/Bookmarks/index.tsx": {
-    "mtime": 1781015956.5763555,
-    "ast_hash": "c189652268798796611c3bd1ab14638f",
+    "mtime": 1781531431.9937017,
+    "ast_hash": "31b3ee33e7b5dcbb2e98b5523913aa26",
     "semantic_hash": ""
   },
   "src/pages/Credits/index.tsx": {
@@ -765,23 +765,23 @@
     "semantic_hash": ""
   },
   "src/pages/Downloads/index.tsx": {
-    "mtime": 1781015956.593355,
-    "ast_hash": "9753439390d7bfeb00bda6d9fdff3240",
+    "mtime": 1781531432.1530142,
+    "ast_hash": "c0b97dca3daa3a2cd7a18bc195070901",
     "semantic_hash": ""
   },
   "src/pages/Duas/[category]/index.tsx": {
-    "mtime": 1781015956.5963523,
-    "ast_hash": "14642feaaa0d57107104a317579b2a94",
+    "mtime": 1781531432.2817247,
+    "ast_hash": "115622e3c972a182aa12b6ca337784cb",
     "semantic_hash": ""
   },
   "src/pages/Duas/index.tsx": {
-    "mtime": 1781015956.5973556,
-    "ast_hash": "4a7ddf3f0d09f5bc570fda971384b506",
+    "mtime": 1781531432.2657218,
+    "ast_hash": "ba8332ff2ae55d6d36728cb93385abd8",
     "semantic_hash": ""
   },
   "src/pages/FastingCalendar/index.tsx": {
-    "mtime": 1781170072.449989,
-    "ast_hash": "c9d738623b6dd7934d36ac51872b0053",
+    "mtime": 1781532161.3245623,
+    "ast_hash": "16132e9e6238832bc9b6d8b380194c3e",
     "semantic_hash": ""
   },
   "src/pages/Hadith/[collection]/[bookId]/index.tsx": {
@@ -795,13 +795,13 @@
     "semantic_hash": ""
   },
   "src/pages/Hadith/index.tsx": {
-    "mtime": 1781015956.6063542,
-    "ast_hash": "5dc2ce6b3d96d032f990fd4748312e0e",
+    "mtime": 1781531432.4096417,
+    "ast_hash": "f36ee95e5934c4c90fecc36c196bfed9",
     "semantic_hash": ""
   },
   "src/pages/HijriCalendar/index.tsx": {
-    "mtime": 1781170072.5228963,
-    "ast_hash": "6a58e53d42d79ca9e3dbcb46f60703b2",
+    "mtime": 1781532161.4388888,
+    "ast_hash": "dfa369dd08611b8031a5afdeca274635",
     "semantic_hash": ""
   },
   "src/pages/Home/index.tsx": {
@@ -810,13 +810,13 @@
     "semantic_hash": ""
   },
   "src/pages/IslamicNames/index.tsx": {
-    "mtime": 1781015956.613352,
-    "ast_hash": "b894c51b5ea37a9eaf38df47a13be221",
+    "mtime": 1781531432.6087978,
+    "ast_hash": "5de9be7d6d71b31e284aff9da8651cf4",
     "semantic_hash": ""
   },
   "src/pages/Knowledge/index.tsx": {
-    "mtime": 1781015956.6153538,
-    "ast_hash": "e8654015c8c2a4eef01d4e487aa6f1fe",
+    "mtime": 1781531432.3428333,
+    "ast_hash": "e4c5a4d93eca1ecb0792c16b1fe54bc3",
     "semantic_hash": ""
   },
   "src/pages/LastTenSurahs/index.tsx": {
@@ -855,13 +855,13 @@
     "semantic_hash": ""
   },
   "src/pages/ReadingGoals/index.tsx": {
-    "mtime": 1781511029.407705,
-    "ast_hash": "de11bc68a28539ae6ac2e6f3e299d954",
+    "mtime": 1781532507.4212883,
+    "ast_hash": "a6ad97fed0c6923ff4c9ceae0a49cb06",
     "semantic_hash": ""
   },
   "src/pages/SadaqahTracker/index.tsx": {
-    "mtime": 1781527378.3434422,
-    "ast_hash": "725ad3b17f71c69c11654349d055f176",
+    "mtime": 1781535075.1308193,
+    "ast_hash": "875eb4381d9c91923e6fef56c1b7dad7",
     "semantic_hash": ""
   },
   "src/pages/SalahGuide/index.tsx": {
@@ -880,8 +880,8 @@
     "semantic_hash": ""
   },
   "src/pages/Surah/index.tsx": {
-    "mtime": 1781015956.6718776,
-    "ast_hash": "5a30469d5e50e96a9624dfd7f436874d",
+    "mtime": 1781534080.5408301,
+    "ast_hash": "629303bf929abb9ca320b0540dbd65e4",
     "semantic_hash": ""
   },
   "src/pages/TaraweehTracker/index.tsx": {
@@ -895,8 +895,8 @@
     "semantic_hash": ""
   },
   "src/pages/ZakatCalculator/index.tsx": {
-    "mtime": 1781527377.5248787,
-    "ast_hash": "1d126b078ce45385f7e6619973fba4b6",
+    "mtime": 1781532504.7826998,
+    "ast_hash": "45c90f14330d36a4fdb3eeaa269e5566",
     "semantic_hash": ""
   },
   "src/store/audio.ts": {
@@ -1025,8 +1025,8 @@
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1781015955.5274954,
-    "ast_hash": "aa034babe5d6509e3c2af6625c97e1b6",
+    "mtime": 1781537566.0462701,
+    "ast_hash": "a44663b0a30997329dcf6695a2a20a91",
     "semantic_hash": ""
   },
   "EXPANSION_ROADMAP.md": {
@@ -1767,6 +1767,11 @@
   "src/components/common/LocationGate/LocationGate.tsx": {
     "mtime": 1781170071.2332351,
     "ast_hash": "f7c1d11559107e13698d854190271744",
+    "semantic_hash": ""
+  },
+  "src/components/ui/input-group.tsx": {
+    "mtime": 1781534672.3562207,
+    "ast_hash": "33988e58558fab4d86da3994f979d0e5",
     "semantic_hash": ""
   }
 }
