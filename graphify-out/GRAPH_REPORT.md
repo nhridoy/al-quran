@@ -1,7 +1,7 @@
 # Graph Report - al-quran  (2026-06-15)
 
 ## Corpus Check
-- 223 files · ~218,480 words
+- 223 files · ~218,971 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c2bd1b52`
+- Built from commit: `69919b99`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -275,8 +275,8 @@ Cohesion: 0.05
 Nodes (38): 10. 99 Names Memorization Tracker (`/asma-tracker`), 11. Knowledge Section (`/knowledge`), 12. Islamic Name Finder (`/islamic-names`), 13. Ramadan Mode (Seasonal), 14. Bookmarks (wire up), 15. Tajweed Color-Coded Quran (fix), 16. Reading Goals & Reminders, 17. Data Export (+30 more)
 
 ### Community 13 - "Community 13"
-Cohesion: 0.05
-Nodes (33): About, AsmaUlHusna, Bookmarks, Credits, DailyLog, DataExport, Donation, Downloads (+25 more)
+Cohesion: 0.06
+Nodes (32): About, AsmaUlHusna, Bookmarks, Credits, DailyLog, DataExport, Donation, Downloads (+24 more)
 
 ### Community 14 - "Community 14"
 Cohesion: 0.09
@@ -488,7 +488,7 @@ Nodes (12): surah, filterPlaceholder, loading, madinah, makkah, nextAria, notFou
 
 ### Community 66 - "Community 66"
 Cohesion: 0.06
-Nodes (19): GRID_ITEMS, GridItem, Home(), ReadingStreakWidget(), RandomContentItem, useRandomContent(), computePrayerTimes(), formatTime() (+11 more)
+Nodes (20): GRID_ITEMS, GridItem, Home(), ReadingStreakWidget(), RandomContentItem, useRandomContent(), computePrayerTimes(), formatTime() (+12 more)
 
 ### Community 67 - "Community 67"
 Cohesion: 0.29

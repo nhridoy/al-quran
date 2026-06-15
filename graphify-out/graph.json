@@ -220,19 +220,10 @@
       "norm_label": "zakatcalculator"
     },
     {
-      "label": "QuranProgress",
-      "file_type": "code",
-      "source_file": "src/App.tsx",
-      "source_location": "L53",
-      "id": "src_app_quranprogress",
-      "community": 13,
-      "norm_label": "quranprogress"
-    },
-    {
       "label": "SadaqahTracker",
       "file_type": "code",
       "source_file": "src/App.tsx",
-      "source_location": "L54",
+      "source_location": "L53",
       "id": "src_app_sadaqahtracker",
       "community": 13,
       "norm_label": "sadaqahtracker"
@@ -241,7 +232,7 @@
       "label": "SalahGuide",
       "file_type": "code",
       "source_file": "src/App.tsx",
-      "source_location": "L55",
+      "source_location": "L54",
       "id": "src_app_salahguide",
       "community": 13,
       "norm_label": "salahguide"
@@ -250,7 +241,7 @@
       "label": "Knowledge",
       "file_type": "code",
       "source_file": "src/App.tsx",
-      "source_location": "L56",
+      "source_location": "L55",
       "id": "src_app_knowledge",
       "community": 13,
       "norm_label": "knowledge"
@@ -259,7 +250,7 @@
       "label": "IslamicNames",
       "file_type": "code",
       "source_file": "src/App.tsx",
-      "source_location": "L57",
+      "source_location": "L56",
       "id": "src_app_islamicnames",
       "community": 13,
       "norm_label": "islamicnames"
@@ -268,7 +259,7 @@
       "label": "ReadingGoals",
       "file_type": "code",
       "source_file": "src/App.tsx",
-      "source_location": "L58",
+      "source_location": "L57",
       "id": "src_app_readinggoals",
       "community": 13,
       "norm_label": "readinggoals"
@@ -277,7 +268,7 @@
       "label": "DataExport",
       "file_type": "code",
       "source_file": "src/App.tsx",
-      "source_location": "L59",
+      "source_location": "L58",
       "id": "src_app_dataexport",
       "community": 13,
       "norm_label": "dataexport"
@@ -286,7 +277,7 @@
       "label": "TaraweehTracker",
       "file_type": "code",
       "source_file": "src/App.tsx",
-      "source_location": "L60",
+      "source_location": "L59",
       "id": "src_app_taraweehtracker",
       "community": 13,
       "norm_label": "taraweehtracker"
@@ -295,7 +286,7 @@
       "label": "Home",
       "file_type": "code",
       "source_file": "src/App.tsx",
-      "source_location": "L61",
+      "source_location": "L60",
       "id": "src_app_home",
       "community": 13,
       "norm_label": "home"
@@ -304,7 +295,7 @@
       "label": "routeDefinitions",
       "file_type": "code",
       "source_file": "src/App.tsx",
-      "source_location": "L63",
+      "source_location": "L62",
       "id": "src_app_routedefinitions",
       "community": 13,
       "norm_label": "routedefinitions"
@@ -313,7 +304,7 @@
       "label": "DataLoader()",
       "file_type": "code",
       "source_file": "src/App.tsx",
-      "source_location": "L95",
+      "source_location": "L93",
       "id": "src_app_dataloader",
       "community": 60,
       "norm_label": "dataloader()"
@@ -322,7 +313,7 @@
       "label": "ThemeController()",
       "file_type": "code",
       "source_file": "src/App.tsx",
-      "source_location": "L141",
+      "source_location": "L139",
       "id": "src_app_themecontroller",
       "community": 49,
       "norm_label": "themecontroller()"
@@ -331,7 +322,7 @@
       "label": "LocaleSync()",
       "file_type": "code",
       "source_file": "src/App.tsx",
-      "source_location": "L176",
+      "source_location": "L174",
       "id": "src_app_localesync",
       "community": 49,
       "norm_label": "localesync()"
@@ -340,7 +331,7 @@
       "label": "RamadanModeController()",
       "file_type": "code",
       "source_file": "src/App.tsx",
-      "source_location": "L185",
+      "source_location": "L183",
       "id": "src_app_ramadanmodecontroller",
       "community": 49,
       "norm_label": "ramadanmodecontroller()"
@@ -349,7 +340,7 @@
       "label": "ScrollToTop()",
       "file_type": "code",
       "source_file": "src/App.tsx",
-      "source_location": "L209",
+      "source_location": "L207",
       "id": "src_app_scrolltotop",
       "community": 13,
       "norm_label": "scrolltotop()"
@@ -358,7 +349,7 @@
       "label": "AppContent()",
       "file_type": "code",
       "source_file": "src/App.tsx",
-      "source_location": "L218",
+      "source_location": "L216",
       "id": "src_app_appcontent",
       "community": 49,
       "norm_label": "appcontent()"
@@ -367,10 +358,100 @@
       "label": "App()",
       "file_type": "code",
       "source_file": "src/App.tsx",
-      "source_location": "L279",
+      "source_location": "L277",
       "id": "src_app_app",
       "community": 49,
       "norm_label": "app()"
+    },
+    {
+      "label": "navigation.ts",
+      "file_type": "code",
+      "source_file": "src/lib/navigation.ts",
+      "source_location": "L1",
+      "id": "lib_navigation",
+      "community": 107,
+      "norm_label": "navigation.ts"
+    },
+    {
+      "label": "NavItem",
+      "file_type": "code",
+      "source_file": "src/lib/navigation.ts",
+      "source_location": "L35",
+      "id": "lib_navigation_navitem",
+      "community": 107,
+      "norm_label": "navitem"
+    },
+    {
+      "label": "NavSection",
+      "file_type": "code",
+      "source_file": "src/lib/navigation.ts",
+      "source_location": "L41",
+      "id": "lib_navigation_navsection",
+      "community": 107,
+      "norm_label": "navsection"
+    },
+    {
+      "label": "sidebarSections",
+      "file_type": "code",
+      "source_file": "src/lib/navigation.ts",
+      "source_location": "L46",
+      "id": "lib_navigation_sidebarsections",
+      "community": 107,
+      "norm_label": "sidebarsections"
+    },
+    {
+      "label": "bottomNavPrimary",
+      "file_type": "code",
+      "source_file": "src/lib/navigation.ts",
+      "source_location": "L130",
+      "id": "lib_navigation_bottomnavprimary",
+      "community": 107,
+      "norm_label": "bottomnavprimary"
+    },
+    {
+      "label": "bottomNavOverflow",
+      "file_type": "code",
+      "source_file": "src/lib/navigation.ts",
+      "source_location": "L138",
+      "id": "lib_navigation_bottomnavoverflow",
+      "community": 107,
+      "norm_label": "bottomnavoverflow"
+    },
+    {
+      "label": "isActiveMatch()",
+      "file_type": "code",
+      "source_file": "src/lib/navigation.ts",
+      "source_location": "L163",
+      "id": "lib_navigation_isactivematch",
+      "community": 107,
+      "norm_label": "isactivematch()"
+    },
+    {
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "src/pages/ReadingGoals/index.tsx",
+      "source_location": "L1",
+      "id": "readinggoals_index",
+      "community": 66,
+      "norm_label": "index.tsx"
+    },
+    {
+      "label": "SURAH_TO_JUZ",
+      "file_type": "code",
+      "source_file": "src/pages/ReadingGoals/index.tsx",
+      "source_location": "L20",
+      "id": "readinggoals_index_surah_to_juz",
+      "community": 66,
+      "norm_label": "surah_to_juz"
+    },
+    {
+      "label": "ReadingGoals()",
+      "file_type": "code",
+      "source_file": "src/pages/ReadingGoals/index.tsx",
+      "source_location": "L29",
+      "id": "readinggoals_index_readinggoals",
+      "community": 66,
+      "norm_label": "readinggoals()"
     },
     {
       "label": "LocationGate.tsx",
@@ -13126,69 +13207,6 @@
       "id": "lib_content_getrandomdua"
     },
     {
-      "label": "navigation.ts",
-      "file_type": "code",
-      "source_file": "src/lib/navigation.ts",
-      "source_location": "L1",
-      "community": 107,
-      "norm_label": "navigation.ts",
-      "id": "lib_navigation"
-    },
-    {
-      "label": "NavItem",
-      "file_type": "code",
-      "source_file": "src/lib/navigation.ts",
-      "source_location": "L36",
-      "community": 107,
-      "norm_label": "navitem",
-      "id": "lib_navigation_navitem"
-    },
-    {
-      "label": "NavSection",
-      "file_type": "code",
-      "source_file": "src/lib/navigation.ts",
-      "source_location": "L42",
-      "community": 107,
-      "norm_label": "navsection",
-      "id": "lib_navigation_navsection"
-    },
-    {
-      "label": "sidebarSections",
-      "file_type": "code",
-      "source_file": "src/lib/navigation.ts",
-      "source_location": "L47",
-      "community": 107,
-      "norm_label": "sidebarsections",
-      "id": "lib_navigation_sidebarsections"
-    },
-    {
-      "label": "bottomNavPrimary",
-      "file_type": "code",
-      "source_file": "src/lib/navigation.ts",
-      "source_location": "L132",
-      "community": 107,
-      "norm_label": "bottomnavprimary",
-      "id": "lib_navigation_bottomnavprimary"
-    },
-    {
-      "label": "bottomNavOverflow",
-      "file_type": "code",
-      "source_file": "src/lib/navigation.ts",
-      "source_location": "L140",
-      "community": 107,
-      "norm_label": "bottomnavoverflow",
-      "id": "lib_navigation_bottomnavoverflow"
-    },
-    {
-      "label": "isActiveMatch()",
-      "file_type": "code",
-      "source_file": "src/lib/navigation.ts",
-      "source_location": "L166",
-      "community": 107,
-      "norm_label": "isactivematch()",
-      "id": "lib_navigation_isactivematch"
-    },
-    {
       "label": "tajweed.ts",
       "file_type": "code",
       "source_file": "src/lib/tajweed.ts",
@@ -13799,24 +13817,6 @@
       "community": 66,
       "norm_label": "quranprogress()",
       "id": "quranprogress_index_quranprogress"
-    },
-    {
-      "label": "index.tsx",
-      "file_type": "code",
-      "source_file": "src/pages/ReadingGoals/index.tsx",
-      "source_location": "L1",
-      "community": 66,
-      "norm_label": "index.tsx",
-      "id": "readinggoals_index"
-    },
-    {
-      "label": "ReadingGoals()",
-      "file_type": "code",
-      "source_file": "src/pages/ReadingGoals/index.tsx",
-      "source_location": "L16",
-      "community": 66,
-      "norm_label": "readinggoals()",
-      "id": "readinggoals_index_readinggoals"
     },
     {
       "label": "index.tsx",
@@ -22260,16 +22260,6 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/App.tsx",
-      "source_location": "L52",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app",
-      "target": "src_app_quranprogress"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/App.tsx",
       "source_location": "L168",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -22594,6 +22584,119 @@
       "weight": 1.0,
       "source": "src_app_app",
       "target": "store_settings_usesettings"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/navigation.ts",
+      "source_location": "L140",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_navigation",
+      "target": "lib_navigation_bottomnavoverflow"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/navigation.ts",
+      "source_location": "L132",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_navigation",
+      "target": "lib_navigation_bottomnavprimary"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/navigation.ts",
+      "source_location": "L166",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_navigation",
+      "target": "lib_navigation_isactivematch"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/navigation.ts",
+      "source_location": "L36",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_navigation",
+      "target": "lib_navigation_navitem"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/navigation.ts",
+      "source_location": "L42",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_navigation",
+      "target": "lib_navigation_navsection"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/navigation.ts",
+      "source_location": "L47",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_navigation",
+      "target": "lib_navigation_sidebarsections"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/ReadingGoals/index.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readinggoals_index",
+      "target": "readinggoals_index_readinggoals"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/ReadingGoals/index.tsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "readinggoals_index",
+      "target": "readinggoals_index_surah_to_juz",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/pages/ReadingGoals/index.tsx",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "readinggoals_index_readinggoals",
+      "target": "i18n_localecontext_uselocale"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/pages/ReadingGoals/index.tsx",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "readinggoals_index_readinggoals",
+      "target": "store_reading_usereadingstore"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/pages/ReadingGoals/index.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "readinggoals_index_readinggoals",
+      "target": "store_readinggoals_usereadinggoalsstore"
     },
     {
       "relation": "contains",
@@ -34704,17 +34807,6 @@
       "target": "store_reading_usereadingstore"
     },
     {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src/pages/ReadingGoals/index.tsx",
-      "source_location": "L18",
-      "weight": 1.0,
-      "source": "readinggoals_index_readinggoals",
-      "target": "store_reading_usereadingstore"
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/store/readingGoals.ts",
@@ -34804,17 +34896,6 @@
       "confidence_score": 1.0,
       "source": "store_readinggoals_computestreak",
       "target": "store_readinggoals_todaysdate"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src/pages/ReadingGoals/index.tsx",
-      "source_location": "L17",
-      "weight": 1.0,
-      "source": "readinggoals_index_readinggoals",
-      "target": "store_readinggoals_usereadinggoalsstore"
     },
     {
       "relation": "contains",
@@ -35827,17 +35908,6 @@
       "source_location": "L26",
       "weight": 1.0,
       "source": "quranprogress_index_quranprogress",
-      "target": "i18n_localecontext_uselocale"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src/pages/ReadingGoals/index.tsx",
-      "source_location": "L36",
-      "weight": 1.0,
-      "source": "readinggoals_index_readinggoals",
       "target": "i18n_localecontext_uselocale"
     },
     {
@@ -38352,66 +38422,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src/lib/navigation.ts",
-      "source_location": "L140",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_navigation",
-      "target": "lib_navigation_bottomnavoverflow"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/navigation.ts",
-      "source_location": "L132",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_navigation",
-      "target": "lib_navigation_bottomnavprimary"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/navigation.ts",
-      "source_location": "L166",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_navigation",
-      "target": "lib_navigation_isactivematch"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/navigation.ts",
-      "source_location": "L36",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_navigation",
-      "target": "lib_navigation_navitem"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/navigation.ts",
-      "source_location": "L42",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_navigation",
-      "target": "lib_navigation_navsection"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/navigation.ts",
-      "source_location": "L47",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_navigation",
-      "target": "lib_navigation_sidebarsections"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "src/lib/tajweed.ts",
       "source_location": "L137",
       "weight": 1.0,
@@ -39326,16 +39336,6 @@
       "confidence_score": 1.0,
       "source": "quranprogress_index",
       "target": "quranprogress_index_surah_to_juz"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/ReadingGoals/index.tsx",
-      "source_location": "L16",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "readinggoals_index",
-      "target": "readinggoals_index_readinggoals"
     },
     {
       "relation": "contains",
@@ -49172,5 +49172,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "c2bd1b522c02f142cd234e2b624a6f2dac7e2c3e"
+  "built_at_commit": "69919b991870bebf6b1917057bba941272c32fd5"
 }
