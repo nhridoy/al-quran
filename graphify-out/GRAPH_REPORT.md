@@ -1,7 +1,7 @@
-# Graph Report - al-quran  (2026-06-15)
+# Graph Report - al-quran  (2026-06-16)
 
 ## Corpus Check
-- 224 files · ~219,409 words
+- 224 files · ~219,659 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `7210477d`
+- Built from commit: `fbee67af`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -203,6 +203,8 @@
 10. `settings` - 51 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `SurahGroupItem()` --calls--> `useLocale()`  [INFERRED]
+  src/components/pages/Bookmarks/SurahGroupItem.tsx → src/i18n/LocaleContext.tsx
 - `ReadingSettings()` --calls--> `useLocale()`  [INFERRED]
   src/components/pages/Settings/ReadingSettings.tsx → src/i18n/LocaleContext.tsx
 - `AsmaUlHusna()` --calls--> `useLocale()`  [INFERRED]
@@ -211,8 +213,6 @@
   src/pages/Duas/index.tsx → src/i18n/LocaleContext.tsx
 - `IslamicNames()` --calls--> `useLocale()`  [INFERRED]
   src/pages/IslamicNames/index.tsx → src/i18n/LocaleContext.tsx
-- `Knowledge()` --calls--> `useLocale()`  [INFERRED]
-  src/pages/Knowledge/index.tsx → src/i18n/LocaleContext.tsx
 
 ## Import Cycles
 - None detected.
@@ -772,7 +772,7 @@ Cohesion: 0.50
 Nodes (3): LANG_OPTIONS, ReadingSettings(), ReadingSettingsProps
 
 ## Knowledge Gaps
-- **1580 isolated node(s):** `Stack`, `Commands`, `Architecture`, `Key conventions`, `Data flow` (+1575 more)
+- **1580 isolated node(s):** `PlayerButtonProps`, `PlayerButton`, `BookmarkRowProps`, `BookmarkRow`, `SurahGroupItemProps` (+1575 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **36 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -780,14 +780,14 @@ Nodes (3): LANG_OPTIONS, ReadingSettings(), ReadingSettingsProps
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `useLocale()` connect `Community 18` to `Community 129`, `Community 138`, `Community 140`, `Community 13`, `Community 155`, `Community 156`, `Community 157`, `Community 49`, `Community 58`, `Community 60`, `Community 188`, `Community 66`, `Community 67`, `Community 74`, `Community 76`, `Community 89`, `Community 94`, `Community 100`, `Community 104`, `Community 106`, `Community 108`, `Community 111`, `Community 112`, `Community 115`, `Community 120`, `Community 121`, `Community 123`?**
-  _High betweenness centrality (0.167) - this node is a cross-community bridge._
-- **Why does `zakat` connect `Community 3` to `Community 29`?**
-  _High betweenness centrality (0.053) - this node is a cross-community bridge._
+  _High betweenness centrality (0.182) - this node is a cross-community bridge._
 - **Why does `zakat` connect `Community 4` to `Community 45`?**
-  _High betweenness centrality (0.046) - this node is a cross-community bridge._
+  _High betweenness centrality (0.053) - this node is a cross-community bridge._
+- **Why does `settings` connect `Community 8` to `Community 45`?**
+  _High betweenness centrality (0.040) - this node is a cross-community bridge._
 - **Are the 108 inferred relationships involving `cn()` (e.g. with `Accordion()` and `AccordionContent()`) actually correct?**
   _`cn()` has 108 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `Stack`, `Commands`, `Architecture` to the rest of the system?**
+- **What connects `PlayerButtonProps`, `PlayerButton`, `BookmarkRowProps` to the rest of the system?**
   _1580 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.027777777777777776 - nodes in this community are weakly interconnected._

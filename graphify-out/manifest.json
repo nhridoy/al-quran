@@ -120,8 +120,8 @@
     "semantic_hash": ""
   },
   "src/components/features/AudioPlayer/DesktopPlayerContent.tsx": {
-    "mtime": 1781015956.1322143,
-    "ast_hash": "4e0dd8426e0b1bf74a433c7678604f4a",
+    "mtime": 1781591192.187438,
+    "ast_hash": "6f45279c9d1bb02265bf1a40fe8e5fc6",
     "semantic_hash": ""
   },
   "src/components/features/AudioPlayer/ExpandedPlayer.tsx": {
@@ -150,8 +150,8 @@
     "semantic_hash": ""
   },
   "src/components/features/AudioPlayer/PlayerButton.tsx": {
-    "mtime": 1781015956.1442163,
-    "ast_hash": "e4a0190da2f61faa6fab5ed2704d1025",
+    "mtime": 1781591081.6000907,
+    "ast_hash": "bbe8018c4c0aa1998dce7d85f0eb4381",
     "semantic_hash": ""
   },
   "src/components/features/AudioPlayer/PlaylistDrawer.tsx": {
@@ -265,18 +265,18 @@
     "semantic_hash": ""
   },
   "src/components/pages/Bookmarks/BookmarkRow.tsx": {
-    "mtime": 1781015956.215268,
-    "ast_hash": "95e6141a58a6925aa3593f9e9cff1797",
+    "mtime": 1781591192.0865295,
+    "ast_hash": "c276e944a42d416fdb8e8c314bac3222",
     "semantic_hash": ""
   },
   "src/components/pages/Bookmarks/SurahGroupItem.tsx": {
-    "mtime": 1781015956.217268,
-    "ast_hash": "dbb1c69d502463eed509febb7a229707",
+    "mtime": 1781591195.8470604,
+    "ast_hash": "578662acd02b6d7efe08830982ecc3fb",
     "semantic_hash": ""
   },
   "src/components/pages/Downloads/SurahDownloadCard.tsx": {
-    "mtime": 1781015956.2192671,
-    "ast_hash": "404935882bc3f1e56fbb0814fb64b8e4",
+    "mtime": 1781591199.394015,
+    "ast_hash": "d012fe82ea901ab4dc88cdc55c7b23f0",
     "semantic_hash": ""
   },
   "src/components/pages/Hadith/HadithItem.tsx": {
@@ -335,8 +335,8 @@
     "semantic_hash": ""
   },
   "src/components/pages/Surah/SurahHead.tsx": {
-    "mtime": 1781015956.2888582,
-    "ast_hash": "e42d378dd4d063c0f0b6648f52af0bd0",
+    "mtime": 1781591128.763915,
+    "ast_hash": "164f1bb4b73f408b6bd438accdc3289e",
     "semantic_hash": ""
   },
   "src/components/pages/Tasbih/CircularCounter.tsx": {
@@ -345,8 +345,8 @@
     "semantic_hash": ""
   },
   "src/components/quran/Ayah/Ayah.tsx": {
-    "mtime": 1781015956.2938595,
-    "ast_hash": "bef9f6b33fb09f7c3f141b9c0d75ec40",
+    "mtime": 1781591195.845064,
+    "ast_hash": "9aaacc50d348112991a08dda6e56b458",
     "semantic_hash": ""
   },
   "src/components/quran/Ayah/AyahTafsir.tsx": {
@@ -360,8 +360,8 @@
     "semantic_hash": ""
   },
   "src/components/quran/ParaHeader/ParaHeader.tsx": {
-    "mtime": 1781015956.2998562,
-    "ast_hash": "e26874513d5b30f2b9b388f95b5c8111",
+    "mtime": 1781591130.0290534,
+    "ast_hash": "550c1d9470ed3d38723fbb1e76566ea2",
     "semantic_hash": ""
   },
   "src/components/quran/ParaItem/ParaItem.tsx": {
@@ -520,7 +520,7 @@
     "semantic_hash": ""
   },
   "src/components/ui/tooltip.tsx": {
-    "mtime": 1781015956.4133675,
+    "mtime": 1781589893.2769723,
     "ast_hash": "b21394d90cecf901fb884892480a66cf",
     "semantic_hash": ""
   },
@@ -895,8 +895,8 @@
     "semantic_hash": ""
   },
   "src/pages/ZakatCalculator/index.tsx": {
-    "mtime": 1781532504.7826998,
-    "ast_hash": "45c90f14330d36a4fdb3eeaa269e5566",
+    "mtime": 1781591128.1989636,
+    "ast_hash": "70e4141e60792c856d32d1b6832bcbdd",
     "semantic_hash": ""
   },
   "src/store/audio.ts": {

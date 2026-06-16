@@ -4,832 +4,220 @@
   "graph": {},
   "nodes": [
     {
-      "label": "AGENTS.md",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
+      "label": "DesktopPlayerContent.tsx",
+      "file_type": "code",
+      "source_file": "src/components/features/AudioPlayer/DesktopPlayerContent.tsx",
       "source_location": "L1",
-      "id": "agents",
-      "community": 69,
-      "norm_label": "agents.md"
+      "id": "audioplayer_desktopplayercontent",
+      "community": 53,
+      "norm_label": "desktopplayercontent.tsx"
     },
     {
-      "label": "Al Quran \u2014 AGENTS.md",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L1",
-      "id": "agents_al_quran_agents_md",
-      "community": 69,
-      "norm_label": "al quran \u2014 agents.md"
-    },
-    {
-      "label": "Stack",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L3",
-      "id": "agents_stack",
-      "community": 69,
-      "norm_label": "stack"
-    },
-    {
-      "label": "Commands",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L10",
-      "id": "agents_commands",
-      "community": 69,
-      "norm_label": "commands"
-    },
-    {
-      "label": "Architecture",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
+      "label": "DesktopPlayerContent()",
+      "file_type": "code",
+      "source_file": "src/components/features/AudioPlayer/DesktopPlayerContent.tsx",
       "source_location": "L22",
-      "id": "agents_architecture",
-      "community": 69,
-      "norm_label": "architecture"
+      "id": "audioplayer_desktopplayercontent_desktopplayercontent",
+      "community": 53,
+      "norm_label": "desktopplayercontent()"
     },
     {
-      "label": "Key conventions",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L31",
-      "id": "agents_key_conventions",
-      "community": 69,
-      "norm_label": "key conventions"
-    },
-    {
-      "label": "Data flow",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L42",
-      "id": "agents_data_flow",
-      "community": 69,
-      "norm_label": "data flow"
-    },
-    {
-      "label": "Build & Deploy",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L50",
-      "id": "agents_build_deploy",
-      "community": 69,
-      "norm_label": "build & deploy"
-    },
-    {
-      "label": "i18n / Locale",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L57",
-      "id": "agents_i18n_locale",
-      "community": 69,
-      "norm_label": "i18n / locale"
-    },
-    {
-      "label": "Data Export",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L66",
-      "id": "agents_data_export",
-      "community": 69,
-      "norm_label": "data export"
-    },
-    {
-      "label": "Form Control Standardization (Completed Jun 2026)",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L72",
-      "id": "agents_form_control_standardization_completed_jun_2026",
-      "community": 69,
-      "norm_label": "form control standardization (completed jun 2026)"
-    },
-    {
-      "label": "Expansion areas",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L84",
-      "id": "agents_expansion_areas",
-      "community": 69,
-      "norm_label": "expansion areas"
-    },
-    {
-      "label": "Search.tsx",
+      "label": "PlayerButton.tsx",
       "file_type": "code",
-      "source_file": "src/components/features/Search/Search.tsx",
+      "source_file": "src/components/features/AudioPlayer/PlayerButton.tsx",
       "source_location": "L1",
-      "id": "search_search",
-      "community": 90,
-      "norm_label": "search.tsx"
+      "id": "audioplayer_playerbutton",
+      "community": 53,
+      "norm_label": "playerbutton.tsx"
     },
     {
-      "label": "Search()",
+      "label": "PlayerButtonProps",
       "file_type": "code",
-      "source_file": "src/components/features/Search/Search.tsx",
-      "source_location": "L26",
-      "id": "search_search_search",
-      "community": 67,
-      "norm_label": "search()"
+      "source_file": "src/components/features/AudioPlayer/PlayerButton.tsx",
+      "source_location": "L8",
+      "id": "audioplayer_playerbutton_playerbuttonprops",
+      "community": 53,
+      "norm_label": "playerbuttonprops"
     },
     {
-      "label": "PrayerSettings.tsx",
+      "label": "PlayerButton",
       "file_type": "code",
-      "source_file": "src/components/pages/Settings/PrayerSettings.tsx",
+      "source_file": "src/components/features/AudioPlayer/PlayerButton.tsx",
+      "source_location": "L16",
+      "id": "audioplayer_playerbutton_playerbutton",
+      "community": 53,
+      "norm_label": "playerbutton"
+    },
+    {
+      "label": "BookmarkRow.tsx",
+      "file_type": "code",
+      "source_file": "src/components/pages/Bookmarks/BookmarkRow.tsx",
       "source_location": "L1",
-      "id": "settings_prayersettings",
-      "community": 18,
-      "norm_label": "prayersettings.tsx"
+      "id": "bookmarks_bookmarkrow",
+      "community": 112,
+      "norm_label": "bookmarkrow.tsx"
     },
     {
-      "label": "PrayerSettingsProps",
+      "label": "BookmarkRowProps",
       "file_type": "code",
-      "source_file": "src/components/pages/Settings/PrayerSettings.tsx",
+      "source_file": "src/components/pages/Bookmarks/BookmarkRow.tsx",
       "source_location": "L14",
-      "id": "settings_prayersettings_prayersettingsprops",
-      "community": 18,
-      "norm_label": "prayersettingsprops"
+      "id": "bookmarks_bookmarkrow_bookmarkrowprops",
+      "community": 112,
+      "norm_label": "bookmarkrowprops"
     },
     {
-      "label": "PrayerSettings()",
+      "label": "BookmarkRow",
       "file_type": "code",
-      "source_file": "src/components/pages/Settings/PrayerSettings.tsx",
-      "source_location": "L21",
-      "id": "settings_prayersettings_prayersettings",
-      "community": 18,
-      "norm_label": "prayersettings()"
-    },
-    {
-      "label": "ReadingSettings.tsx",
-      "file_type": "code",
-      "source_file": "src/components/pages/Settings/ReadingSettings.tsx",
-      "source_location": "L1",
-      "id": "settings_readingsettings",
-      "community": 188,
-      "norm_label": "readingsettings.tsx"
-    },
-    {
-      "label": "LANG_OPTIONS",
-      "file_type": "code",
-      "source_file": "src/components/pages/Settings/ReadingSettings.tsx",
-      "source_location": "L15",
-      "id": "settings_readingsettings_lang_options",
-      "community": 188,
-      "norm_label": "lang_options"
-    },
-    {
-      "label": "ReadingSettingsProps",
-      "file_type": "code",
-      "source_file": "src/components/pages/Settings/ReadingSettings.tsx",
-      "source_location": "L20",
-      "id": "settings_readingsettings_readingsettingsprops",
-      "community": 188,
-      "norm_label": "readingsettingsprops"
-    },
-    {
-      "label": "ReadingSettings()",
-      "file_type": "code",
-      "source_file": "src/components/pages/Settings/ReadingSettings.tsx",
-      "source_location": "L27",
-      "id": "settings_readingsettings_readingsettings",
-      "community": 188,
-      "norm_label": "readingsettings()"
-    },
-    {
-      "label": "TafsirSettings.tsx",
-      "file_type": "code",
-      "source_file": "src/components/pages/Settings/TafsirSettings.tsx",
-      "source_location": "L1",
-      "id": "settings_tafsirsettings",
-      "community": 18,
-      "norm_label": "tafsirsettings.tsx"
-    },
-    {
-      "label": "TafsirSettingsProps",
-      "file_type": "code",
-      "source_file": "src/components/pages/Settings/TafsirSettings.tsx",
-      "source_location": "L15",
-      "id": "settings_tafsirsettings_tafsirsettingsprops",
-      "community": 18,
-      "norm_label": "tafsirsettingsprops"
-    },
-    {
-      "label": "TafsirSettings()",
-      "file_type": "code",
-      "source_file": "src/components/pages/Settings/TafsirSettings.tsx",
-      "source_location": "L25",
-      "id": "settings_tafsirsettings_tafsirsettings",
-      "community": 18,
-      "norm_label": "tafsirsettings()"
-    },
-    {
-      "label": "input-group.tsx",
-      "file_type": "code",
-      "source_file": "src/components/ui/input-group.tsx",
-      "source_location": "L1",
-      "id": "ui_input_group",
-      "community": 113,
-      "norm_label": "input-group.tsx"
-    },
-    {
-      "label": "InputGroup()",
-      "file_type": "code",
-      "source_file": "src/components/ui/input-group.tsx",
-      "source_location": "L8",
-      "id": "ui_input_group_inputgroup",
-      "community": 113,
-      "norm_label": "inputgroup()"
-    },
-    {
-      "label": "inputGroupAddonVariants",
-      "file_type": "code",
-      "source_file": "src/components/ui/input-group.tsx",
-      "source_location": "L21",
-      "id": "ui_input_group_inputgroupaddonvariants",
-      "community": 113,
-      "norm_label": "inputgroupaddonvariants"
-    },
-    {
-      "label": "InputGroupAddon()",
-      "file_type": "code",
-      "source_file": "src/components/ui/input-group.tsx",
-      "source_location": "L42",
-      "id": "ui_input_group_inputgroupaddon",
-      "community": 113,
-      "norm_label": "inputgroupaddon()"
-    },
-    {
-      "label": "inputGroupButtonVariants",
-      "file_type": "code",
-      "source_file": "src/components/ui/input-group.tsx",
-      "source_location": "L73",
-      "id": "ui_input_group_inputgroupbuttonvariants",
-      "community": 113,
-      "norm_label": "inputgroupbuttonvariants"
-    },
-    {
-      "label": "InputGroupButton()",
-      "file_type": "code",
-      "source_file": "src/components/ui/input-group.tsx",
-      "source_location": "L91",
-      "id": "ui_input_group_inputgroupbutton",
-      "community": 113,
-      "norm_label": "inputgroupbutton()"
-    },
-    {
-      "label": "InputGroupText()",
-      "file_type": "code",
-      "source_file": "src/components/ui/input-group.tsx",
-      "source_location": "L112",
-      "id": "ui_input_group_inputgrouptext",
-      "community": 113,
-      "norm_label": "inputgrouptext()"
-    },
-    {
-      "label": "InputGroupInput()",
-      "file_type": "code",
-      "source_file": "src/components/ui/input-group.tsx",
-      "source_location": "L124",
-      "id": "ui_input_group_inputgroupinput",
-      "community": 113,
-      "norm_label": "inputgroupinput()"
-    },
-    {
-      "label": "InputGroupTextarea()",
-      "file_type": "code",
-      "source_file": "src/components/ui/input-group.tsx",
-      "source_location": "L140",
-      "id": "ui_input_group_inputgrouptextarea",
-      "community": 113,
-      "norm_label": "inputgrouptextarea()"
-    },
-    {
-      "label": "input.tsx",
-      "file_type": "code",
-      "source_file": "src/components/ui/input.tsx",
-      "source_location": "L1",
-      "id": "ui_input",
-      "community": 14,
-      "norm_label": "input.tsx"
-    },
-    {
-      "label": "Input()",
-      "file_type": "code",
-      "source_file": "src/components/ui/input.tsx",
-      "source_location": "L6",
-      "id": "ui_input_input",
-      "community": 14,
-      "norm_label": "input()"
-    },
-    {
-      "label": "select.tsx",
-      "file_type": "code",
-      "source_file": "src/components/ui/select.tsx",
-      "source_location": "L1",
-      "id": "ui_select",
-      "community": 14,
-      "norm_label": "select.tsx"
-    },
-    {
-      "label": "SelectGroup()",
-      "file_type": "code",
-      "source_file": "src/components/ui/select.tsx",
-      "source_location": "L8",
-      "id": "ui_select_selectgroup",
-      "community": 14,
-      "norm_label": "selectgroup()"
-    },
-    {
-      "label": "SelectValue()",
-      "file_type": "code",
-      "source_file": "src/components/ui/select.tsx",
-      "source_location": "L18",
-      "id": "ui_select_selectvalue",
-      "community": 14,
-      "norm_label": "selectvalue()"
-    },
-    {
-      "label": "SelectTrigger()",
-      "file_type": "code",
-      "source_file": "src/components/ui/select.tsx",
-      "source_location": "L28",
-      "id": "ui_select_selecttrigger",
-      "community": 14,
-      "norm_label": "selecttrigger()"
-    },
-    {
-      "label": "SelectContent()",
-      "file_type": "code",
-      "source_file": "src/components/ui/select.tsx",
-      "source_location": "L56",
-      "id": "ui_select_selectcontent",
-      "community": 14,
-      "norm_label": "selectcontent()"
-    },
-    {
-      "label": "SelectLabel()",
-      "file_type": "code",
-      "source_file": "src/components/ui/select.tsx",
-      "source_location": "L98",
-      "id": "ui_select_selectlabel",
-      "community": 14,
-      "norm_label": "selectlabel()"
-    },
-    {
-      "label": "SelectItem()",
-      "file_type": "code",
-      "source_file": "src/components/ui/select.tsx",
-      "source_location": "L111",
-      "id": "ui_select_selectitem",
-      "community": 14,
-      "norm_label": "selectitem()"
-    },
-    {
-      "label": "SelectSeparator()",
-      "file_type": "code",
-      "source_file": "src/components/ui/select.tsx",
-      "source_location": "L139",
-      "id": "ui_select_selectseparator",
-      "community": 14,
-      "norm_label": "selectseparator()"
-    },
-    {
-      "label": "SelectScrollUpButton()",
-      "file_type": "code",
-      "source_file": "src/components/ui/select.tsx",
-      "source_location": "L152",
-      "id": "ui_select_selectscrollupbutton",
-      "community": 14,
-      "norm_label": "selectscrollupbutton()"
-    },
-    {
-      "label": "SelectScrollDownButton()",
-      "file_type": "code",
-      "source_file": "src/components/ui/select.tsx",
-      "source_location": "L170",
-      "id": "ui_select_selectscrolldownbutton",
-      "community": 14,
-      "norm_label": "selectscrolldownbutton()"
-    },
-    {
-      "label": "index.tsx",
-      "file_type": "code",
-      "source_file": "src/pages/AsmaUlHusna/index.tsx",
-      "source_location": "L1",
-      "id": "asmaulhusna_index",
-      "community": 111,
-      "norm_label": "index.tsx"
-    },
-    {
-      "label": "NameEntry",
-      "file_type": "code",
-      "source_file": "src/pages/AsmaUlHusna/index.tsx",
+      "source_file": "src/components/pages/Bookmarks/BookmarkRow.tsx",
       "source_location": "L19",
-      "id": "asmaulhusna_index_nameentry",
-      "community": 111,
-      "norm_label": "nameentry"
+      "id": "bookmarks_bookmarkrow_bookmarkrow",
+      "community": 112,
+      "norm_label": "bookmarkrow"
     },
     {
-      "label": "FilterMode",
+      "label": "SurahGroupItem.tsx",
       "file_type": "code",
-      "source_file": "src/pages/AsmaUlHusna/index.tsx",
-      "source_location": "L27",
-      "id": "asmaulhusna_index_filtermode",
-      "community": 111,
-      "norm_label": "filtermode"
-    },
-    {
-      "label": "loadMemorized()",
-      "file_type": "code",
-      "source_file": "src/pages/AsmaUlHusna/index.tsx",
-      "source_location": "L29",
-      "id": "asmaulhusna_index_loadmemorized",
-      "community": 111,
-      "norm_label": "loadmemorized()"
-    },
-    {
-      "label": "saveMemorized()",
-      "file_type": "code",
-      "source_file": "src/pages/AsmaUlHusna/index.tsx",
-      "source_location": "L37",
-      "id": "asmaulhusna_index_savememorized",
-      "community": 111,
-      "norm_label": "savememorized()"
-    },
-    {
-      "label": "AsmaUlHusna()",
-      "file_type": "code",
-      "source_file": "src/pages/AsmaUlHusna/index.tsx",
-      "source_location": "L41",
-      "id": "asmaulhusna_index_asmaulhusna",
-      "community": 111,
-      "norm_label": "asmaulhusna()"
-    },
-    {
-      "label": "index.tsx",
-      "file_type": "code",
-      "source_file": "src/pages/Bookmarks/index.tsx",
+      "source_file": "src/components/pages/Bookmarks/SurahGroupItem.tsx",
       "source_location": "L1",
-      "id": "bookmarks_index",
-      "community": 76,
-      "norm_label": "index.tsx"
+      "id": "bookmarks_surahgroupitem",
+      "community": 112,
+      "norm_label": "surahgroupitem.tsx"
     },
     {
-      "label": "Bookmarks()",
+      "label": "SurahGroupItemProps",
       "file_type": "code",
-      "source_file": "src/pages/Bookmarks/index.tsx",
-      "source_location": "L12",
-      "id": "bookmarks_index_bookmarks",
-      "community": 76,
-      "norm_label": "bookmarks()"
+      "source_file": "src/components/pages/Bookmarks/SurahGroupItem.tsx",
+      "source_location": "L20",
+      "id": "bookmarks_surahgroupitem_surahgroupitemprops",
+      "community": 112,
+      "norm_label": "surahgroupitemprops"
     },
     {
-      "label": "index.tsx",
+      "label": "SurahGroupItem()",
       "file_type": "code",
-      "source_file": "src/pages/Downloads/index.tsx",
+      "source_file": "src/components/pages/Bookmarks/SurahGroupItem.tsx",
+      "source_location": "L26",
+      "id": "bookmarks_surahgroupitem_surahgroupitem",
+      "community": 112,
+      "norm_label": "surahgroupitem()"
+    },
+    {
+      "label": "SurahDownloadCard.tsx",
+      "file_type": "code",
+      "source_file": "src/components/pages/Downloads/SurahDownloadCard.tsx",
       "source_location": "L1",
-      "id": "downloads_index",
+      "id": "downloads_surahdownloadcard",
       "community": 60,
-      "norm_label": "index.tsx"
+      "norm_label": "surahdownloadcard.tsx"
     },
     {
-      "label": "DownloadsPage()",
+      "label": "SurahDownloadCardProps",
       "file_type": "code",
-      "source_file": "src/pages/Downloads/index.tsx",
-      "source_location": "L17",
-      "id": "downloads_index_downloadspage",
-      "community": 60,
-      "norm_label": "downloadspage()"
-    },
-    {
-      "label": "index.tsx",
-      "file_type": "code",
-      "source_file": "src/pages/Duas/[category]/index.tsx",
-      "source_location": "L1",
-      "id": "category_index",
-      "community": 18,
-      "norm_label": "index.tsx"
-    },
-    {
-      "label": "DuaCategory()",
-      "file_type": "code",
-      "source_file": "src/pages/Duas/[category]/index.tsx",
-      "source_location": "L16",
-      "id": "category_index_duacategory",
-      "community": 18,
-      "norm_label": "duacategory()"
-    },
-    {
-      "label": "index.tsx",
-      "file_type": "code",
-      "source_file": "src/pages/Duas/index.tsx",
-      "source_location": "L1",
-      "id": "duas_index",
-      "community": 129,
-      "norm_label": "index.tsx"
-    },
-    {
-      "label": "categories",
-      "file_type": "code",
-      "source_file": "src/pages/Duas/index.tsx",
-      "source_location": "L9",
-      "id": "duas_index_categories",
-      "community": 129,
-      "norm_label": "categories"
-    },
-    {
-      "label": "categoryIcons",
-      "file_type": "code",
-      "source_file": "src/pages/Duas/index.tsx",
-      "source_location": "L11",
-      "id": "duas_index_categoryicons",
-      "community": 129,
-      "norm_label": "categoryicons"
-    },
-    {
-      "label": "Duas()",
-      "file_type": "code",
-      "source_file": "src/pages/Duas/index.tsx",
-      "source_location": "L42",
-      "id": "duas_index_duas",
-      "community": 129,
-      "norm_label": "duas()"
-    },
-    {
-      "label": "index.tsx",
-      "file_type": "code",
-      "source_file": "src/pages/FastingCalendar/index.tsx",
-      "source_location": "L1",
-      "id": "fastingcalendar_index",
-      "community": 49,
-      "norm_label": "index.tsx"
-    },
-    {
-      "label": "formatDuration()",
-      "file_type": "code",
-      "source_file": "src/pages/FastingCalendar/index.tsx",
-      "source_location": "L24",
-      "id": "fastingcalendar_index_formatduration",
-      "community": 49,
-      "norm_label": "formatduration()"
-    },
-    {
-      "label": "FastingCalendar()",
-      "file_type": "code",
-      "source_file": "src/pages/FastingCalendar/index.tsx",
-      "source_location": "L31",
-      "id": "fastingcalendar_index_fastingcalendar",
-      "community": 49,
-      "norm_label": "fastingcalendar()"
-    },
-    {
-      "label": "index.tsx",
-      "file_type": "code",
-      "source_file": "src/pages/Hadith/index.tsx",
-      "source_location": "L1",
-      "id": "hadith_index",
-      "community": 67,
-      "norm_label": "index.tsx"
-    },
-    {
-      "label": "SUPPORTED_LANGUAGES",
-      "file_type": "code",
-      "source_file": "src/pages/Hadith/index.tsx",
-      "source_location": "L15",
-      "id": "hadith_index_supported_languages",
-      "community": 67,
-      "norm_label": "supported_languages"
-    },
-    {
-      "label": "getEditionName()",
-      "file_type": "code",
-      "source_file": "src/pages/Hadith/index.tsx",
-      "source_location": "L17",
-      "id": "hadith_index_geteditionname",
-      "community": 67,
-      "norm_label": "geteditionname()"
-    },
-    {
-      "label": "HadithCollections()",
-      "file_type": "code",
-      "source_file": "src/pages/Hadith/index.tsx",
+      "source_file": "src/components/pages/Downloads/SurahDownloadCard.tsx",
       "source_location": "L21",
-      "id": "hadith_index_hadithcollections",
-      "community": 67,
-      "norm_label": "hadithcollections()"
+      "id": "downloads_surahdownloadcard_surahdownloadcardprops",
+      "community": 60,
+      "norm_label": "surahdownloadcardprops"
     },
     {
-      "label": "index.tsx",
+      "label": "formatBytes()",
       "file_type": "code",
-      "source_file": "src/pages/HijriCalendar/index.tsx",
-      "source_location": "L1",
-      "id": "hijricalendar_index",
-      "community": 49,
-      "norm_label": "index.tsx"
+      "source_file": "src/components/pages/Downloads/SurahDownloadCard.tsx",
+      "source_location": "L27",
+      "id": "downloads_surahdownloadcard_formatbytes",
+      "community": 60,
+      "norm_label": "formatbytes()"
     },
     {
-      "label": "buildEmptyCells()",
+      "label": "SurahDownloadCard",
       "file_type": "code",
-      "source_file": "src/pages/HijriCalendar/index.tsx",
-      "source_location": "L30",
-      "id": "hijricalendar_index_buildemptycells",
-      "community": 49,
-      "norm_label": "buildemptycells()"
-    },
-    {
-      "label": "HijriCalendar()",
-      "file_type": "code",
-      "source_file": "src/pages/HijriCalendar/index.tsx",
-      "source_location": "L38",
-      "id": "hijricalendar_index_hijricalendar",
-      "community": 49,
-      "norm_label": "hijricalendar()"
-    },
-    {
-      "label": "index.tsx",
-      "file_type": "code",
-      "source_file": "src/pages/IslamicNames/index.tsx",
-      "source_location": "L1",
-      "id": "islamicnames_index",
-      "community": 123,
-      "norm_label": "index.tsx"
-    },
-    {
-      "label": "NameEntry",
-      "file_type": "code",
-      "source_file": "src/pages/IslamicNames/index.tsx",
-      "source_location": "L8",
-      "id": "islamicnames_index_nameentry",
-      "community": 123,
-      "norm_label": "nameentry"
-    },
-    {
-      "label": "loadFavorites()",
-      "file_type": "code",
-      "source_file": "src/pages/IslamicNames/index.tsx",
-      "source_location": "L17",
-      "id": "islamicnames_index_loadfavorites",
-      "community": 123,
-      "norm_label": "loadfavorites()"
-    },
-    {
-      "label": "saveFavorites()",
-      "file_type": "code",
-      "source_file": "src/pages/IslamicNames/index.tsx",
-      "source_location": "L25",
-      "id": "islamicnames_index_savefavorites",
-      "community": 123,
-      "norm_label": "savefavorites()"
-    },
-    {
-      "label": "IslamicNames()",
-      "file_type": "code",
-      "source_file": "src/pages/IslamicNames/index.tsx",
-      "source_location": "L29",
-      "id": "islamicnames_index_islamicnames",
-      "community": 123,
-      "norm_label": "islamicnames()"
-    },
-    {
-      "label": "index.tsx",
-      "file_type": "code",
-      "source_file": "src/pages/Knowledge/index.tsx",
-      "source_location": "L1",
-      "id": "knowledge_index",
-      "community": 106,
-      "norm_label": "index.tsx"
-    },
-    {
-      "label": "Fact",
-      "file_type": "code",
-      "source_file": "src/pages/Knowledge/index.tsx",
-      "source_location": "L7",
-      "id": "knowledge_index_fact",
-      "community": 106,
-      "norm_label": "fact"
-    },
-    {
-      "label": "FACTS",
-      "file_type": "code",
-      "source_file": "src/pages/Knowledge/index.tsx",
-      "source_location": "L14",
-      "id": "knowledge_index_facts",
-      "community": 106,
-      "norm_label": "facts"
-    },
-    {
-      "label": "CATEGORIES",
-      "file_type": "code",
-      "source_file": "src/pages/Knowledge/index.tsx",
-      "source_location": "L294",
-      "id": "knowledge_index_categories",
-      "community": 106,
-      "norm_label": "categories"
-    },
-    {
-      "label": "loadBookmarks()",
-      "file_type": "code",
-      "source_file": "src/pages/Knowledge/index.tsx",
-      "source_location": "L296",
-      "id": "knowledge_index_loadbookmarks",
-      "community": 106,
-      "norm_label": "loadbookmarks()"
-    },
-    {
-      "label": "saveBookmarks()",
-      "file_type": "code",
-      "source_file": "src/pages/Knowledge/index.tsx",
-      "source_location": "L304",
-      "id": "knowledge_index_savebookmarks",
-      "community": 106,
-      "norm_label": "savebookmarks()"
-    },
-    {
-      "label": "Knowledge()",
-      "file_type": "code",
-      "source_file": "src/pages/Knowledge/index.tsx",
-      "source_location": "L308",
-      "id": "knowledge_index_knowledge",
-      "community": 106,
-      "norm_label": "knowledge()"
-    },
-    {
-      "label": "index.tsx",
-      "file_type": "code",
-      "source_file": "src/pages/ReadingGoals/index.tsx",
-      "source_location": "L1",
-      "id": "readinggoals_index",
-      "community": 66,
-      "norm_label": "index.tsx"
-    },
-    {
-      "label": "SURAH_TO_JUZ",
-      "file_type": "code",
-      "source_file": "src/pages/ReadingGoals/index.tsx",
-      "source_location": "L28",
-      "id": "readinggoals_index_surah_to_juz",
-      "community": 66,
-      "norm_label": "surah_to_juz"
-    },
-    {
-      "label": "ReadingGoals()",
-      "file_type": "code",
-      "source_file": "src/pages/ReadingGoals/index.tsx",
-      "source_location": "L37",
-      "id": "readinggoals_index_readinggoals",
-      "community": 66,
-      "norm_label": "readinggoals()"
-    },
-    {
-      "label": "index.tsx",
-      "file_type": "code",
-      "source_file": "src/pages/SadaqahTracker/index.tsx",
-      "source_location": "L1",
-      "id": "sadaqahtracker_index",
-      "community": 120,
-      "norm_label": "index.tsx"
-    },
-    {
-      "label": "SadaqahTracker()",
-      "file_type": "code",
-      "source_file": "src/pages/SadaqahTracker/index.tsx",
-      "source_location": "L16",
-      "id": "sadaqahtracker_index_sadaqahtracker",
-      "community": 120,
-      "norm_label": "sadaqahtracker()"
-    },
-    {
-      "label": "index.tsx",
-      "file_type": "code",
-      "source_file": "src/pages/Surah/index.tsx",
-      "source_location": "L1",
-      "id": "surah_index",
-      "community": 94,
-      "norm_label": "index.tsx"
-    },
-    {
-      "label": "SkeletonRow()",
-      "file_type": "code",
-      "source_file": "src/pages/Surah/index.tsx",
-      "source_location": "L14",
-      "id": "surah_index_skeletonrow",
-      "community": 94,
-      "norm_label": "skeletonrow()"
-    },
-    {
-      "label": "skeletonRows",
-      "file_type": "code",
-      "source_file": "src/pages/Surah/index.tsx",
+      "source_file": "src/components/pages/Downloads/SurahDownloadCard.tsx",
       "source_location": "L33",
-      "id": "surah_index_skeletonrows",
-      "community": 94,
-      "norm_label": "skeletonrows"
+      "id": "downloads_surahdownloadcard_surahdownloadcard",
+      "community": 60,
+      "norm_label": "surahdownloadcard"
     },
     {
-      "label": "Surahs()",
+      "label": "SurahHead.tsx",
       "file_type": "code",
-      "source_file": "src/pages/Surah/index.tsx",
-      "source_location": "L37",
-      "id": "surah_index_surahs",
-      "community": 94,
-      "norm_label": "surahs()"
+      "source_file": "src/components/pages/Surah/SurahHead.tsx",
+      "source_location": "L1",
+      "id": "surah_surahhead",
+      "community": 159,
+      "norm_label": "surahhead.tsx"
+    },
+    {
+      "label": "SurahHeadProps",
+      "file_type": "code",
+      "source_file": "src/components/pages/Surah/SurahHead.tsx",
+      "source_location": "L20",
+      "id": "surah_surahhead_surahheadprops",
+      "community": 159,
+      "norm_label": "surahheadprops"
+    },
+    {
+      "label": "SurahHead",
+      "file_type": "code",
+      "source_file": "src/components/pages/Surah/SurahHead.tsx",
+      "source_location": "L24",
+      "id": "surah_surahhead_surahhead",
+      "community": 159,
+      "norm_label": "surahhead"
+    },
+    {
+      "label": "Ayah.tsx",
+      "file_type": "code",
+      "source_file": "src/components/quran/Ayah/Ayah.tsx",
+      "source_location": "L1",
+      "id": "ayah_ayah",
+      "community": 81,
+      "norm_label": "ayah.tsx"
+    },
+    {
+      "label": "AyahsProps",
+      "file_type": "code",
+      "source_file": "src/components/quran/Ayah/Ayah.tsx",
+      "source_location": "L21",
+      "id": "ayah_ayah_ayahsprops",
+      "community": 81,
+      "norm_label": "ayahsprops"
+    },
+    {
+      "label": "Ayahs",
+      "file_type": "code",
+      "source_file": "src/components/quran/Ayah/Ayah.tsx",
+      "source_location": "L28",
+      "id": "ayah_ayah_ayahs",
+      "community": 81,
+      "norm_label": "ayahs"
+    },
+    {
+      "label": "ParaHeader.tsx",
+      "file_type": "code",
+      "source_file": "src/components/quran/ParaHeader/ParaHeader.tsx",
+      "source_location": "L1",
+      "id": "paraheader_paraheader",
+      "community": 81,
+      "norm_label": "paraheader.tsx"
+    },
+    {
+      "label": "ParaHeadProps",
+      "file_type": "code",
+      "source_file": "src/components/quran/ParaHeader/ParaHeader.tsx",
+      "source_location": "L21",
+      "id": "paraheader_paraheader_paraheadprops",
+      "community": 81,
+      "norm_label": "paraheadprops"
+    },
+    {
+      "label": "ParaHeader",
+      "file_type": "code",
+      "source_file": "src/components/quran/ParaHeader/ParaHeader.tsx",
+      "source_location": "L26",
+      "id": "paraheader_paraheader_paraheader",
+      "community": 81,
+      "norm_label": "paraheader"
     },
     {
       "label": "index.tsx",
@@ -844,7 +232,7 @@
       "label": "NisabMethod",
       "file_type": "code",
       "source_file": "src/pages/ZakatCalculator/index.tsx",
-      "source_location": "L19",
+      "source_location": "L24",
       "id": "zakatcalculator_index_nisabmethod",
       "community": 74,
       "norm_label": "nisabmethod"
@@ -853,7 +241,7 @@
       "label": "Step",
       "file_type": "code",
       "source_file": "src/pages/ZakatCalculator/index.tsx",
-      "source_location": "L20",
+      "source_location": "L25",
       "id": "zakatcalculator_index_step",
       "community": 74,
       "norm_label": "step"
@@ -862,7 +250,7 @@
       "label": "AssetInput",
       "file_type": "code",
       "source_file": "src/pages/ZakatCalculator/index.tsx",
-      "source_location": "L22",
+      "source_location": "L27",
       "id": "zakatcalculator_index_assetinput",
       "community": 74,
       "norm_label": "assetinput"
@@ -871,7 +259,7 @@
       "label": "ASSETS",
       "file_type": "code",
       "source_file": "src/pages/ZakatCalculator/index.tsx",
-      "source_location": "L30",
+      "source_location": "L36",
       "id": "zakatcalculator_index_assets",
       "community": 74,
       "norm_label": "assets"
@@ -880,7 +268,7 @@
       "label": "KARAT_OPTIONS",
       "file_type": "code",
       "source_file": "src/pages/ZakatCalculator/index.tsx",
-      "source_location": "L82",
+      "source_location": "L94",
       "id": "zakatcalculator_index_karat_options",
       "community": 74,
       "norm_label": "karat_options"
@@ -889,7 +277,7 @@
       "label": "formatCurrency()",
       "file_type": "code",
       "source_file": "src/pages/ZakatCalculator/index.tsx",
-      "source_location": "L89",
+      "source_location": "L101",
       "id": "zakatcalculator_index_formatcurrency",
       "community": 74,
       "norm_label": "formatcurrency()"
@@ -898,7 +286,7 @@
       "label": "loadRates()",
       "file_type": "code",
       "source_file": "src/pages/ZakatCalculator/index.tsx",
-      "source_location": "L93",
+      "source_location": "L105",
       "id": "zakatcalculator_index_loadrates",
       "community": 74,
       "norm_label": "loadrates()"
@@ -907,7 +295,7 @@
       "label": "saveRates()",
       "file_type": "code",
       "source_file": "src/pages/ZakatCalculator/index.tsx",
-      "source_location": "L101",
+      "source_location": "L113",
       "id": "zakatcalculator_index_saverates",
       "community": 74,
       "norm_label": "saverates()"
@@ -916,7 +304,7 @@
       "label": "ZakatCalculator()",
       "file_type": "code",
       "source_file": "src/pages/ZakatCalculator/index.tsx",
-      "source_location": "L105",
+      "source_location": "L117",
       "id": "zakatcalculator_index_zakatcalculator",
       "community": 74,
       "norm_label": "zakatcalculator()"
@@ -925,10 +313,838 @@
       "label": "BreakdownRow()",
       "file_type": "code",
       "source_file": "src/pages/ZakatCalculator/index.tsx",
-      "source_location": "L548",
+      "source_location": "L564",
       "id": "zakatcalculator_index_breakdownrow",
       "community": 74,
       "norm_label": "breakdownrow()"
+    },
+    {
+      "label": "AGENTS.md",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "community": 69,
+      "norm_label": "agents.md",
+      "id": "agents"
+    },
+    {
+      "label": "Al Quran \u2014 AGENTS.md",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "community": 69,
+      "norm_label": "al quran \u2014 agents.md",
+      "id": "agents_al_quran_agents_md"
+    },
+    {
+      "label": "Stack",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L3",
+      "community": 69,
+      "norm_label": "stack",
+      "id": "agents_stack"
+    },
+    {
+      "label": "Commands",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L10",
+      "community": 69,
+      "norm_label": "commands",
+      "id": "agents_commands"
+    },
+    {
+      "label": "Architecture",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L22",
+      "community": 69,
+      "norm_label": "architecture",
+      "id": "agents_architecture"
+    },
+    {
+      "label": "Key conventions",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L31",
+      "community": 69,
+      "norm_label": "key conventions",
+      "id": "agents_key_conventions"
+    },
+    {
+      "label": "Data flow",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L42",
+      "community": 69,
+      "norm_label": "data flow",
+      "id": "agents_data_flow"
+    },
+    {
+      "label": "Build & Deploy",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L50",
+      "community": 69,
+      "norm_label": "build & deploy",
+      "id": "agents_build_deploy"
+    },
+    {
+      "label": "i18n / Locale",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L57",
+      "community": 69,
+      "norm_label": "i18n / locale",
+      "id": "agents_i18n_locale"
+    },
+    {
+      "label": "Data Export",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L66",
+      "community": 69,
+      "norm_label": "data export",
+      "id": "agents_data_export"
+    },
+    {
+      "label": "Form Control Standardization (Completed Jun 2026)",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L72",
+      "community": 69,
+      "norm_label": "form control standardization (completed jun 2026)",
+      "id": "agents_form_control_standardization_completed_jun_2026"
+    },
+    {
+      "label": "Expansion areas",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L84",
+      "community": 69,
+      "norm_label": "expansion areas",
+      "id": "agents_expansion_areas"
+    },
+    {
+      "label": "Search.tsx",
+      "file_type": "code",
+      "source_file": "src/components/features/Search/Search.tsx",
+      "source_location": "L1",
+      "community": 90,
+      "norm_label": "search.tsx",
+      "id": "search_search"
+    },
+    {
+      "label": "Search()",
+      "file_type": "code",
+      "source_file": "src/components/features/Search/Search.tsx",
+      "source_location": "L26",
+      "community": 67,
+      "norm_label": "search()",
+      "id": "search_search_search"
+    },
+    {
+      "label": "PrayerSettings.tsx",
+      "file_type": "code",
+      "source_file": "src/components/pages/Settings/PrayerSettings.tsx",
+      "source_location": "L1",
+      "community": 18,
+      "norm_label": "prayersettings.tsx",
+      "id": "settings_prayersettings"
+    },
+    {
+      "label": "PrayerSettingsProps",
+      "file_type": "code",
+      "source_file": "src/components/pages/Settings/PrayerSettings.tsx",
+      "source_location": "L14",
+      "community": 18,
+      "norm_label": "prayersettingsprops",
+      "id": "settings_prayersettings_prayersettingsprops"
+    },
+    {
+      "label": "PrayerSettings()",
+      "file_type": "code",
+      "source_file": "src/components/pages/Settings/PrayerSettings.tsx",
+      "source_location": "L21",
+      "community": 18,
+      "norm_label": "prayersettings()",
+      "id": "settings_prayersettings_prayersettings"
+    },
+    {
+      "label": "ReadingSettings.tsx",
+      "file_type": "code",
+      "source_file": "src/components/pages/Settings/ReadingSettings.tsx",
+      "source_location": "L1",
+      "community": 188,
+      "norm_label": "readingsettings.tsx",
+      "id": "settings_readingsettings"
+    },
+    {
+      "label": "LANG_OPTIONS",
+      "file_type": "code",
+      "source_file": "src/components/pages/Settings/ReadingSettings.tsx",
+      "source_location": "L15",
+      "community": 188,
+      "norm_label": "lang_options",
+      "id": "settings_readingsettings_lang_options"
+    },
+    {
+      "label": "ReadingSettingsProps",
+      "file_type": "code",
+      "source_file": "src/components/pages/Settings/ReadingSettings.tsx",
+      "source_location": "L20",
+      "community": 188,
+      "norm_label": "readingsettingsprops",
+      "id": "settings_readingsettings_readingsettingsprops"
+    },
+    {
+      "label": "ReadingSettings()",
+      "file_type": "code",
+      "source_file": "src/components/pages/Settings/ReadingSettings.tsx",
+      "source_location": "L27",
+      "community": 188,
+      "norm_label": "readingsettings()",
+      "id": "settings_readingsettings_readingsettings"
+    },
+    {
+      "label": "TafsirSettings.tsx",
+      "file_type": "code",
+      "source_file": "src/components/pages/Settings/TafsirSettings.tsx",
+      "source_location": "L1",
+      "community": 18,
+      "norm_label": "tafsirsettings.tsx",
+      "id": "settings_tafsirsettings"
+    },
+    {
+      "label": "TafsirSettingsProps",
+      "file_type": "code",
+      "source_file": "src/components/pages/Settings/TafsirSettings.tsx",
+      "source_location": "L15",
+      "community": 18,
+      "norm_label": "tafsirsettingsprops",
+      "id": "settings_tafsirsettings_tafsirsettingsprops"
+    },
+    {
+      "label": "TafsirSettings()",
+      "file_type": "code",
+      "source_file": "src/components/pages/Settings/TafsirSettings.tsx",
+      "source_location": "L25",
+      "community": 18,
+      "norm_label": "tafsirsettings()",
+      "id": "settings_tafsirsettings_tafsirsettings"
+    },
+    {
+      "label": "input-group.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/input-group.tsx",
+      "source_location": "L1",
+      "community": 113,
+      "norm_label": "input-group.tsx",
+      "id": "ui_input_group"
+    },
+    {
+      "label": "InputGroup()",
+      "file_type": "code",
+      "source_file": "src/components/ui/input-group.tsx",
+      "source_location": "L8",
+      "community": 113,
+      "norm_label": "inputgroup()",
+      "id": "ui_input_group_inputgroup"
+    },
+    {
+      "label": "inputGroupAddonVariants",
+      "file_type": "code",
+      "source_file": "src/components/ui/input-group.tsx",
+      "source_location": "L21",
+      "community": 113,
+      "norm_label": "inputgroupaddonvariants",
+      "id": "ui_input_group_inputgroupaddonvariants"
+    },
+    {
+      "label": "InputGroupAddon()",
+      "file_type": "code",
+      "source_file": "src/components/ui/input-group.tsx",
+      "source_location": "L42",
+      "community": 113,
+      "norm_label": "inputgroupaddon()",
+      "id": "ui_input_group_inputgroupaddon"
+    },
+    {
+      "label": "inputGroupButtonVariants",
+      "file_type": "code",
+      "source_file": "src/components/ui/input-group.tsx",
+      "source_location": "L73",
+      "community": 113,
+      "norm_label": "inputgroupbuttonvariants",
+      "id": "ui_input_group_inputgroupbuttonvariants"
+    },
+    {
+      "label": "InputGroupButton()",
+      "file_type": "code",
+      "source_file": "src/components/ui/input-group.tsx",
+      "source_location": "L91",
+      "community": 113,
+      "norm_label": "inputgroupbutton()",
+      "id": "ui_input_group_inputgroupbutton"
+    },
+    {
+      "label": "InputGroupText()",
+      "file_type": "code",
+      "source_file": "src/components/ui/input-group.tsx",
+      "source_location": "L112",
+      "community": 113,
+      "norm_label": "inputgrouptext()",
+      "id": "ui_input_group_inputgrouptext"
+    },
+    {
+      "label": "InputGroupInput()",
+      "file_type": "code",
+      "source_file": "src/components/ui/input-group.tsx",
+      "source_location": "L124",
+      "community": 113,
+      "norm_label": "inputgroupinput()",
+      "id": "ui_input_group_inputgroupinput"
+    },
+    {
+      "label": "InputGroupTextarea()",
+      "file_type": "code",
+      "source_file": "src/components/ui/input-group.tsx",
+      "source_location": "L140",
+      "community": 113,
+      "norm_label": "inputgrouptextarea()",
+      "id": "ui_input_group_inputgrouptextarea"
+    },
+    {
+      "label": "input.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/input.tsx",
+      "source_location": "L1",
+      "community": 14,
+      "norm_label": "input.tsx",
+      "id": "ui_input"
+    },
+    {
+      "label": "Input()",
+      "file_type": "code",
+      "source_file": "src/components/ui/input.tsx",
+      "source_location": "L6",
+      "community": 14,
+      "norm_label": "input()",
+      "id": "ui_input_input"
+    },
+    {
+      "label": "select.tsx",
+      "file_type": "code",
+      "source_file": "src/components/ui/select.tsx",
+      "source_location": "L1",
+      "community": 14,
+      "norm_label": "select.tsx",
+      "id": "ui_select"
+    },
+    {
+      "label": "SelectGroup()",
+      "file_type": "code",
+      "source_file": "src/components/ui/select.tsx",
+      "source_location": "L8",
+      "community": 14,
+      "norm_label": "selectgroup()",
+      "id": "ui_select_selectgroup"
+    },
+    {
+      "label": "SelectValue()",
+      "file_type": "code",
+      "source_file": "src/components/ui/select.tsx",
+      "source_location": "L18",
+      "community": 14,
+      "norm_label": "selectvalue()",
+      "id": "ui_select_selectvalue"
+    },
+    {
+      "label": "SelectTrigger()",
+      "file_type": "code",
+      "source_file": "src/components/ui/select.tsx",
+      "source_location": "L28",
+      "community": 14,
+      "norm_label": "selecttrigger()",
+      "id": "ui_select_selecttrigger"
+    },
+    {
+      "label": "SelectContent()",
+      "file_type": "code",
+      "source_file": "src/components/ui/select.tsx",
+      "source_location": "L56",
+      "community": 14,
+      "norm_label": "selectcontent()",
+      "id": "ui_select_selectcontent"
+    },
+    {
+      "label": "SelectLabel()",
+      "file_type": "code",
+      "source_file": "src/components/ui/select.tsx",
+      "source_location": "L98",
+      "community": 14,
+      "norm_label": "selectlabel()",
+      "id": "ui_select_selectlabel"
+    },
+    {
+      "label": "SelectItem()",
+      "file_type": "code",
+      "source_file": "src/components/ui/select.tsx",
+      "source_location": "L111",
+      "community": 14,
+      "norm_label": "selectitem()",
+      "id": "ui_select_selectitem"
+    },
+    {
+      "label": "SelectSeparator()",
+      "file_type": "code",
+      "source_file": "src/components/ui/select.tsx",
+      "source_location": "L139",
+      "community": 14,
+      "norm_label": "selectseparator()",
+      "id": "ui_select_selectseparator"
+    },
+    {
+      "label": "SelectScrollUpButton()",
+      "file_type": "code",
+      "source_file": "src/components/ui/select.tsx",
+      "source_location": "L152",
+      "community": 14,
+      "norm_label": "selectscrollupbutton()",
+      "id": "ui_select_selectscrollupbutton"
+    },
+    {
+      "label": "SelectScrollDownButton()",
+      "file_type": "code",
+      "source_file": "src/components/ui/select.tsx",
+      "source_location": "L170",
+      "community": 14,
+      "norm_label": "selectscrolldownbutton()",
+      "id": "ui_select_selectscrolldownbutton"
+    },
+    {
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "src/pages/AsmaUlHusna/index.tsx",
+      "source_location": "L1",
+      "community": 111,
+      "norm_label": "index.tsx",
+      "id": "asmaulhusna_index"
+    },
+    {
+      "label": "NameEntry",
+      "file_type": "code",
+      "source_file": "src/pages/AsmaUlHusna/index.tsx",
+      "source_location": "L19",
+      "community": 111,
+      "norm_label": "nameentry",
+      "id": "asmaulhusna_index_nameentry"
+    },
+    {
+      "label": "FilterMode",
+      "file_type": "code",
+      "source_file": "src/pages/AsmaUlHusna/index.tsx",
+      "source_location": "L27",
+      "community": 111,
+      "norm_label": "filtermode",
+      "id": "asmaulhusna_index_filtermode"
+    },
+    {
+      "label": "loadMemorized()",
+      "file_type": "code",
+      "source_file": "src/pages/AsmaUlHusna/index.tsx",
+      "source_location": "L29",
+      "community": 111,
+      "norm_label": "loadmemorized()",
+      "id": "asmaulhusna_index_loadmemorized"
+    },
+    {
+      "label": "saveMemorized()",
+      "file_type": "code",
+      "source_file": "src/pages/AsmaUlHusna/index.tsx",
+      "source_location": "L37",
+      "community": 111,
+      "norm_label": "savememorized()",
+      "id": "asmaulhusna_index_savememorized"
+    },
+    {
+      "label": "AsmaUlHusna()",
+      "file_type": "code",
+      "source_file": "src/pages/AsmaUlHusna/index.tsx",
+      "source_location": "L41",
+      "community": 111,
+      "norm_label": "asmaulhusna()",
+      "id": "asmaulhusna_index_asmaulhusna"
+    },
+    {
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "src/pages/Bookmarks/index.tsx",
+      "source_location": "L1",
+      "community": 76,
+      "norm_label": "index.tsx",
+      "id": "bookmarks_index"
+    },
+    {
+      "label": "Bookmarks()",
+      "file_type": "code",
+      "source_file": "src/pages/Bookmarks/index.tsx",
+      "source_location": "L12",
+      "community": 76,
+      "norm_label": "bookmarks()",
+      "id": "bookmarks_index_bookmarks"
+    },
+    {
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "src/pages/Downloads/index.tsx",
+      "source_location": "L1",
+      "community": 60,
+      "norm_label": "index.tsx",
+      "id": "downloads_index"
+    },
+    {
+      "label": "DownloadsPage()",
+      "file_type": "code",
+      "source_file": "src/pages/Downloads/index.tsx",
+      "source_location": "L17",
+      "community": 60,
+      "norm_label": "downloadspage()",
+      "id": "downloads_index_downloadspage"
+    },
+    {
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "src/pages/Duas/[category]/index.tsx",
+      "source_location": "L1",
+      "community": 18,
+      "norm_label": "index.tsx",
+      "id": "category_index"
+    },
+    {
+      "label": "DuaCategory()",
+      "file_type": "code",
+      "source_file": "src/pages/Duas/[category]/index.tsx",
+      "source_location": "L16",
+      "community": 18,
+      "norm_label": "duacategory()",
+      "id": "category_index_duacategory"
+    },
+    {
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "src/pages/Duas/index.tsx",
+      "source_location": "L1",
+      "community": 129,
+      "norm_label": "index.tsx",
+      "id": "duas_index"
+    },
+    {
+      "label": "categories",
+      "file_type": "code",
+      "source_file": "src/pages/Duas/index.tsx",
+      "source_location": "L9",
+      "community": 129,
+      "norm_label": "categories",
+      "id": "duas_index_categories"
+    },
+    {
+      "label": "categoryIcons",
+      "file_type": "code",
+      "source_file": "src/pages/Duas/index.tsx",
+      "source_location": "L11",
+      "community": 129,
+      "norm_label": "categoryicons",
+      "id": "duas_index_categoryicons"
+    },
+    {
+      "label": "Duas()",
+      "file_type": "code",
+      "source_file": "src/pages/Duas/index.tsx",
+      "source_location": "L42",
+      "community": 129,
+      "norm_label": "duas()",
+      "id": "duas_index_duas"
+    },
+    {
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "src/pages/FastingCalendar/index.tsx",
+      "source_location": "L1",
+      "community": 49,
+      "norm_label": "index.tsx",
+      "id": "fastingcalendar_index"
+    },
+    {
+      "label": "formatDuration()",
+      "file_type": "code",
+      "source_file": "src/pages/FastingCalendar/index.tsx",
+      "source_location": "L24",
+      "community": 49,
+      "norm_label": "formatduration()",
+      "id": "fastingcalendar_index_formatduration"
+    },
+    {
+      "label": "FastingCalendar()",
+      "file_type": "code",
+      "source_file": "src/pages/FastingCalendar/index.tsx",
+      "source_location": "L31",
+      "community": 49,
+      "norm_label": "fastingcalendar()",
+      "id": "fastingcalendar_index_fastingcalendar"
+    },
+    {
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "src/pages/Hadith/index.tsx",
+      "source_location": "L1",
+      "community": 67,
+      "norm_label": "index.tsx",
+      "id": "hadith_index"
+    },
+    {
+      "label": "SUPPORTED_LANGUAGES",
+      "file_type": "code",
+      "source_file": "src/pages/Hadith/index.tsx",
+      "source_location": "L15",
+      "community": 67,
+      "norm_label": "supported_languages",
+      "id": "hadith_index_supported_languages"
+    },
+    {
+      "label": "getEditionName()",
+      "file_type": "code",
+      "source_file": "src/pages/Hadith/index.tsx",
+      "source_location": "L17",
+      "community": 67,
+      "norm_label": "geteditionname()",
+      "id": "hadith_index_geteditionname"
+    },
+    {
+      "label": "HadithCollections()",
+      "file_type": "code",
+      "source_file": "src/pages/Hadith/index.tsx",
+      "source_location": "L21",
+      "community": 67,
+      "norm_label": "hadithcollections()",
+      "id": "hadith_index_hadithcollections"
+    },
+    {
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "src/pages/HijriCalendar/index.tsx",
+      "source_location": "L1",
+      "community": 49,
+      "norm_label": "index.tsx",
+      "id": "hijricalendar_index"
+    },
+    {
+      "label": "buildEmptyCells()",
+      "file_type": "code",
+      "source_file": "src/pages/HijriCalendar/index.tsx",
+      "source_location": "L30",
+      "community": 49,
+      "norm_label": "buildemptycells()",
+      "id": "hijricalendar_index_buildemptycells"
+    },
+    {
+      "label": "HijriCalendar()",
+      "file_type": "code",
+      "source_file": "src/pages/HijriCalendar/index.tsx",
+      "source_location": "L38",
+      "community": 49,
+      "norm_label": "hijricalendar()",
+      "id": "hijricalendar_index_hijricalendar"
+    },
+    {
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "src/pages/IslamicNames/index.tsx",
+      "source_location": "L1",
+      "community": 123,
+      "norm_label": "index.tsx",
+      "id": "islamicnames_index"
+    },
+    {
+      "label": "NameEntry",
+      "file_type": "code",
+      "source_file": "src/pages/IslamicNames/index.tsx",
+      "source_location": "L8",
+      "community": 123,
+      "norm_label": "nameentry",
+      "id": "islamicnames_index_nameentry"
+    },
+    {
+      "label": "loadFavorites()",
+      "file_type": "code",
+      "source_file": "src/pages/IslamicNames/index.tsx",
+      "source_location": "L17",
+      "community": 123,
+      "norm_label": "loadfavorites()",
+      "id": "islamicnames_index_loadfavorites"
+    },
+    {
+      "label": "saveFavorites()",
+      "file_type": "code",
+      "source_file": "src/pages/IslamicNames/index.tsx",
+      "source_location": "L25",
+      "community": 123,
+      "norm_label": "savefavorites()",
+      "id": "islamicnames_index_savefavorites"
+    },
+    {
+      "label": "IslamicNames()",
+      "file_type": "code",
+      "source_file": "src/pages/IslamicNames/index.tsx",
+      "source_location": "L29",
+      "community": 123,
+      "norm_label": "islamicnames()",
+      "id": "islamicnames_index_islamicnames"
+    },
+    {
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "src/pages/Knowledge/index.tsx",
+      "source_location": "L1",
+      "community": 106,
+      "norm_label": "index.tsx",
+      "id": "knowledge_index"
+    },
+    {
+      "label": "Fact",
+      "file_type": "code",
+      "source_file": "src/pages/Knowledge/index.tsx",
+      "source_location": "L7",
+      "community": 106,
+      "norm_label": "fact",
+      "id": "knowledge_index_fact"
+    },
+    {
+      "label": "FACTS",
+      "file_type": "code",
+      "source_file": "src/pages/Knowledge/index.tsx",
+      "source_location": "L14",
+      "community": 106,
+      "norm_label": "facts",
+      "id": "knowledge_index_facts"
+    },
+    {
+      "label": "CATEGORIES",
+      "file_type": "code",
+      "source_file": "src/pages/Knowledge/index.tsx",
+      "source_location": "L294",
+      "community": 106,
+      "norm_label": "categories",
+      "id": "knowledge_index_categories"
+    },
+    {
+      "label": "loadBookmarks()",
+      "file_type": "code",
+      "source_file": "src/pages/Knowledge/index.tsx",
+      "source_location": "L296",
+      "community": 106,
+      "norm_label": "loadbookmarks()",
+      "id": "knowledge_index_loadbookmarks"
+    },
+    {
+      "label": "saveBookmarks()",
+      "file_type": "code",
+      "source_file": "src/pages/Knowledge/index.tsx",
+      "source_location": "L304",
+      "community": 106,
+      "norm_label": "savebookmarks()",
+      "id": "knowledge_index_savebookmarks"
+    },
+    {
+      "label": "Knowledge()",
+      "file_type": "code",
+      "source_file": "src/pages/Knowledge/index.tsx",
+      "source_location": "L308",
+      "community": 106,
+      "norm_label": "knowledge()",
+      "id": "knowledge_index_knowledge"
+    },
+    {
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "src/pages/ReadingGoals/index.tsx",
+      "source_location": "L1",
+      "community": 66,
+      "norm_label": "index.tsx",
+      "id": "readinggoals_index"
+    },
+    {
+      "label": "SURAH_TO_JUZ",
+      "file_type": "code",
+      "source_file": "src/pages/ReadingGoals/index.tsx",
+      "source_location": "L28",
+      "community": 66,
+      "norm_label": "surah_to_juz",
+      "id": "readinggoals_index_surah_to_juz"
+    },
+    {
+      "label": "ReadingGoals()",
+      "file_type": "code",
+      "source_file": "src/pages/ReadingGoals/index.tsx",
+      "source_location": "L37",
+      "community": 66,
+      "norm_label": "readinggoals()",
+      "id": "readinggoals_index_readinggoals"
+    },
+    {
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "src/pages/SadaqahTracker/index.tsx",
+      "source_location": "L1",
+      "community": 120,
+      "norm_label": "index.tsx",
+      "id": "sadaqahtracker_index"
+    },
+    {
+      "label": "SadaqahTracker()",
+      "file_type": "code",
+      "source_file": "src/pages/SadaqahTracker/index.tsx",
+      "source_location": "L16",
+      "community": 120,
+      "norm_label": "sadaqahtracker()",
+      "id": "sadaqahtracker_index_sadaqahtracker"
+    },
+    {
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "src/pages/Surah/index.tsx",
+      "source_location": "L1",
+      "community": 94,
+      "norm_label": "index.tsx",
+      "id": "surah_index"
+    },
+    {
+      "label": "SkeletonRow()",
+      "file_type": "code",
+      "source_file": "src/pages/Surah/index.tsx",
+      "source_location": "L14",
+      "community": 94,
+      "norm_label": "skeletonrow()",
+      "id": "surah_index_skeletonrow"
+    },
+    {
+      "label": "skeletonRows",
+      "file_type": "code",
+      "source_file": "src/pages/Surah/index.tsx",
+      "source_location": "L33",
+      "community": 94,
+      "norm_label": "skeletonrows",
+      "id": "surah_index_skeletonrows"
+    },
+    {
+      "label": "Surahs()",
+      "file_type": "code",
+      "source_file": "src/pages/Surah/index.tsx",
+      "source_location": "L37",
+      "community": 94,
+      "norm_label": "surahs()",
+      "id": "surah_index_surahs"
     },
     {
       "label": "bn.json",
@@ -13225,96 +13441,6 @@
       "id": "mainlayout_mainlayout_layout"
     },
     {
-      "label": "BookmarkRow.tsx",
-      "file_type": "code",
-      "source_file": "src/components/pages/Bookmarks/BookmarkRow.tsx",
-      "source_location": "L1",
-      "community": 112,
-      "norm_label": "bookmarkrow.tsx",
-      "id": "bookmarks_bookmarkrow"
-    },
-    {
-      "label": "BookmarkRowProps",
-      "file_type": "code",
-      "source_file": "src/components/pages/Bookmarks/BookmarkRow.tsx",
-      "source_location": "L9",
-      "community": 112,
-      "norm_label": "bookmarkrowprops",
-      "id": "bookmarks_bookmarkrow_bookmarkrowprops"
-    },
-    {
-      "label": "BookmarkRow",
-      "file_type": "code",
-      "source_file": "src/components/pages/Bookmarks/BookmarkRow.tsx",
-      "source_location": "L14",
-      "community": 112,
-      "norm_label": "bookmarkrow",
-      "id": "bookmarks_bookmarkrow_bookmarkrow"
-    },
-    {
-      "label": "SurahGroupItem.tsx",
-      "file_type": "code",
-      "source_file": "src/components/pages/Bookmarks/SurahGroupItem.tsx",
-      "source_location": "L1",
-      "community": 112,
-      "norm_label": "surahgroupitem.tsx",
-      "id": "bookmarks_surahgroupitem"
-    },
-    {
-      "label": "SurahGroupItemProps",
-      "file_type": "code",
-      "source_file": "src/components/pages/Bookmarks/SurahGroupItem.tsx",
-      "source_location": "L15",
-      "community": 112,
-      "norm_label": "surahgroupitemprops",
-      "id": "bookmarks_surahgroupitem_surahgroupitemprops"
-    },
-    {
-      "label": "SurahGroupItem()",
-      "file_type": "code",
-      "source_file": "src/components/pages/Bookmarks/SurahGroupItem.tsx",
-      "source_location": "L21",
-      "community": 112,
-      "norm_label": "surahgroupitem()",
-      "id": "bookmarks_surahgroupitem_surahgroupitem"
-    },
-    {
-      "label": "SurahDownloadCard.tsx",
-      "file_type": "code",
-      "source_file": "src/components/pages/Downloads/SurahDownloadCard.tsx",
-      "source_location": "L1",
-      "community": 60,
-      "norm_label": "surahdownloadcard.tsx",
-      "id": "downloads_surahdownloadcard"
-    },
-    {
-      "label": "SurahDownloadCardProps",
-      "file_type": "code",
-      "source_file": "src/components/pages/Downloads/SurahDownloadCard.tsx",
-      "source_location": "L16",
-      "community": 60,
-      "norm_label": "surahdownloadcardprops",
-      "id": "downloads_surahdownloadcard_surahdownloadcardprops"
-    },
-    {
-      "label": "formatBytes()",
-      "file_type": "code",
-      "source_file": "src/components/pages/Downloads/SurahDownloadCard.tsx",
-      "source_location": "L22",
-      "community": 60,
-      "norm_label": "formatbytes()",
-      "id": "downloads_surahdownloadcard_formatbytes"
-    },
-    {
-      "label": "SurahDownloadCard",
-      "file_type": "code",
-      "source_file": "src/components/pages/Downloads/SurahDownloadCard.tsx",
-      "source_location": "L28",
-      "community": 60,
-      "norm_label": "surahdownloadcard",
-      "id": "downloads_surahdownloadcard_surahdownloadcard"
-    },
-    {
       "label": "HadithItem.tsx",
       "file_type": "code",
       "source_file": "src/components/pages/Hadith/HadithItem.tsx",
@@ -13495,33 +13621,6 @@
       "id": "settings_savebar_savebar"
     },
     {
-      "label": "SurahHead.tsx",
-      "file_type": "code",
-      "source_file": "src/components/pages/Surah/SurahHead.tsx",
-      "source_location": "L1",
-      "community": 159,
-      "norm_label": "surahhead.tsx",
-      "id": "surah_surahhead"
-    },
-    {
-      "label": "SurahHeadProps",
-      "file_type": "code",
-      "source_file": "src/components/pages/Surah/SurahHead.tsx",
-      "source_location": "L15",
-      "community": 159,
-      "norm_label": "surahheadprops",
-      "id": "surah_surahhead_surahheadprops"
-    },
-    {
-      "label": "SurahHead",
-      "file_type": "code",
-      "source_file": "src/components/pages/Surah/SurahHead.tsx",
-      "source_location": "L19",
-      "community": 159,
-      "norm_label": "surahhead",
-      "id": "surah_surahhead_surahhead"
-    },
-    {
       "label": "CircularCounter.tsx",
       "file_type": "code",
       "source_file": "src/components/pages/Tasbih/CircularCounter.tsx",
@@ -13556,33 +13655,6 @@
       "community": 157,
       "norm_label": "countercontent()",
       "id": "tasbih_circularcounter_countercontent"
-    },
-    {
-      "label": "Ayah.tsx",
-      "file_type": "code",
-      "source_file": "src/components/quran/Ayah/Ayah.tsx",
-      "source_location": "L1",
-      "community": 81,
-      "norm_label": "ayah.tsx",
-      "id": "ayah_ayah"
-    },
-    {
-      "label": "AyahsProps",
-      "file_type": "code",
-      "source_file": "src/components/quran/Ayah/Ayah.tsx",
-      "source_location": "L16",
-      "community": 81,
-      "norm_label": "ayahsprops",
-      "id": "ayah_ayah_ayahsprops"
-    },
-    {
-      "label": "Ayahs",
-      "file_type": "code",
-      "source_file": "src/components/quran/Ayah/Ayah.tsx",
-      "source_location": "L23",
-      "community": 81,
-      "norm_label": "ayahs",
-      "id": "ayah_ayah_ayahs"
     },
     {
       "label": "islamicNames.json",
@@ -15204,24 +15276,6 @@
       "id": "audioplayer_audioengineshell_audioengineshell"
     },
     {
-      "label": "DesktopPlayerContent.tsx",
-      "file_type": "code",
-      "source_file": "src/components/features/AudioPlayer/DesktopPlayerContent.tsx",
-      "source_location": "L1",
-      "community": 53,
-      "norm_label": "desktopplayercontent.tsx",
-      "id": "audioplayer_desktopplayercontent"
-    },
-    {
-      "label": "DesktopPlayerContent()",
-      "file_type": "code",
-      "source_file": "src/components/features/AudioPlayer/DesktopPlayerContent.tsx",
-      "source_location": "L17",
-      "community": 53,
-      "norm_label": "desktopplayercontent()",
-      "id": "audioplayer_desktopplayercontent_desktopplayercontent"
-    },
-    {
       "label": "ExpandedPlayer.tsx",
       "file_type": "code",
       "source_file": "src/components/features/AudioPlayer/ExpandedPlayer.tsx",
@@ -15328,33 +15382,6 @@
       "community": 53,
       "norm_label": "playpausebutton()",
       "id": "audioplayer_playpausebutton_playpausebutton"
-    },
-    {
-      "label": "PlayerButton.tsx",
-      "file_type": "code",
-      "source_file": "src/components/features/AudioPlayer/PlayerButton.tsx",
-      "source_location": "L1",
-      "community": 53,
-      "norm_label": "playerbutton.tsx",
-      "id": "audioplayer_playerbutton"
-    },
-    {
-      "label": "PlayerButtonProps",
-      "file_type": "code",
-      "source_file": "src/components/features/AudioPlayer/PlayerButton.tsx",
-      "source_location": "L3",
-      "community": 53,
-      "norm_label": "playerbuttonprops",
-      "id": "audioplayer_playerbutton_playerbuttonprops"
-    },
-    {
-      "label": "PlayerButton",
-      "file_type": "code",
-      "source_file": "src/components/features/AudioPlayer/PlayerButton.tsx",
-      "source_location": "L11",
-      "community": 53,
-      "norm_label": "playerbutton",
-      "id": "audioplayer_playerbutton_playerbutton"
     },
     {
       "label": "RepeatButton.tsx",
@@ -15751,33 +15778,6 @@
       "community": 171,
       "norm_label": "lastreadbanner",
       "id": "lastreadbanner_lastreadbanner_lastreadbanner"
-    },
-    {
-      "label": "ParaHeader.tsx",
-      "file_type": "code",
-      "source_file": "src/components/quran/ParaHeader/ParaHeader.tsx",
-      "source_location": "L1",
-      "community": 81,
-      "norm_label": "paraheader.tsx",
-      "id": "paraheader_paraheader"
-    },
-    {
-      "label": "ParaHeadProps",
-      "file_type": "code",
-      "source_file": "src/components/quran/ParaHeader/ParaHeader.tsx",
-      "source_location": "L16",
-      "community": 81,
-      "norm_label": "paraheadprops",
-      "id": "paraheader_paraheader_paraheadprops"
-    },
-    {
-      "label": "ParaHeader",
-      "file_type": "code",
-      "source_file": "src/components/quran/ParaHeader/ParaHeader.tsx",
-      "source_location": "L21",
-      "community": 81,
-      "norm_label": "paraheader",
-      "id": "paraheader_paraheader_paraheader"
     },
     {
       "label": "ParaItem.tsx",
@@ -21958,6 +21958,497 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/DesktopPlayerContent.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "audioplayer_desktopplayercontent",
+      "target": "audioplayer_desktopplayercontent_desktopplayercontent"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/DesktopPlayerContent.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "audioplayer_desktopplayercontent",
+      "target": "audioplayer_mutebutton"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/DesktopPlayerContent.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "audioplayer_desktopplayercontent",
+      "target": "audioplayer_playerbutton"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/DesktopPlayerContent.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "audioplayer_desktopplayercontent",
+      "target": "audioplayer_playpausebutton"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/DesktopPlayerContent.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "audioplayer_desktopplayercontent",
+      "target": "audioplayer_repeatbutton"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/DesktopPlayerContent.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "audioplayer_desktopplayercontent",
+      "target": "audioplayer_seekbar"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/DesktopPlayerContent.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "audioplayer_desktopplayercontent",
+      "target": "audioplayer_types"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/DesktopPlayerContent.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "audioplayer_desktopplayercontent",
+      "target": "audioplayer_types_desktopplayercontentprops"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/DesktopPlayerContent.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "audioplayer_desktopplayercontent",
+      "target": "audioplayer_vinyldisc"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/ExpandedPlayer.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "audioplayer_expandedplayer",
+      "target": "audioplayer_desktopplayercontent"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/MuteButton.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "audioplayer_mutebutton",
+      "target": "audioplayer_playerbutton"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/PlayerButton.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "audioplayer_playerbutton",
+      "target": "audioplayer_playerbutton_playerbutton"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/PlayerButton.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "audioplayer_playerbutton",
+      "target": "audioplayer_playerbutton_playerbuttonprops"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/features/AudioPlayer/RepeatButton.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "audioplayer_repeatbutton",
+      "target": "audioplayer_playerbutton"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/pages/Bookmarks/BookmarkRow.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bookmarks_bookmarkrow",
+      "target": "bookmarks_bookmarkrow_bookmarkrow"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/pages/Bookmarks/BookmarkRow.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bookmarks_bookmarkrow",
+      "target": "bookmarks_bookmarkrow_bookmarkrowprops"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/pages/Bookmarks/SurahGroupItem.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bookmarks_surahgroupitem",
+      "target": "bookmarks_bookmarkrow"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/pages/Bookmarks/SurahGroupItem.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bookmarks_surahgroupitem",
+      "target": "bookmarks_surahgroupitem_surahgroupitem"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/pages/Bookmarks/SurahGroupItem.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bookmarks_surahgroupitem",
+      "target": "bookmarks_surahgroupitem_surahgroupitemprops"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/components/pages/Bookmarks/SurahGroupItem.tsx",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "bookmarks_surahgroupitem_surahgroupitem",
+      "target": "i18n_localecontext_uselocale"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/pages/Downloads/SurahDownloadCard.tsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "downloads_surahdownloadcard",
+      "target": "downloads_surahdownloadcard_formatbytes"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/pages/Downloads/SurahDownloadCard.tsx",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "downloads_surahdownloadcard",
+      "target": "downloads_surahdownloadcard_surahdownloadcard"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/pages/Downloads/SurahDownloadCard.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "downloads_surahdownloadcard",
+      "target": "downloads_surahdownloadcard_surahdownloadcardprops"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/pages/Downloads/index.tsx",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "downloads_index_downloadspage",
+      "target": "downloads_surahdownloadcard_formatbytes"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/pages/Surah/SurahHead.tsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "surah_surahhead",
+      "target": "surah_surahhead_surahhead"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/pages/Surah/SurahHead.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "surah_surahhead",
+      "target": "surah_surahhead_surahheadprops"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/quran/Ayah/Ayah.tsx",
+      "source_location": "L23",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ayah_ayah",
+      "target": "ayah_ayah_ayahs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/quran/Ayah/Ayah.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ayah_ayah",
+      "target": "ayah_ayah_ayahsprops"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/quran/Ayah/Ayah.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ayah_ayah",
+      "target": "ayah_ayahtafsir"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/quran/ParaHeader/ParaHeader.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "paraheader_paraheader",
+      "target": "ayah_ayah"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/quran/ParaHeader/ParaHeader.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "paraheader_paraheader",
+      "target": "audioplayer_audioutils_buildplaylistfromsurahs"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/quran/ParaHeader/ParaHeader.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "paraheader_paraheader",
+      "target": "audioplayer_index"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/quran/ParaHeader/ParaHeader.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "paraheader_paraheader",
+      "target": "paraheader_paraheader_paraheader"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/quran/ParaHeader/ParaHeader.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "paraheader_paraheader",
+      "target": "paraheader_paraheader_paraheadprops"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/ZakatCalculator/index.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "zakatcalculator_index",
+      "target": "zakatcalculator_index_assetinput"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/ZakatCalculator/index.tsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "zakatcalculator_index",
+      "target": "zakatcalculator_index_assets"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/ZakatCalculator/index.tsx",
+      "source_location": "L561",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "zakatcalculator_index",
+      "target": "zakatcalculator_index_breakdownrow"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/ZakatCalculator/index.tsx",
+      "source_location": "L81",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "zakatcalculator_index",
+      "target": "zakatcalculator_index_formatcurrency"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/ZakatCalculator/index.tsx",
+      "source_location": "L74",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "zakatcalculator_index",
+      "target": "zakatcalculator_index_karat_options"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/ZakatCalculator/index.tsx",
+      "source_location": "L85",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "zakatcalculator_index",
+      "target": "zakatcalculator_index_loadrates"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/ZakatCalculator/index.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "zakatcalculator_index",
+      "target": "zakatcalculator_index_nisabmethod"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/ZakatCalculator/index.tsx",
+      "source_location": "L93",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "zakatcalculator_index",
+      "target": "zakatcalculator_index_saverates"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/ZakatCalculator/index.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "zakatcalculator_index",
+      "target": "zakatcalculator_index_step"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/ZakatCalculator/index.tsx",
+      "source_location": "L97",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "zakatcalculator_index",
+      "target": "zakatcalculator_index_zakatcalculator"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/ZakatCalculator/index.tsx",
+      "source_location": "L579",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "zakatcalculator_index_breakdownrow",
+      "target": "zakatcalculator_index_formatcurrency"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/ZakatCalculator/index.tsx",
+      "source_location": "L395",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "zakatcalculator_index_zakatcalculator",
+      "target": "zakatcalculator_index_formatcurrency"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/pages/ZakatCalculator/index.tsx",
+      "source_location": "L104",
+      "weight": 1.0,
+      "source": "zakatcalculator_index_zakatcalculator",
+      "target": "i18n_localecontext_uselocale"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "AGENTS.md",
       "source_location": "L1",
       "weight": 1.0,
@@ -22031,9 +22522,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L72",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "agents_al_quran_agents_md",
-      "target": "agents_form_control_standardization_completed_jun_2026",
-      "confidence_score": 1.0
+      "target": "agents_form_control_standardization_completed_jun_2026"
     },
     {
       "relation": "contains",
@@ -22239,9 +22730,9 @@
       "source_file": "src/components/ui/input-group.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ui_input_group",
-      "target": "ui_input_group_inputgroup",
-      "confidence_score": 1.0
+      "target": "ui_input_group_inputgroup"
     },
     {
       "relation": "contains",
@@ -22249,9 +22740,9 @@
       "source_file": "src/components/ui/input-group.tsx",
       "source_location": "L42",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ui_input_group",
-      "target": "ui_input_group_inputgroupaddon",
-      "confidence_score": 1.0
+      "target": "ui_input_group_inputgroupaddon"
     },
     {
       "relation": "contains",
@@ -22259,9 +22750,9 @@
       "source_file": "src/components/ui/input-group.tsx",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ui_input_group",
-      "target": "ui_input_group_inputgroupaddonvariants",
-      "confidence_score": 1.0
+      "target": "ui_input_group_inputgroupaddonvariants"
     },
     {
       "relation": "contains",
@@ -22269,9 +22760,9 @@
       "source_file": "src/components/ui/input-group.tsx",
       "source_location": "L91",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ui_input_group",
-      "target": "ui_input_group_inputgroupbutton",
-      "confidence_score": 1.0
+      "target": "ui_input_group_inputgroupbutton"
     },
     {
       "relation": "contains",
@@ -22279,9 +22770,9 @@
       "source_file": "src/components/ui/input-group.tsx",
       "source_location": "L73",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ui_input_group",
-      "target": "ui_input_group_inputgroupbuttonvariants",
-      "confidence_score": 1.0
+      "target": "ui_input_group_inputgroupbuttonvariants"
     },
     {
       "relation": "contains",
@@ -22289,9 +22780,9 @@
       "source_file": "src/components/ui/input-group.tsx",
       "source_location": "L124",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ui_input_group",
-      "target": "ui_input_group_inputgroupinput",
-      "confidence_score": 1.0
+      "target": "ui_input_group_inputgroupinput"
     },
     {
       "relation": "contains",
@@ -22299,9 +22790,9 @@
       "source_file": "src/components/ui/input-group.tsx",
       "source_location": "L112",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ui_input_group",
-      "target": "ui_input_group_inputgrouptext",
-      "confidence_score": 1.0
+      "target": "ui_input_group_inputgrouptext"
     },
     {
       "relation": "contains",
@@ -22309,9 +22800,9 @@
       "source_file": "src/components/ui/input-group.tsx",
       "source_location": "L140",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ui_input_group",
-      "target": "ui_input_group_inputgrouptextarea",
-      "confidence_score": 1.0
+      "target": "ui_input_group_inputgrouptextarea"
     },
     {
       "relation": "calls",
@@ -22320,9 +22811,9 @@
       "source_file": "src/components/ui/input-group.tsx",
       "source_location": "L61",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ui_input_group_inputgroupaddon",
-      "target": "ui_input_group_inputgroupaddonvariants",
-      "confidence_score": 1.0
+      "target": "ui_input_group_inputgroupaddonvariants"
     },
     {
       "relation": "calls",
@@ -22331,9 +22822,9 @@
       "source_file": "src/components/ui/input-group.tsx",
       "source_location": "L106",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ui_input_group_inputgroupbutton",
-      "target": "ui_input_group_inputgroupbuttonvariants",
-      "confidence_score": 1.0
+      "target": "ui_input_group_inputgroupbuttonvariants"
     },
     {
       "relation": "contains",
@@ -22647,17 +23138,6 @@
       "confidence_score": 1.0,
       "source": "downloads_index",
       "target": "downloads_index_downloadspage"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src/pages/Downloads/index.tsx",
-      "source_location": "L76",
-      "weight": 1.0,
-      "source": "downloads_index_downloadspage",
-      "target": "downloads_surahdownloadcard_formatbytes"
     },
     {
       "relation": "calls",
@@ -23246,139 +23726,6 @@
       "source_location": "L33",
       "weight": 1.0,
       "source": "surah_index_surahs",
-      "target": "i18n_localecontext_uselocale"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/ZakatCalculator/index.tsx",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "zakatcalculator_index",
-      "target": "zakatcalculator_index_assetinput"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/ZakatCalculator/index.tsx",
-      "source_location": "L22",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "zakatcalculator_index",
-      "target": "zakatcalculator_index_assets"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/ZakatCalculator/index.tsx",
-      "source_location": "L561",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "zakatcalculator_index",
-      "target": "zakatcalculator_index_breakdownrow"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/ZakatCalculator/index.tsx",
-      "source_location": "L81",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "zakatcalculator_index",
-      "target": "zakatcalculator_index_formatcurrency"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/ZakatCalculator/index.tsx",
-      "source_location": "L74",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "zakatcalculator_index",
-      "target": "zakatcalculator_index_karat_options"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/ZakatCalculator/index.tsx",
-      "source_location": "L85",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "zakatcalculator_index",
-      "target": "zakatcalculator_index_loadrates"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/ZakatCalculator/index.tsx",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "zakatcalculator_index",
-      "target": "zakatcalculator_index_nisabmethod"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/ZakatCalculator/index.tsx",
-      "source_location": "L93",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "zakatcalculator_index",
-      "target": "zakatcalculator_index_saverates"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/ZakatCalculator/index.tsx",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "zakatcalculator_index",
-      "target": "zakatcalculator_index_step"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/ZakatCalculator/index.tsx",
-      "source_location": "L97",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "zakatcalculator_index",
-      "target": "zakatcalculator_index_zakatcalculator"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/ZakatCalculator/index.tsx",
-      "source_location": "L579",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "zakatcalculator_index_breakdownrow",
-      "target": "zakatcalculator_index_formatcurrency"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/ZakatCalculator/index.tsx",
-      "source_location": "L395",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "zakatcalculator_index_zakatcalculator",
-      "target": "zakatcalculator_index_formatcurrency"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src/pages/ZakatCalculator/index.tsx",
-      "source_location": "L104",
-      "weight": 1.0,
-      "source": "zakatcalculator_index_zakatcalculator",
       "target": "i18n_localecontext_uselocale"
     },
     {
@@ -36684,17 +37031,6 @@
       "context": "call",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
-      "source_file": "src/components/pages/Bookmarks/SurahGroupItem.tsx",
-      "source_location": "L26",
-      "weight": 1.0,
-      "source": "bookmarks_surahgroupitem_surahgroupitem",
-      "target": "i18n_localecontext_uselocale"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
       "source_file": "src/pages/Hadith/[collection]/index.tsx",
       "source_location": "L19",
       "weight": 1.0,
@@ -38120,17 +38456,6 @@
       "target": "audioplayer_audioutils_buildplaylistfromsurahs"
     },
     {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/quran/ParaHeader/ParaHeader.tsx",
-      "source_location": "L10",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "paraheader_paraheader",
-      "target": "audioplayer_audioutils_buildplaylistfromsurahs"
-    },
-    {
       "relation": "re_exports",
       "context": "re-export",
       "confidence": "EXTRACTED",
@@ -38140,17 +38465,6 @@
       "confidence_score": 1.0,
       "source": "audioplayer_index",
       "target": "audioplayer_audioutils_buildplaylistfromsurah"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/AudioPlayer/DesktopPlayerContent.tsx",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "audioplayer_desktopplayercontent",
-      "target": "audioplayer_types"
     },
     {
       "relation": "re_exports",
@@ -38321,17 +38635,6 @@
       "target": "audioplayer_types_playercontentprops"
     },
     {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/AudioPlayer/DesktopPlayerContent.tsx",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "audioplayer_desktopplayercontent",
-      "target": "audioplayer_types_desktopplayercontentprops"
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/features/Search/VerseResultItem.tsx",
@@ -38370,87 +38673,6 @@
       "confidence_score": 1.0,
       "source": "mainlayout_mainlayout",
       "target": "mainlayout_mainlayout_layoutprops"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/pages/Bookmarks/BookmarkRow.tsx",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "bookmarks_bookmarkrow",
-      "target": "bookmarks_bookmarkrow_bookmarkrow"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/pages/Bookmarks/BookmarkRow.tsx",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "bookmarks_bookmarkrow",
-      "target": "bookmarks_bookmarkrow_bookmarkrowprops"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/pages/Bookmarks/SurahGroupItem.tsx",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "bookmarks_surahgroupitem",
-      "target": "bookmarks_bookmarkrow"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/pages/Bookmarks/SurahGroupItem.tsx",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "bookmarks_surahgroupitem",
-      "target": "bookmarks_surahgroupitem_surahgroupitem"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/pages/Bookmarks/SurahGroupItem.tsx",
-      "source_location": "L15",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "bookmarks_surahgroupitem",
-      "target": "bookmarks_surahgroupitem_surahgroupitemprops"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/pages/Downloads/SurahDownloadCard.tsx",
-      "source_location": "L22",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "downloads_surahdownloadcard",
-      "target": "downloads_surahdownloadcard_formatbytes"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/pages/Downloads/SurahDownloadCard.tsx",
-      "source_location": "L28",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "downloads_surahdownloadcard",
-      "target": "downloads_surahdownloadcard_surahdownloadcard"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/pages/Downloads/SurahDownloadCard.tsx",
-      "source_location": "L16",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "downloads_surahdownloadcard",
-      "target": "downloads_surahdownloadcard_surahdownloadcardprops"
     },
     {
       "relation": "contains",
@@ -38595,26 +38817,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src/components/pages/Surah/SurahHead.tsx",
-      "source_location": "L19",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "surah_surahhead",
-      "target": "surah_surahhead_surahhead"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/pages/Surah/SurahHead.tsx",
-      "source_location": "L15",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "surah_surahhead",
-      "target": "surah_surahhead_surahheadprops"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "src/components/pages/Tasbih/CircularCounter.tsx",
       "source_location": "L7",
       "weight": 1.0,
@@ -38641,48 +38843,6 @@
       "confidence_score": 1.0,
       "source": "tasbih_circularcounter",
       "target": "tasbih_circularcounter_countercontent"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/quran/Ayah/Ayah.tsx",
-      "source_location": "L23",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "ayah_ayah",
-      "target": "ayah_ayah_ayahs"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/quran/Ayah/Ayah.tsx",
-      "source_location": "L16",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "ayah_ayah",
-      "target": "ayah_ayah_ayahsprops"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/quran/Ayah/Ayah.tsx",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "ayah_ayah",
-      "target": "ayah_ayahtafsir"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/quran/ParaHeader/ParaHeader.tsx",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "paraheader_paraheader",
-      "target": "ayah_ayah"
     },
     {
       "relation": "contains",
@@ -41070,93 +41230,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src/components/features/AudioPlayer/DesktopPlayerContent.tsx",
-      "source_location": "L17",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "audioplayer_desktopplayercontent",
-      "target": "audioplayer_desktopplayercontent_desktopplayercontent"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/AudioPlayer/DesktopPlayerContent.tsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "audioplayer_desktopplayercontent",
-      "target": "audioplayer_mutebutton"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/AudioPlayer/DesktopPlayerContent.tsx",
-      "source_location": "L10",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "audioplayer_desktopplayercontent",
-      "target": "audioplayer_playerbutton"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/AudioPlayer/DesktopPlayerContent.tsx",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "audioplayer_desktopplayercontent",
-      "target": "audioplayer_playpausebutton"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/AudioPlayer/DesktopPlayerContent.tsx",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "audioplayer_desktopplayercontent",
-      "target": "audioplayer_repeatbutton"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/AudioPlayer/DesktopPlayerContent.tsx",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "audioplayer_desktopplayercontent",
-      "target": "audioplayer_seekbar"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/AudioPlayer/DesktopPlayerContent.tsx",
-      "source_location": "L15",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "audioplayer_desktopplayercontent",
-      "target": "audioplayer_vinyldisc"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/AudioPlayer/ExpandedPlayer.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "audioplayer_expandedplayer",
-      "target": "audioplayer_desktopplayercontent"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "src/components/features/AudioPlayer/ExpandedPlayer.tsx",
       "source_location": "L10",
       "weight": 1.0,
@@ -41303,17 +41376,6 @@
       "target": "audioplayer_mutebutton_mutebutton"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/AudioPlayer/MuteButton.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "audioplayer_mutebutton",
-      "target": "audioplayer_playerbutton"
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/features/AudioPlayer/PlayPauseButton.tsx",
@@ -41322,37 +41384,6 @@
       "confidence_score": 1.0,
       "source": "audioplayer_playpausebutton",
       "target": "audioplayer_playpausebutton_playpausebutton"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/AudioPlayer/PlayerButton.tsx",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "audioplayer_playerbutton",
-      "target": "audioplayer_playerbutton_playerbutton"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/AudioPlayer/PlayerButton.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "audioplayer_playerbutton",
-      "target": "audioplayer_playerbutton_playerbuttonprops"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/features/AudioPlayer/RepeatButton.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "audioplayer_repeatbutton",
-      "target": "audioplayer_playerbutton"
     },
     {
       "relation": "contains",
@@ -41600,17 +41631,6 @@
       "target": "audioplayer_index_audioplayer"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/quran/ParaHeader/ParaHeader.tsx",
-      "source_location": "L10",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "paraheader_paraheader",
-      "target": "audioplayer_index"
-    },
-    {
       "relation": "calls",
       "context": "call",
       "confidence": "INFERRED",
@@ -41783,26 +41803,6 @@
       "confidence_score": 1.0,
       "source": "lastreadbanner_lastreadbanner",
       "target": "lastreadbanner_lastreadbanner_lastreadbanner"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/quran/ParaHeader/ParaHeader.tsx",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "paraheader_paraheader",
-      "target": "paraheader_paraheader_paraheader"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/quran/ParaHeader/ParaHeader.tsx",
-      "source_location": "L16",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "paraheader_paraheader",
-      "target": "paraheader_paraheader_paraheadprops"
     },
     {
       "relation": "contains",
@@ -49374,5 +49374,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "7210477d5c69e4a930b1711f8d3d5170832d7ed2"
+  "built_at_commit": "fbee67af4359a5519b1cea6ee3ec7b529a98522a"
 }
