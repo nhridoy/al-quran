@@ -1,4 +1,9 @@
 import { memo } from "react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface PlayerButtonProps {
   icon: React.ReactNode;
@@ -16,21 +21,27 @@ const PlayerButton = memo(function PlayerButton({
   variant = "muted",
 }: PlayerButtonProps) {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={`cursor-pointer rounded-full p-2 transition-all active:scale-90 ${
-        active
-          ? "bg-secondary/10 text-secondary"
-          : variant === "secondary"
-            ? "text-text-secondary hover:bg-surface-alt dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
-            : "text-text-muted hover:bg-surface-alt dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
-      }`}
-      aria-label={label}
-      title={label}
-    >
-      {icon}
-    </button>
+    <Tooltip>
+      <TooltipTrigger
+        render={
+          <button
+            type="button"
+            onClick={onClick}
+            className={`cursor-pointer rounded-full p-2 transition-all active:scale-90 ${
+              active
+                ? "bg-secondary/10 text-secondary"
+                : variant === "secondary"
+                  ? "text-text-secondary hover:bg-surface-alt dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
+                  : "text-text-muted hover:bg-surface-alt dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
+            }`}
+            aria-label={label}
+          >
+            {icon}
+          </button>
+        }
+      />
+      <TooltipContent>{label}</TooltipContent>
+    </Tooltip>
   );
 });
 

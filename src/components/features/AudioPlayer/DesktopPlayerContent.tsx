@@ -6,6 +6,11 @@ import {
   SkipForwardIcon,
 } from "lucide-react";
 import { useCallback } from "react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import MuteButton from "./MuteButton";
 import PlayerButton from "./PlayerButton";
 import PlayPauseButton from "./PlayPauseButton";
@@ -41,14 +46,23 @@ export default function DesktopPlayerContent({
     <div className="mx-auto flex h-20 max-w-7xl items-center gap-4 px-4">
       <div className="flex min-w-0 items-center gap-3">
         <VinylDisc isPlaying={isPlaying} />
-        <div className="min-w-0">
-          <p className="truncate text-sm font-semibold text-text-primary dark:text-dark-text-primary">
-            {currentTrack.enName}
-          </p>
-          <p className="truncate text-xs text-text-muted dark:text-dark-text-muted">
-            Ayah {currentTrack.ayahNumber}
-          </p>
-        </div>
+        <Tooltip>
+          <TooltipTrigger
+            render={
+              <div className="min-w-0 cursor-default">
+                <p className="truncate text-sm font-semibold text-text-primary dark:text-dark-text-primary">
+                  {currentTrack.enName}
+                </p>
+                <p className="truncate text-xs text-text-muted dark:text-dark-text-muted">
+                  Ayah {currentTrack.ayahNumber}
+                </p>
+              </div>
+            }
+          />
+          <TooltipContent>
+            {currentTrack.enName} &mdash; Ayah {currentTrack.ayahNumber}
+          </TooltipContent>
+        </Tooltip>
       </div>
 
       <div className="flex flex-1 items-center justify-center gap-3">

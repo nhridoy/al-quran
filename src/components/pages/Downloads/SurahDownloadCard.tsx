@@ -3,6 +3,11 @@ import { memo, useCallback, useRef, useState } from "react";
 import { FiTrash2 } from "react-icons/fi";
 import { IoPlayCircleOutline } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { useLocale } from "@/i18n";
 import { dedupeUrls } from "@/lib/audio";
 import { getAudioData, mergeAudioWithSurah } from "@/lib/db";
@@ -164,79 +169,115 @@ const SurahDownloadCard = memo(
         </div>
         <div className="shrink-0">
           {isDownloaded ? (
-            <Button
-              onClick={handleDelete}
-              variant="danger"
-              size="icon"
-              className="rounded-lg"
-              title={t("downloads.remove")}
-              aria-label={t("downloads.remove")}
-            >
-              <FiTrash2 className="text-sm" />
-            </Button>
+            <Tooltip>
+              <TooltipTrigger
+                render={
+                  <Button
+                    onClick={handleDelete}
+                    variant="danger"
+                    size="icon"
+                    className="rounded-lg"
+                    aria-label={t("downloads.remove")}
+                  >
+                    <FiTrash2 className="text-sm" />
+                  </Button>
+                }
+              />
+              <TooltipContent>{t("downloads.remove")}</TooltipContent>
+            </Tooltip>
           ) : isPaused ? (
             <div className="flex items-center gap-1">
               <span className="text-xs font-medium text-warning">
                 {displayProgress}%
               </span>
-              <Button
-                onClick={runDownload}
-                variant="secondary-ghost"
-                size="icon-sm"
-                className="rounded-lg text-text-muted hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20 dark:hover:text-secondary-light"
-                title={t("downloads.resume")}
-                aria-label={t("downloads.resume")}
-              >
-                <IoPlayCircleOutline className="text-sm" />
-              </Button>
-              <Button
-                onClick={handleCancel}
-                variant="danger"
-                size="icon-sm"
-                className="rounded-lg"
-                title="Cancel download"
-                aria-label="Cancel download"
-              >
-                <FiTrash2 className="text-xs" />
-              </Button>
+              <Tooltip>
+                <TooltipTrigger
+                  render={
+                    <Button
+                      onClick={runDownload}
+                      variant="secondary-ghost"
+                      size="icon-sm"
+                      className="rounded-lg text-text-muted hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20 dark:hover:text-secondary-light"
+                      aria-label={t("downloads.resume")}
+                    >
+                      <IoPlayCircleOutline className="text-sm" />
+                    </Button>
+                  }
+                />
+                <TooltipContent>{t("downloads.resume")}</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger
+                  render={
+                    <Button
+                      onClick={handleCancel}
+                      variant="danger"
+                      size="icon-sm"
+                      className="rounded-lg"
+                      aria-label="Cancel download"
+                    >
+                      <FiTrash2 className="text-xs" />
+                    </Button>
+                  }
+                />
+                <TooltipContent>Cancel download</TooltipContent>
+              </Tooltip>
             </div>
           ) : downloading ? (
             <div className="flex items-center gap-1">
               <span className="text-xs font-medium text-secondary">
                 {displayProgress}%
               </span>
-              <Button
-                onClick={handlePause}
-                variant="secondary-ghost"
-                size="icon-sm"
-                className="rounded-lg text-text-muted hover:bg-warning/10 hover:text-warning dark:hover:bg-warning/20"
-                title={t("downloads.pause")}
-                aria-label={t("downloads.pause")}
-              >
-                <PauseIcon className="h-3.5 w-3.5" aria-hidden="true" />
-              </Button>
-              <Button
-                onClick={handleCancel}
-                variant="danger"
-                size="icon-sm"
-                className="rounded-lg"
-                title={t("downloads.cancel")}
-                aria-label={t("downloads.cancel")}
-              >
-                <FiTrash2 className="text-xs" />
-              </Button>
+              <Tooltip>
+                <TooltipTrigger
+                  render={
+                    <Button
+                      onClick={handlePause}
+                      variant="secondary-ghost"
+                      size="icon-sm"
+                      className="rounded-lg text-text-muted hover:bg-warning/10 hover:text-warning dark:hover:bg-warning/20"
+                      aria-label={t("downloads.pause")}
+                    >
+                      <PauseIcon className="h-3.5 w-3.5" aria-hidden="true" />
+                    </Button>
+                  }
+                />
+                <TooltipContent>{t("downloads.pause")}</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger
+                  render={
+                    <Button
+                      onClick={handleCancel}
+                      variant="danger"
+                      size="icon-sm"
+                      className="rounded-lg"
+                      aria-label={t("downloads.cancel")}
+                    >
+                      <FiTrash2 className="text-xs" />
+                    </Button>
+                  }
+                />
+                <TooltipContent>{t("downloads.cancel")}</TooltipContent>
+              </Tooltip>
             </div>
           ) : (
-            <Button
-              onClick={runDownload}
-              variant="secondary-ghost"
-              size="icon"
-              className="rounded-lg text-text-muted hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20 dark:hover:text-secondary-light"
-              title={t("downloads.download")}
-              aria-label={t("downloads.download")}
-            >
-              <IoPlayCircleOutline className="text-lg" />
-            </Button>
+            <Tooltip>
+              <TooltipTrigger
+                render={
+                  <Button
+                    onClick={runDownload}
+                    variant="secondary-ghost"
+                    size="icon"
+                    className="rounded-lg text-text-muted hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20 dark:hover:text-secondary-light"
+                    aria-label={t("downloads.download")}
+                  >
+                    <IoPlayCircleOutline className="text-lg" />
+                  </Button>
+                }
+              />
+              <TooltipContent>{t("downloads.download")}</TooltipContent>
+            </Tooltip>
           )}
         </div>
       </div>

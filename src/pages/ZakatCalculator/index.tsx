@@ -14,6 +14,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { useLocale } from "@/i18n";
 
 type NisabMethod = "gold" | "silver";
@@ -25,6 +30,7 @@ interface AssetInput {
   icon: string;
   description?: string;
   tKey: string;
+  descTKey?: string;
 }
 
 const ASSETS: AssetInput[] = [
@@ -35,6 +41,7 @@ const ASSETS: AssetInput[] = [
     icon: "🥇",
     description: "Total gold weight in grams",
     tKey: "zakat.assetGold",
+    descTKey: "zakat.assetGoldDesc",
   },
   {
     label: "Silver (grams)",
@@ -42,6 +49,7 @@ const ASSETS: AssetInput[] = [
     icon: "🥈",
     description: "Total silver weight in grams",
     tKey: "zakat.assetSilver",
+    descTKey: "zakat.assetSilverDesc",
   },
   {
     label: "Investments",
@@ -49,6 +57,7 @@ const ASSETS: AssetInput[] = [
     icon: "📈",
     description: "Stocks, bonds, funds",
     tKey: "zakat.assetInvestments",
+    descTKey: "zakat.assetInvestmentsDesc",
   },
   {
     label: "Business Inventory",
@@ -56,6 +65,7 @@ const ASSETS: AssetInput[] = [
     icon: "🏪",
     description: "Value of saleable goods",
     tKey: "zakat.assetBusiness",
+    descTKey: "zakat.assetBusinessDesc",
   },
   {
     label: "Rental Property",
@@ -63,6 +73,7 @@ const ASSETS: AssetInput[] = [
     icon: "🏠",
     description: "Only investment/rental properties",
     tKey: "zakat.assetProperty",
+    descTKey: "zakat.assetPropertyDesc",
   },
   {
     label: "Money Owed to You",
@@ -76,6 +87,7 @@ const ASSETS: AssetInput[] = [
     icon: "📋",
     description: "Subtracted from total",
     tKey: "zakat.assetPayables",
+    descTKey: "zakat.assetPayablesDesc",
   },
 ];
 
@@ -247,13 +259,17 @@ export default function ZakatCalculator() {
                 <div className="mb-1 flex items-center gap-2 text-xs text-text-muted dark:text-dark-text-muted">
                   <span>{asset.icon}</span>
                   <span>{t(asset.tKey)}</span>
-                  {asset.description && (
-                    <span
-                      className="flex items-center gap-0.5 text-[10px]"
-                      title={t(`zakat.${asset.key}Desc`)}
-                    >
-                      <BiInfoCircle /> {t("common.info")}
-                    </span>
+                  {asset.description && asset.descTKey && (
+                    <Tooltip>
+                      <TooltipTrigger
+                        render={
+                          <span className="flex cursor-help items-center gap-0.5 text-[10px]">
+                            <BiInfoCircle /> {t("common.info")}
+                          </span>
+                        }
+                      />
+                      <TooltipContent>{t(asset.descTKey)}</TooltipContent>
+                    </Tooltip>
                   )}
                 </div>
                 <div className="relative">

@@ -2,6 +2,11 @@ import { memo } from "react";
 import { BiTrash } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { useLocale } from "@/i18n";
 import type { Bookmark } from "@/store/bookmarks";
 import { useSettings } from "@/store/settings";
@@ -49,15 +54,22 @@ const BookmarkRow = memo(function BookmarkRow({
           {t("bookmarks.ayahLabel", { n: ayahNo })}
         </p>
       </button>
-      <Button
-        variant="danger"
-        size="icon"
-        className="rounded-lg"
-        onClick={() => onRemove(id)}
-        aria-label={t("bookmarks.removeBookmark")}
-      >
-        <BiTrash className="text-sm" />
-      </Button>
+      <Tooltip>
+        <TooltipTrigger
+          render={
+            <Button
+              variant="danger"
+              size="icon"
+              className="rounded-lg"
+              onClick={() => onRemove(id)}
+              aria-label={t("bookmarks.removeBookmark")}
+            >
+              <BiTrash className="text-sm" />
+            </Button>
+          }
+        />
+        <TooltipContent>{t("bookmarks.removeBookmark")}</TooltipContent>
+      </Tooltip>
     </div>
   );
 });
