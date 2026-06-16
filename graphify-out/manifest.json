@@ -245,8 +245,8 @@
     "semantic_hash": ""
   },
   "src/components/features/Search/Search.tsx": {
-    "mtime": 1781544644.3658957,
-    "ast_hash": "f8e84c42a02d9b271de7b4c956a8158b",
+    "mtime": 1781583888.8706653,
+    "ast_hash": "101e29851c7bdbbc6eed4a2822b484f1",
     "semantic_hash": ""
   },
   "src/components/features/Search/VerseResultItem.tsx": {

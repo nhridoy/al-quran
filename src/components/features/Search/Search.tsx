@@ -131,19 +131,19 @@ export default function Search() {
                         }
                       />
                       <InputGroupAddon align="inline-end">
-           {query && (
-                      <button
-                        type="button"
-                        onClick={() => setQuery("")}
-                        aria-label="Clear search"
-                        className="cursor-pointer rounded-lg p-1 text-secondary-light hover:bg-surface-alt hover:text-text-primary dark:text-secondary-light dark:hover:bg-secondary-light"
-                      >
-                        <IoClose className="text-lg" />
-                      </button>
-                    )}
-        </InputGroupAddon>
+                        {query && (
+                          <button
+                            type="button"
+                            onClick={() => setQuery("")}
+                            aria-label="Clear search"
+                            className="cursor-pointer rounded-lg p-1 text-secondary-light hover:bg-surface-alt hover:text-text-primary dark:text-secondary-light dark:hover:bg-secondary-light"
+                          >
+                            <IoClose className="text-lg" />
+                          </button>
+                        )}
+                      </InputGroupAddon>
                     </InputGroup>
-                   
+
                     <button
                       type="button"
                       onClick={handleClose}
