@@ -115,7 +115,7 @@ export default function Search() {
             <div className="relative w-full max-w-lg mx-4 animate-scale-in">
               <div className="overflow-hidden rounded-2xl p-4 bg-white shadow-2xl ring-1 ring-black/5 dark:bg-dark-surface-card dark:ring-white/10">
                 <div className="border-b border-border dark:border-dark-border">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 mb-2">
                     <InputGroup className="flex-1 border-transparent bg-transparent dark:border-transparent dark:bg-transparent">
                       <InputGroupAddon>
                         <BiSearch className="text-lg shrink-0 text-text-muted" />
@@ -130,17 +130,20 @@ export default function Search() {
                             : "Search by verse text..."
                         }
                       />
-                    </InputGroup>
-                    {query && (
+                      <InputGroupAddon align="inline-end">
+           {query && (
                       <button
                         type="button"
                         onClick={() => setQuery("")}
                         aria-label="Clear search"
-                        className="cursor-pointer rounded-lg p-1 text-text-muted hover:bg-surface-alt hover:text-text-primary dark:text-dark-text-muted dark:hover:bg-dark-surface-alt"
+                        className="cursor-pointer rounded-lg p-1 text-secondary-light hover:bg-surface-alt hover:text-text-primary dark:text-secondary-light dark:hover:bg-secondary-light"
                       >
                         <IoClose className="text-lg" />
                       </button>
                     )}
+        </InputGroupAddon>
+                    </InputGroup>
+                   
                     <button
                       type="button"
                       onClick={handleClose}
