@@ -8,7 +8,13 @@ import {
 import { FiPauseCircle, FiPlayCircle } from "react-icons/fi";
 import { useAudioStore } from "@/components/features/AudioPlayer";
 import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { useSurahAudio } from "@/hooks/useSurahAudio";
+import { useLocale } from "@/i18n";
 import type { SurahData } from "@/types";
 
 interface SurahHeadProps {
@@ -16,6 +22,7 @@ interface SurahHeadProps {
 }
 
 export const SurahHead: React.FC<SurahHeadProps> = memo(({ surah }) => {
+  const { t } = useLocale();
   const currentTrack = useAudioStore((s) => s.currentTrack);
   const isPlaying = useAudioStore((s) => s.isPlaying);
   const playerLoading = useAudioStore((s) => s.isLoading);
@@ -86,10 +93,12 @@ export const SurahHead: React.FC<SurahHeadProps> = memo(({ surah }) => {
           </h2>
           <div className="mt-1 flex items-center gap-2 text-xs font-medium uppercase text-white/60">
             <span>
-              {surah.revelationType === "Meccan" ? "Makkah" : "Madinah"}
+              {surah.revelationType === "Meccan"
+                ? t("surah.makkah")
+                : t("surah.madinah")}
             </span>
             <span>&bull;</span>
-            <span>{surah.numberOfAyahs} verses</span>
+            <span>{t("surah.verses", { count: surah.numberOfAyahs })}</span>
           </div>
         </div>
 
@@ -100,38 +109,71 @@ export const SurahHead: React.FC<SurahHeadProps> = memo(({ surah }) => {
         </div>
 
         <div className="flex items-center gap-4">
-          <Button
-            variant="white-ghost"
-            size="icon"
-            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
-            onClick={handlePrev}
-            aria-label="Previous"
-          >
-            <CgPlayTrackPrevO className="text-xl text-white size-5" />
-          </Button>
-          <Button
-            size="icon"
-            className="rounded-full h-12 w-12 bg-white text-primary shadow-lg hover:scale-105 active:scale-95 border-0 hover:bg-white"
-            onClick={handlePlay}
-            aria-label={isLoading ? "Loading" : isPlaying ? "Pause" : "Play"}
-          >
-            {isLoading ? (
-              <CgSpinnerTwo className="animate-spin text-xl size-5" />
-            ) : isPlaying ? (
-              <FiPauseCircle className="text-2xl size-6" />
-            ) : (
-              <FiPlayCircle className="text-2xl size-6" />
-            )}
-          </Button>
-          <Button
-            variant="white-ghost"
-            size="icon"
-            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
-            onClick={handleNext}
-            aria-label="Next"
-          >
-            <CgPlayTrackNextO className="text-xl text-white size-5" />
-          </Button>
+          <Tooltip>
+            <TooltipTrigger
+              render={
+                <Button
+                  variant="white-ghost"
+                  size="icon"
+                  className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
+                  onClick={handlePrev}
+                  aria-label={t("surah.prevAria")}
+                >
+                  <CgPlayTrackPrevO className="text-xl text-white size-5" />
+                </Button>
+              }
+            />
+            <TooltipContent>{t("surah.prevAria")}</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger
+              render={
+                <Button
+                  size="icon"
+                  className="rounded-full h-12 w-12 bg-white text-primary shadow-lg hover:scale-105 active:scale-95 border-0 hover:bg-white"
+                  onClick={handlePlay}
+                  aria-label={
+                    isLoading
+                      ? t("surah.loading")
+                      : isPlaying
+                        ? t("surah.pause")
+                        : t("surah.play")
+                  }
+                >
+                  {isLoading ? (
+                    <CgSpinnerTwo className="animate-spin text-xl size-5" />
+                  ) : isPlaying ? (
+                    <FiPauseCircle className="text-2xl size-6" />
+                  ) : (
+                    <FiPlayCircle className="text-2xl size-6" />
+                  )}
+                </Button>
+              }
+            />
+            <TooltipContent>
+              {isLoading
+                ? t("surah.loading")
+                : isPlaying
+                  ? t("surah.pause")
+                  : t("surah.play")}
+            </TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger
+              render={
+                <Button
+                  variant="white-ghost"
+                  size="icon"
+                  className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
+                  onClick={handleNext}
+                  aria-label={t("surah.nextAria")}
+                >
+                  <CgPlayTrackNextO className="text-xl text-white size-5" />
+                </Button>
+              }
+            />
+            <TooltipContent>{t("surah.nextAria")}</TooltipContent>
+          </Tooltip>
         </div>
       </div>
 

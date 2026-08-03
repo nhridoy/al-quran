@@ -6,13 +6,16 @@ import SurahDownloadCard, {
   formatBytes,
 } from "@/components/pages/Downloads/SurahDownloadCard";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { useSurahs } from "@/hooks/useSurahs";
+import { useLocale } from "@/i18n";
 import { confirm } from "@/lib/confirm";
 import { clearAllAudio, getCacheSize } from "@/lib/downloadManager";
 import { useDownloadsStore } from "@/store/downloads";
 import { useSettings } from "@/store/settings";
 
 export default function DownloadsPage() {
+  const { t } = useLocale();
   const { surahList, loading } = useSurahs();
   const reciterId = useSettings((s) => s.reciterId);
   const loadDownloads = useDownloadsStore((s) => s.load);
@@ -42,9 +45,9 @@ export default function DownloadsPage() {
 
   const handleClearAll = useCallback(async () => {
     const ok = await confirm({
-      title: "Clear all downloads?",
-      message: "This will remove all cached audio files.",
-      confirmText: "Clear All",
+      title: t("downloads.clearAllTitle"),
+      message: t("downloads.clearAllMessage"),
+      confirmText: t("downloads.clearAll"),
     });
     if (!ok) return;
     await clearAllAudio();
@@ -53,25 +56,25 @@ export default function DownloadsPage() {
       await useDownloadsStore.getState().remove(item.surahNo, item.qariId);
     }
     await refreshCacheSize();
-  }, [refreshCacheSize]);
+  }, [refreshCacheSize, t]);
 
   if (loading) {
     return (
-      <PageShell head="Downloads">
+      <PageShell head={t("downloads.pageTitle")}>
         <SkeletonLoader count={6} height="h-16" />
       </PageShell>
     );
   }
 
   return (
-    <PageShell head="Downloads">
+    <PageShell head={t("downloads.pageTitle")}>
       <div className="mb-4 flex items-center justify-between">
         <div>
           <h2 className="text-lg font-bold text-text-primary dark:text-dark-text-primary">
-            Offline Downloads
+            {t("downloads.offlineDownloads")}
           </h2>
           <p className="text-sm text-text-muted dark:text-dark-text-muted">
-            Cache: {formatBytes(cacheSize)}
+            {t("downloads.cacheSize", { bytes: formatBytes(cacheSize) })}
           </p>
         </div>
         <div className="flex items-center gap-2">
@@ -82,19 +85,17 @@ export default function DownloadsPage() {
               className="gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium"
             >
               <FiTrash2 />
-              Clear All
+              {t("downloads.clearAll")}
             </Button>
           )}
         </div>
       </div>
 
       <div className="mb-4">
-        <input
-          type="text"
+        <Input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search surahs..."
-          className="w-full rounded-xl border border-border bg-surface-alt px-4 py-2.5 text-sm text-text-primary outline-none transition-colors focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
+          placeholder={t("downloads.searchPlaceholder")}
         />
       </div>
 

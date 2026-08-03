@@ -1,0 +1,520 @@
+{
+  "nodes": [
+    {
+      "id": "c_users_hrido_desktop_al_quran_biome_json",
+      "label": "biome.json",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L1"
+    },
+    {
+      "id": "al_quran_biome_schema",
+      "label": "$schema",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L2"
+    },
+    {
+      "id": "al_quran_biome_vcs",
+      "label": "vcs",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L3"
+    },
+    {
+      "id": "al_quran_biome_vcs_enabled",
+      "label": "enabled",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L4"
+    },
+    {
+      "id": "al_quran_biome_vcs_clientkind",
+      "label": "clientKind",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L5"
+    },
+    {
+      "id": "al_quran_biome_vcs_useignorefile",
+      "label": "useIgnoreFile",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L6"
+    },
+    {
+      "id": "al_quran_biome_files",
+      "label": "files",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L8"
+    },
+    {
+      "id": "al_quran_biome_files_ignoreunknown",
+      "label": "ignoreUnknown",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L9"
+    },
+    {
+      "id": "al_quran_biome_files_includes",
+      "label": "includes",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L10"
+    },
+    {
+      "id": "al_quran_biome_formatter",
+      "label": "formatter",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L12"
+    },
+    {
+      "id": "al_quran_biome_formatter_enabled",
+      "label": "enabled",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L13"
+    },
+    {
+      "id": "al_quran_biome_formatter_indentstyle",
+      "label": "indentStyle",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L14"
+    },
+    {
+      "id": "al_quran_biome_formatter_indentwidth",
+      "label": "indentWidth",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "al_quran_biome_linter",
+      "label": "linter",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L17"
+    },
+    {
+      "id": "al_quran_biome_linter_enabled",
+      "label": "enabled",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L18"
+    },
+    {
+      "id": "al_quran_biome_linter_rules",
+      "label": "rules",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L19"
+    },
+    {
+      "id": "al_quran_biome_rules_recommended",
+      "label": "recommended",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L20"
+    },
+    {
+      "id": "al_quran_biome_rules_suspicious",
+      "label": "suspicious",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L21"
+    },
+    {
+      "id": "al_quran_biome_suspicious_nounknownatrules",
+      "label": "noUnknownAtRules",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L22"
+    },
+    {
+      "id": "al_quran_biome_linter_domains",
+      "label": "domains",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L25"
+    },
+    {
+      "id": "al_quran_biome_domains_react",
+      "label": "react",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L26"
+    },
+    {
+      "id": "al_quran_biome_css",
+      "label": "css",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L29"
+    },
+    {
+      "id": "al_quran_biome_css_formatter",
+      "label": "formatter",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L30"
+    },
+    {
+      "id": "al_quran_biome_css_parser",
+      "label": "parser",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L33"
+    },
+    {
+      "id": "al_quran_biome_parser_tailwinddirectives",
+      "label": "tailwindDirectives",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L34"
+    },
+    {
+      "id": "al_quran_biome_assist",
+      "label": "assist",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L37"
+    },
+    {
+      "id": "al_quran_biome_assist_actions",
+      "label": "actions",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L38"
+    },
+    {
+      "id": "al_quran_biome_actions_source",
+      "label": "source",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L39"
+    },
+    {
+      "id": "al_quran_biome_source_organizeimports",
+      "label": "organizeImports",
+      "file_type": "code",
+      "source_file": "biome.json",
+      "source_location": "L40"
+    }
+  ],
+  "edges": [
+    {
+      "source": "c_users_hrido_desktop_al_quran_biome_json",
+      "target": "al_quran_biome_schema",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "c_users_hrido_desktop_al_quran_biome_json",
+      "target": "al_quran_biome_vcs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_biome_vcs",
+      "target": "al_quran_biome_vcs_enabled",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_biome_vcs",
+      "target": "al_quran_biome_vcs_clientkind",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_biome_vcs",
+      "target": "al_quran_biome_vcs_useignorefile",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "c_users_hrido_desktop_al_quran_biome_json",
+      "target": "al_quran_biome_files",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_biome_files",
+      "target": "al_quran_biome_files_ignoreunknown",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_biome_files",
+      "target": "al_quran_biome_files_includes",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_biome_files_includes",
+      "target": "ref",
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "al_quran_biome_files_includes",
+      "target": "ref_node_modules",
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "al_quran_biome_files_includes",
+      "target": "ref_next",
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "al_quran_biome_files_includes",
+      "target": "ref_dist",
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "al_quran_biome_files_includes",
+      "target": "ref_build",
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "c_users_hrido_desktop_al_quran_biome_json",
+      "target": "al_quran_biome_formatter",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_biome_formatter",
+      "target": "al_quran_biome_formatter_enabled",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_biome_formatter",
+      "target": "al_quran_biome_formatter_indentstyle",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_biome_formatter",
+      "target": "al_quran_biome_formatter_indentwidth",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "c_users_hrido_desktop_al_quran_biome_json",
+      "target": "al_quran_biome_linter",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_biome_linter",
+      "target": "al_quran_biome_linter_enabled",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_biome_linter",
+      "target": "al_quran_biome_linter_rules",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_biome_linter_rules",
+      "target": "al_quran_biome_rules_recommended",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_biome_linter_rules",
+      "target": "al_quran_biome_rules_suspicious",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_biome_rules_suspicious",
+      "target": "al_quran_biome_suspicious_nounknownatrules",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_biome_linter",
+      "target": "al_quran_biome_linter_domains",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_biome_linter_domains",
+      "target": "al_quran_biome_domains_react",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "c_users_hrido_desktop_al_quran_biome_json",
+      "target": "al_quran_biome_css",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_biome_css",
+      "target": "al_quran_biome_css_formatter",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_biome_css_formatter",
+      "target": "al_quran_biome_formatter_enabled",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_biome_css",
+      "target": "al_quran_biome_css_parser",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_biome_css_parser",
+      "target": "al_quran_biome_parser_tailwinddirectives",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "c_users_hrido_desktop_al_quran_biome_json",
+      "target": "al_quran_biome_assist",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_biome_assist",
+      "target": "al_quran_biome_assist_actions",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_biome_assist_actions",
+      "target": "al_quran_biome_actions_source",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_biome_actions_source",
+      "target": "al_quran_biome_source_organizeimports",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "biome.json",
+      "source_location": "L40",
+      "weight": 1.0
+    }
+  ]
+}

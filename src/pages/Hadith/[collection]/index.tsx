@@ -4,6 +4,7 @@ import { PageShell } from "@/components/common/PageShell/PageShell";
 import { SkeletonLoader } from "@/components/common/SkeletonLoader/SkeletonLoader";
 import { Button } from "@/components/ui/button";
 import { useEditionBooks, useEditions } from "@/hooks/useHadith";
+import { useLocale } from "@/i18n";
 import { useSettings } from "@/store/settings";
 
 function getBookName(name: Record<string, string>, lang: string): string {
@@ -15,6 +16,7 @@ export default function HadithBooks() {
   const navigate = useNavigate();
   const hadithLang = useSettings((s) => s.hadithLang);
   const { books, loading, error, refetch } = useEditionBooks(slug, hadithLang);
+  const { t } = useLocale();
   const { editions } = useEditions();
   const edition = editions.find((e) => e.slug === slug);
   const hasSelectedLang =
@@ -23,7 +25,7 @@ export default function HadithBooks() {
 
   return (
     <PageShell
-      head="Books"
+      head={t("hadith.books")}
       showBack
       title={
         slug
@@ -31,9 +33,9 @@ export default function HadithBooks() {
               .split("-")
               .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
               .join(" ")
-          : "Books"
+          : t("hadith.books")
       }
-      description="Select a book to read hadith"
+      description={t("hadith.selectBook")}
     >
       {loading ? (
         <SkeletonLoader count={6} height="h-16" />
@@ -44,8 +46,7 @@ export default function HadithBooks() {
           {!hasSelectedLang && edition && (
             <div className="mb-4 p-3 rounded-xl bg-amber-50/50 border border-amber-200/50 text-amber-700 dark:bg-amber-900/20 dark:border-amber-800/30 dark:text-amber-300">
               <p className="text-xs">
-                This collection is not available in {languageName}. Showing
-                English version.
+                {t("hadith.unavailable", { languageName })}
               </p>
             </div>
           )}
@@ -67,7 +68,7 @@ export default function HadithBooks() {
                     {getBookName(book.name, hadithLang)}
                   </p>
                   <p className="mt-0.5 text-xs text-text-muted">
-                    {book.hadithCount} hadith
+                    {book.hadithCount} {t("hadith.hadith")}
                   </p>
                 </div>
               </Button>

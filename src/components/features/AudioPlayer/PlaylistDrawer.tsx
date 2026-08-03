@@ -1,6 +1,7 @@
 import { MusicIcon, XIcon } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useAudioStore } from "@/store/audio";
+import { useSettings } from "@/store/settings";
 import { formatTime } from "./audioUtils";
 
 export default function PlaylistDrawer() {
@@ -9,6 +10,7 @@ export default function PlaylistDrawer() {
   const showPlaylist = useAudioStore((s) => s.showPlaylist);
   const playlist = useAudioStore((s) => s.playlist);
   const currentTrack = useAudioStore((s) => s.currentTrack);
+  const translationLang = useSettings((s) => s.translationLang);
   const duration = useAudioStore((s) => s.duration);
   const setShowPlaylist = useAudioStore((s) => s.setShowPlaylist);
   const playTrack = useAudioStore((s) => s.playTrack);
@@ -132,7 +134,11 @@ export default function PlaylistDrawer() {
                                 : "text-text-primary dark:text-dark-text-primary"
                             }`}
                           >
-                            {track.transliterationText || track.translationText}
+                            {translationLang === "bn"
+                              ? track.translationAltText ||
+                                track.translationText
+                              : track.transliterationText ||
+                                track.translationText}
                           </p>
                           <p className="truncate text-xs text-text-muted dark:text-dark-text-muted">
                             {track.arabicText}

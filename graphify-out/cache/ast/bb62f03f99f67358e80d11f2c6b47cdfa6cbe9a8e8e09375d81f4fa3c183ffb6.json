@@ -1,0 +1,463 @@
+{
+  "nodes": [
+    {
+      "id": "c_users_hrido_desktop_al_quran_refactor_report_md",
+      "label": "REFACTOR-REPORT.md",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "al_quran_refactor_report_codebase_refactoring_report_al_quran",
+      "label": "Codebase Refactoring Report \u2014 Al-Quran",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "al_quran_refactor_report_overall_verdict_high_quality",
+      "label": "Overall Verdict: **HIGH QUALITY**",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L3"
+    },
+    {
+      "id": "al_quran_refactor_report_strong_points",
+      "label": "\u2705 Strong Points",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L9"
+    },
+    {
+      "id": "al_quran_refactor_report_audioplayer_architecture_src_components_features_audioplayer",
+      "label": "AudioPlayer Architecture (`src/components/features/AudioPlayer/`)",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L11"
+    },
+    {
+      "id": "al_quran_refactor_report_state_management_src_store",
+      "label": "State Management (`src/store/`)",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L16"
+    },
+    {
+      "id": "al_quran_refactor_report_custom_hooks_src_hooks",
+      "label": "Custom Hooks (`src/hooks/`)",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L21"
+    },
+    {
+      "id": "al_quran_refactor_report_typescript",
+      "label": "TypeScript",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L26"
+    },
+    {
+      "id": "al_quran_refactor_report_react_memo_usage",
+      "label": "React.memo Usage",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L30"
+    },
+    {
+      "id": "al_quran_refactor_report_critical",
+      "label": "\ud83d\udd34 Critical",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L35"
+    },
+    {
+      "id": "al_quran_refactor_report_1_random_keys_on_every_render_skeletonloader",
+      "label": "1. Random keys on every render \u2014 SkeletonLoader",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L37"
+    },
+    {
+      "id": "al_quran_refactor_report_high",
+      "label": "\ud83d\udfe1 High",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L47"
+    },
+    {
+      "id": "al_quran_refactor_report_2_text_based_react_keys_ayah",
+      "label": "2. Text-based React keys \u2014 Ayah",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L49"
+    },
+    {
+      "id": "al_quran_refactor_report_3_weak_react_keys_paraheader",
+      "label": "3. Weak React keys \u2014 ParaHeader",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L57"
+    },
+    {
+      "id": "al_quran_refactor_report_4_stale_closure_risk_search",
+      "label": "4. Stale closure risk \u2014 Search",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L65"
+    },
+    {
+      "id": "al_quran_refactor_report_medium",
+      "label": "\ud83d\udfe0 Medium",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L75"
+    },
+    {
+      "id": "al_quran_refactor_report_5_unnecessary_effect_dependency_paraheader",
+      "label": "5. Unnecessary effect dependency \u2014 ParaHeader",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L77"
+    },
+    {
+      "id": "al_quran_refactor_report_6_dry_violation_splash",
+      "label": "6. DRY violation \u2014 Splash",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L85"
+    },
+    {
+      "id": "al_quran_refactor_report_7_prop_drilling_bookmark_components",
+      "label": "7. Prop drilling \u2014 Bookmark components",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L93"
+    },
+    {
+      "id": "al_quran_refactor_report_8_function_defined_in_render_hijridate",
+      "label": "8. Function defined in render \u2014 HijriDate",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L101"
+    },
+    {
+      "id": "al_quran_refactor_report_9_fragile_string_parsing_db",
+      "label": "9. Fragile string parsing \u2014 db",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L109"
+    },
+    {
+      "id": "al_quran_refactor_report_low",
+      "label": "\ud83d\udd35 Low",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L119"
+    },
+    {
+      "id": "al_quran_refactor_report_10_inline_styles_break_theming_confirmmodal",
+      "label": "10. Inline styles break theming \u2014 ConfirmModal",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L121"
+    },
+    {
+      "id": "al_quran_refactor_report_11_hardcoded_colors_steppermissions",
+      "label": "11. Hardcoded colors \u2014 StepPermissions",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L129"
+    },
+    {
+      "id": "al_quran_refactor_report_12_redundant_key_prop_verseresultitem",
+      "label": "12. Redundant key prop \u2014 VerseResultItem",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L137"
+    },
+    {
+      "id": "al_quran_refactor_report_13_verbose_audio_ref_syncing_useplayback",
+      "label": "13. Verbose audio ref syncing \u2014 usePlayback",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L145"
+    },
+    {
+      "id": "al_quran_refactor_report_14_named_export_confusion_search",
+      "label": "14. Named export confusion \u2014 Search",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L153"
+    },
+    {
+      "id": "al_quran_refactor_report_missing_memoization_top_candidates",
+      "label": "Missing Memoization \u2014 Top Candidates",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L163"
+    },
+    {
+      "id": "al_quran_refactor_report_performance_notes",
+      "label": "Performance Notes",
+      "file_type": "document",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L179"
+    }
+  ],
+  "edges": [
+    {
+      "source": "c_users_hrido_desktop_al_quran_refactor_report_md",
+      "target": "al_quran_refactor_report_codebase_refactoring_report_al_quran",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_codebase_refactoring_report_al_quran",
+      "target": "al_quran_refactor_report_overall_verdict_high_quality",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_codebase_refactoring_report_al_quran",
+      "target": "al_quran_refactor_report_strong_points",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_strong_points",
+      "target": "al_quran_refactor_report_audioplayer_architecture_src_components_features_audioplayer",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_strong_points",
+      "target": "al_quran_refactor_report_state_management_src_store",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_strong_points",
+      "target": "al_quran_refactor_report_custom_hooks_src_hooks",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_strong_points",
+      "target": "al_quran_refactor_report_typescript",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_strong_points",
+      "target": "al_quran_refactor_report_react_memo_usage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_codebase_refactoring_report_al_quran",
+      "target": "al_quran_refactor_report_critical",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_critical",
+      "target": "al_quran_refactor_report_1_random_keys_on_every_render_skeletonloader",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_codebase_refactoring_report_al_quran",
+      "target": "al_quran_refactor_report_high",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L47",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_high",
+      "target": "al_quran_refactor_report_2_text_based_react_keys_ayah",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_high",
+      "target": "al_quran_refactor_report_3_weak_react_keys_paraheader",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L57",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_high",
+      "target": "al_quran_refactor_report_4_stale_closure_risk_search",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_codebase_refactoring_report_al_quran",
+      "target": "al_quran_refactor_report_medium",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L75",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_medium",
+      "target": "al_quran_refactor_report_5_unnecessary_effect_dependency_paraheader",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L77",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_medium",
+      "target": "al_quran_refactor_report_6_dry_violation_splash",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L85",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_medium",
+      "target": "al_quran_refactor_report_7_prop_drilling_bookmark_components",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L93",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_medium",
+      "target": "al_quran_refactor_report_8_function_defined_in_render_hijridate",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L101",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_medium",
+      "target": "al_quran_refactor_report_9_fragile_string_parsing_db",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L109",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_codebase_refactoring_report_al_quran",
+      "target": "al_quran_refactor_report_low",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L119",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_low",
+      "target": "al_quran_refactor_report_10_inline_styles_break_theming_confirmmodal",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L121",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_low",
+      "target": "al_quran_refactor_report_11_hardcoded_colors_steppermissions",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L129",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_low",
+      "target": "al_quran_refactor_report_12_redundant_key_prop_verseresultitem",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L137",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_low",
+      "target": "al_quran_refactor_report_13_verbose_audio_ref_syncing_useplayback",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L145",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_low",
+      "target": "al_quran_refactor_report_14_named_export_confusion_search",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L153",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_codebase_refactoring_report_al_quran",
+      "target": "al_quran_refactor_report_missing_memoization_top_candidates",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L163",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_refactor_report_codebase_refactoring_report_al_quran",
+      "target": "al_quran_refactor_report_performance_notes",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REFACTOR-REPORT.md",
+      "source_location": "L179",
+      "weight": 1.0
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

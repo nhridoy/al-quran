@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { PageShell } from "@/components/common/PageShell/PageShell";
 import { Button } from "@/components/ui/button";
 import { useSurahList } from "@/hooks/useSurahList";
+import { useLocale } from "@/i18n";
 import { LAST_TEN_SURAH_IDS } from "@/lib/const";
 
 export default function LastTenSurahs() {
+  const { t } = useLocale();
   const { surahList, loading } = useSurahList();
   const navigate = useNavigate();
 
@@ -16,10 +18,10 @@ export default function LastTenSurahs() {
 
   return (
     <PageShell
-      head="Last 10 Surahs"
+      head={t("lastTen.pageTitle")}
       showBack
-      title="Last 10 Surahs"
-      description="Surahs 105–114 — commonly recited in prayer"
+      title={t("lastTen.pageTitle")}
+      description={t("lastTen.subtitle")}
     >
       {loading ? (
         <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
@@ -50,7 +52,7 @@ export default function LastTenSurahs() {
                   {surah.enNameTranslation} &bull; {surah.revelationType}
                 </p>
                 <p className="mt-0.5 text-[11px] text-text-muted dark:text-dark-text-muted">
-                  {surah.numberOfAyahs} verses
+                  {t("lastTen.verses", { count: surah.numberOfAyahs })}
                 </p>
               </div>
               <p className="font-arabic text-lg text-text-primary dark:text-dark-text-primary">

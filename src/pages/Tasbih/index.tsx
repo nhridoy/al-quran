@@ -6,9 +6,11 @@ import CircularCounter, {
   CounterContent,
 } from "@/components/pages/Tasbih/CircularCounter";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/i18n";
 import { loadCounts, PRESETS, saveCounts } from "@/lib/tasbih";
 
 export default function Tasbih() {
+  const { t } = useLocale();
   const [activeId, setActiveId] = useState(PRESETS[0].id);
   const [counts, setCounts] = useState<Record<string, number>>(loadCounts);
   const longPressRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -71,10 +73,10 @@ export default function Tasbih() {
 
   return (
     <PageShell
-      head="Tasbih"
+      head={t("tasbih.pageTitle")}
       showBack
-      title="Tasbih Counter"
-      description="Tap to count. Long-press to reset."
+      title={t("tasbih.headerTitle")}
+      description={t("tasbih.headerDescription")}
       className="space-y-0"
     >
       <div className="flex gap-2 overflow-x-auto pb-2">
@@ -97,7 +99,11 @@ export default function Tasbih() {
       <div className="flex flex-col items-center py-8">
         <button
           type="button"
-          aria-label={`Count ${active.label}: ${currentCount} of ${active.target}`}
+          aria-label={t("tasbih.countAria", {
+            label: active.label,
+            current: currentCount,
+            target: active.target,
+          })}
           onPointerDown={handlePointerDown}
           onPointerUp={handlePointerUp}
           onPointerLeave={handlePointerLeave}
@@ -119,7 +125,7 @@ export default function Tasbih() {
             className="gap-2 rounded-xl border border-border px-4 py-2 text-sm text-text-secondary hover:bg-surface-alt dark:border-dark-border dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
           >
             <BiReset className="text-base" />
-            Reset
+            {t("tasbih.resetCurrent")}
           </Button>
           <Button
             onClick={resetAll}
@@ -127,7 +133,7 @@ export default function Tasbih() {
             className="gap-2 rounded-xl border border-border px-4 py-2 text-sm text-text-secondary hover:bg-surface-alt dark:border-dark-border dark:text-dark-text-secondary dark:hover:bg-dark-surface-alt"
           >
             <MdLoop className="text-base" />
-            Reset All
+            {t("tasbih.resetAll")}
           </Button>
         </div>
       </div>

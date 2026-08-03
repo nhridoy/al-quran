@@ -4,6 +4,11 @@ import { CgPlayTrackNextO, CgPlayTrackPrevO } from "react-icons/cg";
 import { FiPauseCircle, FiPlayCircle } from "react-icons/fi";
 import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { getAudioData, mergeAudioWithSurah } from "@/lib/db";
 import { useSettings } from "@/store/settings";
 import type { ParaSurah } from "@/types";
@@ -116,33 +121,54 @@ export const ParaHeader: React.FC<ParaHeadProps> = memo(
                   {para.enNameTranslation}
                 </p>
               </div>
-              <Button
-                variant="white-ghost"
-                className="h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
-                onClick={handlePrev}
-                aria-label="Previous"
-              >
-                <CgPlayTrackPrevO className="text-lg text-white size-5" />
-              </Button>
-              <Button
-                className="rounded-full h-9 w-9 bg-white text-primary shadow hover:scale-105 active:scale-95 border-0 hover:bg-white"
-                onClick={handlePlay}
-                aria-label={isPlaying ? "Pause" : "Play"}
-              >
-                {isCurrentPara && isPlaying ? (
-                  <FiPauseCircle className="text-xl size-6" />
-                ) : (
-                  <FiPlayCircle className="text-xl size-6" />
-                )}
-              </Button>
-              <Button
-                variant="white-ghost"
-                className="h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
-                onClick={handleNext}
-                aria-label="Next"
-              >
-                <CgPlayTrackNextO className="text-lg text-white size-5" />
-              </Button>
+              <Tooltip>
+                <TooltipTrigger
+                  render={
+                    <Button
+                      variant="white-ghost"
+                      className="h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
+                      onClick={handlePrev}
+                      aria-label="Previous"
+                    >
+                      <CgPlayTrackPrevO className="text-lg text-white size-5" />
+                    </Button>
+                  }
+                />
+                <TooltipContent>Previous</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger
+                  render={
+                    <Button
+                      className="rounded-full h-9 w-9 bg-white text-primary shadow hover:scale-105 active:scale-95 border-0 hover:bg-white"
+                      onClick={handlePlay}
+                      aria-label={isPlaying ? "Pause" : "Play"}
+                    >
+                      {isCurrentPara && isPlaying ? (
+                        <FiPauseCircle className="text-xl size-6" />
+                      ) : (
+                        <FiPlayCircle className="text-xl size-6" />
+                      )}
+                    </Button>
+                  }
+                />
+                <TooltipContent>{isPlaying ? "Pause" : "Play"}</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger
+                  render={
+                    <Button
+                      variant="white-ghost"
+                      className="h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 active:scale-90"
+                      onClick={handleNext}
+                      aria-label="Next"
+                    >
+                      <CgPlayTrackNextO className="text-lg text-white size-5" />
+                    </Button>
+                  }
+                />
+                <TooltipContent>Next</TooltipContent>
+              </Tooltip>
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { BiArrowBack } from "react-icons/bi";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/i18n";
 import type { SurahData } from "@/types";
 import Search from "../../features/Search/Search";
 
@@ -11,6 +12,7 @@ interface HeaderProps {
 }
 
 const Header = memo((props: HeaderProps) => {
+  const { t } = useLocale();
   const handleBackBtn = () => {
     window.history.back();
   };
@@ -25,7 +27,7 @@ const Header = memo((props: HeaderProps) => {
               size="icon"
               className="rounded-xl"
               onClick={handleBackBtn}
-              aria-label="Go back"
+              aria-label={t("common.goBack")}
             >
               <BiArrowBack className="text-xl" />
             </Button>

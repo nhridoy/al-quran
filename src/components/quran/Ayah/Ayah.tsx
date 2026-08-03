@@ -3,6 +3,11 @@ import { BiBookmark, BiShareAlt } from "react-icons/bi";
 import { IoPauseOutline, IoPlayOutline } from "react-icons/io5";
 import type { Track } from "@/components/features/AudioPlayer";
 import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { useAyahAudio } from "@/hooks/useAyahAudio";
 import { useAyahBookmark } from "@/hooks/useAyahBookmark";
 import { useScrollToCurrentAyah } from "@/hooks/useScrollToCurrentAyah";
@@ -24,6 +29,7 @@ const Ayahs = memo(({ ayah, surah, tracklist, surahNo }: AyahsProps) => {
   const tajweedEnabled = useSettings((s) => s.tajweedEnabled);
   const tafsirEnabled = useSettings((s) => s.tafsirEnabled);
   const tafsirId = useSettings((s) => s.tafsirId);
+  const translationLang = useSettings((s) => s.translationLang);
   const currentSurahNo = surah?.no ?? surahNo ?? 0;
 
   const { isCurrentAyah, isThisAyahPlaying, handlePlay } = useAyahAudio(
@@ -86,48 +92,70 @@ const Ayahs = memo(({ ayah, surah, tracklist, surahNo }: AyahsProps) => {
           </div>
 
           <div className="flex items-center gap-2">
-            <Button
-              variant="secondary-ghost"
-              size="icon"
-              className="rounded-lg"
-              onClick={handleShare}
-              aria-label="Share"
-              title="Share"
-            >
-              <BiShareAlt className="text-base" />
-            </Button>
-            <Button
-              variant={isThisAyahPlaying ? "gradient" : "secondary-ghost"}
-              size="icon"
-              className={`rounded-lg ${isThisAyahPlaying ? "shadow-md" : ""}`}
-              onClick={handlePlay}
-              aria-label={isThisAyahPlaying ? "Pause" : "Play"}
-              title={
-                isThisAyahPlaying ? "Pause" : `Play ayah ${ayah.numberInSurah}`
-              }
-            >
-              {isThisAyahPlaying ? (
-                <IoPauseOutline className="text-base" />
-              ) : (
-                <IoPlayOutline className="text-base" />
-              )}
-            </Button>
-            <Button
-              variant={isBookmarked ? "gradient" : "secondary-ghost"}
-              size="icon"
-              className={`rounded-lg ${
-                isBookmarked
-                  ? "from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20 text-secondary dark:text-secondary-light"
-                  : ""
-              }`}
-              onClick={handleToggleBookmark}
-              aria-label={isBookmarked ? "Remove bookmark" : "Bookmark"}
-              title={isBookmarked ? "Remove bookmark" : "Bookmark"}
-            >
-              <BiBookmark
-                className={`text-base ${isBookmarked ? "fill-current" : ""}`}
+            <Tooltip>
+              <TooltipTrigger
+                render={
+                  <Button
+                    variant="secondary-ghost"
+                    size="icon"
+                    className="rounded-lg"
+                    onClick={handleShare}
+                    aria-label="Share"
+                  >
+                    <BiShareAlt className="text-base" />
+                  </Button>
+                }
               />
-            </Button>
+              <TooltipContent>Share</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger
+                render={
+                  <Button
+                    variant={isThisAyahPlaying ? "gradient" : "secondary-ghost"}
+                    size="icon"
+                    className={`rounded-lg ${isThisAyahPlaying ? "shadow-md" : ""}`}
+                    onClick={handlePlay}
+                    aria-label={isThisAyahPlaying ? "Pause" : "Play"}
+                  >
+                    {isThisAyahPlaying ? (
+                      <IoPauseOutline className="text-base" />
+                    ) : (
+                      <IoPlayOutline className="text-base" />
+                    )}
+                  </Button>
+                }
+              />
+              <TooltipContent>
+                {isThisAyahPlaying
+                  ? "Pause"
+                  : `Play ayah ${ayah.numberInSurah}`}
+              </TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger
+                render={
+                  <Button
+                    variant={isBookmarked ? "gradient" : "secondary-ghost"}
+                    size="icon"
+                    className={`rounded-lg ${
+                      isBookmarked
+                        ? "from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20 text-secondary dark:text-secondary-light"
+                        : ""
+                    }`}
+                    onClick={handleToggleBookmark}
+                    aria-label={isBookmarked ? "Remove bookmark" : "Bookmark"}
+                  >
+                    <BiBookmark
+                      className={`text-base ${isBookmarked ? "fill-current" : ""}`}
+                    />
+                  </Button>
+                }
+              />
+              <TooltipContent>
+                {isBookmarked ? "Remove bookmark" : "Bookmark"}
+              </TooltipContent>
+            </Tooltip>
           </div>
         </div>
 
@@ -158,10 +186,7 @@ const Ayahs = memo(({ ayah, surah, tracklist, surahNo }: AyahsProps) => {
 
         <div className="space-y-1.5 border-t border-border pt-3 dark:border-dark-border">
           <p className="text-sm leading-relaxed text-text-primary dark:text-dark-text-primary">
-            {ayah.text.enText}
-          </p>
-          <p className="text-sm leading-relaxed text-text-secondary dark:text-dark-text-secondary">
-            {ayah.text.bnText}
+            {translationLang === "bn" ? ayah.text.bnText : ayah.text.enText}
           </p>
         </div>
 

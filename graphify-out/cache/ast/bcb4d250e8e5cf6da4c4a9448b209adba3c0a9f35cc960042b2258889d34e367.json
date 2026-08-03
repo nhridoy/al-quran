@@ -1,0 +1,125 @@
+{
+  "nodes": [
+    {
+      "id": "c_users_hrido_desktop_al_quran_skills_lock_json",
+      "label": "skills-lock.json",
+      "file_type": "code",
+      "source_file": "skills-lock.json",
+      "source_location": "L1"
+    },
+    {
+      "id": "al_quran_skills_lock_version",
+      "label": "version",
+      "file_type": "code",
+      "source_file": "skills-lock.json",
+      "source_location": "L2"
+    },
+    {
+      "id": "al_quran_skills_lock_skills",
+      "label": "skills",
+      "file_type": "code",
+      "source_file": "skills-lock.json",
+      "source_location": "L3"
+    },
+    {
+      "id": "al_quran_skills_lock_skills_shadcn",
+      "label": "shadcn",
+      "file_type": "code",
+      "source_file": "skills-lock.json",
+      "source_location": "L4"
+    },
+    {
+      "id": "al_quran_skills_lock_shadcn_source",
+      "label": "source",
+      "file_type": "code",
+      "source_file": "skills-lock.json",
+      "source_location": "L5"
+    },
+    {
+      "id": "al_quran_skills_lock_shadcn_sourcetype",
+      "label": "sourceType",
+      "file_type": "code",
+      "source_file": "skills-lock.json",
+      "source_location": "L6"
+    },
+    {
+      "id": "al_quran_skills_lock_shadcn_skillpath",
+      "label": "skillPath",
+      "file_type": "code",
+      "source_file": "skills-lock.json",
+      "source_location": "L7"
+    },
+    {
+      "id": "al_quran_skills_lock_shadcn_computedhash",
+      "label": "computedHash",
+      "file_type": "code",
+      "source_file": "skills-lock.json",
+      "source_location": "L8"
+    }
+  ],
+  "edges": [
+    {
+      "source": "c_users_hrido_desktop_al_quran_skills_lock_json",
+      "target": "al_quran_skills_lock_version",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "skills-lock.json",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "c_users_hrido_desktop_al_quran_skills_lock_json",
+      "target": "al_quran_skills_lock_skills",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "skills-lock.json",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_skills_lock_skills",
+      "target": "al_quran_skills_lock_skills_shadcn",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "skills-lock.json",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_skills_lock_skills_shadcn",
+      "target": "al_quran_skills_lock_shadcn_source",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "skills-lock.json",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_skills_lock_skills_shadcn",
+      "target": "al_quran_skills_lock_shadcn_sourcetype",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "skills-lock.json",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_skills_lock_skills_shadcn",
+      "target": "al_quran_skills_lock_shadcn_skillpath",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "skills-lock.json",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_skills_lock_skills_shadcn",
+      "target": "al_quran_skills_lock_shadcn_computedhash",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "skills-lock.json",
+      "source_location": "L8",
+      "weight": 1.0
+    }
+  ]
+}

@@ -2,10 +2,12 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   IoBookOutline,
   IoChevronBack,
+  IoGlobeOutline,
   IoHeadsetOutline,
   IoMusicalNotesOutline,
 } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/i18n";
 import {
   cacheAllAudioForReciter,
   cacheAllHadithFor,
@@ -16,15 +18,20 @@ import {
 } from "@/lib/batchCache";
 import { LANGUAGES, RECITERS, TAFSIR_LIST } from "@/lib/const";
 import { getSurahList, getSurahs } from "@/lib/db";
-
 import { useLocationStore } from "@/store/location";
 import { useSettings } from "@/store/settings";
 import ListSelectStep from "./ListSelectStep";
 import StepDone from "./StepDone";
+import StepLocation from "./StepLocation";
 import StepPermissions from "./StepPermissions";
 import StepWelcome from "./StepWelcome";
 
-type Step = 0 | 1 | 2 | 3 | 4 | 5;
+type Step = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
+
+const APP_LANGS: Array<{ id: string; name: string; nativeName: string }> = [
+  { id: "en", name: "English", nativeName: "English" },
+  { id: "bn", name: "Bengali", nativeName: "বাংলা" },
+];
 
 const HADITH_LANGS: Array<{ id: string; name: string; nativeName: string }> = [
   { id: "en", name: "English", nativeName: "English" },
@@ -33,23 +40,42 @@ const HADITH_LANGS: Array<{ id: string; name: string; nativeName: string }> = [
 
 export default function Onboarding({ onComplete }: { onComplete: () => void }) {
   const [step, setStep] = useState<Step>(0);
-  const [direction, setDirection] = useState<1 | -1>(1);
-  const [language, setLanguage] = useState<"en" | "bn">("en");
+  const [appLanguage, setAppLanguage] = useState<"en" | "bn">("en");
+  const [readingLang, setReadingLang] = useState<"en" | "bn">("en");
   const [hadithLang, setHadithLang] = useState<"en" | "bn">("en");
   const [reciterId, setReciterId] = useState("ar.alafasy");
   const [tafsirId, setTafsirId] = useState("en-tafsir-maarif-ul-quran");
   const [locationGranted, setLocationGranted] = useState(false);
   const [notificationGranted, setNotificationGranted] = useState(false);
   const [animating, setAnimating] = useState(false);
+  const mountedRef = useRef(true);
+
+  const { setLocale, t } = useLocale();
   const updateSettings = useSettings((s) => s.update);
+
+  const locationLoading = useLocationStore((s) => s.loading);
+  const locationError = useLocationStore((s) => s.error);
+  const locAddress = useLocationStore((s) => s.address);
+  const refreshLocation = useLocationStore((s) => s.refresh);
+
   useEffect(() => {
     getSurahList();
+    getSurahs();
     cacheAllJuz();
+  }, []);
+
+  useEffect(() => {
+    mountedRef.current = true;
+    document.body.style.overflow = "hidden";
+    return () => {
+      mountedRef.current = false;
+      document.body.style.overflow = "";
+    };
   }, []);
 
   const slideRef = useRef<HTMLDivElement>(null);
   const stepIndices = useMemo(
-    () => Array.from({ length: 6 }, (_, i) => ({ id: `step-${i}`, index: i })),
+    () => Array.from({ length: 8 }, (_, i) => ({ id: `step-${i}`, index: i })),
     [],
   );
 
@@ -58,17 +84,16 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
     [],
   );
 
-  const totalSteps = 6;
+  const totalSteps = 8;
 
   const goTo = useCallback(
     (next: Step) => {
       if (animating) return;
       setAnimating(true);
-      setDirection(next > step ? 1 : -1);
       setStep(next);
       setTimeout(() => setAnimating(false), 400);
     },
-    [animating, step],
+    [animating],
   );
 
   const next = useCallback(() => {
@@ -78,6 +103,10 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
   const prev = useCallback(() => {
     if (step > 0) goTo((step - 1) as Step);
   }, [step, goTo]);
+
+  const handleReadingLangContinue = useCallback(() => {
+    next();
+  }, [next]);
 
   const handleHadithLangContinue = useCallback(() => {
     cacheAllHadithFor(hadithLang);
@@ -96,36 +125,54 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
     next();
   }, [tafsirId, next]);
 
-  const handleFinish = useCallback(async () => {
-    await updateSettings({
-      translationLang: language,
-      hadithLang,
-      reciterId,
-      tafsirId,
-      onboardingComplete: true,
-    });
-    await getSurahs(true);
-    onComplete();
-  }, [language, hadithLang, reciterId, tafsirId, updateSettings, onComplete]);
-
-  const requestLocation = useLocationStore((s) => s.request);
-
-  const handleRequestLocation = useCallback(() => {
-    if ("geolocation" in navigator) {
-      requestLocation();
+  const handleRequestLocation = useCallback(async () => {
+    await refreshLocation();
+    if (!mountedRef.current) return;
+    const state = useLocationStore.getState();
+    if (state.lat !== null) {
+      setLocationGranted(true);
     }
-    setLocationGranted(true);
-  }, [requestLocation]);
+  }, [refreshLocation]);
+
+  const handleLocationNext = useCallback(() => {
+    useLocationStore.setState({ requested: true });
+    next();
+  }, [next]);
 
   const handleRequestNotification = useCallback(() => {
     if ("Notification" in window && Notification.permission === "default") {
       Notification.requestPermission().then((r) => {
-        setNotificationGranted(r === "granted");
+        if (mountedRef.current) setNotificationGranted(r === "granted");
       });
     } else {
       setNotificationGranted(true);
     }
   }, []);
+
+  const handleFinish = useCallback(async () => {
+    await updateSettings({
+      locale: appLanguage,
+      translationLang: readingLang,
+      hadithLang,
+      reciterId,
+      tafsirId,
+      onboardingComplete: true,
+    });
+    onComplete();
+  }, [
+    appLanguage,
+    readingLang,
+    hadithLang,
+    reciterId,
+    tafsirId,
+    updateSettings,
+    onComplete,
+  ]);
+
+  const locationLabel = useMemo(() => {
+    if (!locAddress?.city && !locAddress?.countryName) return null;
+    return [locAddress.city, locAddress.countryName].filter(Boolean).join(", ");
+  }, [locAddress]);
 
   return (
     <div className="fixed inset-0 z-[9999] flex flex-col bg-gradient-to-b from-[#0a0618] via-[#100b20] to-[#0a0618]">
@@ -146,48 +193,45 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
           </Button>
         )}
 
-        <div className="mb-8 flex items-center justify-center gap-2">
-          {stepIndices.map(({ id, index: i }) => (
-            <div
-              key={id}
-              className={`h-1.5 rounded-full transition-all duration-500 ${
-                i === step
-                  ? "w-8 bg-gradient-to-r from-[#9345f2] to-[#b87aff]"
-                  : i < step
-                    ? "w-1.5 bg-[#b87aff]/60"
-                    : "w-1.5 bg-white/15"
-              }`}
-            />
-          ))}
-        </div>
-
         <div className="relative flex-1 overflow-hidden">
           <div
             ref={slideRef}
-            className={`absolute inset-0 transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]`}
+            className="absolute inset-0 transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
             style={{
-              transform: animating
-                ? direction === 1
-                  ? "translateX(-30px)"
-                  : "translateX(30px)"
-                : "translateX(0)",
               opacity: animating ? 0 : 1,
             }}
           >
             {step === 0 && (
               <StepWelcome
-                language={language}
+                appLanguage={appLanguage}
                 onSelect={(l) => {
-                  setLanguage(l);
+                  setAppLanguage(l);
+                  setReadingLang(l);
+                  setLocale(l);
                   setTimeout(next, 200);
                 }}
               />
             )}
             {step === 1 && (
               <ListSelectStep
+                icon={<IoGlobeOutline className="text-2xl text-white" />}
+                title={t("onboarding.readingLangTitle")}
+                description={t("onboarding.readingLangDesc")}
+                items={APP_LANGS.map((l) => ({
+                  id: l.id,
+                  primary: l.name,
+                  secondary: l.nativeName,
+                }))}
+                selectedId={readingLang}
+                onSelect={(l) => setReadingLang(l as "en" | "bn")}
+                onContinue={handleReadingLangContinue}
+              />
+            )}
+            {step === 2 && (
+              <ListSelectStep
                 icon={<IoBookOutline className="text-2xl text-white" />}
-                title="Hadith Language"
-                description="Select your preferred language for hadith"
+                title={t("onboarding.hadithLangTitle")}
+                description={t("onboarding.hadithLangDesc")}
                 items={HADITH_LANGS.map((l) => ({
                   id: l.id,
                   primary: l.name,
@@ -198,11 +242,11 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
                 onContinue={handleHadithLangContinue}
               />
             )}
-            {step === 2 && (
+            {step === 3 && (
               <ListSelectStep
                 icon={<IoHeadsetOutline className="text-2xl text-white" />}
-                title="Choose a Reciter"
-                description="Select your preferred voice for Quran recitation"
+                title={t("onboarding.reciterTitle")}
+                description={t("onboarding.reciterDesc")}
                 items={RECITERS.map((r) => ({
                   id: r.identifier,
                   primary: r.englishName,
@@ -213,11 +257,11 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
                 onContinue={handleReciterContinue}
               />
             )}
-            {step === 3 && (
+            {step === 4 && (
               <ListSelectStep
                 icon={<IoMusicalNotesOutline className="text-2xl text-white" />}
-                title="Choose Tafsir"
-                description="Select your preferred Quran exegesis"
+                title={t("onboarding.tafsirTitle")}
+                description={t("onboarding.tafsirDesc")}
                 items={filteredTafsirs.map((t) => ({
                   id: t.id,
                   primary: t.name,
@@ -229,16 +273,24 @@ export default function Onboarding({ onComplete }: { onComplete: () => void }) {
                 onContinue={handleTafsirContinue}
               />
             )}
-            {step === 4 && (
-              <StepPermissions
+            {step === 5 && (
+              <StepLocation
                 locationGranted={locationGranted}
-                notificationGranted={notificationGranted}
+                isDetecting={locationLoading}
+                error={locationError}
+                locationLabel={locationLabel}
                 onRequestLocation={handleRequestLocation}
+                onNext={handleLocationNext}
+              />
+            )}
+            {step === 6 && (
+              <StepPermissions
+                notificationGranted={notificationGranted}
                 onRequestNotification={handleRequestNotification}
                 onNext={next}
               />
             )}
-            {step === 5 && <StepDone onFinish={handleFinish} />}
+            {step === 7 && <StepDone onFinish={handleFinish} />}
           </div>
         </div>
 

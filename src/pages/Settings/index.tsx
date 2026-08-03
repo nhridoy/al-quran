@@ -1,13 +1,18 @@
 import { useCallback, useEffect, useState } from "react";
+import { IoLocationOutline } from "react-icons/io5";
 import { toast } from "react-toastify";
 import { PageShell } from "@/components/common/PageShell/PageShell";
 import AppearanceSettings from "@/components/pages/Settings/AppearanceSettings";
+import AppLanguageSettings from "@/components/pages/Settings/AppLanguageSettings";
 import DataSettings from "@/components/pages/Settings/DataSettings";
 import HadithSettings from "@/components/pages/Settings/HadithSettings";
 import PrayerSettings from "@/components/pages/Settings/PrayerSettings";
 import ReadingSettings from "@/components/pages/Settings/ReadingSettings";
 import SaveBar from "@/components/pages/Settings/SaveBar";
+import SettingCard from "@/components/pages/Settings/SettingCard";
 import TafsirSettings from "@/components/pages/Settings/TafsirSettings";
+import { Button } from "@/components/ui/button";
+import { useLocale } from "@/i18n";
 import { confirm } from "@/lib/confirm";
 import { LANGUAGES, TAFSIR_LIST } from "@/lib/const";
 import {
@@ -16,13 +21,18 @@ import {
   handleTafsirChange,
   handleRefresh as refreshData,
 } from "@/lib/settingsCaching";
+import { useLocationStore } from "@/store/location";
 import { useSettings } from "@/store/settings";
 
 export default function Settings() {
+  const { t } = useLocale();
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [locationLoading, setLocationLoading] = useState(false);
   const storeSettings = useSettings();
   const updateSettings = useSettings((s) => s.update);
+  const locAddress = useLocationStore((s) => s.address);
+  const refreshLocation = useLocationStore((s) => s.refresh);
 
   const [local, setLocal] = useState({
     theme: storeSettings.theme,
@@ -34,6 +44,7 @@ export default function Settings() {
     tafsirEnabled: storeSettings.tafsirEnabled,
     tajweedEnabled: storeSettings.tajweedEnabled,
     hadithLang: storeSettings.hadithLang,
+    locale: storeSettings.locale,
     prayerCalcMethod: storeSettings.prayerCalcMethod,
     prayerAsrMethod: storeSettings.prayerAsrMethod,
     hijriAdjust: storeSettings.hijriAdjust,
@@ -51,7 +62,8 @@ export default function Settings() {
     local.hadithLang !== storeSettings.hadithLang ||
     local.prayerCalcMethod !== storeSettings.prayerCalcMethod ||
     local.prayerAsrMethod !== storeSettings.prayerAsrMethod ||
-    local.hijriAdjust !== storeSettings.hijriAdjust;
+    local.hijriAdjust !== storeSettings.hijriAdjust ||
+    local.locale !== storeSettings.locale;
 
   const set = useCallback((key: string, value: unknown) => {
     setLocal((prev) => ({ ...prev, [key]: value }));
@@ -62,9 +74,9 @@ export default function Settings() {
     try {
       await updateSettings(local);
 
-      toast.success("Settings saved!");
+      toast.success(t("settings.saved"));
     } catch {
-      toast.error("Failed to save settings");
+      toast.error(t("settings.saveFailed"));
     }
     setSaving(false);
 
@@ -79,7 +91,7 @@ export default function Settings() {
     if (local.hadithLang !== storeSettings.hadithLang) {
       await handleHadithLangChange(storeSettings.hadithLang, local.hadithLang);
     }
-  }, [local, storeSettings, updateSettings]);
+  }, [local, storeSettings, updateSettings, t]);
 
   useEffect(() => {
     setLocal({
@@ -92,6 +104,7 @@ export default function Settings() {
       tafsirEnabled: storeSettings.tafsirEnabled,
       tajweedEnabled: storeSettings.tajweedEnabled,
       hadithLang: storeSettings.hadithLang,
+      locale: storeSettings.locale,
       prayerCalcMethod: storeSettings.prayerCalcMethod,
       prayerAsrMethod: storeSettings.prayerAsrMethod,
       hijriAdjust: storeSettings.hijriAdjust,
@@ -100,22 +113,37 @@ export default function Settings() {
 
   const handleUpdate = useCallback(async () => {
     const ok = await confirm({
-      title: "Refresh Data?",
-      message:
-        "This will clear and re-fetch all cached data (surahs, audio, tafsir, juz, hadith).",
-      confirmText: "Yes, refresh!",
+      title: t("settings.refreshTitle"),
+      message: t("settings.refreshMsg"),
+      confirmText: t("settings.refreshConfirm"),
       confirmColor: "#9345f2",
     });
     if (!ok) return;
     setLoading(true);
     try {
       await refreshData(local.reciterId, local.tafsirId, local.hadithLang);
-      toast.success("Data refreshed successfully!");
+      toast.success(t("settings.refreshSuccess"));
     } catch {
-      toast.error("Failed to refresh data");
+      toast.error(t("settings.refreshFailed"));
     }
     setLoading(false);
-  }, [local.reciterId, local.tafsirId, local.hadithLang]);
+  }, [local.reciterId, local.tafsirId, local.hadithLang, t]);
+
+  const handleRefreshLocation = useCallback(async () => {
+    setLocationLoading(true);
+    try {
+      await refreshLocation();
+      const state = useLocationStore.getState();
+      if (state.lat !== null) {
+        toast.success("Location updated");
+      } else {
+        toast.error("Could not detect location");
+      }
+    } catch {
+      toast.error("Failed to refresh location");
+    }
+    setLocationLoading(false);
+  }, [refreshLocation]);
 
   const handleDiscard = useCallback(() => {
     setLocal({
@@ -128,6 +156,7 @@ export default function Settings() {
       tafsirEnabled: storeSettings.tafsirEnabled,
       tajweedEnabled: storeSettings.tajweedEnabled,
       hadithLang: storeSettings.hadithLang,
+      locale: storeSettings.locale,
       prayerCalcMethod: storeSettings.prayerCalcMethod,
       prayerAsrMethod: storeSettings.prayerAsrMethod,
       hijriAdjust: storeSettings.hijriAdjust,
@@ -148,9 +177,9 @@ export default function Settings() {
 
   return (
     <PageShell
-      head="Settings"
-      title="Settings"
-      description="Manage application data and preferences"
+      head={t("nav.settings")}
+      title={t("nav.settings")}
+      description={t("settings.pageDesc")}
     >
       <AppearanceSettings
         theme={local.theme}
@@ -158,6 +187,7 @@ export default function Settings() {
         translationFontSize={local.translationFontSize}
         onChange={set}
       />
+      <AppLanguageSettings locale={local.locale} onChange={set} />
       <ReadingSettings
         translationLang={local.translationLang}
         reciterId={local.reciterId}
@@ -184,6 +214,41 @@ export default function Settings() {
         onSave={handleSave}
       />
       <DataSettings loading={loading} onRefresh={handleUpdate} />
+      <SettingCard
+        icon={
+          <IoLocationOutline className="text-lg text-primary dark:text-secondary-light" />
+        }
+        title="Location"
+        description={
+          locAddress
+            ? `${locAddress.city ?? ""}, ${locAddress.countryName ?? ""}`.replace(
+                /^, |, $/g,
+                "",
+              ) || "Location detected"
+            : "Detect your location for prayer times"
+        }
+      >
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div>
+              <p className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
+                {locAddress?.city ?? "Unknown location"}
+              </p>
+              <p className="text-xs text-text-muted dark:text-dark-text-muted">
+                {locAddress?.countryName ?? "Refresh to detect"}
+              </p>
+            </div>
+          </div>
+          <Button
+            onClick={handleRefreshLocation}
+            disabled={locationLoading}
+            variant="gradient"
+            className="rounded-xl px-4 py-2 text-sm font-semibold"
+          >
+            {locationLoading ? "Detecting..." : "Refresh"}
+          </Button>
+        </div>
+      </SettingCard>
     </PageShell>
   );
 }

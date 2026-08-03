@@ -2,7 +2,13 @@ import { useEffect, useMemo, useState } from "react";
 import { BiChevronRight, BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import SurahItem from "@/components/quran/SurahItem/SurahItem";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group";
 import { useSurahList } from "@/hooks/useSurahList";
+import { useLocale } from "@/i18n";
 import { searchSurahs } from "@/lib/search";
 
 function SkeletonRow() {
@@ -29,12 +35,13 @@ const skeletonRows = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => (
 ));
 
 export default function Surahs() {
+  const { t } = useLocale();
   const { surahList, loading } = useSurahList();
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    document.title = "Al Quran - Surah List";
-  }, []);
+    document.title = t("surah.pageTitle");
+  }, [t]);
 
   const filtered = useMemo(() => {
     if (!search) return surahList;
@@ -44,16 +51,16 @@ export default function Surahs() {
   return (
     <div>
       <div className="mx-4 mb-3 md:mx-6">
-        <div className="flex items-center gap-2 rounded-xl border border-border bg-surface px-3 dark:border-dark-border dark:bg-dark-surface-card">
-          <BiSearch className="text-text-muted dark:text-dark-text-muted" />
-          <input
+        <InputGroup>
+          <InputGroupAddon>
+            <BiSearch className="text-text-muted dark:text-dark-text-muted" />
+          </InputGroupAddon>
+          <InputGroupInput
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            type="text"
-            placeholder="Filter surahs..."
-            className="flex-1 bg-transparent py-2.5 text-sm text-text-primary outline-none placeholder:text-text-muted dark:text-dark-text-primary dark:placeholder:text-dark-text-muted"
+            placeholder={t("surah.filterPlaceholder")}
           />
-        </div>
+        </InputGroup>
       </div>
       <div className="mx-4 md:mx-6">
         {loading ? (
@@ -75,7 +82,7 @@ export default function Surahs() {
         ) : (
           <div className="flex flex-col items-center py-16 text-text-muted dark:text-dark-text-muted">
             <BiSearch className="mb-2 text-3xl opacity-40" />
-            <p className="text-sm font-medium">No surahs found</p>
+            <p className="text-sm font-medium">{t("surah.notFound")}</p>
           </div>
         )}
       </div>

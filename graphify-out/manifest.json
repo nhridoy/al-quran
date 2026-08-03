@@ -1,0 +1,1777 @@
+{
+  ".agents/skills/shadcn/evals/evals.json": {
+    "mtime": 1781015955.504495,
+    "ast_hash": "bb66fc14af25cb69206861800c185deb",
+    "semantic_hash": ""
+  },
+  ".opencode/opencode.json": {
+    "mtime": 1781015955.522494,
+    "ast_hash": "2c54ef777837d22801f0d64fdfc0f2d4",
+    "semantic_hash": ""
+  },
+  ".opencode/package.json": {
+    "mtime": 1780800019.575252,
+    "ast_hash": "c9442b1dfba4cd254e8dc712cf2d3da8",
+    "semantic_hash": ""
+  },
+  ".opencode/plugins/graphify.js": {
+    "mtime": 1781015955.5254915,
+    "ast_hash": "31fe84bad40699cb5131d9c3abacc966",
+    "semantic_hash": ""
+  },
+  "biome.json": {
+    "mtime": 1781015955.541231,
+    "ast_hash": "5db5944559bdeb250621ccd77a97ec29",
+    "semantic_hash": ""
+  },
+  "components.json": {
+    "mtime": 1781015955.5422306,
+    "ast_hash": "66fe19b4881d0ebaae1ceac74519915f",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1781158802.1231813,
+    "ast_hash": "7ef027932cbd59e4233b57e9fa73f47b",
+    "semantic_hash": ""
+  },
+  "scripts/hooks/pre-commit": {
+    "mtime": 1781015956.0752003,
+    "ast_hash": "dbb02b00a2a726e551341aee555c28b2",
+    "semantic_hash": ""
+  },
+  "scripts/hooks/pre-push": {
+    "mtime": 1781015956.0762162,
+    "ast_hash": "17f42b1bb4ef23f4caf5f14ade30bafd",
+    "semantic_hash": ""
+  },
+  "scripts/setup-hooks.sh": {
+    "mtime": 1781015956.0782156,
+    "ast_hash": "740040d681a0993cce864725d8fd5ec4",
+    "semantic_hash": ""
+  },
+  "skills-lock.json": {
+    "mtime": 1781015956.0822132,
+    "ast_hash": "13752162d0d748899ef40274a121a4fc",
+    "semantic_hash": ""
+  },
+  "src/App.tsx": {
+    "mtime": 1781514318.6668062,
+    "ast_hash": "4d5cc1fbf5529c0c2a1a883e694f811e",
+    "semantic_hash": ""
+  },
+  "src/components/common/BottomNav/BottomNav.tsx": {
+    "mtime": 1781015956.0992146,
+    "ast_hash": "979eb7ce9f8a1b5c8cc4f177213638b8",
+    "semantic_hash": ""
+  },
+  "src/components/common/ConfirmModal/ConfirmModal.tsx": {
+    "mtime": 1781015956.1012158,
+    "ast_hash": "040300a166c466a7bedeeea0671742aa",
+    "semantic_hash": ""
+  },
+  "src/components/common/ErrorBoundary/ErrorBoundary.tsx": {
+    "mtime": 1781015956.1032155,
+    "ast_hash": "e9279a089af69930dd0dd4d46ef75386",
+    "semantic_hash": ""
+  },
+  "src/components/common/ErrorState/ErrorState.tsx": {
+    "mtime": 1781015956.1052167,
+    "ast_hash": "89e50564ba2aff15c05b2227914cf682",
+    "semantic_hash": ""
+  },
+  "src/components/common/Header/Header.tsx": {
+    "mtime": 1781015956.1072166,
+    "ast_hash": "55fa91c568a24c1ad934edbe1a31f088",
+    "semantic_hash": ""
+  },
+  "src/components/common/OfflineBanner/OfflineBanner.tsx": {
+    "mtime": 1781015956.1092222,
+    "ast_hash": "38f52525114ec261cacb0742fc15221e",
+    "semantic_hash": ""
+  },
+  "src/components/common/PageShell/PageShell.tsx": {
+    "mtime": 1781015956.1122198,
+    "ast_hash": "9d4376a6141b26f5dbe973fb274228e9",
+    "semantic_hash": ""
+  },
+  "src/components/common/PaginationBar.tsx": {
+    "mtime": 1781015956.1132162,
+    "ast_hash": "31bcc3335201d0b02abd5b07ef125589",
+    "semantic_hash": ""
+  },
+  "src/components/common/Sidebar/Sidebar.tsx": {
+    "mtime": 1781015956.1152217,
+    "ast_hash": "cc42eb81f5651f9e5c4840a579f4ac8c",
+    "semantic_hash": ""
+  },
+  "src/components/common/SkeletonLoader/SkeletonLoader.tsx": {
+    "mtime": 1781015956.125213,
+    "ast_hash": "f463cf26b4385698bbc079ec2a528303",
+    "semantic_hash": ""
+  },
+  "src/components/common/UpdateBanner/UpdateBanner.tsx": {
+    "mtime": 1781015956.127218,
+    "ast_hash": "85017146808d869db7269fe4af7730c5",
+    "semantic_hash": ""
+  },
+  "src/components/features/AudioPlayer/AudioEngineShell.tsx": {
+    "mtime": 1781015956.1302137,
+    "ast_hash": "6122ce7945c7a8a3887ecf7d71842f0b",
+    "semantic_hash": ""
+  },
+  "src/components/features/AudioPlayer/DesktopPlayerContent.tsx": {
+    "mtime": 1781591192.187438,
+    "ast_hash": "6f45279c9d1bb02265bf1a40fe8e5fc6",
+    "semantic_hash": ""
+  },
+  "src/components/features/AudioPlayer/ExpandedPlayer.tsx": {
+    "mtime": 1781015956.13422,
+    "ast_hash": "499afd078a716164a95b678ddd280c9e",
+    "semantic_hash": ""
+  },
+  "src/components/features/AudioPlayer/MiniPlayer.tsx": {
+    "mtime": 1781015956.136214,
+    "ast_hash": "55a1d2e26b2b398cb08cfac99a36d7b5",
+    "semantic_hash": ""
+  },
+  "src/components/features/AudioPlayer/MobilePlayerContent.tsx": {
+    "mtime": 1781015956.1382153,
+    "ast_hash": "4991a7718d2a5adcc008fbf3b2ff6ca8",
+    "semantic_hash": ""
+  },
+  "src/components/features/AudioPlayer/MuteButton.tsx": {
+    "mtime": 1781015956.1402166,
+    "ast_hash": "29ac994be6f763928ce34789f2f0a10a",
+    "semantic_hash": ""
+  },
+  "src/components/features/AudioPlayer/PlayPauseButton.tsx": {
+    "mtime": 1781015956.1422176,
+    "ast_hash": "93024df55713a05c2c211410931faca5",
+    "semantic_hash": ""
+  },
+  "src/components/features/AudioPlayer/PlayerButton.tsx": {
+    "mtime": 1781591081.6000907,
+    "ast_hash": "bbe8018c4c0aa1998dce7d85f0eb4381",
+    "semantic_hash": ""
+  },
+  "src/components/features/AudioPlayer/PlaylistDrawer.tsx": {
+    "mtime": 1781015956.1462157,
+    "ast_hash": "3bb94b98ab43622c27e99762c85be2c4",
+    "semantic_hash": ""
+  },
+  "src/components/features/AudioPlayer/RepeatButton.tsx": {
+    "mtime": 1781015956.1492167,
+    "ast_hash": "8919fbd27e116407f57a34eb0dc8dac8",
+    "semantic_hash": ""
+  },
+  "src/components/features/AudioPlayer/SeekBar.tsx": {
+    "mtime": 1781015956.1517437,
+    "ast_hash": "91d8d364474de02b066f90e3ea62a38d",
+    "semantic_hash": ""
+  },
+  "src/components/features/AudioPlayer/TopProgressBar.tsx": {
+    "mtime": 1781015956.1537404,
+    "ast_hash": "7ff4b243108cb723f2f163391b708e31",
+    "semantic_hash": ""
+  },
+  "src/components/features/AudioPlayer/VinylDisc.tsx": {
+    "mtime": 1781015956.15574,
+    "ast_hash": "e47bacd0eb88f0727632240664bc0074",
+    "semantic_hash": ""
+  },
+  "src/components/features/AudioPlayer/audioEngine.ts": {
+    "mtime": 1781015956.1567397,
+    "ast_hash": "9d6ba601c4b67c5702226af58cd78f7a",
+    "semantic_hash": ""
+  },
+  "src/components/features/AudioPlayer/audioUtils.ts": {
+    "mtime": 1781015956.1587417,
+    "ast_hash": "56389d7a1861327f10b95a8502e9c536",
+    "semantic_hash": ""
+  },
+  "src/components/features/AudioPlayer/index.tsx": {
+    "mtime": 1781015956.1607387,
+    "ast_hash": "a613dedc5137d2df03ea043432fcf4f3",
+    "semantic_hash": ""
+  },
+  "src/components/features/AudioPlayer/types.ts": {
+    "mtime": 1781015956.162741,
+    "ast_hash": "fa124d08b3060f7484d041ee76720f15",
+    "semantic_hash": ""
+  },
+  "src/components/features/HijriDate/HijriDate.tsx": {
+    "mtime": 1781165069.126248,
+    "ast_hash": "4df1b2d7295f46c9c961b8b894437ee7",
+    "semantic_hash": ""
+  },
+  "src/components/features/InstallPrompt/InstallPrompt.tsx": {
+    "mtime": 1781015956.166743,
+    "ast_hash": "cf7cc2077be13484d12525f33e53967c",
+    "semantic_hash": ""
+  },
+  "src/components/features/LastReadTracker.tsx": {
+    "mtime": 1781015956.1687443,
+    "ast_hash": "649e274a87b077ba7ff555873da82557",
+    "semantic_hash": ""
+  },
+  "src/components/features/Onboarding/ListSelectStep.tsx": {
+    "mtime": 1781023859.5477366,
+    "ast_hash": "c453d91d9b43bca6192a93d1480b7094",
+    "semantic_hash": ""
+  },
+  "src/components/features/Onboarding/Onboarding.tsx": {
+    "mtime": 1781165809.747718,
+    "ast_hash": "d8e3c9d82917a223b15b80d73f75ecf0",
+    "semantic_hash": ""
+  },
+  "src/components/features/Onboarding/StepDone.tsx": {
+    "mtime": 1781024228.475721,
+    "ast_hash": "74c5814d0eff7e9dd898b2493a05609d",
+    "semantic_hash": ""
+  },
+  "src/components/features/Onboarding/StepPermissions.tsx": {
+    "mtime": 1781061563.1758997,
+    "ast_hash": "077421a88dfcde91ef4c35c5e78856f2",
+    "semantic_hash": ""
+  },
+  "src/components/features/Onboarding/StepWelcome.tsx": {
+    "mtime": 1781059691.5258133,
+    "ast_hash": "320159e1bda747dbcc74e9b018163637",
+    "semantic_hash": ""
+  },
+  "src/components/features/PrayerGrid/PrayerGrid.tsx": {
+    "mtime": 1781160289.215351,
+    "ast_hash": "ddde0cecb30b3902f418dbc7f050e18f",
+    "semantic_hash": ""
+  },
+  "src/components/features/Search/Search.tsx": {
+    "mtime": 1781583888.8706653,
+    "ast_hash": "101e29851c7bdbbc6eed4a2822b484f1",
+    "semantic_hash": ""
+  },
+  "src/components/features/Search/VerseResultItem.tsx": {
+    "mtime": 1781015956.196267,
+    "ast_hash": "b2dfbf9e4d51ef48c481fdafd16e9b06",
+    "semantic_hash": ""
+  },
+  "src/components/layouts/HomeLayout/HomeLayout.tsx": {
+    "mtime": 1781015956.2002692,
+    "ast_hash": "f1d164d754ddf541013d6ce47025229e",
+    "semantic_hash": ""
+  },
+  "src/components/layouts/MainLayout/MainLayout.tsx": {
+    "mtime": 1781015956.2112684,
+    "ast_hash": "de5bab108e19811459e55d0ad7efa84b",
+    "semantic_hash": ""
+  },
+  "src/components/pages/Bookmarks/BookmarkRow.tsx": {
+    "mtime": 1781591192.0865295,
+    "ast_hash": "c276e944a42d416fdb8e8c314bac3222",
+    "semantic_hash": ""
+  },
+  "src/components/pages/Bookmarks/SurahGroupItem.tsx": {
+    "mtime": 1781591195.8470604,
+    "ast_hash": "578662acd02b6d7efe08830982ecc3fb",
+    "semantic_hash": ""
+  },
+  "src/components/pages/Downloads/SurahDownloadCard.tsx": {
+    "mtime": 1781591199.394015,
+    "ast_hash": "d012fe82ea901ab4dc88cdc55c7b23f0",
+    "semantic_hash": ""
+  },
+  "src/components/pages/Hadith/HadithItem.tsx": {
+    "mtime": 1781015956.233266,
+    "ast_hash": "951ddf6d98c50e23f41ce1ed5e9f01a7",
+    "semantic_hash": ""
+  },
+  "src/components/pages/Settings/AppLanguageSettings.tsx": {
+    "mtime": 1781015956.270327,
+    "ast_hash": "353a1323db3846213c32db33ef8eb9af",
+    "semantic_hash": ""
+  },
+  "src/components/pages/Settings/AppearanceSettings.tsx": {
+    "mtime": 1781015956.2723267,
+    "ast_hash": "04033145864757e26fb6ff0c293d2e11",
+    "semantic_hash": ""
+  },
+  "src/components/pages/Settings/DataSettings.tsx": {
+    "mtime": 1781015956.2743256,
+    "ast_hash": "94077597e4b7fa1d1b611fe4a9bcd5b7",
+    "semantic_hash": ""
+  },
+  "src/components/pages/Settings/HadithSettings.tsx": {
+    "mtime": 1781015956.276332,
+    "ast_hash": "d7e3ea1ffb2f028d6e65ec5ef836e449",
+    "semantic_hash": ""
+  },
+  "src/components/pages/Settings/PrayerSettings.tsx": {
+    "mtime": 1781532504.1679447,
+    "ast_hash": "ef5442c7e82a73d668bf0b1dfc5998de",
+    "semantic_hash": ""
+  },
+  "src/components/pages/Settings/ReadingSettings.tsx": {
+    "mtime": 1781532502.751012,
+    "ast_hash": "e04c5877520e3b80ad5e85c137e0a32e",
+    "semantic_hash": ""
+  },
+  "src/components/pages/Settings/SaveBar.tsx": {
+    "mtime": 1781015956.2823286,
+    "ast_hash": "69faf0c1247b84823d432d03ec11e158",
+    "semantic_hash": ""
+  },
+  "src/components/pages/Settings/SegmentedControl.tsx": {
+    "mtime": 1781015956.2838418,
+    "ast_hash": "87debdae7d93333b1bca17a9a7afbe24",
+    "semantic_hash": ""
+  },
+  "src/components/pages/Settings/SettingCard.tsx": {
+    "mtime": 1781015956.2858555,
+    "ast_hash": "76e0389638b762cc9960c25990362dfb",
+    "semantic_hash": ""
+  },
+  "src/components/pages/Settings/TafsirSettings.tsx": {
+    "mtime": 1781532534.4358995,
+    "ast_hash": "06bf07aeea4e8a497f7e6a5341575ce6",
+    "semantic_hash": ""
+  },
+  "src/components/pages/Surah/SurahHead.tsx": {
+    "mtime": 1781591128.763915,
+    "ast_hash": "164f1bb4b73f408b6bd438accdc3289e",
+    "semantic_hash": ""
+  },
+  "src/components/pages/Tasbih/CircularCounter.tsx": {
+    "mtime": 1781015956.2908587,
+    "ast_hash": "fb450b1b11a8bbe24ae809bd3264e599",
+    "semantic_hash": ""
+  },
+  "src/components/quran/Ayah/Ayah.tsx": {
+    "mtime": 1781591195.845064,
+    "ast_hash": "9aaacc50d348112991a08dda6e56b458",
+    "semantic_hash": ""
+  },
+  "src/components/quran/Ayah/AyahTafsir.tsx": {
+    "mtime": 1781015956.2958553,
+    "ast_hash": "e2b8595fb4dc4d5d0fae70303aa42b3e",
+    "semantic_hash": ""
+  },
+  "src/components/quran/LastReadBanner/LastReadBanner.tsx": {
+    "mtime": 1781015956.297857,
+    "ast_hash": "381077f7d1877875c258a403d6a9c04b",
+    "semantic_hash": ""
+  },
+  "src/components/quran/ParaHeader/ParaHeader.tsx": {
+    "mtime": 1781591130.0290534,
+    "ast_hash": "550c1d9470ed3d38723fbb1e76566ea2",
+    "semantic_hash": ""
+  },
+  "src/components/quran/ParaItem/ParaItem.tsx": {
+    "mtime": 1781015956.311855,
+    "ast_hash": "d3b3d0c5ddd0634f472342d536829d14",
+    "semantic_hash": ""
+  },
+  "src/components/quran/SurahItem/SurahItem.tsx": {
+    "mtime": 1781015956.313856,
+    "ast_hash": "ffd17f768bbbd9fdbdccccdbde41f65c",
+    "semantic_hash": ""
+  },
+  "src/components/ui/accordion.tsx": {
+    "mtime": 1781015956.3158586,
+    "ast_hash": "be2ad7b72b1ba72491c3e00a02b2682c",
+    "semantic_hash": ""
+  },
+  "src/components/ui/alert.tsx": {
+    "mtime": 1781015956.3183858,
+    "ast_hash": "c400d6b83455a5761ac5d27abb4cb2e0",
+    "semantic_hash": ""
+  },
+  "src/components/ui/avatar.tsx": {
+    "mtime": 1781015956.320385,
+    "ast_hash": "0761c939d9e72c203693ca30f04fa696",
+    "semantic_hash": ""
+  },
+  "src/components/ui/badge.tsx": {
+    "mtime": 1781015956.3213806,
+    "ast_hash": "9e99dace84d5866712f1a3f79a04277e",
+    "semantic_hash": ""
+  },
+  "src/components/ui/button.tsx": {
+    "mtime": 1781015956.3233807,
+    "ast_hash": "fcc71c3a513dfb80388b68e8d26a2e41",
+    "semantic_hash": ""
+  },
+  "src/components/ui/card.tsx": {
+    "mtime": 1781015956.3253858,
+    "ast_hash": "af06306c656be50a6f7cfa34b99ab3ba",
+    "semantic_hash": ""
+  },
+  "src/components/ui/checkbox.tsx": {
+    "mtime": 1781015956.3311715,
+    "ast_hash": "b3cdcec94335bd5b1992b1a24385f1ec",
+    "semantic_hash": ""
+  },
+  "src/components/ui/collapsible.tsx": {
+    "mtime": 1781015956.3321867,
+    "ast_hash": "3b9b37a3b09d01532a09c9223a619c1c",
+    "semantic_hash": ""
+  },
+  "src/components/ui/dialog.tsx": {
+    "mtime": 1781015956.3341844,
+    "ast_hash": "9fbe6cb8b1003d411337eb482cf38e25",
+    "semantic_hash": ""
+  },
+  "src/components/ui/drawer.tsx": {
+    "mtime": 1781015956.3361838,
+    "ast_hash": "99fcbb10b793e329929757cc2096a11d",
+    "semantic_hash": ""
+  },
+  "src/components/ui/dropdown-menu.tsx": {
+    "mtime": 1781015956.3371854,
+    "ast_hash": "00543f436e23b86fa061d4dea0cd24fa",
+    "semantic_hash": ""
+  },
+  "src/components/ui/hover-card.tsx": {
+    "mtime": 1781015956.3391857,
+    "ast_hash": "5403fadcf74cfd125a52740fde149385",
+    "semantic_hash": ""
+  },
+  "src/components/ui/input.tsx": {
+    "mtime": 1781530829.9737163,
+    "ast_hash": "b0f6692085fa1595cbd96dd093d289a8",
+    "semantic_hash": ""
+  },
+  "src/components/ui/navigation-menu.tsx": {
+    "mtime": 1781015956.3537097,
+    "ast_hash": "981a1099b5cff671966001a0d48a34fe",
+    "semantic_hash": ""
+  },
+  "src/components/ui/pagination.tsx": {
+    "mtime": 1781015956.3557067,
+    "ast_hash": "ff62fc95c1232697d3413954e6c82011",
+    "semantic_hash": ""
+  },
+  "src/components/ui/popover.tsx": {
+    "mtime": 1781015956.3567104,
+    "ast_hash": "b66a890b0e7a8b27593f5070beaf8729",
+    "semantic_hash": ""
+  },
+  "src/components/ui/progress.tsx": {
+    "mtime": 1781015956.358712,
+    "ast_hash": "fe776a98eefa93f4746f91f573af3f6c",
+    "semantic_hash": ""
+  },
+  "src/components/ui/radio-group.tsx": {
+    "mtime": 1781015956.3607285,
+    "ast_hash": "aa6ca89579b3659fd072fe267de884a5",
+    "semantic_hash": ""
+  },
+  "src/components/ui/scroll-area.tsx": {
+    "mtime": 1781015956.362713,
+    "ast_hash": "b97f09ba683c0405aba968f98ecb11eb",
+    "semantic_hash": ""
+  },
+  "src/components/ui/select.tsx": {
+    "mtime": 1781532473.9181046,
+    "ast_hash": "20686b0721aebd66e1e2cd6534619e57",
+    "semantic_hash": ""
+  },
+  "src/components/ui/separator.tsx": {
+    "mtime": 1781015956.365245,
+    "ast_hash": "bb5864766c573e76dcf608fdec7e41e5",
+    "semantic_hash": ""
+  },
+  "src/components/ui/sheet.tsx": {
+    "mtime": 1781015956.3672414,
+    "ast_hash": "82c05c414bc2273de474347e5dfaf1cb",
+    "semantic_hash": ""
+  },
+  "src/components/ui/skeleton.tsx": {
+    "mtime": 1781015956.3682437,
+    "ast_hash": "d631371349ab550b5fcbc86300fad048",
+    "semantic_hash": ""
+  },
+  "src/components/ui/slider.tsx": {
+    "mtime": 1781015956.370244,
+    "ast_hash": "12f9777b9d971ffe14df3c5a616f2436",
+    "semantic_hash": ""
+  },
+  "src/components/ui/spinner.tsx": {
+    "mtime": 1781015956.3722415,
+    "ast_hash": "81d83ec9c0f2145e7b618e5e1b213c4f",
+    "semantic_hash": ""
+  },
+  "src/components/ui/switch.tsx": {
+    "mtime": 1781015956.373242,
+    "ast_hash": "d7ccc70c842b5478d1717c4e9bfcd83f",
+    "semantic_hash": ""
+  },
+  "src/components/ui/table.tsx": {
+    "mtime": 1781015956.3752432,
+    "ast_hash": "3881a84a5496d097d6427be5426237a3",
+    "semantic_hash": ""
+  },
+  "src/components/ui/tabs.tsx": {
+    "mtime": 1781015956.4053693,
+    "ast_hash": "334ed43c58a01dcf34f68e8a6f8d2b5c",
+    "semantic_hash": ""
+  },
+  "src/components/ui/textarea.tsx": {
+    "mtime": 1781015956.407369,
+    "ast_hash": "c17ab871a22d4738954aa588868b79b5",
+    "semantic_hash": ""
+  },
+  "src/components/ui/tooltip.tsx": {
+    "mtime": 1781589893.2769723,
+    "ast_hash": "b21394d90cecf901fb884892480a66cf",
+    "semantic_hash": ""
+  },
+  "src/data/asmaUlHusna.json": {
+    "mtime": 1781015956.4163666,
+    "ast_hash": "70946ef016a24121004ede024529c05f",
+    "semantic_hash": ""
+  },
+  "src/data/duas.json": {
+    "mtime": 1781015956.4183688,
+    "ast_hash": "2fc7d53f7912d93e630cb533cfa961ef",
+    "semantic_hash": ""
+  },
+  "src/data/islamicEvents.ts": {
+    "mtime": 1781165069.7120893,
+    "ast_hash": "76973edcc815527e7f8bdb9eafdebf69",
+    "semantic_hash": ""
+  },
+  "src/data/islamicNames.json": {
+    "mtime": 1781015956.4218786,
+    "ast_hash": "0fd7a1a569b365255f2d18a20c2679d0",
+    "semantic_hash": ""
+  },
+  "src/hooks/useAyahAudio.ts": {
+    "mtime": 1781015956.4258966,
+    "ast_hash": "895df232927d2142ce06f90cedcae4ee",
+    "semantic_hash": ""
+  },
+  "src/hooks/useAyahBookmark.ts": {
+    "mtime": 1781015956.4278927,
+    "ast_hash": "501e1c1b6224cd6c6511b8776c69bf9d",
+    "semantic_hash": ""
+  },
+  "src/hooks/useDebounce.ts": {
+    "mtime": 1781015956.429893,
+    "ast_hash": "62cffe29c5a25d3f8dbd29badcae4c44",
+    "semantic_hash": ""
+  },
+  "src/hooks/useHadith.ts": {
+    "mtime": 1781015956.431893,
+    "ast_hash": "65134fdc43209d4c9a4b446fc2b056b3",
+    "semantic_hash": ""
+  },
+  "src/hooks/usePara.ts": {
+    "mtime": 1781015956.432894,
+    "ast_hash": "cc31ae975dc30a7807cacc27459b825b",
+    "semantic_hash": ""
+  },
+  "src/hooks/useRandomContent.ts": {
+    "mtime": 1781015956.4348943,
+    "ast_hash": "b4789e8043fff31f7c58c4054704a388",
+    "semantic_hash": ""
+  },
+  "src/hooks/useScrollToCurrentAyah.ts": {
+    "mtime": 1781015956.4358923,
+    "ast_hash": "e33864ece246bad03d3cba4d9d19cea6",
+    "semantic_hash": ""
+  },
+  "src/hooks/useShareAyah.ts": {
+    "mtime": 1781015956.4378932,
+    "ast_hash": "e045b031a0caa5e5e7a576b0d0f8a33e",
+    "semantic_hash": ""
+  },
+  "src/hooks/useSurah.ts": {
+    "mtime": 1781015956.439894,
+    "ast_hash": "99af313a3a8d5ee7701d45933e6c9cfd",
+    "semantic_hash": ""
+  },
+  "src/hooks/useSurahAudio.ts": {
+    "mtime": 1781015956.4408948,
+    "ast_hash": "68881cd3aea6460889208bffb10983ba",
+    "semantic_hash": ""
+  },
+  "src/hooks/useSurahList.ts": {
+    "mtime": 1781015956.4428983,
+    "ast_hash": "9d89f6fba8e98213d3d20f749f461dd7",
+    "semantic_hash": ""
+  },
+  "src/hooks/useSurahs.ts": {
+    "mtime": 1781015956.4722116,
+    "ast_hash": "89c871fabcb3421bdb418200d774264b",
+    "semantic_hash": ""
+  },
+  "src/hooks/useVerseTafsir.ts": {
+    "mtime": 1781015956.4742217,
+    "ast_hash": "64063774687b9eed82e29257ac1988a4",
+    "semantic_hash": ""
+  },
+  "src/i18n/LocaleContext.tsx": {
+    "mtime": 1781059786.6288798,
+    "ast_hash": "a40672c92f1d3d7653644549f9706d63",
+    "semantic_hash": ""
+  },
+  "src/i18n/bn.json": {
+    "mtime": 1781526552.011927,
+    "ast_hash": "c8ecc36201ea8d2a144ee934f627faf3",
+    "semantic_hash": ""
+  },
+  "src/i18n/en.json": {
+    "mtime": 1781526549.9621427,
+    "ast_hash": "d2939c2f137d430d5740ec5a2b76bd79",
+    "semantic_hash": ""
+  },
+  "src/i18n/index.ts": {
+    "mtime": 1781015956.48375,
+    "ast_hash": "c77e2cc53e9cb3c475525e203487db25",
+    "semantic_hash": ""
+  },
+  "src/lib/apiClient.ts": {
+    "mtime": 1781015956.487753,
+    "ast_hash": "241d36c84a2de89e5593790c8f9aeb6d",
+    "semantic_hash": ""
+  },
+  "src/lib/audio.ts": {
+    "mtime": 1781015956.4897609,
+    "ast_hash": "866aadecbdfb40d037bc838a7c72ba01",
+    "semantic_hash": ""
+  },
+  "src/lib/batchCache.ts": {
+    "mtime": 1781015956.4927554,
+    "ast_hash": "04bef9859ab7bcc6b126e94e65efe251",
+    "semantic_hash": ""
+  },
+  "src/lib/cache.ts": {
+    "mtime": 1781015956.495751,
+    "ast_hash": "597ade3f8809d801b2c56c2f0e3c31e0",
+    "semantic_hash": ""
+  },
+  "src/lib/confirm.ts": {
+    "mtime": 1781015956.4977508,
+    "ast_hash": "04a82f9331c72df693cea100b776fce9",
+    "semantic_hash": ""
+  },
+  "src/lib/const.ts": {
+    "mtime": 1781015956.4997518,
+    "ast_hash": "7fe625acea9ab9d9f906fe521379f458",
+    "semantic_hash": ""
+  },
+  "src/lib/content.ts": {
+    "mtime": 1781015956.501763,
+    "ast_hash": "c0bf8c2bdb6be2de820c84e16584d228",
+    "semantic_hash": ""
+  },
+  "src/lib/createStore.ts": {
+    "mtime": 1781015956.504751,
+    "ast_hash": "a91c6efade7ad81fe6d47e3767c052e5",
+    "semantic_hash": ""
+  },
+  "src/lib/db.ts": {
+    "mtime": 1781015956.505752,
+    "ast_hash": "3d66e3fa5c84f53bbe7859f6458ee63b",
+    "semantic_hash": ""
+  },
+  "src/lib/downloadManager.ts": {
+    "mtime": 1781015956.5077534,
+    "ast_hash": "52290b4f1c54900823e8ae6eeb21959f",
+    "semantic_hash": ""
+  },
+  "src/lib/navigation.ts": {
+    "mtime": 1781510646.1755638,
+    "ast_hash": "5ad14897474c8dce7803393699a52289",
+    "semantic_hash": ""
+  },
+  "src/lib/prayerTimes.ts": {
+    "mtime": 1781114450.274504,
+    "ast_hash": "a78a25cfd12ed3f31e43b3f120cabd75",
+    "semantic_hash": ""
+  },
+  "src/lib/qibla.ts": {
+    "mtime": 1781015956.5558283,
+    "ast_hash": "45b03fe1b19ad5a9118bca035a8d77bf",
+    "semantic_hash": ""
+  },
+  "src/lib/routes.ts": {
+    "mtime": 1781015956.5578282,
+    "ast_hash": "45f254c65a3a6e3e35909b1e11a6fe4b",
+    "semantic_hash": ""
+  },
+  "src/lib/search.ts": {
+    "mtime": 1781015956.5598316,
+    "ast_hash": "cf7414641e498ac3ccd5d668369e1433",
+    "semantic_hash": ""
+  },
+  "src/lib/settingsCaching.ts": {
+    "mtime": 1781015956.5608256,
+    "ast_hash": "7862e07a63c7fbe737d710e23766d3d0",
+    "semantic_hash": ""
+  },
+  "src/lib/tajweed.ts": {
+    "mtime": 1781015956.562826,
+    "ast_hash": "f138e428c394d684a5bd5eb49885a1ab",
+    "semantic_hash": ""
+  },
+  "src/lib/tasbih.ts": {
+    "mtime": 1781015956.5648265,
+    "ast_hash": "277cdfe8dcbf6ce848511d6877a6a7c6",
+    "semantic_hash": ""
+  },
+  "src/lib/utils.ts": {
+    "mtime": 1781015956.5663366,
+    "ast_hash": "618d00bf4537ce84f9ba62c5b215fb30",
+    "semantic_hash": ""
+  },
+  "src/main.tsx": {
+    "mtime": 1781015956.5703542,
+    "ast_hash": "904d53fb98fe213cc99ae4c8a8298681",
+    "semantic_hash": ""
+  },
+  "src/pages/About/index.tsx": {
+    "mtime": 1781015956.5723538,
+    "ast_hash": "17c610b879a74833ca9a12a950a15f03",
+    "semantic_hash": ""
+  },
+  "src/pages/AsmaUlHusna/index.tsx": {
+    "mtime": 1781532505.9336817,
+    "ast_hash": "072eb2459156976715edc9132d5b90d0",
+    "semantic_hash": ""
+  },
+  "src/pages/Bookmarks/index.tsx": {
+    "mtime": 1781531431.9937017,
+    "ast_hash": "31b3ee33e7b5dcbb2e98b5523913aa26",
+    "semantic_hash": ""
+  },
+  "src/pages/Credits/index.tsx": {
+    "mtime": 1781015956.5783541,
+    "ast_hash": "7103979d0af650435d7e601087033a8e",
+    "semantic_hash": ""
+  },
+  "src/pages/DailyLog/index.tsx": {
+    "mtime": 1781506029.3521788,
+    "ast_hash": "ad265de33917acf725fe145a06485152",
+    "semantic_hash": ""
+  },
+  "src/pages/DataExport/index.tsx": {
+    "mtime": 1781015956.5823548,
+    "ast_hash": "819dc2fc84827ea46ba082e016e54a65",
+    "semantic_hash": ""
+  },
+  "src/pages/Donation/index.tsx": {
+    "mtime": 1781015956.5843508,
+    "ast_hash": "03db614450c238475d0318c206db86ae",
+    "semantic_hash": ""
+  },
+  "src/pages/Downloads/index.tsx": {
+    "mtime": 1781531432.1530142,
+    "ast_hash": "c0b97dca3daa3a2cd7a18bc195070901",
+    "semantic_hash": ""
+  },
+  "src/pages/Duas/[category]/index.tsx": {
+    "mtime": 1781531432.2817247,
+    "ast_hash": "115622e3c972a182aa12b6ca337784cb",
+    "semantic_hash": ""
+  },
+  "src/pages/Duas/index.tsx": {
+    "mtime": 1781531432.2657218,
+    "ast_hash": "ba8332ff2ae55d6d36728cb93385abd8",
+    "semantic_hash": ""
+  },
+  "src/pages/FastingCalendar/index.tsx": {
+    "mtime": 1781532161.3245623,
+    "ast_hash": "16132e9e6238832bc9b6d8b380194c3e",
+    "semantic_hash": ""
+  },
+  "src/pages/Hadith/[collection]/[bookId]/index.tsx": {
+    "mtime": 1781015956.6023579,
+    "ast_hash": "320757a165360bd7a094dec03e45adee",
+    "semantic_hash": ""
+  },
+  "src/pages/Hadith/[collection]/index.tsx": {
+    "mtime": 1781015956.6043527,
+    "ast_hash": "bb0a4c5bfdb7ca2a83f4d4794ba438c9",
+    "semantic_hash": ""
+  },
+  "src/pages/Hadith/index.tsx": {
+    "mtime": 1781531432.4096417,
+    "ast_hash": "f36ee95e5934c4c90fecc36c196bfed9",
+    "semantic_hash": ""
+  },
+  "src/pages/HijriCalendar/index.tsx": {
+    "mtime": 1781532161.4388888,
+    "ast_hash": "dfa369dd08611b8031a5afdeca274635",
+    "semantic_hash": ""
+  },
+  "src/pages/Home/index.tsx": {
+    "mtime": 1781170072.5033689,
+    "ast_hash": "031948d04c791c4bd1589a2840c424c7",
+    "semantic_hash": ""
+  },
+  "src/pages/IslamicNames/index.tsx": {
+    "mtime": 1781531432.6087978,
+    "ast_hash": "5de9be7d6d71b31e284aff9da8651cf4",
+    "semantic_hash": ""
+  },
+  "src/pages/Knowledge/index.tsx": {
+    "mtime": 1781531432.3428333,
+    "ast_hash": "e4c5a4d93eca1ecb0792c16b1fe54bc3",
+    "semantic_hash": ""
+  },
+  "src/pages/LastTenSurahs/index.tsx": {
+    "mtime": 1781015956.6173534,
+    "ast_hash": "b72d5f871a7aa12d001bd9de50ed506c",
+    "semantic_hash": ""
+  },
+  "src/pages/Para/[id]/index.tsx": {
+    "mtime": 1781015956.6193545,
+    "ast_hash": "21ff28b7af073d9c971b8b796f780b7f",
+    "semantic_hash": ""
+  },
+  "src/pages/Para/index.tsx": {
+    "mtime": 1781015956.6213536,
+    "ast_hash": "64ffa238503523948446dabdb495f97d",
+    "semantic_hash": ""
+  },
+  "src/pages/PrayerTimes/index.tsx": {
+    "mtime": 1781170072.235565,
+    "ast_hash": "e0a9e898f17dfd955f2d664495d2d7c2",
+    "semantic_hash": ""
+  },
+  "src/pages/PrayerTracker/index.tsx": {
+    "mtime": 1781506029.8569915,
+    "ast_hash": "ebefe6b4f98ebd098e16ba149d3c3a09",
+    "semantic_hash": ""
+  },
+  "src/pages/Qibla/index.tsx": {
+    "mtime": 1781170196.072247,
+    "ast_hash": "a167f8b5e80932b668c2fea92123162c",
+    "semantic_hash": ""
+  },
+  "src/pages/QuranProgress/index.tsx": {
+    "mtime": 1781015956.6558764,
+    "ast_hash": "5a7e8e8f79abc2bffbd25194e41be072",
+    "semantic_hash": ""
+  },
+  "src/pages/ReadingGoals/index.tsx": {
+    "mtime": 1781532507.4212883,
+    "ast_hash": "a6ad97fed0c6923ff4c9ceae0a49cb06",
+    "semantic_hash": ""
+  },
+  "src/pages/SadaqahTracker/index.tsx": {
+    "mtime": 1781535075.1308193,
+    "ast_hash": "875eb4381d9c91923e6fef56c1b7dad7",
+    "semantic_hash": ""
+  },
+  "src/pages/SalahGuide/index.tsx": {
+    "mtime": 1781015956.6658788,
+    "ast_hash": "e4ee0022ff2e406ba420644b382e8fd4",
+    "semantic_hash": ""
+  },
+  "src/pages/Settings/index.tsx": {
+    "mtime": 1781015956.6678772,
+    "ast_hash": "0970bf27f70643b56f4d7ef97dcfe70b",
+    "semantic_hash": ""
+  },
+  "src/pages/Surah/[id]/index.tsx": {
+    "mtime": 1781015956.6698787,
+    "ast_hash": "d079366ded9489c9bdb15dbd76e73701",
+    "semantic_hash": ""
+  },
+  "src/pages/Surah/index.tsx": {
+    "mtime": 1781534080.5408301,
+    "ast_hash": "629303bf929abb9ca320b0540dbd65e4",
+    "semantic_hash": ""
+  },
+  "src/pages/TaraweehTracker/index.tsx": {
+    "mtime": 1781164357.2116709,
+    "ast_hash": "b633f265c247509cdc9850cc9aee8d65",
+    "semantic_hash": ""
+  },
+  "src/pages/Tasbih/index.tsx": {
+    "mtime": 1781015956.676882,
+    "ast_hash": "a40128c5bb43e399f5252364e0b1a90e",
+    "semantic_hash": ""
+  },
+  "src/pages/ZakatCalculator/index.tsx": {
+    "mtime": 1781591128.1989636,
+    "ast_hash": "70e4141e60792c856d32d1b6832bcbdd",
+    "semantic_hash": ""
+  },
+  "src/store/audio.ts": {
+    "mtime": 1781015956.6808808,
+    "ast_hash": "7e1cf06b10e9232186ba390bb0e0a0bd",
+    "semantic_hash": ""
+  },
+  "src/store/bookmarks.ts": {
+    "mtime": 1781015956.6828806,
+    "ast_hash": "66b601ff9abca57ec81246714d1dd454",
+    "semantic_hash": ""
+  },
+  "src/store/downloads.ts": {
+    "mtime": 1781015956.6846318,
+    "ast_hash": "a811008cfaf5f3034f83b9936429b493",
+    "semantic_hash": ""
+  },
+  "src/store/location.ts": {
+    "mtime": 1781015956.6856258,
+    "ast_hash": "d8bdb365570d32c6a593a33d6c170e77",
+    "semantic_hash": ""
+  },
+  "src/store/prayer.ts": {
+    "mtime": 1781160353.0774388,
+    "ast_hash": "650b556c7c9d5f0264d948d371e691a6",
+    "semantic_hash": ""
+  },
+  "src/store/reading.ts": {
+    "mtime": 1781165069.0634322,
+    "ast_hash": "67646a84ea57b5b1016c80c18b938cb0",
+    "semantic_hash": ""
+  },
+  "src/store/readingGoals.ts": {
+    "mtime": 1781160375.6842415,
+    "ast_hash": "f5bfedeb513031c0cf9d5f9005648469",
+    "semantic_hash": ""
+  },
+  "src/store/sadaqah.ts": {
+    "mtime": 1781015956.7326872,
+    "ast_hash": "71c562acdc694b88bcb1255e168079bc",
+    "semantic_hash": ""
+  },
+  "src/store/settings.ts": {
+    "mtime": 1781015956.734687,
+    "ast_hash": "72dce96233d4d2e06a278105feb7de25",
+    "semantic_hash": ""
+  },
+  "src/store/worship.ts": {
+    "mtime": 1781160364.0831017,
+    "ast_hash": "3e46512f37b50105efef94860c141fc2",
+    "semantic_hash": ""
+  },
+  "src/types/index.ts": {
+    "mtime": 1781015956.7386875,
+    "ast_hash": "ebd689f7009e8a3900ac7f5f56e58557",
+    "semantic_hash": ""
+  },
+  "tsconfig.app.json": {
+    "mtime": 1781015956.7402163,
+    "ast_hash": "9198d6eb15e85cf1bc345484966e1a23",
+    "semantic_hash": ""
+  },
+  "tsconfig.json": {
+    "mtime": 1781015956.7422302,
+    "ast_hash": "a3d39fa780ebff65444de257f291ce6c",
+    "semantic_hash": ""
+  },
+  "tsconfig.node.json": {
+    "mtime": 1781015956.7442336,
+    "ast_hash": "70bdd0a673bcfc0e828080b306e7c680",
+    "semantic_hash": ""
+  },
+  "vite.config.ts": {
+    "mtime": 1781015956.7462304,
+    "ast_hash": "9206d5a3f65205432c08c9d1d6445743",
+    "semantic_hash": ""
+  },
+  ".agents/skills/shadcn/SKILL.md": {
+    "mtime": 1781015955.4905005,
+    "ast_hash": "6008a24515078170719dcdfca43bfc93",
+    "semantic_hash": ""
+  },
+  ".agents/skills/shadcn/agents/openai.yml": {
+    "mtime": 1781015955.4944947,
+    "ast_hash": "a93201a1b378a868c0795edbf1ae751c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/shadcn/cli.md": {
+    "mtime": 1781015955.5004942,
+    "ast_hash": "f5f08750de55adf6d8b2c97ccb8badf6",
+    "semantic_hash": ""
+  },
+  ".agents/skills/shadcn/customization.md": {
+    "mtime": 1781015955.502494,
+    "ast_hash": "7454b40655ce6bcbbfa8fa3804b66fbe",
+    "semantic_hash": ""
+  },
+  ".agents/skills/shadcn/mcp.md": {
+    "mtime": 1781015955.506495,
+    "ast_hash": "3336303da4658cd6554da844f81842c7",
+    "semantic_hash": ""
+  },
+  ".agents/skills/shadcn/rules/base-vs-radix.md": {
+    "mtime": 1781015955.5094938,
+    "ast_hash": "582481904d3c35aae4125153db97fc37",
+    "semantic_hash": ""
+  },
+  ".agents/skills/shadcn/rules/composition.md": {
+    "mtime": 1781015955.512495,
+    "ast_hash": "3e1ca9394ace05ebe5a7e90fe4608e98",
+    "semantic_hash": ""
+  },
+  ".agents/skills/shadcn/rules/forms.md": {
+    "mtime": 1781015955.5154924,
+    "ast_hash": "41155ed5a844952613e717a5add76606",
+    "semantic_hash": ""
+  },
+  ".agents/skills/shadcn/rules/icons.md": {
+    "mtime": 1781015955.5174913,
+    "ast_hash": "56b5a01599f8c03c90f248c5e5e01f67",
+    "semantic_hash": ""
+  },
+  ".agents/skills/shadcn/rules/styling.md": {
+    "mtime": 1781015955.5184941,
+    "ast_hash": "1873b34282624ef89b08d3d9263bf98d",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1781537566.0462701,
+    "ast_hash": "a44663b0a30997329dcf6695a2a20a91",
+    "semantic_hash": ""
+  },
+  "EXPANSION_ROADMAP.md": {
+    "mtime": 1781015955.5310273,
+    "ast_hash": "8dc1781371882af4b2ebcb77f1813447",
+    "semantic_hash": ""
+  },
+  "PLAN-islamic-revamp.md": {
+    "mtime": 1781015955.534044,
+    "ast_hash": "cd4019a16b3cfee6e1526af3c1553b78",
+    "semantic_hash": ""
+  },
+  "REFACTOR-REPORT.md": {
+    "mtime": 1781015955.5350425,
+    "ast_hash": "f644f80aa0b74faa3d5fbc878b58f1d5",
+    "semantic_hash": ""
+  },
+  "REFACTORING.md": {
+    "mtime": 1781015955.537215,
+    "ast_hash": "ed3caae3613d38902ff5e1ce65e3b1b2",
+    "semantic_hash": ""
+  },
+  "SOLID-REFACTOR.md": {
+    "mtime": 1781015955.5392332,
+    "ast_hash": "f8a6d4e655876c58a7c9ee7ca9beba88",
+    "semantic_hash": ""
+  },
+  "index.html": {
+    "mtime": 1781015955.7159793,
+    "ast_hash": "5f4e8a79ca8bf4c8ecbeb1c4e98aa0e9",
+    "semantic_hash": ""
+  },
+  "public/robots.txt": {
+    "mtime": 1781015955.866442,
+    "ast_hash": "61c27d2cd39a713f7829422c3d9edcc7",
+    "semantic_hash": ""
+  },
+  "src/components/features/AudioPlayer/README.md": {
+    "mtime": 1781015956.1482153,
+    "ast_hash": "1ddbc6e8ebaadae90e55dbceae7b3dfe",
+    "semantic_hash": ""
+  },
+  ".agents/skills/shadcn/assets/shadcn-small.png": {
+    "mtime": 1781015955.496493,
+    "ast_hash": "72349c6b7f303e6be598a2196391291b",
+    "semantic_hash": ""
+  },
+  ".agents/skills/shadcn/assets/shadcn.png": {
+    "mtime": 1781015955.4984956,
+    "ast_hash": "cb56bf002d36bb860c3d320a23bd871a",
+    "semantic_hash": ""
+  },
+  "public/android/android-launchericon-144-144.png": {
+    "mtime": 1781015955.7522416,
+    "ast_hash": "be719323c4996ba71fcb1c8d3819d5c5",
+    "semantic_hash": ""
+  },
+  "public/android/android-launchericon-192-192.png": {
+    "mtime": 1781015955.7542405,
+    "ast_hash": "766e4899783171ae2c3f35a25a303eb5",
+    "semantic_hash": ""
+  },
+  "public/android/android-launchericon-48-48.png": {
+    "mtime": 1781015955.7562368,
+    "ast_hash": "6b6b0000322d5f6813ae3d0f311da08f",
+    "semantic_hash": ""
+  },
+  "public/android/android-launchericon-512-512.png": {
+    "mtime": 1781015955.7597716,
+    "ast_hash": "45473e945dcdd5d55c9a1417d50ba775",
+    "semantic_hash": ""
+  },
+  "public/android/android-launchericon-72-72.png": {
+    "mtime": 1781015955.7617674,
+    "ast_hash": "3a20222be306ae1166b889bac7fb9319",
+    "semantic_hash": ""
+  },
+  "public/android/android-launchericon-96-96.png": {
+    "mtime": 1781015955.7637708,
+    "ast_hash": "06ca35a5fab1ce59867084a6e9e43ff0",
+    "semantic_hash": ""
+  },
+  "public/apple-touch-icon.png": {
+    "mtime": 1781015955.7657673,
+    "ast_hash": "d6fec8cce4d4714935fc68c7fc19d132",
+    "semantic_hash": ""
+  },
+  "public/ios/100.png": {
+    "mtime": 1781015955.7707684,
+    "ast_hash": "3e39a91fa2a41f319bbb9e4b7ef75e7e",
+    "semantic_hash": ""
+  },
+  "public/ios/1024.png": {
+    "mtime": 1781015955.7747645,
+    "ast_hash": "c8b8c17b68d29bf10a9789faf715255a",
+    "semantic_hash": ""
+  },
+  "public/ios/114.png": {
+    "mtime": 1781015955.7757695,
+    "ast_hash": "2b84dbc4c7fc3c072dd8c0737d0d2605",
+    "semantic_hash": ""
+  },
+  "public/ios/120.png": {
+    "mtime": 1781015955.7783043,
+    "ast_hash": "fa0e7846376e2c7d521555f1e8f583ac",
+    "semantic_hash": ""
+  },
+  "public/ios/128.png": {
+    "mtime": 1781015955.7803018,
+    "ast_hash": "da54fddb4dfe1deb3bd11735f91ebf8b",
+    "semantic_hash": ""
+  },
+  "public/ios/144.png": {
+    "mtime": 1781015955.7823012,
+    "ast_hash": "be719323c4996ba71fcb1c8d3819d5c5",
+    "semantic_hash": ""
+  },
+  "public/ios/152.png": {
+    "mtime": 1781015955.7843037,
+    "ast_hash": "a9bd6f9c450a3534e63fe6381c66705d",
+    "semantic_hash": ""
+  },
+  "public/ios/16.png": {
+    "mtime": 1781015955.790303,
+    "ast_hash": "6f67ac003b6ba20c1cea6382d6b5510c",
+    "semantic_hash": ""
+  },
+  "public/ios/167.png": {
+    "mtime": 1781015955.7923028,
+    "ast_hash": "a79527eb039f940b3f1dc2cb55d19d97",
+    "semantic_hash": ""
+  },
+  "public/ios/180.png": {
+    "mtime": 1781015955.7943015,
+    "ast_hash": "99e551667a4d1d31bb6871a71f518576",
+    "semantic_hash": ""
+  },
+  "public/ios/192.png": {
+    "mtime": 1781015955.796302,
+    "ast_hash": "766e4899783171ae2c3f35a25a303eb5",
+    "semantic_hash": ""
+  },
+  "public/ios/20.png": {
+    "mtime": 1781015955.7983015,
+    "ast_hash": "655b242b2ce4f9ea052dac2638aa3d1a",
+    "semantic_hash": ""
+  },
+  "public/ios/256.png": {
+    "mtime": 1781015955.8003013,
+    "ast_hash": "ad3705cc93acce78e591122c1140c57d",
+    "semantic_hash": ""
+  },
+  "public/ios/29.png": {
+    "mtime": 1781015955.8023014,
+    "ast_hash": "f1a0f592aee1162bffe2ee329145ac84",
+    "semantic_hash": ""
+  },
+  "public/ios/32.png": {
+    "mtime": 1781015955.8033006,
+    "ast_hash": "c5e1868501297b8278c10bc5ca6c621c",
+    "semantic_hash": ""
+  },
+  "public/ios/40.png": {
+    "mtime": 1781015955.805689,
+    "ast_hash": "c47d72b50037d6dd9b2e1aeb0c794002",
+    "semantic_hash": ""
+  },
+  "public/ios/50.png": {
+    "mtime": 1781015955.8073168,
+    "ast_hash": "f25548f8324ac0ad6c891b84fdeaf223",
+    "semantic_hash": ""
+  },
+  "public/ios/512.png": {
+    "mtime": 1781015955.809314,
+    "ast_hash": "45473e945dcdd5d55c9a1417d50ba775",
+    "semantic_hash": ""
+  },
+  "public/ios/57.png": {
+    "mtime": 1781015955.8113165,
+    "ast_hash": "b544e2dc08da0864f3670cf278200dd9",
+    "semantic_hash": ""
+  },
+  "public/ios/58.png": {
+    "mtime": 1781015955.8133144,
+    "ast_hash": "250590965797bc58dcc6fd8adfec5b48",
+    "semantic_hash": ""
+  },
+  "public/ios/60.png": {
+    "mtime": 1781015955.8143194,
+    "ast_hash": "97bdb425df4ee6fa07ac7c2c825384de",
+    "semantic_hash": ""
+  },
+  "public/ios/64.png": {
+    "mtime": 1781015955.8168497,
+    "ast_hash": "06502f7ef65d34c33440fd9786c93e6a",
+    "semantic_hash": ""
+  },
+  "public/ios/72.png": {
+    "mtime": 1781015955.817853,
+    "ast_hash": "3a20222be306ae1166b889bac7fb9319",
+    "semantic_hash": ""
+  },
+  "public/ios/76.png": {
+    "mtime": 1781015955.8203628,
+    "ast_hash": "1b5ec4476a59bcc01affdfa219378726",
+    "semantic_hash": ""
+  },
+  "public/ios/80.png": {
+    "mtime": 1781015955.8213773,
+    "ast_hash": "4e91b4b95c3317219ce3d2f9e7630516",
+    "semantic_hash": ""
+  },
+  "public/ios/87.png": {
+    "mtime": 1781015955.8243792,
+    "ast_hash": "bf99c3696b79e10b6d56add6233fb143",
+    "semantic_hash": ""
+  },
+  "public/logo192.png": {
+    "mtime": 1781015955.826387,
+    "ast_hash": "d6fec8cce4d4714935fc68c7fc19d132",
+    "semantic_hash": ""
+  },
+  "public/logo512.png": {
+    "mtime": 1781015955.8293793,
+    "ast_hash": "84094803973c638214bb192492f7c349",
+    "semantic_hash": ""
+  },
+  "public/maskable/maskable_icon.png": {
+    "mtime": 1781015955.8413808,
+    "ast_hash": "c6a1f109b3a3a561a7157d71313b6753",
+    "semantic_hash": ""
+  },
+  "public/maskable/maskable_icon_x128.png": {
+    "mtime": 1781015955.8433826,
+    "ast_hash": "59b139f3f17673f01bf58910df193c7f",
+    "semantic_hash": ""
+  },
+  "public/maskable/maskable_icon_x192.png": {
+    "mtime": 1781015955.8459015,
+    "ast_hash": "f79a08a18e1aebf89a3b7d38ceae0d14",
+    "semantic_hash": ""
+  },
+  "public/maskable/maskable_icon_x384.png": {
+    "mtime": 1781015955.8499155,
+    "ast_hash": "261628c72958f8b6cd0f408a6ce40d6b",
+    "semantic_hash": ""
+  },
+  "public/maskable/maskable_icon_x48.png": {
+    "mtime": 1781015955.8519173,
+    "ast_hash": "0956cba5c5de9ec8546c32ad7e491f75",
+    "semantic_hash": ""
+  },
+  "public/maskable/maskable_icon_x512.png": {
+    "mtime": 1781015955.8554263,
+    "ast_hash": "77c88cd0a1e24de46927078c6f8befc2",
+    "semantic_hash": ""
+  },
+  "public/maskable/maskable_icon_x72.png": {
+    "mtime": 1781015955.8624408,
+    "ast_hash": "be7892be264347f996f3c37001527d5a",
+    "semantic_hash": ""
+  },
+  "public/maskable/maskable_icon_x96.png": {
+    "mtime": 1781015955.8644438,
+    "ast_hash": "b496cd5970dc3691072d7df73139f6a0",
+    "semantic_hash": ""
+  },
+  "public/screenshots/desktop.svg": {
+    "mtime": 1781015955.867956,
+    "ast_hash": "c08e9b80f02855d5d786fe3abfcb4251",
+    "semantic_hash": ""
+  },
+  "public/screenshots/mobile.svg": {
+    "mtime": 1781015955.8699737,
+    "ast_hash": "45abd2eb73121a451560ece915d8ad5b",
+    "semantic_hash": ""
+  },
+  "public/windows11/LargeTile.scale-100.png": {
+    "mtime": 1781015955.8729713,
+    "ast_hash": "c8e194c52d7e769be47950f367818a98",
+    "semantic_hash": ""
+  },
+  "public/windows11/LargeTile.scale-125.png": {
+    "mtime": 1781015955.8759763,
+    "ast_hash": "3ba953344d95f3d6dc3699e8a650a317",
+    "semantic_hash": ""
+  },
+  "public/windows11/LargeTile.scale-150.png": {
+    "mtime": 1781015955.8789742,
+    "ast_hash": "48f676742a8cd8eb78abb0d69b004932",
+    "semantic_hash": ""
+  },
+  "public/windows11/LargeTile.scale-200.png": {
+    "mtime": 1781015955.881972,
+    "ast_hash": "630e5b4131b336603e4c09c795a97185",
+    "semantic_hash": ""
+  },
+  "public/windows11/LargeTile.scale-400.png": {
+    "mtime": 1781015955.887972,
+    "ast_hash": "42fe49d29ef4057157deb040173032af",
+    "semantic_hash": ""
+  },
+  "public/windows11/SmallTile.scale-100.png": {
+    "mtime": 1781015955.8899896,
+    "ast_hash": "4c5e07cce36c33a0ccf8510c6a986200",
+    "semantic_hash": ""
+  },
+  "public/windows11/SmallTile.scale-125.png": {
+    "mtime": 1781015955.8919742,
+    "ast_hash": "287f27ba79faab89e8b1405100e68c27",
+    "semantic_hash": ""
+  },
+  "public/windows11/SmallTile.scale-150.png": {
+    "mtime": 1781015955.8939736,
+    "ast_hash": "7fc34595c9673d9a6bf2217bcc4c1f8a",
+    "semantic_hash": ""
+  },
+  "public/windows11/SmallTile.scale-200.png": {
+    "mtime": 1781015955.897972,
+    "ast_hash": "dc67812192b6bfcf4f573b1ecedfee4c",
+    "semantic_hash": ""
+  },
+  "public/windows11/SmallTile.scale-400.png": {
+    "mtime": 1781015955.9005086,
+    "ast_hash": "d0b759a5b095ad7ddfa977eabe0d2751",
+    "semantic_hash": ""
+  },
+  "public/windows11/SplashScreen.scale-100.png": {
+    "mtime": 1781015955.9025056,
+    "ast_hash": "3648a78b93e98ca509991baabe95a955",
+    "semantic_hash": ""
+  },
+  "public/windows11/SplashScreen.scale-125.png": {
+    "mtime": 1781015955.9055014,
+    "ast_hash": "09099eeb2c522a28746c499280d34604",
+    "semantic_hash": ""
+  },
+  "public/windows11/SplashScreen.scale-150.png": {
+    "mtime": 1781015955.9085088,
+    "ast_hash": "4b0a9998f6d644c438525e25b339a214",
+    "semantic_hash": ""
+  },
+  "public/windows11/SplashScreen.scale-200.png": {
+    "mtime": 1781015955.9115014,
+    "ast_hash": "0e422e9bfe6aeffa088ee165788f9382",
+    "semantic_hash": ""
+  },
+  "public/windows11/SplashScreen.scale-400.png": {
+    "mtime": 1781015955.9175017,
+    "ast_hash": "69a8c2e5d893fdcb82c3672e29f0abfb",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square150x150Logo.scale-100.png": {
+    "mtime": 1781015955.9195013,
+    "ast_hash": "e0f00bb8abee40b4f65d6b3da50bf8b6",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square150x150Logo.scale-125.png": {
+    "mtime": 1781015955.9220314,
+    "ast_hash": "3218f16d3e829f965e2c73acb80cd692",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square150x150Logo.scale-150.png": {
+    "mtime": 1781015955.9240296,
+    "ast_hash": "b38326456c2088cad68d3d4222660676",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square150x150Logo.scale-200.png": {
+    "mtime": 1781015955.9270368,
+    "ast_hash": "934a70220c54d1c1be3540dfebc94e0b",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square150x150Logo.scale-400.png": {
+    "mtime": 1781015955.9320302,
+    "ast_hash": "c9d54fdbef54b64d0b1db52d00be611d",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-lightunplated_targetsize-16.png": {
+    "mtime": 1781015955.9350326,
+    "ast_hash": "a00143ee78645e11b32cd2a63942e9c3",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-lightunplated_targetsize-20.png": {
+    "mtime": 1781015955.937033,
+    "ast_hash": "7aaf821987ee441e6158c99a49c6bc21",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-lightunplated_targetsize-24.png": {
+    "mtime": 1781015955.9390297,
+    "ast_hash": "b1469a2a824db068d35ee98332ecd980",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-lightunplated_targetsize-256.png": {
+    "mtime": 1781015955.9410331,
+    "ast_hash": "c986d7cd2767a3532259e64de2e4f9fc",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-lightunplated_targetsize-30.png": {
+    "mtime": 1781015955.9440348,
+    "ast_hash": "adae20151fb0955f680afb303dc2b994",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-lightunplated_targetsize-32.png": {
+    "mtime": 1781015955.9470317,
+    "ast_hash": "bbb704ed25e802761422400f83007fcd",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-lightunplated_targetsize-36.png": {
+    "mtime": 1781015955.9490314,
+    "ast_hash": "f20c007888ac7bada5c5420119633d86",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-lightunplated_targetsize-40.png": {
+    "mtime": 1781015955.9510305,
+    "ast_hash": "dd438f4e978c7a2ffead3e1ce7f33e46",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-lightunplated_targetsize-44.png": {
+    "mtime": 1781015955.9530325,
+    "ast_hash": "89b38b628a8da4aba657fd722e6174bd",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-lightunplated_targetsize-48.png": {
+    "mtime": 1781015955.9550319,
+    "ast_hash": "80daf025172ea9a12045aa1ed8845140",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-lightunplated_targetsize-60.png": {
+    "mtime": 1781015955.957028,
+    "ast_hash": "a58e313995ffc8fe202fd5925586d8d1",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-lightunplated_targetsize-64.png": {
+    "mtime": 1781015955.9580297,
+    "ast_hash": "5241af776f8c7f33f93d6ff9488d3851",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-lightunplated_targetsize-72.png": {
+    "mtime": 1781015955.9615543,
+    "ast_hash": "7e14aacf4ad6d333b3b3b98fc87f205e",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-lightunplated_targetsize-80.png": {
+    "mtime": 1781015955.9635527,
+    "ast_hash": "36ef03a449d7cbcced79dc3798d6804b",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-lightunplated_targetsize-96.png": {
+    "mtime": 1781015955.9655566,
+    "ast_hash": "ab08b6db6beb516a6bcbe53b3e32e5dc",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-unplated_targetsize-16.png": {
+    "mtime": 1781015955.9675534,
+    "ast_hash": "a00143ee78645e11b32cd2a63942e9c3",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-unplated_targetsize-20.png": {
+    "mtime": 1781015955.9695551,
+    "ast_hash": "7aaf821987ee441e6158c99a49c6bc21",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-unplated_targetsize-24.png": {
+    "mtime": 1781015955.9715545,
+    "ast_hash": "b1469a2a824db068d35ee98332ecd980",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-unplated_targetsize-256.png": {
+    "mtime": 1781015955.9745562,
+    "ast_hash": "c986d7cd2767a3532259e64de2e4f9fc",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-unplated_targetsize-30.png": {
+    "mtime": 1781015955.976555,
+    "ast_hash": "adae20151fb0955f680afb303dc2b994",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-unplated_targetsize-32.png": {
+    "mtime": 1781015955.9785566,
+    "ast_hash": "bbb704ed25e802761422400f83007fcd",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-unplated_targetsize-36.png": {
+    "mtime": 1781015955.980555,
+    "ast_hash": "f20c007888ac7bada5c5420119633d86",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-unplated_targetsize-40.png": {
+    "mtime": 1781015955.9825573,
+    "ast_hash": "dd438f4e978c7a2ffead3e1ce7f33e46",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-unplated_targetsize-44.png": {
+    "mtime": 1781015955.984556,
+    "ast_hash": "89b38b628a8da4aba657fd722e6174bd",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-unplated_targetsize-48.png": {
+    "mtime": 1781015955.9865584,
+    "ast_hash": "80daf025172ea9a12045aa1ed8845140",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-unplated_targetsize-60.png": {
+    "mtime": 1781015955.987559,
+    "ast_hash": "a58e313995ffc8fe202fd5925586d8d1",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-unplated_targetsize-64.png": {
+    "mtime": 1781015955.989559,
+    "ast_hash": "5241af776f8c7f33f93d6ff9488d3851",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-unplated_targetsize-72.png": {
+    "mtime": 1781015955.991556,
+    "ast_hash": "7e14aacf4ad6d333b3b3b98fc87f205e",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-unplated_targetsize-80.png": {
+    "mtime": 1781015955.9935622,
+    "ast_hash": "36ef03a449d7cbcced79dc3798d6804b",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.altform-unplated_targetsize-96.png": {
+    "mtime": 1781015955.9955552,
+    "ast_hash": "ab08b6db6beb516a6bcbe53b3e32e5dc",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.scale-100.png": {
+    "mtime": 1781015955.997558,
+    "ast_hash": "89b38b628a8da4aba657fd722e6174bd",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.scale-125.png": {
+    "mtime": 1781015955.9995565,
+    "ast_hash": "6675912f199c1f6b190938f465ab002d",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.scale-150.png": {
+    "mtime": 1781015956.001069,
+    "ast_hash": "b40b47e96840e4170fba1ad524ed5b49",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.scale-200.png": {
+    "mtime": 1781015956.0130916,
+    "ast_hash": "11293485bf1e1953bc212f82a90615a3",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.scale-400.png": {
+    "mtime": 1781015956.0150893,
+    "ast_hash": "623c4f861d3ef0e15bfc820b26613c19",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.targetsize-16.png": {
+    "mtime": 1781015956.0170877,
+    "ast_hash": "a00143ee78645e11b32cd2a63942e9c3",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.targetsize-20.png": {
+    "mtime": 1781015956.018084,
+    "ast_hash": "7aaf821987ee441e6158c99a49c6bc21",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.targetsize-24.png": {
+    "mtime": 1781015956.0200863,
+    "ast_hash": "b1469a2a824db068d35ee98332ecd980",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.targetsize-256.png": {
+    "mtime": 1781015956.0226176,
+    "ast_hash": "c986d7cd2767a3532259e64de2e4f9fc",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.targetsize-30.png": {
+    "mtime": 1781015956.0246184,
+    "ast_hash": "adae20151fb0955f680afb303dc2b994",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.targetsize-32.png": {
+    "mtime": 1781015956.02662,
+    "ast_hash": "bbb704ed25e802761422400f83007fcd",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.targetsize-36.png": {
+    "mtime": 1781015956.0286155,
+    "ast_hash": "f20c007888ac7bada5c5420119633d86",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.targetsize-40.png": {
+    "mtime": 1781015956.0306244,
+    "ast_hash": "dd438f4e978c7a2ffead3e1ce7f33e46",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.targetsize-44.png": {
+    "mtime": 1781015956.032616,
+    "ast_hash": "89b38b628a8da4aba657fd722e6174bd",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.targetsize-48.png": {
+    "mtime": 1781015956.0346181,
+    "ast_hash": "80daf025172ea9a12045aa1ed8845140",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.targetsize-60.png": {
+    "mtime": 1781015956.036616,
+    "ast_hash": "a58e313995ffc8fe202fd5925586d8d1",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.targetsize-64.png": {
+    "mtime": 1781015956.038617,
+    "ast_hash": "5241af776f8c7f33f93d6ff9488d3851",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.targetsize-72.png": {
+    "mtime": 1781015956.0406184,
+    "ast_hash": "7e14aacf4ad6d333b3b3b98fc87f205e",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.targetsize-80.png": {
+    "mtime": 1781015956.0426185,
+    "ast_hash": "36ef03a449d7cbcced79dc3798d6804b",
+    "semantic_hash": ""
+  },
+  "public/windows11/Square44x44Logo.targetsize-96.png": {
+    "mtime": 1781015956.0501428,
+    "ast_hash": "ab08b6db6beb516a6bcbe53b3e32e5dc",
+    "semantic_hash": ""
+  },
+  "public/windows11/StoreLogo.scale-100.png": {
+    "mtime": 1781015956.0531456,
+    "ast_hash": "f25548f8324ac0ad6c891b84fdeaf223",
+    "semantic_hash": ""
+  },
+  "public/windows11/StoreLogo.scale-125.png": {
+    "mtime": 1781015956.0551498,
+    "ast_hash": "0dfbe4b77cc3c37ef4fcd48b6a839840",
+    "semantic_hash": ""
+  },
+  "public/windows11/StoreLogo.scale-150.png": {
+    "mtime": 1781015956.0571458,
+    "ast_hash": "0551719e6515dce1ac57f81d7f138520",
+    "semantic_hash": ""
+  },
+  "public/windows11/StoreLogo.scale-200.png": {
+    "mtime": 1781015956.0586572,
+    "ast_hash": "3e39a91fa2a41f319bbb9e4b7ef75e7e",
+    "semantic_hash": ""
+  },
+  "public/windows11/StoreLogo.scale-400.png": {
+    "mtime": 1781015956.0616734,
+    "ast_hash": "96a2f3ed4ccca6b354739efae8b7d1ce",
+    "semantic_hash": ""
+  },
+  "public/windows11/Wide310x150Logo.scale-100.png": {
+    "mtime": 1781015956.0636728,
+    "ast_hash": "578a275a3a01ec2c3843091b2ee25917",
+    "semantic_hash": ""
+  },
+  "public/windows11/Wide310x150Logo.scale-125.png": {
+    "mtime": 1781015956.0656936,
+    "ast_hash": "975f62d3101f424522cd46818bd5cdf0",
+    "semantic_hash": ""
+  },
+  "public/windows11/Wide310x150Logo.scale-150.png": {
+    "mtime": 1781015956.067691,
+    "ast_hash": "4c78f355333942e438e73aa2e006aff9",
+    "semantic_hash": ""
+  },
+  "public/windows11/Wide310x150Logo.scale-200.png": {
+    "mtime": 1781015956.0696948,
+    "ast_hash": "3648a78b93e98ca509991baabe95a955",
+    "semantic_hash": ""
+  },
+  "public/windows11/Wide310x150Logo.scale-400.png": {
+    "mtime": 1781015956.0726898,
+    "ast_hash": "0e422e9bfe6aeffa088ee165788f9382",
+    "semantic_hash": ""
+  },
+  "src/logo.svg": {
+    "mtime": 1781015956.5683527,
+    "ast_hash": "828294088b604d1c8a027ac6b74ffc1b",
+    "semantic_hash": ""
+  },
+  "src/components/features/Onboarding/StepLocation.tsx": {
+    "mtime": 1781061554.0332403,
+    "ast_hash": "fade8f1662fb9bc84df7521cc055bf51",
+    "semantic_hash": ""
+  },
+  "src/components/ui/carousel.tsx": {
+    "mtime": 1781015956.3273928,
+    "ast_hash": "da7a657ad145ef2f34499e2ce8967237",
+    "semantic_hash": ""
+  },
+  "src/components/layouts/HomeLayout/SurahParaNav.tsx": {
+    "mtime": 1781015956.2062702,
+    "ast_hash": "87376b78dd64feef7d268148a5d4f923",
+    "semantic_hash": ""
+  },
+  "src/data/knowledgeFacts.ts": {
+    "mtime": 1781015956.42389,
+    "ast_hash": "0faf9cead5c2ccff013222fdc8a0cf22",
+    "semantic_hash": ""
+  },
+  "src/components/ui/icons/asr.tsx": {
+    "mtime": 1781015956.3416965,
+    "ast_hash": "b21939acf6072419fa3b4c81f8308d58",
+    "semantic_hash": ""
+  },
+  "src/components/ui/icons/dhuhr.tsx": {
+    "mtime": 1781015956.3437102,
+    "ast_hash": "9f458d32f430b12a3855f52d7225cb7c",
+    "semantic_hash": ""
+  },
+  "src/components/ui/icons/fajr.tsx": {
+    "mtime": 1781015956.3457098,
+    "ast_hash": "9cb6de30899bb085cffa9ccd482b32cb",
+    "semantic_hash": ""
+  },
+  "src/components/ui/icons/isha.tsx": {
+    "mtime": 1781015956.3477106,
+    "ast_hash": "f9b711bb1836e72c5d09e5d98b45a433",
+    "semantic_hash": ""
+  },
+  "src/components/ui/icons/maghrib.tsx": {
+    "mtime": 1781015956.348722,
+    "ast_hash": "9208fe4d6858650520272fc2119bac5b",
+    "semantic_hash": ""
+  },
+  "src/components/ui/icons/prayer-icon.tsx": {
+    "mtime": 1781015956.3507104,
+    "ast_hash": "bca534ef37f4d169f532859d81ea9f56",
+    "semantic_hash": ""
+  },
+  "src/lib/date.ts": {
+    "mtime": 1781165069.98235,
+    "ast_hash": "8eb6ec4471efd0b95cc8756d5381ec35",
+    "semantic_hash": ""
+  },
+  "src/components/common/LocationGate/LocationGate.tsx": {
+    "mtime": 1781170071.2332351,
+    "ast_hash": "f7c1d11559107e13698d854190271744",
+    "semantic_hash": ""
+  },
+  "src/components/ui/input-group.tsx": {
+    "mtime": 1781534672.3562207,
+    "ast_hash": "33988e58558fab4d86da3994f979d0e5",
+    "semantic_hash": ""
+  }
+}

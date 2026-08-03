@@ -1,5 +1,6 @@
 import { memo } from "react";
 import type { VerseResult } from "@/lib/search";
+import { useSettings } from "@/store/settings";
 
 interface VerseResultItemProps {
   result: VerseResult;
@@ -10,6 +11,7 @@ const VerseResultItem = memo(function VerseResultItem({
   result,
   onClick,
 }: VerseResultItemProps) {
+  const translationLang = useSettings((s) => s.translationLang);
   return (
     <button
       type="button"
@@ -20,10 +22,9 @@ const VerseResultItem = memo(function VerseResultItem({
         {result.verse.text.arText}
       </p>
       <p className="mt-1 text-xs italic text-text-muted dark:text-dark-text-muted line-clamp-1">
-        {result.verse.text.enText}
-      </p>
-      <p className="text-[11px] text-text-muted/60 dark:text-dark-text-muted/60 line-clamp-1">
-        {result.verse.text.bnText}
+        {translationLang === "bn"
+          ? result.verse.text.bnText
+          : result.verse.text.enText}
       </p>
       <p className="mt-1 text-[11px] font-medium text-secondary dark:text-secondary-light">
         {result.enName} &mdash; Ayah {result.verse.numberInSurah}

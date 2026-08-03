@@ -1,5 +1,6 @@
 import { BiErrorCircle, BiRefresh } from "react-icons/bi";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/i18n";
 
 interface ErrorStateProps {
   message: string;
@@ -7,6 +8,8 @@ interface ErrorStateProps {
 }
 
 export function ErrorState({ message, onRetry }: ErrorStateProps) {
+  const { t } = useLocale();
+
   return (
     <div className="flex flex-col items-center gap-4 card-surface p-8 text-center">
       <BiErrorCircle className="text-4xl text-red-400" />
@@ -18,7 +21,7 @@ export function ErrorState({ message, onRetry }: ErrorStateProps) {
           className="gap-2 rounded-xl px-5 py-2.5 text-sm font-medium"
         >
           <BiRefresh className="text-base" />
-          Try Again
+          {t("error.tryAgain")}
         </Button>
       )}
     </div>

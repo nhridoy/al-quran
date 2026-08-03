@@ -1,5 +1,6 @@
 import { IoCheckmarkCircle } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/i18n";
 
 interface SaveBarProps {
   hasChanges: boolean;
@@ -14,6 +15,8 @@ export default function SaveBar({
   saving,
   onSave,
 }: SaveBarProps) {
+  const { t } = useLocale();
+
   if (!hasChanges) return null;
 
   return (
@@ -23,7 +26,7 @@ export default function SaveBar({
         variant="secondary-ghost"
         className="rounded-xl px-5 py-2 text-sm font-semibold text-white hover:text-text-muted"
       >
-        Discard
+        {t("common.cancel")}
       </Button>
       <Button
         onClick={onSave}
@@ -32,7 +35,7 @@ export default function SaveBar({
         className="rounded-xl px-5 py-2 text-sm font-semibold"
       >
         <IoCheckmarkCircle className="text-base" />
-        {saving ? "Saving..." : "Save"}
+        {saving ? t("settings.saving") : t("common.save")}
       </Button>
     </div>
   );

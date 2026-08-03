@@ -1,0 +1,623 @@
+{
+  "nodes": [
+    {
+      "id": "c_users_hrido_desktop_al_quran_plan_islamic_revamp_md",
+      "label": "PLAN-islamic-revamp.md",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_pure_islamic_app_revamp_plan",
+      "label": "Pure \u2014 Islamic App Revamp Plan",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_brand",
+      "label": "Brand",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L5"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_feature_inventory",
+      "label": "Feature Inventory",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L13"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_already_built_no_change_needed",
+      "label": "\u2705 Already Built (no change needed)",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L15"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_needs_rework_enhancement",
+      "label": "\ud83d\udd27 Needs Rework / Enhancement",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L32"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_new_features",
+      "label": "\ud83c\udd95 New Features",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L42"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_architecture_approach",
+      "label": "Architecture Approach",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L68"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_routes",
+      "label": "Routes",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L70"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_nav_structure",
+      "label": "Nav Structure",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L89"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_data_layer",
+      "label": "Data Layer",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L128"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_detailed_feature_specs",
+      "label": "Detailed Feature Specs",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L149"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_1_homepage_dashboard_rewrite_splash",
+      "label": "1. Homepage Dashboard (rewrite Splash)",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L151"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_2_hijri_calendar_page_hijri_calendar",
+      "label": "2. Hijri Calendar Page (`/hijri-calendar`)",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L204"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_3_fasting_calendar_fasting_calendar",
+      "label": "3. Fasting Calendar (`/fasting-calendar`)",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L223"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_4_worship_daily_log_daily_log",
+      "label": "4. Worship Daily Log (`/daily-log`)",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L231"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_5_prayer_tracker_prayer_tracker",
+      "label": "5. Prayer Tracker (`/prayer-tracker`)",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L252"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_6_zakat_calculator_zakat_calculator",
+      "label": "6. Zakat Calculator (`/zakat-calculator`)",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L261"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_7_quran_reading_progress_quran_progress",
+      "label": "7. Quran Reading Progress (`/quran-progress`)",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L274"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_8_sadaqah_charity_tracker_sadaqah_tracker",
+      "label": "8. Sadaqah/Charity Tracker (`/sadaqah-tracker`)",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L282"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_9_salah_learning_guide_salah_guide",
+      "label": "9. Salah Learning Guide (`/salah-guide`)",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L291"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_10_99_names_memorization_tracker_asma_tracker",
+      "label": "10. 99 Names Memorization Tracker (`/asma-tracker`)",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L300"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_11_knowledge_section_knowledge",
+      "label": "11. Knowledge Section (`/knowledge`)",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L308"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_12_islamic_name_finder_islamic_names",
+      "label": "12. Islamic Name Finder (`/islamic-names`)",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L317"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_13_ramadan_mode_seasonal",
+      "label": "13. Ramadan Mode (Seasonal)",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L326"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_14_bookmarks_wire_up",
+      "label": "14. Bookmarks (wire up)",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L336"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_15_tajweed_color_coded_quran_fix",
+      "label": "15. Tajweed Color-Coded Quran (fix)",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L343"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_16_reading_goals_reminders",
+      "label": "16. Reading Goals & Reminders",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L350"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_17_data_export",
+      "label": "17. Data Export",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L358"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_18_language_expansion_en_bn",
+      "label": "18. Language Expansion (EN + BN)",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L366"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_future_post_v1",
+      "label": "Future (Post v1)",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L377"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_phasing_execution",
+      "label": "Phasing & Execution",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L388"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_phase_1_foundation_homepage_week_1",
+      "label": "Phase 1: Foundation + Homepage (Week 1)",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L390"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_phase_2_calendar_fasting_week_2",
+      "label": "Phase 2: Calendar & Fasting (Week 2)",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L400"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_phase_3_trackers_week_3",
+      "label": "Phase 3: Trackers (Week 3)",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L410"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_phase_4_tools_learning_week_4",
+      "label": "Phase 4: Tools & Learning (Week 4)",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L420"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_phase_5_goals_language_export_week_5",
+      "label": "Phase 5: Goals, Language & Export (Week 5)",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L432"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_key_technical_decisions",
+      "label": "Key Technical Decisions",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L443"
+    },
+    {
+      "id": "al_quran_plan_islamic_revamp_what_does_not_change",
+      "label": "What Does NOT Change",
+      "file_type": "document",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L457"
+    }
+  ],
+  "edges": [
+    {
+      "source": "c_users_hrido_desktop_al_quran_plan_islamic_revamp_md",
+      "target": "al_quran_plan_islamic_revamp_pure_islamic_app_revamp_plan",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_pure_islamic_app_revamp_plan",
+      "target": "al_quran_plan_islamic_revamp_brand",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_pure_islamic_app_revamp_plan",
+      "target": "al_quran_plan_islamic_revamp_feature_inventory",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_feature_inventory",
+      "target": "al_quran_plan_islamic_revamp_already_built_no_change_needed",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_feature_inventory",
+      "target": "al_quran_plan_islamic_revamp_needs_rework_enhancement",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_feature_inventory",
+      "target": "al_quran_plan_islamic_revamp_new_features",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L42",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_pure_islamic_app_revamp_plan",
+      "target": "al_quran_plan_islamic_revamp_architecture_approach",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L68",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_architecture_approach",
+      "target": "al_quran_plan_islamic_revamp_routes",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L70",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_architecture_approach",
+      "target": "al_quran_plan_islamic_revamp_nav_structure",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L89",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_architecture_approach",
+      "target": "al_quran_plan_islamic_revamp_data_layer",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L128",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_pure_islamic_app_revamp_plan",
+      "target": "al_quran_plan_islamic_revamp_detailed_feature_specs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L149",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_detailed_feature_specs",
+      "target": "al_quran_plan_islamic_revamp_1_homepage_dashboard_rewrite_splash",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L151",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_detailed_feature_specs",
+      "target": "al_quran_plan_islamic_revamp_2_hijri_calendar_page_hijri_calendar",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L204",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_detailed_feature_specs",
+      "target": "al_quran_plan_islamic_revamp_3_fasting_calendar_fasting_calendar",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L223",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_detailed_feature_specs",
+      "target": "al_quran_plan_islamic_revamp_4_worship_daily_log_daily_log",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L231",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_detailed_feature_specs",
+      "target": "al_quran_plan_islamic_revamp_5_prayer_tracker_prayer_tracker",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L252",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_detailed_feature_specs",
+      "target": "al_quran_plan_islamic_revamp_6_zakat_calculator_zakat_calculator",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L261",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_detailed_feature_specs",
+      "target": "al_quran_plan_islamic_revamp_7_quran_reading_progress_quran_progress",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L274",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_detailed_feature_specs",
+      "target": "al_quran_plan_islamic_revamp_8_sadaqah_charity_tracker_sadaqah_tracker",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L282",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_detailed_feature_specs",
+      "target": "al_quran_plan_islamic_revamp_9_salah_learning_guide_salah_guide",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L291",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_detailed_feature_specs",
+      "target": "al_quran_plan_islamic_revamp_10_99_names_memorization_tracker_asma_tracker",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L300",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_detailed_feature_specs",
+      "target": "al_quran_plan_islamic_revamp_11_knowledge_section_knowledge",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L308",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_detailed_feature_specs",
+      "target": "al_quran_plan_islamic_revamp_12_islamic_name_finder_islamic_names",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L317",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_detailed_feature_specs",
+      "target": "al_quran_plan_islamic_revamp_13_ramadan_mode_seasonal",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L326",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_detailed_feature_specs",
+      "target": "al_quran_plan_islamic_revamp_14_bookmarks_wire_up",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L336",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_detailed_feature_specs",
+      "target": "al_quran_plan_islamic_revamp_15_tajweed_color_coded_quran_fix",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L343",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_detailed_feature_specs",
+      "target": "al_quran_plan_islamic_revamp_16_reading_goals_reminders",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L350",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_detailed_feature_specs",
+      "target": "al_quran_plan_islamic_revamp_17_data_export",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L358",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_detailed_feature_specs",
+      "target": "al_quran_plan_islamic_revamp_18_language_expansion_en_bn",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L366",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_pure_islamic_app_revamp_plan",
+      "target": "al_quran_plan_islamic_revamp_future_post_v1",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L377",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_pure_islamic_app_revamp_plan",
+      "target": "al_quran_plan_islamic_revamp_phasing_execution",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L388",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_phasing_execution",
+      "target": "al_quran_plan_islamic_revamp_phase_1_foundation_homepage_week_1",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L390",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_phasing_execution",
+      "target": "al_quran_plan_islamic_revamp_phase_2_calendar_fasting_week_2",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L400",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_phasing_execution",
+      "target": "al_quran_plan_islamic_revamp_phase_3_trackers_week_3",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L410",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_phasing_execution",
+      "target": "al_quran_plan_islamic_revamp_phase_4_tools_learning_week_4",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L420",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_phasing_execution",
+      "target": "al_quran_plan_islamic_revamp_phase_5_goals_language_export_week_5",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L432",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_pure_islamic_app_revamp_plan",
+      "target": "al_quran_plan_islamic_revamp_key_technical_decisions",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L443",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_plan_islamic_revamp_pure_islamic_app_revamp_plan",
+      "target": "al_quran_plan_islamic_revamp_what_does_not_change",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "PLAN-islamic-revamp.md",
+      "source_location": "L457",
+      "weight": 1.0
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

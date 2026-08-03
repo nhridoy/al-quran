@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Header } from "@/components/common/Header/Header";
+import LocationGate from "@/components/common/LocationGate/LocationGate";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/i18n";
 import { KAABA_COORDS, QIBLA_SMOOTHING } from "@/lib/const";
 import {
   bearing,
@@ -17,13 +19,8 @@ interface OrientationEvent {
 }
 
 export default function QiblaFinder() {
-  const {
-    lat,
-    lng,
-    loading: geoLoading,
-    error: geoError,
-    request,
-  } = useLocationStore();
+  const { lat, lng } = useLocationStore();
+  const { t } = useLocale();
   const [heading, setHeading] = useState<number | null>(null);
   const [compassSupported, setCompassSupported] = useState<boolean | null>(
     null,
@@ -145,186 +142,167 @@ export default function QiblaFinder() {
 
   return (
     <div className="min-h-screen">
-      <Header head="Qibla Finder" showBack />
+      <Header head={t("qibla.pageTitle")} showBack />
       <div className="mx-4 space-y-6 pb-8 md:mx-6">
         <div className="mb-2">
           <h2 className="text-lg font-bold text-text-primary dark:text-dark-text-primary">
-            Qibla Finder
+            {t("qibla.pageTitle")}
           </h2>
           <p className="text-sm text-text-muted dark:text-dark-text-muted">
-            Find the direction of the Kaaba in Makkah
+            {t("qibla.subtitle")}
           </p>
         </div>
 
-        {!hasCoords && geoLoading && (
-          <div className="flex flex-col items-center gap-3 py-10">
-            <div className="h-8 w-8 animate-spin rounded-full border-4 border-border border-t-secondary" />
-            <p className="text-sm text-text-muted">
-              Detecting your location...
-            </p>
-          </div>
-        )}
+        <LocationGate>
+          {!permissionRequested && deviceOrientationWithPermission() && (
+            <div className="flex flex-col items-center gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-center dark:border-amber-900/30 dark:bg-amber-950/20">
+              <p className="text-sm text-amber-800 dark:text-amber-300">
+                {t("qibla.compassRequired")}
+              </p>
+              <Button
+                onClick={startCompass}
+                variant="secondary-ghost"
+                className="rounded-lg bg-amber-600 px-4 py-1.5 text-xs font-semibold text-white"
+              >
+                {t("qibla.enableCompass")}
+              </Button>
+            </div>
+          )}
 
-        {geoError && (
-          <div className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-surface p-6 text-center dark:border-dark-border dark:bg-dark-surface-card">
-            <p className="text-sm text-text-muted">
-              {geoError}. Location is required.
-            </p>
-            <Button
-              onClick={request}
-              variant="gradient"
-              className="rounded-xl px-5 py-2 text-sm font-semibold"
-            >
-              Try Again
-            </Button>
-          </div>
-        )}
-
-        {hasCoords && (
-          <>
-            {!permissionRequested && deviceOrientationWithPermission() && (
-              <div className="flex flex-col items-center gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-center dark:border-amber-900/30 dark:bg-amber-950/20">
-                <p className="text-sm text-amber-800 dark:text-amber-300">
-                  Compass sensor access is required to point towards the Qibla.
-                </p>
-                <Button
-                  onClick={startCompass}
-                  variant="secondary-ghost"
-                  className="rounded-lg bg-amber-600 px-4 py-1.5 text-xs font-semibold text-white"
-                >
-                  Enable Compass
-                </Button>
+          <div className="flex flex-col items-center gap-4">
+            {/* Compass Frame Container */}
+            <div className="relative flex h-64 w-64 items-center justify-center overflow-hidden rounded-full border border-border/40 bg-surface-alt shadow-inner dark:border-dark-border/40 dark:bg-dark-surface-alt">
+              {/* 1. ROTATING DIAL COMPASS (N E S W) */}
+              <div
+                className="absolute inset-0 flex items-center justify-center transition-transform duration-150 ease-out will-change-transform"
+                style={{ transform: `rotate(${dialRotation}deg)` }}
+              >
+                <div className="absolute inset-4 rounded-full border border-dashed border-border/60 dark:border-dark-border/40" />
+                <span className="absolute top-3 text-xs font-black tracking-wider text-red-500">
+                  {t("qibla.north")}
+                </span>
+                <span className="absolute right-3 text-xs font-bold text-text-primary dark:text-dark-text-primary">
+                  {t("qibla.east")}
+                </span>
+                <span className="absolute bottom-3 text-xs font-bold text-text-primary dark:text-dark-text-primary">
+                  {t("qibla.south")}
+                </span>
+                <span className="absolute left-3 text-xs font-bold text-text-primary dark:text-dark-text-primary">
+                  {t("qibla.west")}
+                </span>
               </div>
-            )}
 
-            <div className="flex flex-col items-center gap-4">
-              {/* Compass Frame Container */}
-              <div className="relative flex h-64 w-64 items-center justify-center overflow-hidden rounded-full border border-border/40 bg-surface-alt shadow-inner dark:border-dark-border/40 dark:bg-dark-surface-alt">
-                {/* 1. ROTATING DIAL COMPASS (N E S W) */}
-                <div
-                  className="absolute inset-0 flex items-center justify-center transition-transform duration-150 ease-out will-change-transform"
-                  style={{ transform: `rotate(${dialRotation}deg)` }}
-                >
-                  <div className="absolute inset-4 rounded-full border border-dashed border-border/60 dark:border-dark-border/40" />
-                  <span className="absolute top-3 text-xs font-black tracking-wider text-red-500">
-                    N
-                  </span>
-                  <span className="absolute right-3 text-xs font-bold text-text-primary dark:text-dark-text-primary">
-                    E
-                  </span>
-                  <span className="absolute bottom-3 text-xs font-bold text-text-primary dark:text-dark-text-primary">
-                    S
-                  </span>
-                  <span className="absolute left-3 text-xs font-bold text-text-primary dark:text-dark-text-primary">
-                    W
-                  </span>
+              {/* 2. STATIONARY LABELS (Center Text Indicator) */}
+              <div className="absolute inset-20 z-30 flex items-center justify-center rounded-full border border-border/30 bg-surface shadow-md dark:border-dark-border/30 dark:bg-dark-surface-card">
+                <div className="text-center">
+                  <p className="text-lg font-black tracking-tight text-text-primary dark:text-dark-text-primary">
+                    {qiblaDirection.toFixed(0)}&deg;
+                  </p>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-text-muted">
+                    {toCompassDirection(qiblaDirection)}
+                  </p>
                 </div>
+              </div>
 
-                {/* 2. STATIONARY LABELS (Center Text Indicator) */}
-                <div className="absolute inset-20 z-30 flex items-center justify-center rounded-full border border-border/30 bg-surface shadow-md dark:border-dark-border/30 dark:bg-dark-surface-card">
-                  <div className="text-center">
-                    <p className="text-lg font-black tracking-tight text-text-primary dark:text-dark-text-primary">
-                      {qiblaDirection.toFixed(0)}&deg;
-                    </p>
-                    <p className="text-[10px] font-bold uppercase tracking-wider text-text-muted">
-                      {toCompassDirection(qiblaDirection)}
-                    </p>
-                  </div>
-                </div>
-
-                {/* 3. IMPROVED ROTATING QIBLA NEEDLE */}
-                <div
-                  className="absolute z-20 flex h-full w-full items-center justify-center transition-transform duration-150 ease-out will-change-transform"
-                  style={{ transform: `rotate(${needleRotation}deg)` }}
-                >
-                  <div className="relative flex h-[82%] w-6 items-center justify-center">
-                    {/* Upper Qibla Pointer (3D Diamond/Arrowhead) */}
-                    <div className="absolute top-0 bottom-1/2 left-0 right-0 flex flex-col items-center justify-end">
-                      <div
-                        className={`w-0 h-0 border-l-10 border-r-10 border-b-85 border-l-transparent border-r-transparent transition-all duration-300 drop-shadow-md
+              {/* 3. IMPROVED ROTATING QIBLA NEEDLE */}
+              <div
+                className="absolute z-20 flex h-full w-full items-center justify-center transition-transform duration-150 ease-out will-change-transform"
+                style={{ transform: `rotate(${needleRotation}deg)` }}
+              >
+                <div className="relative flex h-[82%] w-6 items-center justify-center">
+                  {/* Upper Qibla Pointer (3D Diamond/Arrowhead) */}
+                  <div className="absolute top-0 bottom-1/2 left-0 right-0 flex flex-col items-center justify-end">
+                    <div
+                      className={`w-0 h-0 border-l-10 border-r-10 border-b-85 border-l-transparent border-r-transparent transition-all duration-300 drop-shadow-md
                           ${
                             isFacingQibla
                               ? "border-b-green-500 animate-pulse drop-shadow-[0_0_8px_rgba(34,197,94,0.6)]"
                               : "border-b-secondary"
                           }`}
-                      />
-                    </div>
-
-                    {/* Lower Trailing Needle */}
-                    <div className="absolute top-1/2 bottom-0 left-0 right-0 flex flex-col items-center justify-start">
-                      <div className="w-0 h-0 border-l-[6px] border-r-[6px] border-t-55 border-l-transparent border-r-transparent border-t-text-muted/20 dark:border-t-dark-text-muted/20" />
-                    </div>
-
-                    {/* Center Pivot Pin Ring */}
-                    <div className="absolute z-10 h-3 w-3 rounded-full border border-white/20 bg-text-primary shadow-xs dark:bg-dark-text-primary" />
+                    />
                   </div>
-                </div>
-              </div>
 
-              {/* Status Indicator Bar */}
-              <div
-                className={`rounded-xl px-4 py-2 text-center text-sm font-semibold tracking-wide transition-colors ${
-                  isFacingQibla
-                    ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
-                    : sensorTimeout
-                      ? "bg-red-50 text-red-700 dark:bg-red-950/20 dark:text-red-400"
-                      : "bg-surface-alt text-text-muted dark:bg-dark-surface-alt"
-                }`}
-              >
-                {isFacingQibla
-                  ? "✓ Facing Qibla!"
-                  : heading !== null
-                    ? `Turn ${Math.abs(angularDiff).toFixed(0)}° ${angularDiff > 0 ? "Right" : "Left"}`
-                    : sensorTimeout
-                      ? "⚠ Compass sensor not detected"
-                      : "Calibrating Compass Sensor..."}
+                  {/* Lower Trailing Needle */}
+                  <div className="absolute top-1/2 bottom-0 left-0 right-0 flex flex-col items-center justify-start">
+                    <div className="w-0 h-0 border-l-[6px] border-r-[6px] border-t-55 border-l-transparent border-r-transparent border-t-text-muted/20 dark:border-t-dark-text-muted/20" />
+                  </div>
+
+                  {/* Center Pivot Pin Ring */}
+                  <div className="absolute z-10 h-3 w-3 rounded-full border border-white/20 bg-text-primary shadow-xs dark:bg-dark-text-primary" />
+                </div>
               </div>
             </div>
 
-            {/* Bottom Metadata Panel */}
-            <div className="card-surface">
-              <div className="divide-y divide-border dark:divide-dark-border">
-                <div className="flex items-center justify-between p-4">
-                  <span className="text-sm text-text-muted">
-                    Your Coordinates
-                  </span>
-                  <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
-                    {lat.toFixed(4)}&deg;N, {lng.toFixed(4)}&deg;E
-                  </span>
-                </div>
-                <div className="flex items-center justify-between p-4">
-                  <span className="text-sm text-text-muted">
-                    Qibla Direction
-                  </span>
-                  <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
-                    {qiblaDirection.toFixed(1)}&deg;{" "}
-                    {toCompassDirection(qiblaDirection)}
-                  </span>
-                </div>
-                <div className="flex items-center justify-between p-4">
-                  <span className="text-sm text-text-muted">
-                    Distance to Kaaba
-                  </span>
-                  <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
-                    ~{distanceToKaaba.toFixed(0)} km
-                  </span>
-                </div>
-                <div className="flex items-center justify-between p-4">
-                  <span className="text-sm text-text-muted">
-                    Current Device Heading
-                  </span>
-                  <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
-                    {compassSupported === false || sensorTimeout
-                      ? "Sensor not found / unavailable"
-                      : heading === null
-                        ? "Calibrating..."
-                        : `${heading.toFixed(1)}°`}
-                  </span>
-                </div>
+            {/* Status Indicator Bar */}
+            <div
+              className={`rounded-xl px-4 py-2 text-center text-sm font-semibold tracking-wide transition-colors ${
+                isFacingQibla
+                  ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
+                  : sensorTimeout
+                    ? "bg-red-50 text-red-700 dark:bg-red-950/20 dark:text-red-400"
+                    : "bg-surface-alt text-text-muted dark:bg-dark-surface-alt"
+              }`}
+            >
+              {isFacingQibla
+                ? t("qibla.facing")
+                : heading !== null
+                  ? angularDiff > 0
+                    ? t("qibla.turnRight", {
+                        n: Math.abs(angularDiff).toFixed(0),
+                      })
+                    : t("qibla.turnLeft", {
+                        n: Math.abs(angularDiff).toFixed(0),
+                      })
+                  : sensorTimeout
+                    ? t("qibla.noSensor")
+                    : t("qibla.calibrating")}
+            </div>
+          </div>
+
+          {/* Bottom Metadata Panel */}
+          <div className="card-surface">
+            <div className="divide-y divide-border dark:divide-dark-border">
+              <div className="flex items-center justify-between p-4">
+                <span className="text-sm text-text-muted">
+                  {t("qibla.coordinates")}
+                </span>
+                <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
+                  {lat == null ? "—" : `${lat.toFixed(4)}°N`},{" "}
+                  {lng == null ? "—" : `${lng.toFixed(4)}°E`}
+                </span>
+              </div>
+              <div className="flex items-center justify-between p-4">
+                <span className="text-sm text-text-muted">
+                  {t("qibla.direction")}
+                </span>
+                <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
+                  {qiblaDirection.toFixed(1)}&deg;{" "}
+                  {toCompassDirection(qiblaDirection)}
+                </span>
+              </div>
+              <div className="flex items-center justify-between p-4">
+                <span className="text-sm text-text-muted">
+                  {t("qibla.distance")}
+                </span>
+                <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
+                  {t("qibla.km", { n: distanceToKaaba.toFixed(0) })}
+                </span>
+              </div>
+              <div className="flex items-center justify-between p-4">
+                <span className="text-sm text-text-muted">
+                  {t("qibla.heading")}
+                </span>
+                <span className="text-sm font-medium text-text-primary dark:text-dark-text-primary">
+                  {compassSupported === false || sensorTimeout
+                    ? t("qibla.sensorUnavailable")
+                    : heading === null
+                      ? t("qibla.calibratingShort")
+                      : `${heading.toFixed(1)}°`}
+                </span>
               </div>
             </div>
-          </>
-        )}
+          </div>
+        </LocationGate>
       </div>
     </div>
   );

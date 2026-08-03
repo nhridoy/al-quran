@@ -1,0 +1,143 @@
+{
+  "nodes": [
+    {
+      "id": "c_users_hrido_desktop_al_quran_agents_skills_shadcn_rules_forms_md",
+      "label": "forms.md",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/rules/forms.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "rules_forms_forms_inputs",
+      "label": "Forms & Inputs",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/rules/forms.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "rules_forms_contents",
+      "label": "Contents",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/rules/forms.md",
+      "source_location": "L3"
+    },
+    {
+      "id": "rules_forms_forms_use_fieldgroup_field",
+      "label": "Forms use FieldGroup + Field",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/rules/forms.md",
+      "source_location": "L14"
+    },
+    {
+      "id": "rules_forms_inputgroup_requires_inputgroupinput_inputgrouptextarea",
+      "label": "InputGroup requires InputGroupInput/InputGroupTextarea",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/rules/forms.md",
+      "source_location": "L47"
+    },
+    {
+      "id": "rules_forms_buttons_inside_inputs_use_inputgroup_inputgroupaddon",
+      "label": "Buttons inside inputs use InputGroup + InputGroupAddon",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/rules/forms.md",
+      "source_location": "L71"
+    },
+    {
+      "id": "rules_forms_option_sets_2_7_choices_use_togglegroup",
+      "label": "Option sets (2\u20137 choices) use ToggleGroup",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/rules/forms.md",
+      "source_location": "L103"
+    },
+    {
+      "id": "rules_forms_fieldset_fieldlegend_for_grouping_related_fields",
+      "label": "FieldSet + FieldLegend for grouping related fields",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/rules/forms.md",
+      "source_location": "L154"
+    },
+    {
+      "id": "rules_forms_field_validation_and_disabled_states",
+      "label": "Field validation and disabled states",
+      "file_type": "document",
+      "source_file": ".agents/skills/shadcn/rules/forms.md",
+      "source_location": "L173"
+    }
+  ],
+  "edges": [
+    {
+      "source": "c_users_hrido_desktop_al_quran_agents_skills_shadcn_rules_forms_md",
+      "target": "rules_forms_forms_inputs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/rules/forms.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "rules_forms_forms_inputs",
+      "target": "rules_forms_contents",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/rules/forms.md",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "rules_forms_forms_inputs",
+      "target": "rules_forms_forms_use_fieldgroup_field",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/rules/forms.md",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "rules_forms_forms_inputs",
+      "target": "rules_forms_inputgroup_requires_inputgroupinput_inputgrouptextarea",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/rules/forms.md",
+      "source_location": "L47",
+      "weight": 1.0
+    },
+    {
+      "source": "rules_forms_forms_inputs",
+      "target": "rules_forms_buttons_inside_inputs_use_inputgroup_inputgroupaddon",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/rules/forms.md",
+      "source_location": "L71",
+      "weight": 1.0
+    },
+    {
+      "source": "rules_forms_forms_inputs",
+      "target": "rules_forms_option_sets_2_7_choices_use_togglegroup",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/rules/forms.md",
+      "source_location": "L103",
+      "weight": 1.0
+    },
+    {
+      "source": "rules_forms_forms_inputs",
+      "target": "rules_forms_fieldset_fieldlegend_for_grouping_related_fields",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/rules/forms.md",
+      "source_location": "L154",
+      "weight": 1.0
+    },
+    {
+      "source": "rules_forms_forms_inputs",
+      "target": "rules_forms_field_validation_and_disabled_states",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/shadcn/rules/forms.md",
+      "source_location": "L173",
+      "weight": 1.0
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

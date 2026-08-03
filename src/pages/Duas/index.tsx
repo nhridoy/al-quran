@@ -2,7 +2,9 @@ import { useMemo, useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { PageShell } from "@/components/common/PageShell/PageShell";
+import { Input } from "@/components/ui/input";
 import duas from "@/data/duas.json";
+import { useLocale } from "@/i18n";
 
 const categories = [...new Set(duas.map((d) => d.category))] as string[];
 
@@ -38,6 +40,7 @@ const categoryIcons: Record<string, string> = {
 };
 
 export default function Duas() {
+  const { t } = useLocale();
   const [search, setSearch] = useState("");
 
   const filtered = useMemo(() => {
@@ -57,19 +60,18 @@ export default function Duas() {
 
   return (
     <PageShell
-      head="Duas"
+      head={t("duas.pageTitle")}
       showBack
-      title="Duas & Supplications"
-      description="Daily prayers from Quran and Sunnah"
+      title={t("duas.headerTitle")}
+      description={t("duas.headerSubtitle")}
     >
       <div className="relative">
         <BiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-base text-text-muted" />
-        <input
-          type="text"
-          placeholder="Search duas..."
+        <Input
+          placeholder={t("duas.searchPlaceholder")}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full rounded-xl border border-border bg-surface-alt py-2.5 pl-9 pr-4 text-sm text-text-primary outline-none transition-colors placeholder:text-text-muted focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
+          className="pl-9"
         />
       </div>
 
@@ -87,7 +89,7 @@ export default function Duas() {
                 {cat}
               </span>
               <span className="text-xs text-text-muted">
-                {count} dua{count === 1 ? "" : "s"}
+                {t("duas.duaCount", { n: count })}
               </span>
             </Link>
           );

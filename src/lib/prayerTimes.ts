@@ -4,12 +4,12 @@ import {
   type CalculationParameters,
   Coordinates,
   Madhab,
+  SunnahTimes,
 } from "adhan";
 
 export interface PrayerEntry {
   key: string;
   name: string;
-  nameBn: string;
   time: Date;
   icon: string;
 }
@@ -17,15 +17,14 @@ export interface PrayerEntry {
 export const PRAYER_NAMES: {
   key: "fajr" | "sunrise" | "dhuhr" | "asr" | "maghrib" | "isha";
   name: string;
-  nameBn: string;
   icon: string;
 }[] = [
-  { key: "fajr", name: "Fajr", nameBn: "ফজর", icon: "🌅" },
-  { key: "sunrise", name: "Sunrise", nameBn: "সূর্যোদয়", icon: "🌄" },
-  { key: "dhuhr", name: "Dhuhr", nameBn: "যোহর", icon: "☀️" },
-  { key: "asr", name: "Asr", nameBn: "আসর", icon: "🌤️" },
-  { key: "maghrib", name: "Maghrib", nameBn: "মাগরিব", icon: "🌇" },
-  { key: "isha", name: "Isha", nameBn: "ইশা", icon: "🌙" },
+  { key: "fajr", name: "prayerNames.fajr", icon: "🌅" },
+  { key: "sunrise", name: "prayerNames.sunrise", icon: "🌄" },
+  { key: "dhuhr", name: "prayerNames.dhuhr", icon: "☀️" },
+  { key: "asr", name: "prayerNames.asr", icon: "🌤️" },
+  { key: "maghrib", name: "prayerNames.maghrib", icon: "🌇" },
+  { key: "isha", name: "prayerNames.isha", icon: "🌙" },
 ];
 
 // Registry of calculation method factories.
@@ -112,11 +111,41 @@ export function findNextPrayer(
 export function findCurrentPrayer(
   prayers: PrayerEntry[],
   now: Date,
+  windowEndMap?: Map<string, Date | null>,
 ): PrayerEntry | null {
   if (prayers.length === 0) return null;
   let current = prayers[0];
   for (const p of prayers) {
-    if (p.time <= now) current = p;
+    if (p.time <= now) {
+      const end = windowEndMap?.get(p.key) ?? null;
+      if (end && now > end) continue;
+      current = p;
+    }
   }
   return current;
+}
+
+export function buildPrayerWindowMap(
+  prayers: PrayerEntry[],
+  times: AdhanPrayerTimes,
+): Map<string, Date | null> {
+  const map = new Map<string, Date | null>();
+  if (prayers.length === 0 || !times) return map;
+  const sunnah = new SunnahTimes(times);
+  for (let i = 0; i < prayers.length; i++) {
+    const p = prayers[i];
+    if (p.key === "fajr") {
+      map.set(p.key, times.sunrise);
+    } else if (p.key === "isha") {
+      map.set(p.key, sunnah.middleOfTheNight);
+    } else {
+      const next = prayers[i + 1];
+      map.set(p.key, next?.time ?? null);
+    }
+  }
+  return map;
+}
+
+export function getTahajjudTime(times: AdhanPrayerTimes): Date {
+  return new SunnahTimes(times).lastThirdOfTheNight;
 }

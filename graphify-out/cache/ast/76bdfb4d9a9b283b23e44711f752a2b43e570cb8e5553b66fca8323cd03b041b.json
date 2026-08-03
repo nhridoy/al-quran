@@ -1,0 +1,447 @@
+{
+  "nodes": [
+    {
+      "id": "c_users_hrido_desktop_al_quran_solid_refactor_md",
+      "label": "SOLID-REFACTOR.md",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "al_quran_solid_refactor_solid_principles_refactor_plan",
+      "label": "SOLID Principles \u2014 Refactor Plan",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "al_quran_solid_refactor_s_single_responsibility_principle",
+      "label": "S \u2014 Single Responsibility Principle",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L8"
+    },
+    {
+      "id": "al_quran_solid_refactor_violation_1_ayah_tsx_god_component",
+      "label": "Violation #1: `Ayah.tsx` \u2014 God component",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L12"
+    },
+    {
+      "id": "al_quran_solid_refactor_violation_2_audioplayercontext_tsx_monolithic_orchestrator",
+      "label": "Violation #2: `AudioPlayerContext.tsx` \u2014 Monolithic orchestrator",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L18"
+    },
+    {
+      "id": "al_quran_solid_refactor_violation_3_settings_tsx_page_does_too_much",
+      "label": "Violation #3: `Settings.tsx` \u2014 Page does too much",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L24"
+    },
+    {
+      "id": "al_quran_solid_refactor_violation_4_db_ts_data_access_monolith",
+      "label": "Violation #4: `db.ts` \u2014 Data access monolith",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L30"
+    },
+    {
+      "id": "al_quran_solid_refactor_violation_5_search_tsx_ui_search_algorithm",
+      "label": "Violation #5: `Search.tsx` \u2014 UI + search algorithm",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L36"
+    },
+    {
+      "id": "al_quran_solid_refactor_o_open_closed_principle",
+      "label": "O \u2014 Open/Closed Principle",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L44"
+    },
+    {
+      "id": "al_quran_solid_refactor_violation_1_prayertimes_ts_switch_statement",
+      "label": "Violation #1: `prayerTimes.ts` switch statement",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L48"
+    },
+    {
+      "id": "al_quran_solid_refactor_violation_2_duplicated_nav_arrays",
+      "label": "Violation #2: Duplicated nav arrays",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L54"
+    },
+    {
+      "id": "al_quran_solid_refactor_violation_3_all_routes_in_app_tsx",
+      "label": "Violation #3: All routes in `App.tsx`",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L60"
+    },
+    {
+      "id": "al_quran_solid_refactor_violation_4_cyclerepeat_state_machine",
+      "label": "Violation #4: `cycleRepeat` state machine",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L66"
+    },
+    {
+      "id": "al_quran_solid_refactor_l_liskov_substitution_principle",
+      "label": "L \u2014 Liskov Substitution Principle",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L74"
+    },
+    {
+      "id": "al_quran_solid_refactor_violation_1_incompatible_desktop_mobile_player_props",
+      "label": "Violation #1: Incompatible Desktop/Mobile player props",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L78"
+    },
+    {
+      "id": "al_quran_solid_refactor_i_interface_segregation_principle",
+      "label": "I \u2014 Interface Segregation Principle",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L86"
+    },
+    {
+      "id": "al_quran_solid_refactor_violation_1_appsettings_fat_interface",
+      "label": "Violation #1: `AppSettings` fat interface",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L90"
+    },
+    {
+      "id": "al_quran_solid_refactor_violation_2_audioplayerstate_9_field_interface",
+      "label": "Violation #2: `AudioPlayerState` 9-field interface",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L96"
+    },
+    {
+      "id": "al_quran_solid_refactor_violation_3_bookmark_11_field_interface",
+      "label": "Violation #3: `Bookmark` 11-field interface",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L102"
+    },
+    {
+      "id": "al_quran_solid_refactor_d_dependency_inversion_principle",
+      "label": "D \u2014 Dependency Inversion Principle",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L110"
+    },
+    {
+      "id": "al_quran_solid_refactor_violation_1_hardcoded_fetch_in_data_layer",
+      "label": "Violation #1: Hardcoded `fetch()` in data layer",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L114"
+    },
+    {
+      "id": "al_quran_solid_refactor_violation_2_hardcoded_new_audio_in_audio_player",
+      "label": "Violation #2: Hardcoded `new Audio()` in audio player",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L120"
+    },
+    {
+      "id": "al_quran_solid_refactor_violation_3_hardcoded_cache_storage_api",
+      "label": "Violation #3: Hardcoded Cache Storage API",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L126"
+    },
+    {
+      "id": "al_quran_solid_refactor_violation_4_direct_adhan_dependency_in_prayer_times",
+      "label": "Violation #4: Direct `adhan` dependency in prayer times",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L132"
+    },
+    {
+      "id": "al_quran_solid_refactor_violation_5_orchestration_logic_in_settings_tsx",
+      "label": "Violation #5: Orchestration logic in `Settings.tsx`",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L138"
+    },
+    {
+      "id": "al_quran_solid_refactor_implementation_order_recommended",
+      "label": "Implementation Order (Recommended)",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L146"
+    },
+    {
+      "id": "al_quran_solid_refactor_note",
+      "label": "Note:",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L167"
+    },
+    {
+      "id": "al_quran_solid_refactor_verification",
+      "label": "Verification",
+      "file_type": "document",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L170"
+    }
+  ],
+  "edges": [
+    {
+      "source": "c_users_hrido_desktop_al_quran_solid_refactor_md",
+      "target": "al_quran_solid_refactor_solid_principles_refactor_plan",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_solid_principles_refactor_plan",
+      "target": "al_quran_solid_refactor_s_single_responsibility_principle",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_s_single_responsibility_principle",
+      "target": "al_quran_solid_refactor_violation_1_ayah_tsx_god_component",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_s_single_responsibility_principle",
+      "target": "al_quran_solid_refactor_violation_2_audioplayercontext_tsx_monolithic_orchestrator",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_s_single_responsibility_principle",
+      "target": "al_quran_solid_refactor_violation_3_settings_tsx_page_does_too_much",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_s_single_responsibility_principle",
+      "target": "al_quran_solid_refactor_violation_4_db_ts_data_access_monolith",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_s_single_responsibility_principle",
+      "target": "al_quran_solid_refactor_violation_5_search_tsx_ui_search_algorithm",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_solid_principles_refactor_plan",
+      "target": "al_quran_solid_refactor_o_open_closed_principle",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L44",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_o_open_closed_principle",
+      "target": "al_quran_solid_refactor_violation_1_prayertimes_ts_switch_statement",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L48",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_o_open_closed_principle",
+      "target": "al_quran_solid_refactor_violation_2_duplicated_nav_arrays",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L54",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_o_open_closed_principle",
+      "target": "al_quran_solid_refactor_violation_3_all_routes_in_app_tsx",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L60",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_o_open_closed_principle",
+      "target": "al_quran_solid_refactor_violation_4_cyclerepeat_state_machine",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_solid_principles_refactor_plan",
+      "target": "al_quran_solid_refactor_l_liskov_substitution_principle",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L74",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_l_liskov_substitution_principle",
+      "target": "al_quran_solid_refactor_violation_1_incompatible_desktop_mobile_player_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L78",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_solid_principles_refactor_plan",
+      "target": "al_quran_solid_refactor_i_interface_segregation_principle",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L86",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_i_interface_segregation_principle",
+      "target": "al_quran_solid_refactor_violation_1_appsettings_fat_interface",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L90",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_i_interface_segregation_principle",
+      "target": "al_quran_solid_refactor_violation_2_audioplayerstate_9_field_interface",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L96",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_i_interface_segregation_principle",
+      "target": "al_quran_solid_refactor_violation_3_bookmark_11_field_interface",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L102",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_solid_principles_refactor_plan",
+      "target": "al_quran_solid_refactor_d_dependency_inversion_principle",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L110",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_d_dependency_inversion_principle",
+      "target": "al_quran_solid_refactor_violation_1_hardcoded_fetch_in_data_layer",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L114",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_d_dependency_inversion_principle",
+      "target": "al_quran_solid_refactor_violation_2_hardcoded_new_audio_in_audio_player",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L120",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_d_dependency_inversion_principle",
+      "target": "al_quran_solid_refactor_violation_3_hardcoded_cache_storage_api",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L126",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_d_dependency_inversion_principle",
+      "target": "al_quran_solid_refactor_violation_4_direct_adhan_dependency_in_prayer_times",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L132",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_d_dependency_inversion_principle",
+      "target": "al_quran_solid_refactor_violation_5_orchestration_logic_in_settings_tsx",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L138",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_solid_principles_refactor_plan",
+      "target": "al_quran_solid_refactor_implementation_order_recommended",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L146",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_solid_principles_refactor_plan",
+      "target": "al_quran_solid_refactor_note",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L167",
+      "weight": 1.0
+    },
+    {
+      "source": "al_quran_solid_refactor_solid_principles_refactor_plan",
+      "target": "al_quran_solid_refactor_verification",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOLID-REFACTOR.md",
+      "source_location": "L170",
+      "weight": 1.0
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

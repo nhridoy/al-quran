@@ -1,0 +1,12 @@
+{
+  "nodes": [
+    {
+      "id": "c_users_hrido_desktop_al_quran_src_data_duas_json",
+      "label": "duas.json",
+      "file_type": "code",
+      "source_file": "src/data/duas.json",
+      "source_location": "L1"
+    }
+  ],
+  "edges": []
+}

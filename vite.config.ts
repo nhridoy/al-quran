@@ -20,9 +20,9 @@ export default defineConfig({
       //   enabled: true,
       // },
       manifest: {
-        name: "Al Quran",
-        short_name: "Al Quran",
-        description: "Read the Holy Quran with translations and audio",
+        name: "Pure",
+        short_name: "Pure",
+        description: "Your daily companion for faith & reflection",
         theme_color: "#9345F2",
         background_color: "#9345F2",
         display: "standalone",

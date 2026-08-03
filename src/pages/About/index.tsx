@@ -7,13 +7,15 @@ import { BsInfoCircle } from "react-icons/bs";
 import { GoDotFill } from "react-icons/go";
 import { IoLogoFacebook, IoLogoWhatsapp } from "react-icons/io5";
 import { PageShell } from "@/components/common/PageShell/PageShell";
+import { useLocale } from "@/i18n";
 
 const About: React.FC = () => {
+  const { t } = useLocale();
   return (
     <PageShell
-      head="About"
-      title="About Us"
-      description="Learn more about the team behind Al Quran"
+      head={t("about.pageTitle")}
+      title={t("about.title")}
+      description={t("about.description")}
     >
       <div className="card-surface">
         <div className="flex items-center gap-3 border-b border-border p-4 dark:border-dark-border">
@@ -22,7 +24,7 @@ const About: React.FC = () => {
           </div>
           <div>
             <h3 className="text-sm font-semibold text-text-primary dark:text-dark-text-primary">
-              Contact Us
+              {t("about.contactUs")}
             </h3>
           </div>
         </div>
@@ -81,18 +83,18 @@ const About: React.FC = () => {
           </div>
           <div>
             <h3 className="text-sm font-semibold text-text-primary dark:text-dark-text-primary">
-              Binary Software Solution
+              {t("about.binarySoftwareSolution")}
             </h3>
             <p className="text-xs text-text-muted dark:text-dark-text-muted">
-              We are a team of software developers and designers
+              {t("about.teamDesc")}
             </p>
           </div>
         </div>
         <div className="space-y-2 p-4">
           <address className="space-y-1 text-sm text-text-secondary not-italic dark:text-dark-text-secondary">
-            <p>Dhaka, Bangladesh</p>
-            <p>+8801768098882</p>
-            <p>nahidujjamanhridoy@gmail.com</p>
+            <p>{t("about.addressDhaka")}</p>
+            <p>{t("about.phone")}</p>
+            <p>{t("about.email")}</p>
           </address>
         </div>
       </div>
@@ -106,30 +108,30 @@ const About: React.FC = () => {
           </div>
           <div>
             <h3 className="text-sm font-semibold text-text-primary dark:text-dark-text-primary">
-              What We Do
+              {t("about.whatWeDo")}
             </h3>
           </div>
         </div>
         <div className="space-y-2 p-4">
           {[
-            "We are a team of software developers and designers.",
-            "We develop web and mobile applications.",
-            "We have years of experience in developing web and mobile applications.",
-            "We use latest technologies to develop web and mobile applications.",
-          ].map((item) => (
+            "about.bullet1",
+            "about.bullet2",
+            "about.bullet3",
+            "about.bullet4",
+          ].map((key) => (
             <div
-              key={item}
+              key={key}
               className="flex items-start gap-2 text-sm text-text-secondary dark:text-dark-text-secondary"
             >
               <GoDotFill className="mt-0.5 shrink-0 text-xs text-primary dark:text-secondary-light" />
-              <span>{item}</span>
+              <span>{t(key)}</span>
             </div>
           ))}
         </div>
       </div>
 
       <div className="rounded-2xl bg-linear-to-br from-primary/5 to-secondary/5 p-4 text-center text-sm font-medium text-text-muted dark:from-primary/10 dark:to-secondary/10 dark:text-dark-text-muted">
-        www.binarytech.com
+        {t("about.website")}
       </div>
     </PageShell>
   );

@@ -1,11 +1,13 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import ParaItem from "@/components/quran/ParaItem/ParaItem";
+import { useLocale } from "@/i18n";
 
 export default function Paras() {
+  const { t } = useLocale();
   useEffect(() => {
-    document.title = "Al Quran - Para List";
-  }, []);
+    document.title = t("para.pageTitle");
+  }, [t]);
 
   return (
     <div>

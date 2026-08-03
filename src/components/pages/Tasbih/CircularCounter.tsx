@@ -1,3 +1,5 @@
+import { useLocale } from "@/i18n";
+
 interface CircularCounterProps {
   progress: number;
 }
@@ -43,6 +45,7 @@ export function CounterContent({
   count: number;
   target: number;
 }) {
+  const { t } = useLocale();
   return (
     <div className="flex flex-col items-center">
       <p className="font-arabic text-3xl leading-relaxed text-text-primary dark:text-dark-text-primary">
@@ -51,10 +54,12 @@ export function CounterContent({
       <p className="mt-2 text-5xl font-bold text-primary dark:text-secondary-light">
         {count}
       </p>
-      <p className="mt-1 text-sm text-text-muted">/ {target}</p>
+      <p className="mt-1 text-sm text-text-muted">
+        {t("tasbih.ofTarget", { n: target })}
+      </p>
       {count >= target && count > 0 && (
         <p className="mt-2 rounded-full bg-success/10 px-3 py-0.5 text-xs font-medium text-success">
-          Completed
+          {t("tasbih.completed")}
         </p>
       )}
     </div>

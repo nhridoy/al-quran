@@ -1,0 +1,802 @@
+[
+  {
+    "id": 1,
+    "name": "Muhammad",
+    "arabic": "مُحَمَّد",
+    "gender": "boy",
+    "meaning": "Praiseworthy, the name of the final Prophet",
+    "origin": "Arabic"
+  },
+  {
+    "id": 2,
+    "name": "Ahmad",
+    "arabic": "أَحْمَد",
+    "gender": "boy",
+    "meaning": "Most praiseworthy, another name of the Prophet",
+    "origin": "Arabic"
+  },
+  {
+    "id": 3,
+    "name": "Abdullah",
+    "arabic": "عَبْدُ اللَّهِ",
+    "gender": "boy",
+    "meaning": "Servant of Allah",
+    "origin": "Arabic"
+  },
+  {
+    "id": 4,
+    "name": "Ibrahim",
+    "arabic": "إِبْرَاهِيم",
+    "gender": "boy",
+    "meaning": "Father of many, Prophet Abraham",
+    "origin": "Arabic/Hebrew"
+  },
+  {
+    "id": 5,
+    "name": "Ismail",
+    "arabic": "إِسْمَاعِيل",
+    "gender": "boy",
+    "meaning": "God hears, Prophet Ishmael",
+    "origin": "Arabic/Hebrew"
+  },
+  {
+    "id": 6,
+    "name": "Yusuf",
+    "arabic": "يُوسُف",
+    "gender": "boy",
+    "meaning": "God increases, Prophet Joseph",
+    "origin": "Arabic/Hebrew"
+  },
+  {
+    "id": 7,
+    "name": "Musa",
+    "arabic": "مُوسَى",
+    "gender": "boy",
+    "meaning": "Saved from water, Prophet Moses",
+    "origin": "Arabic/Hebrew"
+  },
+  {
+    "id": 8,
+    "name": "Isa",
+    "arabic": "عِيسَى",
+    "gender": "boy",
+    "meaning": "God is salvation, Prophet Jesus",
+    "origin": "Arabic/Hebrew"
+  },
+  {
+    "id": 9,
+    "name": "Adam",
+    "arabic": "آدَم",
+    "gender": "boy",
+    "meaning": "From the earth, the first human and prophet",
+    "origin": "Arabic"
+  },
+  {
+    "id": 10,
+    "name": "Nuh",
+    "arabic": "نُوح",
+    "gender": "boy",
+    "meaning": "Comforter, Prophet Noah",
+    "origin": "Arabic/Hebrew"
+  },
+  {
+    "id": 11,
+    "name": "Dawud",
+    "arabic": "دَاوُد",
+    "gender": "boy",
+    "meaning": "Beloved, Prophet David",
+    "origin": "Arabic/Hebrew"
+  },
+  {
+    "id": 12,
+    "name": "Sulayman",
+    "arabic": "سُلَيْمَان",
+    "gender": "boy",
+    "meaning": "Peaceful, Prophet Solomon",
+    "origin": "Arabic/Hebrew"
+  },
+  {
+    "id": 13,
+    "name": "Yahya",
+    "arabic": "يَحْيَى",
+    "gender": "boy",
+    "meaning": "God is gracious, Prophet John",
+    "origin": "Arabic/Hebrew"
+  },
+  {
+    "id": 14,
+    "name": "Ayyub",
+    "arabic": "أَيُّوب",
+    "gender": "boy",
+    "meaning": "Repentant, Prophet Job",
+    "origin": "Arabic/Hebrew"
+  },
+  {
+    "id": 15,
+    "name": "Yunus",
+    "arabic": "يُونُس",
+    "gender": "boy",
+    "meaning": "Dove, Prophet Jonah",
+    "origin": "Arabic/Hebrew"
+  },
+  {
+    "id": 16,
+    "name": "Harun",
+    "arabic": "هَارُون",
+    "gender": "boy",
+    "meaning": "Mountain of strength, Prophet Aaron",
+    "origin": "Arabic/Hebrew"
+  },
+  {
+    "id": 17,
+    "name": "Ishaq",
+    "arabic": "إِسْحَاق",
+    "gender": "boy",
+    "meaning": "He laughs, Prophet Isaac",
+    "origin": "Arabic/Hebrew"
+  },
+  {
+    "id": 18,
+    "name": "Yaqub",
+    "arabic": "يَعْقُوب",
+    "gender": "boy",
+    "meaning": "Supplanter, Prophet Jacob",
+    "origin": "Arabic/Hebrew"
+  },
+  {
+    "id": 19,
+    "name": "Lut",
+    "arabic": "لُوط",
+    "gender": "boy",
+    "meaning": "Covered, Prophet Lot",
+    "origin": "Arabic/Hebrew"
+  },
+  {
+    "id": 20,
+    "name": "Idris",
+    "arabic": "إِدْرِيس",
+    "gender": "boy",
+    "meaning": "Studious, Prophet Enoch",
+    "origin": "Arabic"
+  },
+  {
+    "id": 21,
+    "name": "Shuayb",
+    "arabic": "شُعَيْب",
+    "gender": "boy",
+    "meaning": "Who shows the right path",
+    "origin": "Arabic"
+  },
+  {
+    "id": 22,
+    "name": "Salih",
+    "arabic": "صَالِح",
+    "gender": "boy",
+    "meaning": "Righteous, pious",
+    "origin": "Arabic"
+  },
+  {
+    "id": 23,
+    "name": "Hud",
+    "arabic": "هُود",
+    "gender": "boy",
+    "meaning": "Knower of God",
+    "origin": "Arabic"
+  },
+  {
+    "id": 24,
+    "name": "Umar",
+    "arabic": "عُمَر",
+    "gender": "boy",
+    "meaning": "Flourishing, long life",
+    "origin": "Arabic"
+  },
+  {
+    "id": 25,
+    "name": "Ali",
+    "arabic": "عَلِيّ",
+    "gender": "boy",
+    "meaning": "Exalted, noble",
+    "origin": "Arabic"
+  },
+  {
+    "id": 26,
+    "name": "Abu Bakr",
+    "arabic": "أَبُو بَكْر",
+    "gender": "boy",
+    "meaning": "Father of the young camel, closest companion",
+    "origin": "Arabic"
+  },
+  {
+    "id": 27,
+    "name": "Uthman",
+    "arabic": "عُثْمَان",
+    "gender": "boy",
+    "meaning": "Wise, intelligent",
+    "origin": "Arabic"
+  },
+  {
+    "id": 28,
+    "name": "Khalid",
+    "arabic": "خَالِد",
+    "gender": "boy",
+    "meaning": "Eternal, immortal",
+    "origin": "Arabic"
+  },
+  {
+    "id": 29,
+    "name": "Hamza",
+    "arabic": "حَمْزَة",
+    "gender": "boy",
+    "meaning": "Lion, strong",
+    "origin": "Arabic"
+  },
+  {
+    "id": 30,
+    "name": "Bilal",
+    "arabic": "بِلَال",
+    "gender": "boy",
+    "meaning": "Water, moisture; first muezzin",
+    "origin": "Arabic"
+  },
+  {
+    "id": 31,
+    "name": "Tariq",
+    "arabic": "طَارِق",
+    "gender": "boy",
+    "meaning": "Night visitor, morning star",
+    "origin": "Arabic"
+  },
+  {
+    "id": 32,
+    "name": "Zayd",
+    "arabic": "زَيْد",
+    "gender": "boy",
+    "meaning": "Abundance, growth",
+    "origin": "Arabic"
+  },
+  {
+    "id": 33,
+    "name": "Amir",
+    "arabic": "أَمِير",
+    "gender": "boy",
+    "meaning": "Prince, commander",
+    "origin": "Arabic"
+  },
+  {
+    "id": 34,
+    "name": "Hassan",
+    "arabic": "حَسَن",
+    "gender": "boy",
+    "meaning": "Handsome, good",
+    "origin": "Arabic"
+  },
+  {
+    "id": 35,
+    "name": "Husayn",
+    "arabic": "حُسَيْن",
+    "gender": "boy",
+    "meaning": "Little handsome one",
+    "origin": "Arabic"
+  },
+  {
+    "id": 36,
+    "name": "Malik",
+    "arabic": "مَالِك",
+    "gender": "boy",
+    "meaning": "King, master",
+    "origin": "Arabic"
+  },
+  {
+    "id": 37,
+    "name": "Nur",
+    "arabic": "نُور",
+    "gender": "boy",
+    "meaning": "Light",
+    "origin": "Arabic"
+  },
+  {
+    "id": 38,
+    "name": "Karim",
+    "arabic": "كَرِيم",
+    "gender": "boy",
+    "meaning": "Generous, noble",
+    "origin": "Arabic"
+  },
+  {
+    "id": 39,
+    "name": "Rashid",
+    "arabic": "رَاشِد",
+    "gender": "boy",
+    "meaning": "Rightly guided",
+    "origin": "Arabic"
+  },
+  {
+    "id": 40,
+    "name": "Jabir",
+    "arabic": "جَابِر",
+    "gender": "boy",
+    "meaning": "Comforter, restorer",
+    "origin": "Arabic"
+  },
+  {
+    "id": 41,
+    "name": "Saad",
+    "arabic": "سَعْد",
+    "gender": "boy",
+    "meaning": "Happiness, good fortune",
+    "origin": "Arabic"
+  },
+  {
+    "id": 42,
+    "name": "Fahd",
+    "arabic": "فَهْد",
+    "gender": "boy",
+    "meaning": "Leopard, lynx",
+    "origin": "Arabic"
+  },
+  {
+    "id": 43,
+    "name": "Majid",
+    "arabic": "مَاجِد",
+    "gender": "boy",
+    "meaning": "Glorious, noble",
+    "origin": "Arabic"
+  },
+  {
+    "id": 44,
+    "name": "Nasir",
+    "arabic": "نَاصِر",
+    "gender": "boy",
+    "meaning": "Helper, supporter",
+    "origin": "Arabic"
+  },
+  {
+    "id": 45,
+    "name": "Rayan",
+    "arabic": "رَيَّان",
+    "gender": "boy",
+    "meaning": "Gate of Paradise, well-watered",
+    "origin": "Arabic"
+  },
+  {
+    "id": 46,
+    "name": "Zakariya",
+    "arabic": "زَكَرِيَّا",
+    "gender": "boy",
+    "meaning": "God remembers, Prophet Zachariah",
+    "origin": "Arabic/Hebrew"
+  },
+  {
+    "id": 47,
+    "name": "Aziz",
+    "arabic": "عَزِيز",
+    "gender": "boy",
+    "meaning": "Mighty, powerful",
+    "origin": "Arabic"
+  },
+  {
+    "id": 48,
+    "name": "Jibril",
+    "arabic": "جِبْرِيل",
+    "gender": "boy",
+    "meaning": "God is my strength, Angel Gabriel",
+    "origin": "Arabic/Hebrew"
+  },
+  {
+    "id": 49,
+    "name": "Asim",
+    "arabic": "عَاصِم",
+    "gender": "boy",
+    "meaning": "Protector, defender",
+    "origin": "Arabic"
+  },
+  {
+    "id": 50,
+    "name": "Hadi",
+    "arabic": "هَادِي",
+    "gender": "boy",
+    "meaning": "Guide",
+    "origin": "Arabic"
+  },
+  {
+    "id": 51,
+    "name": "Aisha",
+    "arabic": "عَائِشَة",
+    "gender": "girl",
+    "meaning": "Living, prosperous; mother of the believers",
+    "origin": "Arabic"
+  },
+  {
+    "id": 52,
+    "name": "Fatima",
+    "arabic": "فَاطِمَة",
+    "gender": "girl",
+    "meaning": "Captivating, daughter of the Prophet",
+    "origin": "Arabic"
+  },
+  {
+    "id": 53,
+    "name": "Maryam",
+    "arabic": "مَرْيَم",
+    "gender": "girl",
+    "meaning": "Beloved, mother of Prophet Isa",
+    "origin": "Arabic/Hebrew"
+  },
+  {
+    "id": 54,
+    "name": "Khadija",
+    "arabic": "خَدِيجَة",
+    "gender": "girl",
+    "meaning": "Premature, first wife of the Prophet",
+    "origin": "Arabic"
+  },
+  {
+    "id": 55,
+    "name": "Zaynab",
+    "arabic": "زَيْنَب",
+    "gender": "girl",
+    "meaning": "Beautiful tree, fragrant flower",
+    "origin": "Arabic"
+  },
+  {
+    "id": 56,
+    "name": "Ruqayyah",
+    "arabic": "رُقَيَّة",
+    "gender": "girl",
+    "meaning": "Gentle, soft",
+    "origin": "Arabic"
+  },
+  {
+    "id": 57,
+    "name": "Umm Kulthum",
+    "arabic": "أُمُّ كُلْثُوم",
+    "gender": "girl",
+    "meaning": "Mother of Kulthum",
+    "origin": "Arabic"
+  },
+  {
+    "id": 58,
+    "name": "Hafsa",
+    "arabic": "حَفْصَة",
+    "gender": "girl",
+    "meaning": "Young lioness",
+    "origin": "Arabic"
+  },
+  {
+    "id": 59,
+    "name": "Sawda",
+    "arabic": "سَوْدَة",
+    "gender": "girl",
+    "meaning": "Black, beautiful",
+    "origin": "Arabic"
+  },
+  {
+    "id": 60,
+    "name": "Sarah",
+    "arabic": "سَارَة",
+    "gender": "girl",
+    "meaning": "Princess, joyful",
+    "origin": "Arabic/Hebrew"
+  },
+  {
+    "id": 61,
+    "name": "Hajar",
+    "arabic": "هَاجَر",
+    "gender": "girl",
+    "meaning": "Fleeing, wife of Ibrahim",
+    "origin": "Arabic"
+  },
+  {
+    "id": 62,
+    "name": "Asiya",
+    "arabic": "آسِيَة",
+    "gender": "girl",
+    "meaning": "Healer, comforter; wife of Pharaoh",
+    "origin": "Arabic"
+  },
+  {
+    "id": 63,
+    "name": "Noor",
+    "arabic": "نُور",
+    "gender": "girl",
+    "meaning": "Light",
+    "origin": "Arabic"
+  },
+  {
+    "id": 64,
+    "name": "Layla",
+    "arabic": "لَيْلَى",
+    "gender": "girl",
+    "meaning": "Night, born at night",
+    "origin": "Arabic"
+  },
+  {
+    "id": 65,
+    "name": "Huda",
+    "arabic": "هُدَى",
+    "gender": "girl",
+    "meaning": "Guidance, right path",
+    "origin": "Arabic"
+  },
+  {
+    "id": 66,
+    "name": "Safiyya",
+    "arabic": "صَفِيَّة",
+    "gender": "girl",
+    "meaning": "Pure, chosen friend",
+    "origin": "Arabic"
+  },
+  {
+    "id": 67,
+    "name": "Amira",
+    "arabic": "أَمِيرَة",
+    "gender": "girl",
+    "meaning": "Princess, leader",
+    "origin": "Arabic"
+  },
+  {
+    "id": 68,
+    "name": "Jannah",
+    "arabic": "جَنَّة",
+    "gender": "girl",
+    "meaning": "Paradise, garden",
+    "origin": "Arabic"
+  },
+  {
+    "id": 69,
+    "name": "Salma",
+    "arabic": "سَلْمَى",
+    "gender": "girl",
+    "meaning": "Safe, peaceful",
+    "origin": "Arabic"
+  },
+  {
+    "id": 70,
+    "name": "Nadia",
+    "arabic": "نَادِيَة",
+    "gender": "girl",
+    "meaning": "Caller, announcer",
+    "origin": "Arabic"
+  },
+  {
+    "id": 71,
+    "name": "Mariam",
+    "arabic": "مَرْيَم",
+    "gender": "girl",
+    "meaning": "Pious, devoted to God",
+    "origin": "Arabic"
+  },
+  {
+    "id": 72,
+    "name": "Yasmin",
+    "arabic": "يَاسَمِين",
+    "gender": "girl",
+    "meaning": "Jasmine flower",
+    "origin": "Arabic/Persian"
+  },
+  {
+    "id": 73,
+    "name": "Sana",
+    "arabic": "سَنَاء",
+    "gender": "girl",
+    "meaning": "Resplendence, brilliance",
+    "origin": "Arabic"
+  },
+  {
+    "id": 74,
+    "name": "Rahma",
+    "arabic": "رَحْمَة",
+    "gender": "girl",
+    "meaning": "Mercy, compassion",
+    "origin": "Arabic"
+  },
+  {
+    "id": 75,
+    "name": "Iman",
+    "arabic": "إِيمَان",
+    "gender": "girl",
+    "meaning": "Faith, belief",
+    "origin": "Arabic"
+  },
+  {
+    "id": 76,
+    "name": "Amina",
+    "arabic": "آمِنَة",
+    "gender": "girl",
+    "meaning": "Trustworthy, safe; mother of the Prophet",
+    "origin": "Arabic"
+  },
+  {
+    "id": 77,
+    "name": "Rania",
+    "arabic": "رَانِيَة",
+    "gender": "girl",
+    "meaning": "Gazing, looking at",
+    "origin": "Arabic"
+  },
+  {
+    "id": 78,
+    "name": "Samira",
+    "arabic": "سَمِيرَة",
+    "gender": "girl",
+    "meaning": "Entertaining companion",
+    "origin": "Arabic"
+  },
+  {
+    "id": 79,
+    "name": "Farida",
+    "arabic": "فَرِيدَة",
+    "gender": "girl",
+    "meaning": "Unique, precious pearl",
+    "origin": "Arabic"
+  },
+  {
+    "id": 80,
+    "name": "Karima",
+    "arabic": "كَرِيمَة",
+    "gender": "girl",
+    "meaning": "Generous, noble",
+    "origin": "Arabic"
+  },
+  {
+    "id": 81,
+    "name": "Nabila",
+    "arabic": "نَبِيلَة",
+    "gender": "girl",
+    "meaning": "Noble, distinguished",
+    "origin": "Arabic"
+  },
+  {
+    "id": 82,
+    "name": "Shahd",
+    "arabic": "شَهْد",
+    "gender": "girl",
+    "meaning": "Honey",
+    "origin": "Arabic"
+  },
+  {
+    "id": 83,
+    "name": "Mira",
+    "arabic": "مِيرَا",
+    "gender": "girl",
+    "meaning": "Princess, sea of light",
+    "origin": "Arabic"
+  },
+  {
+    "id": 84,
+    "name": "Lina",
+    "arabic": "لِينَا",
+    "gender": "girl",
+    "meaning": "Tender, delicate",
+    "origin": "Arabic"
+  },
+  {
+    "id": 85,
+    "name": "Zara",
+    "arabic": "زَارَة",
+    "gender": "girl",
+    "meaning": "Blooming flower, princess",
+    "origin": "Arabic/Hebrew"
+  },
+  {
+    "id": 86,
+    "name": "Jana",
+    "arabic": "جَنَى",
+    "gender": "girl",
+    "meaning": "Fresh fruit from paradise",
+    "origin": "Arabic"
+  },
+  {
+    "id": 87,
+    "name": "Tahira",
+    "arabic": "طَاهِرَة",
+    "gender": "girl",
+    "meaning": "Pure, chaste",
+    "origin": "Arabic"
+  },
+  {
+    "id": 88,
+    "name": "Sabiha",
+    "arabic": "صَبِيحَة",
+    "gender": "girl",
+    "meaning": "Beautiful, graceful",
+    "origin": "Arabic"
+  },
+  {
+    "id": 89,
+    "name": "Ruba",
+    "arabic": "رُبَى",
+    "gender": "girl",
+    "meaning": "Hill, elevated ground",
+    "origin": "Arabic"
+  },
+  {
+    "id": 90,
+    "name": "Maysa",
+    "arabic": "مَيْسَاء",
+    "gender": "girl",
+    "meaning": "Graceful walk",
+    "origin": "Arabic"
+  },
+  {
+    "id": 91,
+    "name": "Alia",
+    "arabic": "عَالِيَة",
+    "gender": "girl",
+    "meaning": "Sublime, exalted",
+    "origin": "Arabic"
+  },
+  {
+    "id": 92,
+    "name": "Dina",
+    "arabic": "دِينَا",
+    "gender": "girl",
+    "meaning": "Judgment, religion",
+    "origin": "Arabic/Hebrew"
+  },
+  {
+    "id": 93,
+    "name": "Nihal",
+    "arabic": "نِهَال",
+    "gender": "girl",
+    "meaning": "Quenching drink",
+    "origin": "Arabic"
+  },
+  {
+    "id": 94,
+    "name": "Sumaya",
+    "arabic": "سُمَيَّة",
+    "gender": "girl",
+    "meaning": "High above, exalted",
+    "origin": "Arabic"
+  },
+  {
+    "id": 95,
+    "name": "Eman",
+    "arabic": "إِيمَان",
+    "gender": "girl",
+    "meaning": "Faith, belief",
+    "origin": "Arabic"
+  },
+  {
+    "id": 96,
+    "name": "Shireen",
+    "arabic": "شِيرِين",
+    "gender": "girl",
+    "meaning": "Sweet, pleasant",
+    "origin": "Persian"
+  },
+  {
+    "id": 97,
+    "name": "Halima",
+    "arabic": "حَلِيمَة",
+    "gender": "girl",
+    "meaning": "Gentle, patient; foster mother of the Prophet",
+    "origin": "Arabic"
+  },
+  {
+    "id": 98,
+    "name": "Malika",
+    "arabic": "مَلِكَة",
+    "gender": "girl",
+    "meaning": "Queen",
+    "origin": "Arabic"
+  },
+  {
+    "id": 99,
+    "name": "Zahra",
+    "arabic": "زَهْرَاء",
+    "gender": "girl",
+    "meaning": "Radiant, shining",
+    "origin": "Arabic"
+  },
+  {
+    "id": 100,
+    "name": "Nawal",
+    "arabic": "نَوَال",
+    "gender": "girl",
+    "meaning": "Gift, bestowal",
+    "origin": "Arabic"
+  }
+]

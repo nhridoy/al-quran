@@ -9,9 +9,12 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
 import duas from "@/data/duas.json";
+import { useLocale } from "@/i18n";
 
 export default function DuaCategory() {
+  const { t } = useLocale();
   const { categoryId } = useParams();
   const category = decodeURIComponent(categoryId || "");
   const [search, setSearch] = useState("");
@@ -32,18 +35,17 @@ export default function DuaCategory() {
     <PageShell head={category} showBack>
       <div className="relative">
         <BiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-base text-text-muted" />
-        <input
-          type="text"
-          placeholder="Search within this category..."
+        <Input
+          placeholder={t("duas.categorySearchPlaceholder")}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full rounded-xl border border-border bg-surface-alt py-2.5 pl-9 pr-4 text-sm text-text-primary outline-none transition-colors placeholder:text-text-muted focus:border-secondary dark:border-dark-border dark:bg-dark-surface-alt dark:text-dark-text-primary"
+          className="pl-9"
         />
       </div>
 
       {items.length === 0 && (
         <p className="py-10 text-center text-sm text-text-muted">
-          No duas found
+          {t("duas.noDuasFound")}
         </p>
       )}
 
@@ -81,7 +83,9 @@ export default function DuaCategory() {
                 <Badge variant="default">{dua.reference}</Badge>
                 {dua.benefit && (
                   <div className="rounded-xl bg-accent/10 p-3 dark:bg-accent/5">
-                    <p className="text-xs font-medium text-accent">Benefit</p>
+                    <p className="text-xs font-medium text-accent">
+                      {t("duas.benefit")}
+                    </p>
                     <p className="mt-0.5 text-xs leading-relaxed text-text-secondary dark:text-dark-text-secondary">
                       {dua.benefit}
                     </p>

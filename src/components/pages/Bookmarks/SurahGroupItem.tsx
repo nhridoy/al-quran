@@ -8,6 +8,12 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { useLocale } from "@/i18n";
 import type { Bookmark } from "@/store/bookmarks";
 import BookmarkRow from "./BookmarkRow";
 
@@ -22,6 +28,7 @@ export default function SurahGroupItem({
   onClearSurah,
   onRemove,
 }: SurahGroupItemProps) {
+  const { t } = useLocale();
   const navigate = useNavigate();
   const surahNo = items[0].surahNo;
   const enName = items[0].enName;
@@ -37,34 +44,48 @@ export default function SurahGroupItem({
             {enName}
           </p>
           <p className="text-xs text-text-muted dark:text-dark-text-muted">
-            {items.length} ayah{items.length !== 1 ? "s" : ""}
+            {t("bookmarks.surahAyahCount", { n: items.length })}
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <Button
-            variant="secondary-ghost"
-            size="icon-xs"
-            className="rounded-lg"
-            onClick={(e) => {
-              e.stopPropagation();
-              navigate(`/surah/${surahNo}`);
-            }}
-            aria-label="Go to surah"
-          >
-            <IoOpenOutline className="text-xs" />
-          </Button>
-          <Button
-            variant="danger"
-            size="icon-xs"
-            className="rounded-lg"
-            onClick={(e) => {
-              e.stopPropagation();
-              onClearSurah(surahNo, enName);
-            }}
-            aria-label="Clear surah bookmarks"
-          >
-            <BiTrash className="text-xs" />
-          </Button>
+          <Tooltip>
+            <TooltipTrigger
+              render={
+                <Button
+                  variant="secondary-ghost"
+                  size="icon-xs"
+                  className="rounded-lg"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate(`/surah/${surahNo}`);
+                  }}
+                  aria-label={t("bookmarks.goToSurah")}
+                >
+                  <IoOpenOutline className="text-xs" />
+                </Button>
+              }
+            />
+            <TooltipContent>{t("bookmarks.goToSurah")}</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger
+              render={
+                <Button
+                  variant="danger"
+                  size="icon-xs"
+                  className="rounded-lg"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onClearSurah(surahNo, enName);
+                  }}
+                  aria-label={t("bookmarks.clearSurahAria")}
+                >
+                  <BiTrash className="text-xs" />
+                </Button>
+              }
+            />
+            <TooltipContent>{t("bookmarks.clearSurahAria")}</TooltipContent>
+          </Tooltip>
         </div>
       </AccordionTrigger>
       <AccordionContent className="border-0 pb-0">
