@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import { lazy, Suspense, useEffect, useState } from "react";
 import {
   BrowserRouter,
@@ -284,6 +285,7 @@ function App() {
           <AppContent />
         </LocaleProvider>
       </TooltipProvider>
+      <Analytics />
     </BrowserRouter>
   );
 }
